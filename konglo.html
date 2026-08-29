@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20260829p">
+    <link rel="stylesheet" href="assets/css/app.css?v=20260829q">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="konglo">
 
@@ -208,7 +208,7 @@
                     </div>
                 </div>
 
-                <div id="konglo-detail-view" class="hide premium-card no-hover-lift overflow-hidden shadow-xl">
+                <div id="konglo-detail-view" class="hide premium-card no-hover-lift overflow-hidden shadow-xl" hidden style="display:none">
                     <div class="bg-slate-900 px-6 py-8 relative border-slate-800">
                         <button id="btn-back" onclick="hideDetail()" class="absolute top-4 left-4 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl font-bold transition-colors text-xs flex items-center gap-2">
                             <i class="fas fa-arrow-left"></i> Kembali
@@ -226,7 +226,7 @@
                     </div>
                 </div>
 
-                <div id="konglo-funda-view" class="hide premium-card no-hover-lift overflow-hidden bg-slate-900 text-slate-100 p-4 md:p-6 border-slate-700 shadow-xl">
+                <div id="konglo-funda-view" class="hide premium-card no-hover-lift overflow-hidden bg-slate-900 text-slate-100 p-4 md:p-6 border-slate-700 shadow-xl" hidden style="display:none">
                     <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-slate-700 pb-4 gap-4">
                         <div>
                             <button onclick="hideFunda()" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-lg font-bold transition-colors text-xs flex items-center gap-2 mb-3 shadow-sm">
@@ -267,7 +267,7 @@
                                         <th>2023</th>
                                         <th>2024</th>
                                         <th>2025</th>
-                                        <th class="text-blue-400">Q1 2026</th>
+                                        <th class="text-blue-400">Q 2026</th>
                                     </tr>
                                 </thead>
                                 <tbody id="funda-lapkeu-body">
@@ -309,7 +309,7 @@
                                             <th>2023</th>
                                             <th>2024</th>
                                             <th>2025</th>
-                                            <th class="text-blue-400">Q1 2026</th>
+                                            <th class="text-blue-400">Q 2026</th>
                                         </tr>
                                     </thead>
                                     <tbody id="funda-npm-body"></tbody>
@@ -346,7 +346,7 @@
                                                 <th>2023</th>
                                                 <th>2024</th>
                                                 <th>2025</th>
-                                                <th class="text-blue-400">Q1 2026</th>
+                                                <th class="text-blue-400">Q 2026</th>
                                             </tr>
                                         </thead>
                                         <tbody id="funda-metrics-body">
@@ -440,9 +440,9 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20260829p"></script>
-    <script src="assets/js/pages/page-konglo-data-funda.js?v=20260829p"></script>
-    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20260829p"></script>
-    <script src="assets/js/pages/page-konglo-ui.js?v=20260829p"></script>
+    <script src="assets/js/ewoks-core.js?v=20260829q"></script>
+    <script src="assets/js/pages/page-konglo-data-funda.js?v=20260829q"></script>
+    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20260829q"></script>
+    <script src="assets/js/pages/page-konglo-ui.js?v=20260829q"></script>
 </body>
 </html>

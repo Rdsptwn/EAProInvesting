@@ -1,6 +1,6 @@
 /**
  * Bangun assets/data/funda-idx.json dari Yahoo Finance (.JK).
- * Kolom 2020–2025: laporan tahunan. Kolom Q1 2026: kuartal terbaru (Mar 2026).
+ * Kolom 2020–2025: laporan tahunan. Kolom terakhir: kuartal 2026 terbaru (Jun/Sep, fallback Mar).
  * Dividend yield: historis per tahun + TTM.
  * Jalankan: node tools/build-funda-idx.mjs --force
  */
@@ -117,15 +117,20 @@ function seriesByYear(rows, fxUsdIdr) {
     return YEARS.map((y) => (y === 2026 ? null : map[y] ?? null));
 }
 
-/** Q1 2026: periode berakhir Maret 2026, atau kuartal pertama tahun 2026. */
-function pickQ12026(rows, fxUsdIdr) {
-    if (!rows?.length) return null;
+/** Kuartal 2026 terbaru: Jun (Q2) / Sep (Q3), lalu Mar (Q1). */
+function pickLatest2026Quarter(rows, fxUsdIdr) {
+    if (!rows?.length) return { value: null, asOf: null };
     const sorted = [...rows].sort((a, b) => String(b.asOfDate).localeCompare(String(a.asOfDate)));
-    let row = sorted.find((r) => String(r.asOfDate).startsWith('2026-03'));
+    let row = sorted.find((r) => String(r.asOfDate).startsWith('2026-09'));
     if (!row) row = sorted.find((r) => String(r.asOfDate).startsWith('2026-06'));
+    if (!row) row = sorted.find((r) => String(r.asOfDate).startsWith('2026-03'));
     if (!row) row = sorted.find((r) => yearFromAsOf(r.asOfDate) === 2026);
-    if (!row) return null;
-    return toTriliunFromRow(row, fxUsdIdr);
+    if (!row) return { value: null, asOf: null };
+    return { value: toTriliunFromRow(row, fxUsdIdr), asOf: String(row.asOfDate).slice(0, 10) };
+}
+
+function pickQ12026(rows, fxUsdIdr) {
+    return pickLatest2026Quarter(rows, fxUsdIdr).value;
 }
 
 function mergeQ1(seriesAnnual, q1Value) {
@@ -406,7 +411,7 @@ function normalize(ticker, byType, isBank, fxUsdIdr, divYield, legacy) {
         ocf: fillForward(mergeQ1(ocfA, ocfQ)),
         divYield: divYield || YEARS.map(() => 0),
         source: 'yahoo',
-        sourceLabel: 'Yahoo Finance (tahunan + Q1 2026)',
+        sourceLabel: 'Yahoo Finance (tahunan + kuartal 2026 terbaru)',
         updated: new Date().toISOString().slice(0, 10)
     };
 
@@ -458,8 +463,8 @@ async function main() {
 
     const out = {
         meta: {
-            source: 'Yahoo Finance — tahunan + Q1 2026 + metrik turunan',
-            unit: 'triliun IDR (kolom Q1 2026 = kuartal; ROE/ROA Q1 annualized)',
+            source: 'Yahoo Finance — tahunan + kuartal 2026 terbaru + metrik turunan',
+            unit: 'triliun IDR (kolom terakhir = kuartal 2026 terbaru; ROE/ROA kuartal annualized)',
             built: new Date().toISOString()
         },
         tickers: { ...existing }

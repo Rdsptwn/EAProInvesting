@@ -44,9 +44,17 @@ function searchKonglo() {
 
 function kongloSetView(viewId) {
     ['konglo-dashboard-view', 'konglo-detail-view', 'konglo-funda-view'].forEach((id) => {
-        document.getElementById(id)?.classList.add('hide');
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('hide');
+        el.hidden = true;
+        el.style.display = 'none';
     });
-    document.getElementById(viewId)?.classList.remove('hide');
+    const show = document.getElementById(viewId);
+    if (!show) return;
+    show.classList.remove('hide');
+    show.hidden = false;
+    show.style.display = '';
 }
 
 function kongloQuoteCells(stock) {
@@ -181,7 +189,7 @@ function hideDetail() {
 }
 
 // --- FUNDAMENTAL PRO: metrik turunan dari laporan keuangan ---
-const FUNDA_YEAR_LABELS = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q1 2026'];
+const FUNDA_YEAR_LABELS = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q 2026'];
 const FUNDA_EMPTY = '(-)';
 const FUNDA_MIN_TRILIUN = 0.05;
 const FUNDA_MIN_MILIAR = 0.001;
@@ -701,7 +709,7 @@ function openFundaTab(evt, tabName) {
 }
 
 function renderFundaCharts(fcfData, divData, npmData, ticker) {
-    const labels = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q1 2026'];
+    const labels = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q 2026'];
     const commonOptions = { 
         responsive: true, maintainAspectRatio: false, 
         color: '#cbd5e1',
