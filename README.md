@@ -17,7 +17,7 @@ Setelah workflow ini ada di GitHub (`main`), bot meng-commit data **setiap hari 
 |------|-----------|
 | IHSG + harga emiten (peta konglo) | Setiap hari |
 | ETF / pasar alternatif | Setiap hari |
-| Laporan keuangan (Fundamental PRO) | Minggu + tanggal 5 |
+| Laporan keuangan (Fundamental PRO) | Minggu, tanggal 5, dan 1 Jan/Apr/Jul/Okt |
 | Cache `?v=` di HTML | Setiap sync (agar Pages tidak nyangkut) |
 
 Cek: repo → **Actions** → *Daily market sync*. Kalau kosong, buka **Settings → Actions → General** → izinkan Actions. Sekali pertama, **Run workflow** untuk uji.
@@ -27,7 +27,7 @@ Cek: repo → **Actions** → *Daily market sync*. Kalau kosong, buka **Settings
 - `assets/data/market-snapshot.json` (wajib — harga IHSG + emiten)
 - `assets/data/corporate-calendar.json`
 - `assets/data/funda-idx.json`
-- `assets/js/ewoks-core.js`, `assets/js/pages/page-konglo-ui.js`, `assets/css/app.css`
+- `assets/js/ewoks-core.js`, `assets/js/pages/page-konglo-ui.js`, `assets/js/pages/page-konglo-funda-fetch.js`, `assets/css/app.css`
 - `index.html`, `konglo.html`, semua `.html` lain
 - `.github/workflows/sync-funda-idx.yml`
 - `.nojekyll`

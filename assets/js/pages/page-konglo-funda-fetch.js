@@ -24,6 +24,8 @@ const FUNDA_TRUSTED_SOURCES = new Set(['yahoo', 'finnhub', 'bundle']);
 
 let fundaIdxBundle = null;
 
+let fundaIdxBundleMeta = {};
+
 let fundaIdxBundlePromise = null;
 
 
@@ -32,7 +34,7 @@ function fundaCacheKey(ticker) {
 
     const v = window.EWOKS_ASSET_V || '1';
 
-    return `ewoks_funda_v3_${String(ticker).toUpperCase()}_${v}`;
+    return `ewoks_funda_v4_${String(ticker).toUpperCase()}_${v}`;
 
 }
 
@@ -124,11 +126,15 @@ async function loadFundaIdxBundle() {
 
             const json = await res.json();
 
+            fundaIdxBundleMeta = json.meta || {};
+
             fundaIdxBundle = json.tickers || json;
 
             return fundaIdxBundle;
 
         } catch (_) {
+
+            fundaIdxBundleMeta = {};
 
             fundaIdxBundle = {};
 
@@ -456,27 +462,53 @@ function bundleEntryForTicker(bundle, ticker) {
 
  */
 
+function fundaStampMs(value) {
+
+    const t = Date.parse(value);
+
+    return Number.isFinite(t) ? t : 0;
+
+}
+
+function shouldUseFundaCache(cached, bundled) {
+
+    if (!cached?.rev?.length) return false;
+
+    if (!bundled) return true;
+
+    const cacheTs = fundaStampMs(cached.updated);
+
+    const bundleTs = fundaStampMs(bundled.updated) || fundaStampMs(fundaIdxBundleMeta.built);
+
+    if (bundleTs && (!cacheTs || bundleTs > cacheTs)) return false;
+
+    return true;
+
+}
+
 async function resolveKongloFunda(ticker, sector) {
 
     const t = String(ticker).toUpperCase();
-
-
-
-    const cached = readFundaCache(t);
-
-    if (cached?.rev?.length) {
-
-        return { data: cached, source: cached.source || 'cache', sourceLabel: cached.sourceLabel || 'Cache lokal' };
-
-    }
-
-
 
     const bundle = await loadFundaIdxBundle();
 
     const bundled = bundleEntryForTicker(bundle, t);
 
+    const cached = readFundaCache(t);
 
+    if (shouldUseFundaCache(cached, bundled)) {
+
+        return { data: cached, source: cached.source || 'cache', sourceLabel: cached.sourceLabel || 'Cache lokal' };
+
+    }
+
+    if (bundled) {
+
+        writeFundaCache(t, bundled);
+
+        return { data: bundled, source: bundled.source, sourceLabel: bundled.sourceLabel };
+
+    }
 
     const token = typeof getEwoksFinnhubToken === 'function' ? getEwoksFinnhubToken() : '';
 
@@ -495,16 +527,6 @@ async function resolveKongloFunda(ticker, sector) {
             console.warn('Finnhub funda', t, err);
 
         }
-
-    }
-
-
-
-    if (bundled) {
-
-        writeFundaCache(t, bundled);
-
-        return { data: bundled, source: bundled.source, sourceLabel: bundled.sourceLabel };
 
     }
 

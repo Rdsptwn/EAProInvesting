@@ -178,9 +178,13 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
             border-color: rgba(226, 232, 240, 0.8);
         }
-        header { overflow: visible; }
-        nav { overflow: visible; }
-        .dropdown-content { z-index: 200; }
+        header { overflow: visible !important; }
+        nav { overflow: visible !important; }
+        .dropdown-content {
+            z-index: 400;
+            overflow: visible;
+            min-width: 240px;
+        }
         .dropdown-end { left: auto; right: 0; }
 
         .glass-card {
@@ -238,12 +242,13 @@
             position: absolute;
             top: 100%;
             left: 0;
-            min-width: 220px;
+            min-width: 240px;
             background-color: white;
             border: 1px solid #e2e8f0;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            z-index: 100;
+            z-index: 400;
+            overflow: visible;
             padding: 0.5rem;
             margin-top: 0.5rem;
         }
