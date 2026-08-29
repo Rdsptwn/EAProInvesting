@@ -23,6 +23,7 @@ const PAGES = [
   { key: 'bandar', file: 'bandar.html', title: 'Kalkulator Bandar' },
   { key: 'konglo', file: 'konglo.html', title: 'Peta Konglomerat' },
   { key: 'broker', file: 'broker.html', title: 'Broker Database' },
+  { key: 'pasar-alternatif', file: 'pasar-alternatif.html', title: 'Obligasi, RD & ETF' },
 ];
 
 /** 1-based line ranges from monolith index.html (inclusive) */

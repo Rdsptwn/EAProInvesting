@@ -14,7 +14,7 @@
 
 
 
-const FUNDA_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const FUNDA_CACHE_TTL_MS = 12 * 60 * 60 * 1000;
 
 const FUNDA_YEARS = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
@@ -250,7 +250,7 @@ function seriesFromFinnhubRows(icRows, bsRows, cfRows, isBank) {
 
             }
 
-            return last;
+            return 0;
 
         });
 

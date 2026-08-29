@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20260805m';
+window.EWOKS_ASSET_V = '20260829a';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -248,12 +248,12 @@ function getJakartaDateKey(date = new Date()) {
 }
 
 const CORPORATE_CALENDAR_FALLBACK = [
-    { ticker: 'BBCA', action: 'Dividen Final', kind: 'dividen', date: '2026-05-12', dateLabel: 'Cum Date' },
-    { ticker: 'ADRO', action: 'Dividen Interim', kind: 'dividen', date: '2026-05-15', dateLabel: 'Cum Date' },
-    { ticker: 'TLKM', action: 'RUPS Tahunan', kind: 'rups', date: '2026-05-20', dateLabel: 'Jadwal' },
-    { ticker: 'BMRI', action: 'Dividen Interim', kind: 'dividen', date: '2026-05-28', dateLabel: 'Cum Date' },
-    { ticker: 'ASII', action: 'RUPS Tahunan', kind: 'rups', date: '2026-06-12', dateLabel: 'Jadwal' },
-    { ticker: 'UNVR', action: 'Dividen Final', kind: 'dividen', date: '2026-06-18', dateLabel: 'Cum Date' },
+    { ticker: 'BBCA', action: 'Dividen Interim Rp25', kind: 'dividen', date: '2026-08-31', dateLabel: 'Ex-Date' },
+    { ticker: 'BBCA', action: 'Bayar Dividen Interim', kind: 'dividen', date: '2026-09-16', dateLabel: 'Pembayaran' },
+    { ticker: 'BBRI', action: 'Dividen Interim (est.)', kind: 'dividen', date: '2026-10-21', dateLabel: 'Ex-Date' },
+    { ticker: 'BBRI', action: 'Bayar Dividen (est.)', kind: 'dividen', date: '2026-11-06', dateLabel: 'Pembayaran' },
+    { ticker: 'ASII', action: 'Pantau aksi korporasi IDX', kind: 'rups', date: '2026-09-30', dateLabel: 'Jadwal' },
+    { ticker: 'TLKM', action: 'Rilis kinerja kuartalan', kind: 'rups', date: '2026-10-31', dateLabel: 'Estimasi' },
 ];
 
 /** Emiten IDX (tanpa .JK) untuk tarik dividen via Finnhub jika token di-set — daftar bisa Anda sesuaikan. */
@@ -488,72 +488,91 @@ async function fetchNews() {
     }
 }
 
-async function fetchRealIHSG() {
-    try {
-        throw new Error("GSheet URL belum di-set, force fallback."); 
-    } catch (error) {
-        fetchLiveMarketData();
-    }
+let __ewoksMarketSnapshot = null;
+let __ewoksMarketSnapshotPromise = null;
+
+async function loadEwoksMarketSnapshot() {
+    if (__ewoksMarketSnapshot) return __ewoksMarketSnapshot;
+    if (__ewoksMarketSnapshotPromise) return __ewoksMarketSnapshotPromise;
+    __ewoksMarketSnapshotPromise = (async () => {
+        try {
+            const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+            const v = window.EWOKS_ASSET_V || '1';
+            const res = await fetch(`${base}assets/data/market-snapshot.json?v=${encodeURIComponent(v)}`, { cache: 'no-store' });
+            if (!res.ok) throw new Error('snapshot missing');
+            __ewoksMarketSnapshot = await res.json();
+        } catch (_) {
+            __ewoksMarketSnapshot = { quotes: {}, ihsg: null };
+        }
+        return __ewoksMarketSnapshot;
+    })();
+    return __ewoksMarketSnapshotPromise;
 }
 
-function fetchLiveMarketData() {
+function formatIdxPrice(n) {
+    const v = Number(n);
+    if (!Number.isFinite(v)) return '—';
+    return v.toLocaleString('id-ID', { maximumFractionDigits: v >= 100 ? 0 : 2 });
+}
+
+function getIdxQuote(ticker) {
+    const t = String(ticker || '').toUpperCase();
+    return __ewoksMarketSnapshot?.quotes?.[t] || null;
+}
+
+function applyMarketSnapshotToDashboard(snap) {
+    const ihsg = snap?.ihsg;
     const ihsgEl = document.getElementById('ihsg-dash-live');
     const termIhsgEl = document.getElementById('terminal-ihsg');
-    const seedEl = ihsgEl || termIhsgEl;
-    if (!seedEl) return;
-
-    let currentIHSG = parseFloat(seedEl.innerText.replace(/,/g, ''));
-    if(isNaN(currentIHSG)) currentIHSG = 7350.25;
-
-    const change = (Math.random() * 10) - 5;
-    currentIHSG += change;
-
-    const formattedIHSG = currentIHSG.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    if (ihsgEl) ihsgEl.innerText = formattedIHSG;
-    if (termIhsgEl) termIhsgEl.innerText = formattedIHSG;
-
-    if (ihsgEl) {
-        ihsgEl.classList.add('scale-110');
-        setTimeout(() => ihsgEl.classList.remove('scale-110'), 300);
+    if (ihsg?.price != null) {
+        const formatted = Number(ihsg.price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (ihsgEl) ihsgEl.innerText = formatted;
+        if (termIhsgEl) termIhsgEl.innerText = formatted;
+        const up = (ihsg.changePct ?? 0) >= 0;
+        if (ihsgEl) ihsgEl.className = `stat-badge ${up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'} transition-all duration-300`;
+        if (termIhsgEl) termIhsgEl.className = `font-black ${up ? 'text-emerald-600' : 'text-rose-600'} transition-all duration-300`;
     }
 
-    if(change >= 0) {
-        if (ihsgEl) ihsgEl.className = "stat-badge bg-emerald-100 text-emerald-700 transition-all duration-300";
-        if(termIhsgEl) termIhsgEl.className = "font-black text-emerald-600 transition-all duration-300";
-    } else {
-        if (ihsgEl) ihsgEl.className = "stat-badge bg-rose-100 text-rose-700 transition-all duration-300";
-        if(termIhsgEl) termIhsgEl.className = "font-black text-rose-600 transition-all duration-300";
+    const yieldEl = document.getElementById('sbn-yield-dash');
+    if (yieldEl && snap?.id10y?.price != null) {
+        yieldEl.innerText = `${Number(snap.id10y.price).toFixed(2)}%`;
     }
 
     const fgPointer = document.getElementById('fg-pointer');
     const fgText = document.getElementById('fg-text');
     const termSentiment = document.getElementById('terminal-sentiment');
-
-    let fgValue = 50 + ((currentIHSG - 7300) / 10);
-    if(fgValue < 0) fgValue = 0;
-    if(fgValue > 100) fgValue = 100;
-
-    if(fgPointer) fgPointer.style.left = `${fgValue}%`;
-
-    if(fgText) {
-        let statusText = "";
-        let colorClass = "";
-        if(fgValue < 25) { statusText = "EXTREME FEAR"; colorClass = "text-rose-600"; fgText.className = "text-[10px] font-black text-rose-600 transition-all duration-300"; }
-        else if(fgValue < 45) { statusText = "FEAR"; colorClass = "text-rose-500"; fgText.className = "text-[10px] font-black text-rose-500 transition-all duration-300"; }
-        else if(fgValue < 55) { statusText = "NEUTRAL"; colorClass = "text-amber-500"; fgText.className = "text-[10px] font-black text-amber-500 transition-all duration-300"; }
-        else if(fgValue < 75) { statusText = "GREED"; colorClass = "text-emerald-500"; fgText.className = "text-[10px] font-black text-emerald-500 transition-all duration-300"; }
-        else { statusText = "EXTREME GREED"; colorClass = "text-emerald-600"; fgText.className = "text-[10px] font-black text-emerald-600 transition-all duration-300"; }
-
+    let fgValue = 50;
+    if (ihsg?.changePct != null) {
+        fgValue = 50 + Math.max(-25, Math.min(25, ihsg.changePct * 4));
+    }
+    if (fgPointer) fgPointer.style.left = `${fgValue}%`;
+    if (fgText) {
+        let statusText = 'NEUTRAL';
+        let colorClass = 'text-amber-500';
+        if (fgValue < 25) { statusText = 'EXTREME FEAR'; colorClass = 'text-rose-600'; }
+        else if (fgValue < 45) { statusText = 'FEAR'; colorClass = 'text-rose-500'; }
+        else if (fgValue < 55) { statusText = 'NEUTRAL'; colorClass = 'text-amber-500'; }
+        else if (fgValue < 75) { statusText = 'GREED'; colorClass = 'text-emerald-500'; }
+        else { statusText = 'EXTREME GREED'; colorClass = 'text-emerald-600'; }
+        fgText.className = `text-[10px] font-black ${colorClass} transition-all duration-300`;
         fgText.innerText = `${statusText} (${Math.round(fgValue)})`;
-        if(termSentiment) {
+        if (termSentiment) {
             termSentiment.innerText = statusText;
             termSentiment.className = `text-xl md:text-2xl font-black ${colorClass}`;
         }
     }
+}
 
+async function fetchRealIHSG() {
+    const snap = await loadEwoksMarketSnapshot();
+    applyMarketSnapshotToDashboard(snap);
     if (EwoksSiteContext.is('watchlist') && typeof renderWatchlist === 'function') {
         renderWatchlist(true);
     }
+}
+
+function fetchLiveMarketData() {
+    fetchRealIHSG();
 }
 
 function getBrokerBadge(kode) {
@@ -687,6 +706,6 @@ window.addEventListener('load', () => {
     }
 
     setInterval(updateClock, 1000);
-    setInterval(fetchRealIHSG, 5000);
+    setInterval(fetchRealIHSG, 15 * 60 * 1000);
 });
 

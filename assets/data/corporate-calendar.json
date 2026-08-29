@@ -1,8 +1,8 @@
 [
-  { "ticker": "BBCA", "action": "Dividen Final", "kind": "dividen", "date": "2026-05-12", "dateLabel": "Cum Date" },
-  { "ticker": "ADRO", "action": "Dividen Interim", "kind": "dividen", "date": "2026-05-15", "dateLabel": "Cum Date" },
-  { "ticker": "TLKM", "action": "RUPS Tahunan", "kind": "rups", "date": "2026-05-20", "dateLabel": "Jadwal" },
-  { "ticker": "BMRI", "action": "Dividen Interim", "kind": "dividen", "date": "2026-05-28", "dateLabel": "Cum Date" },
-  { "ticker": "ASII", "action": "RUPS Tahunan", "kind": "rups", "date": "2026-06-12", "dateLabel": "Jadwal" },
-  { "ticker": "UNVR", "action": "Dividen Final", "kind": "dividen", "date": "2026-06-18", "dateLabel": "Cum Date" }
+  { "ticker": "BBCA", "action": "Dividen Interim Rp25", "kind": "dividen", "date": "2026-08-31", "dateLabel": "Ex-Date" },
+  { "ticker": "BBCA", "action": "Bayar Dividen Interim", "kind": "dividen", "date": "2026-09-16", "dateLabel": "Pembayaran" },
+  { "ticker": "BBRI", "action": "Dividen Interim (est.)", "kind": "dividen", "date": "2026-10-21", "dateLabel": "Ex-Date" },
+  { "ticker": "BBRI", "action": "Bayar Dividen (est.)", "kind": "dividen", "date": "2026-11-06", "dateLabel": "Pembayaran" },
+  { "ticker": "ASII", "action": "Pantau aksi korporasi IDX", "kind": "rups", "date": "2026-09-30", "dateLabel": "Jadwal" },
+  { "ticker": "TLKM", "action": "Rilis kinerja kuartalan", "kind": "rups", "date": "2026-10-31", "dateLabel": "Estimasi" }
 ]

@@ -42,13 +42,35 @@ function searchKonglo() {
     renderGrid(filtered);
 }
 
+function kongloSetView(viewId) {
+    ['konglo-dashboard-view', 'konglo-detail-view', 'konglo-funda-view'].forEach((id) => {
+        document.getElementById(id)?.classList.add('hide');
+    });
+    document.getElementById(viewId)?.classList.remove('hide');
+}
+
+function kongloQuoteCells(stock) {
+    const q = typeof getIdxQuote === 'function' ? getIdxQuote(stock.ticker) : null;
+    const price = q?.price != null ? `Rp ${formatIdxPrice(q.price)}` : 'Menunggu snapshot';
+    const chg = q?.changePct != null
+        ? `${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%`
+        : '—';
+    const chgClass = (q?.changePct ?? 0) >= 0 ? 'text-emerald-600' : 'text-rose-600';
+    const avg = q?.avg != null ? `Rp ${formatIdxPrice(q.avg)}` : `Rp ${stock.avg_up}`;
+    const prev = q?.prevClose != null ? `Rp ${formatIdxPrice(q.prevClose)}` : `Rp ${stock.avg_down}`;
+    const support = q?.support != null ? `Rp ${formatIdxPrice(q.support)}` : `Rp ${stock.support}`;
+    const resist = q?.resistance != null ? `Rp ${formatIdxPrice(q.resistance)}` : `Rp ${stock.resistance}`;
+    const stamp = __ewoksMarketSnapshot?.meta?.built
+        ? new Date(__ewoksMarketSnapshot.meta.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
+        : stock.last_update;
+    return { price, chg, chgClass, avg, prev, support, resist, stamp, live: q?.price != null };
+}
+
 function showDetail(groupId) {
     const group = dataGroups.find(g => g.id === groupId);
     if (!group) return;
 
-    document.getElementById('konglo-dashboard-view').classList.add('hide');
-    document.getElementById('konglo-funda-view').classList.add('hide');
-    document.getElementById('konglo-detail-view').classList.remove('hide');
+    kongloSetView('konglo-detail-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     document.getElementById('detail-title').innerText = group.name;
@@ -57,16 +79,23 @@ function showDetail(groupId) {
     const stockList = document.getElementById('stock-list');
     stockList.innerHTML = '';
 
-    group.stocks.forEach(stock => {
-        const stockItem = document.createElement('div');
-        stockItem.className = 'bg-slate-50 border border-slate-100 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row gap-6 hover:border-blue-300 transition-colors shadow-sm dark-mode-card';
-        
-        stockItem.innerHTML = `
-            <div class="md:w-1/3 shrink-0 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
+    const paint = () => {
+        stockList.innerHTML = '';
+        group.stocks.forEach(stock => {
+            const q = kongloQuoteCells(stock);
+            const stockItem = document.createElement('div');
+            stockItem.className = 'konglo-stock-card bg-slate-50 border border-slate-100 rounded-2xl p-5 md:p-6 hover:border-blue-300 transition-colors shadow-sm dark-mode-card';
+            const company = String(stock.company || '').replace(/,$/, '');
+            stockItem.innerHTML = `
+            <div class="min-w-0 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
                 <h5 class="text-3xl font-black text-blue-600 tracking-tight mb-1">${stock.ticker}</h5>
-                <p class="font-bold text-slate-800 text-xs mb-3 line-clamp-2">${stock.company}</p>
-                <span class="inline-block bg-emerald-100 text-emerald-700 text-[10px] uppercase px-2 py-1 rounded font-bold mb-4">${stock.sector}</span>
-                
+                <p class="font-bold text-slate-800 text-xs mb-2 leading-snug">${company}</p>
+                <span class="inline-block bg-emerald-100 text-emerald-700 text-[10px] uppercase px-2 py-1 rounded font-bold mb-3">${stock.sector}</span>
+                <div class="bg-white p-3 rounded-xl border border-slate-100 mb-3">
+                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga Yahoo (.JK)' : 'Harga (snapshot belum ada)'}</p>
+                    <p class="text-lg font-black text-slate-800 leading-tight">${q.price}</p>
+                    <p class="text-xs font-bold ${q.chgClass}">${q.chg} hari ini</p>
+                </div>
                 <div class="bg-white p-3 rounded-xl border border-slate-100 space-y-2 mb-3">
                     <div>
                         <p class="text-[9px] font-black text-slate-400 uppercase">Est. Free Float</p>
@@ -77,67 +106,63 @@ function showDetail(groupId) {
                         <p class="text-sm font-bold text-slate-700">${stock.broker_afiliasi}</p>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-2 gap-2 mt-4">
+                <div class="grid grid-cols-2 gap-2">
                     <div class="bg-emerald-50 p-2 rounded-xl border border-emerald-100 text-center">
-                        <p class="text-[9px] font-black text-emerald-600 uppercase">AVG UP</p>
-                        <p class="text-xs font-bold text-slate-700">Rp ${stock.avg_up}</p>
+                        <p class="text-[9px] font-black text-emerald-600 uppercase">MA 50 hari</p>
+                        <p class="text-xs font-bold text-slate-700">${q.avg}</p>
                     </div>
                     <div class="bg-blue-50 p-2 rounded-xl border border-blue-100 text-center">
-                        <p class="text-[9px] font-black text-blue-600 uppercase">AVG DOWN</p>
-                        <p class="text-xs font-bold text-slate-700">Rp ${stock.avg_down}</p>
+                        <p class="text-[9px] font-black text-blue-600 uppercase">Close kemarin</p>
+                        <p class="text-xs font-bold text-slate-700">${q.prev}</p>
                     </div>
                     <div class="bg-rose-50 p-2 rounded-xl border border-rose-100 text-center">
-                        <p class="text-[9px] font-black text-rose-600 uppercase">Support</p>
-                        <p class="text-xs font-bold text-slate-700">Rp ${stock.support}</p>
+                        <p class="text-[9px] font-black text-rose-600 uppercase">Support 20h</p>
+                        <p class="text-xs font-bold text-slate-700">${q.support}</p>
                     </div>
                     <div class="bg-amber-50 p-2 rounded-xl border border-amber-100 text-center">
-                        <p class="text-[9px] font-black text-amber-600 uppercase">Resisten</p>
-                        <p class="text-xs font-bold text-slate-700">Rp ${stock.resistance}</p>
+                        <p class="text-[9px] font-black text-amber-600 uppercase">Resisten 20h</p>
+                        <p class="text-xs font-bold text-slate-700">${q.resist}</p>
                     </div>
                 </div>
-                <p class="text-[8px] text-slate-400 text-right mt-2 font-bold italic">Update: ${stock.last_update}</p>
+                <p class="text-[8px] text-slate-400 text-right mt-2 font-bold italic">Update: ${q.stamp}</p>
             </div>
-            
-            <div class="md:w-2/3 flex flex-col justify-between">
+            <div class="min-w-0 flex flex-col justify-between gap-4">
                 <div>
                     <div class="mb-4">
-                        <h6 class="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1 flex items-center gap-2">
-                            <i class="fas fa-chart-pie"></i> Porsi & Status Kepemilikan (${stock.tahun_masuk})
+                        <h6 class="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1">
+                            Porsi & Status Kepemilikan (${stock.tahun_masuk})
                         </h6>
-                        <p class="text-slate-700 text-sm leading-relaxed">
-                            <span class="font-black bg-blue-50 text-blue-700 px-2 py-0.5 rounded mr-1">${stock.kepemilikan_persen}</span>
+                        <p class="text-slate-700 text-sm leading-relaxed break-words">
+                            <span class="font-black bg-blue-50 text-blue-700 px-2 py-0.5 rounded mr-1 inline-block mb-1">${stock.kepemilikan_persen}</span>
                             ${stock.ownership}
                         </p>
                     </div>
-                    
                     <div class="bg-slate-100/50 p-4 rounded-xl border border-slate-200">
-                        <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                            <i class="fas fa-history"></i> Sejarah Perusahaan / Akuisisi
-                        </h6>
-                        <p class="text-slate-600 text-sm leading-relaxed italic">
-                            "${stock.sejarah}"
-                        </p>
+                        <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Sejarah / Akuisisi</h6>
+                        <p class="text-slate-600 text-sm leading-relaxed">${stock.sejarah}</p>
                     </div>
                 </div>
-
-                <div class="mt-4 pt-4 border-t border-slate-200 flex gap-2">
-                    <button onclick="showFunda('${stock.ticker}', '${stock.company}', '${stock.sector}')" class="flex-[3] bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors shadow-md">
+                <div class="pt-2 border-t border-slate-200 flex flex-col sm:flex-row gap-2">
+                    <button type="button" onclick="showFunda('${stock.ticker}', '${String(company).replace(/'/g, "\\'")}', '${String(stock.sector).replace(/'/g, "\\'")}')" class="flex-[3] bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors shadow-md">
                         <i class="fas fa-chart-bar"></i> Analisis Fundamental PRO
                     </button>
-                    <button onclick="showPage('watchlist'); document.getElementById('wl-ticker').value='${stock.ticker}'; showToast('Kode ditambahkan ke input Watchlist', 'success');" class="flex-1 bg-amber-100 text-amber-700 py-3 rounded-xl font-bold text-xs uppercase hover:bg-amber-200 transition-colors flex items-center justify-center tooltip-trigger shadow-sm">
-                        <i class="fas fa-star"></i><span class="tooltip-text">Kirim ke Watchlist</span>
+                    <button type="button" onclick="showPage('watchlist')" class="sm:flex-1 bg-amber-100 text-amber-700 py-3 rounded-xl font-bold text-xs uppercase hover:bg-amber-200 transition-colors flex items-center justify-center">
+                        <i class="fas fa-star"></i>
                     </button>
                 </div>
-            </div>
-        `;
-        stockList.appendChild(stockItem);
-    });
+            </div>`;
+            stockList.appendChild(stockItem);
+        });
+    };
+
+    paint();
+    if (typeof loadEwoksMarketSnapshot === 'function') {
+        loadEwoksMarketSnapshot().then(paint);
+    }
 }
 
 function hideDetail() {
-    document.getElementById('konglo-detail-view').classList.add('hide');
-    document.getElementById('konglo-dashboard-view').classList.remove('hide');
+    kongloSetView('konglo-dashboard-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -398,8 +423,7 @@ function fundaMetricCells(values, opts = {}) {
 
 // --- FUNDAMENTAL PRO VIEW ---
 function showFunda(ticker, company, sector) {
-    document.getElementById('konglo-detail-view').classList.add('hide');
-    document.getElementById('konglo-funda-view').classList.remove('hide');
+    kongloSetView('konglo-funda-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     document.getElementById('funda-ticker').innerText = ticker;
@@ -625,8 +649,7 @@ function initKongloFinnhubTokenField() {
 }
 
 function hideFunda() {
-    document.getElementById('konglo-funda-view').classList.add('hide');
-    document.getElementById('konglo-detail-view').classList.remove('hide');
+    kongloSetView('konglo-detail-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -642,6 +665,11 @@ function openFundaTab(evt, tabName) {
     }
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
+    requestAnimationFrame(() => {
+        Object.values(fundaCharts || {}).forEach((c) => {
+            try { c.resize(); } catch (_) {}
+        });
+    });
 }
 
 function renderFundaCharts(fcfData, divData, npmData, ticker) {
@@ -657,15 +685,18 @@ function renderFundaCharts(fcfData, divData, npmData, ticker) {
     };
 
     if (fundaCharts.npm) fundaCharts.npm.destroy();
-    const ctxNpm = document.getElementById('fundaNpmChart').getContext('2d');
-    fundaCharts.npm = new Chart(ctxNpm, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{ label: `NPM ${ticker} (%)`, data: npmData, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', fill: true, tension: 0.3, borderWidth: 2, spanGaps: true }]
-        },
-        options: { ...commonOptions, plugins: { legend: { display: false } } }
-    });
+    const npmEl = document.getElementById('fundaNpmChart');
+    if (npmEl) {
+        const ctxNpm = npmEl.getContext('2d');
+        fundaCharts.npm = new Chart(ctxNpm, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{ label: `NPM ${ticker} (%)`, data: npmData, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', fill: true, tension: 0.3, borderWidth: 2, spanGaps: true }]
+            },
+            options: { ...commonOptions, plugins: { legend: { display: false } } }
+        });
+    }
 
     if (fundaCharts.fcf) fundaCharts.fcf.destroy();
     const ctxFcf = document.getElementById('fundaFcfChart').getContext('2d');
@@ -691,7 +722,12 @@ function renderFundaCharts(fcfData, divData, npmData, ticker) {
 }
 
 function renderChart() {
-    const ctx = document.getElementById('sectorChart').getContext('2d');
+    const el = document.getElementById('sectorChart');
+    if (!el) return;
+    const ctx = el.getContext('2d');
+    if (fundaCharts.sector) {
+        try { fundaCharts.sector.destroy(); } catch (_) {}
+    }
     
     let sectorCounts = {};
     dataGroups.forEach(group => {
@@ -714,7 +750,7 @@ function renderChart() {
     const labels = sortedSectors.map(item => item[0]);
     const data = sortedSectors.map(item => item[1]);
 
-    new Chart(ctx, {
+    fundaCharts.sector = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: labels,
@@ -728,7 +764,7 @@ function renderChart() {
         options: {
             responsive: true, maintainAspectRatio: false,
             plugins: {
-                legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10, family: "'Plus Jakarta Sans', sans-serif" } } },
+                legend: { position: window.innerWidth < 768 ? 'bottom' : 'right', labels: { boxWidth: 12, font: { size: 10, family: "'Plus Jakarta Sans', sans-serif" } } },
                 tooltip: { callbacks: { label: function(context) { return (context.label || '') + ': ' + (context.parsed || 0) + ' Emiten'; } } }
             },
             cutout: '65%'
