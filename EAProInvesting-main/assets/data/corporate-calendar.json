@@ -1,0 +1,8 @@
+[
+  { "ticker": "BBCA", "action": "Dividen Interim Rp25", "kind": "dividen", "date": "2026-08-31", "dateLabel": "Ex-Date" },
+  { "ticker": "BBCA", "action": "Bayar Dividen Interim", "kind": "dividen", "date": "2026-09-16", "dateLabel": "Pembayaran" },
+  { "ticker": "BBRI", "action": "Dividen Interim (est.)", "kind": "dividen", "date": "2026-10-21", "dateLabel": "Ex-Date" },
+  { "ticker": "BBRI", "action": "Bayar Dividen (est.)", "kind": "dividen", "date": "2026-11-06", "dateLabel": "Pembayaran" },
+  { "ticker": "ASII", "action": "Pantau aksi korporasi IDX", "kind": "rups", "date": "2026-09-30", "dateLabel": "Jadwal" },
+  { "ticker": "TLKM", "action": "Rilis kinerja kuartalan", "kind": "rups", "date": "2026-10-31", "dateLabel": "Estimasi" }
+]
