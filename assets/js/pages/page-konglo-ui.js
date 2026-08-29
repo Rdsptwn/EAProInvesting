@@ -75,11 +75,25 @@ function showDetail(groupId) {
 
     document.getElementById('detail-title').innerText = group.name;
     document.getElementById('detail-desc').innerText = group.desc;
+    const priceNote = document.getElementById('detail-price-note');
+    if (priceNote) {
+        const built = typeof __ewoksMarketSnapshot !== 'undefined' ? __ewoksMarketSnapshot?.meta?.built : null;
+        priceNote.textContent = built && typeof formatStampWib === 'function'
+            ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
+            : 'Harga emiten dari Yahoo .JK (commit market-snapshot.json agar tampil)';
+    }
 
     const stockList = document.getElementById('stock-list');
     stockList.innerHTML = '';
 
     const paint = () => {
+        const priceNote = document.getElementById('detail-price-note');
+        if (priceNote) {
+            const built = typeof __ewoksMarketSnapshot !== 'undefined' ? __ewoksMarketSnapshot?.meta?.built : null;
+            priceNote.textContent = built && typeof formatStampWib === 'function'
+                ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
+                : 'Harga emiten dari Yahoo .JK (commit market-snapshot.json agar tampil)';
+        }
         stockList.innerHTML = '';
         group.stocks.forEach(stock => {
             const q = kongloQuoteCells(stock);
@@ -451,7 +465,21 @@ function showFunda(ticker, company, sector) {
                 badge.className = cls;
                 badge.innerText = sourceLabel || source;
             }
-            if (updatedEl) updatedEl.innerText = d.updated || 'Hari ini';
+            if (updatedEl) {
+                updatedEl.innerText = (typeof formatStampWib === 'function' && d.updated)
+                    ? formatStampWib(d.updated)
+                    : (d.updated || 'Hari ini');
+            }
+            const liveEl = document.getElementById('funda-live-price');
+            if (liveEl) {
+                const q = typeof getIdxQuote === 'function' ? getIdxQuote(ticker) : null;
+                if (q?.price != null && typeof formatIdxPrice === 'function') {
+                    const chg = q.changePct != null ? ` (${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)` : '';
+                    liveEl.textContent = `Harga Yahoo: Rp ${formatIdxPrice(q.price)}${chg}`;
+                } else {
+                    liveEl.textContent = 'Harga Yahoo: snapshot belum di GitHub';
+                }
+            }
             renderFundaView(d, ticker, company, sector);
         })
         .catch(() => {

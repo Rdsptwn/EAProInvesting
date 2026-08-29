@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20260829a';
+window.EWOKS_ASSET_V = '20260829p';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -363,42 +363,93 @@ function normalizeCorporateCalendarPayload(data) {
     return [];
 }
 
-function renderCorporateCalendar(events) {
+function formatStampWib(iso) {
+    if (!iso) return '';
+    try {
+        return new Date(iso).toLocaleString('id-ID', {
+            timeZone: 'Asia/Jakarta',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        }) + ' WIB';
+    } catch (_) {
+        return String(iso).slice(0, 10);
+    }
+}
+
+function paintDataStamps(snap) {
+    const built = snap?.meta?.built;
+    const text = built
+        ? `Update data pasar: ${formatStampWib(built)} · Yahoo Finance`
+        : 'Update data pasar: commit file assets/data/market-snapshot.json ke GitHub';
+    const home = document.getElementById('data-updated-stamp');
+    if (home) home.textContent = text;
+    const konglo = document.getElementById('konglo-data-stamp');
+    if (konglo) konglo.textContent = text;
+}
+
+function ewoksAssetUrl(relPath) {
+    const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+    const v = window.EWOKS_ASSET_V || getJakartaDateKey();
+    return `${base}${relPath}?v=${encodeURIComponent(v)}`;
+}
+
+function renderCorporateCalendar(events, meta = {}) {
     const container = document.getElementById('corporate-calendar-container');
     if (!container) return;
 
     const today = getJakartaDateKey();
-    const upcoming = events
-        .filter((e) => e && e.date && e.ticker && String(e.date) >= today)
-        .sort((a, b) => String(a.date).localeCompare(String(b.date)))
-        .slice(0, 3);
+    const valid = (events || []).filter((e) => e && e.date && e.ticker);
+    const upcoming = valid
+        .filter((e) => String(e.date) >= today)
+        .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    const past = valid
+        .filter((e) => String(e.date) < today)
+        .sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
-    if (upcoming.length === 0) {
+    let rows = upcoming.slice(0, 4);
+    if (rows.length < 3) {
+        rows = rows.concat(past.slice(0, 3 - rows.length).map((e) => ({ ...e, _past: true })));
+    }
+
+    const stampEl = document.getElementById('calendar-updated-stamp');
+    if (stampEl) {
+        stampEl.textContent = meta.updated
+            ? `Update kalender: ${formatStampWib(meta.updated)}`
+            : `Update kalender: ${today}`;
+    }
+
+    if (rows.length === 0) {
         container.innerHTML = `
             <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
-                <p class="text-xs text-slate-600 leading-relaxed">Belum ada jadwal mendatang di daftar. Lihat kalender resmi IDX lewat tautan di bawah.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Gagal memuat kalender. Commit <b>assets/data/corporate-calendar.json</b> ke GitHub.</p>
             </div>`;
         return;
     }
 
-    container.innerHTML = upcoming
+    container.innerHTML = rows
         .map((e) => {
             const isToday = e.date === today;
+            const isPast = !!e._past;
             const border = isToday ? 'border-amber-300 ring-1 ring-amber-200/60' : 'border-slate-100';
             const todayTag = isToday
                 ? '<span class="text-[8px] bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded font-black uppercase ml-1">Hari ini</span>'
-                : '';
+                : isPast
+                    ? '<span class="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase ml-1">Selesai</span>'
+                    : '';
             const badge = corporateCalendarBadgeClass(e.kind);
             const tk = escapeHtml(e.ticker);
             const ac = escapeHtml(e.action);
             const dl = escapeHtml(e.dateLabel || 'Jadwal');
             return `
             <div class="flex justify-between items-center bg-white p-4 rounded-xl border ${border} shadow-sm hover:border-amber-300 transition-colors">
-                <div>
+                <div class="min-w-0 pr-3">
                     <span class="font-black text-slate-800 text-lg block leading-none mb-1">${tk}${todayTag}</span>
                     <span class="text-[9px] ${badge} px-2 py-0.5 rounded font-bold uppercase tracking-widest">${ac}</span>
                 </div>
-                <div class="text-right">
+                <div class="text-right shrink-0">
                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">${dl}</p>
                     <p class="text-sm font-black text-slate-700">${formatCorporateCalendarIdDate(e.date)}</p>
                 </div>
@@ -414,15 +465,17 @@ async function fetchAndRenderCorporateCalendar() {
     if (!container) return;
 
     const jakartaToday = getJakartaDateKey();
-    const url = new URL(`assets/data/corporate-calendar.json?v=${encodeURIComponent(jakartaToday)}`, document.baseURI || window.location.href).href;
+    const url = ewoksAssetUrl('assets/data/corporate-calendar.json');
 
     let list = [...CORPORATE_CALENDAR_FALLBACK];
+    let meta = { updated: new Date().toISOString() };
     try {
         const res = await fetch(url, { cache: 'no-store' });
         if (res.ok) {
             const data = await res.json();
             const parsed = normalizeCorporateCalendarPayload(data);
             if (parsed.length) list = [...parsed];
+            if (data && !Array.isArray(data)) meta = { updated: data.updated, source: data.source };
         }
     } catch (_) {
         /* pakai fallback */
@@ -439,7 +492,7 @@ async function fetchAndRenderCorporateCalendar() {
     }
 
     __ewoksCorpCalFetchedForJakartaDate = jakartaToday;
-    renderCorporateCalendar(list);
+    renderCorporateCalendar(list, meta);
 }
 
 function refreshCorporateCalendarIfJakartaDateChanged() {
@@ -501,8 +554,10 @@ async function loadEwoksMarketSnapshot() {
             const res = await fetch(`${base}assets/data/market-snapshot.json?v=${encodeURIComponent(v)}`, { cache: 'no-store' });
             if (!res.ok) throw new Error('snapshot missing');
             __ewoksMarketSnapshot = await res.json();
+            paintDataStamps(__ewoksMarketSnapshot);
         } catch (_) {
             __ewoksMarketSnapshot = { quotes: {}, ihsg: null };
+            paintDataStamps(__ewoksMarketSnapshot);
         }
         return __ewoksMarketSnapshot;
     })();

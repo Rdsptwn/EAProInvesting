@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20260829a">
+    <link rel="stylesheet" href="assets/css/app.css?v=20260829p">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="konglo">
 
@@ -176,6 +176,7 @@
                 <div id="konglo-dashboard-view">
                     <section class="mb-10 text-center max-w-4xl mx-auto">
                         <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Peta Kepemilikan Saham Konglomerasi</h2>
+                        <p id="konglo-data-stamp" class="text-xs font-black text-blue-600 mb-3">Memuat update harga Yahoo…</p>
                         <p class="text-sm md:text-base text-slate-500 leading-relaxed">
                             Aplikasi interaktif ini memetakan portofolio emiten yang dikendalikan atau dimiliki secara signifikan oleh tokoh-tokoh utama, konglomerat, dan <i>market maker</i> (bandar) di Bursa Efek Indonesia (BEI).
                         </p>
@@ -215,6 +216,7 @@
                         <div class="mt-6 text-center">
                             <h2 id="detail-title" class="text-2xl md:text-4xl font-black text-white mb-2">Nama Grup</h2>
                             <p id="detail-desc" class="text-slate-300 max-w-2xl mx-auto text-sm md:text-base"></p>
+                            <p id="detail-price-note" class="text-xs font-bold text-blue-300 mt-3">Harga emiten dari Yahoo .JK</p>
                         </div>
                     </div>
                     <div class="p-6 md:p-10">
@@ -234,9 +236,10 @@
                             <p class="text-slate-400 text-xs md:text-sm mt-1" id="funda-company">Nama Perusahaan</p>
                             <p class="mt-2"><span id="funda-source-badge" class="text-[10px] font-bold px-2 py-1 rounded-full bg-slate-700 text-slate-300 border border-slate-600">Sumber data</span></p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <p class="text-xs text-slate-400">Update Terakhir</p>
-                            <p class="text-sm font-semibold text-slate-200" id="funda-updated-at">—</p>
+                        <div class="text-left md:text-right bg-slate-800/80 border border-slate-600 rounded-xl px-4 py-3">
+                            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-black">Update terakhir</p>
+                            <p class="text-base font-black text-white" id="funda-updated-at">—</p>
+                            <p class="text-[10px] text-emerald-300 mt-1" id="funda-live-price">Harga pasar: —</p>
                         </div>
                     </header>
 
@@ -437,9 +440,9 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20260829a"></script>
-    <script src="assets/js/pages/page-konglo-data-funda.js?v=20260829a"></script>
-    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20260829a"></script>
-    <script src="assets/js/pages/page-konglo-ui.js?v=20260829a"></script>
+    <script src="assets/js/ewoks-core.js?v=20260829p"></script>
+    <script src="assets/js/pages/page-konglo-data-funda.js?v=20260829p"></script>
+    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20260829p"></script>
+    <script src="assets/js/pages/page-konglo-ui.js?v=20260829p"></script>
 </body>
 </html>

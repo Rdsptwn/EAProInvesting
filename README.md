@@ -22,6 +22,18 @@ Setelah workflow ini ada di GitHub (`main`), bot meng-commit data **setiap hari 
 
 Cek: repo → **Actions** → *Daily market sync*. Kalau kosong, buka **Settings → Actions → General** → izinkan Actions. Sekali pertama, **Run workflow** untuk uji.
 
+**Commit manual dari folder D:** harus termasuk file data, kalau tidak situs live tetap versi lama (kalender kosong, IHSG 7.350, harga konglo Mei 2026):
+
+- `assets/data/market-snapshot.json` (wajib — harga IHSG + emiten)
+- `assets/data/corporate-calendar.json`
+- `assets/data/funda-idx.json`
+- `assets/js/ewoks-core.js`, `assets/js/pages/page-konglo-ui.js`, `assets/css/app.css`
+- `index.html`, `konglo.html`, semua `.html` lain
+- `.github/workflows/sync-funda-idx.yml`
+- `.nojekyll`
+
+Hard refresh browser (Ctrl+F5) setelah push. GitHub Pages kadang 1–2 menit.
+
 Ini **bukan** harga detik-detikan. Setelah bursa tutup, angka di situs mengikuti file JSON yang di-push bot. Jurnal/watchlist tetap di browser kamu (localStorage), tidak ikut sync.
 
 Jalankan lokal (Node 20+):
