@@ -68,9 +68,9 @@ function kongloQuoteCells(stock) {
     const prev = q?.prevClose != null ? `Rp ${formatIdxPrice(q.prevClose)}` : `Rp ${stock.avg_down}`;
     const support = q?.support != null ? `Rp ${formatIdxPrice(q.support)}` : `Rp ${stock.support}`;
     const resist = q?.resistance != null ? `Rp ${formatIdxPrice(q.resistance)}` : `Rp ${stock.resistance}`;
-    const stamp = __ewoksMarketSnapshot?.meta?.built
-        ? new Date(__ewoksMarketSnapshot.meta.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
-        : stock.last_update;
+    const stamp = typeof kongloDailyStampText === 'function'
+        ? kongloDailyStampText()
+        : (typeof formatJakartaLongDate === 'function' ? formatJakartaLongDate() : '');
     return { price, chg, chgClass, avg, prev, support, resist, stamp, live: q?.price != null };
 }
 
@@ -189,7 +189,11 @@ function hideDetail() {
 }
 
 // --- FUNDAMENTAL PRO: metrik turunan dari laporan keuangan ---
-const FUNDA_YEAR_LABELS = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q 2026'];
+function FUNDA_YEAR_LABELS() {
+    return typeof getFundaYearLabels === 'function'
+        ? getFundaYearLabels()
+        : ['2020', '2021', '2022', '2023', '2024', '2025', 'Q2 2026'];
+}
 const FUNDA_EMPTY = '(-)';
 const FUNDA_MIN_TRILIUN = 0.05;
 const FUNDA_MIN_MILIAR = 0.001;
@@ -388,7 +392,7 @@ function computeKongloDerivedMetrics(d, sector) {
     return {
         isBank,
         latestIdx: li,
-        latestYear: FUNDA_YEAR_LABELS[li],
+        latestYear: FUNDA_YEAR_LABELS()[li],
         npm,
         roe,
         roa,
@@ -458,8 +462,13 @@ function showFunda(ticker, company, sector) {
         badge.className = 'text-[10px] font-bold px-2 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40';
         badge.innerText = 'Memuat data…';
     }
-    if (updatedEl) updatedEl.innerText = FUNDA_EMPTY;
+    if (updatedEl) {
+        updatedEl.innerText = typeof formatJakartaLongDate === 'function'
+            ? formatJakartaLongDate()
+            : (typeof getJakartaDateKey === 'function' ? getJakartaDateKey() : '');
+    }
     if (loadingEl) loadingEl.classList.remove('hidden');
+    if (typeof paintFundaQuarterHeadings === 'function') paintFundaQuarterHeadings();
 
     resolveKongloFunda(ticker, sector)
         .then(({ data: d, sourceLabel, source }) => {
@@ -471,12 +480,15 @@ function showFunda(ticker, company, sector) {
                         ? 'text-[10px] font-bold px-2 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40'
                         : 'text-[10px] font-bold px-2 py-1 rounded-full bg-slate-600 text-slate-200 border border-slate-500';
                 badge.className = cls;
-                badge.innerText = sourceLabel || source;
+                badge.innerText = (source === 'finnhub' || source === 'yahoo' || source === 'bundle' || source === 'cache')
+                    && typeof yahooFundaBadgeText === 'function'
+                    ? yahooFundaBadgeText()
+                    : (sourceLabel || source);
             }
             if (updatedEl) {
-                updatedEl.innerText = (typeof formatStampWib === 'function' && d.updated)
-                    ? formatStampWib(d.updated)
-                    : (d.updated || 'Hari ini');
+                updatedEl.innerText = typeof formatJakartaLongDate === 'function'
+                    ? formatJakartaLongDate()
+                    : (typeof getJakartaDateKey === 'function' ? getJakartaDateKey() : '');
             }
             const liveEl = document.getElementById('funda-live-price');
             if (liveEl) {
@@ -499,6 +511,7 @@ function showFunda(ticker, company, sector) {
 }
 
 function renderFundaView(d, ticker, company, sector) {
+    if (typeof paintFundaQuarterHeadings === 'function') paintFundaQuarterHeadings();
     const isBank = sector.includes("Perbankan");
     const m = computeKongloDerivedMetrics(d, sector);
     const mos = m.mosCalc != null ? m.mosCalc : FUNDA_EMPTY;
@@ -709,7 +722,7 @@ function openFundaTab(evt, tabName) {
 }
 
 function renderFundaCharts(fcfData, divData, npmData, ticker) {
-    const labels = ['2020', '2021', '2022', '2023', '2024', '2025', 'Q 2026'];
+    const labels = FUNDA_YEAR_LABELS();
     const commonOptions = { 
         responsive: true, maintainAspectRatio: false, 
         color: '#cbd5e1',
@@ -807,3 +820,12 @@ function renderChart() {
         }
     });
 }
+
+function paintFundaQuarterHeadings() {
+    const last = FUNDA_YEAR_LABELS()[6];
+    document.querySelectorAll('.js-funda-q-label').forEach((el) => {
+        el.textContent = last;
+    });
+}
+
+paintFundaQuarterHeadings();

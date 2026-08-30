@@ -424,9 +424,13 @@ function cloneFundaEntry(entry, source, sourceLabel) {
 
     copy.source = source || entry.source || 'bundle';
 
-    copy.sourceLabel = sourceLabel || entry.sourceLabel || copy.source;
+    copy.sourceLabel = (typeof yahooFundaBadgeText === 'function')
+        ? yahooFundaBadgeText()
+        : (sourceLabel || entry.sourceLabel || copy.source);
 
-    copy.updated = entry.updated || new Date().toISOString().slice(0, 10);
+    copy.updated = (typeof getJakartaDateKey === 'function')
+        ? getJakartaDateKey()
+        : (entry.updated || new Date().toISOString().slice(0, 10));
 
     return copy;
 
@@ -443,10 +447,9 @@ function bundleEntryForTicker(bundle, ticker) {
     const src = entry.source || 'bundle';
 
     const label =
-
-        entry.sourceLabel ||
-
-        (src === 'yahoo' ? 'Yahoo Finance (data pasar .JK)' : 'Database Ewoks (referensi pasar)');
+        (typeof yahooFundaBadgeText === 'function')
+            ? yahooFundaBadgeText()
+            : (entry.sourceLabel || (src === 'yahoo' ? 'Yahoo Finance (data pasar .JK)' : 'Database Ewoks (referensi pasar)'));
 
     return cloneFundaEntry(entry, src, label);
 

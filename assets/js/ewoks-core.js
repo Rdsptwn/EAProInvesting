@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20260829t15';
+window.EWOKS_ASSET_V = '20260830a';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -405,6 +405,44 @@ function formatStampWib(iso) {
     } catch (_) {
         return String(iso).slice(0, 10);
     }
+}
+
+/** Tanggal panjang hari ini di Jakarta, mis. "29 Agustus 2026". */
+function formatJakartaLongDate(date = new Date()) {
+    return new Intl.DateTimeFormat('id-ID', {
+        timeZone: 'Asia/Jakarta',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    }).format(date);
+}
+
+/**
+ * Kuartal laporan terakhir yang sudah lewat (bukan teks Q1 yang di-hardcode).
+ * Agustus → Q2; Oktober → Q3. Kolom angka tetap dari Yahoo; label mengikuti kalender.
+ */
+function currentLapkeuQuarter(date = new Date()) {
+    const key = getJakartaDateKey(date);
+    const year = Number(key.slice(0, 4));
+    const month = Number(key.slice(5, 7));
+    if (month <= 3) return { q: 4, year: year - 1, label: `Q4 ${year - 1}` };
+    if (month <= 6) return { q: 1, year, label: `Q1 ${year}` };
+    if (month <= 9) return { q: 2, year, label: `Q2 ${year}` };
+    return { q: 3, year, label: `Q3 ${year}` };
+}
+
+function getFundaYearLabels(date = new Date()) {
+    const { label } = currentLapkeuQuarter(date);
+    return ['2020', '2021', '2022', '2023', '2024', '2025', label];
+}
+
+function yahooFundaBadgeText(date = new Date()) {
+    const { label } = currentLapkeuQuarter(date);
+    return `Yahoo Finance (tahunan + ${label})`;
+}
+
+function kongloDailyStampText() {
+    return formatJakartaLongDate();
 }
 
 function paintDataStamps(snap) {
