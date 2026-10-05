@@ -2,7 +2,7 @@
   "meta": {
     "source": "Yahoo Finance — tahunan + kuartal 2026 terbaru + metrik turunan",
     "unit": "triliun IDR (kolom terakhir = kuartal 2026 terbaru; ROE/ROA kuartal annualized)",
-    "built": "2026-09-05T06:50:40.313Z"
+    "built": "2026-10-05T08:44:17.191Z"
   },
   "tickers": {
     "BBCA": {
@@ -94,11 +94,11 @@
         2.3,
         2.9,
         3.8,
-        5.7
+        6.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         34.3,
         35.7,
@@ -146,7 +146,7 @@
         125.6,
         129.7,
         136.8,
-        36.8
+        37
       ],
       "cogs": [
         0,
@@ -164,7 +164,7 @@
         60.1,
         59.9,
         56.6,
-        15.5
+        15.4
       ],
       "asset": [
         1511.8,
@@ -173,7 +173,7 @@
         1965.4,
         1992.2,
         2135.4,
-        2249.8
+        2352.4
       ],
       "eq": [
         199.9,
@@ -182,7 +182,7 @@
         311.5,
         317,
         324,
-        338.2
+        321.9
       ],
       "interest": [
         35.2,
@@ -191,7 +191,7 @@
         42.7,
         55.6,
         56,
-        12.3
+        14.2
       ],
       "tax": [
         4.2,
@@ -200,7 +200,7 @@
         16,
         16.9,
         15.7,
-        4.3
+        4.5
       ],
       "fcf": [
         12.5,
@@ -209,7 +209,7 @@
         -13.2,
         13.9,
         8.3,
-        49
+        24.8
       ],
       "ocf": [
         0,
@@ -218,7 +218,7 @@
         -5,
         24.3,
         14.6,
-        50.3
+        25.6
       ],
       "divYield": [
         3,
@@ -227,11 +227,11 @@
         5,
         11.1,
         9.4,
-        10.2
+        11.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         15.9,
         22.4,
@@ -239,7 +239,7 @@
         47.9,
         46.2,
         41.4,
-        42.1
+        41.6
       ],
       "grossMargin": [
         69.9,
@@ -248,7 +248,7 @@
         66,
         57.1,
         59.1,
-        66.6
+        61.6
       ],
       "roe": [
         9.3,
@@ -257,7 +257,7 @@
         19.3,
         18.9,
         17.5,
-        18.3
+        19.1
       ],
       "roa": [
         1.2,
@@ -266,7 +266,7 @@
         3.1,
         3,
         2.7,
-        2.8
+        2.6
       ],
       "zscore": 3.5,
       "mos": 18.5
@@ -360,11 +360,11 @@
         4.4,
         6.2,
         9.1,
-        10.8
+        13.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         16,
         23.4,
@@ -493,11 +493,11 @@
         4.2,
         6.6,
         6.1,
-        8.6
+        9.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         15.2,
         17.3,
@@ -626,11 +626,11 @@
         11.5,
         10.6,
         6.1,
-        8
+        8.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         9.2,
         8.7,
@@ -754,16 +754,16 @@
       ],
       "divYield": [
         3.5,
-        4.4,
+        3.8,
         4.1,
         4,
         3.5,
         4.1,
-        4
+        4.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         7.8,
         7.7,
@@ -807,47 +807,47 @@
       "rev": [
         38.5,
         59.5,
-        142.8,
-        37.7,
-        36.7,
-        33,
-        8.3
+        145,
+        38.3,
+        37.2,
+        33.5,
+        9.5
       ],
       "cogs": [
         0,
         0,
-        -60.8,
-        -22.4,
-        -21.2,
-        -21.9,
-        -5.2
+        -61.7,
+        -22.7,
+        -21.5,
+        -22.2,
+        -5.1
       ],
       "net": [
         2.1,
         14.5,
-        43.9,
-        28.9,
-        24.3,
-        7.9,
-        2.3
+        44.6,
+        29.4,
+        24.7,
+        8,
+        3.2
       ],
       "asset": [
         95.2,
         110.5,
-        190.1,
-        184.6,
-        118.1,
-        120.3,
-        126.8
+        192.9,
+        187.4,
+        119.9,
+        122.1,
+        139.6
       ],
       "eq": [
         55.2,
         65.1,
-        106.2,
-        119.4,
-        86.9,
-        79.2,
-        86.4
+        107.7,
+        121.2,
+        88.2,
+        80.4,
+        82.5
       ],
       "interest": [
         1.2,
@@ -856,25 +856,25 @@
         1.1,
         0.8,
         0.2,
-        0
+        0.5
       ],
       "tax": [
         0.8,
         4.5,
-        29.1,
-        2.9,
+        29.5,
         3,
+        3.1,
         2.2,
-        0.6
+        0.9
       ],
       "fcf": [
         1.5,
         12.1,
-        61,
-        10,
-        20.8,
+        61.9,
+        10.1,
+        21.1,
         -3.7,
-        0.6
+        -2
       ],
       "ocf": [
         0,
@@ -892,37 +892,37 @@
         29.1,
         68.9,
         17.2,
-        9.7
+        10.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         5.5,
         24.4,
-        30.7,
-        76.7,
-        66.2,
+        30.8,
+        76.8,
+        66.4,
         23.9,
-        27.7
+        33.7
       ],
       "grossMargin": [
         null,
         null,
         57.4,
-        40.6,
+        40.7,
         42.2,
-        33.6,
-        37.3
+        33.7,
+        46.3
       ],
       "roe": [
         3.8,
         22.3,
-        41.3,
-        24.2,
+        41.4,
+        24.3,
         28,
         10,
-        10.6
+        15.5
       ],
       "roa": [
         2.2,
@@ -931,7 +931,7 @@
         15.7,
         20.6,
         6.6,
-        7.3
+        9.2
       ],
       "zscore": 1.89,
       "mos": 13.7
@@ -940,10 +940,10 @@
       "rev": [
         6.5,
         7.2,
-        10,
-        10.5,
-        10.5,
+        10.2,
+        10.6,
         10.7,
+        10.8,
         3
       ],
       "cogs": [
@@ -961,26 +961,26 @@
         1.6,
         1.9,
         2.2,
-        2.3,
+        2.4,
         0.8
       ],
       "asset": [
         35.2,
         38.5,
-        59.8,
-        61.9,
-        66.8,
-        68.2,
-        71.2
+        60.7,
+        62.8,
+        67.8,
+        69.3,
+        72.3
       ],
       "eq": [
         15.2,
         18.5,
         3.4,
-        7.8,
-        9.1,
-        11.2,
-        12.3
+        7.9,
+        9.3,
+        11.4,
+        12.4
       ],
       "interest": [
         0.8,
@@ -996,7 +996,7 @@
         0.5,
         2.6,
         2.6,
-        2.5,
+        2.6,
         2.5,
         0.7
       ],
@@ -1004,10 +1004,10 @@
         1,
         1.2,
         3.3,
-        3.5,
+        3.6,
         2.7,
-        1.6,
-        -0.2
+        1.7,
+        -0.3
       ],
       "ocf": [
         0,
@@ -1029,14 +1029,14 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         18.5,
         20.8,
-        16,
-        18.1,
-        21,
-        21.5,
+        15.7,
+        17.9,
+        20.6,
+        22.2,
         26.7
       ],
       "grossMargin": [
@@ -1052,19 +1052,19 @@
         7.9,
         8.1,
         47.1,
-        24.4,
-        24.2,
-        20.5,
-        26
+        24.1,
+        23.7,
+        21.1,
+        25.8
       ],
       "roa": [
         3.4,
         3.9,
-        2.7,
-        3.1,
-        3.3,
-        3.4,
-        4.5
+        2.6,
+        3,
+        3.2,
+        3.5,
+        4.4
       ],
       "zscore": 0.57,
       "mos": 9.7
@@ -1073,74 +1073,74 @@
       "rev": [
         8.5,
         12.4,
-        49.9,
-        35.8,
-        46.9,
-        32.6,
-        14.2
+        50.7,
+        36.3,
+        47.6,
+        33.1,
+        22.2
       ],
       "cogs": [
         0,
         0,
-        -21,
-        -19.9,
-        -23.3,
-        -17.8,
-        -8.2
+        -21.3,
+        -20.2,
+        -23.6,
+        -18.1,
+        -11.1
       ],
       "net": [
         1.5,
         2.8,
-        19.2,
-        4.4,
-        11.2,
-        4.4,
-        2.8
+        19.5,
+        4.5,
+        11.4,
+        4.5,
+        6
       ],
       "asset": [
         45.2,
         55.1,
-        114.6,
-        160.5,
-        196.1,
-        244.6,
+        116.3,
+        162.9,
+        199,
+        248.2,
         247
       ],
       "eq": [
         25.2,
         32.1,
-        62.2,
-        80.2,
-        91,
-        94.2,
-        96.8
+        63.2,
+        81.4,
+        92.4,
+        95.6,
+        103.3
       ],
       "interest": [
         0.5,
         0.8,
         2.5,
-        3.4,
-        5,
-        6.8,
-        2.2
+        3.5,
+        5.1,
+        6.9,
+        2.3
       ],
       "tax": [
         0.5,
         0.9,
         5.5,
         2.4,
-        3.7,
-        1.1,
-        0.7
+        3.8,
+        1.2,
+        1.8
       ],
       "fcf": [
         1.1,
         2.2,
         5.3,
-        -28.9,
-        -28.9,
-        -32.6,
-        1.4
+        -29.4,
+        -29.4,
+        -33.1,
+        9.9
       ],
       "ocf": [
         0,
@@ -1162,24 +1162,24 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance + referensi historis (2020–2026)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         17.6,
         22.6,
         38.5,
-        12.3,
+        12.4,
         23.9,
-        13.5,
-        19.7
+        13.6,
+        27
       ],
       "grossMargin": [
         null,
         null,
-        57.9,
+        58,
         44.4,
-        50.3,
-        45.4,
-        42.3
+        50.4,
+        45.3,
+        50
       ],
       "roe": [
         6,
@@ -1188,16 +1188,16 @@
         5.5,
         12.3,
         4.7,
-        11.6
+        23.2
       ],
       "roa": [
         3.3,
         5.1,
         16.8,
-        2.7,
+        2.8,
         5.7,
         1.8,
-        4.5
+        9.7
       ],
       "zscore": 0.72,
       "mos": 10.2
@@ -1291,11 +1291,11 @@
         5.7,
         4,
         4.2,
-        5.4
+        4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1428,7 +1428,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1561,7 +1561,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1694,7 +1694,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1823,11 +1823,11 @@
         0,
         0,
         0.4,
-        1.6
+        1.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1875,7 +1875,7 @@
         41,
         69.2,
         84.6,
-        29.3
+        33.4
       ],
       "cogs": [
         0,
@@ -1884,7 +1884,7 @@
         -34.7,
         -62.7,
         -71,
-        -23.7
+        -28.2
       ],
       "net": [
         0,
@@ -1893,7 +1893,7 @@
         3.1,
         3.6,
         7.2,
-        3.4
+        3
       ],
       "asset": [
         0,
@@ -1902,7 +1902,7 @@
         42.9,
         44.5,
         52.5,
-        63.3
+        61.3
       ],
       "eq": [
         0,
@@ -1911,7 +1911,7 @@
         30.6,
         31.5,
         35.3,
-        38.9
+        37.3
       ],
       "interest": [
         0,
@@ -1929,7 +1929,7 @@
         0.8,
         0.8,
         1.8,
-        1.1
+        1
       ],
       "fcf": [
         0,
@@ -1938,7 +1938,7 @@
         2.9,
         2.5,
         4.2,
-        -3.3
+        2.2
       ],
       "ocf": [
         0,
@@ -1956,11 +1956,11 @@
         4.7,
         8.4,
         4.8,
-        6.7
+        6.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -1968,7 +1968,7 @@
         7.6,
         5.2,
         8.5,
-        11.6
+        9
       ],
       "grossMargin": [
         null,
@@ -1977,7 +1977,7 @@
         15.4,
         9.4,
         16.1,
-        19.1
+        15.6
       ],
       "roe": [
         null,
@@ -1986,7 +1986,7 @@
         10.1,
         11.4,
         20.4,
-        35
+        32.2
       ],
       "roa": [
         null,
@@ -1995,7 +1995,7 @@
         7.2,
         8.1,
         13.7,
-        21.5
+        19.6
       ],
       "zscore": 3.68,
       "mos": 19
@@ -2089,11 +2089,11 @@
         3.8,
         6.1,
         6.8,
-        11.2
+        9.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2222,11 +2222,11 @@
         0,
         0,
         1.1,
-        1.5
+        1.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2355,11 +2355,11 @@
         0,
         5.8,
         4.4,
-        7.8
+        8.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2488,11 +2488,11 @@
         5.4,
         8.2,
         7.1,
-        6.9
+        6.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2625,7 +2625,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2754,11 +2754,11 @@
         0,
         0,
         0.7,
-        1.5
+        1.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -2887,11 +2887,11 @@
         3.7,
         6.4,
         8.6,
-        8.9
+        10.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3024,7 +3024,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3157,7 +3157,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3286,11 +3286,11 @@
         4.3,
         4.9,
         4.6,
-        3.2
+        3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3423,7 +3423,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3552,11 +3552,11 @@
         5,
         5.8,
         9.6,
-        7.4
+        7.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3689,7 +3689,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3822,7 +3822,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -3955,7 +3955,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4088,7 +4088,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4136,7 +4136,7 @@
         3.8,
         3.9,
         3.7,
-        1.1
+        1.5
       ],
       "cogs": [
         0,
@@ -4145,7 +4145,7 @@
         -2.9,
         -3,
         -3,
-        -0.8
+        -1.2
       ],
       "net": [
         0,
@@ -4154,7 +4154,7 @@
         0.2,
         0.3,
         0.5,
-        0
+        -0.2
       ],
       "asset": [
         0,
@@ -4163,7 +4163,7 @@
         7.1,
         6.8,
         23.6,
-        24.2
+        24.3
       ],
       "eq": [
         0,
@@ -4172,7 +4172,7 @@
         2.2,
         3.3,
         3.9,
-        3.9
+        3.7
       ],
       "interest": [
         0,
@@ -4181,7 +4181,7 @@
         0.1,
         0.1,
         0.3,
-        0.2
+        0.3
       ],
       "tax": [
         0,
@@ -4199,7 +4199,7 @@
         -0.4,
         -0.4,
         -0.3,
-        0
+        -0.2
       ],
       "ocf": [
         0,
@@ -4221,7 +4221,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4229,7 +4229,7 @@
         5.3,
         7.7,
         13.5,
-        null
+        -13.3
       ],
       "grossMargin": [
         null,
@@ -4238,7 +4238,7 @@
         23.7,
         23.1,
         18.9,
-        27.3
+        20
       ],
       "roe": [
         null,
@@ -4269,7 +4269,7 @@
         18.7,
         21.2,
         24,
-        6.7
+        6.3
       ],
       "cogs": [
         0,
@@ -4287,7 +4287,7 @@
         5.7,
         7,
         7.6,
-        2.2
+        2
       ],
       "asset": [
         0,
@@ -4296,7 +4296,7 @@
         353.6,
         408.6,
         456.2,
-        460.1
+        464.5
       ],
       "eq": [
         0,
@@ -4305,7 +4305,7 @@
         38.7,
         45,
         52,
-        50.8
+        51
       ],
       "interest": [
         0,
@@ -4323,7 +4323,7 @@
         1.9,
         2.3,
         2.4,
-        0.7
+        0.6
       ],
       "fcf": [
         0,
@@ -4332,7 +4332,7 @@
         0.2,
         2.7,
         11.2,
-        -19.9
+        -0.9
       ],
       "ocf": [
         0,
@@ -4341,7 +4341,7 @@
         2,
         6.8,
         14.2,
-        -19.7
+        -0.4
       ],
       "divYield": [
         0,
@@ -4350,11 +4350,11 @@
         0.5,
         0.7,
         1,
-        1.8
+        2.3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4362,7 +4362,7 @@
         30.5,
         33,
         31.7,
-        32.8
+        31.7
       ],
       "grossMargin": [
         null,
@@ -4380,7 +4380,7 @@
         14.7,
         15.6,
         14.6,
-        17.3
+        15.7
       ],
       "roa": [
         null,
@@ -4389,7 +4389,7 @@
         1.6,
         1.7,
         1.7,
-        1.9
+        1.7
       ],
       "zscore": 3.5,
       "mos": 18.5
@@ -4487,7 +4487,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4620,7 +4620,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4753,7 +4753,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -4886,7 +4886,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5019,7 +5019,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5152,7 +5152,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5200,7 +5200,7 @@
         0,
         0.1,
         0.1,
-        0.1
+        0
       ],
       "cogs": [
         0,
@@ -5209,7 +5209,7 @@
         0,
         -0.1,
         -0.1,
-        -0.1
+        0
       ],
       "net": [
         0,
@@ -5236,7 +5236,7 @@
         0.2,
         0.1,
         0,
-        0.1
+        0
       ],
       "interest": [
         0,
@@ -5263,7 +5263,7 @@
         -0.1,
         -0.2,
         -0.1,
-        0
+        -0.8
       ],
       "ocf": [
         0,
@@ -5285,7 +5285,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5414,11 +5414,11 @@
         20.4,
         0,
         15.4,
-        13.6
+        14.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5547,11 +5547,11 @@
         0.5,
         3.2,
         7.3,
-        10.2
+        10.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5680,11 +5680,11 @@
         1.3,
         2.1,
         2.9,
-        5.7
+        6.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5817,7 +5817,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5950,7 +5950,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -5998,7 +5998,7 @@
         7.4,
         6,
         6.4,
-        1.6
+        1.7
       ],
       "cogs": [
         0,
@@ -6016,7 +6016,7 @@
         0,
         0.1,
         4.3,
-        0.1
+        0.3
       ],
       "asset": [
         0,
@@ -6025,7 +6025,7 @@
         7.8,
         8.5,
         16.7,
-        15.9
+        17.6
       ],
       "eq": [
         0,
@@ -6034,7 +6034,7 @@
         3,
         3,
         8.6,
-        7.9
+        8.1
       ],
       "interest": [
         0,
@@ -6052,7 +6052,7 @@
         0,
         0,
         -0.1,
-        0
+        0.1
       ],
       "fcf": [
         0,
@@ -6061,7 +6061,7 @@
         0.9,
         -0.8,
         -0.1,
-        -0.1
+        -0.6
       ],
       "ocf": [
         0,
@@ -6078,12 +6078,12 @@
         0,
         0,
         0,
-        0.3,
-        0.3
+        0.4,
+        0.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6091,7 +6091,7 @@
         null,
         1.7,
         67.2,
-        6.3
+        17.6
       ],
       "grossMargin": [
         null,
@@ -6100,7 +6100,7 @@
         6.8,
         6.7,
         15.6,
-        18.8
+        23.5
       ],
       "roe": [
         null,
@@ -6109,7 +6109,7 @@
         null,
         3.3,
         50,
-        5.1
+        14.8
       ],
       "roa": [
         null,
@@ -6118,7 +6118,7 @@
         null,
         1.2,
         25.7,
-        2.5
+        6.8
       ],
       "zscore": 2.48,
       "mos": 15.4
@@ -6216,7 +6216,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6345,11 +6345,11 @@
         13.5,
         0,
         22.5,
-        8.4
+        8.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6482,7 +6482,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6611,11 +6611,11 @@
         1.5,
         4,
         4.1,
-        6.9
+        7.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6744,11 +6744,11 @@
         5.4,
         2.3,
         1.6,
-        2.9
+        3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -6876,12 +6876,12 @@
         9.2,
         0,
         10.5,
-        10,
-        10
+        10.9,
+        10.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7014,7 +7014,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7147,7 +7147,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7276,11 +7276,11 @@
         0.8,
         0.8,
         3.5,
-        1.9
+        2.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7409,11 +7409,11 @@
         4.5,
         4.2,
         4.7,
-        4.2
+        4.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7542,11 +7542,11 @@
         0,
         3,
         2.5,
-        2.5
+        2.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7594,7 +7594,7 @@
         32.3,
         34.4,
         42.5,
-        11.8
+        12.2
       ],
       "cogs": [
         0,
@@ -7603,7 +7603,7 @@
         -12.2,
         -12.2,
         -17.2,
-        -4.6
+        -4.9
       ],
       "net": [
         0,
@@ -7612,7 +7612,7 @@
         1.3,
         1.8,
         -4.4,
-        -0.7
+        -0.3
       ],
       "asset": [
         0,
@@ -7621,7 +7621,7 @@
         87.7,
         86.2,
         115.3,
-        111.8
+        113.5
       ],
       "eq": [
         0,
@@ -7630,7 +7630,7 @@
         26.3,
         26.1,
         29.8,
-        29.1
+        28.9
       ],
       "interest": [
         0,
@@ -7639,7 +7639,7 @@
         2.9,
         3.1,
         3.9,
-        1
+        0.9
       ],
       "tax": [
         0,
@@ -7648,7 +7648,7 @@
         0.4,
         0.6,
         -0.8,
-        -0.2
+        -0.1
       ],
       "fcf": [
         0,
@@ -7657,7 +7657,7 @@
         5.7,
         8.3,
         8.2,
-        4.5
+        1.4
       ],
       "ocf": [
         0,
@@ -7675,11 +7675,11 @@
         2.1,
         2.2,
         6.5,
-        5.9
+        6.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7687,7 +7687,7 @@
         4,
         5.2,
         -10.4,
-        -5.9
+        -2.5
       ],
       "grossMargin": [
         null,
@@ -7696,7 +7696,7 @@
         62.2,
         64.5,
         59.5,
-        61
+        59.8
       ],
       "roe": [
         null,
@@ -7745,7 +7745,7 @@
         -0.4,
         -0.8,
         -0.8,
-        0
+        -0.1
       ],
       "asset": [
         0,
@@ -7763,7 +7763,7 @@
         0.7,
         0,
         0,
-        0.3
+        0.2
       ],
       "interest": [
         0,
@@ -7790,7 +7790,7 @@
         -0.3,
         -0.1,
         -0.1,
-        0
+        -0.1
       ],
       "ocf": [
         0,
@@ -7812,7 +7812,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         -6.3,
@@ -7820,7 +7820,7 @@
         -6.8,
         -16.3,
         -16.3,
-        null
+        -7.1
       ],
       "grossMargin": [
         null,
@@ -7941,11 +7941,11 @@
         0,
         4.5,
         4.8,
-        5.8
+        6.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -7993,7 +7993,7 @@
         0.4,
         0.4,
         0.3,
-        0
+        0.1
       ],
       "cogs": [
         0,
@@ -8029,7 +8029,7 @@
         0.7,
         0.8,
         0.9,
-        0.8
+        0.9
       ],
       "interest": [
         0,
@@ -8074,11 +8074,11 @@
         0,
         0,
         0.1,
-        0.3
+        0.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8211,7 +8211,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8340,11 +8340,11 @@
         0.5,
         0.5,
         0.8,
-        2
+        2.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8477,7 +8477,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8601,16 +8601,16 @@
       ],
       "divYield": [
         0,
-        2.5,
+        0,
         2.1,
         1.8,
         1.8,
         3,
-        3.6
+        3.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8658,7 +8658,7 @@
         28.9,
         29.3,
         30.5,
-        8.5
+        8.9
       ],
       "cogs": [
         0,
@@ -8667,7 +8667,7 @@
         -23,
         -23.3,
         -24.3,
-        -6.9
+        -7.2
       ],
       "net": [
         0,
@@ -8685,7 +8685,7 @@
         62.9,
         67.6,
         78.5,
-        80.8
+        85
       ],
       "eq": [
         0,
@@ -8694,7 +8694,7 @@
         13.1,
         13.4,
         13.4,
-        13.7
+        14.2
       ],
       "interest": [
         0,
@@ -8703,7 +8703,7 @@
         2.1,
         2.5,
         2.6,
-        0.6
+        0.7
       ],
       "tax": [
         0,
@@ -8721,7 +8721,7 @@
         -2.6,
         -1.4,
         -0.8,
-        -3.7
+        -1.5
       ],
       "ocf": [
         0,
@@ -8739,11 +8739,11 @@
         0.7,
         1.1,
         0.4,
-        0.4
+        0.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8760,7 +8760,7 @@
         20.4,
         20.5,
         20.3,
-        18.8
+        19.1
       ],
       "roe": [
         null,
@@ -8876,7 +8876,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -8942,7 +8942,7 @@
         0.1,
         0.2,
         -0.6,
-        0.1
+        0
       ],
       "asset": [
         0,
@@ -8951,7 +8951,7 @@
         26.1,
         30.1,
         27.6,
-        30.3
+        28.3
       ],
       "eq": [
         0,
@@ -8960,7 +8960,7 @@
         4.2,
         4.3,
         3.8,
-        3.8
+        3.9
       ],
       "interest": [
         0,
@@ -8987,7 +8987,7 @@
         -0.5,
         5.8,
         -1.2,
-        2.5
+        -0.9
       ],
       "ocf": [
         0,
@@ -8996,7 +8996,7 @@
         -0.5,
         5.8,
         -1.2,
-        2.5
+        -0.9
       ],
       "divYield": [
         0,
@@ -9009,7 +9009,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9017,7 +9017,7 @@
         10,
         22.2,
         null,
-        50
+        null
       ],
       "grossMargin": [
         null,
@@ -9035,7 +9035,7 @@
         2.4,
         4.7,
         null,
-        10.5
+        null
       ],
       "roa": [
         null,
@@ -9044,7 +9044,7 @@
         0.4,
         0.7,
         null,
-        1.3
+        null
       ],
       "zscore": 3.5,
       "mos": 18.5
@@ -9142,7 +9142,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9275,7 +9275,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9323,7 +9323,7 @@
         21.3,
         31.8,
         29.9,
-        6.5
+        6.7
       ],
       "cogs": [
         0,
@@ -9341,7 +9341,7 @@
         6.8,
         4.5,
         3.7,
-        0.8
+        1.1
       ],
       "asset": [
         0,
@@ -9350,7 +9350,7 @@
         134.7,
         148.7,
         160,
-        160.5
+        163.2
       ],
       "eq": [
         0,
@@ -9377,7 +9377,7 @@
         1.2,
         0.2,
         1.6,
-        0.5
+        0.4
       ],
       "fcf": [
         0,
@@ -9386,7 +9386,7 @@
         -1.6,
         -6.8,
         -7.4,
-        -0.8
+        -0.2
       ],
       "ocf": [
         0,
@@ -9404,11 +9404,11 @@
         1.6,
         0.9,
         4.6,
-        5.2
+        6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9416,7 +9416,7 @@
         31.9,
         14.2,
         12.4,
-        12.3
+        16.4
       ],
       "grossMargin": [
         null,
@@ -9425,7 +9425,7 @@
         41.8,
         35.8,
         39.5,
-        46.2
+        47.8
       ],
       "roe": [
         null,
@@ -9434,7 +9434,7 @@
         24.4,
         13.2,
         10.2,
-        8.6
+        11.9
       ],
       "roa": [
         null,
@@ -9443,7 +9443,7 @@
         5,
         3,
         2.3,
-        2
+        2.7
       ],
       "zscore": 0.6,
       "mos": 9.8
@@ -9541,7 +9541,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9674,7 +9674,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9807,7 +9807,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -9936,11 +9936,11 @@
         2.9,
         0.5,
         2.1,
-        0.8
+        1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10064,7 +10064,7 @@
       ],
       "divYield": [
         0,
-        4.6,
+        0,
         0,
         0,
         0,
@@ -10073,7 +10073,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10206,7 +10206,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10339,7 +10339,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10468,11 +10468,11 @@
         26.3,
         14.2,
         17.6,
-        15.6
+        15.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10538,7 +10538,7 @@
         0,
         0,
         0.1,
-        -0.1
+        0
       ],
       "asset": [
         0,
@@ -10605,7 +10605,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10729,16 +10729,16 @@
       ],
       "divYield": [
         0,
-        1.7,
+        0,
         5,
         6,
         4,
         5.4,
-        4.9
+        5.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -10786,7 +10786,7 @@
         1.9,
         2.3,
         3.2,
-        0.6
+        0.7
       ],
       "cogs": [
         0,
@@ -10813,7 +10813,7 @@
         141.5,
         150.2,
         163.8,
-        169.1
+        169.3
       ],
       "eq": [
         0,
@@ -10822,7 +10822,7 @@
         15.9,
         16.9,
         17.1,
-        19.1
+        19.4
       ],
       "interest": [
         0,
@@ -10831,7 +10831,7 @@
         6.9,
         8.8,
         9.7,
-        2.4
+        2.5
       ],
       "tax": [
         0,
@@ -10849,7 +10849,7 @@
         -3.3,
         0,
         4.1,
-        1.1
+        -3.3
       ],
       "ocf": [
         0,
@@ -10858,7 +10858,7 @@
         -3.1,
         0.2,
         4.2,
-        1.1
+        -3.3
       ],
       "divYield": [
         0,
@@ -10871,7 +10871,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11004,7 +11004,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11133,11 +11133,11 @@
         4.7,
         5.1,
         2.7,
-        4.3
+        4.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11403,7 +11403,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11532,11 +11532,11 @@
         11.5,
         1.2,
         0.2,
-        0.4
+        0.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11660,7 +11660,7 @@
       ],
       "divYield": [
         0,
-        0.9,
+        0,
         0,
         1.3,
         0,
@@ -11669,7 +11669,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11798,11 +11798,11 @@
         12.9,
         11.7,
         12.4,
-        16.5
+        16.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -11935,7 +11935,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12156,7 +12156,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12285,11 +12285,11 @@
         2.2,
         3.5,
         2.7,
-        4.5
+        5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12422,7 +12422,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12555,7 +12555,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12683,12 +12683,12 @@
         6.5,
         0,
         0,
-        1.1,
-        1.1
+        1.2,
+        1.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12821,7 +12821,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -12954,7 +12954,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13083,11 +13083,11 @@
         0,
         0,
         3.9,
-        4.5
+        5.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13220,7 +13220,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13268,7 +13268,7 @@
         13.2,
         10.7,
         11.1,
-        3.2
+        2.2
       ],
       "cogs": [
         0,
@@ -13286,7 +13286,7 @@
         1.5,
         1.5,
         1.7,
-        0.8
+        0
       ],
       "asset": [
         0,
@@ -13295,7 +13295,7 @@
         234.3,
         256.9,
         251.7,
-        239.3
+        243.1
       ],
       "eq": [
         0,
@@ -13331,7 +13331,7 @@
         3.5,
         18.6,
         -2.2,
-        -4.6
+        6.9
       ],
       "ocf": [
         0,
@@ -13340,7 +13340,7 @@
         0,
         19,
         -1.8,
-        -4.6
+        7.2
       ],
       "divYield": [
         0,
@@ -13353,7 +13353,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13361,7 +13361,7 @@
         11.4,
         14,
         15.3,
-        25
+        null
       ],
       "grossMargin": [
         null,
@@ -13379,7 +13379,7 @@
         5.4,
         5.1,
         5.3,
-        10.2
+        null
       ],
       "roa": [
         null,
@@ -13388,7 +13388,7 @@
         0.6,
         0.6,
         0.7,
-        1.3
+        null
       ],
       "zscore": 0.5,
       "mos": 9.5
@@ -13486,7 +13486,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13534,7 +13534,7 @@
         38.5,
         42.8,
         42.6,
-        9.9
+        12.1
       ],
       "cogs": [
         0,
@@ -13543,7 +13543,7 @@
         -29.3,
         -34.6,
         -36.4,
-        -8.4
+        -9.4
       ],
       "net": [
         0,
@@ -13552,7 +13552,7 @@
         6.1,
         5.1,
         2.9,
-        0.8
+        1.9
       ],
       "asset": [
         0,
@@ -13561,7 +13561,7 @@
         38.8,
         41.8,
         43.9,
-        43.2
+        48.1
       ],
       "eq": [
         0,
@@ -13570,7 +13570,7 @@
         21.4,
         22.5,
         22.5,
-        23.5
+        25.2
       ],
       "interest": [
         0,
@@ -13588,7 +13588,7 @@
         1.9,
         1.1,
         0.8,
-        0.2
+        0.4
       ],
       "fcf": [
         0,
@@ -13597,7 +13597,7 @@
         2.1,
         3.8,
         2.8,
-        1.1
+        2.3
       ],
       "ocf": [
         0,
@@ -13615,11 +13615,11 @@
         44.8,
         14.5,
         14.4,
-        4
+        3.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13627,7 +13627,7 @@
         15.8,
         11.9,
         6.8,
-        8.1
+        15.7
       ],
       "grossMargin": [
         null,
@@ -13636,7 +13636,7 @@
         23.9,
         19.2,
         14.6,
-        15.2
+        22.3
       ],
       "roe": [
         null,
@@ -13645,7 +13645,7 @@
         28.5,
         22.7,
         12.9,
-        13.6
+        30.2
       ],
       "roa": [
         null,
@@ -13654,7 +13654,7 @@
         15.7,
         12.2,
         6.6,
-        7.4
+        15.8
       ],
       "zscore": 2.06,
       "mos": 14.2
@@ -13752,7 +13752,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -13881,11 +13881,11 @@
         1.4,
         2.3,
         3.8,
-        4.7
+        5.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14014,11 +14014,11 @@
         9.3,
         9,
         10.1,
-        13.7
+        14
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14151,7 +14151,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14280,11 +14280,11 @@
         3.8,
         6,
         8,
-        10.3
+        11.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14417,7 +14417,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14541,16 +14541,16 @@
       ],
       "divYield": [
         0,
-        0.7,
+        0,
         3.1,
         4,
         2.6,
         3.5,
-        4
+        4.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14598,7 +14598,7 @@
         0.3,
         0.4,
         0.5,
-        0.3
+        0.1
       ],
       "cogs": [
         0,
@@ -14607,7 +14607,7 @@
         -0.2,
         -0.3,
         -0.4,
-        -0.2
+        -0.1
       ],
       "net": [
         0,
@@ -14616,7 +14616,7 @@
         0,
         0,
         0,
-        0
+        0.6
       ],
       "asset": [
         0,
@@ -14625,7 +14625,7 @@
         0.6,
         0.8,
         1.6,
-        1.6
+        5.4
       ],
       "eq": [
         0,
@@ -14634,7 +14634,7 @@
         -0.7,
         -0.7,
         -0.8,
-        -0.8
+        -0.1
       ],
       "interest": [
         0,
@@ -14683,7 +14683,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14700,7 +14700,7 @@
         33.3,
         25,
         20,
-        33.3
+        null
       ],
       "roe": [
         null,
@@ -14720,8 +14720,8 @@
         null,
         null
       ],
-      "zscore": 0.5,
-      "mos": 9.5
+      "zscore": 0.7,
+      "mos": 10.1
     },
     "SMAR": {
       "rev": [
@@ -14812,11 +14812,11 @@
         9.3,
         5.5,
         0.6,
-        4
+        3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14949,7 +14949,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -14997,7 +14997,7 @@
         38.6,
         36.2,
         35.2,
-        8.3
+        9.4
       ],
       "cogs": [
         0,
@@ -15006,7 +15006,7 @@
         -28.5,
         -28.3,
         -28.2,
-        -6.6
+        -7.2
       ],
       "net": [
         0,
@@ -15024,7 +15024,7 @@
         81.8,
         77,
         76.6,
-        75.5
+        74.6
       ],
       "eq": [
         0,
@@ -15033,7 +15033,7 @@
         43.3,
         43.8,
         43.5,
-        43.5
+        43.7
       ],
       "interest": [
         0,
@@ -15060,7 +15060,7 @@
         4,
         2.8,
         2.6,
-        0.4
+        1.2
       ],
       "ocf": [
         0,
@@ -15078,11 +15078,11 @@
         3.8,
         2.6,
         3.6,
-        1.6
+        1.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15090,7 +15090,7 @@
         5.7,
         1.9,
         0.6,
-        1.2
+        1.1
       ],
       "grossMargin": [
         null,
@@ -15099,7 +15099,7 @@
         26.2,
         21.8,
         19.9,
-        20.5
+        23.4
       ],
       "roe": [
         null,
@@ -15130,7 +15130,7 @@
         25,
         29.6,
         35.8,
-        7
+        8.4
       ],
       "cogs": [
         0,
@@ -15148,7 +15148,7 @@
         1.2,
         1,
         2,
-        0.6
+        1.8
       ],
       "asset": [
         0,
@@ -15157,7 +15157,7 @@
         116,
         119.1,
         120.4,
-        124.1
+        129.7
       ],
       "eq": [
         0,
@@ -15166,7 +15166,7 @@
         20.7,
         21.5,
         23.5,
-        24.9
+        26.7
       ],
       "interest": [
         0,
@@ -15175,7 +15175,7 @@
         1.8,
         2,
         2.1,
-        0.3
+        0.5
       ],
       "tax": [
         0,
@@ -15193,7 +15193,7 @@
         6.6,
         4.7,
         -2,
-        -4.2
+        -2
       ],
       "ocf": [
         0,
@@ -15202,7 +15202,7 @@
         7,
         5.1,
         -1.8,
-        -4.2
+        -2
       ],
       "divYield": [
         0,
@@ -15215,7 +15215,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15223,7 +15223,7 @@
         4.8,
         3.4,
         5.6,
-        8.6
+        21.4
       ],
       "grossMargin": [
         null,
@@ -15241,7 +15241,7 @@
         5.8,
         4.7,
         8.5,
-        9.6
+        27
       ],
       "roa": [
         null,
@@ -15250,7 +15250,7 @@
         1,
         0.8,
         1.7,
-        1.9
+        5.6
       ],
       "zscore": 0.65,
       "mos": 9.9
@@ -15343,12 +15343,12 @@
         0,
         0,
         0,
-        2.2,
-        2.2
+        1.6,
+        1.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15396,7 +15396,7 @@
         -11,
         5.3,
         7,
-        6.9
+        -10.1
       ],
       "cogs": [
         0,
@@ -15405,7 +15405,7 @@
         -0.1,
         -0.1,
         -0.1,
-        -0.1
+        0
       ],
       "net": [
         0,
@@ -15414,7 +15414,7 @@
         -10.2,
         3.3,
         7.3,
-        5.3
+        -9.2
       ],
       "asset": [
         0,
@@ -15423,7 +15423,7 @@
         51,
         57.8,
         62.5,
-        68.7
+        57.5
       ],
       "eq": [
         0,
@@ -15432,7 +15432,7 @@
         48.7,
         51.8,
         58.9,
-        64.2
+        53.7
       ],
       "interest": [
         0,
@@ -15450,7 +15450,7 @@
         -1.2,
         1.6,
         -0.7,
-        1.5
+        -0.9
       ],
       "fcf": [
         0,
@@ -15459,7 +15459,7 @@
         1.4,
         -1.1,
         1.4,
-        0.5
+        1.8
       ],
       "ocf": [
         0,
@@ -15477,11 +15477,11 @@
         4.6,
         1.1,
         0.9,
-        5.8
+        5.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15489,7 +15489,7 @@
         null,
         62.3,
         null,
-        76.8
+        null
       ],
       "grossMargin": [
         null,
@@ -15507,7 +15507,7 @@
         null,
         6.4,
         12.4,
-        33
+        null
       ],
       "roa": [
         null,
@@ -15516,7 +15516,7 @@
         null,
         5.7,
         11.7,
-        30.9
+        null
       ],
       "zscore": 6,
       "mos": 26
@@ -15614,7 +15614,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15747,7 +15747,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -15876,11 +15876,11 @@
         7,
         21.8,
         11,
-        9
+        10.3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16009,11 +16009,11 @@
         2.9,
         2.6,
         0.9,
-        3.1
+        3.3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16142,11 +16142,11 @@
         6.5,
         0,
         2,
-        2
+        1.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16275,11 +16275,11 @@
         2.4,
         2.8,
         3.9,
-        3.1
+        3.3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16354,7 +16354,7 @@
         2.9,
         3.5,
         6.8,
-        8.8
+        8.3
       ],
       "eq": [
         0,
@@ -16363,7 +16363,7 @@
         1.2,
         1.5,
         2.1,
-        2.2
+        2.3
       ],
       "interest": [
         0,
@@ -16390,7 +16390,7 @@
         -0.4,
         -0.4,
         -1.6,
-        0.3
+        -0.2
       ],
       "ocf": [
         0,
@@ -16412,7 +16412,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16438,7 +16438,7 @@
         16.7,
         20,
         28.6,
-        18.2
+        17.4
       ],
       "roa": [
         null,
@@ -16447,7 +16447,7 @@
         6.9,
         8.6,
         8.8,
-        4.5
+        4.8
       ],
       "zscore": 0.98,
       "mos": 10.9
@@ -16487,7 +16487,7 @@
         1.5,
         1.6,
         1.8,
-        1.8
+        1.9
       ],
       "eq": [
         0,
@@ -16545,7 +16545,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16593,7 +16593,7 @@
         2.4,
         2.3,
         2.6,
-        0.6
+        0.7
       ],
       "cogs": [
         0,
@@ -16602,7 +16602,7 @@
         -1.9,
         -1.7,
         -1.8,
-        -0.4
+        -0.6
       ],
       "net": [
         0,
@@ -16611,7 +16611,7 @@
         0.1,
         0.1,
         0,
-        0
+        -0.3
       ],
       "asset": [
         0,
@@ -16620,7 +16620,7 @@
         4.6,
         3.2,
         3.5,
-        3.6
+        3.5
       ],
       "eq": [
         0,
@@ -16629,7 +16629,7 @@
         -5.4,
         -5.3,
         -5.3,
-        -5.3
+        -5.5
       ],
       "interest": [
         0,
@@ -16678,7 +16678,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16686,7 +16686,7 @@
         4.2,
         4.3,
         null,
-        null
+        -42.9
       ],
       "grossMargin": [
         null,
@@ -16695,7 +16695,7 @@
         20.8,
         26.1,
         30.8,
-        33.3
+        14.3
       ],
       "roe": [
         null,
@@ -16807,11 +16807,11 @@
         30.4,
         8.4,
         7,
-        6.7
+        6.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -16944,7 +16944,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -17077,7 +17077,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -17125,7 +17125,7 @@
         22.5,
         19.2,
         13.3,
-        2.6
+        3.7
       ],
       "cogs": [
         0,
@@ -17134,7 +17134,7 @@
         -20.7,
         -17.7,
         -12.2,
-        -2.4
+        -3
       ],
       "net": [
         0,
@@ -17143,7 +17143,7 @@
         -7.1,
         -2.3,
         -9.7,
-        -1.1
+        -0.3
       ],
       "asset": [
         0,
@@ -17152,7 +17152,7 @@
         66,
         63.5,
         50.1,
-        48.7
+        49
       ],
       "eq": [
         0,
@@ -17161,7 +17161,7 @@
         5.8,
         8.9,
         -0.9,
-        -2
+        -2.4
       ],
       "interest": [
         0,
@@ -17188,7 +17188,7 @@
         -4.3,
         -1.6,
         -0.4,
-        -1.3
+        0.5
       ],
       "ocf": [
         0,
@@ -17210,7 +17210,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -17218,7 +17218,7 @@
         -31.6,
         -12,
         -72.9,
-        -42.3
+        -8.1
       ],
       "grossMargin": [
         null,
@@ -17227,7 +17227,7 @@
         8,
         7.8,
         8.3,
-        7.7
+        18.9
       ],
       "roe": [
         null,
@@ -17343,7 +17343,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -17387,47 +17387,47 @@
       "rev": [
         0,
         0,
-        136.3,
-        104.4,
-        93.8,
-        86.6,
-        18.3
+        138.4,
+        106,
+        95.2,
+        87.9,
+        26.8
       ],
       "cogs": [
         0,
         0,
-        -66.7,
-        -73.9,
-        -67.9,
-        -64.4,
-        -13.9
+        -67.7,
+        -75,
+        -68.9,
+        -65.3,
+        -17.5
       ],
       "net": [
         0,
         0,
-        41.4,
-        20.1,
-        21.3,
-        13.4,
-        2.5
+        42.1,
+        20.4,
+        21.7,
+        13.6,
+        5.9
       ],
       "asset": [
         0,
         0,
-        140.5,
-        124.5,
-        105.6,
-        100.7,
-        101.9
+        142.6,
+        126.4,
+        107.2,
+        102.2,
+        113.1
       ],
       "eq": [
         0,
         0,
-        72.6,
-        77.1,
-        52.9,
-        58.7,
-        61.2
+        73.7,
+        78.2,
+        53.7,
+        59.6,
+        64.3
       ],
       "interest": [
         0,
@@ -17436,25 +17436,25 @@
         1.2,
         1.3,
         0.9,
-        0.1
+        0.2
       ],
       "tax": [
         0,
         0,
-        26.4,
-        4.8,
+        26.8,
+        4.9,
         3.8,
-        3.6,
-        1
+        3.7,
+        1.5
       ],
       "fcf": [
         0,
         0,
-        53.3,
-        5.7,
-        14.6,
-        9.4,
-        -0.6
+        54.1,
+        5.8,
+        14.8,
+        9.6,
+        6.4
       ],
       "ocf": [
         0,
@@ -17472,19 +17472,19 @@
         0,
         0,
         7.7,
-        8.9
+        8.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         30.4,
-        19.3,
-        22.7,
+        19.2,
+        22.8,
         15.5,
-        13.7
+        22
       ],
       "grossMargin": [
         null,
@@ -17492,17 +17492,17 @@
         51.1,
         29.2,
         27.6,
-        25.6,
-        24
+        25.7,
+        34.7
       ],
       "roe": [
         null,
         null,
-        57,
+        57.1,
         26.1,
-        40.3,
+        40.4,
         22.8,
-        16.3
+        36.7
       ],
       "roa": [
         null,
@@ -17511,7 +17511,7 @@
         16.1,
         20.2,
         13.3,
-        9.8
+        20.9
       ],
       "zscore": 2.51,
       "mos": 15.5
@@ -17520,55 +17520,55 @@
       "rev": [
         0,
         0,
-        25.6,
-        26.3,
-        21.2,
-        18.3,
-        5
+        26,
+        26.7,
+        21.5,
+        18.6,
+        5.1
       ],
       "cogs": [
         0,
         0,
-        -16.3,
-        -19.4,
-        -18.9,
         -16.5,
-        -4.5
+        -19.7,
+        -19.2,
+        -16.7,
+        -4.6
       ],
       "net": [
         0,
         0,
         4.8,
-        5.1,
+        5.2,
         2.5,
-        1.2,
+        1.3,
         0.4
       ],
       "asset": [
         0,
         0,
-        34.9,
-        38.1,
-        37,
-        36.3,
-        36.3
+        35.4,
+        38.7,
+        37.6,
+        36.9,
+        36.9
       ],
       "eq": [
         0,
         0,
-        9.7,
-        13.4,
-        14.8,
-        15.4,
-        15.7
+        9.9,
+        13.6,
+        15.1,
+        15.7,
+        15.9
       ],
       "interest": [
         0,
         0,
         0.9,
         1.9,
-        1.9,
-        1.3,
+        2,
+        1.4,
         0.3
       ],
       "tax": [
@@ -17585,8 +17585,8 @@
         0,
         2.5,
         -0.8,
-        1.3,
-        2.8,
+        1.4,
+        2.9,
         0.3
       ],
       "ocf": [
@@ -17605,57 +17605,57 @@
         11.8,
         8.3,
         5.5,
-        3.4
+        3.7
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        18.7,
-        19.4,
-        11.8,
-        6.6,
-        8
+        18.5,
+        19.5,
+        11.6,
+        7,
+        7.8
       ],
       "grossMargin": [
         null,
         null,
-        36.3,
+        36.5,
         26.2,
-        10.8,
-        9.8,
-        10
+        10.7,
+        10.2,
+        9.8
       ],
       "roe": [
         null,
         null,
-        49.5,
-        38.1,
-        16.9,
-        7.8,
-        10.2
+        48.5,
+        38.2,
+        16.6,
+        8.3,
+        10.1
       ],
       "roa": [
         null,
         null,
-        13.8,
+        13.6,
         13.4,
-        6.8,
-        3.3,
-        4.4
+        6.6,
+        3.5,
+        4.3
       ],
-      "zscore": 1.24,
-      "mos": 11.7
+      "zscore": 1.25,
+      "mos": 11.8
     },
     "ADMG": {
       "rev": [
         0,
         0,
-        2.5,
-        1.8,
+        2.6,
         1.9,
+        2,
         2.6,
         1
       ],
@@ -17665,7 +17665,7 @@
         -2.7,
         -1.9,
         -1.9,
-        -2.5,
+        -2.6,
         -1
       ],
       "net": [
@@ -17680,9 +17680,9 @@
       "asset": [
         0,
         0,
-        3,
+        3.1,
         2.8,
-        2.7,
+        2.8,
         2.7,
         3.2
       ],
@@ -17690,8 +17690,8 @@
         0,
         0,
         2.6,
-        2.2,
-        2,
+        2.3,
+        2.1,
         2,
         2.1
       ],
@@ -17742,23 +17742,23 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        -20,
-        -16.7,
-        -10.5,
+        -19.2,
+        -15.8,
+        -10,
         -3.8,
         10
       ],
       "grossMargin": [
         null,
         null,
-        -8,
-        -5.6,
+        -3.8,
         null,
-        3.8,
+        5,
+        null,
         null
       ],
       "roe": [
@@ -17786,47 +17786,47 @@
       "rev": [
         0,
         0,
-        16,
-        19.2,
-        20.3,
-        17.2,
-        4.7
+        16.3,
+        19.5,
+        20.6,
+        17.4,
+        5.7
       ],
       "cogs": [
         0,
         0,
-        -6.6,
-        -8.9,
-        -10.2,
-        -10.2,
-        -2.5
+        -6.7,
+        -9,
+        -10.3,
+        -10.3,
+        -2.9
       ],
       "net": [
         0,
         0,
         5.9,
+        7.9,
         7.8,
-        7.7,
-        4.8,
+        4.9,
         1.5
       ],
       "asset": [
         0,
         0,
-        22.7,
-        30,
-        36.5,
-        51,
-        56.6
+        23.1,
+        30.4,
+        37,
+        51.7,
+        73.9
       ],
       "eq": [
         0,
         0,
-        9.4,
-        17.2,
-        24.9,
-        27.5,
-        29.1
+        9.6,
+        17.5,
+        25.2,
+        27.9,
+        29.2
       ],
       "interest": [
         0,
@@ -17835,7 +17835,7 @@
         0.5,
         0.2,
         0,
-        0
+        0.5
       ],
       "tax": [
         0,
@@ -17844,16 +17844,16 @@
         2.2,
         2.2,
         1.4,
-        0.4
+        0.6
       ],
       "fcf": [
         0,
         0,
-        8.1,
+        8.2,
         2.9,
         2.1,
-        -8.5,
-        -1.9
+        -8.7,
+        -1.7
       ],
       "ocf": [
         0,
@@ -17871,46 +17871,46 @@
         0,
         0,
         3.1,
-        3.1
+        3.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        36.9,
-        40.6,
+        36.2,
+        40.5,
         37.9,
-        27.9,
-        31.9
+        28.2,
+        26.3
       ],
       "grossMargin": [
         null,
         null,
-        58.8,
-        53.6,
-        49.8,
-        40.7,
-        46.8
+        58.9,
+        53.8,
+        50,
+        40.8,
+        49.1
       ],
       "roe": [
         null,
         null,
-        62.8,
-        45.3,
-        30.9,
-        17.5,
-        20.6
+        61.5,
+        45.1,
+        31,
+        17.6,
+        20.5
       ],
       "roa": [
         null,
         null,
-        26,
+        25.5,
         26,
         21.1,
-        9.4,
-        10.6
+        9.5,
+        8.1
       ],
       "zscore": 1.65,
       "mos": 12.9
@@ -18008,7 +18008,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -18055,7 +18055,7 @@
         0.2,
         0.8,
         2.9,
-        4.4,
+        4.5,
         0.5
       ],
       "cogs": [
@@ -18064,7 +18064,7 @@
         -0.1,
         -0.4,
         -1.5,
-        -1.9,
+        -2,
         -0.3
       ],
       "net": [
@@ -18079,20 +18079,20 @@
       "asset": [
         0,
         0,
-        19,
-        19.4,
-        20.3,
-        23.1,
-        24.9
+        19.3,
+        19.7,
+        20.6,
+        23.4,
+        25.2
       ],
       "eq": [
         0,
         0,
-        20.5,
         20.8,
-        21.2,
-        22,
-        22.2
+        21.1,
+        21.5,
+        22.4,
+        22.6
       ],
       "interest": [
         0,
@@ -18141,14 +18141,14 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         null,
         25,
         13.8,
-        20.5,
+        20,
         -20
       ],
       "grossMargin": [
@@ -18157,25 +18157,25 @@
         50,
         50,
         48.3,
-        56.8,
+        55.6,
         40
       ],
       "roe": [
         null,
         null,
         1,
-        1,
+        0.9,
         1.9,
-        4.1,
+        4,
         null
       ],
       "roa": [
         null,
         null,
-        1.1,
         1,
-        2,
-        3.9,
+        1,
+        1.9,
+        3.8,
         null
       ],
       "zscore": 6,
@@ -18185,20 +18185,20 @@
       "rev": [
         0,
         0,
-        52.2,
-        48.7,
-        42.1,
-        134.5,
-        55
+        53,
+        49.4,
+        42.8,
+        136.6,
+        55.8
       ],
       "cogs": [
         0,
         0,
-        -44.4,
-        -38.8,
-        -29.4,
-        -124.8,
-        -45.7
+        -45.1,
+        -39.4,
+        -29.9,
+        -126.7,
+        -46.4
       ],
       "net": [
         0,
@@ -18206,34 +18206,34 @@
         0,
         0.5,
         1,
-        8.6,
+        8.8,
         1.8
       ],
       "asset": [
         0,
         0,
-        163.1,
-        179,
-        185.7,
-        305.9,
-        334.1
+        165.6,
+        181.7,
+        188.5,
+        310.5,
+        339.2
       ],
       "eq": [
         0,
         0,
-        27.9,
-        29.8,
-        30.5,
-        39.5,
-        42.8
+        28.3,
+        30.2,
+        31,
+        40.1,
+        43.5
       ],
       "interest": [
         0,
         0,
         3.4,
-        5.3,
-        5.6,
-        6.9,
+        5.4,
+        5.7,
+        7,
         2.3
       ],
       "tax": [
@@ -18241,17 +18241,17 @@
         0,
         2.2,
         2.2,
-        1.9,
+        2,
         -0.2,
-        1.3
+        1.4
       ],
       "fcf": [
         0,
         0,
-        -5.5,
+        -5.6,
         0.3,
-        -11.1,
-        -10.6,
+        -11.3,
+        -10.8,
         -1
       ],
       "ocf": [
@@ -18274,33 +18274,33 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         null,
         1,
-        2.4,
+        2.3,
         6.4,
-        3.3
+        3.2
       ],
       "grossMargin": [
         null,
         null,
         14.9,
-        20.3,
-        30.2,
+        20.2,
+        30.1,
         7.2,
-        16.9
+        16.8
       ],
       "roe": [
         null,
         null,
         null,
         1.7,
-        3.3,
-        21.8,
-        16.8
+        3.2,
+        21.9,
+        16.6
       ],
       "roa": [
         null,
@@ -18309,34 +18309,34 @@
         0.3,
         0.5,
         2.8,
-        2.2
+        2.1
       ],
-      "zscore": 0.79,
+      "zscore": 0.8,
       "mos": 10.4
     },
     "BUMI": {
       "rev": [
         0,
         0,
-        32.3,
-        29.6,
-        24,
-        25,
-        7.9
+        32.8,
+        30.1,
+        24.3,
+        25.4,
+        8
       ],
       "cogs": [
         0,
         0,
-        -25.7,
-        -27.2,
-        -21,
-        -20.8,
-        -6.8
+        -26.1,
+        -27.6,
+        -21.3,
+        -21.1,
+        -6.9
       ],
       "net": [
         0,
         0,
-        9.6,
+        9.8,
         0.3,
         1.3,
         1.5,
@@ -18345,20 +18345,20 @@
       "asset": [
         0,
         0,
-        79.2,
-        74.1,
-        73.4,
-        74.4,
-        80.9
+        80.4,
+        75.2,
+        74.5,
+        75.5,
+        82.2
       ],
       "eq": [
         0,
         0,
-        27.9,
-        27.2,
-        28.4,
-        28.6,
-        29.3
+        28.3,
+        27.6,
+        28.8,
+        29,
+        29.7
       ],
       "interest": [
         0,
@@ -18372,7 +18372,7 @@
       "tax": [
         0,
         0,
-        2,
+        2.1,
         0.9,
         0.5,
         1,
@@ -18381,7 +18381,7 @@
       "fcf": [
         0,
         0,
-        -12.7,
+        -12.9,
         -3,
         -0.5,
         -1.2,
@@ -18407,91 +18407,91 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        29.7,
+        29.9,
         1,
-        5.4,
-        6,
-        7.6
+        5.3,
+        5.9,
+        7.5
       ],
       "grossMargin": [
         null,
         null,
         20.4,
-        8.1,
-        12.5,
-        16.8,
-        13.9
+        8.3,
+        12.3,
+        16.9,
+        13.7
       ],
       "roe": [
         null,
         null,
-        34.4,
+        34.6,
         1.1,
-        4.6,
+        4.5,
         5.2,
-        8.2
+        8.1
       ],
       "roa": [
         null,
         null,
-        12.1,
+        12.2,
         0.4,
-        1.8,
+        1.7,
         2,
-        3
+        2.9
       ],
-      "zscore": 0.94,
+      "zscore": 0.93,
       "mos": 10.8
     },
     "BYAN": {
       "rev": [
         0,
         0,
-        82.9,
-        63.1,
-        60.8,
-        60.5,
-        16.2
+        84.1,
+        64.1,
+        61.7,
+        61.4,
+        16.4
       ],
       "cogs": [
         0,
         0,
-        -27.2,
-        -33.9,
-        -37.2,
-        -40.9,
-        -10
+        -27.6,
+        -34.4,
+        -37.8,
+        -41.5,
+        -10.2
       ],
       "net": [
         0,
         0,
-        38.4,
-        21.9,
-        16.3,
-        13.5,
+        39,
+        22.2,
+        16.5,
+        13.7,
         3.9
       ],
       "asset": [
         0,
         0,
-        69.7,
-        60.7,
-        62.1,
-        59.6,
-        66.7
+        70.7,
+        61.6,
+        63,
+        60.5,
+        67.7
       ],
       "eq": [
         0,
         0,
-        33.3,
-        33.2,
-        38.8,
-        45.3,
-        43.7
+        33.8,
+        33.6,
+        39.4,
+        46,
+        44.4
       ],
       "interest": [
         0,
@@ -18505,20 +18505,20 @@
       "tax": [
         0,
         0,
-        11.4,
-        6.2,
-        4.6,
-        4,
-        1.1
+        11.5,
+        6.3,
+        4.7,
+        4.1,
+        1.2
       ],
       "fcf": [
         0,
         0,
-        34,
-        9.1,
-        15.5,
-        14.2,
-        4
+        34.5,
+        9.2,
+        15.8,
+        14.4,
+        4.1
       ],
       "ocf": [
         0,
@@ -18536,37 +18536,37 @@
         2.9,
         1.4,
         1.2,
-        1.9
+        2.2
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        46.3,
-        34.7,
-        26.8,
+        46.4,
+        34.6,
+        26.7,
         22.3,
-        24.1
+        23.8
       ],
       "grossMargin": [
         null,
         null,
         67.2,
         46.3,
-        38.8,
+        38.7,
         32.4,
-        38.3
+        37.8
       ],
       "roe": [
         null,
         null,
         null,
-        66,
-        42,
+        66.1,
+        41.9,
         29.8,
-        35.7
+        35.1
       ],
       "roa": [
         null,
@@ -18574,8 +18574,8 @@
         null,
         null,
         26.2,
-        22.7,
-        23.4
+        22.6,
+        23
       ],
       "zscore": 4.21,
       "mos": 20.6
@@ -18605,26 +18605,26 @@
         0,
         0,
         0.6,
-        2.1,
+        2.2,
         0.2
       ],
       "asset": [
         0,
         0,
         0,
-        16.2,
-        19,
-        30.7,
-        34
+        16.5,
+        19.3,
+        31.1,
+        34.5
       ],
       "eq": [
         0,
         0,
         0,
-        11,
-        11.5,
-        18.9,
-        18.3
+        11.2,
+        11.7,
+        19.2,
+        18.6
       ],
       "interest": [
         0,
@@ -18649,9 +18649,9 @@
         0,
         0,
         0,
-        -1.2,
-        -3.1,
-        -1.3
+        -1.3,
+        -3.2,
+        -1.4
       ],
       "ocf": [
         0,
@@ -18668,19 +18668,19 @@
         0,
         0,
         0,
-        1,
-        1
+        1.4,
+        1.4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         null,
         null,
         33.3,
-        80.8,
+        84.6,
         28.6
       ],
       "grossMargin": [
@@ -18697,20 +18697,20 @@
         null,
         null,
         null,
-        5.2,
-        11.1,
-        4.4
+        5.1,
+        11.5,
+        4.3
       ],
       "roa": [
         null,
         null,
         null,
         null,
-        3.2,
-        6.8,
-        2.4
+        3.1,
+        7.1,
+        2.3
       ],
-      "zscore": 1.52,
+      "zscore": 1.54,
       "mos": 12.6
     },
     "CUAN": {
@@ -18718,46 +18718,46 @@
         0,
         0,
         0,
-        1.7,
-        14.1,
-        21.5,
-        6.4
+        1.8,
+        14.3,
+        21.8,
+        6.5
       ],
       "cogs": [
         0,
         0,
         0,
         -1.1,
-        -12.1,
-        -18.7,
-        -5.6
+        -12.2,
+        -19,
+        -5.7
       ],
       "net": [
         0,
         0,
         0,
         0.3,
-        2.8,
+        2.9,
         2.4,
-        0.2
+        0.3
       ],
       "asset": [
         0,
         0,
         2,
         4.1,
-        31.4,
-        47.4,
-        46.7
+        31.9,
+        48.1,
+        47.4
       ],
       "eq": [
         0,
         0,
         1.2,
         1.9,
-        5.4,
-        6,
-        6.1
+        5.5,
+        6.1,
+        6.2
       ],
       "interest": [
         0,
@@ -18765,7 +18765,7 @@
         0,
         0,
         0.8,
-        1.4,
+        1.5,
         0.5
       ],
       "tax": [
@@ -18782,8 +18782,8 @@
         0,
         0,
         -0.2,
-        -3,
-        -9.5,
+        -3.1,
+        -9.7,
         -0.4
       ],
       "ocf": [
@@ -18806,42 +18806,42 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         null,
-        17.6,
-        19.9,
-        11.2,
-        3.1
+        16.7,
+        20.3,
+        11,
+        4.6
       ],
       "grossMargin": [
         null,
         null,
         null,
-        35.3,
-        14.2,
-        13,
-        12.5
+        38.9,
+        14.7,
+        12.8,
+        12.3
       ],
       "roe": [
         null,
         null,
         null,
         15.8,
-        51.9,
-        40,
-        13.1
+        52.7,
+        39.3,
+        19.4
       ],
       "roa": [
         null,
         null,
         null,
         7.3,
-        8.9,
-        5.1,
-        1.7
+        9.1,
+        5,
+        2.5
       ],
       "zscore": 0.92,
       "mos": 10.8
@@ -18850,26 +18850,26 @@
       "rev": [
         0,
         0,
-        105.1,
-        88.3,
-        53.3,
-        49.2,
-        12.2
+        106.7,
+        89.7,
+        54.1,
+        49.9,
+        12.4
       ],
       "cogs": [
         0,
         0,
-        -58.5,
-        -51.8,
-        -31.6,
-        -32.6,
-        -7.9
+        -59.4,
+        -52.6,
+        -32,
+        -33.1,
+        -8
       ],
       "net": [
         0,
         0,
-        10.4,
-        7.5,
+        10.6,
+        7.6,
         5.5,
         4.1,
         1.5
@@ -18877,20 +18877,20 @@
       "asset": [
         0,
         0,
-        114.6,
-        54,
-        65.2,
-        77.8,
-        81.1
+        116.3,
+        54.8,
+        66.2,
+        78.9,
+        82.3
       ],
       "eq": [
         0,
         0,
-        36.5,
-        24.3,
-        28.4,
-        32.1,
-        33.3
+        37,
+        24.7,
+        28.8,
+        32.6,
+        33.8
       ],
       "interest": [
         0,
@@ -18904,8 +18904,8 @@
       "tax": [
         0,
         0,
-        5.3,
-        5.6,
+        5.4,
+        5.7,
         3,
         1.8,
         0.5
@@ -18913,10 +18913,10 @@
       "fcf": [
         0,
         0,
-        33.5,
-        12.8,
-        5.1,
-        -2.4,
+        34,
+        13,
+        5.2,
+        -2.5,
         -0.8
       ],
       "ocf": [
@@ -18939,64 +18939,64 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         9.9,
         8.5,
-        10.3,
-        8.3,
-        12.3
+        10.2,
+        8.2,
+        12.1
       ],
       "grossMargin": [
         null,
         null,
         44.3,
-        41.3,
-        40.7,
+        41.4,
+        40.9,
         33.7,
-        35.2
+        35.5
       ],
       "roe": [
         null,
         null,
-        28.5,
-        30.9,
-        19.4,
-        12.8,
-        18
+        28.6,
+        30.8,
+        19.1,
+        12.6,
+        17.8
       ],
       "roa": [
         null,
         null,
         9.1,
         13.9,
-        8.4,
-        5.3,
-        7.4
+        8.3,
+        5.2,
+        7.3
       ],
-      "zscore": 1.45,
+      "zscore": 1.44,
       "mos": 12.3
     },
     "ENRG": {
       "rev": [
         0,
         0,
-        8,
-        7.4,
-        8.2,
-        8.8,
-        2.4
+        8.1,
+        7.5,
+        8.4,
+        8.9,
+        2.6
       ],
       "cogs": [
         0,
         0,
-        -4.7,
         -4.8,
-        -5.6,
-        -5.6,
-        -1.4
+        -4.9,
+        -5.7,
+        -5.7,
+        -1.5
       ],
       "net": [
         0,
@@ -19005,25 +19005,25 @@
         1.2,
         1.3,
         1.6,
-        0.3
+        0.5
       ],
       "asset": [
         0,
         0,
-        21,
-        24.2,
-        27.9,
-        32.1,
-        33
+        21.3,
+        24.5,
+        28.3,
+        32.6,
+        35.3
       ],
       "eq": [
         0,
         0,
-        10.4,
-        11.6,
-        12.9,
-        15.8,
-        16.1
+        10.5,
+        11.7,
+        13.1,
+        16,
+        17.2
       ],
       "interest": [
         0,
@@ -19032,7 +19032,7 @@
         0.2,
         0.5,
         0.5,
-        0.1
+        0.2
       ],
       "tax": [
         0,
@@ -19040,8 +19040,8 @@
         1.3,
         0.6,
         0.4,
-        0.6,
-        0.4
+        0.7,
+        0.3
       ],
       "fcf": [
         0,
@@ -19050,7 +19050,7 @@
         0.5,
         -1.2,
         0.4,
-        0.2
+        0.4
       ],
       "ocf": [
         0,
@@ -19072,42 +19072,42 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        15,
-        16.2,
-        15.9,
-        18.2,
-        12.5
+        14.8,
+        16,
+        15.5,
+        18,
+        19.2
       ],
       "grossMargin": [
         null,
         null,
-        41.3,
-        35.1,
-        31.7,
-        36.4,
-        41.7
+        40.7,
+        34.7,
+        32.1,
+        36,
+        42.3
       ],
       "roe": [
         null,
         null,
-        11.5,
+        11.4,
         10.3,
-        10.1,
-        10.1,
-        7.5
+        9.9,
+        10,
+        11.6
       ],
       "roa": [
         null,
         null,
-        5.7,
-        5,
-        4.7,
-        5,
-        3.6
+        5.6,
+        4.9,
+        4.6,
+        4.9,
+        5.7
       ],
       "zscore": 1.23,
       "mos": 11.7
@@ -19116,47 +19116,47 @@
       "rev": [
         0,
         0,
-        12.9,
-        6.1,
+        13.1,
+        6.2,
+        5.4,
         5.3,
-        5.2,
-        1.7
+        1.6
       ],
       "cogs": [
         0,
         0,
-        -6.9,
+        -7,
         -4.3,
-        -3.4,
         -3.5,
-        -0.9
+        -3.5,
+        -1.2
       ],
       "net": [
         0,
         0,
-        2.4,
+        2.5,
         0.6,
         0.8,
         0.7,
-        0.3
+        0.2
       ],
       "asset": [
         0,
         0,
-        14.7,
-        12.3,
-        12.2,
-        11.4,
-        12
+        14.9,
+        12.4,
+        12.4,
+        11.6,
+        12.4
       ],
       "eq": [
         0,
         0,
-        6.2,
-        6.7,
-        7.3,
-        7.9,
-        8.2
+        6.3,
+        6.8,
+        7.5,
+        8,
+        7.6
       ],
       "interest": [
         0,
@@ -19174,16 +19174,16 @@
         0.3,
         0.3,
         0.3,
-        0.1
+        0
       ],
       "fcf": [
         0,
         0,
-        5.6,
-        2.6,
-        2.4,
+        5.7,
+        2.7,
+        2.5,
         1.7,
-        0.8
+        0.7
       ],
       "ocf": [
         0,
@@ -19201,95 +19201,95 @@
         8.5,
         0.6,
         1.7,
-        7.4
+        9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        18.6,
-        9.8,
-        15.1,
-        13.5,
-        17.6
+        19.1,
+        9.7,
+        14.8,
+        13.2,
+        12.5
       ],
       "grossMargin": [
         null,
         null,
-        46.5,
-        29.5,
-        35.8,
-        32.7,
-        47.1
+        46.6,
+        30.6,
+        35.2,
+        34,
+        25
       ],
       "roe": [
         null,
         null,
-        38.7,
-        9,
-        11,
-        8.9,
-        14.6
+        39.7,
+        8.8,
+        10.7,
+        8.8,
+        10.5
       ],
       "roa": [
         null,
         null,
-        16.3,
-        4.9,
-        6.6,
-        6.1,
-        10
+        16.8,
+        4.8,
+        6.5,
+        6,
+        6.5
       ],
-      "zscore": 2.25,
-      "mos": 14.8
+      "zscore": 2.22,
+      "mos": 14.7
     },
     "GEMS": {
       "rev": [
         0,
         0,
-        51.5,
-        51.1,
-        47.8,
-        42.5,
-        10.3
+        52.3,
+        51.9,
+        48.5,
+        43.1,
+        10.4
       ],
       "cogs": [
         0,
         0,
-        -28.4,
-        -31,
-        -28.2,
-        -28.9,
-        -6.8
+        -28.8,
+        -31.5,
+        -28.6,
+        -29.4,
+        -6.9
       ],
       "net": [
         0,
         0,
-        12,
-        9.1,
-        8.4,
+        12.2,
+        9.3,
+        8.5,
         4.6,
         1.4
       ],
       "asset": [
         0,
         0,
-        19.9,
-        23.1,
-        21.9,
-        21.2,
-        21.7
+        20.2,
+        23.4,
+        22.2,
+        21.5,
+        22
       ],
       "eq": [
         0,
         0,
-        9.7,
-        11.5,
-        11.5,
-        12.4,
-        13.8
+        9.9,
+        11.7,
+        11.7,
+        12.6,
+        14
       ],
       "interest": [
         0,
@@ -19304,7 +19304,7 @@
         0,
         0,
         3.6,
-        2.7,
+        2.8,
         2.7,
         1.7,
         0.4
@@ -19312,11 +19312,11 @@
       "fcf": [
         0,
         0,
-        12.2,
-        5.3,
-        8.2,
-        4,
-        0.6
+        12.3,
+        5.4,
+        8.3,
+        4.1,
+        0.7
       ],
       "ocf": [
         0,
@@ -19334,19 +19334,19 @@
         18.7,
         12.1,
         7.2,
-        3.2
+        2.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         23.3,
-        17.8,
-        17.6,
-        10.8,
-        13.6
+        17.9,
+        17.5,
+        10.7,
+        13.5
       ],
       "grossMargin": [
         null,
@@ -19354,17 +19354,17 @@
         44.9,
         39.3,
         41,
-        32,
-        34
+        31.8,
+        33.7
       ],
       "roe": [
         null,
         null,
         null,
-        79.1,
-        73,
-        37.1,
-        40.6
+        79.5,
+        72.6,
+        36.5,
+        40
       ],
       "roa": [
         null,
@@ -19372,71 +19372,71 @@
         null,
         null,
         null,
-        21.7,
-        25.8
+        21.4,
+        25.5
       ],
-      "zscore": 4.1,
+      "zscore": 4.09,
       "mos": 20.3
     },
     "GIAA": {
       "rev": [
         0,
         0,
-        37,
-        51.8,
-        60.3,
-        56.8,
-        13.4
+        37.6,
+        52.6,
+        61.2,
+        57.6,
+        13.6
       ],
       "cogs": [
         0,
         0,
-        -38.3,
-        -40.7,
-        -48,
-        -47.6,
-        -11.6
+        -38.8,
+        -41.3,
+        -48.7,
+        -48.3,
+        -11.8
       ],
       "net": [
         0,
         0,
-        65.9,
-        4.4,
+        66.9,
+        4.5,
         -1.3,
-        -5.7,
+        -5.8,
         -0.8
       ],
       "asset": [
         0,
         0,
-        110,
-        118.7,
-        116.7,
-        131,
-        132.4
+        111.7,
+        120.5,
+        118.5,
+        133,
+        134.4
       ],
       "eq": [
         0,
         0,
-        -26.4,
-        -22,
-        -23.3,
+        -26.8,
+        -22.4,
+        -23.6,
         0.1,
         -0.7
       ],
       "interest": [
         0,
         0,
-        7.3,
-        8.1,
-        8.5,
-        9.3,
+        7.4,
+        8.2,
+        8.6,
+        9.4,
         1.1
       ],
       "tax": [
         0,
         0,
-        3.5,
+        3.6,
         -0.3,
         -0.2,
         -0.6,
@@ -19471,24 +19471,24 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
         null,
-        8.5,
-        -2.2,
-        -10,
-        -6
+        8.6,
+        -2.1,
+        -10.1,
+        -5.9
       ],
       "grossMargin": [
         null,
         null,
-        -3.5,
-        21.4,
+        -3.2,
+        21.5,
         20.4,
-        16.2,
-        13.4
+        16.1,
+        13.2
       ],
       "roe": [
         null,
@@ -19515,47 +19515,47 @@
       "rev": [
         0,
         0,
-        20.8,
-        21.7,
-        16.8,
-        17.5,
-        5.1
+        21.1,
+        22,
+        17,
+        17.7,
+        5.2
       ],
       "cogs": [
         0,
         0,
-        -15.3,
-        -15.6,
-        -14.8,
         -15.5,
-        -3.4
+        -15.8,
+        -15.1,
+        -15.7,
+        -3.5
       ],
       "net": [
         0,
         0,
-        3.5,
-        4.8,
+        3.6,
+        4.9,
         1,
-        1.3,
+        1.4,
         1.1
       ],
       "asset": [
         0,
         0,
-        46.9,
-        51.7,
-        56.1,
-        59.1,
-        59.6
+        47.6,
+        52.4,
+        56.9,
+        60,
+        60.5
       ],
       "eq": [
         0,
         0,
-        41.4,
-        45.1,
-        48.1,
-        49,
-        49.9
+        42.1,
+        45.8,
+        48.9,
+        49.8,
+        50.7
       ],
       "interest": [
         0,
@@ -19581,7 +19581,7 @@
         2.3,
         2.4,
         -2.2,
-        -4.4,
+        -4.5,
         -1.1
       ],
       "ocf": [
@@ -19600,110 +19600,110 @@
         2,
         0,
         1,
-        1.6
+        1.8
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        16.8,
-        22.1,
-        6,
-        7.4,
-        21.6
+        17.1,
+        22.3,
+        5.9,
+        7.9,
+        21.2
       ],
       "grossMargin": [
         null,
         null,
-        26.4,
-        28.1,
-        11.9,
-        11.4,
-        33.3
+        26.5,
+        28.2,
+        11.2,
+        11.3,
+        32.7
       ],
       "roe": [
         null,
         null,
-        8.5,
-        10.6,
-        2.1,
-        2.7,
-        8.8
+        8.6,
+        10.7,
+        2,
+        2.8,
+        8.7
       ],
       "roa": [
         null,
         null,
-        7.5,
-        9.3,
+        7.6,
+        9.4,
         1.8,
-        2.2,
-        7.4
+        2.3,
+        7.3
       ],
-      "zscore": 3.44,
-      "mos": 18.3
+      "zscore": 3.47,
+      "mos": 18.4
     },
     "INKP": {
       "rev": [
         0,
         0,
-        70.5,
-        61.4,
-        56.4,
-        55.9,
-        15.6
+        71.6,
+        62.3,
+        57.3,
+        56.7,
+        15.8
       ],
       "cogs": [
         0,
         0,
-        -42.5,
-        -41.4,
-        -38.4,
-        -37.9,
-        -11.1
+        -43.1,
+        -42.1,
+        -39,
+        -38.5,
+        -11.2
       ],
       "net": [
         0,
         0,
-        15.1,
-        7.3,
-        7.5,
-        8,
-        3.8
+        15.3,
+        7.4,
+        7.6,
+        8.1,
+        3.9
       ],
       "asset": [
         0,
         0,
-        170,
-        178.6,
-        207.7,
-        217.8,
-        233.6
+        172.5,
+        181.3,
+        210.8,
+        221,
+        237.1
       ],
       "eq": [
         0,
         0,
-        98.7,
-        105.8,
-        113,
-        120.6,
-        126.8
+        100.2,
+        107.4,
+        114.7,
+        122.4,
+        128.7
       ],
       "interest": [
         0,
         0,
-        4.3,
-        5.1,
-        5.3,
-        5.3,
+        4.4,
+        5.2,
+        5.4,
+        5.4,
         1.3
       ],
       "tax": [
         0,
         0,
         3.4,
-        2.4,
+        2.5,
         1.8,
         1.7,
         0.6
@@ -19711,9 +19711,9 @@
       "fcf": [
         0,
         0,
-        4.1,
-        5.1,
-        -17.2,
+        4.2,
+        5.2,
+        -17.4,
         0.6,
         -0.7
       ],
@@ -19728,7 +19728,7 @@
       ],
       "divYield": [
         0,
-        0.6,
+        0,
         0.6,
         0.6,
         0.7,
@@ -19737,7 +19737,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -19745,16 +19745,16 @@
         11.9,
         13.3,
         14.3,
-        24.4
+        24.7
       ],
       "grossMargin": [
         null,
         null,
-        39.7,
-        32.6,
+        39.8,
+        32.4,
         31.9,
-        32.2,
-        28.8
+        32.1,
+        29.1
       ],
       "roe": [
         null,
@@ -19763,7 +19763,7 @@
         6.9,
         6.6,
         6.6,
-        12
+        12.1
       ],
       "roa": [
         null,
@@ -19772,7 +19772,7 @@
         4.1,
         3.6,
         3.7,
-        6.5
+        6.6
       ],
       "zscore": 1.31,
       "mos": 11.9
@@ -19781,55 +19781,55 @@
       "rev": [
         0,
         0,
-        39.5,
-        25.6,
-        16.8,
-        16.9,
+        40.1,
+        26,
+        17.1,
+        17.2,
         6.4
       ],
       "cogs": [
         0,
         0,
-        -36,
-        -23.6,
-        -14.9,
-        -16,
-        -5.8
+        -36.5,
+        -24,
+        -15.2,
+        -16.3,
+        -5.9
       ],
       "net": [
         0,
         0,
         0.3,
         -2.3,
-        -2.7,
-        5.7,
+        -2.8,
+        5.8,
         0.1
       ],
       "asset": [
         0,
         0,
-        55.7,
-        50.3,
+        56.6,
         51,
-        48.8,
-        49.5
+        51.7,
+        49.6,
+        50.3
       ],
       "eq": [
         0,
         0,
-        10.5,
-        9.3,
-        6.9,
-        11.9,
-        12
+        10.6,
+        9.4,
+        7,
+        12.1,
+        12.1
       ],
       "interest": [
         0,
         0,
-        2.9,
+        3,
         2.2,
-        2.6,
         2.7,
+        2.8,
         0.4
       ],
       "tax": [
@@ -19838,16 +19838,16 @@
         3.3,
         0.5,
         0.2,
-        2.1,
+        2.2,
         0.1
       ],
       "fcf": [
         0,
         0,
-        4.8,
+        4.9,
         2.4,
         1.1,
-        -0.6,
+        -0.7,
         -0.3
       ],
       "ocf": [
@@ -19870,29 +19870,29 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        0.8,
-        -9,
-        -16.1,
+        0.7,
+        -8.8,
+        -16.4,
         33.7,
         1.6
       ],
       "grossMargin": [
         null,
         null,
-        8.9,
-        7.8,
-        11.3,
-        5.3,
-        9.4
+        9,
+        7.7,
+        11.1,
+        5.2,
+        7.8
       ],
       "roe": [
         null,
         null,
-        2.9,
+        2.8,
         null,
         null,
         47.9,
@@ -20003,7 +20003,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -20047,20 +20047,20 @@
       "rev": [
         0,
         0,
-        8,
-        23.5,
-        32.4,
-        25.2,
-        8
+        8.2,
+        23.8,
+        32.9,
+        25.6,
+        8.1
       ],
       "cogs": [
         0,
         0,
-        -7.3,
-        -22,
-        -30.5,
+        -7.4,
         -22.4,
-        -5.8
+        -31,
+        -22.7,
+        -5.9
       ],
       "net": [
         0,
@@ -20074,20 +20074,20 @@
       "asset": [
         0,
         0,
-        42.7,
-        57.5,
-        60.7,
-        65.9,
-        70
+        43.3,
+        58.3,
+        61.6,
+        66.9,
+        71.1
       ],
       "eq": [
         0,
         0,
-        16.9,
-        27,
-        27.3,
-        27.9,
-        28.6
+        17.1,
+        27.4,
+        27.7,
+        28.3,
+        29
       ],
       "interest": [
         0,
@@ -20110,8 +20110,8 @@
       "fcf": [
         0,
         0,
-        -7.4,
-        -6.8,
+        -7.5,
+        -6.9,
         -2.9,
         -2.8,
         2.1
@@ -20136,42 +20136,42 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        5,
+        4.9,
         0.4,
         1.2,
         2,
-        6.3
+        6.2
       ],
       "grossMargin": [
         null,
         null,
-        8.8,
-        6.4,
+        9.8,
         5.9,
-        11.1,
-        27.5
+        5.8,
+        11.3,
+        27.2
       ],
       "roe": [
         null,
         null,
-        2.4,
+        2.3,
         0.4,
-        1.5,
+        1.4,
         1.8,
-        7
+        6.9
       ],
       "roa": [
         null,
         null,
         0.9,
         0.2,
+        0.6,
         0.7,
-        0.8,
-        2.9
+        2.8
       ],
       "zscore": 0.98,
       "mos": 10.9
@@ -20180,20 +20180,20 @@
       "rev": [
         0,
         0,
-        15.3,
-        30.2,
-        39.5,
-        33.3,
-        10.9
+        15.6,
+        30.6,
+        40.1,
+        33.8,
+        11.1
       ],
       "cogs": [
         0,
         0,
-        -12.4,
-        -27.5,
-        -36.3,
-        -29.6,
-        -7.1
+        -12.6,
+        -27.9,
+        -36.9,
+        -30.1,
+        -7.2
       ],
       "net": [
         0,
@@ -20207,28 +20207,28 @@
       "asset": [
         0,
         0,
-        68.4,
-        87.5,
-        92.4,
-        100.7,
-        106.3
+        69.4,
+        88.8,
+        93.8,
+        102.2,
+        107.9
       ],
       "eq": [
         0,
         0,
-        17.6,
-        16.3,
-        16.3,
-        14,
-        15
+        17.9,
+        16.6,
+        16.5,
+        14.2,
+        15.2
       ],
       "interest": [
         0,
         0,
         1.1,
         1.6,
-        2.2,
-        2.4,
+        2.3,
+        2.5,
         0.7
       ],
       "tax": [
@@ -20243,11 +20243,11 @@
       "fcf": [
         0,
         0,
-        -5,
-        -9.8,
-        -4.8,
         -5.1,
-        1.7
+        -9.9,
+        -4.9,
+        -5.2,
+        1.8
       ],
       "ocf": [
         0,
@@ -20269,42 +20269,42 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        6.5,
+        6.4,
         -1.3,
         -2.5,
         -3.3,
-        9.2
+        9
       ],
       "grossMargin": [
         null,
         null,
-        19,
-        8.9,
-        8.1,
-        11.1,
-        34.9
+        19.2,
+        8.8,
+        8,
+        10.9,
+        35.1
       ],
       "roe": [
         null,
         null,
-        5.7,
+        5.6,
         null,
         null,
         null,
-        26.7
+        26.3
       ],
       "roa": [
         null,
         null,
-        1.5,
+        1.4,
         null,
         null,
         null,
-        3.8
+        3.7
       ],
       "zscore": 0.5,
       "mos": 9.5
@@ -20313,73 +20313,73 @@
       "rev": [
         0,
         0,
-        40.7,
-        39.7,
-        42.3,
-        42.3,
-        11.8
+        41.3,
+        40.3,
+        43,
+        43,
+        12
       ],
       "cogs": [
         0,
         0,
-        -18.9,
-        -21.5,
-        -25.9,
-        -25.7,
-        -7.7
+        -19.2,
+        -21.8,
+        -26.3,
+        -26.1,
+        -7.8
       ],
       "net": [
         0,
         0,
-        9.4,
-        5.8,
-        6.5,
+        9.5,
+        5.9,
+        6.6,
         1.8,
         1.2
       ],
       "asset": [
         0,
         0,
-        122.2,
-        131.7,
-        139.8,
-        147.4,
-        145.8
+        124,
+        133.7,
+        141.9,
+        149.6,
+        148
       ],
       "eq": [
         0,
         0,
-        27.5,
-        32.3,
-        37.4,
+        27.9,
+        32.8,
         37.9,
-        38.8
+        38.5,
+        39.4
       ],
       "interest": [
         0,
         0,
         4.6,
         4.9,
-        5.4,
-        5.7,
+        5.5,
+        5.8,
         1.4
       ],
       "tax": [
         0,
         0,
-        9,
-        6,
-        5.1,
-        5.1,
+        9.1,
+        6.1,
+        5.2,
+        5.2,
         1.4
       ],
       "fcf": [
         0,
         0,
-        15,
-        7.5,
-        14.7,
-        6.9,
+        15.2,
+        7.6,
+        14.9,
+        7,
         3.3
       ],
       "ocf": [
@@ -20398,46 +20398,46 @@
         3.4,
         4.1,
         4,
-        4.1
+        4.3
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        23.1,
+        23,
         14.6,
-        15.4,
-        4.3,
-        10.2
+        15.3,
+        4.2,
+        10
       ],
       "grossMargin": [
         null,
         null,
-        53.6,
-        45.8,
+        53.5,
+        45.9,
         38.8,
-        39.2,
-        34.7
+        39.3,
+        35
       ],
       "roe": [
         null,
         null,
-        34.2,
+        34.1,
         18,
         17.4,
         4.7,
-        12.4
+        12.2
       ],
       "roa": [
         null,
         null,
         7.7,
         4.4,
-        4.6,
+        4.7,
         1.2,
-        3.3
+        3.2
       ],
       "zscore": 0.68,
       "mos": 10
@@ -20538,21 +20538,21 @@
         2.4,
         3.2,
         2.9,
-        0.7
+        0.8
       ],
       "cogs": [
         0,
         0,
-        -2,
+        -2.1,
         -1.9,
+        -2.6,
         -2.5,
-        -2.4,
         -0.6
       ],
       "net": [
         0,
         0,
-        0.2,
+        0.3,
         0.3,
         0.3,
         0.3,
@@ -20570,11 +20570,11 @@
       "eq": [
         0,
         0,
-        2.6,
-        2.8,
-        3,
+        2.7,
+        2.9,
         3.1,
-        3.2
+        3.2,
+        3.1
       ],
       "interest": [
         0,
@@ -20601,7 +20601,7 @@
         0.4,
         0.6,
         0.6,
-        0
+        0.1
       ],
       "ocf": [
         0,
@@ -20619,49 +20619,49 @@
         2.8,
         1.4,
         3.8,
-        5.6
+        6.5
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        8,
+        12,
         12.5,
         9.4,
         10.3,
-        14.3
+        12.5
       ],
       "grossMargin": [
         null,
         null,
-        20,
+        16,
         20.8,
-        21.9,
-        17.2,
-        14.3
+        18.8,
+        13.8,
+        25
       ],
       "roe": [
         null,
         null,
-        7.7,
-        10.7,
-        10,
+        11.1,
+        10.3,
         9.7,
-        12.5
+        9.4,
+        12.9
       ],
       "roa": [
         null,
         null,
-        6.7,
+        10,
         7.1,
         7.5,
         7.5,
         10.3
       ],
-      "zscore": 3.3,
-      "mos": 17.9
+      "zscore": 3.63,
+      "mos": 18.9
     },
     "PADI": {
       "rev": [
@@ -20755,47 +20755,47 @@
       "rev": [
         0,
         0,
-        62.9,
-        64.4,
-        66.8,
-        70.2,
-        16.4
+        63.9,
+        65.3,
+        67.8,
+        71.2,
+        16.6
       ],
       "cogs": [
         0,
         0,
-        -49.2,
-        -51.3,
-        -53.4,
-        -57.8,
-        0
+        -49.9,
+        -52.1,
+        -54.2,
+        -58.7,
+        -13.8
       ],
       "net": [
         0,
         0,
         5.8,
-        4.9,
-        6,
-        3.8,
+        5,
+        6.1,
+        3.9,
         1.6
       ],
       "asset": [
         0,
         0,
-        126.8,
-        116.4,
-        113.2,
-        109.9,
-        109.3
+        128.7,
+        118.1,
+        114.9,
+        111.5,
+        111
       ],
       "eq": [
         0,
         0,
-        46.4,
-        47.6,
-        49.9,
+        47.1,
         48.3,
-        49.9
+        50.7,
+        49,
+        50.7
       ],
       "interest": [
         0,
@@ -20811,17 +20811,17 @@
         0,
         2.5,
         2.6,
-        2.4,
+        2.5,
         2.5,
         0.3
       ],
       "fcf": [
         0,
         0,
-        14.8,
-        10.6,
-        11.4,
-        7.9,
+        15,
+        10.8,
+        11.6,
+        8,
         0.9
       ],
       "ocf": [
@@ -20840,46 +20840,46 @@
         12.5,
         9.3,
         9.5,
-        8.3
+        9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        9.2,
-        7.6,
+        9.1,
+        7.7,
         9,
-        5.4,
-        9.8
+        5.5,
+        9.6
       ],
       "grossMargin": [
         null,
         null,
-        21.8,
-        20.3,
+        21.9,
+        20.2,
         20.1,
-        17.7,
-        null
+        17.6,
+        16.9
       ],
       "roe": [
         null,
         null,
-        12.5,
-        10.3,
+        12.3,
+        10.4,
         12,
-        7.9,
-        12.8
+        8,
+        12.6
       ],
       "roa": [
         null,
         null,
-        4.6,
+        4.5,
         4.2,
         5.3,
         3.5,
-        5.9
+        5.8
       ],
       "zscore": 1.41,
       "mos": 12.2
@@ -20888,20 +20888,20 @@
       "rev": [
         0,
         0,
-        8.4,
-        10.2,
-        12.2,
-        15.6,
-        5
+        8.5,
+        10.3,
+        12.4,
+        15.9,
+        4.7
       ],
       "cogs": [
         0,
         0,
-        -6.7,
-        -8.7,
-        -10.6,
-        -13.7,
-        -4.4
+        -6.8,
+        -8.9,
+        -10.7,
+        -13.9,
+        -4.5
       ],
       "net": [
         0,
@@ -20910,25 +20910,25 @@
         0.2,
         0.2,
         0.5,
-        0
+        0.2
       ],
       "asset": [
         0,
         0,
-        10.5,
-        12.8,
-        15.3,
-        27.9,
-        28.4
+        10.7,
+        13,
+        15.5,
+        28.3,
+        27.4
       ],
       "eq": [
         0,
         0,
-        5.2,
-        4.1,
-        4.4,
-        4.6,
-        4.6
+        5.3,
+        4.2,
+        4.5,
+        4.7,
+        4.9
       ],
       "interest": [
         0,
@@ -20954,8 +20954,8 @@
         0.5,
         0.7,
         -1.7,
-        -6.8,
-        -0.5
+        -6.9,
+        0.2
       ],
       "ocf": [
         0,
@@ -20977,42 +20977,42 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        8.3,
-        2,
+        8.2,
+        1.9,
         1.6,
-        3.2,
-        null
+        3.1,
+        4.3
       ],
       "grossMargin": [
         null,
         null,
-        20.2,
-        14.7,
-        13.1,
-        12.2,
-        12
+        20,
+        13.6,
+        13.7,
+        12.6,
+        4.3
       ],
       "roe": [
         null,
         null,
-        13.5,
-        4.9,
-        4.5,
-        10.9,
-        null
+        13.2,
+        4.8,
+        4.4,
+        10.6,
+        16.3
       ],
       "roa": [
         null,
         null,
-        6.7,
-        1.6,
+        6.5,
+        1.5,
         1.3,
         1.8,
-        null
+        2.9
       ],
       "zscore": 0.89,
       "mos": 10.7
@@ -21021,19 +21021,19 @@
       "rev": [
         0,
         0,
-        2.2,
+        2.3,
         3.6,
-        4.5,
-        4.7,
-        1.3
+        4.6,
+        4.8,
+        1.4
       ],
       "cogs": [
         0,
         0,
         -1.8,
-        -2.4,
+        -2.5,
         -3.3,
-        -3.4,
+        -3.5,
         -0.9
       ],
       "net": [
@@ -21043,16 +21043,16 @@
         0.5,
         0.5,
         0.5,
-        0.2
+        0.3
       ],
       "asset": [
         0,
         0,
-        4.6,
-        5.8,
-        5.8,
-        8.4,
-        11
+        4.7,
+        5.9,
+        5.9,
+        8.5,
+        11.2
       ],
       "eq": [
         0,
@@ -21086,7 +21086,7 @@
         0,
         -0.2,
         -0.3,
-        0.6,
+        0.7,
         0.1,
         0.1
       ],
@@ -21106,28 +21106,28 @@
         1.1,
         1.4,
         1,
-        1.6
+        1.9
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        9.1,
+        8.7,
         13.9,
-        11.1,
-        10.6,
-        15.4
+        10.9,
+        10.4,
+        21.4
       ],
       "grossMargin": [
         null,
         null,
-        18.2,
-        33.3,
-        26.7,
-        27.7,
-        30.8
+        21.7,
+        30.6,
+        28.3,
+        27.1,
+        35.7
       ],
       "roe": [
         null,
@@ -21136,16 +21136,16 @@
         21.7,
         19.2,
         13.2,
-        20.5
+        30.8
       ],
       "roa": [
         null,
         null,
         4.3,
-        8.6,
-        8.6,
-        6,
-        7.3
+        8.5,
+        8.5,
+        5.9,
+        10.7
       ],
       "zscore": 1.48,
       "mos": 12.4
@@ -21166,7 +21166,7 @@
         0,
         -0.4,
         -0.6,
-        -0.4,
+        -0.5,
         -0.1
       ],
       "net": [
@@ -21184,7 +21184,7 @@
         0.3,
         1,
         0.9,
-        1.3,
+        1.4,
         4.1
       ],
       "eq": [
@@ -21239,11 +21239,11 @@
         0,
         0,
         0.4,
-        1
+        1.1
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -21259,7 +21259,7 @@
         null,
         50,
         40,
-        55.6,
+        44.4,
         66.7
       ],
       "roe": [
@@ -21277,11 +21277,11 @@
         33.3,
         null,
         22.2,
-        23.1,
+        21.4,
         19.5
       ],
-      "zscore": 3.36,
-      "mos": 18.1
+      "zscore": 2.96,
+      "mos": 16.9
     },
     "TIRT": {
       "rev": [
@@ -21375,52 +21375,52 @@
       "rev": [
         0,
         0,
-        20.1,
-        18.9,
-        17.4,
-        17.4,
-        4.7
+        20.4,
+        19.2,
+        17.6,
+        17.6,
+        4.8
       ],
       "cogs": [
         0,
         0,
-        -17.4,
-        -16.4,
-        -14.8,
-        -14.7,
+        -17.6,
+        -16.7,
+        -15,
+        -14.9,
         -4
       ],
       "net": [
         0,
         0,
-        8.2,
-        3,
-        5.2,
+        8.3,
+        3.1,
+        5.3,
         4.9,
         3.2
       ],
       "asset": [
         0,
         0,
-        62.6,
-        63.7,
-        68.1,
+        63.5,
+        64.6,
         69.1,
-        73.7
+        70.2,
+        74.8
       ],
       "eq": [
         0,
         0,
-        39.1,
-        42.1,
-        47.3,
-        52,
-        56.6
+        39.7,
+        42.8,
+        48,
+        52.8,
+        57.5
       ],
       "interest": [
         0,
         0,
-        0.7,
+        0.8,
         0.8,
         0.8,
         0.7,
@@ -21455,7 +21455,7 @@
       ],
       "divYield": [
         0,
-        0.3,
+        0,
         0.4,
         0.3,
         0.4,
@@ -21464,64 +21464,64 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        40.8,
-        15.9,
-        29.9,
-        28.2,
-        68.1
+        40.7,
+        16.1,
+        30.1,
+        27.8,
+        66.7
       ],
       "grossMargin": [
         null,
         null,
-        13.4,
-        13.2,
-        14.9,
-        15.5,
-        14.9
+        13.7,
+        13,
+        14.8,
+        15.3,
+        16.7
       ],
       "roe": [
         null,
         null,
-        21,
-        7.1,
+        20.9,
+        7.2,
         11,
-        9.4,
-        22.6
+        9.3,
+        22.3
       ],
       "roa": [
         null,
         null,
         13.1,
-        4.7,
-        7.6,
-        7.1,
-        17.4
+        4.8,
+        7.7,
+        7,
+        17.1
       ],
-      "zscore": 2.56,
-      "mos": 15.7
+      "zscore": 2.55,
+      "mos": 15.6
     },
     "TOBA": {
       "rev": [
         0,
         0,
-        11.2,
-        8.8,
-        6.8,
+        11.4,
+        9,
+        6.9,
         6.5,
-        1.5
+        1.6
       ],
       "cogs": [
         0,
         0,
-        -8.8,
-        -7.7,
+        -8.9,
+        -7.8,
         -5.5,
-        -5.9,
-        -1.3
+        -6,
+        -1.2
       ],
       "net": [
         0,
@@ -21529,26 +21529,26 @@
         1,
         0.1,
         0.5,
-        -2.8,
+        -2.9,
         -0.2
       ],
       "asset": [
         0,
         0,
-        15.9,
-        16.7,
-        15.8,
-        14,
-        13.8
+        16.1,
+        17,
+        16,
+        14.2,
+        13.7
       ],
       "eq": [
         0,
         0,
         6,
-        5.8,
-        6.3,
-        3.4,
-        3.2
+        5.9,
+        6.4,
+        3.5,
+        3
       ],
       "interest": [
         0,
@@ -21564,7 +21564,7 @@
         0,
         0.4,
         0.2,
-        0.2,
+        0.3,
         0,
         0
       ],
@@ -21573,9 +21573,9 @@
         0,
         1.5,
         0,
-        1.7,
-        -0.7,
-        0.1
+        1.8,
+        -0.8,
+        -0.1
       ],
       "ocf": [
         0,
@@ -21592,45 +21592,45 @@
         0,
         4.2,
         0,
-        2.9,
-        3.1
+        3,
+        4
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        8.9,
+        8.8,
         1.1,
-        7.4,
-        -43.1,
-        -13.3
+        7.2,
+        -44.6,
+        -12.5
       ],
       "grossMargin": [
         null,
         null,
-        21.4,
-        12.5,
-        19.1,
-        9.2,
-        13.3
+        21.9,
+        13.3,
+        20.3,
+        7.7,
+        25
       ],
       "roe": [
         null,
         null,
         16.7,
         1.7,
-        7.9,
+        7.8,
         null,
         null
       ],
       "roa": [
         null,
         null,
-        6.3,
+        6.2,
         0.6,
-        3.2,
+        3.1,
         null,
         null
       ],
@@ -21641,55 +21641,55 @@
       "rev": [
         0,
         0,
-        42,
-        38.1,
-        31.6,
-        123.8,
-        52
+        42.6,
+        38.7,
+        32,
+        125.6,
+        52.8
       ],
       "cogs": [
         0,
         0,
-        -42.3,
-        -36.7,
-        -28.7,
-        -124.5,
-        -111.6
+        -43,
+        -37.2,
+        -29.2,
+        -126.4,
+        -113.3
       ],
       "net": [
         0,
         0,
-        -2.6,
+        -2.7,
         -0.6,
         -1.2,
-        19.2,
-        2.4
+        19.5,
+        2.5
       ],
       "asset": [
         0,
         0,
-        86.9,
-        98.9,
-        99.8,
-        217.2,
-        242.8
+        88.2,
+        100.4,
+        101.3,
+        220.5,
+        246.5
       ],
       "eq": [
         0,
         0,
-        49.5,
-        48.3,
-        46.6,
-        65.8,
-        69.8
+        50.3,
+        49,
+        47.3,
+        66.8,
+        70.9
       ],
       "interest": [
         0,
         0,
-        1.2,
-        2,
+        1.3,
+        2.1,
         2.4,
-        4.2,
+        4.3,
         1.6
       ],
       "tax": [
@@ -21698,16 +21698,16 @@
         -0.5,
         -0.4,
         -0.6,
-        -2.7,
+        -2.8,
         0.7
       ],
       "fcf": [
         0,
         0,
-        -6.4,
+        -6.5,
         0.6,
-        -9.9,
-        -6.8,
+        -10.1,
+        -6.9,
         0.9
       ],
       "ocf": [
@@ -21726,26 +21726,26 @@
         0.1,
         0.1,
         0.1,
-        0.5
+        0.6
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
-        -6.2,
+        -6.3,
         -1.6,
         -3.8,
         15.5,
-        4.6
+        4.7
       ],
       "grossMargin": [
         null,
         null,
-        -0.7,
-        3.7,
-        9.2,
+        -0.9,
+        3.9,
+        8.8,
         -0.6,
         null
       ],
@@ -21756,7 +21756,7 @@
         null,
         null,
         29.2,
-        13.8
+        14.1
       ],
       "roa": [
         null,
@@ -21765,7 +21765,7 @@
         null,
         null,
         8.8,
-        4
+        4.1
       ],
       "zscore": 1.41,
       "mos": 12.2
@@ -21863,7 +21863,7 @@
       ],
       "source": "yahoo",
       "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
-      "updated": "2026-09-05",
+      "updated": "2026-10-05",
       "npm": [
         null,
         null,
@@ -21902,6 +21902,139 @@
       ],
       "zscore": 2.3,
       "mos": 14.9
+    },
+    "EMAS": {
+      "rev": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.5
+      ],
+      "cogs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.3
+      ],
+      "net": [
+        0,
+        0,
+        -0.2,
+        -0.1,
+        -0.2,
+        -0.5,
+        -0.1
+      ],
+      "asset": [
+        0,
+        0,
+        3.8,
+        5.9,
+        9.5,
+        13.3,
+        17.3
+      ],
+      "eq": [
+        0,
+        0,
+        3,
+        2.8,
+        4.9,
+        6.8,
+        6.5
+      ],
+      "interest": [
+        0,
+        0,
+        0,
+        0.2,
+        0.4,
+        0.2,
+        0.1
+      ],
+      "tax": [
+        0,
+        0,
+        0,
+        -0.1,
+        0,
+        0,
+        0
+      ],
+      "fcf": [
+        0,
+        0,
+        -0.3,
+        -1.3,
+        -1.9,
+        -3.6,
+        -0.8
+      ],
+      "ocf": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "divYield": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "yahoo",
+      "sourceLabel": "Yahoo Finance (tahunan + kuartal 2026 terbaru)",
+      "updated": "2026-10-05",
+      "npm": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        -20
+      ],
+      "grossMargin": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        40
+      ],
+      "roe": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "roa": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "zscore": 0.55,
+      "mos": 9.7
     }
   }
 }
