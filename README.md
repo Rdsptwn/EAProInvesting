@@ -1,6 +1,6 @@
 # Ewoks Academy Pro
 
-Situs edukasi investasi & tools analisis IDX. Live: [ewoksacademy.github.io/EAProInvesting](https://ewoksacademy.github.io/EAProInvesting/index.html)
+Situs edukasi investasi & tools analisis IDX. Live: [rdsptwn.github.io/EAProInvesting](https://rdsptwn.github.io/EAProInvesting/index.html)
 
 ## Halaman
 
