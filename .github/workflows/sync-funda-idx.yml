@@ -1,12 +1,13 @@
-# Sinkron laporan keuangan Konglo dari Yahoo Finance — jadwal tiap tanggal 5 (09:00 WIB).
+# Sinkron laporan keuangan Konglo (Fundamental PRO) dari Yahoo Finance.
+# Jalan Senin–Jumat 18:30 WIB, supaya laporan kuartal baru cepat masuk.
 # Bisa juga dijalankan manual: Actions → Sync funda-idx → Run workflow
 
 name: Sync funda-idx
 
 on:
   schedule:
-    # 02:00 UTC = 09:00 WIB, tanggal 5 setiap bulan
-    - cron: '0 2 5 * *'
+    # 11:30 UTC = 18:30 WIB, Senin–Jumat
+    - cron: '30 11 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
 
     steps:
       - name: Checkout
@@ -30,23 +31,43 @@ jobs:
         with:
           node-version: '20'
 
+      # Emiten yang gagal diambil tetap memakai data lama (skrip tidak menimpa dengan kosong).
+      # Simpan cadangan dan tolak hasil kalau jumlah emiten turun atau JSON rusak.
       - name: Build funda-idx.json from Yahoo
-        run: node tools/build-funda-idx.mjs --force
+        run: |
+          cp assets/data/funda-idx.json /tmp/funda-idx.bak
+          node tools/build-funda-idx.mjs --force
+          node -e '
+            const fs = require("fs");
+            const a = JSON.parse(fs.readFileSync("/tmp/funda-idx.bak", "utf8")).tickers;
+            const b = JSON.parse(fs.readFileSync("assets/data/funda-idx.json", "utf8")).tickers;
+            const na = Object.keys(a).length, nb = Object.keys(b).length;
+            if (nb < na) { console.error("Jumlah emiten turun " + na + " -> " + nb); process.exit(1); }
+            console.log("emiten: " + na + " -> " + nb);
+          ' || { echo "::warning::funda-idx tidak valid — pakai versi sebelumnya"; cp /tmp/funda-idx.bak assets/data/funda-idx.json; }
 
       - name: Build pasar-alternatif.json from Yahoo
+        continue-on-error: true
         run: node tools/build-pasar-alternatif.mjs
 
-      - name: Bump cache version
-        run: node tools/bump-asset-version.mjs
+      - name: Bump cache version (hanya kalau data berubah)
+        run: |
+          if git diff --quiet -- assets/data; then
+            echo "Data tidak berubah — skip bump cache."
+          else
+            node tools/bump-asset-version.mjs
+          fi
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/funda-idx.json assets/data/pasar-alternatif.json assets/js/ewoks-core.js konglo.html
+          git add assets/data/funda-idx.json assets/data/pasar-alternatif.json assets/js/ewoks-core.js
+          git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
           fi
-          git commit -m "chore(data): sync funda-idx from Yahoo (scheduled monthly)"
+          git commit -m "chore(data): sync lapkeu funda-idx (harian)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push

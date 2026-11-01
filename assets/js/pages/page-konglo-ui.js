@@ -36,7 +36,7 @@ function searchKonglo() {
     const q = document.getElementById('kongloSearch').value.toLowerCase();
     const filtered = dataGroups.filter(g => {
         const matchNameDesc = g.name.toLowerCase().includes(q) || g.desc.toLowerCase().includes(q);
-        const matchTicker = g.stocks.some(s => s.ticker.toLowerCase().includes(q));
+        const matchTicker = g.stocks.some(s => s.ticker.toLowerCase().includes(q) || String(s.company || '').toLowerCase().includes(q));
         return matchNameDesc || matchTicker;
     });
     renderGrid(filtered);
@@ -64,14 +64,14 @@ function kongloQuoteCells(stock) {
         ? `${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%`
         : '—';
     const chgClass = (q?.changePct ?? 0) >= 0 ? 'text-emerald-600' : 'text-rose-600';
-    const avg = q?.avg != null ? `Rp ${formatIdxPrice(q.avg)}` : `Rp ${stock.avg_up}`;
-    const prev = q?.prevClose != null ? `Rp ${formatIdxPrice(q.prevClose)}` : `Rp ${stock.avg_down}`;
-    const support = q?.support != null ? `Rp ${formatIdxPrice(q.support)}` : `Rp ${stock.support}`;
-    const resist = q?.resistance != null ? `Rp ${formatIdxPrice(q.resistance)}` : `Rp ${stock.resistance}`;
+    const avg = q?.avg != null ? `Rp ${formatIdxPrice(q.avg)}` : '—';
+    const prev = q?.prevClose != null ? `Rp ${formatIdxPrice(q.prevClose)}` : '—';
+    const support = q?.support != null ? `Rp ${formatIdxPrice(q.support)}` : '—';
+    const resist = q?.resistance != null ? `Rp ${formatIdxPrice(q.resistance)}` : '—';
     const stamp = typeof kongloDailyStampText === 'function'
         ? kongloDailyStampText()
         : (typeof formatJakartaLongDate === 'function' ? formatJakartaLongDate() : '');
-    return { price, chg, chgClass, avg, prev, support, resist, stamp, live: q?.price != null };
+    return { price, chg, chgClass, avg, prev, support, resist, stamp, name: q?.name || '', live: q?.price != null };
 }
 
 function showDetail(groupId) {
@@ -107,7 +107,7 @@ function showDetail(groupId) {
             const q = kongloQuoteCells(stock);
             const stockItem = document.createElement('div');
             stockItem.className = 'konglo-stock-card bg-slate-50 border border-slate-100 rounded-2xl p-5 md:p-6 hover:border-blue-300 transition-colors shadow-sm dark-mode-card';
-            const company = String(stock.company || '').replace(/,$/, '');
+            const company = String(stock.company || q.name || stock.ticker).replace(/,$/, '');
             stockItem.innerHTML = `
             <div class="min-w-0 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
                 <h5 class="text-3xl font-black text-blue-600 tracking-tight mb-1">${stock.ticker}</h5>

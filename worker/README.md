@@ -1,7 +1,7 @@
 # Harga live (Cloudflare Worker)
 
 Proxy kecil ke Yahoo Finance supaya web bisa menampilkan harga IHSG & emiten yang
-diperbarui tiap ~1 menit saat jam bursa (data IDX di Yahoo tertunda ±10 menit).
+diperbarui tiap 10 menit saat jam bursa (data IDX di Yahoo tertunda ±10 menit).
 Tanpa ini, web tetap jalan memakai snapshot harian dari GitHub Actions.
 
 ## Pasang (±5 menit, gratis)
@@ -22,7 +22,7 @@ harus mengembalikan JSON berisi harga.
 
 - Domain web yang boleh memanggil Worker diatur di `ALLOWED_ORIGINS` (bagian atas file).
   Kalau pindah domain, tambahkan di sana lalu deploy ulang.
-- Batas gratis Cloudflare: 100 ribu request/hari. Tiap simbol di-cache 60 detik di edge.
+- Batas gratis Cloudflare: 100 ribu request/hari. Tiap simbol di-cache 60 detik di edge (web memanggil tiap 10 menit).
 - API Yahoo ini tidak resmi dan bisa berubah/diblok sewaktu-waktu. Kalau gagal, web otomatis
   kembali ke snapshot harian.
 - Polling hanya jalan Senin–Jumat ±08:55–16:30 WIB, saat tab terbuka.

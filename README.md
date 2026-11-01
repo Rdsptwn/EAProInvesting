@@ -17,7 +17,9 @@ Setelah workflow ini ada di GitHub (`main`), bot meng-commit data **setiap hari 
 |------|-----------|
 | IHSG + harga emiten (peta konglo) | Setiap hari |
 | ETF / pasar alternatif | Setiap hari |
-| Laporan keuangan (Fundamental PRO) | Minggu, tanggal 5, dan 1 Jan/Apr/Jul/Okt |
+| Laporan keuangan (Fundamental PRO) | Setiap hari kerja ~18:30 WIB |
+| CAGR ETF Pasar Global (sumber Stooq) | Setiap hari kerja |
+| Harga live IHSG & emiten (opsional, butuh Cloudflare Worker — lihat `worker/README.md`) | Tiap 10 menit saat jam bursa |
 | Cache `?v=` di HTML | Setiap sync (agar Pages tidak nyangkut) |
 
 Cek: repo → **Actions** → *Daily market sync*. Kalau kosong, buka **Settings → Actions → General** → izinkan Actions. Sekali pertama, **Run workflow** untuk uji.

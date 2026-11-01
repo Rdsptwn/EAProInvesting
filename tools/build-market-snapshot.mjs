@@ -76,6 +76,7 @@ function quoteFromChart(result) {
         resistance: roundTick(high20),
         avg: roundTick(sma50),
         currency: meta.currency || 'IDR',
+        name: meta.longName || meta.shortName || null,
     };
 }
 

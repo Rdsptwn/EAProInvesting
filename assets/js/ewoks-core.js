@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261101t10';
+window.EWOKS_ASSET_V = '20261101t15';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -112,7 +112,7 @@ function highlightNavForCurrentPage() {
 
     const edu = ['edukasi', 'fixed-income', 'bandarmology-edu', 'quiz'];
     const tools = ['watchlist', 'jurnal', 'pensiun', 'kalkulator', 'bandar'];
-    const db = ['konglo', 'broker', 'pasar-alternatif'];
+    const db = ['konglo', 'broker', 'pasar-alternatif', 'pasar-global'];
 
     if (page === 'home') {
         document.getElementById('nav-home')?.classList.add('active');
@@ -163,6 +163,32 @@ function ensurePasarAlternatifNav() {
     }
 }
 
+/** Tambahkan menu "Pasar Global" ke semua halaman (HTML lama tidak perlu diedit satu per satu). */
+function ensurePasarGlobalNav() {
+    const label = '<i class="fas fa-earth-asia w-5 text-blue-500"></i> Pasar Global (ETF/RD/SBN)';
+    if (!document.getElementById('nav-pasar-global')) {
+        const anchor = document.getElementById('nav-pasar-alternatif') || document.getElementById('nav-broker');
+        const menu = anchor && anchor.parentElement;
+        if (menu) {
+            const btn = document.createElement('button');
+            btn.id = 'nav-pasar-global';
+            btn.className = 'dropdown-item';
+            btn.innerHTML = label;
+            btn.onclick = () => showPage('pasar-global');
+            anchor.insertAdjacentElement('afterend', btn);
+        }
+    }
+    const mParent = document.getElementById('m-nav-database-parent');
+    const mMenu = mParent && mParent.nextElementSibling;
+    if (mMenu && !mMenu.querySelector('[onclick*="pasar-global"]')) {
+        const btn = document.createElement('button');
+        btn.className = 'dropdown-item';
+        btn.innerHTML = '<i class="fas fa-earth-asia w-5 text-blue-500"></i> Pasar Global';
+        btn.onclick = () => showPage('pasar-global');
+        mMenu.appendChild(btn);
+    }
+}
+
 // --- THEME & UI ---
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode-override');
@@ -201,7 +227,8 @@ function showPage(pageId) {
         bandar: 'bandar.html',
         konglo: 'konglo.html',
         broker: 'broker.html',
-        'pasar-alternatif': 'pasar-alternatif.html'
+        'pasar-alternatif': 'pasar-alternatif.html',
+        'pasar-global': 'pasar-global.html'
     };
     const url = routes[pageId];
     if (url) window.location.href = EwoksSiteContext.basePath + url;
@@ -651,7 +678,7 @@ function getIdxQuote(ticker) {
  * Data IDX di Yahoo tertunda ±10 menit; polling hanya saat jam bursa.
  * ====================================================================== */
 const EWOKS_LIVE_API_URL = '';
-const EWOKS_LIVE_POLL_MS = 60 * 1000;
+const EWOKS_LIVE_POLL_MS = 10 * 60 * 1000; // 10 menit (data IDX di Yahoo memang tertunda ±10 menit)
 let __ewoksLiveBusy = false;
 
 function getEwoksLiveApi() {
@@ -872,6 +899,7 @@ function scrollToTop() {
 window.addEventListener('load', () => {
     checkTheme();
     ensurePasarAlternatifNav();
+    ensurePasarGlobalNav();
     highlightNavForCurrentPage();
 
     if (typeof loadMacroNotes === 'function') loadMacroNotes();
