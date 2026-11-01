@@ -8,7 +8,7 @@
 
  * 3. Finnhub API (jika token valid)
 
- * 4. generateFunda (estimasi, hanya jika semua gagal)
+ * 4. generateFunda (data kurasi, atau KOSONG jika belum ada — tidak ada angka karangan)
 
  */
 
@@ -537,11 +537,12 @@ async function resolveKongloFunda(ticker, sector) {
 
     const data = generateFunda(t, sector);
 
-    data.source = 'estimate';
-
-    data.sourceLabel = 'Estimasi internal (data pasar belum tersedia untuk emiten ini)';
-
-    return { data, source: 'estimate', sourceLabel: data.sourceLabel };
+    if (data.noData) {
+        data.source = 'unavailable';
+        data.sourceLabel = 'Laporan keuangan emiten ini belum tersedia di database';
+        return { data, source: 'unavailable', sourceLabel: data.sourceLabel };
+    }
+    return { data, source: data.source || 'curated', sourceLabel: data.sourceLabel || 'Data kurasi (laporan keuangan publik IDX/emiten)' };
 
 }
 

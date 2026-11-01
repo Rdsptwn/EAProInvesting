@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261101t07';
+window.EWOKS_ASSET_V = '20261101t10';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -447,9 +447,12 @@ function kongloDailyStampText() {
 
 function paintDataStamps(snap) {
     const built = snap?.meta?.built;
-    const text = built
-        ? `Update data pasar: ${formatStampWib(built)} · Yahoo Finance`
-        : 'Update data pasar: commit file assets/data/market-snapshot.json ke GitHub';
+    const liveAt = snap?.meta?.liveAt;
+    const text = liveAt
+        ? `Harga live: ${formatStampWib(liveAt)} · Yahoo Finance (tertunda ±10 menit)`
+        : built
+            ? `Update data pasar: ${formatStampWib(built)} · Yahoo Finance`
+            : 'Update data pasar: snapshot belum tersedia';
     const home = document.getElementById('data-updated-stamp');
     if (home) home.textContent = text;
     const konglo = document.getElementById('konglo-data-stamp');
@@ -641,6 +644,120 @@ function getIdxQuote(ticker) {
     return __ewoksMarketSnapshot?.quotes?.[t] || null;
 }
 
+/* ======================================================================
+ * HARGA LIVE (opsional) — proxy Yahoo lewat Cloudflare Worker (lihat worker/README.md)
+ * Isi URL Worker di EWOKS_LIVE_API_URL, atau localStorage 'ewoks_live_api'.
+ * Kosong = nonaktif: web tetap memakai snapshot harian dari GitHub Actions.
+ * Data IDX di Yahoo tertunda ±10 menit; polling hanya saat jam bursa.
+ * ====================================================================== */
+const EWOKS_LIVE_API_URL = '';
+const EWOKS_LIVE_POLL_MS = 60 * 1000;
+let __ewoksLiveBusy = false;
+
+function getEwoksLiveApi() {
+    let u = EWOKS_LIVE_API_URL;
+    try { u = u || localStorage.getItem('ewoks_live_api') || ''; } catch (_) {}
+    return String(u || '').trim().replace(/\/+$/, '');
+}
+
+/** Senin–Jumat 08:55–16:30 WIB (sedikit lebih lebar karena data tertunda). */
+function isIdxMarketOpen(d = new Date()) {
+    try {
+        const p = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Jakarta', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+        }).formatToParts(d);
+        const get = (t) => p.find((x) => x.type === t)?.value;
+        const wd = get('weekday');
+        if (wd === 'Sat' || wd === 'Sun') return false;
+        const mins = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+        return mins >= 8 * 60 + 55 && mins <= 16 * 60 + 30;
+    } catch (_) {
+        return false;
+    }
+}
+
+function getEwoksLiveTickers() {
+    const set = new Set();
+    try {
+        if (typeof watchlist !== 'undefined' && Array.isArray(watchlist)) {
+            watchlist.forEach((w) => w && w.ticker && set.add(String(w.ticker).toUpperCase()));
+        }
+    } catch (_) {}
+    if (Array.isArray(window.__ewoksLiveTickers)) {
+        window.__ewoksLiveTickers.forEach((t) => set.add(String(t).toUpperCase()));
+    }
+    return [...set].filter((t) => /^[A-Z0-9]{2,6}$/.test(t)).slice(0, 40);
+}
+
+async function refreshLiveQuotes(force = false) {
+    const api = getEwoksLiveApi();
+    if (!api || __ewoksLiveBusy) return false;
+    if (!force && !isIdxMarketOpen()) return false;
+    if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return false;
+    const tickers = getEwoksLiveTickers();
+    const wantIhsg = !!(document.getElementById('ihsg-dash-live') || document.getElementById('terminal-ihsg'));
+    if (!tickers.length && !wantIhsg) return false;
+    __ewoksLiveBusy = true;
+    try {
+        const snap = await loadEwoksMarketSnapshot();
+        const url = `${api}/quotes?s=${encodeURIComponent(tickers.join(','))}${wantIhsg ? '&ihsg=1' : ''}`;
+        const ctl = new AbortController();
+        const timer = setTimeout(() => ctl.abort(), 12000);
+        const res = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
+        clearTimeout(timer);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        snap.quotes = snap.quotes || {};
+        let n = 0;
+        for (const [t, q] of Object.entries(data.quotes || {})) {
+            if (!q || !Number.isFinite(q.price)) continue;
+            const old = snap.quotes[t] || {};
+            snap.quotes[t] = {
+                ...old,
+                price: q.price,
+                prevClose: Number.isFinite(q.prevClose) ? q.prevClose : (old.prevClose ?? null),
+                changePct: Number.isFinite(q.changePct) ? q.changePct : null,
+                liveAt: q.time || data.ts || null,
+                live: true
+            };
+            n++;
+        }
+        if (data.ihsg && Number.isFinite(data.ihsg.price)) {
+            snap.ihsg = {
+                ...(snap.ihsg || {}),
+                price: data.ihsg.price,
+                prevClose: Number.isFinite(data.ihsg.prevClose) ? data.ihsg.prevClose : (snap.ihsg?.prevClose ?? null),
+                changePct: Number.isFinite(data.ihsg.changePct) ? data.ihsg.changePct : null
+            };
+            n++;
+        }
+        if (!n) throw new Error('data kosong');
+        snap.meta = { ...(snap.meta || {}), liveAt: data.ts || new Date().toISOString() };
+        paintDataStamps(snap);
+        applyMarketSnapshotToDashboard(snap);
+        if (typeof EwoksSiteContext !== 'undefined' && EwoksSiteContext.is('watchlist') && typeof renderWatchlist === 'function') {
+            renderWatchlist(true);
+        }
+        if (typeof window.__kongloRepaint === 'function') window.__kongloRepaint();
+        return true;
+    } catch (e) {
+        console.warn('Harga live gagal, pakai snapshot:', e.message);
+        return false;
+    } finally {
+        __ewoksLiveBusy = false;
+    }
+}
+
+function startEwoksLivePolling() {
+    if (!getEwoksLiveApi()) return;
+    const tick = () => refreshLiveQuotes(false);
+    setTimeout(tick, 1500);
+    setInterval(tick, EWOKS_LIVE_POLL_MS);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') tick();
+    });
+}
+
 function applyMarketSnapshotToDashboard(snap) {
     const ihsg = snap?.ihsg;
     const ihsgEl = document.getElementById('ihsg-dash-live');
@@ -817,6 +934,7 @@ window.addEventListener('load', () => {
 
     updateClock();
     fetchRealIHSG();
+    startEwoksLivePolling();
     fetchNews();
 
     if (document.getElementById('corporate-calendar-container')) {

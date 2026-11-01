@@ -59,7 +59,7 @@ function kongloSetView(viewId) {
 
 function kongloQuoteCells(stock) {
     const q = typeof getIdxQuote === 'function' ? getIdxQuote(stock.ticker) : null;
-    const price = q?.price != null ? `Rp ${formatIdxPrice(q.price)}` : 'Menunggu snapshot';
+    const price = q?.price != null ? `Rp ${formatIdxPrice(q.price)}` : 'Menunggu data pasar';
     const chg = q?.changePct != null
         ? `${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%`
         : '—';
@@ -85,10 +85,10 @@ function showDetail(groupId) {
     document.getElementById('detail-desc').innerText = group.desc;
     const priceNote = document.getElementById('detail-price-note');
     if (priceNote) {
-        const built = typeof __ewoksMarketSnapshot !== 'undefined' ? __ewoksMarketSnapshot?.meta?.built : null;
+        const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;
         priceNote.textContent = built && typeof formatStampWib === 'function'
             ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
-            : 'Harga emiten dari Yahoo .JK (commit market-snapshot.json agar tampil)';
+            : 'Harga emiten dari Yahoo .JK (data pasar belum tersedia)';
     }
 
     const stockList = document.getElementById('stock-list');
@@ -97,10 +97,10 @@ function showDetail(groupId) {
     const paint = () => {
         const priceNote = document.getElementById('detail-price-note');
         if (priceNote) {
-            const built = typeof __ewoksMarketSnapshot !== 'undefined' ? __ewoksMarketSnapshot?.meta?.built : null;
+            const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;
             priceNote.textContent = built && typeof formatStampWib === 'function'
                 ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
-                : 'Harga emiten dari Yahoo .JK (commit market-snapshot.json agar tampil)';
+                : 'Harga emiten dari Yahoo .JK (data pasar belum tersedia)';
         }
         stockList.innerHTML = '';
         group.stocks.forEach(stock => {
@@ -114,7 +114,7 @@ function showDetail(groupId) {
                 <p class="font-bold text-slate-800 text-xs mb-2 leading-snug">${company}</p>
                 <span class="inline-block bg-emerald-100 text-emerald-700 text-[10px] uppercase px-2 py-1 rounded font-bold mb-3">${stock.sector}</span>
                 <div class="bg-white p-3 rounded-xl border border-slate-100 mb-3">
-                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga Yahoo (.JK)' : 'Harga (snapshot belum ada)'}</p>
+                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga Yahoo (.JK)' : 'Harga (data pasar belum ada)'}</p>
                     <p class="text-lg font-black text-slate-800 leading-tight">${q.price}</p>
                     <p class="text-xs font-bold ${q.chgClass}">${q.chg} hari ini</p>
                 </div>
@@ -178,12 +178,17 @@ function showDetail(groupId) {
     };
 
     paint();
+    window.__ewoksLiveTickers = group.stocks.map((s) => s.ticker);
+    window.__kongloRepaint = paint;
     if (typeof loadEwoksMarketSnapshot === 'function') {
         loadEwoksMarketSnapshot().then(paint);
     }
+    if (typeof refreshLiveQuotes === 'function') refreshLiveQuotes(false);
 }
 
 function hideDetail() {
+    window.__ewoksLiveTickers = [];
+    window.__kongloRepaint = null;
     kongloSetView('konglo-dashboard-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -380,7 +385,9 @@ function computeKongloDerivedMetrics(d, sector) {
     }
 
     let zscore = 3.5;
-    if (!isBank && assetLi >= FUNDA_MIN_TRILIUN && eqLi >= FUNDA_MIN_TRILIUN) {
+    const hasAnyData = [0, 1, 2, 3, 4, 5, 6].some((k) => fundaYearHasData(d, k));
+    if (!hasAnyData) zscore = null;
+    if (hasAnyData && !isBank && assetLi >= FUNDA_MIN_TRILIUN && eqLi >= FUNDA_MIN_TRILIUN) {
         const tl = Math.max(assetLi - eqLi, assetLi * 0.01);
         const wc = assetLi * 0.1;
         const re = netLi / assetLi;
@@ -490,23 +497,28 @@ function showFunda(ticker, company, sector) {
                     ? formatJakartaLongDate()
                     : (typeof getJakartaDateKey === 'function' ? getJakartaDateKey() : '');
             }
-            const liveEl = document.getElementById('funda-live-price');
-            if (liveEl) {
+            const paintLive = () => {
+                const liveEl = document.getElementById('funda-live-price');
+                if (!liveEl) return;
                 const q = typeof getIdxQuote === 'function' ? getIdxQuote(ticker) : null;
                 if (q?.price != null && typeof formatIdxPrice === 'function') {
                     const chg = q.changePct != null ? ` (${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)` : '';
                     liveEl.textContent = `Harga Yahoo: Rp ${formatIdxPrice(q.price)}${chg}`;
                 } else {
-                    liveEl.textContent = 'Harga Yahoo: snapshot belum di GitHub';
+                    liveEl.textContent = 'Harga Yahoo: belum tersedia';
                 }
-            }
+            };
+            paintLive();
+            window.__ewoksLiveTickers = [ticker];
+            window.__kongloRepaint = paintLive;
+            if (typeof refreshLiveQuotes === 'function') refreshLiveQuotes(false);
             renderFundaView(d, ticker, company, sector);
         })
         .catch(() => {
             if (loadingEl) loadingEl.classList.add('hidden');
             const d = generateFunda(ticker, sector);
             renderFundaView(d, ticker, company, sector);
-            if (typeof showToast === 'function') showToast('Gagal memuat data live. Menampilkan estimasi.', 'warning');
+            if (typeof showToast === 'function') showToast('Gagal memuat laporan keuangan. Coba muat ulang halaman.', 'warning');
         });
 }
 
@@ -515,7 +527,7 @@ function renderFundaView(d, ticker, company, sector) {
     const isBank = sector.includes("Perbankan");
     const m = computeKongloDerivedMetrics(d, sector);
     const mos = m.mosCalc != null ? m.mosCalc : FUNDA_EMPTY;
-    const zscore = m.zscore != null ? m.zscore : d.zscore;
+    const zscore = m.zscore != null ? m.zscore : null;
     const li = m.latestIdx;
 
     const lBody = document.getElementById('funda-lapkeu-body');
@@ -578,8 +590,8 @@ function renderFundaView(d, ticker, company, sector) {
     `;
 
     const dash = document.getElementById('funda-valuation-dashboard');
-    let zStatus = zscore >= 3 ? "Aman (Green Zone)" : (zscore >= 1.8 ? "Waspada (Grey Zone)" : "Bahaya (Red Zone)");
-    let zColor = zscore >= 3 ? "text-emerald-400" : (zscore >= 1.8 ? "text-amber-400" : "text-rose-400");
+    let zStatus = zscore == null ? "Data belum tersedia" : zscore >= 3 ? "Aman (Green Zone)" : (zscore >= 1.8 ? "Waspada (Grey Zone)" : "Bahaya (Red Zone)");
+    let zColor = zscore == null ? "text-slate-400" : zscore >= 3 ? "text-emerald-400" : (zscore >= 1.8 ? "text-amber-400" : "text-rose-400");
     const npmLatest = m.latestNpm != null ? `${m.latestNpm}%` : FUNDA_EMPTY;
     const roeLatest = m.latestRoe != null ? `${m.latestRoe}%` : FUNDA_EMPTY;
     const divLatest = parseFloat(d.divYield[li]) > 0 ? `${d.divYield[li]}%` : FUNDA_EMPTY;
@@ -592,7 +604,7 @@ function renderFundaView(d, ticker, company, sector) {
         </div>
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center shadow-lg hover:border-blue-500 transition-colors">
             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center justify-center gap-1"><i class="fas fa-heartbeat text-blue-500"></i> Altman Z-Score</p>
-            <p class="text-2xl md:text-3xl font-black ${zColor} my-1">${zscore}</p>
+            <p class="text-2xl md:text-3xl font-black ${zColor} my-1">${zscore == null ? FUNDA_EMPTY : zscore}</p>
             <p class="text-[10px] text-slate-500">${zStatus}</p>
         </div>
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center shadow-lg hover:border-indigo-500 transition-colors">

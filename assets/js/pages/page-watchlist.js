@@ -38,23 +38,18 @@ function renderWatchlist(isTick = false) {
         return;
     }
 
-    if(isTick) {
-        watchlist.forEach(w => {
-            const target = parseFloat(w.price);
-            if(!w.currentPrice) w.currentPrice = target * 0.95; 
-            const change = (Math.random() * target * 0.02) - (target * 0.005); 
-            w.currentPrice += change;
-        });
-    } else {
-         watchlist.forEach(w => {
-            if(!w.currentPrice) w.currentPrice = parseFloat(w.price) * 0.95; 
-        });
-    }
-
+    // Harga asli dari snapshot/live Yahoo (.JK). Tidak ada lagi harga simulasi acak.
+    watchlist.forEach(w => {
+        const q = typeof getIdxQuote === 'function' ? getIdxQuote(w.ticker) : null;
+        w.currentPrice = q && q.price != null ? Number(q.price) : null;
+        w.changePct = q && q.changePct != null ? Number(q.changePct) : null;
+    });
     container.innerHTML = watchlist.map(w => {
         const target = parseFloat(w.price);
         const current = w.currentPrice;
-        const isHit = current >= target;
+        const hasPrice = current != null && Number.isFinite(current);
+        const isHit = hasPrice && current >= target;
+        const chgTxt = hasPrice && w.changePct != null ? ` (${w.changePct >= 0 ? '+' : ''}${w.changePct.toFixed(2)}%)` : '';
         
         return `
         <div class="bg-white border ${isHit ? 'border-emerald-400 shadow-emerald-100' : 'border-slate-200'} rounded-2xl p-5 shadow-sm relative group hover:border-amber-400 transition-colors flex flex-col h-full dark-mode-card">
@@ -68,7 +63,7 @@ function renderWatchlist(isTick = false) {
                 <div>
                     <h4 class="font-black text-slate-900 text-lg leading-none">${w.ticker}</h4>
                     <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Target Beli: <span class="text-emerald-600">Rp ${Number(w.price).toLocaleString('id-ID')}</span></p>
-                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">Live: Rp ${Math.round(current).toLocaleString('id-ID')}</p>
+                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${hasPrice ? `Harga: Rp ${Math.round(current).toLocaleString('id-ID')}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
                 </div>
             </div>
             
