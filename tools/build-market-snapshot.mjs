@@ -47,9 +47,16 @@ function quoteFromChart(result) {
     const meta = result.meta || {};
     const closes = (result.indicators?.quote?.[0]?.close || []).filter((v) => Number.isFinite(v) && v > 0);
     const price = Number(meta.regularMarketPrice);
-    const prev = Number(meta.chartPreviousClose ?? meta.previousClose);
     const last = Number.isFinite(price) && price > 0 ? price : closes[closes.length - 1];
-    const prevClose = Number.isFinite(prev) && prev > 0 ? prev : closes[closes.length - 2];
+    // PENTING: meta.chartPreviousClose = penutupan SEBELUM rentang grafik mulai (3–6 bulan lalu),
+    // bukan kemarin. Pakai penutupan hari bursa sebelumnya dari deret harian.
+    const lastClose = closes[closes.length - 1];
+    const lastBarIsToday = Number.isFinite(lastClose) && Number.isFinite(last) && Math.abs(lastClose - last) / last < 0.001;
+    const prevFromSeries = lastBarIsToday ? closes[closes.length - 2] : lastClose;
+    const prev = Number(meta.previousClose);
+    const prevClose = Number.isFinite(prevFromSeries) && prevFromSeries > 0
+        ? prevFromSeries
+        : (Number.isFinite(prev) && prev > 0 ? prev : null);
     const changePct =
         Number.isFinite(last) && Number.isFinite(prevClose) && prevClose > 0
             ? +(((last - prevClose) / prevClose) * 100).toFixed(2)
