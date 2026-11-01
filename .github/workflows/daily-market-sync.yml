@@ -1,0 +1,83 @@
+# Sinkron harian IHSG, harga emiten, kalender korporasi, dan pasar alternatif.
+# Jalan Senin–Jumat 17:00 WIB (setelah bursa tutup). Bisa juga manual:
+# Actions → Daily market sync → Run workflow
+
+name: Daily market sync
+
+on:
+  schedule:
+    # 10:00 UTC = 17:00 WIB, Senin–Jumat
+    - cron: '0 10 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-market-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Skrip snapshot tetap menulis file walau Yahoo gagal (IHSG null / quotes kosong).
+      # Simpan cadangan, lalu kembalikan kalau hasilnya tidak layak.
+      - name: Build market-snapshot.json
+        continue-on-error: true
+        run: |
+          cp assets/data/market-snapshot.json /tmp/market-snapshot.bak
+          node tools/build-market-snapshot.mjs
+          node -e '
+            const s = JSON.parse(require("fs").readFileSync("assets/data/market-snapshot.json", "utf8"));
+            const ok = s.ihsg && Number.isFinite(s.ihsg.price) && s.meta.tickerCount >= 100;
+            if (!ok) { console.error("Snapshot tidak valid: ihsg=" + JSON.stringify(s.ihsg) + " tickerCount=" + s.meta.tickerCount); process.exit(1); }
+          ' || { echo "::warning::Snapshot gagal/tidak valid — pakai versi sebelumnya"; cp /tmp/market-snapshot.bak assets/data/market-snapshot.json; exit 1; }
+
+      - name: Build corporate-calendar.json
+        continue-on-error: true
+        run: |
+          cp assets/data/corporate-calendar.json /tmp/corporate-calendar.bak
+          node tools/build-corporate-calendar.mjs
+          node -e 'JSON.parse(require("fs").readFileSync("assets/data/corporate-calendar.json", "utf8"))' \
+            || { echo "::warning::Kalender rusak — pakai versi sebelumnya"; cp /tmp/corporate-calendar.bak assets/data/corporate-calendar.json; exit 1; }
+
+      - name: Build pasar-alternatif.json
+        continue-on-error: true
+        run: |
+          cp assets/data/pasar-alternatif.json /tmp/pasar-alternatif.bak
+          node tools/build-pasar-alternatif.mjs
+          node -e 'JSON.parse(require("fs").readFileSync("assets/data/pasar-alternatif.json", "utf8"))' \
+            || { echo "::warning::Pasar alternatif rusak — pakai versi sebelumnya"; cp /tmp/pasar-alternatif.bak assets/data/pasar-alternatif.json; exit 1; }
+
+      - name: Bump cache version (hanya kalau data berubah)
+        run: |
+          if git diff --quiet -- assets/data; then
+            echo "Data tidak berubah — skip bump cache."
+          else
+            node tools/bump-asset-version.mjs
+          fi
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-alternatif.json assets/js/ewoks-core.js
+          git add -u -- '*.html'
+          if git diff --staged --quiet; then
+            echo "Tidak ada perubahan data — skip commit."
+            exit 0
+          fi
+          git commit -m "chore(data): daily market sync"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
