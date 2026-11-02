@@ -113,7 +113,7 @@ function pgCagrBadge(i) {
     else bg = 'bg-rose-100 text-rose-800';
     const live = i.cagrBasis === 'stooq';
     const dot = live
-        ? '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1" title="Dihitung otomatis dari harga pasar"></span>'
+        ? '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1" title="CAGR dihitung dari harga pasar"></span>'
         : '<span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 mr-1" title="Angka arsip, belum diverifikasi 2026"></span>';
     return `<span class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-black ${bg}">${dot}${i.cagr}%</span>`;
 }
@@ -193,6 +193,7 @@ function pgApplyFilters() {
     pgRenderTable();
     pgRenderSummary();
     pgRenderCharts();
+    pgRenderTierCards();
 }
 
 function pgSort() {
@@ -277,7 +278,7 @@ function pgRenderSummary() {
         card('fa-list', 'text-blue-500', 'Instrumen', String(pgFiltered.length), `dari ${pgData.instruments.length} di database`) +
         card('fa-trophy', 'text-amber-500', 'CAGR Tertinggi', best ? best.cagr + '%' : '—', best ? pgEsc(best.ticker) + ' · ' + pgEsc(best.name) : 'Tidak ada data') +
         card('fa-percent', 'text-emerald-500', 'Expense Termurah', cheap ? cheap.expense + '%' : '—', cheap ? pgEsc(cheap.ticker) + ' · ' + pgEsc(cheap.name) : 'Tidak ada data') +
-        card('fa-landmark', 'text-rose-500', bm ? pgEsc(bm.label) : 'Yield SBN 10 th', bm ? bm.value + '%' : '—', bm ? `per ${pgEsc(bm.asOf)} · <a class="underline" href="${pgEsc(bm.url)}" target="_blank" rel="noopener">${pgEsc(bm.source)}</a>` : 'Belum ada');
+        card('fa-landmark', 'text-rose-500', bm ? pgEsc(bm.label) : 'Yield SBN 10 th', bm ? bm.value + '%' : '—', bm ? `per ${pgEsc(bm.asOf)}` : 'Belum ada');
 }
 
 function pgRenderCharts() {
@@ -322,6 +323,7 @@ function pgRenderCharts() {
 function pgSelect(id) {
     pgSelectedId = id;
     const i = pgData.instruments.find((x) => x.id === id);
+    if (i && i.ticker && (pgData.yearlyRef || []).some((y) => y.ticker === i.ticker)) pgRenderYearly('y-' + String(i.ticker).toLowerCase());
     const panel = document.getElementById('pgDetailPanel');
     if (!i || !panel) return;
     const info = PG_CLASS_INFO[i.assetClass];
@@ -355,7 +357,7 @@ function pgSelect(id) {
         <p class="leading-relaxed text-slate-700">${pgEsc(i.desc)}</p>
         ${info ? `<h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-4 mb-1"><i class="fas ${info.icon} ${info.color} mr-1"></i> Tentang ${pgEsc(i.assetClass)}</h5><p class="leading-relaxed text-slate-600">${pgEsc(info.what)} ${pgEsc(info.risk)}</p>` : ''}
         ${warn}
-        <p class="text-[11px] text-slate-500 mt-4 border-t border-slate-100 pt-3"><strong>Data CAGR:</strong> ${basis}<br><strong>Sumber:</strong> ${pgEsc(i.source)}</p>`;
+        <p class="text-[11px] text-slate-500 mt-4 border-t border-slate-100 pt-3"><strong>Data CAGR:</strong> ${basis}</p>`;
     document.querySelectorAll('#pgTableBody tr').forEach((tr) => {
         tr.classList.toggle('bg-blue-50', parseInt(tr.getAttribute('data-pg-id'), 10) === id);
     });
@@ -388,6 +390,82 @@ function pgRenderExplainers() {
     dl('pgTierGlossary', PG_TIERS);
 }
 
+const PG_TIER_CARDS = [
+    { tier: 'Developed', dot: 'bg-blue-500', txt: 'text-blue-600', nick: 'Kakak Dewasa 🧔🏻‍♂️', desc: 'Mandiri, kaya, aturan main paling jelas. CAGR stabil, paling aman buat uang besar.' },
+    { tier: 'Emerging', dot: 'bg-emerald-500', txt: 'text-emerald-600', nick: 'Remaja Bongsor 🏃🏻‍♂️', desc: 'Lagi tumbuh kenceng. Return tinggi tapi gampang masuk angin kalau ada badai suku bunga.' },
+    { tier: 'Advanced Frontier', dot: 'bg-purple-500', txt: 'text-purple-600', nick: 'Anak Seragam Pramuka 👦🏻', desc: 'Pasar imut tapi tertib banget ikutan aturan Uni Eropa (Romania, Slovenia, Estonia).' },
+    { tier: 'Frontier', dot: 'bg-amber-500', txt: 'text-amber-600', nick: 'Balita Belajar Jalan 👶🏻', desc: 'Pasar kecil. Dapet uang asing langsung terbang, tapi modal ditarik langsung jatuh.' },
+    { tier: 'Standalone', dot: 'bg-red-500', txt: 'text-red-600', nick: 'Anak Karantina 🛑', desc: 'Bermasalah (perang, krisis, gembok uang). Dipisah penyedia indeks karena berisiko.' }
+];
+
+function pgRenderTierCards() {
+    const box = document.getElementById('pgTierCards');
+    if (!box) return;
+    const active = document.getElementById('pgTier')?.value || 'ALL';
+    box.innerHTML = PG_TIER_CARDS.map((c) => {
+        const n = pgData.instruments.filter((i) => i.tier === c.tier && (pgShowIndikatif() || i.status !== 'indikatif')).length;
+        const on = active === c.tier;
+        return `<button type="button" onclick="pgSelectTier('${c.tier}')" class="text-left premium-card p-4 transition cursor-pointer border ${on ? 'border-blue-500 ring-2 ring-blue-200' : 'border-transparent hover:border-blue-300'}">
+            <div class="flex items-center gap-2 mb-2"><span class="w-2.5 h-2.5 rounded-full ${c.dot}"></span><h4 class="font-black text-sm text-slate-800">${pgEsc(c.tier)}</h4><span class="ml-auto text-[10px] font-bold text-slate-400">${n} instrumen</span></div>
+            <p class="text-xs font-bold ${c.txt} mb-1">${c.nick}</p>
+            <p class="text-xs text-slate-500 leading-relaxed">${pgEsc(c.desc)}</p>
+        </button>`;
+    }).join('');
+}
+
+function pgSelectTier(tier) {
+    const sel = document.getElementById('pgTier');
+    if (!sel) return;
+    sel.value = sel.value === tier ? 'ALL' : tier;
+    pgApplyFilters();
+}
+
+let pgYearlyChart = null;
+
+function pgYearLabel(y) {
+    return y === new Date().getFullYear() ? y + ' (YTD)' : String(y);
+}
+
+function pgRenderYearly(id) {
+    const list = pgData.yearlyRef || [];
+    if (!list.length) return;
+    const sel = document.getElementById('pgYearlySelect');
+    const item = list.find((x) => x.id === id) || list[0];
+    if (sel && sel.value !== item.id) sel.value = item.id;
+    const rows = (item.yearly || []).slice().sort((a, b) => a.year - b.year);
+    const t = document.getElementById('pgYearlyTitle');
+    if (t) t.textContent = (item.ticker ? item.ticker + ' · ' : '') + item.name;
+    const m = document.getElementById('pgYearlyMeta');
+    if (m) {
+        const est = item.basis === 'estimasi' ? ' · estimasi referensi' : '';
+        m.textContent = `${item.group} · ${item.focus || ''}${item.cagr10y != null ? ' · CAGR ±10 th: ' + item.cagr10y + '%' : ''}${est}`;
+    }
+    const l = document.getElementById('pgYearlyList');
+    if (l) l.innerHTML = rows.slice().reverse().map((r) => `<div class="flex items-center justify-between text-xs px-3 py-1.5 rounded-lg bg-slate-50"><span class="font-bold text-slate-600">${pgYearLabel(r.year)}</span><span class="font-black ${r.return >= 0 ? 'text-emerald-600' : 'text-rose-600'}">${r.return >= 0 ? '+' : ''}${r.return}%</span></div>`).join('');
+    const n = document.getElementById('pgYearlyNote');
+    if (n) n.textContent = item.note || (item.basis === 'pasar' ? 'Return harga penutupan per tahun kalender, tahun berjalan dihitung sampai update terakhir.' : '');
+    if (typeof whenChartReady !== 'function') return;
+    whenChartReady(() => {
+        const ctx = document.getElementById('pgYearlyChart');
+        if (!ctx) return;
+        if (pgYearlyChart) pgYearlyChart.destroy();
+        pgYearlyChart = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: rows.map((r) => pgYearLabel(r.year)), datasets: [{ data: rows.map((r) => r.return), backgroundColor: rows.map((r) => (r.return >= 0 ? '#10b981' : '#f43f5e')), borderRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ` ${c.parsed.y}%` } } }, scales: { y: { ticks: { callback: (v) => v + '%' } } } }
+        });
+    });
+}
+
+function pgInitYearly() {
+    const sel = document.getElementById('pgYearlySelect');
+    const list = pgData.yearlyRef || [];
+    if (!sel || !list.length) { document.getElementById('pgYearlyCard')?.classList.add('hidden'); return; }
+    const groups = ['ETF', 'Reksa Dana', 'Obligasi'];
+    sel.innerHTML = groups.map((g) => `<optgroup label="${g}">${list.filter((x) => x.group === g).map((x) => `<option value="${pgEsc(x.id)}">${pgEsc((x.ticker ? x.ticker + ' — ' : '') + x.name)}</option>`).join('')}</optgroup>`).join('');
+    pgRenderYearly(list[0].id);
+}
+
 function pgRenderNotes() {
     const m = pgData.meta || {};
     const box = document.getElementById('pgNotes');
@@ -397,12 +475,11 @@ function pgRenderNotes() {
         meta.textContent = `Database per ${m.asOf || '—'} · ${pgData.instruments.length} instrumen · ${stooq} ETF dengan CAGR dihitung otomatis dari harga pasar${m.builtAt ? ' (pembaruan terakhir ' + m.builtAt.slice(0, 10) + ')' : ''} · selebihnya data arsip.`;
     }
     if (!box) return;
-    const src = (m.sources || []).map((s) => `<li><a class="text-blue-600 underline" href="${pgEsc(s.url)}" target="_blank" rel="noopener">${pgEsc(s.name)}</a></li>`).join('');
     const corr = (m.corrections || []).map((c) => `<li>${pgEsc(c)}</li>`).join('');
     box.innerHTML = `
         <p>${pgEsc(m.note || '')}</p>
+        <p>${pgEsc(m.yearlyNote || '')}</p>
         <p><strong>Data indikatif</strong> adalah baris yang tidak ditemukan sebagai produk atau ticker resmi. Baris itu disembunyikan secara default.</p>
-        ${src ? `<div><strong>Sumber:</strong><ul class="list-disc ml-5 mt-1">${src}</ul></div>` : ''}
         ${corr ? `<div><strong>Koreksi dari file lama:</strong><ul class="list-disc ml-5 mt-1">${corr}</ul></div>` : ''}
         <p class="italic text-slate-500">Seluruh informasi untuk tujuan edukasi, bukan rekomendasi membeli atau menjual. Return masa lalu tidak menjamin hasil di masa depan.</p>`;
 }
@@ -419,6 +496,7 @@ async function pgInit() {
     pgRenderExplainers();
     pgRenderNotes();
     pgApplyFilters();
+    pgInitYearly();
 }
 
 document.addEventListener('DOMContentLoaded', pgInit);

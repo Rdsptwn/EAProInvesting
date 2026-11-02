@@ -1,4 +1,4 @@
-# Sinkron harian IHSG, harga emiten, kalender korporasi, dan pasar alternatif.
+# Sinkron harian IHSG, harga emiten, kalender korporasi, dan pasar global.
 # Jalan Senin–Jumat 17:00 WIB (setelah bursa tutup). Bisa juga manual:
 # Actions → Daily market sync → Run workflow
 
@@ -52,15 +52,7 @@ jobs:
           node -e 'JSON.parse(require("fs").readFileSync("assets/data/corporate-calendar.json", "utf8"))' \
             || { echo "::warning::Kalender rusak — pakai versi sebelumnya"; cp /tmp/corporate-calendar.bak assets/data/corporate-calendar.json; exit 1; }
 
-      - name: Build pasar-alternatif.json
-        continue-on-error: true
-        run: |
-          cp assets/data/pasar-alternatif.json /tmp/pasar-alternatif.bak
-          node tools/build-pasar-alternatif.mjs
-          node -e 'JSON.parse(require("fs").readFileSync("assets/data/pasar-alternatif.json", "utf8"))' \
-            || { echo "::warning::Pasar alternatif rusak — pakai versi sebelumnya"; cp /tmp/pasar-alternatif.bak assets/data/pasar-alternatif.json; exit 1; }
-
-      # CAGR ETF Pasar Global dari harga Stooq (alternatif Yahoo/TradingView).
+      # CAGR + return per tahun ETF Pasar Global dari harga penutupan bulanan.
       # Skrip keluar tanpa menulis apa pun kalau semua permintaan gagal; angka lama dipertahankan.
       - name: Build pasar-global.json (CAGR dari Stooq)
         continue-on-error: true
@@ -82,7 +74,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-alternatif.json assets/data/pasar-global.json assets/js/ewoks-core.js
+          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/js/ewoks-core.js
           git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."

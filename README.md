@@ -43,7 +43,7 @@ Jalankan lokal (Node 20+):
 ```bash
 node tools/build-market-snapshot.mjs
 node tools/build-funda-idx.mjs --force
-node tools/build-pasar-alternatif.mjs
+node tools/build-pasar-global.mjs
 node tools/bump-asset-version.mjs
 ```
 

@@ -43,6 +43,19 @@ export function computeCagr(rows, yearsWanted = 10, minYears = 3) {
     return { cagr: +cagr.toFixed(1), years: +years.toFixed(1), from: start.date.toISOString().slice(0, 10), to: last.date.toISOString().slice(0, 10) };
 }
 
+/** Return per tahun kalender (%) dari deret bulanan; tahun berjalan = YTD. Maks 10 tahun terakhir. */
+export function computeYearly(rows, maxYears = 10) {
+    const lastClose = new Map();
+    for (const r of rows) lastClose.set(r.date.getUTCFullYear(), r.close);
+    const years = [...lastClose.keys()].sort((a, b) => a - b);
+    const out = [];
+    for (const y of years) {
+        if (!lastClose.has(y - 1)) continue;
+        out.push({ year: y, return: +(((lastClose.get(y) / lastClose.get(y - 1)) - 1) * 100).toFixed(1) });
+    }
+    return out.slice(-maxYears);
+}
+
 async function fetchStooq(symbol) {
     const url = `https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol)}&i=m`;
     const res = await fetch(url, { headers: UA });
@@ -64,12 +77,24 @@ async function main() {
             inst.cagrYears = res.years;
             inst.cagrBasis = 'stooq';
             inst.dataAsOf = res.to;
-            inst.source = `Stooq — CAGR harga penutupan ${res.years} th (${res.from} → ${res.to}), tanpa dividen. Expense ratio & AUM: arsip, belum diverifikasi 2026`;
             ok++;
         } catch (e) {
             fail++;
             console.warn(`skip ${inst.ticker}: ${e.message}`);
         }
+        await sleep(250);
+    }
+    // Return per tahun kalender (ETF di yearlyRef)
+    for (const ref of json.yearlyRef || []) {
+        if (!ref.stooq) continue;
+        try {
+            const y = computeYearly(await fetchStooq(ref.stooq));
+            if (y.length >= 3) {
+                ref.yearly = y;
+                const c = computeCagr(await fetchStooq(ref.stooq));
+                if (c) ref.cagr10y = c.cagr;
+            }
+        } catch (e) { console.warn(`skip yearly ${ref.ticker}: ${e.message}`); }
         await sleep(250);
     }
     json.meta.builtAt = new Date().toISOString();

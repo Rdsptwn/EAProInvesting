@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261101t15';
+window.EWOKS_ASSET_V = '20261102t07';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -112,7 +112,7 @@ function highlightNavForCurrentPage() {
 
     const edu = ['edukasi', 'fixed-income', 'bandarmology-edu', 'quiz'];
     const tools = ['watchlist', 'jurnal', 'pensiun', 'kalkulator', 'bandar'];
-    const db = ['konglo', 'broker', 'pasar-alternatif', 'pasar-global'];
+    const db = ['konglo', 'broker', 'pasar-global'];
 
     if (page === 'home') {
         document.getElementById('nav-home')?.classList.add('active');
@@ -135,39 +135,11 @@ function highlightNavForCurrentPage() {
     }
 }
 
-/** Isi menu Obligasi meski HTML lama (2 item) masih ter-cache di GitHub Pages. */
-function ensurePasarAlternatifNav() {
-    const label = '<i class="fas fa-layer-group w-5 text-emerald-500"></i> Obligasi, RD & ETF';
-    if (!document.getElementById('nav-pasar-alternatif')) {
-        const broker = document.getElementById('nav-broker');
-        const menu = broker && broker.parentElement;
-        if (menu) {
-            const btn = document.createElement('button');
-            btn.id = 'nav-pasar-alternatif';
-            btn.className = 'dropdown-item border-t border-slate-100 mt-1 pt-2';
-            btn.innerHTML = label;
-            btn.onclick = () => showPage('pasar-alternatif');
-            menu.appendChild(btn);
-        }
-        const parent = document.getElementById('nav-database-parent');
-        if (parent && parent.nextElementSibling) parent.nextElementSibling.classList.add('dropdown-end');
-    }
-    const mParent = document.getElementById('m-nav-database-parent');
-    const mMenu = mParent && mParent.nextElementSibling;
-    if (mMenu && !mMenu.querySelector('[onclick*="pasar-alternatif"]')) {
-        const btn = document.createElement('button');
-        btn.className = 'dropdown-item';
-        btn.innerHTML = label;
-        btn.onclick = () => showPage('pasar-alternatif');
-        mMenu.appendChild(btn);
-    }
-}
-
 /** Tambahkan menu "Pasar Global" ke semua halaman (HTML lama tidak perlu diedit satu per satu). */
 function ensurePasarGlobalNav() {
     const label = '<i class="fas fa-earth-asia w-5 text-blue-500"></i> Pasar Global (ETF/RD/SBN)';
     if (!document.getElementById('nav-pasar-global')) {
-        const anchor = document.getElementById('nav-pasar-alternatif') || document.getElementById('nav-broker');
+        const anchor = document.getElementById('nav-broker');
         const menu = anchor && anchor.parentElement;
         if (menu) {
             const btn = document.createElement('button');
@@ -227,7 +199,6 @@ function showPage(pageId) {
         bandar: 'bandar.html',
         konglo: 'konglo.html',
         broker: 'broker.html',
-        'pasar-alternatif': 'pasar-alternatif.html',
         'pasar-global': 'pasar-global.html'
     };
     const url = routes[pageId];
@@ -465,7 +436,7 @@ function getFundaYearLabels(date = new Date()) {
 
 function yahooFundaBadgeText(date = new Date()) {
     const { label } = currentLapkeuQuarter(date);
-    return `Yahoo Finance (tahunan + ${label})`;
+    return `Lapkeu tahunan + ${label}`;
 }
 
 function kongloDailyStampText() {
@@ -476,9 +447,9 @@ function paintDataStamps(snap) {
     const built = snap?.meta?.built;
     const liveAt = snap?.meta?.liveAt;
     const text = liveAt
-        ? `Harga live: ${formatStampWib(liveAt)} · Yahoo Finance (tertunda ±10 menit)`
+        ? `Harga live: ${formatStampWib(liveAt)} (tertunda ±10 menit)`
         : built
-            ? `Update data pasar: ${formatStampWib(built)} · Yahoo Finance`
+            ? `Update data pasar: ${formatStampWib(built)}`
             : 'Update data pasar: snapshot belum tersedia';
     const home = document.getElementById('data-updated-stamp');
     if (home) home.textContent = text;
@@ -898,7 +869,6 @@ function scrollToTop() {
 
 window.addEventListener('load', () => {
     checkTheme();
-    ensurePasarAlternatifNav();
     ensurePasarGlobalNav();
     highlightNavForCurrentPage();
 

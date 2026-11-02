@@ -87,8 +87,8 @@ function showDetail(groupId) {
     if (priceNote) {
         const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;
         priceNote.textContent = built && typeof formatStampWib === 'function'
-            ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
-            : 'Harga emiten dari Yahoo .JK (data pasar belum tersedia)';
+            ? `Harga emiten · update ${formatStampWib(built)}`
+            : 'Harga emiten (data pasar belum tersedia)';
     }
 
     const stockList = document.getElementById('stock-list');
@@ -99,8 +99,8 @@ function showDetail(groupId) {
         if (priceNote) {
             const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;
             priceNote.textContent = built && typeof formatStampWib === 'function'
-                ? `Harga emiten Yahoo .JK · ${formatStampWib(built)}`
-                : 'Harga emiten dari Yahoo .JK (data pasar belum tersedia)';
+                ? `Harga emiten · update ${formatStampWib(built)}`
+                : 'Harga emiten (data pasar belum tersedia)';
         }
         stockList.innerHTML = '';
         group.stocks.forEach(stock => {
@@ -114,7 +114,7 @@ function showDetail(groupId) {
                 <p class="font-bold text-slate-800 text-xs mb-2 leading-snug">${company}</p>
                 <span class="inline-block bg-emerald-100 text-emerald-700 text-[10px] uppercase px-2 py-1 rounded font-bold mb-3">${stock.sector}</span>
                 <div class="bg-white p-3 rounded-xl border border-slate-100 mb-3">
-                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga Yahoo (.JK)' : 'Harga (data pasar belum ada)'}</p>
+                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga terakhir' : 'Harga (data pasar belum ada)'}</p>
                     <p class="text-lg font-black text-slate-800 leading-tight">${q.price}</p>
                     <p class="text-xs font-bold ${q.chgClass}">${q.chg} hari ini</p>
                 </div>
@@ -503,9 +503,9 @@ function showFunda(ticker, company, sector) {
                 const q = typeof getIdxQuote === 'function' ? getIdxQuote(ticker) : null;
                 if (q?.price != null && typeof formatIdxPrice === 'function') {
                     const chg = q.changePct != null ? ` (${q.changePct >= 0 ? '+' : ''}${q.changePct.toFixed(2)}%)` : '';
-                    liveEl.textContent = `Harga Yahoo: Rp ${formatIdxPrice(q.price)}${chg}`;
+                    liveEl.textContent = `Harga: Rp ${formatIdxPrice(q.price)}${chg}`;
                 } else {
-                    liveEl.textContent = 'Harga Yahoo: belum tersedia';
+                    liveEl.textContent = 'Harga: belum tersedia';
                 }
             };
             paintLive();

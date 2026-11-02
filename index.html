@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261101t15">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261102t07">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="home">
 
@@ -154,9 +154,6 @@
                             <button onclick="showPage('broker')" id="nav-broker" class="dropdown-item">
                                 <i class="fas fa-building w-5 text-slate-500"></i> Broker Database
                             </button>
-                            <button onclick="showPage('pasar-alternatif')" id="nav-pasar-alternatif" class="dropdown-item border-t border-slate-100 mt-1 pt-2">
-                                <i class="fas fa-layer-group w-5 text-emerald-500"></i> Obligasi, RD & ETF
-                            </button>
                         </div>
                     </div>
                     
@@ -189,7 +186,7 @@
                 <div class="premium-card p-6 md:p-8 flex flex-col justify-between border-blue-100 bg-blue-50/30">
                     <div>
                         <h3 class="font-black text-slate-900 text-lg mb-1 uppercase tracking-tight">Market Sentiment</h3>
-                        <p class="text-xs text-slate-500 mb-2 font-medium">Data Yahoo (bukan acak). Stamp update di bawah.</p>
+                        <p class="text-xs text-slate-500 mb-2 font-medium">Data asli, bukan acak. Waktu update di bawah.</p>
                         <p id="data-updated-stamp" class="text-[10px] font-bold text-blue-600 mb-4">Memuat update data…</p>
                         <div class="space-y-4">
                             <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-blue-50 shadow-sm">
@@ -324,13 +321,13 @@
                     <p class="text-xs text-slate-500 leading-relaxed mb-4">Akses data 94 broker resmi BEI. Kenali broker ritel vs asing vs lokal (bandar).</p>
                     <span class="text-xs font-bold text-slate-600">Cari Kode <i class="fas fa-arrow-right ml-1"></i></span>
                 </div>
-                <div onclick="showPage('pasar-alternatif')" class="premium-card p-6 cursor-pointer group border-emerald-100 bg-emerald-50/20 hover:bg-emerald-50/40 transition-all">
+                <div onclick="showPage('pasar-global')" class="premium-card p-6 cursor-pointer group border-emerald-100 bg-emerald-50/20 hover:bg-emerald-50/40 transition-all">
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <i class="fas fa-layer-group text-xl"></i>
                     </div>
-                    <h3 class="font-extrabold text-slate-900 mb-2">Obligasi, RD & ETF</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-4">Top kinerja 10 tahun: obligasi, reksa dana, dan ETF global — diversifikasi di luar saham.</p>
-                    <span class="text-xs font-bold text-emerald-600">Lihat Ranking <i class="fas fa-arrow-right ml-1"></i></span>
+                    <h3 class="font-extrabold text-slate-900 mb-2">Pasar Global (ETF/RD/SBN)</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">Ratusan ETF, reksa dana, dan SBN: klasifikasi pasar, CAGR, dan return per tahun.</p>
+                    <span class="text-xs font-bold text-emerald-600">Buka Pasar Global <i class="fas fa-arrow-right ml-1"></i></span>
                 </div>
             </div>
 
@@ -425,13 +422,12 @@
             <div class="dropdown-content !bottom-full !top-auto !left-auto !right-0 mb-4 w-48 shadow-2xl">
                 <button onclick="showPage('konglo')" class="dropdown-item"><i class="fas fa-project-diagram w-5 text-indigo-500"></i> Peta Konglo</button>
                 <button onclick="showPage('broker')" class="dropdown-item"><i class="fas fa-building w-5 text-slate-500"></i> Broker DB</button>
-                <button onclick="showPage('pasar-alternatif')" class="dropdown-item"><i class="fas fa-layer-group w-5 text-emerald-500"></i> Obligasi, RD & ETF</button>
             </div>
         </div>
     </div>
 
 
     <script>window.EWOKS_FINNHUB_TOKEN = ""; /* isi token Finnhub (gratis): https://finnhub.io/register */</script>
-    <script src="assets/js/ewoks-core.js?v=20261101t15"></script>
+    <script src="assets/js/ewoks-core.js?v=20261102t07"></script>
 </body>
 </html>

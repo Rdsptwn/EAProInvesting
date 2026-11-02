@@ -404,7 +404,7 @@ async function fetchFundaFromFinnhub(ticker, sector, token) {
 
         source: 'finnhub',
 
-        sourceLabel: 'Finnhub (data emiten IDX)',
+        sourceLabel: 'Lapkeu tahunan',
 
         updated: new Date().toISOString().slice(0, 10)
 
@@ -449,7 +449,7 @@ function bundleEntryForTicker(bundle, ticker) {
     const label =
         (typeof yahooFundaBadgeText === 'function')
             ? yahooFundaBadgeText()
-            : (entry.sourceLabel || (src === 'yahoo' ? 'Yahoo Finance (data pasar .JK)' : 'Database Ewoks (referensi pasar)'));
+            : (entry.sourceLabel || (src === 'yahoo' ? 'Lapkeu tahunan' : 'Data referensi'));
 
     return cloneFundaEntry(entry, src, label);
 
@@ -501,7 +501,7 @@ async function resolveKongloFunda(ticker, sector) {
 
     if (shouldUseFundaCache(cached, bundled)) {
 
-        return { data: cached, source: cached.source || 'cache', sourceLabel: cached.sourceLabel || 'Cache lokal' };
+        return { data: cached, source: cached.source || 'cache', sourceLabel: cached.sourceLabel || 'Lapkeu tahunan' };
 
     }
 
@@ -542,7 +542,7 @@ async function resolveKongloFunda(ticker, sector) {
         data.sourceLabel = 'Laporan keuangan emiten ini belum tersedia di database';
         return { data, source: 'unavailable', sourceLabel: data.sourceLabel };
     }
-    return { data, source: data.source || 'curated', sourceLabel: data.sourceLabel || 'Data kurasi (laporan keuangan publik IDX/emiten)' };
+    return { data, source: data.source || 'curated', sourceLabel: data.sourceLabel || 'Data kurasi' };
 
 }
 

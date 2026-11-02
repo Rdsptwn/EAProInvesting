@@ -1,31 +1,20 @@
 {
  "meta": {
   "asOf": "2026-11-01",
-  "note": "Angka CAGR ETF AS dihitung ulang otomatis dari harga penutupan bulanan (Stooq) oleh workflow. Expense ratio, AUM, serta RD/SBN adalah data arsip dan ditandai belum diverifikasi 2026 sampai diperbarui.",
+  "note": "CAGR ETF AS dihitung ulang otomatis dari harga penutupan bulanan oleh workflow. Expense ratio, AUM, serta RD/SBN adalah data arsip dan ditandai belum diverifikasi 2026 sampai diperbarui.",
   "benchmarks": {
    "sbn10y": {
     "value": 7.64,
     "unit": "%",
     "asOf": "2026-10-30",
-    "label": "Yield SBN 10 tahun",
-    "source": "periskop.id",
-    "url": "https://periskop.id/makro/20261030/yield-sbn-10-tahun-sentuh-764-lebih-tinggi-74-bps-dari-asumsi-apbn-2026"
+    "label": "Yield SBN 10 tahun"
    }
   },
-  "sources": [
-   {
-    "name": "Stooq — harga penutupan bulanan ETF (alternatif Yahoo/TradingView)",
-    "url": "https://stooq.com"
-   },
-   {
-    "name": "Yield SBN 10 tahun (judul berita 30 Okt 2026)",
-    "url": "https://periskop.id/makro/20261030/yield-sbn-10-tahun-sentuh-764-lebih-tinggi-74-bps-dari-asumsi-apbn-2026"
-   }
-  ],
   "corrections": [
    "FM: nama diperbarui (dulu \"Frontier 100\")",
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
-  ]
+  ],
+  "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus."
  },
  "instruments": [
   {
@@ -43,7 +32,6 @@
    "desc": "Fokus investasi saham undervalue berkapitalisasi besar & menengah di Bursa Efek Indonesia.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -61,7 +49,6 @@
    "desc": "Fokus pada obligasi korporasi berperingkat A- hingga AAA untuk kupon stabil bulanan.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -79,7 +66,6 @@
    "desc": "Instrumen pasar uang dan deposito syariah tenor pendek dengan likuiditas tinggi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -97,7 +83,6 @@
    "desc": "ETF obligasi pemerintah (SBN) terlikuid yang melacak Indeks IBPA Sovereign.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -115,7 +100,6 @@
    "desc": "Surat Berharga Negara benchmark 10-Tahun dengan kupon fixed dijamin APBN.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -133,7 +117,6 @@
    "desc": "Surat utang negara tenor panjang acuan institusi dana pensiun dan asuransi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -151,7 +134,6 @@
    "desc": "SBN Ritel non-tradable/tradable khusus investor individu warga negara Indonesia.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -169,7 +151,6 @@
    "desc": "Portofolio saham terdiversifikasi pada sektor perbankan, telekomunikasi, dan energi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -187,7 +168,6 @@
    "desc": "Reksa dana pasar uang terbesar yang menempatkan dana pada deposito BUMN.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -205,7 +185,6 @@
    "desc": "Fokus pada saham-saham pilihan dengan kapabilitas pertumbuhan tinggi jangka panjang.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -223,7 +202,6 @@
    "desc": "Reksa dana saham dengan bobot tinggi di saham-saham kapitalisasi besar BEI.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -241,7 +219,6 @@
    "desc": "Reksa dana saham legendaris fokus pada big cap bank dan komoditas.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -259,7 +236,6 @@
    "desc": "Penempatan pasar uang syariah likuiditas harian optimal.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -278,7 +254,6 @@
    "status": "etf-as",
    "stooq": "spy.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -297,7 +272,6 @@
    "status": "etf-as",
    "stooq": "qqq.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -316,7 +290,6 @@
    "status": "etf-as",
    "stooq": "dia.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -335,7 +308,6 @@
    "status": "etf-as",
    "stooq": "iwm.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -354,7 +326,6 @@
    "status": "etf-as",
    "stooq": "tlt.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -373,7 +344,6 @@
    "status": "etf-as",
    "stooq": "bnd.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -391,7 +361,6 @@
    "desc": "Instrumen kas teraman berbasis surat utang jangka pendek pemerintah AS.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -410,7 +379,6 @@
    "status": "etf-as",
    "stooq": "ewc.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -429,7 +397,6 @@
    "status": "etf-as",
    "stooq": "ewj.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -448,7 +415,6 @@
    "status": "etf-as",
    "stooq": "ewa.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -467,7 +433,6 @@
    "status": "etf-as",
    "stooq": "ews.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -486,7 +451,6 @@
    "status": "etf-as",
    "stooq": "ewu.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -505,7 +469,6 @@
    "status": "etf-as",
    "stooq": "ewg.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -524,7 +487,6 @@
    "status": "etf-as",
    "stooq": "ewq.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -543,7 +505,6 @@
    "status": "etf-as",
    "stooq": "ewl.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -562,7 +523,6 @@
    "status": "etf-as",
    "stooq": "ewn.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -581,7 +541,6 @@
    "status": "etf-as",
    "stooq": "eis.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -600,7 +559,6 @@
    "status": "etf-as",
    "stooq": "ewd.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -619,7 +577,6 @@
    "status": "etf-as",
    "stooq": "ewp.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -638,7 +595,6 @@
    "status": "etf-as",
    "stooq": "ewi.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -657,7 +613,6 @@
    "status": "etf-as",
    "stooq": "ewh.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -676,7 +631,6 @@
    "status": "etf-as",
    "stooq": "enzl.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -695,7 +649,6 @@
    "status": "etf-as",
    "stooq": "ewo.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -714,7 +667,6 @@
    "status": "etf-as",
    "stooq": "mchi.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -733,7 +685,6 @@
    "status": "etf-as",
    "stooq": "kweb.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -752,7 +703,6 @@
    "status": "etf-as",
    "stooq": "inda.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -770,7 +720,6 @@
    "desc": "Reksa dana saham unggulan domestik India berkinerja fantastis.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -789,7 +738,6 @@
    "status": "etf-as",
    "stooq": "ewz.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -808,7 +756,6 @@
    "status": "etf-as",
    "stooq": "eww.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -827,7 +774,6 @@
    "status": "etf-as",
    "stooq": "ksa.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -846,7 +792,6 @@
    "status": "etf-as",
    "stooq": "ewy.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -865,7 +810,6 @@
    "status": "etf-as",
    "stooq": "ewt.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -884,7 +828,6 @@
    "status": "etf-as",
    "stooq": "tur.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -903,7 +846,6 @@
    "status": "etf-as",
    "stooq": "eza.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -922,7 +864,6 @@
    "status": "etf-as",
    "stooq": "uae.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -941,7 +882,6 @@
    "status": "etf-as",
    "stooq": "ech.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -960,7 +900,6 @@
    "status": "etf-as",
    "stooq": "gxg.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -979,7 +918,6 @@
    "status": "etf-as",
    "stooq": "epu.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -998,7 +936,6 @@
    "status": "etf-as",
    "stooq": "thd.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1017,7 +954,6 @@
    "status": "etf-as",
    "stooq": "ewm.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1036,7 +972,6 @@
    "status": "etf-as",
    "stooq": "ephe.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1055,7 +990,6 @@
    "status": "etf-as",
    "stooq": "egpt.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1074,7 +1008,6 @@
    "status": "etf-as",
    "stooq": "grek.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1093,7 +1026,6 @@
    "status": "etf-as",
    "stooq": "vnm.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1111,7 +1043,6 @@
    "desc": "Fund investasi saham pilihan di bursa Ho Chi Minh City.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1130,7 +1061,6 @@
    "status": "etf-as",
    "stooq": "pak.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1149,7 +1079,6 @@
    "status": "etf-as",
    "stooq": "fm.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1167,7 +1096,6 @@
    "desc": "Fokus pada industri energi panas bumi, perikanan, dan perbankan Islandia.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1185,7 +1113,6 @@
    "desc": "Pariwisata Laut Adriatik, telekomunikasi, dan perbankan Kroasia.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1203,7 +1130,6 @@
    "desc": "Fintech seluler M-Pesa, perbankan Afrika Timur, dan agribisnis.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1221,7 +1147,6 @@
    "desc": "Industri garmen tekstil ekspor dan perbankan ritel domestik.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1239,7 +1164,6 @@
    "desc": "Saham unggulan perbankan dan energi dengan dividen tinggi di Romania.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1257,7 +1181,6 @@
    "desc": "Farmasi dan logistik pelabuhan teratur di kawasan Eropa Tengah.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1275,7 +1198,6 @@
    "desc": "Korporasi digital & perbankan di Estonia, Latvia, dan Lithuania.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1294,7 +1216,6 @@
    "status": "etf-as",
    "stooq": "argt.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1313,7 +1234,6 @@
    "status": "etf-as",
    "stooq": "nge.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1331,7 +1251,6 @@
    "desc": "Obligasi negara dalam skenario krisis geopolitik perang.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1349,7 +1268,6 @@
    "desc": "Lindung nilai aset di tengah sejarah hiperinflasi mata uang.",
    "status": "indikatif",
    "cagrBasis": "arsip",
-   "source": "Tidak ditemukan sebagai produk nyata/ticker resmi — hanya acuan indikatif dari file lama",
    "dataAsOf": null
   },
   {
@@ -1367,7 +1285,6 @@
    "desc": "Reksa dana saham unggulan fokus blue-chip LQ45.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1385,7 +1302,6 @@
    "desc": "Investasi berimbang pada saham berkualitas tinggi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1403,7 +1319,6 @@
    "desc": "Fokus pada saham value berfundamental kuat.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1421,7 +1336,6 @@
    "desc": "Reksa dana saham dengan seleksi emiten ketat.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1439,7 +1353,6 @@
    "desc": "Obligasi korporasi pilihan berperingkat investment grade.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1457,7 +1370,6 @@
    "desc": "Pendapatan tetap kupon optimal.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1475,7 +1387,6 @@
    "desc": "Sukuk tabungan ritel syariah.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1493,7 +1404,6 @@
    "desc": "Sukuk tabungan mengambang dengan batas minimal.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1511,7 +1421,6 @@
    "desc": "SBN tenor panjang super aman.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1530,7 +1439,6 @@
    "status": "etf-as",
    "stooq": "vti.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1549,7 +1457,6 @@
    "status": "etf-as",
    "stooq": "vug.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1568,7 +1475,6 @@
    "status": "etf-as",
    "stooq": "vtv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1587,7 +1493,6 @@
    "status": "etf-as",
    "stooq": "schd.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1606,7 +1511,6 @@
    "status": "etf-as",
    "stooq": "agg.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1625,7 +1529,6 @@
    "status": "etf-as",
    "stooq": "gld.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1644,7 +1547,6 @@
    "status": "etf-as",
    "stooq": "dbc.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1663,7 +1565,6 @@
    "status": "etf-as",
    "stooq": "icln.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1682,7 +1583,6 @@
    "status": "etf-as",
    "stooq": "arkk.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1701,7 +1601,6 @@
    "status": "etf-as",
    "stooq": "jepi.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1720,7 +1619,6 @@
    "status": "etf-as",
    "stooq": "dxj.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1739,7 +1637,6 @@
    "status": "etf-as",
    "stooq": "ezu.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1757,7 +1654,6 @@
    "status": "etf-as",
    "stooq": "iefa.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1775,7 +1671,6 @@
    "status": "etf-as",
    "stooq": "vea.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1793,7 +1688,6 @@
    "status": "etf-as",
    "stooq": "vwo.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1811,7 +1705,6 @@
    "status": "etf-as",
    "stooq": "iemg.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1830,7 +1723,6 @@
    "status": "etf-as",
    "stooq": "flin.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1849,7 +1741,6 @@
    "status": "etf-as",
    "stooq": "epi.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1868,7 +1759,6 @@
    "status": "etf-as",
    "stooq": "vnam.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1887,7 +1777,6 @@
    "status": "etf-as",
    "stooq": "sdiv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -1905,7 +1794,6 @@
    "desc": "Pasar uang syariah.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1923,7 +1811,6 @@
    "desc": "Pendapatan tetap unggulan.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1941,7 +1828,6 @@
    "desc": "Likuiditas tinggi instan.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1959,7 +1845,6 @@
    "desc": "Obligasi kupon tinggi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1977,7 +1862,6 @@
    "desc": "SBN dan korporasi.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -1995,7 +1879,6 @@
    "desc": "Penempatan kas aman.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -2013,7 +1896,6 @@
    "desc": "Fokus penuh SBN.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
   },
   {
@@ -2032,7 +1914,6 @@
    "status": "etf-as",
    "stooq": "rsp.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2051,7 +1932,6 @@
    "status": "etf-as",
    "stooq": "vym.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2070,7 +1950,6 @@
    "status": "etf-as",
    "stooq": "scha.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2089,7 +1968,6 @@
    "status": "etf-as",
    "stooq": "pff.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2108,7 +1986,6 @@
    "status": "etf-as",
    "stooq": "bsv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2127,7 +2004,6 @@
    "status": "etf-as",
    "stooq": "biv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2146,7 +2022,6 @@
    "status": "etf-as",
    "stooq": "shy.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2165,7 +2040,6 @@
    "status": "etf-as",
    "stooq": "ief.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2184,7 +2058,6 @@
    "status": "etf-as",
    "stooq": "bil.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2203,7 +2076,6 @@
    "status": "etf-as",
    "stooq": "smh.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2222,7 +2094,6 @@
    "status": "etf-as",
    "stooq": "igv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2241,7 +2112,6 @@
    "status": "etf-as",
    "stooq": "xlv.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2260,7 +2130,6 @@
    "status": "etf-as",
    "stooq": "xlf.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2279,7 +2148,6 @@
    "status": "etf-as",
    "stooq": "xle.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2298,7 +2166,6 @@
    "status": "etf-as",
    "stooq": "xlp.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2317,7 +2184,6 @@
    "status": "etf-as",
    "stooq": "xli.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2336,7 +2202,6 @@
    "status": "etf-as",
    "stooq": "xlu.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2355,7 +2220,6 @@
    "status": "etf-as",
    "stooq": "xlb.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2374,7 +2238,6 @@
    "status": "etf-as",
    "stooq": "xlre.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2393,7 +2256,6 @@
    "status": "etf-as",
    "stooq": "xlc.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2412,7 +2274,6 @@
    "status": "etf-as",
    "stooq": "lit.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2431,7 +2292,6 @@
    "status": "etf-as",
    "stooq": "fdn.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2450,7 +2310,6 @@
    "status": "etf-as",
    "stooq": "ihak.us",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026 (CAGR diperbarui otomatis dari harga Stooq oleh workflow)",
    "dataAsOf": null
   },
   {
@@ -2468,8 +2327,1530 @@
    "desc": "Ekposur pasar berkembang Eropa.",
    "status": "arsip",
    "cagrBasis": "arsip",
-   "source": "Arsip file ETF_RD_KONGLO.html — belum diverifikasi 2026",
    "dataAsOf": null
+  }
+ ],
+ "yearlyRef": [
+  {
+   "id": "y-smh",
+   "group": "ETF",
+   "ticker": "SMH",
+   "name": "VanEck Semiconductor ETF",
+   "focus": "Semikonduktor Global",
+   "cagr10y": 30.8,
+   "basis": "pasar",
+   "stooq": "smh.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 36.5
+    },
+    {
+     "year": 2018,
+     "return": -10.8
+    },
+    {
+     "year": 2019,
+     "return": 62
+    },
+    {
+     "year": 2020,
+     "return": 54.5
+    },
+    {
+     "year": 2021,
+     "return": 41.4
+    },
+    {
+     "year": 2022,
+     "return": -34.3
+    },
+    {
+     "year": 2023,
+     "return": 72.3
+    },
+    {
+     "year": 2024,
+     "return": 38.5
+    },
+    {
+     "year": 2025,
+     "return": 48.7
+    },
+    {
+     "year": 2026,
+     "return": 45.1
+    }
+   ]
+  },
+  {
+   "id": "y-qqq",
+   "group": "ETF",
+   "ticker": "QQQ",
+   "name": "Invesco QQQ Trust",
+   "focus": "Saham AS — Teknologi",
+   "cagr10y": 19.4,
+   "basis": "pasar",
+   "stooq": "qqq.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 31.5
+    },
+    {
+     "year": 2018,
+     "return": -1
+    },
+    {
+     "year": 2019,
+     "return": 37.8
+    },
+    {
+     "year": 2020,
+     "return": 47.6
+    },
+    {
+     "year": 2021,
+     "return": 26.8
+    },
+    {
+     "year": 2022,
+     "return": -33.1
+    },
+    {
+     "year": 2023,
+     "return": 53.8
+    },
+    {
+     "year": 2024,
+     "return": 24.8
+    },
+    {
+     "year": 2025,
+     "return": 20.2
+    },
+    {
+     "year": 2026,
+     "return": 12.4
+    }
+   ]
+  },
+  {
+   "id": "y-spy",
+   "group": "ETF",
+   "ticker": "SPY",
+   "name": "SPDR S&P 500 ETF",
+   "focus": "Saham AS — Large Cap",
+   "cagr10y": 13.1,
+   "basis": "pasar",
+   "stooq": "spy.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 19.4
+    },
+    {
+     "year": 2018,
+     "return": -6.3
+    },
+    {
+     "year": 2019,
+     "return": 28.8
+    },
+    {
+     "year": 2020,
+     "return": 16.2
+    },
+    {
+     "year": 2021,
+     "return": 27
+    },
+    {
+     "year": 2022,
+     "return": -19.5
+    },
+    {
+     "year": 2023,
+     "return": 24.3
+    },
+    {
+     "year": 2024,
+     "return": 23.3
+    },
+    {
+     "year": 2025,
+     "return": 16.4
+    },
+    {
+     "year": 2026,
+     "return": 10.8
+    }
+   ]
+  },
+  {
+   "id": "y-vti",
+   "group": "ETF",
+   "ticker": "VTI",
+   "name": "Vanguard Total Stock Market",
+   "focus": "Saham AS — Total Market",
+   "cagr10y": 12.6,
+   "basis": "pasar",
+   "stooq": "vti.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 19
+    },
+    {
+     "year": 2018,
+     "return": -7
+    },
+    {
+     "year": 2019,
+     "return": 28.2
+    },
+    {
+     "year": 2020,
+     "return": 19
+    },
+    {
+     "year": 2021,
+     "return": 24
+    },
+    {
+     "year": 2022,
+     "return": -20.8
+    },
+    {
+     "year": 2023,
+     "return": 24.1
+    },
+    {
+     "year": 2024,
+     "return": 22.2
+    },
+    {
+     "year": 2025,
+     "return": 15.7
+    },
+    {
+     "year": 2026,
+     "return": 10.8
+    }
+   ]
+  },
+  {
+   "id": "y-gld",
+   "group": "ETF",
+   "ticker": "GLD",
+   "name": "SPDR Gold Shares",
+   "focus": "Emas",
+   "cagr10y": 12.3,
+   "basis": "pasar",
+   "stooq": "gld.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 12.8
+    },
+    {
+     "year": 2018,
+     "return": -1.9
+    },
+    {
+     "year": 2019,
+     "return": 17.9
+    },
+    {
+     "year": 2020,
+     "return": 24.8
+    },
+    {
+     "year": 2021,
+     "return": -4.1
+    },
+    {
+     "year": 2022,
+     "return": -0.8
+    },
+    {
+     "year": 2023,
+     "return": 12.7
+    },
+    {
+     "year": 2024,
+     "return": 26.7
+    },
+    {
+     "year": 2025,
+     "return": 63.7
+    },
+    {
+     "year": 2026,
+     "return": -10.2
+    }
+   ]
+  },
+  {
+   "id": "y-vt",
+   "group": "ETF",
+   "ticker": "VT",
+   "name": "Vanguard Total World Stock",
+   "focus": "Saham Dunia",
+   "cagr10y": 9.9,
+   "basis": "pasar",
+   "stooq": "vt.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 21.7
+    },
+    {
+     "year": 2018,
+     "return": -11.9
+    },
+    {
+     "year": 2019,
+     "return": 23.7
+    },
+    {
+     "year": 2020,
+     "return": 14.3
+    },
+    {
+     "year": 2021,
+     "return": 16
+    },
+    {
+     "year": 2022,
+     "return": -19.8
+    },
+    {
+     "year": 2023,
+     "return": 19.4
+    },
+    {
+     "year": 2024,
+     "return": 14.2
+    },
+    {
+     "year": 2025,
+     "return": 20.1
+    },
+    {
+     "year": 2026,
+     "return": 10.1
+    }
+   ]
+  },
+  {
+   "id": "y-schd",
+   "group": "ETF",
+   "ticker": "SCHD",
+   "name": "Schwab US Dividend Equity",
+   "focus": "Dividen AS",
+   "cagr10y": 9.6,
+   "basis": "pasar",
+   "stooq": "schd.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 17.4
+    },
+    {
+     "year": 2018,
+     "return": -8.2
+    },
+    {
+     "year": 2019,
+     "return": 23.3
+    },
+    {
+     "year": 2020,
+     "return": 10.7
+    },
+    {
+     "year": 2021,
+     "return": 26
+    },
+    {
+     "year": 2022,
+     "return": -6.5
+    },
+    {
+     "year": 2023,
+     "return": 0.8
+    },
+    {
+     "year": 2024,
+     "return": 7.7
+    },
+    {
+     "year": 2025,
+     "return": 0.4
+    },
+    {
+     "year": 2026,
+     "return": 30.4
+    }
+   ]
+  },
+  {
+   "id": "y-ixc",
+   "group": "ETF",
+   "ticker": "IXC",
+   "name": "iShares Global Energy",
+   "focus": "Energi Global",
+   "cagr10y": 6.5,
+   "basis": "pasar",
+   "stooq": "ixc.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 2.2
+    },
+    {
+     "year": 2018,
+     "return": -17.4
+    },
+    {
+     "year": 2019,
+     "return": 5
+    },
+    {
+     "year": 2020,
+     "return": -34.1
+    },
+    {
+     "year": 2021,
+     "return": 35.5
+    },
+    {
+     "year": 2022,
+     "return": 41.7
+    },
+    {
+     "year": 2023,
+     "return": 0.3
+    },
+    {
+     "year": 2024,
+     "return": -2.4
+    },
+    {
+     "year": 2025,
+     "return": 9.8
+    },
+    {
+     "year": 2026,
+     "return": 53.1
+    }
+   ]
+  },
+  {
+   "id": "y-eem",
+   "group": "ETF",
+   "ticker": "EEM",
+   "name": "iShares MSCI Emerging Markets",
+   "focus": "Saham Pasar Emerging",
+   "cagr10y": 5.6,
+   "basis": "pasar",
+   "stooq": "eem.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 34.6
+    },
+    {
+     "year": 2018,
+     "return": -17.1
+    },
+    {
+     "year": 2019,
+     "return": 14.9
+    },
+    {
+     "year": 2020,
+     "return": 15.2
+    },
+    {
+     "year": 2021,
+     "return": -5.5
+    },
+    {
+     "year": 2022,
+     "return": -22.4
+    },
+    {
+     "year": 2023,
+     "return": 6.1
+    },
+    {
+     "year": 2024,
+     "return": 4
+    },
+    {
+     "year": 2025,
+     "return": 30.8
+    },
+    {
+     "year": 2026,
+     "return": 11.6
+    }
+   ]
+  },
+  {
+   "id": "y-vwo",
+   "group": "ETF",
+   "ticker": "VWO",
+   "name": "Vanguard FTSE Emerging Markets",
+   "focus": "Saham Emerging (FTSE)",
+   "cagr10y": 4.4,
+   "basis": "pasar",
+   "stooq": "vwo.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 28.3
+    },
+    {
+     "year": 2018,
+     "return": -17
+    },
+    {
+     "year": 2019,
+     "return": 16.7
+    },
+    {
+     "year": 2020,
+     "return": 12.7
+    },
+    {
+     "year": 2021,
+     "return": -1.3
+    },
+    {
+     "year": 2022,
+     "return": -21.2
+    },
+    {
+     "year": 2023,
+     "return": 5.4
+    },
+    {
+     "year": 2024,
+     "return": 7.2
+    },
+    {
+     "year": 2025,
+     "return": 22.1
+    },
+    {
+     "year": 2026,
+     "return": 3.3
+    }
+   ]
+  },
+  {
+   "id": "y-vnq",
+   "group": "ETF",
+   "ticker": "VNQ",
+   "name": "Vanguard Real Estate ETF",
+   "focus": "Properti / REIT AS",
+   "cagr10y": 1.6,
+   "basis": "pasar",
+   "stooq": "vnq.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 0.5
+    },
+    {
+     "year": 2018,
+     "return": -10.1
+    },
+    {
+     "year": 2019,
+     "return": 24.4
+    },
+    {
+     "year": 2020,
+     "return": -8.5
+    },
+    {
+     "year": 2021,
+     "return": 36.6
+    },
+    {
+     "year": 2022,
+     "return": -28.9
+    },
+    {
+     "year": 2023,
+     "return": 7.1
+    },
+    {
+     "year": 2024,
+     "return": 0.8
+    },
+    {
+     "year": 2025,
+     "return": -0.7
+    },
+    {
+     "year": 2026,
+     "return": 6.2
+    }
+   ]
+  },
+  {
+   "id": "y-hyg",
+   "group": "ETF",
+   "ticker": "HYG",
+   "name": "iShares High Yield Corporate",
+   "focus": "Obligasi High Yield AS",
+   "cagr10y": -1,
+   "basis": "pasar",
+   "stooq": "hyg.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 0.8
+    },
+    {
+     "year": 2018,
+     "return": -7.1
+    },
+    {
+     "year": 2019,
+     "return": 8.4
+    },
+    {
+     "year": 2020,
+     "return": -0.7
+    },
+    {
+     "year": 2021,
+     "return": -0.3
+    },
+    {
+     "year": 2022,
+     "return": -15.4
+    },
+    {
+     "year": 2023,
+     "return": 5.1
+    },
+    {
+     "year": 2024,
+     "return": 1.6
+    },
+    {
+     "year": 2025,
+     "return": 2.5
+    },
+    {
+     "year": 2026,
+     "return": -4
+    }
+   ]
+  },
+  {
+   "id": "y-lqd",
+   "group": "ETF",
+   "ticker": "LQD",
+   "name": "iShares Investment Grade Corporate",
+   "focus": "Obligasi Korporat IG AS",
+   "cagr10y": -1.1,
+   "basis": "pasar",
+   "stooq": "lqd.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 3.7
+    },
+    {
+     "year": 2018,
+     "return": -7.2
+    },
+    {
+     "year": 2019,
+     "return": 13.4
+    },
+    {
+     "year": 2020,
+     "return": 7.9
+    },
+    {
+     "year": 2021,
+     "return": -4.1
+    },
+    {
+     "year": 2022,
+     "return": -20.4
+    },
+    {
+     "year": 2023,
+     "return": 5
+    },
+    {
+     "year": 2024,
+     "return": -3.5
+    },
+    {
+     "year": 2025,
+     "return": 3.1
+    },
+    {
+     "year": 2026,
+     "return": -5.4
+    }
+   ]
+  },
+  {
+   "id": "y-agg",
+   "group": "ETF",
+   "ticker": "AGG",
+   "name": "iShares Core US Aggregate Bond",
+   "focus": "Obligasi AS — Aggregat",
+   "cagr10y": -1.2,
+   "basis": "pasar",
+   "stooq": "agg.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 1.2
+    },
+    {
+     "year": 2018,
+     "return": -2.6
+    },
+    {
+     "year": 2019,
+     "return": 5.5
+    },
+    {
+     "year": 2020,
+     "return": 5.2
+    },
+    {
+     "year": 2021,
+     "return": -3.5
+    },
+    {
+     "year": 2022,
+     "return": -15
+    },
+    {
+     "year": 2023,
+     "return": 2.3
+    },
+    {
+     "year": 2024,
+     "return": -2.4
+    },
+    {
+     "year": 2025,
+     "return": 3.1
+    },
+    {
+     "year": 2026,
+     "return": -3.5
+    }
+   ]
+  },
+  {
+   "id": "y-tlt",
+   "group": "ETF",
+   "ticker": "TLT",
+   "name": "iShares 20+ Year Treasury Bond",
+   "focus": "Obligasi AS — Treasuries Panjang",
+   "cagr10y": -3.8,
+   "basis": "pasar",
+   "stooq": "tlt.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 6.5
+    },
+    {
+     "year": 2018,
+     "return": -4.2
+    },
+    {
+     "year": 2019,
+     "return": 11.5
+    },
+    {
+     "year": 2020,
+     "return": 16.4
+    },
+    {
+     "year": 2021,
+     "return": -6
+    },
+    {
+     "year": 2022,
+     "return": -32.8
+    },
+    {
+     "year": 2023,
+     "return": -0.7
+    },
+    {
+     "year": 2024,
+     "return": -11.7
+    },
+    {
+     "year": 2025,
+     "return": -0.2
+    },
+    {
+     "year": 2026,
+     "return": -6.1
+    }
+   ]
+  },
+  {
+   "id": "y-eido",
+   "group": "ETF",
+   "ticker": "EIDO",
+   "name": "iShares MSCI Indonesia ETF",
+   "focus": "Saham Indonesia (NYSE)",
+   "cagr10y": -8.2,
+   "basis": "pasar",
+   "stooq": "eido.us",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 17.8
+    },
+    {
+     "year": 2018,
+     "return": -12.7
+    },
+    {
+     "year": 2019,
+     "return": 3.4
+    },
+    {
+     "year": 2020,
+     "return": -8.7
+    },
+    {
+     "year": 2021,
+     "return": -1.9
+    },
+    {
+     "year": 2022,
+     "return": -2.5
+    },
+    {
+     "year": 2023,
+     "return": -0.3
+    },
+    {
+     "year": 2024,
+     "return": -17.2
+    },
+    {
+     "year": 2025,
+     "return": 1.2
+    },
+    {
+     "year": 2026,
+     "return": -46.7
+    }
+   ]
+  },
+  {
+   "id": "y-schroder-istimewa",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "Schroder Dana Istimewa",
+   "focus": "Quality growth Indonesia",
+   "manager": "Schroder Investment Management",
+   "cagr10y": 13.1,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 22
+    },
+    {
+     "year": 2017,
+     "return": 15.5
+    },
+    {
+     "year": 2018,
+     "return": -7
+    },
+    {
+     "year": 2019,
+     "return": 8
+    },
+    {
+     "year": 2020,
+     "return": -4
+    },
+    {
+     "year": 2021,
+     "return": 26.5
+    },
+    {
+     "year": 2022,
+     "return": 5.5
+    },
+    {
+     "year": 2023,
+     "return": 10.2
+    },
+    {
+     "year": 2024,
+     "return": 4
+    },
+    {
+     "year": 2025,
+     "return": 13
+    }
+   ],
+   "note": "Estimasi kinerja historis; kinerja masa lalu tidak menjamin masa depan."
+  },
+  {
+   "id": "y-mi-utama",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "Mandiri Investa Utama",
+   "focus": "Large cap Indonesia",
+   "manager": "Mandiri Manajemen Investasi",
+   "cagr10y": 12.4,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 20.1
+    },
+    {
+     "year": 2017,
+     "return": 14
+    },
+    {
+     "year": 2018,
+     "return": -10.2
+    },
+    {
+     "year": 2019,
+     "return": 5.5
+    },
+    {
+     "year": 2020,
+     "return": -6.8
+    },
+    {
+     "year": 2021,
+     "return": 24
+    },
+    {
+     "year": 2022,
+     "return": 6.2
+    },
+    {
+     "year": 2023,
+     "return": 9.1
+    },
+    {
+     "year": 2024,
+     "return": 2.8
+    },
+    {
+     "year": 2025,
+     "return": 11.5
+    }
+   ],
+   "note": "Estimasi dari NAV historis / factsheet (periksa prospektus terbaru)."
+  },
+  {
+   "id": "y-rd-saham-top",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "RD Saham (Top Quartile ID)",
+   "focus": "Ekuitas Indonesia aktif",
+   "manager": "Rata-rata reksa saham terbaik",
+   "cagr10y": 11.8,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 18.2
+    },
+    {
+     "year": 2017,
+     "return": 12.5
+    },
+    {
+     "year": 2018,
+     "return": -8.5
+    },
+    {
+     "year": 2019,
+     "return": 6.2
+    },
+    {
+     "year": 2020,
+     "return": -5.1
+    },
+    {
+     "year": 2021,
+     "return": 22.4
+    },
+    {
+     "year": 2022,
+     "return": 4.8
+    },
+    {
+     "year": 2023,
+     "return": 8.5
+    },
+    {
+     "year": 2024,
+     "return": 3.2
+    },
+    {
+     "year": 2025,
+     "return": 12
+    }
+   ],
+   "note": "Ilustrasi quartile atas kategori RD Saham (OJK); bukan satu produk."
+  },
+  {
+   "id": "y-trimegah-saham",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "Trimegah Asset Management — Saham",
+   "focus": "Saham terpilih IDX",
+   "manager": "Trimegah Asset Management",
+   "cagr10y": 11.2,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 17
+    },
+    {
+     "year": 2017,
+     "return": 11
+    },
+    {
+     "year": 2018,
+     "return": -9.5
+    },
+    {
+     "year": 2019,
+     "return": 4
+    },
+    {
+     "year": 2020,
+     "return": -7.5
+    },
+    {
+     "year": 2021,
+     "return": 21
+    },
+    {
+     "year": 2022,
+     "return": 3.5
+    },
+    {
+     "year": 2023,
+     "return": 7.8
+    },
+    {
+     "year": 2024,
+     "return": 2
+    },
+    {
+     "year": 2025,
+     "return": 10.5
+    }
+   ],
+   "note": "Estimasi; bandingkan NAV resmi di KSEI/OJK."
+  },
+  {
+   "id": "y-rd-campuran",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "RD Campuran (Top Quartile ID)",
+   "focus": "Saham + obligasi",
+   "manager": "Rata-rata reksa campuran terbaik",
+   "cagr10y": 9.5,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 14
+    },
+    {
+     "year": 2017,
+     "return": 10
+    },
+    {
+     "year": 2018,
+     "return": -4
+    },
+    {
+     "year": 2019,
+     "return": 6.5
+    },
+    {
+     "year": 2020,
+     "return": 0.5
+    },
+    {
+     "year": 2021,
+     "return": 16
+    },
+    {
+     "year": 2022,
+     "return": 2
+    },
+    {
+     "year": 2023,
+     "return": 7
+    },
+    {
+     "year": 2024,
+     "return": 4.5
+    },
+    {
+     "year": 2025,
+     "return": 8.5
+    }
+   ],
+   "note": "Ilustrasi kategori RD Campuran."
+  },
+  {
+   "id": "y-rd-pendapatan-tetap",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "RD Pendapatan Tetap (Top Quartile ID)",
+   "focus": "Obligasi & SBN",
+   "manager": "Rata-rata reksa pendapatan tetap",
+   "cagr10y": 7.8,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 10
+    },
+    {
+     "year": 2017,
+     "return": 6.5
+    },
+    {
+     "year": 2018,
+     "return": 4
+    },
+    {
+     "year": 2019,
+     "return": 7.5
+    },
+    {
+     "year": 2020,
+     "return": 8
+    },
+    {
+     "year": 2021,
+     "return": 3
+    },
+    {
+     "year": 2022,
+     "return": -3.5
+    },
+    {
+     "year": 2023,
+     "return": 6.5
+    },
+    {
+     "year": 2024,
+     "return": 5.5
+    },
+    {
+     "year": 2025,
+     "return": 6.8
+    }
+   ],
+   "note": "Ilustrasi kategori RD Pendapatan Tetap."
+  },
+  {
+   "id": "y-sucor-mm",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "Sucorinvest Money Market Fund",
+   "focus": "Instrumen pasar uang",
+   "manager": "Sucorinvest Asset Management",
+   "cagr10y": 5.9,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 6.8
+    },
+    {
+     "year": 2017,
+     "return": 6.2
+    },
+    {
+     "year": 2018,
+     "return": 6.5
+    },
+    {
+     "year": 2019,
+     "return": 6.8
+    },
+    {
+     "year": 2020,
+     "return": 5.5
+    },
+    {
+     "year": 2021,
+     "return": 4.2
+    },
+    {
+     "year": 2022,
+     "return": 5.8
+    },
+    {
+     "year": 2023,
+     "return": 6.5
+    },
+    {
+     "year": 2024,
+     "return": 6.2
+    },
+    {
+     "year": 2025,
+     "return": 5.5
+    }
+   ],
+   "note": "Stabil; return lebih rendah, volatilitas rendah."
+  },
+  {
+   "id": "y-bahana-lancar",
+   "group": "Reksa Dana",
+   "ticker": null,
+   "name": "Bahana Dana Lancar",
+   "focus": "Likuiditas tinggi",
+   "manager": "Bahana TCW Investment Management",
+   "cagr10y": 5.7,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 6.5
+    },
+    {
+     "year": 2017,
+     "return": 6
+    },
+    {
+     "year": 2018,
+     "return": 6.3
+    },
+    {
+     "year": 2019,
+     "return": 6.6
+    },
+    {
+     "year": 2020,
+     "return": 5.4
+    },
+    {
+     "year": 2021,
+     "return": 4
+    },
+    {
+     "year": 2022,
+     "return": 5.6
+    },
+    {
+     "year": 2023,
+     "return": 6.3
+    },
+    {
+     "year": 2024,
+     "return": 6
+    },
+    {
+     "year": 2025,
+     "return": 5.3
+    }
+   ],
+   "note": "Cocok untuk dana darurat jangka pendek."
+  },
+  {
+   "id": "y-corp-id-ig",
+   "group": "Obligasi",
+   "ticker": null,
+   "name": "Obligasi Korporasi IG (Indonesia)",
+   "focus": "Perusahaan investment grade",
+   "cagr10y": 8.5,
+   "yieldNow": 7.2,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 10.5
+    },
+    {
+     "year": 2017,
+     "return": 7
+    },
+    {
+     "year": 2018,
+     "return": 5
+    },
+    {
+     "year": 2019,
+     "return": 8.5
+    },
+    {
+     "year": 2020,
+     "return": 7.5
+    },
+    {
+     "year": 2021,
+     "return": 4
+    },
+    {
+     "year": 2022,
+     "return": -4.5
+    },
+    {
+     "year": 2023,
+     "return": 8
+    },
+    {
+     "year": 2024,
+     "return": 6.5
+    },
+    {
+     "year": 2025,
+     "return": 7.8
+    }
+   ],
+   "note": "Spread di atas SBN; risiko kredit emiten."
+  },
+  {
+   "id": "y-sbn-10y",
+   "group": "Obligasi",
+   "ticker": null,
+   "name": "Surat Utang Negara (SBN) — tenor panjang",
+   "focus": "Pendapatan tetap, risiko kredit negara rendah",
+   "cagr10y": 7.2,
+   "yieldNow": 6.65,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 12.5
+    },
+    {
+     "year": 2017,
+     "return": 5.8
+    },
+    {
+     "year": 2018,
+     "return": 4.2
+    },
+    {
+     "year": 2019,
+     "return": 8.1
+    },
+    {
+     "year": 2020,
+     "return": 9.5
+    },
+    {
+     "year": 2021,
+     "return": 2.1
+    },
+    {
+     "year": 2022,
+     "return": -8.5
+    },
+    {
+     "year": 2023,
+     "return": 6.8
+    },
+    {
+     "year": 2024,
+     "return": 5.2
+    },
+    {
+     "year": 2025,
+     "return": 7
+    }
+   ],
+   "note": "Estimasi total return (kupon + perubahan harga) obligasi pemerintah ID; yield 10Y referensi BI."
+  },
+  {
+   "id": "y-fr-bi",
+   "group": "Obligasi",
+   "ticker": null,
+   "name": "Obligasi Negara (FR) — sekunder BI",
+   "focus": "Likuiditas pasar sekunder",
+   "cagr10y": 7,
+   "yieldNow": 6.55,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 11
+    },
+    {
+     "year": 2017,
+     "return": 6
+    },
+    {
+     "year": 2018,
+     "return": 4.5
+    },
+    {
+     "year": 2019,
+     "return": 7.8
+    },
+    {
+     "year": 2020,
+     "return": 9
+    },
+    {
+     "year": 2021,
+     "return": 1.8
+    },
+    {
+     "year": 2022,
+     "return": -9.2
+    },
+    {
+     "year": 2023,
+     "return": 7.2
+    },
+    {
+     "year": 2024,
+     "return": 5
+    },
+    {
+     "year": 2025,
+     "return": 6.8
+    }
+   ],
+   "note": "Estimasi dari pergerakan yield SBN & kupon."
+  },
+  {
+   "id": "y-ori-ritel",
+   "group": "Obligasi",
+   "ticker": null,
+   "name": "Obligasi Ritel Indonesia (ORI)",
+   "focus": "Investor ritel, kupon tetap",
+   "cagr10y": 6.8,
+   "yieldNow": 6.35,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2016,
+     "return": 8
+    },
+    {
+     "year": 2017,
+     "return": 6.5
+    },
+    {
+     "year": 2018,
+     "return": 5.5
+    },
+    {
+     "year": 2019,
+     "return": 7.2
+    },
+    {
+     "year": 2020,
+     "return": 8.8
+    },
+    {
+     "year": 2021,
+     "return": 3.5
+    },
+    {
+     "year": 2022,
+     "return": -5
+    },
+    {
+     "year": 2023,
+     "return": 6
+    },
+    {
+     "year": 2024,
+     "return": 5.8
+    },
+    {
+     "year": 2025,
+     "return": 6.5
+    }
+   ],
+   "note": "Rata-rata historis seri ORI; per seri berbeda."
+  },
+  {
+   "id": "y-usd-treasury",
+   "group": "Obligasi",
+   "ticker": null,
+   "name": "US Treasury 7–10Y (proxy ETF)",
+   "focus": "Safe haven USD",
+   "cagr10y": -1.4,
+   "yieldNow": 4.35,
+   "basis": "estimasi",
+   "yearly": [
+    {
+     "year": 2017,
+     "return": 0.7
+    },
+    {
+     "year": 2018,
+     "return": -1.3
+    },
+    {
+     "year": 2019,
+     "return": 5.8
+    },
+    {
+     "year": 2020,
+     "return": 8.8
+    },
+    {
+     "year": 2021,
+     "return": -4.1
+    },
+    {
+     "year": 2022,
+     "return": -16.7
+    },
+    {
+     "year": 2023,
+     "return": 0.6
+    },
+    {
+     "year": 2024,
+     "return": -4.1
+    },
+    {
+     "year": 2025,
+     "return": 4
+    },
+    {
+     "year": 2026,
+     "return": -4.6
+    }
+   ],
+   "note": "Return per tahun kalender dari harga penutupan; update otomatis."
   }
  ]
 }
