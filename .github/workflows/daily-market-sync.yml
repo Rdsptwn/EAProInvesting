@@ -1,12 +1,16 @@
 # Sinkron harian IHSG, harga emiten, kalender korporasi, dan pasar global.
-# Jalan Senin–Jumat 17:00 WIB (setelah bursa tutup). Bisa juga manual:
+# Jalan Senin–Jumat 09:00, 13:00, dan 17:00 WIB. Bisa juga manual:
 # Actions → Daily market sync → Run workflow
 
 name: Daily market sync
 
 on:
   schedule:
-    # 10:00 UTC = 17:00 WIB, Senin–Jumat
+    # 02:00 UTC = 09:00 WIB (buka sesi 1), Senin–Jumat
+    - cron: '0 2 * * 1-5'
+    # 06:00 UTC = 13:00 WIB (jelang sesi 2), Senin–Jumat
+    - cron: '0 6 * * 1-5'
+    # 10:00 UTC = 17:00 WIB (setelah tutup), Senin–Jumat
     - cron: '0 10 * * 1-5'
   workflow_dispatch:
 

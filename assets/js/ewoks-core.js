@@ -945,5 +945,7 @@ window.addEventListener('load', () => {
 
     setInterval(updateClock, 1000);
     setInterval(fetchRealIHSG, 15 * 60 * 1000);
+    // Berita: segarkan tiap 10 menit selama tab terlihat
+    setInterval(() => { if (document.visibilityState === 'visible') fetchNews(); }, 10 * 60 * 1000);
 });
 
