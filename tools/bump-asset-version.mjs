@@ -10,7 +10,7 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const now = new Date();
 const ver =
     process.argv[2] ||
-    `${now.toISOString().slice(0, 10).replace(/-/g, '')}t${String(now.getUTCHours()).padStart(2, '0')}`;
+    `${now.toISOString().slice(0, 10).replace(/-/g, '')}t${String(now.getUTCHours()).padStart(2, '0')}${String(now.getUTCMinutes()).padStart(2, '0')}`;
 
 const corePath = path.join(root, 'assets/js/ewoks-core.js');
 let core = fs.readFileSync(corePath, 'utf8');
