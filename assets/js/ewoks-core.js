@@ -648,7 +648,7 @@ function getIdxQuote(ticker) {
  * Kosong = nonaktif: web tetap memakai snapshot harian dari GitHub Actions.
  * Data IDX di Yahoo tertunda ±10 menit; polling hanya saat jam bursa.
  * ====================================================================== */
-const EWOKS_LIVE_API_URL = '';
+const EWOKS_LIVE_API_URL = 'https://ewoks-live.raka-dityaseptiawan.workers.dev';
 const EWOKS_LIVE_POLL_MS = 10 * 60 * 1000; // 10 menit (data IDX di Yahoo memang tertunda ±10 menit)
 let __ewoksLiveBusy = false;
 
