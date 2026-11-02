@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="Ewoks Academy Pro">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/><stop offset="0.55" stop-color="#1e3a8a"/><stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0"/><stop offset="0.5" stop-color="#34d399"/><stop offset="1" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="#fff"><path d="M0 80H1200M0 160H1200M0 240H1200M300 0V320M600 0V320M900 0V320"/></g>
+  <path d="M0 270 L120 240 L220 255 L340 200 L460 218 L580 160 L700 180 L820 120 L940 140 L1060 80 L1200 60" fill="none" stroke="url(#ln)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(70 86) scale(1.625)">
+    <rect width="64" height="64" rx="15" fill="url(#lg)"/>
+    <path d="M12 16h19v6.5H19.5v6.2H29v6.2h-9.5v6.4H31.5V48H12z" fill="#fff"/>
+    <path d="M33.5 48 43 16h6.2L58.6 48h-7l-1.5-5.6h-9.6L39 48zm9.7-11.6h5.6L46 25.5z" fill="#fff" fill-rule="evenodd"/>
+    <path d="M9 58.5 22 54.5l10 2.3 12-3.6 11-2.2" fill="none" stroke="#34d399" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="210" y="138" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="56" font-weight="800" fill="#fff">Ewoks Academy <tspan fill="#93c5fd">Pro</tspan></text>
+  <text x="212" y="180" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#cbd5e1">Edukasi investasi &amp; tools analisis pasar modal Indonesia (IDX)</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="600">
+    <rect x="212" y="206" width="132" height="34" rx="17" fill="#fff" fill-opacity="0.12"/><text x="278" y="228" text-anchor="middle" fill="#fff">Peta Konglo</text>
+    <rect x="356" y="206" width="132" height="34" rx="17" fill="#fff" fill-opacity="0.12"/><text x="422" y="228" text-anchor="middle" fill="#fff">Pasar Global</text>
+    <rect x="500" y="206" width="132" height="34" rx="17" fill="#fff" fill-opacity="0.12"/><text x="566" y="228" text-anchor="middle" fill="#fff">Harga Live</text>
+    <rect x="644" y="206" width="132" height="34" rx="17" fill="#fff" fill-opacity="0.12"/><text x="710" y="228" text-anchor="middle" fill="#fff">Tools Trader</text>
+  </g>
+</svg>
