@@ -1,5 +1,13 @@
 {
- "inflation": { "value": 3.28, "period": "2026-09", "label": "Sep 2026", "asOf": "2026-10-01" },
- "sbn10y": { "value": 7.64, "asOf": "2026-10-30" },
- "builtAt": "2026-11-02T07:40:00.000Z"
+ "inflation": {
+  "value": 2.87,
+  "period": "2026-10",
+  "label": "Okt 2026",
+  "asOf": "2026-11-02"
+ },
+ "sbn10y": {
+  "value": 7.64,
+  "asOf": "2026-10-30"
+ },
+ "builtAt": "2026-11-02T20:03:15.000Z"
 }
