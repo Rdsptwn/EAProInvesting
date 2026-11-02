@@ -63,6 +63,10 @@ function formatNumber(num) {
         return;
     }
 
+    if (offerTertinggi <= bidTerendah) {
+        showToast('Offer tertinggi harus lebih besar dari Bid terendah!', 'error');
+        return;
+    }
     const tick = getTickSize(buyAvg);
     const jumlahPapan = ((offerTertinggi - bidTerendah) / tick) + 1;
     const rataPerPapan = (totalBid + totalOffer) / jumlahPapan;
@@ -71,7 +75,7 @@ function formatNumber(num) {
     const fivePercent = buyAvg * 0.05;
 
     const targetHigh = buyAvg + fivePercent + (papanCountHigh * tick);
-    const targetLow = buyAvg + percentLow + (papanCountLow * tick); 
+    const targetLow = buyAvg + (papanCountLow * tick);
     const percentLow = ((targetLow - buyAvg) / buyAvg) * 100;
     const percentHigh = ((targetHigh - buyAvg) / buyAvg) * 100;
 
@@ -184,9 +188,9 @@ function exportHistoryCSV() {
         csvContent += rowData + "\n";
     });
 
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob([csvContent.replace('data:text/csv;charset=utf-8,', '')], { type: 'text/csv;charset=utf-8' });
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.setAttribute("href", URL.createObjectURL(blob));
     link.setAttribute("download", "riwayat_bandar_ewoks.csv");
     document.body.appendChild(link);
     link.click();
@@ -196,6 +200,7 @@ function exportHistoryCSV() {
 
 function copyRes(ts) {
     const r = history.find(h => h.timestamp === ts);
+    if (!r) return;
     const text = `TARGET REALISTIS SAHAM ${r.emiten}\nTarget Low: Rp ${formatNumber(r.targetLow)} (+${(r.percentLow || 0).toFixed(2)}%)\nTarget High: Rp ${formatNumber(r.targetHigh)} (+${(r.percentHigh || 0).toFixed(2)}%)\n\nEwoks Academy Suite`;
     navigator.clipboard.writeText(text).then(() => showToast('Data disalin ke clipboard!', 'success'));
 }

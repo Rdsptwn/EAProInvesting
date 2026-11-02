@@ -223,6 +223,7 @@ function updateSimAnalysisText(tickerA, dataA, tickerB, dataB) {
                 <ul class="space-y-2 text-xs md:text-sm text-slate-700 font-medium">
                     <li class="bg-white p-2 rounded-lg border border-slate-100">🎯 <strong>Valuasi Lebih Murah:</strong> Saham <strong class="text-blue-600">${valuasiWin}</strong> (Berdasarkan PER lebih rendah, balik modal lebih cepat).</li>
                     <li class="bg-white p-2 rounded-lg border border-slate-100">⭐ <strong>Kualitas Profitabilitas:</strong> Saham <strong class="text-emerald-600">${kualitasWin}</strong> (Berdasarkan ROE lebih tinggi, manajemen lebih jago memutar modal).</li>
+                    <li class="text-[11px] text-slate-500 italic bg-slate-50 p-2 rounded-lg border border-slate-100">Angka PER, PBV, ROE, dan NPM di simulasi ini adalah contoh untuk belajar, bukan data terkini. Cek angka terbaru di laporan keuangan emiten (halaman Peta Konglomerat).</li>
                     <li class="mt-3 text-rose-700 bg-rose-50 p-3 rounded-xl border border-rose-100 leading-relaxed font-bold">
                         <strong>Ingat:</strong> Saham bagus yang dibeli di harga kemahalan bisa jadi investasi yang buruk. Saham biasa saja di harga sangat murah bisa jadi investasi menguntungkan (Value Investing).
                     </li>

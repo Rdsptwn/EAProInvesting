@@ -10,17 +10,23 @@ function calculateRetirement() {
 
     const yearsToRetire = ageRetire - ageNow;
     const yearsInRetirement = ageMax - ageRetire;
-    if (yearsToRetire <= 0 || yearsInRetirement <= 0) return;
+    if (yearsToRetire <= 0 || yearsInRetirement <= 0) {
+        if (typeof showToast === 'function') showToast('Umur pensiun harus lebih besar dari umur sekarang, dan umur harapan hidup lebih besar dari umur pensiun.', 'warning');
+        return;
+    }
 
     const futureMonthlyExp = exp * Math.pow((1 + inflation), yearsToRetire);
     const monthlyReturn = returns / 12;
     const totalMonths = yearsInRetirement * 12;
-    const totalFund = futureMonthlyExp * ((1 - Math.pow(1 + monthlyReturn, -totalMonths)) / monthlyReturn);
+    const totalFund = monthlyReturn > 0
+        ? futureMonthlyExp * ((1 - Math.pow(1 + monthlyReturn, -totalMonths)) / monthlyReturn)
+        : futureMonthlyExp * totalMonths;
 
     const futureSavings = savings * Math.pow((1 + returns), yearsToRetire);
     const gap = totalFund - futureSavings;
     const workMonths = yearsToRetire * 12;
-    const monthlyInvest = gap > 0 ? (gap * monthlyReturn) / (Math.pow(1 + monthlyReturn, workMonths) - 1) : 0;
+    const monthlyInvest = gap <= 0 ? 0
+        : (monthlyReturn > 0 ? (gap * monthlyReturn) / (Math.pow(1 + monthlyReturn, workMonths) - 1) : gap / workMonths);
 
     document.getElementById('res-total-fund').innerText = Math.round(totalFund).toLocaleString('id-ID');
     document.getElementById('res-monthly-future').innerText = `Masa Depan: Rp ${Math.round(futureMonthlyExp).toLocaleString('id-ID')}/bln`;

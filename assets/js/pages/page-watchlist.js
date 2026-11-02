@@ -1,12 +1,12 @@
 ﻿// --- WATCHLIST ---
 function addWatchlist() {
-    const ticker = document.getElementById('wl-ticker').value.toUpperCase().trim();
+    const ticker = document.getElementById('wl-ticker').value.toUpperCase().trim().replace(/\.JK$/, '');
     const price = document.getElementById('wl-price').value;
     const note = document.getElementById('wl-note').value;
     const foreign = document.getElementById('wl-foreign').value; 
     
-    if(!ticker || !price || parseFloat(price) <= 0) {
-        showToast("Kode Emiten dan Harga Target wajib diisi dengan valid!", "error");
+    if(!/^[A-Z0-9]{2,6}$/.test(ticker) || !price || !(parseFloat(price) > 0)) {
+        showToast("Kode emiten (2–6 huruf/angka, tanpa spasi) dan Harga Target Beli wajib diisi dengan valid!", "error");
         return;
     }
     
@@ -48,7 +48,8 @@ function renderWatchlist(isTick = false) {
         const target = parseFloat(w.price);
         const current = w.currentPrice;
         const hasPrice = current != null && Number.isFinite(current);
-        const isHit = hasPrice && current >= target;
+        // Target BELI: tercapai saat harga turun ke / di bawah target
+        const isHit = hasPrice && Number.isFinite(target) && current <= target;
         const chgTxt = hasPrice && w.changePct != null ? ` (${w.changePct >= 0 ? '+' : ''}${w.changePct.toFixed(2)}%)` : '';
         
         return `
@@ -57,29 +58,29 @@ function renderWatchlist(isTick = false) {
             ${isHit ? `<div class="absolute -top-3 -right-2 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10 animate-bounce">🎯 TARGET HIT!</div>` : ''}
             
             <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 ${isHit ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'} rounded-xl flex items-center justify-center font-black cursor-pointer hover:opacity-80" onclick="openTVChart('${w.ticker}')" title="Buka Chart Live">
+                <div class="w-10 h-10 ${isHit ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'} rounded-xl flex items-center justify-center font-black cursor-pointer hover:opacity-80" onclick="openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')" title="Buka Chart Live">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div>
-                    <h4 class="font-black text-slate-900 text-lg leading-none">${w.ticker}</h4>
+                    <h4 class="font-black text-slate-900 text-lg leading-none">${escapeHtml(w.ticker)}</h4>
                     <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Target Beli: <span class="text-emerald-600">Rp ${Number(w.price).toLocaleString('id-ID')}</span></p>
                     <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${hasPrice ? `Harga: Rp ${Math.round(current).toLocaleString('id-ID')}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
                 </div>
             </div>
             
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-grow">
-                <p class="text-xs text-slate-600 italic">"${w.note || 'Tidak ada catatan'}"</p>
+                <p class="text-xs text-slate-600 italic">"${escapeHtml(w.note || 'Tidak ada catatan')}"</p>
             </div>
 
             ${w.foreign ? `
             <div class="bg-indigo-50 p-2 rounded-xl border border-indigo-100 flex items-center gap-2 mt-2">
                 <i class="fas fa-globe text-indigo-500 text-[10px]"></i>
-                <span class="text-[10px] font-black text-indigo-700 uppercase">Foreign: ${w.foreign}</span>
+                <span class="text-[10px] font-black text-indigo-700 uppercase">Foreign: ${escapeHtml(w.foreign)}</span>
             </div>` : ''}
 
             <div class="grid grid-cols-2 gap-2 mt-4">
-                <button onclick="openTVChart('${w.ticker}')" class="w-full text-[10px] font-black text-slate-600 bg-slate-100 py-3 rounded-xl hover:bg-slate-200 transition-colors uppercase"><i class="fas fa-chart-pie mr-1"></i> Chart</button>
-                <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${w.ticker}'; document.getElementById('calc-price').value='${w.price}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>
+                <button onclick="openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')" class="w-full text-[10px] font-black text-slate-600 bg-slate-100 py-3 rounded-xl hover:bg-slate-200 transition-colors uppercase"><i class="fas fa-chart-pie mr-1"></i> Chart</button>
+                <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}'; document.getElementById('calc-price').value='${Number(w.price) || 0}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>
             </div>
         </div>
     `}).join('');

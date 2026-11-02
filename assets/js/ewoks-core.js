@@ -26,15 +26,24 @@ function showToast(message, type = 'success') {
     }, 3000);
 }
 // --- APP STATE & INITIALIZATION ---
-let history = JSON.parse(localStorage.getItem('calc_history')) || [];
-let journal = JSON.parse(localStorage.getItem('ewoks_journal')) || [];
-let watchlist = JSON.parse(localStorage.getItem('ewoks_watchlist')) || [];
+/** Baca array dari localStorage tanpa melempar error (storage diblokir / JSON rusak). */
+function readStoredArray(key) {
+    try {
+        const v = JSON.parse(localStorage.getItem(key));
+        return Array.isArray(v) ? v : [];
+    } catch (_) {
+        return [];
+    }
+}
+let history = readStoredArray('calc_history');
+let journal = readStoredArray('ewoks_journal');
+let watchlist = readStoredArray('ewoks_watchlist');
 // --- BACKUP & RESTORE DATA (JSON) ---
 function exportBackup() {
     const dataToExport = {
-        journal: JSON.parse(localStorage.getItem('ewoks_journal')) || [],
-        watchlist: JSON.parse(localStorage.getItem('ewoks_watchlist')) || [],
-        history: JSON.parse(localStorage.getItem('calc_history')) || [],
+        journal: readStoredArray('ewoks_journal'),
+        watchlist: readStoredArray('ewoks_watchlist'),
+        history: readStoredArray('calc_history'),
         macroNotes: localStorage.getItem('ewoks_macro_notes') || ''
     };
     const jsonStr = JSON.stringify(dataToExport, null, 2);
@@ -55,10 +64,11 @@ function importBackup(e) {
     reader.onload = function(event) {
         try {
             const data = JSON.parse(event.target.result);
-            if(data.journal) localStorage.setItem('ewoks_journal', JSON.stringify(data.journal));
-            if(data.watchlist) localStorage.setItem('ewoks_watchlist', JSON.stringify(data.watchlist));
-            if(data.history) localStorage.setItem('calc_history', JSON.stringify(data.history));
-            if(data.macroNotes) localStorage.setItem('ewoks_macro_notes', data.macroNotes);
+            if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('format');
+            if(Array.isArray(data.journal)) localStorage.setItem('ewoks_journal', JSON.stringify(data.journal));
+            if(Array.isArray(data.watchlist)) localStorage.setItem('ewoks_watchlist', JSON.stringify(data.watchlist));
+            if(Array.isArray(data.history)) localStorage.setItem('calc_history', JSON.stringify(data.history));
+            if(typeof data.macroNotes === 'string' && data.macroNotes) localStorage.setItem('ewoks_macro_notes', data.macroNotes);
             alert('Data berhasil di-import dan disinkronkan!');
             location.reload();
         } catch(err) {
@@ -756,6 +766,33 @@ function startEwoksLivePolling() {
     });
 }
 
+/** Inflasi YoY & yield SBN 10 tahun dari assets/data/macro.json (diperbarui harian oleh workflow). */
+async function loadMacroIndicators() {
+    const infEl = document.getElementById('inflasi-dash');
+    const sbnEl = document.getElementById('sbn-yield-dash');
+    if (!infEl && !sbnEl) return;
+    try {
+        const res = await fetch(ewoksAssetUrl('assets/data/macro.json'), { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const m = await res.json();
+        const fmtDate = (iso) => {
+            const d = new Date(`${iso}T00:00:00+07:00`);
+            return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Jakarta' });
+        };
+        if (infEl && Number.isFinite(m?.inflation?.value)) {
+            infEl.innerText = `${m.inflation.value.toFixed(2).replace('.', ',')}% YoY`;
+            infEl.title = `Inflasi tahunan periode ${m.inflation.label || m.inflation.period}`;
+        }
+        if (sbnEl && Number.isFinite(m?.sbn10y?.value)) {
+            sbnEl.innerText = `${m.sbn10y.value.toFixed(2)}%`;
+            sbnEl.title = `Yield SBN 10 tahun per ${fmtDate(m.sbn10y.asOf)}`;
+            if (typeof calcSbn === 'function') calcSbn();
+        }
+    } catch (e) {
+        console.warn('macro.json', e);
+    }
+}
+
 function applyMarketSnapshotToDashboard(snap) {
     const ihsg = snap?.ihsg;
     const ihsgEl = document.getElementById('ihsg-dash-live');
@@ -932,6 +969,7 @@ window.addEventListener('load', () => {
 
     updateClock();
     fetchRealIHSG();
+    loadMacroIndicators();
     startEwoksLivePolling();
     fetchNews();
 

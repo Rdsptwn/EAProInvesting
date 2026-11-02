@@ -171,7 +171,7 @@ function calculateComplexResult() {
 
     let alloHtml = healthWarning;
     if(finalSaham > 0) alloHtml += `<li>🔴 <b class="text-slate-900">${finalSaham}% Saham / ETF</b> (Pertumbuhan modal, dividen. Pilih Bluechip/Growth)</li>`;
-    if(finalSbn > 0) alloHtml += `<li>🟡 <b class="text-slate-900">${finalSbn}% SBN / Obligasi Ritel</b> (Yield pasti 6-7% p.a, dijamin Negara)</li>`;
+    if(finalSbn > 0) alloHtml += `<li>🟡 <b class="text-slate-900">${finalSbn}% SBN / Obligasi Ritel</b> (Imbal hasil tetap, dijamin Negara; cek yield terbaru di halaman Fixed Income)</li>`;
     if(finalRdp > 0) alloHtml += `<li>🟢 <b class="text-slate-900">${finalRdp}% Reksa Dana Pasar Uang / Deposito</b> (Sangat likuid, untuk dana darurat & peluru serok bawah)</li>`;
     if(finalEmas > 0) alloHtml += `<li>🟠 <b class="text-slate-900">${finalEmas}% Emas / Logam Mulia</b> (Safe haven, pelindung krisis makro)</li>`;
 
@@ -229,7 +229,7 @@ function generateCertificate() {
 
     ctx.font = 'bold 46px "Plus Jakarta Sans", Arial, sans-serif';
     ctx.fillStyle = '#10b981'; // emerald-500
-    ctx.fillText(userName, canvas.width / 2, 230);
+    ctx.fillText(userName, canvas.width / 2, 230, canvas.width - 140);
     
     ctx.beginPath();
     ctx.moveTo(canvas.width/2 - 200, 250);
@@ -245,7 +245,7 @@ function generateCertificate() {
 
     ctx.font = 'bold 32px "Plus Jakarta Sans", Arial, sans-serif';
     ctx.fillStyle = '#3b82f6';
-    ctx.fillText(`"${title}"`, canvas.width / 2, 400);
+    ctx.fillText(`"${title}"`, canvas.width / 2, 400, canvas.width - 140);
 
     const date = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
     
@@ -253,7 +253,7 @@ function generateCertificate() {
     ctx.font = '16px "Plus Jakarta Sans", Arial, sans-serif';
     ctx.fillStyle = '#cbd5e1';
     ctx.fillText(`Diterbitkan: ${date}`, 80, 520);
-    ctx.fillText(`ID Validasi: EA-${Date.now().toString().slice(-6)}`, 80, 545);
+    ctx.fillText(`No. Sertifikat: EA-${Date.now().toString().slice(-6)}`, 80, 545);
 
     ctx.textAlign = 'right';
     ctx.font = 'italic 24px Georgia, serif';
@@ -276,7 +276,7 @@ function generateCertificate() {
     ctx.fillText('Rakaditya Septiawan.MOS.MCE.CEH (Founder)', canvas.width - 80, 555);
 
     const link = document.createElement('a');
-    link.download = `Sertifikat_Ewoks_${userName.replace(/ /g, '_')}.png`;
+    link.download = `Sertifikat_Ewoks_${userName.replace(/[^A-Z0-9]+/g, '_')}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
 

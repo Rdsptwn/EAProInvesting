@@ -29,7 +29,8 @@ function addJournal() {
     const lot = parseFloat(document.getElementById('jr-lot').value);
     const buy = parseFloat(document.getElementById('jr-buy').value);
     const sell = parseFloat(document.getElementById('jr-sell').value);
-    const fee = parseFloat(document.getElementById('jr-fee').value) || 0.4;
+    const feeRaw = parseFloat(document.getElementById('jr-fee').value);
+    const fee = Number.isFinite(feeRaw) && feeRaw >= 0 ? feeRaw : 0.4;
     const reason = document.getElementById('jr-reason').value;
     const emotion = document.getElementById('jr-emotion').value;
     const screenshot = document.getElementById('jr-screenshot').value.trim();
@@ -71,7 +72,11 @@ function addJournal() {
 }
 
 function renderJurnalCharts(journalData) {
-    if(!journalData || journalData.length === 0) return;
+    if(!journalData || journalData.length === 0) {
+        if(window.equityChartInstance) { window.equityChartInstance.destroy(); window.equityChartInstance = null; }
+        if(window.winLossChartInstance) { window.winLossChartInstance.destroy(); window.winLossChartInstance = null; }
+        return;
+    }
 
     const sorted = [...journalData].sort((a,b) => new Date(a.date) - new Date(b.date));
     let equity = [];
@@ -173,12 +178,13 @@ function renderJournal(searchQuery = '') {
 
         const pnlColor = j.isWin ? 'text-emerald-500' : 'text-rose-500';
         const pnlSign = j.isWin ? '+' : '';
-        const screenHTML = j.screenshot ? `<a href="${j.screenshot}" target="_blank" class="text-blue-500 hover:text-blue-700 ml-1 tooltip-trigger"><i class="fas fa-image"></i><span class="tooltip-text">Lihat Chart Entry</span></a>` : '';
+        const safeShot = /^https?:\/\//i.test(j.screenshot || '') ? escapeHtml(j.screenshot) : '';
+        const screenHTML = safeShot ? `<a href="${safeShot}" rel="noopener noreferrer" target="_blank" class="text-blue-500 hover:text-blue-700 ml-1 tooltip-trigger"><i class="fas fa-image"></i><span class="tooltip-text">Lihat Chart Entry</span></a>` : '';
 
         return `
         <tr class="border-b border-slate-100 hover:bg-slate-50/50 bg-white transition-colors">
             <td class="p-4">
-                <span class="font-black text-blue-600 text-sm flex items-center">${j.ticker} ${screenHTML}</span>
+                <span class="font-black text-blue-600 text-sm flex items-center">${escapeHtml(j.ticker)} ${screenHTML}</span>
                 <span class="text-[9px] text-slate-400 font-bold">${j.date}</span>
             </td>
             <td class="p-4">
@@ -186,8 +192,8 @@ function renderJournal(searchQuery = '') {
                 <p class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">${j.lot} Lot</p>
             </td>
             <td class="p-4">
-                <span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-0.5 rounded text-[9px] font-black uppercase inline-block mb-1">${j.reason}</span><br>
-                <span class="text-[10px] text-slate-500 italic"><i class="fas fa-brain text-slate-300 mr-1"></i>${j.emotion}</span>
+                <span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-0.5 rounded text-[9px] font-black uppercase inline-block mb-1">${escapeHtml(j.reason)}</span><br>
+                <span class="text-[10px] text-slate-500 italic"><i class="fas fa-brain text-slate-300 mr-1"></i>${escapeHtml(j.emotion)}</span>
             </td>
             <td class="p-4 text-right font-black ${pnlColor}">
                 ${pnlSign}Rp ${Math.round(j.netPnL).toLocaleString('id-ID')}
@@ -248,14 +254,18 @@ function clearJournal() {
 
 function exportJournalCSV() {
     if(journal.length === 0) { showToast('Jurnal masih kosong!', 'error'); return; }
+    const q = (v) => {
+        let t = String(v ?? '');
+        if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; // cegah formula injection di Excel
+        return '"' + t.replace(/"/g, '""') + '"';
+    };
     let csv = "Tanggal,Emiten,Lot,Buy,Sell,Fee(%),Alasan Entry,Psikologi/Emosi,Link Gambar,Net PnL,Status\n";
     journal.forEach(j => {
         const status = j.isWin ? 'WIN' : 'LOSS';
-        csv += `${j.date},${j.ticker},${j.lot},${j.buy},${j.sell},${j.fee},"${j.reason}","${j.emotion}","${j.screenshot || '-'}",${j.netPnL},${status}\n`;
+        csv += [q(j.date), q(j.ticker), j.lot, j.buy, j.sell, j.fee, q(j.reason), q(j.emotion), q(j.screenshot || '-'), j.netPnL, status].join(',') + "\n";
     });
-    const encoded = encodeURI("data:text/csv;charset=utf-8," + csv);
     const link = document.createElement("a");
-    link.setAttribute("href", encoded);
+    link.setAttribute("href", URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })));
     link.setAttribute("download", "Jurnal_Trading_Ewoks.csv");
     document.body.appendChild(link);
     link.click();

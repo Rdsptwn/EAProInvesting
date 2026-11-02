@@ -1,4 +1,21 @@
 ﻿// --- FIXED INCOME & SBN ---
+// Yield SBN 10 tahun terbaru dari assets/data/macro.json (diisi harian oleh workflow)
+let sbnYield10y = null;
+async function loadSbnYield() {
+    try {
+        const res = await fetch(ewoksAssetUrl('assets/data/macro.json'), { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const m = await res.json();
+        if (Number.isFinite(m?.sbn10y?.value)) {
+            sbnYield10y = m.sbn10y.value;
+            const lbl = document.getElementById('sbn-yield-used');
+            if (lbl) lbl.innerText = sbnYield10y.toFixed(2) + '%';
+            if (yieldCurveInstance) { yieldCurveInstance.destroy(); yieldCurveInstance = null; yieldCurveRendered = false; renderYieldCurve(); }
+            calcSbn();
+        }
+    } catch (e) { console.warn('macro.json', e); }
+}
+
 let yieldChartRendered = false;
 function renderYieldChart() {
     if(yieldChartRendered) return;
@@ -41,18 +58,22 @@ function renderYieldChart() {
 }
 
 let yieldCurveRendered = false;
+let yieldCurveInstance = null;
+// Selisih tenor terhadap 10Y: bentuk kurva ILUSTRASI untuk edukasi (bukan data pasar per tenor)
+const YIELD_CURVE_SPREADS = [-0.50, -0.30, -0.15, 0, 0.15, 0.30];
 function renderYieldCurve() {
     if(yieldCurveRendered) return;
     const canvas = document.getElementById('yieldCurveChart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    new Chart(ctx, {
+    const base = Number.isFinite(sbnYield10y) ? sbnYield10y : 7.0;
+    yieldCurveInstance = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['1Y', '3Y', '5Y', '10Y', '15Y', '20Y'],
             datasets: [{
-                label: 'SBN Yield Curve (IDR)',
-                data: [6.15, 6.35, 6.50, 6.65, 6.80, 6.95], 
+                label: 'Ilustrasi Yield Curve SBN (IDR)',
+                data: YIELD_CURVE_SPREADS.map((d) => +(base + d).toFixed(2)),
                 borderColor: '#10b981',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 borderWidth: 3,
@@ -85,9 +106,11 @@ function calcSbn() {
     const yieldDash = document.getElementById('sbn-yield-dash');
     const yieldSBN = yieldDash
         ? (parseFloat(yieldDash.innerText.replace(/,/g, '')) / 100 || 0.065)
-        : 0.065;
+        : (Number.isFinite(sbnYield10y) ? sbnYield10y / 100 : 0.065);
     const grossYearly = modal * yieldSBN;
     const netYearly = grossYearly * 0.9;
     const netMonthly = netYearly / 12;
     resEl.innerText = `Rp ${Math.round(netMonthly).toLocaleString('id-ID')}`;
 }
+
+document.addEventListener('DOMContentLoaded', () => { if (document.getElementById('sbn-modal')) loadSbnYield(); });

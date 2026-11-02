@@ -227,7 +227,7 @@
                 </div>
 
                 <div class="premium-card p-6 border-blue-200 mt-8 shadow-sm">
-                    <h3 class="text-xl font-black text-slate-900 mb-2 tooltip-trigger">Yield Curve Tracker <span class="tooltip-text">Kurva imbal hasil obligasi negara berdasar tenor waktu.</span></h3>
+                    <h3 class="text-xl font-black text-slate-900 mb-2 tooltip-trigger">Ilustrasi Yield Curve <span class="tooltip-text">Bentuk kurva imbal hasil obligasi negara berdasar tenor. Titik 10Y mengikuti data terbaru; tenor lain hanya ilustrasi.</span></h3>
                     <p class="text-xs text-slate-500 mb-6">Jika kurva <span class="text-red-500 font-bold">Inverted (Terbalik)</span> di mana tenor pendek lebih tinggi dari tenor panjang, itu biasanya merupakan indikator resesi/perlambatan ekonomi.</p>
                     <div class="chart-container !h-[250px] !max-w-full">
                         <canvas id="yieldCurveChart"></canvas>
@@ -237,7 +237,7 @@
                 <div class="premium-card p-6 md:p-8 border-l-[6px] border-emerald-500 flex flex-col md:flex-row items-center gap-6 shadow-sm">
                     <div class="flex-1 w-full">
                         <h3 class="text-xl font-black text-slate-900 mb-2">Simulasi Kupon SBN</h3>
-                        <p class="text-xs text-slate-500 mb-6">Jika saya beli seri SBN terbaru dengan yield <span class="font-bold text-emerald-600">6.50%</span>, berapa kupon bersih saya?</p>
+                        <p class="text-xs text-slate-500 mb-6">Jika saya beli seri SBN terbaru dengan yield <span class="font-bold text-emerald-600" id="sbn-yield-used">6.50%</span>, berapa kupon bersih saya?</p>
                         
                         <label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Masukkan Modal (Rupiah)</label>
                         <input type="number" id="sbn-modal" class="input-pro text-lg border border-slate-200 bg-white" placeholder="10000000" value="10000000" oninput="calcSbn()">

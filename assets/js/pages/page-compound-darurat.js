@@ -157,7 +157,7 @@ function calcDarurat() {
 
     const target = expense * multiplier;
     let kurang = target - current;
-    let pct = (current / target) * 100;
+    let pct = target > 0 ? (current / target) * 100 : 0;
 
     if (pct > 100) pct = 100;
     if (kurang < 0) kurang = 0;
