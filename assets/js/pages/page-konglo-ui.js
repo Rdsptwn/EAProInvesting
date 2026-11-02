@@ -1,8 +1,54 @@
 // --- PETA KONGLOMERAT ---
+function kgHue(str) {
+    let h = 0;
+    for (const c of String(str)) h = (h * 31 + c.charCodeAt(0)) % 360;
+    return h;
+}
+
+function kgFmtPct(v) {
+    if (v == null || !Number.isFinite(v)) return '—';
+    return `${v >= 0 ? '▲' : '▼'} ${Math.abs(v).toFixed(2)}%`;
+}
+
+function kgChipClass(v) {
+    if (v == null || !Number.isFinite(v)) return 'kg-chip flat';
+    return v > 0 ? 'kg-chip up' : v < 0 ? 'kg-chip down' : 'kg-chip flat';
+}
+
+function kgGroupStats(group) {
+    const quotes = group.stocks
+        .map((st) => (typeof getIdxQuote === 'function' ? getIdxQuote(st.ticker) : null))
+        .filter((q) => q && q.changePct != null && Number.isFinite(q.changePct));
+    const avg = quotes.length ? quotes.reduce((t, q) => t + q.changePct, 0) / quotes.length : null;
+    return { avg, covered: quotes.length };
+}
+
+function kongloRenderStats() {
+    const box = document.getElementById('kg-stats');
+    if (!box || typeof dataGroups === 'undefined') return;
+    const tickers = new Set();
+    const sectors = new Set();
+    let up = 0, down = 0;
+    dataGroups.forEach((g) => g.stocks.forEach((st) => {
+        if (tickers.has(st.ticker)) return;
+        tickers.add(st.ticker);
+        sectors.add(String(st.sector || '').split(/[(&/]/)[0].trim());
+        const q = typeof getIdxQuote === 'function' ? getIdxQuote(st.ticker) : null;
+        if (q && q.changePct != null) { if (q.changePct > 0) up++; else if (q.changePct < 0) down++; }
+    }));
+    const tile = (label, value, sub, cls = '') => `<div class="kg-stat"><p class="kg-stat-label">${label}</p><p class="kg-stat-value ${cls}">${value}</p><p class="kg-stat-sub">${sub}</p></div>`;
+    box.innerHTML =
+        tile('Grup & tokoh', dataGroups.length, 'konglomerat dan investor besar') +
+        tile('Emiten dipetakan', tickers.size, `${sectors.size} sektor`) +
+        tile('Naik hari ini', up, 'emiten hijau', 'text-up') +
+        tile('Turun hari ini', down, 'emiten merah', 'text-down');
+}
+
 function renderGrid(groups = dataGroups) {
     const gridContainer = document.getElementById('group-grid');
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
+    kongloRenderStats();
 
     if(groups.length === 0) {
         gridContainer.innerHTML = `<div class="col-span-full text-center p-8 text-slate-500">Grup tidak ditemukan.</div>`;
@@ -11,22 +57,29 @@ function renderGrid(groups = dataGroups) {
 
     groups.forEach(group => {
         const numStocks = group.stocks.length;
-        const card = document.createElement('div');
-        card.className = 'bg-white border border-slate-200 rounded-xl p-5 cursor-pointer card-hover transition-all flex flex-col h-full shadow-sm dark-mode-card';
+        const hue = kgHue(group.id || group.name);
+        const st = kgGroupStats(group);
+        const chips = group.stocks.slice(0, 5).map((s) => {
+            const q = typeof getIdxQuote === 'function' ? getIdxQuote(s.ticker) : null;
+            const v = q && q.changePct != null ? q.changePct : null;
+            return `<span class="kg-tk"><b>${escapeHtml(s.ticker)}</b><i class="${v == null ? 'flat' : v >= 0 ? 'up' : 'down'}">${v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%'}</i></span>`;
+        }).join('');
+        const more = numStocks > 5 ? `<span class="kg-tk more">+${numStocks - 5}</span>` : '';
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'kg-card premium-card no-hover-lift dark-mode-card';
         card.onclick = () => showDetail(group.id);
-        
         card.innerHTML = `
-            <div class="flex items-center justify-between mb-3">
-                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-black text-lg">
-                    ${group.name.charAt(0)}
+            <div class="kg-card-top">
+                <span class="kg-avatar" style="background:linear-gradient(135deg,hsl(${hue} 75% 55%),hsl(${(hue + 40) % 360} 70% 45%))">${escapeHtml(group.name.charAt(0))}</span>
+                <div class="min-w-0 flex-1">
+                    <h4 class="kg-card-title">${escapeHtml(group.name)}</h4>
+                    <p class="kg-card-meta">${numStocks} emiten</p>
                 </div>
-                <span class="bg-slate-100 text-slate-500 text-[10px] uppercase font-bold px-2 py-1 rounded">${numStocks} Emiten</span>
+                <span class="${kgChipClass(st.avg)}" title="Rata-rata perubahan harga emiten grup hari ini">${kgFmtPct(st.avg)}</span>
             </div>
-            <h4 class="text-sm font-black text-slate-900 mb-2 leading-tight uppercase">${group.name}</h4>
-            <p class="text-xs text-slate-500 flex-grow line-clamp-3">${group.desc}</p>
-            <div class="mt-4 text-blue-600 text-xs font-bold flex items-center">
-                Lihat Portofolio <i class="fas fa-arrow-right ml-1"></i>
-            </div>
+            <p class="kg-card-desc">${escapeHtml(group.desc)}</p>
+            <div class="kg-chips">${chips}${more}</div>
         `;
         gridContainer.appendChild(card);
     });
@@ -105,73 +158,53 @@ function showDetail(groupId) {
         stockList.innerHTML = '';
         group.stocks.forEach(stock => {
             const q = kongloQuoteCells(stock);
-            const stockItem = document.createElement('div');
-            stockItem.className = 'konglo-stock-card bg-slate-50 border border-slate-100 rounded-2xl p-5 md:p-6 hover:border-blue-300 transition-colors shadow-sm dark-mode-card';
             const company = String(stock.company || q.name || stock.ticker).replace(/,$/, '');
+            const quote = typeof getIdxQuote === 'function' ? getIdxQuote(stock.ticker) : null;
+            const hue = kgHue(stock.ticker);
+            const pct = quote && quote.changePct != null ? quote.changePct : null;
+            let rangeHtml = '';
+            if (quote && quote.support != null && quote.resistance != null && quote.price != null && quote.resistance > quote.support) {
+                const pos = Math.max(0, Math.min(100, ((quote.price - quote.support) / (quote.resistance - quote.support)) * 100));
+                rangeHtml = `<div class="kg-range"><div class="kg-range-bar"><span style="left:${pos.toFixed(1)}%"></span></div><div class="kg-range-lbl"><span>Support 20h<br><b>${q.support}</b></span><span class="text-right">Resisten 20h<br><b>${q.resist}</b></span></div></div>`;
+            }
+            const safeTicker = String(stock.ticker).replace(/[^A-Z0-9]/gi, '');
+            const safeCompany = String(company).replace(/'/g, "\\'");
+            const safeSector = String(stock.sector).replace(/'/g, "\\'");
+            const stockItem = document.createElement('article');
+            stockItem.className = 'kg-stock premium-card no-hover-lift dark-mode-card';
             stockItem.innerHTML = `
-            <div class="min-w-0 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
-                <h5 class="text-3xl font-black text-blue-600 tracking-tight mb-1">${stock.ticker}</h5>
-                <p class="font-bold text-slate-800 text-xs mb-2 leading-snug">${company}</p>
-                <span class="inline-block bg-emerald-100 text-emerald-700 text-[10px] uppercase px-2 py-1 rounded font-bold mb-3">${stock.sector}</span>
-                <div class="bg-white p-3 rounded-xl border border-slate-100 mb-3">
-                    <p class="text-[9px] font-black text-slate-400 uppercase">${q.live ? 'Harga terakhir' : 'Harga (data pasar belum ada)'}</p>
-                    <p class="text-lg font-black text-slate-800 leading-tight">${q.price}</p>
-                    <p class="text-xs font-bold ${q.chgClass}">${q.chg} hari ini</p>
+            <div class="kg-stock-head">
+                <span class="kg-tkbadge" style="background:hsl(${hue} 80% 94%);color:hsl(${hue} 60% 32%)">${escapeHtml(stock.ticker)}</span>
+                <div class="min-w-0 flex-1">
+                    <p class="kg-name">${escapeHtml(company)}</p>
+                    <p class="kg-sub">${escapeHtml(stock.sector)}</p>
                 </div>
-                <div class="bg-white p-3 rounded-xl border border-slate-100 space-y-2 mb-3">
-                    <div>
-                        <p class="text-[9px] font-black text-slate-400 uppercase">Est. Free Float</p>
-                        <p class="text-sm font-bold text-slate-700">${stock.free_float}</p>
-                    </div>
-                    <div>
-                        <p class="text-[9px] font-black text-slate-400 uppercase">Top Broker Afiliasi</p>
-                        <p class="text-sm font-bold text-slate-700">${stock.broker_afiliasi}</p>
-                    </div>
+                <div class="kg-price">
+                    <p class="kg-price-val">${q.live ? q.price : '—'}</p>
+                    <span class="${kgChipClass(pct)}">${kgFmtPct(pct)}</span>
                 </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-emerald-50 p-2 rounded-xl border border-emerald-100 text-center">
-                        <p class="text-[9px] font-black text-emerald-600 uppercase">MA 50 hari</p>
-                        <p class="text-xs font-bold text-slate-700">${q.avg}</p>
-                    </div>
-                    <div class="bg-blue-50 p-2 rounded-xl border border-blue-100 text-center">
-                        <p class="text-[9px] font-black text-blue-600 uppercase">Close kemarin</p>
-                        <p class="text-xs font-bold text-slate-700">${q.prev}</p>
-                    </div>
-                    <div class="bg-rose-50 p-2 rounded-xl border border-rose-100 text-center">
-                        <p class="text-[9px] font-black text-rose-600 uppercase">Support 20h</p>
-                        <p class="text-xs font-bold text-slate-700">${q.support}</p>
-                    </div>
-                    <div class="bg-amber-50 p-2 rounded-xl border border-amber-100 text-center">
-                        <p class="text-[9px] font-black text-amber-600 uppercase">Resisten 20h</p>
-                        <p class="text-xs font-bold text-slate-700">${q.resist}</p>
-                    </div>
-                </div>
-                <p class="text-[8px] text-slate-400 text-right mt-2 font-bold italic">Update: ${q.stamp}</p>
             </div>
-            <div class="min-w-0 flex flex-col justify-between gap-4">
-                <div>
-                    <div class="mb-4">
-                        <h6 class="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1">
-                            Porsi & Status Kepemilikan (${stock.tahun_masuk})
-                        </h6>
-                        <p class="text-slate-700 text-sm leading-relaxed break-words">
-                            <span class="font-black bg-blue-50 text-blue-700 px-2 py-0.5 rounded mr-1 inline-block mb-1">${stock.kepemilikan_persen}</span>
-                            ${stock.ownership}
-                        </p>
-                    </div>
-                    <div class="bg-slate-100/50 p-4 rounded-xl border border-slate-200">
-                        <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Sejarah / Akuisisi</h6>
-                        <p class="text-slate-600 text-sm leading-relaxed">${stock.sejarah}</p>
-                    </div>
+            ${rangeHtml}
+            <div class="kg-metrics">
+                <div><p>Kepemilikan</p><b>${escapeHtml(stock.kepemilikan_persen)}</b></div>
+                <div><p>Free float</p><b>${escapeHtml(stock.free_float)}</b></div>
+                <div><p>Close kemarin</p><b>${q.prev}</b></div>
+                <div><p>MA 50 hari</p><b>${q.avg}</b></div>
+            </div>
+            <details class="kg-more">
+                <summary>Kepemilikan, sejarah, broker afiliasi</summary>
+                <div class="kg-more-body">
+                    <p class="kg-more-h">Status kepemilikan (${escapeHtml(stock.tahun_masuk)})</p>
+                    <p>${escapeHtml(stock.ownership)}</p>
+                    <p class="kg-more-h">Sejarah</p>
+                    <p>${escapeHtml(stock.sejarah)}</p>
+                    <p class="kg-more-h">Top broker afiliasi</p>
+                    <p>${escapeHtml(stock.broker_afiliasi)}</p>
                 </div>
-                <div class="pt-2 border-t border-slate-200 flex flex-col sm:flex-row gap-2">
-                    <button type="button" onclick="showFunda('${stock.ticker}', '${String(company).replace(/'/g, "\\'")}', '${String(stock.sector).replace(/'/g, "\\'")}')" class="flex-[3] bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors shadow-md">
-                        <i class="fas fa-chart-bar"></i> Analisis Fundamental PRO
-                    </button>
-                    <button type="button" onclick="showPage('watchlist')" class="sm:flex-1 bg-amber-100 text-amber-700 py-3 rounded-xl font-bold text-xs uppercase hover:bg-amber-200 transition-colors flex items-center justify-center">
-                        <i class="fas fa-star"></i>
-                    </button>
-                </div>
+            </details>
+            <div class="kg-actions">
+                <button type="button" onclick="showFunda('${safeTicker}', '${safeCompany}', '${safeSector}')" class="kg-btn primary"><i class="fas fa-chart-bar"></i> Analisis Fundamental</button>
+                <button type="button" onclick="showPage('watchlist')" class="kg-btn" title="Buka Watchlist"><i class="fas fa-star"></i></button>
             </div>`;
             stockList.appendChild(stockItem);
         });

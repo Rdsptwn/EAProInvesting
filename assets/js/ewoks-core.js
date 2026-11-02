@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261102t0756';
+window.EWOKS_ASSET_V = '20261102t1212';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -842,6 +842,7 @@ async function fetchRealIHSG() {
     if (EwoksSiteContext.is('watchlist') && typeof renderWatchlist === 'function') {
         renderWatchlist(true);
     }
+    if (document.getElementById('group-grid') && typeof searchKonglo === 'function') searchKonglo();
 }
 
 function fetchLiveMarketData() {

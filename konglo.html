@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261102t0756">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261102t1212">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="konglo">
 
@@ -171,54 +171,54 @@
         <section id="page-konglo" class="max-w-7xl mx-auto">
             <div class="max-w-6xl mx-auto">
                 <div id="konglo-dashboard-view">
-                    <section class="mb-10 text-center max-w-4xl mx-auto">
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Peta Kepemilikan Saham Konglomerasi</h2>
-                        <p id="konglo-data-stamp" class="text-xs font-black text-blue-600 mb-3">Memuat update harga…</p>
-                        <p class="text-sm md:text-base text-slate-500 leading-relaxed">
-                            Aplikasi interaktif ini memetakan portofolio emiten yang dikendalikan atau dimiliki secara signifikan oleh tokoh-tokoh utama, konglomerat, dan <i>market maker</i> (bandar) di Bursa Efek Indonesia (BEI).
+                    <section class="mb-6">
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <h2 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Peta Konglomerat</h2>
+                            <span class="kg-live-pill"><span class="kg-dot"></span><span id="konglo-data-stamp">Memuat update harga…</span></span>
+                        </div>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-3xl">
+                            Pemetaan emiten yang dikendalikan atau dimiliki signifikan oleh konglomerat, tokoh utama, dan <i>market maker</i> di Bursa Efek Indonesia. Pilih grup untuk melihat portofolio, harga, dan laporan keuangannya.
                         </p>
                     </section>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                        <div class="lg:col-span-1 premium-card p-6 flex flex-col justify-center shadow-sm">
-                            <h3 class="text-lg font-bold text-slate-900 mb-2 border-b border-slate-100 pb-2">Distribusi Sektor Emiten</h3>
+                    <div id="kg-stats" class="kg-stats mb-6"></div>
+
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-12">
+                        <div class="xl:col-span-1 xl:order-2 premium-card no-hover-lift p-6 flex flex-col shadow-sm self-start">
+                            <h3 class="text-sm font-black text-slate-900 mb-1 uppercase tracking-wider">Distribusi Sektor</h3>
                             <p class="text-xs text-slate-500 mb-4">Proporsi sektor dari emiten yang terafiliasi. Harga live di halaman portofolio ikut ter-update otomatis.</p>
                             <div class="chart-container">
                                 <canvas id="sectorChart"></canvas>
                             </div>
                         </div>
                         
-                        <div class="lg:col-span-2">
-                            <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="xl:col-span-2 xl:order-1">
+                            <div class="mb-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-slate-900">Direktori Grup & Investor Utama</h3>
-                                    <p class="text-sm text-slate-500">Pilih profil di bawah ini untuk melihat detail portofolio saham, sektor, dan struktur kepemilikan.</p>
+                                    <h3 class="text-lg font-black text-slate-900">Direktori Grup &amp; Investor</h3>
+                                    <p class="text-xs text-slate-500">Persentase hijau/merah = rata-rata perubahan harga emiten grup hari ini.</p>
                                 </div>
                                 <div class="relative w-full md:w-64 flex-shrink-0">
                                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
                                     <input type="text" id="kongloSearch" onkeyup="searchKonglo()" placeholder="Cari Grup/Tokoh/Kode..." class="w-full bg-white border border-slate-200 px-10 py-3 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-blue-500/30 shadow-sm transition-all">
                                 </div>
                             </div>
-                            <div id="group-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div id="group-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="konglo-detail-view" class="hide premium-card no-hover-lift overflow-hidden shadow-xl" hidden style="display:none">
-                    <div class="bg-slate-900 px-6 py-8 relative border-slate-800">
-                        <button id="btn-back" onclick="hideDetail()" class="absolute top-4 left-4 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl font-bold transition-colors text-xs flex items-center gap-2">
-                            <i class="fas fa-arrow-left"></i> Kembali
-                        </button>
-                        <div class="mt-6 text-center">
-                            <h2 id="detail-title" class="text-2xl md:text-4xl font-black text-white mb-2">Nama Grup</h2>
-                            <p id="detail-desc" class="text-slate-300 max-w-2xl mx-auto text-sm md:text-base"></p>
-                            <p id="detail-price-note" class="text-xs font-bold text-blue-300 mt-3">Harga emiten</p>
-                        </div>
+                <div id="konglo-detail-view" class="hide premium-card no-hover-lift overflow-hidden shadow-sm" hidden style="display:none">
+                    <div class="kg-detail-head">
+                        <button id="btn-back" onclick="hideDetail()" class="kg-back"><i class="fas fa-arrow-left"></i> Semua grup</button>
+                        <h2 id="detail-title" class="text-2xl md:text-3xl font-black text-slate-900 mt-4 mb-1">Nama Grup</h2>
+                        <p id="detail-desc" class="text-slate-500 max-w-3xl text-sm md:text-base"></p>
+                        <p id="detail-price-note" class="kg-live-pill mt-3 inline-flex">Harga emiten</p>
                     </div>
-                    <div class="p-6 md:p-10">
-                        <h3 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-200 pb-2">Portofolio Saham Utama</h3>
-                        <div id="stock-list" class="space-y-6">
+                    <div class="p-4 md:p-8">
+                        <h3 class="text-sm font-black text-slate-500 uppercase tracking-wider mb-4">Portofolio Saham</h3>
+                        <div id="stock-list" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                             </div>
                     </div>
                 </div>
@@ -436,9 +436,9 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261102t0756"></script>
-    <script src="assets/js/pages/page-konglo-data-funda.js?v=20261102t0756"></script>
-    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20261102t0756"></script>
-    <script src="assets/js/pages/page-konglo-ui.js?v=20261102t0756"></script>
+    <script src="assets/js/ewoks-core.js?v=20261102t1212"></script>
+    <script src="assets/js/pages/page-konglo-data-funda.js?v=20261102t1212"></script>
+    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20261102t1212"></script>
+    <script src="assets/js/pages/page-konglo-ui.js?v=20261102t1212"></script>
 </body>
 </html>
