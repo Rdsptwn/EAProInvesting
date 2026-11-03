@@ -172,6 +172,19 @@
     };
     window.tpGetFiltered = () => filtered;
 
+    function paintStatCards(snap) {
+        const g = rows.filter((r) => r.chg != null && r.price >= 50).sort((a, b) => b.chg - a.chg)[0];
+        const ge = $('terminal-gainer');
+        if (ge) { ge.textContent = g ? g.ticker : '—'; ge.className = 'text-xl md:text-2xl font-black ' + (g && g.chg >= 0 ? 'text-emerald-600' : 'text-slate-800'); }
+        const gs = $('terminal-gainer-sub');
+        if (gs) gs.textContent = g ? `${g.chg >= 0 ? '+' : ''}${g.chg.toFixed(2)}% · ${fmt(g.price)}` : 'belum ada data';
+        const u = snap && snap.usdIdr;
+        const ue = $('terminal-usdidr');
+        if (ue) ue.textContent = u && Number.isFinite(u.price) ? Math.round(u.price).toLocaleString('id-ID') : '—';
+        const us = $('terminal-usdidr-sub');
+        if (us) us.textContent = u && Number.isFinite(u.changePct) ? `${u.changePct >= 0 ? '+' : ''}${u.changePct.toFixed(2)}%` : 'kurs';
+    }
+
     async function init() {
         paintControls(); applyHeight();
         const pr = $('tp-presets');
@@ -179,11 +192,12 @@
         try {
             const snap = await loadEwoksMarketSnapshot();
             rows = buildRows(snap);
+            paintStatCards(snap);
             const dl = $('tp-ticker-list');
             if (dl) dl.innerHTML = rows.map((r) => `<option value="${esc(r.ticker)}">${esc(r.name)}</option>`).join('');
         } catch (_) { rows = []; }
         tpRunScreener();
-        window.__terminalRepaint = async () => { rows = buildRows(await loadEwoksMarketSnapshot()); tpRunScreener(); };
+        window.__terminalRepaint = async () => { const sn = await loadEwoksMarketSnapshot(); rows = buildRows(sn); paintStatCards(sn); tpRunScreener(); };
     }
     if (document.getElementById('tp-screener')) {
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

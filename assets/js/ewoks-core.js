@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261103t1837';
+window.EWOKS_ASSET_V = '20261103t2126';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -837,7 +837,7 @@ function applyMarketSnapshotToDashboard(snap) {
         fgValue = 50 + Math.max(-25, Math.min(25, ihsg.changePct * 4));
     }
     if (fgPointer) fgPointer.style.left = `${fgValue}%`;
-    if (fgText) {
+    if (fgText || termSentiment) {
         let statusText = 'NEUTRAL';
         let colorClass = 'text-amber-500';
         if (fgValue < 25) { statusText = 'EXTREME FEAR'; colorClass = 'text-rose-600'; }
@@ -845,8 +845,8 @@ function applyMarketSnapshotToDashboard(snap) {
         else if (fgValue < 55) { statusText = 'NEUTRAL'; colorClass = 'text-amber-500'; }
         else if (fgValue < 75) { statusText = 'GREED'; colorClass = 'text-emerald-500'; }
         else { statusText = 'EXTREME GREED'; colorClass = 'text-emerald-600'; }
-        fgText.className = `text-[10px] font-black ${colorClass} transition-all duration-300`;
-        fgText.innerText = `${statusText} (${Math.round(fgValue)})`;
+        if (fgText) fgText.className = `text-[10px] font-black ${colorClass} transition-all duration-300`;
+        if (fgText) fgText.innerText = `${statusText} (${Math.round(fgValue)})`;
         if (termSentiment) {
             termSentiment.innerText = statusText;
             termSentiment.className = `text-xl md:text-2xl font-black ${colorClass}`;

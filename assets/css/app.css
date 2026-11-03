@@ -520,3 +520,9 @@ body.dark-mode-override .bg-red-50{background-color:rgba(239,68,68,.15)!importan
 body.dark-mode-override .bg-red-50:hover,body.dark-mode-override .hover\:bg-red-100:hover{background-color:rgba(239,68,68,.28)!important}
 body.dark-mode-override .bg-red-50 *{color:#fca5a5!important}
 body.dark-mode-override .bg-slate-100.text-slate-600{color:#cbd5e1!important}
+
+/* Perbaikan dark mode & logo (iterasi 2) */
+body.dark-mode-override .bg-purple-50,body.dark-mode-override .bg-sky-50,body.dark-mode-override .bg-orange-50{background-color:#1e1b4b!important;border-color:#312e81!important}
+body.dark-mode-override .tp-rng i{background:#f8fafc;box-shadow:0 0 0 2px #0f172a}
+.kg-avatar:has(.kg-logo){background:#fff!important;border:1px solid rgba(148,163,184,.4)}
+.kg-avatar:has(.kg-logo) .kg-logo{padding:6px}
