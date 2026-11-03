@@ -44,26 +44,68 @@ const known = [
     { ticker: 'ANTM', action: 'Kalender BUMN / MIND ID', kind: 'rups', date: '2026-12-04', dateLabel: 'Pantau' },
 ];
 
-let events = known.filter((e) => e.date >= addDays(today, -7));
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36';
+const DIV_TICKERS = ['BBCA','BBRI','BMRI','BBNI','TLKM','ASII','UNVR','ICBP','INDF','ADRO','PTBA','ITMG','UNTR','PGAS','SMGR','AALI','JSMR','KLBF','HMSP','GGRM','MYOR','CPIN','BRIS','ANTM','INKP','MEDC','AKRA','TPIA'];
+
+/** Dividen riil dari Yahoo (events=div). Ex-date lampau = fakta; berikutnya = estimasi (+ interval historis). */
+async function fetchDividends(t) {
+    try {
+        const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${t}.JK?range=3y&interval=1mo&events=div`, { headers: { 'User-Agent': UA } });
+        if (!r.ok) return [];
+        const d = (await r.json())?.chart?.result?.[0]?.events?.dividends || {};
+        return Object.values(d).map((x) => ({ ymd: jakartaYmd(new Date(x.date * 1000)), amount: x.amount })).sort((a, b) => a.ymd.localeCompare(b.ymd));
+    } catch (_) { return []; }
+}
+function fmtRp(n) { return 'Rp' + Number(n).toLocaleString('id-ID', { maximumFractionDigits: 2 }); }
+
+const dyn = [];
+const lists = await Promise.all(DIV_TICKERS.map(async (t) => [t, await fetchDividends(t)]));
+for (const [t, divs] of lists) {
+    if (!divs.length) continue;
+    for (const dv of divs) {
+        if (dv.ymd >= addDays(today, -14) && dv.ymd <= today) dyn.push({ ticker: t, action: `Ex-Date dividen ${fmtRp(dv.amount)}/saham`, kind: 'dividen', date: dv.ymd, dateLabel: 'Ex-Date' });
+    }
+    // estimasi: tiap ex-date setahun lalu + 365 hari yang jatuh di 75 hari ke depan
+    for (const dv of divs) {
+        const est = addDays(dv.ymd, 364);
+        if (est > today && est <= addDays(today, 75)) dyn.push({ ticker: t, action: `Estimasi ex-date dividen (~${fmtRp(dv.amount)})`, kind: 'dividen', date: est, dateLabel: 'Estimasi' });
+    }
+}
+
+// Agenda makro rutin
+function nextMonthFirstWorkday(ymd) {
+    const [y, m] = ymd.split('-').map(Number);
+    let d = new Date(Date.UTC(y, m, 1));
+    while ([0, 6].includes(d.getUTCDay())) d = new Date(d.getTime() + 86400000);
+    return d.toISOString().slice(0, 10);
+}
+const macro = [
+    { ticker: 'BPS', action: 'Rilis inflasi bulanan (IHK)', kind: 'rups', date: nextMonthFirstWorkday(today), dateLabel: 'BPS' },
+    { ticker: 'FOMC', action: 'Rapat The Fed (FOMC)', kind: 'rups', date: '2026-12-09', dateLabel: 'Keputusan' },
+    { ticker: 'BI', action: 'Rapat Dewan Gubernur BI (BI-Rate)', kind: 'rups', date: '2026-11-19', dateLabel: 'Estimasi' },
+].filter((e) => e.date >= today);
+
+const all = [...dyn, ...macro, ...known.filter((e) => e.date >= addDays(today, -7))];
+const seen = new Set();
+let events = all.filter((e) => { const k = `${e.ticker}|${e.date}|${e.kind}`; if (seen.has(k)) return false; seen.add(k); return true; });
+events = events.filter((e) => e.date >= addDays(today, -14));
 let upcomingCount = events.filter((e) => e.date >= today).length;
 const fillers = [
     { ticker: 'BBCA', action: 'Pantau keterbukaan BCA', kind: 'rups', offset: 12 },
     { ticker: 'BBRI', action: 'Pantau keterbukaan BRI', kind: 'rups', offset: 24 },
     { ticker: 'BMRI', action: 'Pantau keterbukaan Mandiri', kind: 'rups', offset: 36 },
-    { ticker: 'TLKM', action: 'Pantau keterbukaan Telkom', kind: 'rups', offset: 48 },
-    { ticker: 'ASII', action: 'Pantau keterbukaan Astra', kind: 'rups', offset: 60 },
 ];
 for (const f of fillers) {
     if (upcomingCount >= 6) break;
-    const date = addDays(today, f.offset);
-    events.push({ ticker: f.ticker, action: f.action, kind: f.kind, date, dateLabel: 'Pantau IDX' });
+    events.push({ ticker: f.ticker, action: f.action, kind: f.kind, date: addDays(today, f.offset), dateLabel: 'Pantau IDX' });
     upcomingCount += 1;
 }
+console.log(`dividen dinamis: ${dyn.length}, makro: ${macro.length}`);
 
 events.sort((a, b) => a.date.localeCompare(b.date));
 const payload = {
     updated: new Date().toISOString(),
-    source: 'IDX / keterbukaan + jadwal rolling Ewoks',
+    source: 'Yahoo Finance (riwayat dividen) + agenda makro rutin',
     events,
 };
 

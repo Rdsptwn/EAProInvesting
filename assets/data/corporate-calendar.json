@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-02T20:03:13.211Z",
-  "source": "IDX / keterbukaan + jadwal rolling Ewoks",
+  "updated": "2026-11-03T07:57:13.269Z",
+  "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
     {
       "ticker": "BBRI",
@@ -17,11 +17,11 @@
       "dateLabel": "IDX"
     },
     {
-      "ticker": "BBCA",
-      "action": "Pantau keterbukaan BCA",
+      "ticker": "BI",
+      "action": "Rapat Dewan Gubernur BI (BI-Rate)",
       "kind": "rups",
-      "date": "2026-11-15",
-      "dateLabel": "Pantau IDX"
+      "date": "2026-11-19",
+      "dateLabel": "Estimasi"
     },
     {
       "ticker": "BREN",
@@ -31,11 +31,11 @@
       "dateLabel": "IDX"
     },
     {
-      "ticker": "BBRI",
-      "action": "Pantau keterbukaan BRI",
+      "ticker": "BPS",
+      "action": "Rilis inflasi bulanan (IHK)",
       "kind": "rups",
-      "date": "2026-11-27",
-      "dateLabel": "Pantau IDX"
+      "date": "2026-12-01",
+      "dateLabel": "BPS"
     },
     {
       "ticker": "ANTM",
@@ -43,6 +43,13 @@
       "kind": "rups",
       "date": "2026-12-04",
       "dateLabel": "Pantau"
+    },
+    {
+      "ticker": "FOMC",
+      "action": "Rapat The Fed (FOMC)",
+      "kind": "rups",
+      "date": "2026-12-09",
+      "dateLabel": "Keputusan"
     }
   ]
 }
