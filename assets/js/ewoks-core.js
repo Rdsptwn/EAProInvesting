@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261103t1258';
+window.EWOKS_ASSET_V = '20261103t1315';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -218,7 +218,9 @@ function showPage(pageId) {
 window.tvWidgetInstance = null;
 window.currentTickerView = "";
 
-function openTVChart(ticker) {
+function openTVChart(ticker, opts) {
+    opts = opts || {};
+    const prefs = window.EwoksTerminalPrefs || {};
             if (!document.getElementById('chart-active-ticker-input') || !document.getElementById('tv-chart-container')) {
                 return;
             }
@@ -234,18 +236,19 @@ function openTVChart(ticker) {
         document.getElementById('tv-chart-wrapper').classList.remove('hide');
     }
 
-    const isDark = document.body.classList.contains('dark-mode-override');
+    const isDark = prefs.theme === 'dark' ? true : prefs.theme === 'light' ? false : document.body.classList.contains('dark-mode-override');
     
     document.getElementById('tv-chart-container').innerHTML = '';
     
     window.tvWidgetInstance = new TradingView.widget({
       "autosize": true,
       "symbol": symbol,
-      "interval": "D", 
+      "interval": prefs.interval || "D",
       "timezone": "Asia/Jakarta",
       "theme": isDark ? "dark" : "light",
-      "style": "1",
+      "style": String(prefs.style || "1"),
       "locale": "id",
+      "studies": Array.isArray(prefs.studies) ? prefs.studies : [],
       "enable_publishing": false,
       "backgroundColor": isDark ? "#0f172a" : "rgba(255, 255, 255, 1)",
       "gridColor": isDark ? "#1e293b" : "rgba(241, 245, 249, 1)",
@@ -261,10 +264,10 @@ function openTVChart(ticker) {
       "details": true,
       "hotlist": true,
       "calendar": true,
-      "hide_side_toolbar": false
+      "hide_side_toolbar": prefs.sideToolbar === false
     });
     
-    if(EwoksSiteContext.is('watchlist')){
+    if(EwoksSiteContext.is('watchlist') && !opts.noScroll){
         const headerOffset = 100;
         const elementPosition = document.getElementById('tv-chart-wrapper').getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -758,6 +761,7 @@ async function refreshLiveQuotes(force = false) {
             renderWatchlist(true);
         }
         if (typeof window.__kongloRepaint === 'function') window.__kongloRepaint();
+        if (typeof window.__terminalRepaint === 'function') window.__terminalRepaint();
         return true;
     } catch (e) {
         console.warn('Harga live gagal, pakai snapshot:', e.message);
