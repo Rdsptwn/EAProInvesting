@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T07:57:13.269Z",
+  "updated": "2026-11-03T09:08:17.328Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
     {
@@ -8,6 +8,27 @@
       "kind": "dividen",
       "date": "2026-11-06",
       "dateLabel": "Pembayaran"
+    },
+    {
+      "ticker": "MEDC",
+      "action": "Estimasi ex-date dividen (~Rp28,45)",
+      "kind": "dividen",
+      "date": "2026-11-10",
+      "dateLabel": "Estimasi"
+    },
+    {
+      "ticker": "TPIA",
+      "action": "Estimasi ex-date dividen (~Rp3,84)",
+      "kind": "dividen",
+      "date": "2026-11-10",
+      "dateLabel": "Estimasi"
+    },
+    {
+      "ticker": "ITMG",
+      "action": "Estimasi ex-date dividen (~Rp738)",
+      "kind": "dividen",
+      "date": "2026-11-12",
+      "dateLabel": "Estimasi"
     },
     {
       "ticker": "AMMN",
@@ -38,6 +59,13 @@
       "dateLabel": "BPS"
     },
     {
+      "ticker": "BBCA",
+      "action": "Estimasi ex-date dividen (~Rp55)",
+      "kind": "dividen",
+      "date": "2026-12-02",
+      "dateLabel": "Estimasi"
+    },
+    {
       "ticker": "ANTM",
       "action": "Kalender BUMN / MIND ID",
       "kind": "rups",
@@ -50,6 +78,34 @@
       "kind": "rups",
       "date": "2026-12-09",
       "dateLabel": "Keputusan"
+    },
+    {
+      "ticker": "UNVR",
+      "action": "Estimasi ex-date dividen (~Rp87)",
+      "kind": "dividen",
+      "date": "2026-12-14",
+      "dateLabel": "Estimasi"
+    },
+    {
+      "ticker": "BBRI",
+      "action": "Estimasi ex-date dividen (~Rp137)",
+      "kind": "dividen",
+      "date": "2026-12-29",
+      "dateLabel": "Estimasi"
+    },
+    {
+      "ticker": "ADRO",
+      "action": "Estimasi ex-date dividen (~Rp145,14)",
+      "kind": "dividen",
+      "date": "2026-12-29",
+      "dateLabel": "Estimasi"
+    },
+    {
+      "ticker": "BMRI",
+      "action": "Estimasi ex-date dividen (~Rp100)",
+      "kind": "dividen",
+      "date": "2027-01-05",
+      "dateLabel": "Estimasi"
     }
   ]
 }
