@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261103t0749';
+window.EWOKS_ASSET_V = '20261103t0801';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -461,10 +461,11 @@ function paintDataStamps(snap) {
         : built
             ? `Update data pasar: ${formatStampWib(built)}`
             : 'Update data pasar: snapshot belum tersedia';
+    const full = !liveAt && window.__ewoksLiveErr ? `${text} · live gagal (${window.__ewoksLiveErr})` : text;
     const home = document.getElementById('data-updated-stamp');
-    if (home) home.textContent = text;
+    if (home) home.textContent = full;
     const konglo = document.getElementById('konglo-data-stamp');
-    if (konglo) konglo.textContent = text;
+    if (konglo) konglo.textContent = full;
 }
 
 function ewoksAssetUrl(relPath) {
@@ -740,6 +741,7 @@ async function refreshLiveQuotes(force = false) {
             n++;
         }
         if (!n) throw new Error('data kosong');
+        window.__ewoksLiveErr = null;
         snap.meta = { ...(snap.meta || {}), liveAt: data.ts || new Date().toISOString() };
         paintDataStamps(snap);
         applyMarketSnapshotToDashboard(snap);
@@ -750,6 +752,9 @@ async function refreshLiveQuotes(force = false) {
         return true;
     } catch (e) {
         console.warn('Harga live gagal, pakai snapshot:', e.message);
+        const m = String(e.message || '');
+        window.__ewoksLiveErr = /Failed to fetch|NetworkError|Load failed/i.test(m) ? 'diblokir CORS/jaringan: cek ALLOWED_ORIGINS di Worker' : m;
+        try { paintDataStamps(await loadEwoksMarketSnapshot()); } catch (_) {}
         return false;
     } finally {
         __ewoksLiveBusy = false;
