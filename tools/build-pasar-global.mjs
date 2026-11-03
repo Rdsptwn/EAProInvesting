@@ -1,6 +1,6 @@
 /**
  * Perbarui CAGR instrumen "etf-as" di assets/data/pasar-global.json
- * dari harga penutupan bulanan Stooq (alternatif selain Yahoo / TradingView, tanpa API key).
+ * dari harga penutupan bulanan (Yahoo, cadangan Stooq; tanpa API key).
  *
  * - CAGR = berdasarkan harga penutupan (tanpa dividen), jendela 10 tahun (atau yang tersedia, min. 3 tahun).
  * - Instrumen yang gagal diambil tetap memakai angka lama (tidak ditimpa).
@@ -56,6 +56,39 @@ export function computeYearly(rows, maxYears = 10) {
     return out.slice(-maxYears);
 }
 
+/** Yahoo chart bulanan 10 th (gratis, tanpa key). Hasil: [{date:Date, close:number}] */
+export function parseYahooChart(json) {
+    const r = json?.chart?.result?.[0];
+    const ts = r?.timestamp;
+    const cl = r?.indicators?.quote?.[0]?.close;
+    if (!Array.isArray(ts) || !Array.isArray(cl)) return [];
+    const rows = [];
+    for (let i = 0; i < ts.length; i++) {
+        const c = cl[i];
+        if (ts[i] && Number.isFinite(c) && c > 0) rows.push({ date: new Date(ts[i] * 1000), close: c });
+    }
+    return rows.sort((a, b) => a.date - b.date);
+}
+
+async function fetchYahooMonthly(symbol) {
+    const url = `https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1mo&range=11y`;
+    const res = await fetch(url, { headers: { ...UA, Accept: 'application/json' } });
+    if (!res.ok) throw new Error(`Yahoo HTTP ${res.status}`);
+    const rows = parseYahooChart(await res.json());
+    if (!rows.length) throw new Error('Yahoo kosong');
+    return rows;
+}
+
+/** Yahoo dulu; kalau gagal pakai Stooq. */
+async function fetchSeries(stooqSymbol) {
+    const sym = String(stooqSymbol).replace(/\.us$/i, '').toUpperCase();
+    try {
+        return await fetchYahooMonthly(sym);
+    } catch (e) {
+        return fetchStooq(stooqSymbol);
+    }
+}
+
 async function fetchStooq(symbol) {
     const url = `https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol)}&i=m`;
     const res = await fetch(url, { headers: UA });
@@ -71,7 +104,7 @@ async function main() {
     for (const inst of json.instruments) {
         if (inst.status !== 'etf-as' || !inst.stooq) continue;
         try {
-            const res = computeCagr(await fetchStooq(inst.stooq));
+            const res = computeCagr(await fetchSeries(inst.stooq));
             if (!res) throw new Error('riwayat terlalu pendek');
             inst.cagr = res.cagr;
             inst.cagrYears = res.years;
@@ -88,10 +121,10 @@ async function main() {
     for (const ref of json.yearlyRef || []) {
         if (!ref.stooq) continue;
         try {
-            const y = computeYearly(await fetchStooq(ref.stooq));
+            const y = computeYearly(await fetchSeries(ref.stooq));
             if (y.length >= 3) {
                 ref.yearly = y;
-                const c = computeCagr(await fetchStooq(ref.stooq));
+                const c = computeCagr(await fetchSeries(ref.stooq));
                 if (c) ref.cagr10y = c.cagr;
             }
         } catch (e) { console.warn(`skip yearly ${ref.ticker}: ${e.message}`); }
