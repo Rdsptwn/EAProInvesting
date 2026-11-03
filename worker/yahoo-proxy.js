@@ -48,8 +48,8 @@ async function fetchYahooQuote(yahooSymbol, ctx) {
     const hit = await cache.match(cacheKey);
     if (hit) return hit.json();
 
-    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooSymbol)}?range=1d&interval=1d`;
-    const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' } });
+    const url = `https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooSymbol)}?range=1d&interval=1d`;
+    const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(6000) });
     if (!res.ok) throw new Error(`Yahoo ${res.status}`);
     const meta = (await res.json())?.chart?.result?.[0]?.meta;
     const price = Number(meta?.regularMarketPrice);

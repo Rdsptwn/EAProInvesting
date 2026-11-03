@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261103t0909';
+window.EWOKS_ASSET_V = '20261103t1258';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -710,10 +710,19 @@ async function refreshLiveQuotes(force = false) {
     try {
         const snap = await loadEwoksMarketSnapshot();
         const url = `${api}/quotes?s=${encodeURIComponent(tickers.join(','))}${wantIhsg ? '&ihsg=1' : ''}`;
-        const ctl = new AbortController();
-        const timer = setTimeout(() => ctl.abort(), 12000);
-        const res = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
-        clearTimeout(timer);
+        let res = null;
+        for (let attempt = 0; attempt < 2 && !res; attempt++) {
+            const ctl = new AbortController();
+            const timer = setTimeout(() => ctl.abort(), 20000);
+            try {
+                res = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
+            } catch (err) {
+                if (attempt === 1) throw (err && err.name === 'AbortError' ? new Error('Worker terlalu lambat (timeout 20 dtk)') : err);
+                await new Promise((r) => setTimeout(r, 1500));
+            } finally {
+                clearTimeout(timer);
+            }
+        }
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
         snap.quotes = snap.quotes || {};
