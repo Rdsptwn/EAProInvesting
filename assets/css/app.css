@@ -426,3 +426,9 @@ body.dark-mode-override .kg-metrics, body.dark-mode-override .kg-card, body.dark
 body.dark-mode-override .kg-btn { background: #1e293b; color: #e2e8f0; }
 body.dark-mode-override .kg-more-body, body.dark-mode-override .kg-card-desc { color: #94a3b8; }
 @media (max-width: 480px) { .kg-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Logo perusahaan / grup */
+.kg-avatar{position:relative;overflow:hidden}
+.kg-avatar .kg-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:5px;border-radius:inherit}
+.kg-clogo{width:28px;height:28px;object-fit:contain;background:#fff;border:1px solid rgba(148,163,184,.35);border-radius:8px;padding:3px;flex:none;margin-left:6px}
+body.dark-mode-override .kg-avatar .kg-logo,body.dark-mode-override .kg-clogo{background:#f8fafc}

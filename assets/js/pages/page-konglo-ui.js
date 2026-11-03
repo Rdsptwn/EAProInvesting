@@ -1,4 +1,29 @@
 // --- PETA KONGLOMERAT ---
+// --- LOGO PERUSAHAAN / GRUP (favicon situs resmi; inisial bila tidak ada) ---
+let kgLogos = null;
+let kgLogosLoading = false;
+function kgLoadLogos() {
+    if (kgLogos || kgLogosLoading) return;
+    kgLogosLoading = true;
+    const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+    fetch(`${base}assets/data/logos.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => {
+            kgLogos = j || { groups: {}, tickers: {} };
+            if (typeof searchKonglo === 'function' && document.getElementById('group-grid')) searchKonglo();
+            if (typeof window.__kongloRepaint === 'function') window.__kongloRepaint();
+        })
+        .catch(() => { kgLogos = { groups: {}, tickers: {} }; });
+}
+function kgLogoDomain(kind, key) {
+    return kgLogos && kgLogos[kind] ? kgLogos[kind][key] || '' : '';
+}
+/** Gambar logo menimpa inisial; kalau gagal dimuat, inisial tetap terlihat. */
+function kgLogoImg(domain, cls) {
+    if (!domain || !/^[a-z0-9.-]+$/i.test(domain)) return '';
+    return `<img class="${cls}" src="https://www.google.com/s2/favicons?domain=${domain}&sz=128" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`;
+}
+
 function kgHue(str) {
     let h = 0;
     for (const c of String(str)) h = (h * 31 + c.charCodeAt(0)) % 360;
@@ -48,6 +73,7 @@ function renderGrid(groups = dataGroups) {
     const gridContainer = document.getElementById('group-grid');
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
+    kgLoadLogos();
     kongloRenderStats();
 
     if(groups.length === 0) {
@@ -71,7 +97,7 @@ function renderGrid(groups = dataGroups) {
         card.onclick = () => showDetail(group.id);
         card.innerHTML = `
             <div class="kg-card-top">
-                <span class="kg-avatar" style="background:linear-gradient(135deg,hsl(${hue} 75% 55%),hsl(${(hue + 40) % 360} 70% 45%))">${escapeHtml(group.name.charAt(0))}</span>
+                <span class="kg-avatar" style="background:linear-gradient(135deg,hsl(${hue} 75% 55%),hsl(${(hue + 40) % 360} 70% 45%))">${escapeHtml(group.name.charAt(0))}${kgLogoImg(kgLogoDomain('groups', group.id), 'kg-logo')}</span>
                 <div class="min-w-0 flex-1">
                     <h4 class="kg-card-title">${escapeHtml(group.name)}</h4>
                     <p class="kg-card-meta">${numStocks} emiten</p>
@@ -135,6 +161,13 @@ function showDetail(groupId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     document.getElementById('detail-title').innerText = group.name;
+    {
+        const t = document.getElementById('detail-title');
+        const old = document.getElementById('detail-logo');
+        if (old) old.remove();
+        const lg = kgLogoImg(kgLogoDomain('groups', group.id), 'kg-clogo');
+        if (lg) t.insertAdjacentHTML('beforebegin', lg.replace('<img ', '<img id="detail-logo" style="width:44px;height:44px;margin:1rem 0 0;display:block" '));
+    }
     document.getElementById('detail-desc').innerText = group.desc;
     const priceNote = document.getElementById('detail-price-note');
     if (priceNote) {
@@ -174,7 +207,7 @@ function showDetail(groupId) {
             stockItem.className = 'kg-stock premium-card no-hover-lift dark-mode-card';
             stockItem.innerHTML = `
             <div class="kg-stock-head">
-                <span class="kg-tkbadge" style="background:hsl(${hue} 80% 94%);color:hsl(${hue} 60% 32%)">${escapeHtml(stock.ticker)}</span>
+                <span class="kg-tkbadge" style="background:hsl(${hue} 80% 94%);color:hsl(${hue} 60% 32%)">${escapeHtml(stock.ticker)}</span>${kgLogoImg(kgLogoDomain('tickers', stock.ticker), 'kg-clogo')}
                 <div class="min-w-0 flex-1">
                     <p class="kg-name">${escapeHtml(company)}</p>
                     <p class="kg-sub">${escapeHtml(stock.sector)}</p>
