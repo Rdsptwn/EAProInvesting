@@ -508,3 +508,15 @@ body.dark-mode-override .tp-table td{border-color:#1e293b;color:#e2e8f0}
 body.dark-mode-override .tp-table tr:hover td{background:#13203b}
 body.dark-mode-override .tp-tk{background:#1e3a8a;color:#bfdbfe}
 body.dark-mode-override .tp-tab.active{color:#93c5fd}
+
+/* ===== Dark mode: tombol yang sebelumnya tidak terbaca ===== */
+body.dark-mode-override .bg-slate-200{background-color:#1e293b!important;color:#e2e8f0!important;border-color:#334155!important}
+body.dark-mode-override .bg-slate-200:hover,body.dark-mode-override .hover\:bg-slate-300:hover{background-color:#334155!important}
+body.dark-mode-override .bg-slate-200 *{color:inherit!important}
+body.dark-mode-override .btn-action.bg-slate-900,
+body.dark-mode-override button.bg-slate-900{background-color:#2563eb!important;color:#fff!important;border-color:#3b82f6!important}
+body.dark-mode-override button.bg-slate-900:hover{background-color:#1d4ed8!important}
+body.dark-mode-override .bg-red-50{background-color:rgba(239,68,68,.15)!important;border-color:rgba(239,68,68,.45)!important;color:#fca5a5!important}
+body.dark-mode-override .bg-red-50:hover,body.dark-mode-override .hover\:bg-red-100:hover{background-color:rgba(239,68,68,.28)!important}
+body.dark-mode-override .bg-red-50 *{color:#fca5a5!important}
+body.dark-mode-override .bg-slate-100.text-slate-600{color:#cbd5e1!important}
