@@ -62,6 +62,7 @@
     /* ------------------------------ SCREENER ------------------------------ */
     let rows = [];      // semua emiten dari snapshot
     let filtered = [];  // hasil saringan (dipakai ekspor)
+    let dataNote = '';
 
     const PRESETS = [
         ['🚀 Top Gainers', { cmin: 2, sort: 'chg-desc' }],
@@ -73,8 +74,28 @@
         ['🪙 Harga ≤ 500', { pmax: 500, sort: 'chg-desc' }],
         ['🏦 Blue Chip (≥ 5.000)', { pmin: 5000, sort: 'chg-desc' }]
     ];
-    const FIELD = { q: 'f-q', pmin: 'f-pmin', pmax: 'f-pmax', cmin: 'f-cmin', cmax: 'f-cmax', pos: 'f-pos', sr: 'f-sr', sort: 'f-sort', limit: 'f-limit' };
+    const FIELD = { vmin: 'f-vmin', board: 'f-board', sector: 'f-sector', q: 'f-q', pmin: 'f-pmin', pmax: 'f-pmax', cmin: 'f-cmin', cmax: 'f-cmax', pos: 'f-pos', sr: 'f-sr', sort: 'f-sort', limit: 'f-limit' };
 
+    let info = {}; // kode -> [papan, sektor]
+    function rowsFrom(d) {
+        info = d.info || {};
+        const names = d.names || {};
+        const out = [];
+        for (const r of d.rows || []) {
+            const [t, price, prev, chg, low52, high52, support, resist, avg, vol, date, nm] = r;
+            if (!Number.isFinite(price) || price <= 0) continue;
+            const span = high52 - low52;
+            const nmClean = String(names[t] || nm || '').replace(/^PT\s+/i, '').replace(/\s+Tbk\.?$/i, '');
+            out.push({
+                ticker: t, name: nmClean, price, prev, chg: Number.isFinite(chg) ? chg : null, low52, high52, support, resist, avg,
+                vol: Number.isFinite(vol) ? vol : null, date,
+                board: (info[t] || [])[0] || '', sector: (info[t] || [])[1] || '',
+                pos: span > 0 ? Math.max(0, Math.min(100, ((price - low52) / span) * 100)) : null,
+                supDist: Number.isFinite(support) && support > 0 ? ((price - support) / support) * 100 : null
+            });
+        }
+        return out;
+    }
     function buildRows(snap) {
         const out = [];
         for (const [tk, q] of Object.entries((snap && snap.quotes) || {})) {
@@ -84,6 +105,7 @@
                 ticker: tk, name: (q.name || '').replace(/^PT\s+/i, '').replace(/\s+Tbk\.?$/i, ''),
                 price: q.price, chg: Number.isFinite(q.changePct) ? q.changePct : null,
                 low52: q.low52, high52: q.high52, support: q.support, resist: q.resistance,
+                vol: null, board: '', sector: '',
                 pos: span > 0 ? Math.max(0, Math.min(100, ((q.price - q.low52) / span) * 100)) : null,
                 supDist: Number.isFinite(q.support) && q.support > 0 ? ((q.price - q.support) / q.support) * 100 : null
             });
@@ -95,12 +117,16 @@
     window.tpRunScreener = function () {
         const q = (($('f-q') || {}).value || '').trim().toLowerCase();
         const pmin = num('f-pmin'), pmax = num('f-pmax'), cmin = num('f-cmin'), cmax = num('f-cmax');
+        const vmin = num('f-vmin'), board = ($('f-board') || {}).value, sector = ($('f-sector') || {}).value;
         const pos = ($('f-pos') || {}).value, sr = ($('f-sr') || {}).value, sort = ($('f-sort') || {}).value || 'chg-desc';
         const limit = Number(($('f-limit') || {}).value || 50);
         let r = rows.filter((x) => {
             if (q && !(x.ticker.toLowerCase().includes(q) || x.name.toLowerCase().includes(q))) return false;
             if (pmin != null && x.price < pmin) return false;
             if (pmax != null && x.price > pmax) return false;
+            if (vmin != null && (x.vol == null || x.vol / 100 < vmin)) return false;
+            if (board && x.board !== board) return false;
+            if (sector && x.sector !== sector) return false;
             if (cmin != null && (x.chg == null || x.chg < cmin)) return false;
             if (cmax != null && (x.chg == null || x.chg > cmax)) return false;
             if (pos === 'low' && !(x.pos != null && x.pos <= 20)) return false;
@@ -116,16 +142,17 @@
             'chg-desc': (a, b) => (b.chg ?? -999) - (a.chg ?? -999), 'chg-asc': (a, b) => (a.chg ?? 999) - (b.chg ?? 999),
             'price-desc': (a, b) => b.price - a.price, 'price-asc': (a, b) => a.price - b.price,
             'pos-asc': (a, b) => (a.pos ?? 999) - (b.pos ?? 999), 'sup-asc': (a, b) => Math.abs(a.supDist ?? 999) - Math.abs(b.supDist ?? 999),
+            'vol-desc': (a, b) => (b.vol ?? -1) - (a.vol ?? -1), 'val-desc': (a, b) => (b.vol ?? 0) * b.price - (a.vol ?? 0) * a.price,
             tk: (a, b) => a.ticker.localeCompare(b.ticker)
         };
         r.sort(by[sort] || by['chg-desc']);
         filtered = r;
         const shown = r.slice(0, limit);
         const sub = $('tp-scr-sub');
-        if (sub) sub.textContent = `${r.length} dari ${rows.length} emiten cocok · menampilkan ${shown.length}`;
+        if (sub) sub.textContent = `${r.length} dari ${rows.length} emiten cocok · menampilkan ${shown.length}${dataNote ? ' · ' + dataNote : ''}`;
         const tb = $('tp-rows');
         if (!tb) return;
-        if (!shown.length) { tb.innerHTML = '<tr><td colspan="8" class="tp-empty">Tidak ada emiten yang cocok. Longgarkan filter.</td></tr>'; return; }
+        if (!shown.length) { tb.innerHTML = '<tr><td colspan="9" class="tp-empty">Tidak ada emiten yang cocok. Longgarkan filter.</td></tr>'; return; }
         tb.innerHTML = shown.map((x) => {
             const up = (x.chg ?? 0) >= 0;
             const chg = x.chg == null ? '—' : `${up ? '+' : ''}${x.chg.toFixed(2)}%`;
@@ -135,6 +162,7 @@
                 <td class="tp-nm">${esc(x.name)}</td>
                 <td class="r b">${fmt(x.price)}</td>
                 <td class="r"><span class="tp-chg ${x.chg == null ? '' : up ? 'up' : 'dn'}">${chg}</span></td>
+                <td class="r">${x.vol == null ? '—' : fmt(x.vol / 100)}</td>
                 <td><div class="tp-rng" title="Low ${fmt(x.low52)} – High ${fmt(x.high52)}"><i style="left:${pos.toFixed(0)}%"></i></div></td>
                 <td class="r">${fmt(x.support)}</td><td class="r">${fmt(x.resist)}</td>
                 <td class="r"><button type="button" class="tp-mini" title="Tambah ke Watchlist" onclick="tpAddWatch('${x.ticker}')"><i class="fas fa-plus"></i></button></td>
@@ -185,19 +213,93 @@
         if (us) us.textContent = u && Number.isFinite(u.changePct) ? `${u.changePct >= 0 ? '+' : ''}${u.changePct.toFixed(2)}%` : 'kurs';
     }
 
+    let fullData = false;
+    function fillSelects() {
+        const uniq = (k) => [...new Set(rows.map((r) => r[k]).filter(Boolean))].sort();
+        const set = (id, label, vals) => { const e = $(id); if (!e) return; const cur = e.value; e.innerHTML = `<option value="">${label}</option>` + vals.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join(''); e.value = cur; };
+        set('f-board', 'Semua papan', uniq('board'));
+        set('f-sector', 'Semua sektor', uniq('sector'));
+    }
+    function recompute(r) {
+        const span = r.high52 - r.low52;
+        r.pos = span > 0 ? Math.max(0, Math.min(100, ((r.price - r.low52) / span) * 100)) : null;
+        r.supDist = Number.isFinite(r.support) && r.support > 0 ? ((r.price - r.support) / r.support) * 100 : null;
+    }
+    let liveBusy = false;
+    window.tpRefreshLive = async function (manual) {
+        const api = typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '';
+        const btn = $('tp-live-btn');
+        if (!api) { if (manual && typeof showToast === 'function') showToast('URL Worker live belum diatur.', 'warning'); return; }
+        if (liveBusy || !rows.length) return;
+        if (!manual && !(typeof isIdxMarketOpen === 'function' && isIdxMarketOpen())) return;
+        liveBusy = true;
+        if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat…'; }
+        try {
+            const ctl = new AbortController();
+            const timer = setTimeout(() => ctl.abort(), 30000);
+            const res = await fetch(`${api}/screener?s=${rows.map((r) => r.ticker).join(',')}`, { signal: ctl.signal, cache: 'no-store' });
+            clearTimeout(timer);
+            const d = await res.json().catch(() => ({}));
+            if (!res.ok || !d.ok) throw new Error(d.error || 'HTTP ' + res.status);
+            let n = 0;
+            for (const r of rows) {
+                const q = d.q && d.q[r.ticker];
+                if (!q) continue;
+                r.price = q[0];
+                if (q[1] != null) r.prev = q[1];
+                r.chg = q[2] != null ? q[2] : (r.prev > 0 ? +(((r.price - r.prev) / r.prev) * 100).toFixed(2) : r.chg);
+                if (q[3] != null) r.vol = q[3];
+                recompute(r); n++;
+            }
+            const t = new Date(d.ts).toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' });
+            dataNote = `live ${t} WIB (${n} emiten)`;
+            tpRunScreener();
+            if (manual && typeof showToast === 'function') showToast(`Harga live disegarkan untuk ${n} emiten`, 'success');
+        } catch (e) {
+            const m = String(e.message || e);
+            dataNote = `live gagal (${/abort/i.test(m) ? 'timeout' : m})`;
+            tpRunScreener();
+            if (manual && typeof showToast === 'function') showToast('Live gagal: ' + m + '. Memakai data snapshot.', 'warning');
+        } finally {
+            liveBusy = false;
+            if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fas fa-bolt"></i> Segarkan live'; }
+        }
+    };
+
     async function init() {
         paintControls(); applyHeight();
         const pr = $('tp-presets');
         if (pr) pr.innerHTML = PRESETS.map(([l], i) => `<button type="button" class="tp-chip" onclick="tpApplyPreset(${i})">${l}</button>`).join('');
+        let snap = null;
+        try { snap = await loadEwoksMarketSnapshot(); } catch (_) {}
+        // 1) data lengkap semua emiten BEI
         try {
-            const snap = await loadEwoksMarketSnapshot();
-            rows = buildRows(snap);
-            paintStatCards(snap);
-            const dl = $('tp-ticker-list');
-            if (dl) dl.innerHTML = rows.map((r) => `<option value="${esc(r.ticker)}">${esc(r.name)}</option>`).join('');
-        } catch (_) { rows = []; }
+            const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+            const r = await fetch(`${base}assets/data/idx-screener.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`, { cache: 'no-store' });
+            if (r.ok) {
+                const d = await r.json();
+                const built = rowsFrom(d);
+                if (built.length > 300) {
+                    rows = built; fullData = true;
+                    const when = d.meta && d.meta.built ? new Date(d.meta.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+                    dataNote = `snapshot ${when} WIB`;
+                }
+            }
+        } catch (_) {}
+        // 2) cadangan: snapshot konglo (±280 emiten)
+        if (!fullData) { rows = snap ? buildRows(snap) : []; dataNote = 'baru ±' + rows.length + ' emiten (jalankan workflow "Daily market sync" untuk semua emiten)'; }
+        paintStatCards(snap);
+        fillSelects();
+        const dl = $('tp-ticker-list');
+        if (dl) dl.innerHTML = rows.map((r) => `<option value="${esc(r.ticker)}">${esc(r.name)}</option>`).join('');
         tpRunScreener();
-        window.__terminalRepaint = async () => { const sn = await loadEwoksMarketSnapshot(); rows = buildRows(sn); paintStatCards(sn); tpRunScreener(); };
+        window.__terminalRepaint = async () => {
+            const sn = await loadEwoksMarketSnapshot();
+            if (!fullData) { rows = buildRows(sn); fillSelects(); }
+            paintStatCards(sn); tpRunScreener();
+        };
+        setTimeout(() => tpRefreshLive(false), 2500);
+        setInterval(() => tpRefreshLive(false), 5 * 60 * 1000);
     }
     if (document.getElementById('tp-screener')) {
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

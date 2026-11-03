@@ -24,7 +24,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout
@@ -47,6 +47,17 @@ jobs:
             const ok = s.ihsg && Number.isFinite(s.ihsg.price) && s.meta.tickerCount >= 100;
             if (!ok) { console.error("Snapshot tidak valid: ihsg=" + JSON.stringify(s.ihsg) + " tickerCount=" + s.meta.tickerCount); process.exit(1); }
           ' || { echo "::warning::Snapshot gagal/tidak valid — pakai versi sebelumnya"; cp /tmp/market-snapshot.bak assets/data/market-snapshot.json; exit 1; }
+
+      # Daftar SEMUA emiten BEI + harga semuanya (Market Screener). Gagal = data lama dipertahankan.
+      - name: Build idx-universe.json + idx-screener.json (semua emiten BEI)
+        continue-on-error: true
+        run: |
+          cp assets/data/idx-universe.json /tmp/idx-universe.bak
+          cp assets/data/idx-screener.json /tmp/idx-screener.bak 2>/dev/null || true
+          node tools/build-idx-universe.mjs || { echo "::warning::universe gagal — pakai daftar lama"; cp /tmp/idx-universe.bak assets/data/idx-universe.json; }
+          node tools/build-idx-screener.mjs \
+            && node -e 'const s=JSON.parse(require("fs").readFileSync("assets/data/idx-screener.json","utf8")); if(!(s.rows.length>=300)) process.exit(1)' \
+            || { echo "::warning::idx-screener gagal/tidak valid — pakai versi sebelumnya"; [ -f /tmp/idx-screener.bak ] && cp /tmp/idx-screener.bak assets/data/idx-screener.json || rm -f assets/data/idx-screener.json; }
 
       - name: Build corporate-calendar.json
         continue-on-error: true

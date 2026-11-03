@@ -4,7 +4,10 @@
  * GET /quotes?s=BBCA,BBRI,TLKM[&ihsg=1]
  *   -> { ok, ts, quotes: { BBCA: { price, prevClose, changePct, time, state } }, ihsg?: {...} }
  *
- * - Maks 40 ticker per request (batas subrequest Worker gratis = 50).
+ * GET /screener?s=AALI,ABBA,...   (hingga ~1000 kode; satu panggilan batch ke Yahoo, cache 60 dtk)
+ *   -> { ok, ts, n, q: { AALI: [price, prevClose, changePct, volume], ... } }
+ *
+ * - Maks 40 ticker per request (/quotes) (batas subrequest Worker gratis = 50).
  * - Tiap simbol di-cache 60 detik di edge, jadi ramai pengunjung tidak membebani Yahoo.
  * - CORS dibatasi ke domain web kamu (ALLOWED_ORIGINS).
  * Data IDX di Yahoo umumnya tertunda ±10 menit. API Yahoo ini tidak resmi.
@@ -70,6 +73,48 @@ async function fetchYahooQuote(yahooSymbol, ctx) {
     return out;
 }
 
+
+// ---- Batch quote (screener): Yahoo v7/quote butuh cookie + crumb; disimpan di cache edge 30 menit.
+async function getYahooSession() {
+    const cache = caches.default;
+    const key = new Request('https://cache.ewoks.local/yahoo-session');
+    const hit = await cache.match(key);
+    if (hit) return hit.json();
+    const r1 = await fetch('https://fc.yahoo.com', { headers: { 'User-Agent': UA }, redirect: 'manual', signal: AbortSignal.timeout(6000) });
+    const raw = r1.headers.get('set-cookie') || '';
+    const cookie = raw.split(/,(?=\s*[A-Za-z0-9_]+=)/).map((c) => c.split(';')[0].trim()).filter(Boolean).join('; ');
+    if (!cookie) throw new Error('no cookie');
+    const r2 = await fetch('https://query1.finance.yahoo.com/v1/test/getcrumb', { headers: { 'User-Agent': UA, Cookie: cookie }, signal: AbortSignal.timeout(6000) });
+    const crumb = (await r2.text()).trim();
+    if (!r2.ok || !crumb || crumb.length > 40 || crumb.includes('<')) throw new Error('no crumb');
+    const sess = { cookie, crumb };
+    await cache.put(key, new Response(JSON.stringify(sess), { headers: { 'Cache-Control': 'max-age=1800' } }));
+    return sess;
+}
+
+async function fetchBatchQuotes(codes) {
+    const sess = await getYahooSession();
+    const out = {};
+    const chunks = [];
+    for (let i = 0; i < codes.length; i += 200) chunks.push(codes.slice(i, i + 200));
+    await Promise.all(chunks.map(async (ch) => {
+        const syms = ch.map((c) => `${c}.JK`).join(',');
+        const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(syms)}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketChangePercent,regularMarketVolume&crumb=${encodeURIComponent(sess.crumb)}`;
+        const res = await fetch(url, { headers: { 'User-Agent': UA, Cookie: sess.cookie, Accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
+        if (!res.ok) throw new Error(`Yahoo ${res.status}`);
+        const list = (await res.json())?.quoteResponse?.result || [];
+        for (const q of list) {
+            const code = String(q.symbol || '').replace(/\.JK$/, '');
+            const price = Number(q.regularMarketPrice);
+            if (!code || !Number.isFinite(price) || price <= 0) continue;
+            const prev = Number(q.regularMarketPreviousClose);
+            const chg = Number(q.regularMarketChangePercent);
+            out[code] = [round(price), Number.isFinite(prev) ? round(prev) : null, Number.isFinite(chg) ? round(chg) : null, Number.isFinite(Number(q.regularMarketVolume)) ? Math.round(Number(q.regularMarketVolume)) : null];
+        }
+    }));
+    return out;
+}
+
 export default {
     async fetch(request, env, ctx) {
         const origin = request.headers.get('Origin') || '';
@@ -79,6 +124,23 @@ export default {
         if (request.method !== 'GET') return json({ ok: false, error: 'method' }, 405, origin);
         if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live' }, 200, origin);
         if (url.pathname !== '/quotes') return json({ ok: false, error: 'not found' }, 404, origin);
+
+        if (url.pathname === '/screener') {
+            const codes = [...new Set(String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim()))]
+                .filter((t) => /^[A-Z0-9]{2,6}$/.test(t)).slice(0, 1200);
+            if (!codes.length) return json({ ok: false, error: 'no symbols' }, 400, origin);
+            const cache = caches.default;
+            const ck = new Request(`https://cache.ewoks.local/screener/${codes.length}/${codes[0]}-${codes[codes.length - 1]}`);
+            const hit = await cache.match(ck);
+            let q;
+            if (hit) q = await hit.json();
+            else {
+                try { q = await fetchBatchQuotes(codes); }
+                catch (e) { return json({ ok: false, error: String(e.message || e) }, 502, origin); }
+                ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(q), { headers: { 'Cache-Control': `max-age=${CACHE_SECONDS}` } })));
+            }
+            return json({ ok: true, ts: new Date().toISOString(), n: Object.keys(q).length, q }, 200, origin, { 'Cache-Control': 'public, max-age=30' });
+        }
 
         const tickers = [...new Set(String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim()))]
             .filter((t) => /^[A-Z0-9]{2,6}$/.test(t))

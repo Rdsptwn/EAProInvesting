@@ -8,7 +8,9 @@ function tpScreenerRowsForExport() {
         Kode: x.ticker, Nama: x.name, Harga: Math.round(x.price), 'Perubahan %': x.chg == null ? '' : Number(x.chg.toFixed(2)),
         'Low 52 Mgg': Math.round(x.low52 || 0), 'High 52 Mgg': Math.round(x.high52 || 0),
         Support: Math.round(x.support || 0), Resist: Math.round(x.resist || 0),
-        'Posisi Range 52 Mgg %': x.pos == null ? '' : Math.round(x.pos)
+        'Posisi Range 52 Mgg %': x.pos == null ? '' : Math.round(x.pos),
+        'Volume (lot)': x.vol == null ? '' : Math.round(x.vol / 100),
+        Papan: x.board || '', Sektor: x.sector || ''
     }));
 }
 function tpDownload(blob, name) {
