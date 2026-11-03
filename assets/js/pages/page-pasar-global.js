@@ -120,6 +120,7 @@ function pgCagrBadge(i) {
 
 function pgStatusBadge(i) {
     if (i.status === 'etf-as') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-50 text-emerald-700">Harga pasar</span>';
+    if (i.status === 'produk') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-indigo-50 text-indigo-700">Produk UCITS</span>';
     if (i.status === 'indikatif') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-50 text-rose-700">Indikatif</span>';
     return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-50 text-amber-700">Arsip</span>';
 }
@@ -204,10 +205,12 @@ function pgSort() {
         let y = b[col];
         if (col === 'risk') { x = PG_RISK_ORDER.indexOf(x); y = PG_RISK_ORDER.indexOf(y); }
         if (col === 'tier') { x = PG_TIER_ORDER.indexOf(x); y = PG_TIER_ORDER.indexOf(y); }
-        if (typeof x === 'string') return x.localeCompare(y) * mul;
-        const nx = Number.isFinite(x) ? x : -Infinity;
-        const ny = Number.isFinite(y) ? y : -Infinity;
-        return (nx - ny) * mul;
+        if (typeof x === 'string' && typeof y === 'string') return x.localeCompare(y) * mul;
+        const okx = Number.isFinite(x), oky = Number.isFinite(y);
+        if (!okx && !oky) return 0;
+        if (!okx) return 1;   // data kosong selalu di bawah
+        if (!oky) return -1;
+        return (x - y) * mul;
     });
 }
 
@@ -329,7 +332,9 @@ function pgSelect(id) {
     const info = PG_CLASS_INFO[i.assetClass];
     const basis = i.cagrBasis === 'stooq'
         ? `Dihitung dari harga penutupan${i.cagrYears ? ' ' + i.cagrYears + ' tahun' : ''}${i.dataAsOf ? ' sampai ' + pgEsc(i.dataAsOf) : ''} (tanpa dividen).`
-        : 'Angka arsip, belum diverifikasi untuk 2026.';
+        : (i.status === 'produk'
+            ? 'Produk nyata (UCITS) yang diperdagangkan di bursa Eropa. Data kinerja belum tersedia di database ini.'
+            : (i.cagr == null ? 'CAGR belum dihitung; akan terisi setelah pembaruan data otomatis berikutnya.' : 'Angka arsip, belum diverifikasi untuk 2026.'));
     const warn = i.status === 'indikatif'
         ? '<div class="mt-3 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold"><i class="fas fa-triangle-exclamation mr-1"></i> Baris ini tidak ditemukan sebagai produk atau ticker resmi. Anggap sebagai gambaran umum pasarnya saja, jangan sebagai rekomendasi produk.</div>'
         : '';
@@ -351,7 +356,7 @@ function pgSelect(id) {
             ${cell('Kelas aset', pgEsc(i.assetClass), 'text-xs')}
             ${cell('CAGR', i.cagr != null ? i.cagr + '%' : '—')}
             ${cell('Expense ratio', i.expense != null ? i.expense + '%' : '—')}
-            ${cell('AUM (arsip)', pgEsc(i.aum), 'text-xs')}
+            ${cell('AUM (arsip)', i.aum ? pgEsc(i.aum) : '—', 'text-xs')}
         </div>
         <h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-5 mb-1"><i class="fas fa-bullseye text-blue-500 mr-1"></i> Bidang & fokus investasi</h5>
         <p class="leading-relaxed text-slate-700">${pgEsc(i.desc)}</p>
