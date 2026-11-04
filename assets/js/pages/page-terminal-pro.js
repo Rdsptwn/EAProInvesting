@@ -64,7 +64,7 @@
 
 
     /* ------------------------- CHART LIVE INTRADAY (Yahoo via Worker) ------------------------- */
-    const LIVE_RANGES = [['1d', '5m', 'Hari ini'], ['5d', '15m', '5 hari'], ['1mo', '60m', '1 bulan'], ['3mo', '1d', '3 bulan']];
+    const LIVE_RANGES = [['1d', '5m', 'Hari ini 5m'], ['1d', '15m', '15m'], ['1d', '30m', '30m'], ['1d', '60m', '1 jam'], ['5d', '30m', '5 hari'], ['1mo', '60m', '1 bulan'], ['3mo', '1d', '3 bulan']];
     let liveTab = false, liveRange = 0, liveChart = null, liveTimer = null, liveSeq = 0;
     function liveSym() {
         const v = (($('chart-active-ticker-input') || {}).value || 'COMPOSITE').toUpperCase().replace(/^IDX:/, '').replace(/\.JK$/, '').trim();
