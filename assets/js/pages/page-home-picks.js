@@ -28,13 +28,14 @@
         const sbns = I.filter((i) => i.assetClass === 'Obligasi Negara / SBN' && i.cagrBasis === 'kupon' && Number.isFinite(i.cagr)).sort((x, y) => y.cagr - x.cagr);
         const deps = ver('Deposito', 'bunga');
         const rd = rds[0], sb = sbns[0], dp = deps[0];
-        const bar = (arr, key) => arr.map((i) => [(key ? i[key] : i.ticker), i.cagr]);
+        const lbl = (i) => (i.assetClass === 'Deposito' ? i.name.replace(/\s*\(.*$/, '').replace(/^Bank /, '') : i.ticker);
+        const bar = (arr) => arr.map((i) => [lbl(i), i.cagr]);
         if (rd) out.push({ key: rd.ticker, kind: 'bars', cat: 'Reksa Dana', color: 'blue', title: rd.name, sub: 'Pendapatan tetap · AUM ' + (rd.aum || '—'), big: rd.cagr, bigLbl: 'return 1 th', risk: rd.risk, badge: 'MEI 2026',
             link: `pasar-global.html?q=${encodeURIComponent(rd.ticker)}`, linkLabel: 'Buka di Database Reksa Dana', chartTitle: 'Return 1 tahun — 5 reksa dana pendapatan tetap teratas (%)', rows: bar(rds.slice(0, 5)), hi: rd.ticker });
         if (sb) out.push({ key: sb.ticker, kind: 'bars', cat: 'Obligasi / SBN', color: 'emerald', title: sb.ticker, sub: sb.name.replace(/^[A-Z0-9]+\s*/, '').replace(/[()]/g, '') + ' · kupon tetap', big: sb.cagr, bigLbl: 'kupon p.a.', risk: sb.risk, badge: 'KUPON 2026', asOf: 'berikutnya ST017: 6 Nov–2 Des',
             link: `pasar-global.html?q=${encodeURIComponent(sb.ticker)}`, linkLabel: 'Buka di Database SBN', chartTitle: 'Kupon SBN ritel 2026 — tenor terpanjang (% p.a.)', rows: bar(sbns.slice(0, 6)), hi: sb.ticker });
         if (dp) out.push({ key: dp.ticker, kind: 'bars', cat: 'Deposito', color: 'amber', title: dp.name.replace(/\s*\(.*$/, ''), sub: 'Bank digital · di atas batas LPS 3,75% tidak dijamin', big: dp.cagr, bigLbl: 'bunga maks.', risk: dp.risk, badge: 'OKT 2026',
-            link: `pasar-global.html?q=${encodeURIComponent(dp.ticker)}`, linkLabel: 'Buka di Database Deposito', chartTitle: 'Bunga deposito maks. — bank digital vs bank besar (% p.a.)', rows: bar(deps), hi: dp.ticker, big4: true });
+            link: `pasar-global.html?q=${encodeURIComponent(dp.ticker)}`, linkLabel: 'Buka di Database Deposito', chartTitle: 'Bunga deposito maks. — bank digital vs bank besar (% p.a.)', rows: bar(deps), hi: lbl(dp) });
         return out;
     }
 
@@ -95,6 +96,7 @@
         box.classList.remove('hidden');
         const dark = document.body.classList.contains('dark-mode-override');
         const grid = dark ? 'rgba(148,163,184,.15)' : 'rgba(148,163,184,.25)', txt = dark ? '#94a3b8' : '#64748b';
+        $('hp-canvas').parentElement.style.height = '240px';
         let note = '', cfg;
         if (p.kind === 'etf' && live[p.key] && live[p.key].c.length > 1) {
             const L = live[p.key], up = L.c[L.c.length - 1] >= L.c[0];
@@ -111,7 +113,9 @@
             const rows = p.rows || [];
             note = 'Data dikumpulkan dari media keuangan (lihat sumber di database); bukan harga pasar real-time, bisa berubah sewaktu-waktu.';
             cfg = { type: 'bar', data: { labels: rows.map((r) => r[0]), datasets: [{ data: rows.map((r) => r[1]), backgroundColor: rows.map((r) => (r[0] === p.hi ? '#2563eb' : '#94a3b8')), borderRadius: 6 }] },
-                options: { indexAxis: 'y', plugins: { legend: { display: false }, title: { display: !!p.chartTitle, text: p.chartTitle, color: txt, font: { size: 11 } } }, scales: { x: { ticks: { color: txt, callback: (v) => v + '%' }, grid: { color: grid } }, y: { ticks: { color: txt }, grid: { display: false } } } } };
+                options: { indexAxis: 'y', plugins: { legend: { display: false }, title: { display: !!p.chartTitle, text: p.chartTitle, color: txt, font: { size: 11 } } }, scales: { x: { ticks: { color: txt, callback: (v) => v + '%' }, grid: { color: grid } }, y: { ticks: { color: txt, autoSkip: false, font: { size: 11 } }, grid: { display: false } } } } };
+            const h = Math.max(220, rows.length * 30 + 70);
+            $('hp-canvas').parentElement.style.height = h + 'px';
         }
         $('hp-dtitle').textContent = `${p.title} — ${p.cat}`;
         $('hp-dnote').textContent = note;
