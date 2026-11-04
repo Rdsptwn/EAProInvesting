@@ -119,12 +119,19 @@ async function fetchBatchQuotes(codes) {
 
 export default {
     async fetch(request, env, ctx) {
+        try { return await handle(request, env, ctx); }
+        catch (e) { return json({ ok: false, error: 'worker error: ' + String((e && e.message) || e) }, 500, request.headers.get('Origin') || ''); }
+    }
+};
+
+const handle = async (request, env, ctx) => {
+    {
         const origin = request.headers.get('Origin') || '';
         const url = new URL(request.url);
 
         if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
         if (request.method !== 'GET') return json({ ok: false, error: 'method' }, 405, origin);
-        if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live' }, 200, origin);
+        if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live', version: 'v3-chart-screener', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
         if (!['/quotes','/chart','/screener'].includes(url.pathname)) return json({ ok: false, error: 'not found' }, 404, origin);
 
         if (url.pathname === '/chart') {
