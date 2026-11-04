@@ -125,7 +125,7 @@ export default {
         if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
         if (request.method !== 'GET') return json({ ok: false, error: 'method' }, 405, origin);
         if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live' }, 200, origin);
-        if (url.pathname !== '/quotes') return json({ ok: false, error: 'not found' }, 404, origin);
+        if (!['/quotes','/chart','/screener'].includes(url.pathname)) return json({ ok: false, error: 'not found' }, 404, origin);
 
         if (url.pathname === '/chart') {
             const sym = String(url.searchParams.get('s') || '').toUpperCase().trim();
