@@ -146,6 +146,6 @@
         renderMovers();
         renderTape();
         refreshLive();
-        setInterval(() => { if (typeof isIdxMarketOpen !== 'function' || isIdxMarketOpen()) refreshLive(); }, 5 * 60 * 1000);
+        setInterval(() => { if (typeof isIdxMarketOpen !== 'function' || isIdxMarketOpen()) refreshLive(); }, 10 * 60 * 1000);
     })();
 })();

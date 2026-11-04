@@ -83,7 +83,7 @@
         if (tv) tv.style.display = liveTab ? 'none' : '';
         if (lp) { lp.classList.toggle('hidden', !liveTab); lp.style.display = liveTab ? 'flex' : 'none'; }
         clearInterval(liveTimer);
-        if (liveTab) { paintLiveRanges(); tpLoadLiveChart(true); liveTimer = setInterval(() => tpLoadLiveChart(false), 5 * 60 * 1000); }
+        if (liveTab) { paintLiveRanges(); tpLoadLiveChart(true); liveTimer = setInterval(() => tpLoadLiveChart(false), 10 * 60 * 1000); }
     };
     window.tpLoadLiveChart = async function (manual) {
         const meta = $('tpl-meta');
@@ -391,7 +391,7 @@
             paintStatCards(sn); tpRunScreener();
         };
         setTimeout(() => tpRefreshLive(false), 2500);
-        setInterval(() => tpRefreshLive(false), 5 * 60 * 1000);
+        setInterval(() => tpRefreshLive(false), 10 * 60 * 1000);
     }
     if (document.getElementById('tp-screener')) {
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
