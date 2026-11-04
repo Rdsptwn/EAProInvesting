@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261104t0713';
+window.EWOKS_ASSET_V = '20261104t0716';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -460,7 +460,7 @@ function paintDataStamps(snap) {
     const built = snap?.meta?.built;
     const liveAt = snap?.meta?.liveAt;
     const text = liveAt
-        ? `Harga live: ${formatStampWib(liveAt)} (tertunda ±10 menit)`
+        ? `Harga live: ${formatStampWib(liveAt)} `
         : built
             ? `Update data pasar: ${formatStampWib(built)}`
             : 'Update data pasar: snapshot belum tersedia';

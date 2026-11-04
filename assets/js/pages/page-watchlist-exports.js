@@ -69,7 +69,7 @@ function exportScreenerWA() {
     const sel = (id) => { const e = document.getElementById(id); return e && e.value ? e.options[e.selectedIndex].text : ''; };
     if (sel('f-pos')) f.push(sel('f-pos')); if (sel('f-sr')) f.push(sel('f-sr'));
     const head = `*HASIL SCREENER EWOKS*\n${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', dateStyle: 'medium', timeStyle: 'short' })} WIB\nFilter: ${f.join(', ') || 'semua emiten'}\n${r.length} emiten cocok\n\n`;
-    const foot = `\n_Data tertunda ±10 menit · Ewoks Academy_`;
+    const foot = `\n_Ewoks Academy_`;
     let body = '';
     for (const x of r.slice(0, 25)) {
         const line = `• *${x.ticker}* ${tpIdr(x.price)} (${x.chg == null ? '-' : (x.chg >= 0 ? '+' : '') + x.chg.toFixed(2) + '%'}) S:${tpIdr(x.support)} R:${tpIdr(x.resist)}\n`;

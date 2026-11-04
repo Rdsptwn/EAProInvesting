@@ -69,7 +69,7 @@
                 <div><div class="text-[11px] font-black uppercase tracking-widest text-emerald-600 mb-1"><i class="fas fa-arrow-trend-up mr-1"></i> Top Gainer</div><div id="hm-gain"></div></div>
                 <div><div class="text-[11px] font-black uppercase tracking-widest text-rose-600 mb-1"><i class="fas fa-arrow-trend-down mr-1"></i> Top Loser</div><div id="hm-loss"></div></div>
             </div>
-            <p class="text-[10px] text-slate-400 mt-4">Hanya saham dengan harga ≥ Rp50 dan nilai transaksi ≥ Rp500 juta. Data Yahoo tertunda ±10 menit; klik kode untuk buka di Terminal.</p>`;
+            <p class="text-[10px] text-slate-400 mt-4">Hanya saham dengan harga ≥ Rp50 dan nilai transaksi ≥ Rp500 juta. Klik kode untuk buka di Terminal.</p>`;
         hero.insertAdjacentElement('afterend', sec);
     }
 
@@ -116,11 +116,17 @@
         const api = typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '';
         if (!api || !codes.length) return;
         try {
-            const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
-            const r = await fetch(`${api}/screener?s=${codes.join(',')}`, { signal: ctl.signal, cache: 'no-store' });
-            clearTimeout(tm);
-            const d = await r.json();
-            if (!d.ok || !d.q) throw new Error(d.error || 'HTTP ' + r.status);
+            let d, last;
+            for (let a = 0; a < 2 && !(d && d.ok && d.q); a++) {
+                try {
+                    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 40000);
+                    const r = await fetch(`${api}/screener?s=${codes.join(',')}`, { signal: ctl.signal, cache: 'no-store' });
+                    clearTimeout(tm);
+                    d = await r.json();
+                    if (!d.ok || !d.q) last = new Error(d.error || 'HTTP ' + r.status);
+                } catch (e) { last = e; }
+            }
+            if (!d || !d.ok || !d.q) throw last || new Error('gagal');
             let c = 0;
             for (const [t, a] of Object.entries(d.q)) {
                 const [p, prev, chg, vol] = a;
@@ -132,7 +138,7 @@
             }
             live = c > 0;
             const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-            stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham (tertunda ±10 menit)`;
+            stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham`;
         } catch (e) {
             stamp = (live ? 'Live gagal diperbarui' : 'Snapshot harian') + ' (' + (/abort/i.test(String(e.message)) ? 'timeout' : e.message) + ')';
         }
