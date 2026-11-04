@@ -7,7 +7,7 @@
  * GET /screener?s=AALI,ABBA,...   (hingga ~1000 kode; satu panggilan batch ke Yahoo, cache 60 dtk)
  *   -> { ok, ts, n, q: { AALI: [price, prevClose, changePct, volume], ... } }
  *
- * GET /chart?s=BBCA|COMPOSITE&range=1d&interval=5m   -> { ok, t[], o[], h[], l[], c[], v[], prev, price, name }
+ * GET /chart?s=BBCA|COMPOSITE&range=1d&interval=5m  (tambah &g=1 untuk simbol global, mis. QQQ)   -> { ok, t[], o[], h[], l[], c[], v[], prev, price, name }
  *
  * - Maks 40 ticker per request (/quotes) (batas subrequest Worker gratis = 50).
  * - Tiap simbol di-cache 60 detik di edge, jadi ramai pengunjung tidak membebani Yahoo.
@@ -130,8 +130,9 @@ async function routeChart(url, ctx, origin) {
     const iv = url.searchParams.get('interval');
     const range = ['1d', '5d', '1mo', '3mo'].includes(rg) ? rg : '1d';
     const interval = ['1m', '5m', '15m', '30m', '60m', '1d'].includes(iv) ? iv : '5m';
-    if (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE') return J({ ok: false, error: 'bad symbol' }, 400, origin);
-    const ysym = sym === 'COMPOSITE' ? '%5EJKSE' : sym + '.JK';
+    const glob = url.searchParams.get('g') === '1';
+    if (glob ? !/^[A-Z0-9.^-]{1,12}$/.test(sym) : (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE')) return J({ ok: false, error: 'bad symbol' }, 400, origin);
+    const ysym = glob ? encodeURIComponent(sym) : (sym === 'COMPOSITE' ? '%5EJKSE' : sym + '.JK');
     const cache = caches.default;
     const ck = new Request('https://cache.ewoks.local/chart/' + ysym + '/' + range + '/' + interval);
     const hit = await cache.match(ck);
@@ -211,7 +212,7 @@ async function handle(request, ctx) {
     const path = url.pathname;
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v4-flat', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v5-global', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);

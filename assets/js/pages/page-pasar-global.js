@@ -500,8 +500,21 @@ async function pgInit() {
     pgBuildControls();
     pgRenderExplainers();
     pgRenderNotes();
+    let deepId = null;
+    try {
+        const sp = new URLSearchParams(location.search);
+        const q = (sp.get('q') || '').trim(), cls = sp.get('cls');
+        if (cls && PG_CLASS_ORDER.includes(cls)) pgState.cls = cls;
+        if (q) {
+            const se = document.getElementById('pgSearch');
+            if (se) se.value = q;
+            const hit = pgData.instruments.find((i) => String(i.ticker).toUpperCase() === q.toUpperCase());
+            if (hit) deepId = hit.id;
+        }
+    } catch (_) {}
     pgApplyFilters();
     pgInitYearly();
+    if (deepId != null) setTimeout(() => pgSelect(deepId), 150);
 }
 
 document.addEventListener('DOMContentLoaded', pgInit);
