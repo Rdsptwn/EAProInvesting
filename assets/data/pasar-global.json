@@ -15,7 +15,7 @@
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
-  "builtAt": "2026-11-04T07:27:31.373Z",
+  "builtAt": "2026-11-04T08:47:00.162Z",
   "stooqUpdated": 203,
   "indonesia2026": {
    "asOf": "2026-11-04",
@@ -34,7 +34,7 @@
      "ytd": -7.37
     },
     "pendapatanTetap": {
-     "sep": 0.0,
+     "sep": 0,
      "ytd": 0.07
     },
     "pasarUang": {
@@ -4869,14 +4869,14 @@
    "name": "Krom Bank (Krom Max / Flex)",
    "ticker": "KROM",
    "assetClass": "Deposito",
-   "cagr": 8.0,
+   "cagr": 8,
    "cagrBasis": "bunga",
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
     "1 bln": 7.5,
     "3 bln": 7.75,
-    "6 bln": 8.0,
-    "12 bln": 8.0
+    "6 bln": 8,
+    "12 bln": 8
    },
    "risk": "Rendah",
    "manager": "Krom Bank (Krom Max / Flex)",
@@ -4935,7 +4935,7 @@
    "cagrBasis": "bunga",
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
-    "1 bln": 6.0,
+    "1 bln": 6,
     "3 bln": 6.75,
     "6 bln": 7.25,
     "12 bln": 7.25
@@ -4965,9 +4965,9 @@
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
     "1 bln": 5.5,
-    "3 bln": 6.0,
-    "6 bln": 6.0,
-    "12 bln": 6.0
+    "3 bln": 6,
+    "6 bln": 6,
+    "12 bln": 6
    },
    "risk": "Rendah",
    "manager": "Allo Bank",
@@ -4990,14 +4990,14 @@
    "name": "SeaBank (Shopee)",
    "ticker": "SEABANK",
    "assetClass": "Deposito",
-   "cagr": 6.0,
+   "cagr": 6,
    "cagrBasis": "bunga",
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
     "1 bln": 4.75,
     "3 bln": 5.25,
     "6 bln": 5.75,
-    "12 bln": 6.0
+    "12 bln": 6
    },
    "risk": "Rendah",
    "manager": "SeaBank (Shopee)",
@@ -5025,7 +5025,7 @@
    "cagrBasis": "bunga",
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
-    "1 bln": 5.0,
+    "1 bln": 5,
     "3 bln": 5.5,
     "6 bln": 5.5,
     "12 bln": 5.5
@@ -5088,7 +5088,7 @@
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
     "1 bln": 3.75,
-    "3 bln": 4.0,
+    "3 bln": 4,
     "6 bln": 4.25,
     "12 bln": 4.25
    },
@@ -5112,13 +5112,13 @@
    "name": "Bank BRI (deposito rupiah)",
    "ticker": "BRI",
    "assetClass": "Deposito",
-   "cagr": 3.0,
+   "cagr": 3,
    "cagrBasis": "bunga",
    "metric": "Bunga deposito maks. p.a.",
    "rates": {
-    "1 bln": 3.0,
-    "3 bln": 3.0,
-    "6 bln": 3.0,
+    "1 bln": 3,
+    "3 bln": 3,
+    "6 bln": 3,
     "12 bln": 2.5
    },
    "risk": "Sangat Rendah",
@@ -5199,7 +5199,7 @@
    "name": "ORI030 (T3 6,90% · T6 7,00%)",
    "ticker": "ORI030",
    "assetClass": "Obligasi Negara / SBN",
-   "cagr": 7.0,
+   "cagr": 7,
    "cagrBasis": "kupon",
    "metric": "Kupon p.a. (tenor terpanjang)",
    "risk": "Rendah",
@@ -5212,7 +5212,7 @@
    "dataAsOf": "2026-07-30",
    "tenors": {
     "T3": 6.9,
-    "T6": 7.0
+    "T6": 7
    },
    "id": 275,
    "country": "Indonesia",
