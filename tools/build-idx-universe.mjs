@@ -80,7 +80,7 @@ async function tryWiki() {
             if (cells.length < 3) continue;
             let code = null, ci = -1;
             for (let k = 0; k < Math.min(cells.length, 4) && !code; k++) {
-                const m = cells[k].match(/(?:^|\b)IDX\s*:\s*([A-Z]{4})\b/) || cells[k].match(/^([A-Z]{4})$/);
+                const m = cells[k].match(/(?:^|\b)(?:IDX|BEI|BEJ)\s*:\s*([A-Z]{4})\b/) || cells[k].match(/^([A-Z]{4})$/);
                 if (m) { code = m[1]; ci = k; }
             }
             if (!code) continue;
