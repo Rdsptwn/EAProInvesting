@@ -25,7 +25,10 @@
 
     function applyHeight() {
         const el = $('tv-chart-container');
-        if (el) el.style.height = HEIGHTS[window.EwoksTerminalPrefs.height] || HEIGHTS.big;
+        const hgt = HEIGHTS[window.EwoksTerminalPrefs.height] || HEIGHTS.big;
+        if (el) el.style.height = hgt;
+        const lp = $('tp-live-panel');
+        if (lp) lp.style.height = hgt;
     }
     function reopen() {
         const t = ($('chart-active-ticker-input') || {}).value || 'COMPOSITE';
@@ -58,6 +61,95 @@
         if (!el) return;
         if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen();
     };
+
+
+    /* ------------------------- CHART LIVE INTRADAY (Yahoo via Worker) ------------------------- */
+    const LIVE_RANGES = [['1d', '5m', 'Hari ini'], ['5d', '15m', '5 hari'], ['1mo', '60m', '1 bulan'], ['3mo', '1d', '3 bulan']];
+    let liveTab = false, liveRange = 0, liveChart = null, liveTimer = null, liveSeq = 0;
+    function liveSym() {
+        const v = (($('chart-active-ticker-input') || {}).value || 'COMPOSITE').toUpperCase().replace(/^IDX:/, '').replace(/\.JK$/, '').trim();
+        return v === 'IHSG' ? 'COMPOSITE' : v;
+    }
+    function paintLiveRanges() {
+        const e = $('tpl-ranges');
+        if (e) e.innerHTML = LIVE_RANGES.map(([, , l], i) => `<button type="button" class="tp-chip ${i === liveRange ? 'on' : ''}" onclick="tpLiveRange(${i})">${l}</button>`).join('');
+    }
+    window.tpLiveRange = function (i) { liveRange = i; paintLiveRanges(); tpLoadLiveChart(true); };
+    window.tpChartTab = function (t) {
+        liveTab = t === 'live';
+        $('tp-ctab-tv').classList.toggle('active', !liveTab);
+        $('tp-ctab-live').classList.toggle('active', liveTab);
+        const tv = $('tv-chart-container'), lp = $('tp-live-panel');
+        if (tv) tv.style.display = liveTab ? 'none' : '';
+        if (lp) { lp.classList.toggle('hidden', !liveTab); lp.style.display = liveTab ? 'flex' : 'none'; }
+        clearInterval(liveTimer);
+        if (liveTab) { paintLiveRanges(); tpLoadLiveChart(true); liveTimer = setInterval(() => tpLoadLiveChart(false), 5 * 60 * 1000); }
+    };
+    window.tpLoadLiveChart = async function (manual) {
+        const meta = $('tpl-meta');
+        const api = typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '';
+        if (!api) { if (meta) meta.textContent = 'URL Worker live belum diatur.'; return; }
+        if (!manual && !(typeof isIdxMarketOpen === 'function' && isIdxMarketOpen())) return;
+        const sym = liveSym(), [range, interval] = LIVE_RANGES[liveRange];
+        const seq = ++liveSeq;
+        if (meta) meta.textContent = 'Memuat…';
+        try {
+            const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 20000);
+            const res = await fetch(`${api}/chart?s=${encodeURIComponent(sym)}&range=${range}&interval=${interval}`, { signal: ctl.signal, cache: 'no-store' });
+            clearTimeout(timer);
+            const d = await res.json().catch(() => ({}));
+            if (!res.ok || !d.ok) throw new Error(d.error || 'HTTP ' + res.status);
+            if (seq !== liveSeq) return;
+            drawLive(d, interval);
+        } catch (e) {
+            if (meta) meta.textContent = 'Gagal memuat live: ' + (/abort/i.test(String(e.message)) ? 'timeout' : e.message) + ' — coba Segarkan, atau pakai tab TradingView.';
+        }
+    };
+    function drawLive(d, interval) {
+        const n = d.c.length;
+        if (!n) { $('tpl-meta').textContent = 'Belum ada data untuk rentang ini.'; return; }
+        const last = d.c[n - 1];
+        const prev = Number.isFinite(d.prev) ? d.prev : d.c[0];
+        const chg = prev > 0 ? ((last - prev) / prev) * 100 : null;
+        const up = (chg ?? 0) >= 0;
+        $('tpl-sym').textContent = d.sym === 'COMPOSITE' ? 'IHSG' : d.sym;
+        $('tpl-price').textContent = last.toLocaleString('id-ID', { maximumFractionDigits: 2 });
+        const ce = $('tpl-chg'); ce.textContent = chg == null ? '—' : `${up ? '+' : ''}${chg.toFixed(2)}%`; ce.className = 'tp-chg ' + (up ? 'up' : 'dn');
+        const lastT = new Date(d.t[n - 1] * 1000);
+        $('tpl-meta').textContent = `${d.name || ''} · bar terakhir ${lastT.toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })} WIB · ${n} bar ${interval}`;
+        const intraday = interval !== '1d';
+        const labels = d.t.map((s) => new Date(s * 1000).toLocaleString('id-ID', intraday && interval !== '60m' ? { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' } : { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', ...(intraday ? { hour: '2-digit' } : {}) }));
+        const color = up ? '#16a34a' : '#dc2626';
+        const dark = document.body.classList.contains('dark-mode-override');
+        const grid = dark ? 'rgba(148,163,184,.12)' : 'rgba(148,163,184,.25)', txt = dark ? '#94a3b8' : '#64748b';
+        if (typeof Chart === 'undefined') { $('tpl-meta').textContent += ' · Chart.js belum termuat'; return; }
+        if (liveChart) liveChart.destroy();
+        liveChart = new Chart($('tpl-canvas'), {
+            data: {
+                labels,
+                datasets: [
+                    { type: 'line', label: 'Harga', data: d.c, borderColor: color, backgroundColor: up ? 'rgba(22,163,74,.12)' : 'rgba(220,38,38,.12)', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15, yAxisID: 'y', order: 1 },
+                    ...(Number.isFinite(prev) ? [{ type: 'line', label: 'Close sebelumnya', data: d.c.map(() => prev), borderColor: txt, borderDash: [5, 5], borderWidth: 1, pointRadius: 0, yAxisID: 'y', order: 0 }] : []),
+                    { type: 'bar', label: 'Volume', data: d.v, backgroundColor: dark ? 'rgba(96,165,250,.35)' : 'rgba(59,130,246,.3)', yAxisID: 'yv', order: 2 }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, animation: false, interaction: { mode: 'index', intersect: false },
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: txt, maxTicksLimit: 10, autoSkip: true }, grid: { color: grid } },
+                    y: { position: 'right', ticks: { color: txt }, grid: { color: grid }, grace: '2%' },
+                    yv: { position: 'left', display: false, beginAtZero: true, max: Math.max(...d.v, 1) * 4 }
+                }
+            }
+        });
+    }
+    // buka simbol baru dari mana pun (watchlist, screener, tombol cepat) ikut memuat chart live jika tab live aktif
+    (function wrapOpen() {
+        const orig = window.openTVChart;
+        if (typeof orig !== 'function') return;
+        window.openTVChart = function (t, o) { const r = orig.apply(this, arguments); if (liveTab) setTimeout(() => tpLoadLiveChart(true), 50); return r; };
+    })();
 
     /* ------------------------------ SCREENER ------------------------------ */
     let rows = [];      // semua emiten dari snapshot

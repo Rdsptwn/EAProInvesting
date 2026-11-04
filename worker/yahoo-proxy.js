@@ -7,6 +7,8 @@
  * GET /screener?s=AALI,ABBA,...   (hingga ~1000 kode; satu panggilan batch ke Yahoo, cache 60 dtk)
  *   -> { ok, ts, n, q: { AALI: [price, prevClose, changePct, volume], ... } }
  *
+ * GET /chart?s=BBCA|COMPOSITE&range=1d&interval=5m   -> { ok, t[], o[], h[], l[], c[], v[], prev, price, name }
+ *
  * - Maks 40 ticker per request (/quotes) (batas subrequest Worker gratis = 50).
  * - Tiap simbol di-cache 60 detik di edge, jadi ramai pengunjung tidak membebani Yahoo.
  * - CORS dibatasi ke domain web kamu (ALLOWED_ORIGINS).
@@ -124,6 +126,36 @@ export default {
         if (request.method !== 'GET') return json({ ok: false, error: 'method' }, 405, origin);
         if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live' }, 200, origin);
         if (url.pathname !== '/quotes') return json({ ok: false, error: 'not found' }, 404, origin);
+
+        if (url.pathname === '/chart') {
+            const sym = String(url.searchParams.get('s') || '').toUpperCase().trim();
+            const range = ['1d', '5d', '1mo', '3mo'].includes(url.searchParams.get('range')) ? url.searchParams.get('range') : '1d';
+            const interval = ['1m', '5m', '15m', '30m', '60m', '1d'].includes(url.searchParams.get('interval')) ? url.searchParams.get('interval') : '5m';
+            if (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE') return json({ ok: false, error: 'bad symbol' }, 400, origin);
+            const ysym = sym === 'COMPOSITE' ? '%5EJKSE' : `${sym}.JK`;
+            const cache = caches.default;
+            const ck = new Request(`https://cache.ewoks.local/chart/${ysym}/${range}/${interval}`);
+            const hit = await cache.match(ck);
+            let body;
+            if (hit) body = await hit.json();
+            else {
+                try {
+                    const r = await fetch(`https://query2.finance.yahoo.com/v8/finance/chart/${ysym}?range=${range}&interval=${interval}&includePrePost=false`, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
+                    if (!r.ok) throw new Error(`Yahoo ${r.status}`);
+                    const res = (await r.json())?.chart?.result?.[0];
+                    if (!res) throw new Error('empty');
+                    const q = res.indicators?.quote?.[0] || {};
+                    const ts = res.timestamp || [];
+                    const keep = [];
+                    for (let i = 0; i < ts.length; i++) if (Number.isFinite(q.close?.[i])) keep.push(i);
+                    const pick = (arr) => keep.map((i) => (Number.isFinite(arr?.[i]) ? round(arr[i]) : null));
+                    body = { t: keep.map((i) => ts[i]), o: pick(q.open), h: pick(q.high), l: pick(q.low), c: pick(q.close), v: keep.map((i) => q.volume?.[i] ?? 0),
+                        prev: round(Number(res.meta?.chartPreviousClose ?? res.meta?.previousClose)), price: round(Number(res.meta?.regularMarketPrice)), name: res.meta?.longName || res.meta?.shortName || sym };
+                } catch (e) { return json({ ok: false, error: String(e.message || e) }, 502, origin); }
+                ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(body), { headers: { 'Cache-Control': `max-age=${CACHE_SECONDS}` } })));
+            }
+            return json({ ok: true, ts: new Date().toISOString(), sym, range, interval, ...body }, 200, origin, { 'Cache-Control': 'public, max-age=30' });
+        }
 
         if (url.pathname === '/screener') {
             const codes = [...new Set(String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim()))]

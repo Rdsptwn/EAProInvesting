@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261104t0227">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261104t0233">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="watchlist">
 
@@ -271,7 +271,20 @@
                         <button type="button" class="tp-btn" onclick="tpFullscreen()"><i class="fas fa-expand"></i> Fullscreen</button>
                         <button type="button" class="tp-btn tp-ghost" onclick="tpResetPrefs()"><i class="fas fa-undo"></i> Reset</button>
                     </div>
+                    <div class="tp-tabs tp-tabs-chart">
+                        <button type="button" class="tp-tab active" id="tp-ctab-tv" onclick="tpChartTab('tv')">TradingView <em>data harian (IDX gratis = end-of-day)</em></button>
+                        <button type="button" class="tp-tab" id="tp-ctab-live" onclick="tpChartTab('live')">Live Intraday <em>Yahoo · tunda ±10 menit · auto 5 menit</em></button>
+                    </div>
                     <div id="tv-chart-container" class="tp-chart"></div>
+                    <div id="tp-live-panel" class="tp-chart hidden" style="display:none;flex-direction:column">
+                        <div class="tp-livebar">
+                            <div class="tp-liveprice"><span id="tpl-sym" class="tpl-sym">—</span><b id="tpl-price">—</b><span id="tpl-chg" class="tp-chg">—</span></div>
+                            <div class="tp-livemeta" id="tpl-meta">Pilih tab ini untuk memuat data live.</div>
+                            <div class="tp-group" id="tpl-ranges"></div>
+                            <button type="button" class="tp-btn tp-ghost" onclick="tpLoadLiveChart(true)"><i class="fas fa-sync-alt"></i> Segarkan</button>
+                        </div>
+                        <div style="position:relative;flex:1;min-height:0;padding:.5rem 1rem 1rem"><canvas id="tpl-canvas"></canvas></div>
+                    </div>
                 </div>
 
                 <!-- ===== SCREENER ===== -->
@@ -494,9 +507,9 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261104t0227"></script>
-    <script src="assets/js/pages/page-terminal-pro.js?v=20261104t0227"></script>
-    <script src="assets/js/pages/page-watchlist-exports.js?v=20261104t0227"></script>
-    <script src="assets/js/pages/page-watchlist.js?v=20261104t0227"></script>
+    <script src="assets/js/ewoks-core.js?v=20261104t0233"></script>
+    <script src="assets/js/pages/page-terminal-pro.js?v=20261104t0233"></script>
+    <script src="assets/js/pages/page-watchlist-exports.js?v=20261104t0233"></script>
+    <script src="assets/js/pages/page-watchlist.js?v=20261104t0233"></script>
 </body>
 </html>

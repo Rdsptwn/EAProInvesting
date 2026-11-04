@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261104t0227';
+window.EWOKS_ASSET_V = '20261104t0233';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -663,7 +663,7 @@ function getIdxQuote(ticker) {
  * Data IDX di Yahoo tertunda ±10 menit; polling hanya saat jam bursa.
  * ====================================================================== */
 const EWOKS_LIVE_API_URL = 'https://ewoks-live.raka-dityaseptiawan.workers.dev';
-const EWOKS_LIVE_POLL_MS = 10 * 60 * 1000; // 10 menit (data IDX di Yahoo memang tertunda ±10 menit)
+const EWOKS_LIVE_POLL_MS = 5 * 60 * 1000; // 5 menit (data IDX di Yahoo memang tertunda ±10 menit)
 let __ewoksLiveBusy = false;
 
 function getEwoksLiveApi() {

@@ -526,3 +526,14 @@ body.dark-mode-override .bg-purple-50,body.dark-mode-override .bg-sky-50,body.da
 body.dark-mode-override .tp-rng i{background:#f8fafc;box-shadow:0 0 0 2px #0f172a}
 .kg-avatar:has(.kg-logo){background:#fff!important;border:1px solid rgba(148,163,184,.4)}
 .kg-avatar:has(.kg-logo) .kg-logo{padding:6px}
+
+/* Chart live intraday */
+.tp-tabs-chart{padding-top:.4rem}
+.tp-livebar{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;padding:.8rem 1.25rem;border-bottom:1px solid #eef2f7}
+.tp-liveprice{display:flex;align-items:baseline;gap:.6rem}
+.tp-liveprice .tpl-sym{font-weight:900;font-size:.85rem;color:#2563eb;background:#eff6ff;border-radius:.45rem;padding:.2rem .5rem}
+.tp-liveprice b{font-size:1.6rem;font-weight:900;color:#0f172a}
+.tp-livemeta{flex:1;min-width:220px;font-size:.72rem;font-weight:600;color:#94a3b8}
+body.dark-mode-override .tp-livebar{border-color:#1e293b}
+body.dark-mode-override .tp-liveprice b{color:#f1f5f9}
+body.dark-mode-override .tp-liveprice .tpl-sym{background:#1e3a8a;color:#bfdbfe}
