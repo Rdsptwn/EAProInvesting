@@ -215,7 +215,7 @@
 
     let fullData = false;
     function fillSelects() {
-        const uniq = (k) => [...new Set(rows.map((r) => r[k]).filter(Boolean))].sort();
+        const uniq = (k) => [...new Set(rows.map((r) => r[k]).filter((v) => v && v.length > 2))].sort();
         const set = (id, label, vals) => { const e = $(id); if (!e) return; const cur = e.value; e.innerHTML = `<option value="">${label}</option>` + vals.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join(''); e.value = cur; };
         set('f-board', 'Semua papan', uniq('board'));
         set('f-sector', 'Semua sektor', uniq('sector'));
