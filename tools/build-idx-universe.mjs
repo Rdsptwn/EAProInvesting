@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outPath = path.join(root, 'assets/data/idx-universe.json');
-const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36', Accept: 'application/json,text/html' };
+const UA = { 'User-Agent': 'EAProInvestingBot/1.0 (https://github.com/Rdsptwn/EAProInvesting; data sync)', Accept: 'application/json,text/html' };
 const CODE = /^[A-Z]{4}$/;
 
 const map = new Map(); // kode -> {t,name,board,sector}
@@ -68,20 +68,29 @@ function cellText(h) {
 async function tryWiki() {
     const page = 'Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia';
     try {
-        const r = await fetch(`https://id.wikipedia.org/w/api.php?action=parse&page=${page}&prop=text&format=json&formatversion=2`, { headers: UA });
+        const r = await fetch(`https://id.wikipedia.org/w/api.php?action=parse&page=${page}&prop=text&redirects=1&format=json&formatversion=2`, { headers: UA });
         if (!r.ok) throw new Error(r.status);
         const html = (await r.json())?.parse?.text || '';
+        const BOARDS = ['Utama', 'Pengembangan', 'Akselerasi', 'Pemantauan Khusus', 'Ekonomi Baru'];
+        const chunks = html.split(/<tr[\s>]/).slice(1);
+        console.log(`Wikipedia: html ${html.length} karakter, ${chunks.length} baris tabel`);
         let n = 0;
-        for (const tr of html.match(/<tr[\s\S]*?<\/tr>/g) || []) {
-            const cells = (tr.match(/<t[dh][\s\S]*?<\/t[dh]>/g) || []).map(cellText);
+        for (const ch of chunks) {
+            const cells = (ch.match(/<t[dh][\s\S]*?<\/t[dh]>/g) || []).map(cellText);
             if (cells.length < 3) continue;
-            // kolom: No | Kode | Nama | Tanggal | Jumlah saham | Papan | Sektor
-            const codeOf = (c) => { const m = String(c).replace(/^IDX\s*:\s*/i, '').trim().match(/^([A-Z]{4})$/); return m ? m[1] : null; };
-            const i = cells.findIndex((c, k) => k <= 2 && codeOf(c));
-            if (i < 0) continue;
-            put(codeOf(cells[i]), cells[i + 1], cells[i + 4] || '', cells[i + 5] || '');
+            let code = null, ci = -1;
+            for (let k = 0; k < Math.min(cells.length, 4) && !code; k++) {
+                const m = cells[k].match(/(?:^|\b)IDX\s*:\s*([A-Z]{4})\b/) || cells[k].match(/^([A-Z]{4})$/);
+                if (m) { code = m[1]; ci = k; }
+            }
+            if (!code) continue;
+            const board = cells.find((c) => BOARDS.includes(c)) || '';
+            const last = cells[cells.length - 1];
+            const sector = last && last !== board && !/^\d/.test(last) ? last : '';
+            put(code, cells[ci + 1] && cells[ci + 1] !== code ? cells[ci + 1] : '', board, sector);
             n++;
         }
+        if (!n) console.log('Contoh baris tabel:', JSON.stringify(chunks.slice(1, 3).map((c) => cellText(c).slice(0, 200))));
         console.log(`Wikipedia: ${n} baris`);
     } catch (e) { console.warn('Wikipedia gagal:', e.message); }
 }
