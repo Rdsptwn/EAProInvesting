@@ -117,87 +117,113 @@ async function fetchBatchQuotes(codes) {
     return out;
 }
 
+const J = (body, status, origin, cc) => json(body, status, origin, cc ? { 'Cache-Control': 'public, max-age=30' } : {});
+
+function codesFrom(url, max) {
+    const raw = String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim());
+    return [...new Set(raw)].filter((t) => /^[A-Z0-9]{2,6}$/.test(t)).slice(0, max);
+}
+
+async function routeChart(url, ctx, origin) {
+    const sym = String(url.searchParams.get('s') || '').toUpperCase().trim();
+    const rg = url.searchParams.get('range');
+    const iv = url.searchParams.get('interval');
+    const range = ['1d', '5d', '1mo', '3mo'].includes(rg) ? rg : '1d';
+    const interval = ['1m', '5m', '15m', '30m', '60m', '1d'].includes(iv) ? iv : '5m';
+    if (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE') return J({ ok: false, error: 'bad symbol' }, 400, origin);
+    const ysym = sym === 'COMPOSITE' ? '%5EJKSE' : sym + '.JK';
+    const cache = caches.default;
+    const ck = new Request('https://cache.ewoks.local/chart/' + ysym + '/' + range + '/' + interval);
+    const hit = await cache.match(ck);
+    let body;
+    if (hit) {
+        body = await hit.json();
+    } else {
+        try {
+            const yurl = 'https://query2.finance.yahoo.com/v8/finance/chart/' + ysym + '?range=' + range + '&interval=' + interval + '&includePrePost=false';
+            const r = await fetch(yurl, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
+            if (!r.ok) throw new Error('Yahoo ' + r.status);
+            const j = await r.json();
+            const res = j && j.chart && j.chart.result && j.chart.result[0];
+            if (!res) throw new Error('empty');
+            const quote = (res.indicators && res.indicators.quote && res.indicators.quote[0]) || {};
+            const ts = res.timestamp || [];
+            const keep = [];
+            for (let i = 0; i < ts.length; i++) if (quote.close && Number.isFinite(quote.close[i])) keep.push(i);
+            const pick = (arr) => keep.map((i) => (arr && Number.isFinite(arr[i]) ? round(arr[i]) : null));
+            const meta = res.meta || {};
+            body = {
+                t: keep.map((i) => ts[i]),
+                o: pick(quote.open), h: pick(quote.high), l: pick(quote.low), c: pick(quote.close),
+                v: keep.map((i) => (quote.volume && quote.volume[i]) || 0),
+                prev: round(Number(meta.chartPreviousClose != null ? meta.chartPreviousClose : meta.previousClose)),
+                price: round(Number(meta.regularMarketPrice)),
+                name: meta.longName || meta.shortName || sym
+            };
+        } catch (e) {
+            return J({ ok: false, error: String((e && e.message) || e) }, 502, origin);
+        }
+        ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(body), { headers: { 'Cache-Control': 'max-age=' + CACHE_SECONDS } })));
+    }
+    const out = Object.assign({ ok: true, ts: new Date().toISOString(), sym, range, interval }, body);
+    return J(out, 200, origin, true);
+}
+
+async function routeScreener(url, ctx, origin) {
+    const codes = codesFrom(url, 1200);
+    if (!codes.length) return J({ ok: false, error: 'no symbols' }, 400, origin);
+    const cache = caches.default;
+    const ck = new Request('https://cache.ewoks.local/screener/' + codes.length + '/' + codes[0] + '-' + codes[codes.length - 1]);
+    const hit = await cache.match(ck);
+    let q;
+    if (hit) {
+        q = await hit.json();
+    } else {
+        try {
+            q = await fetchBatchQuotes(codes);
+        } catch (e) {
+            return J({ ok: false, error: String((e && e.message) || e) }, 502, origin);
+        }
+        ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(q), { headers: { 'Cache-Control': 'max-age=' + CACHE_SECONDS } })));
+    }
+    return J({ ok: true, ts: new Date().toISOString(), n: Object.keys(q).length, q: q }, 200, origin, true);
+}
+
+async function routeQuotes(url, ctx, origin) {
+    const tickers = codesFrom(url, MAX_SYMBOLS);
+    const wantIhsg = url.searchParams.get('ihsg') === '1';
+    if (!tickers.length && !wantIhsg) return J({ ok: false, error: 'no symbols' }, 400, origin);
+    const jobs = tickers.map((t) => fetchYahooQuote(t + '.JK', ctx).then((q) => [t, q]).catch(() => [t, null]));
+    const ihsgJob = wantIhsg ? fetchYahooQuote('^JKSE', ctx).catch(() => null) : Promise.resolve(null);
+    const results = await Promise.all([Promise.all(jobs), ihsgJob]);
+    const pairs = results[0];
+    const ihsg = results[1];
+    const quotes = {};
+    for (const pr of pairs) if (pr[1]) quotes[pr[0]] = pr[1];
+    const out = { ok: true, ts: new Date().toISOString(), quotes: quotes };
+    if (ihsg) out.ihsg = ihsg;
+    return J(out, 200, origin, true);
+}
+
+async function handle(request, ctx) {
+    const origin = request.headers.get('Origin') || '';
+    const url = new URL(request.url);
+    const path = url.pathname;
+    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v4-flat', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
+    if (path === '/chart') return routeChart(url, ctx, origin);
+    if (path === '/screener') return routeScreener(url, ctx, origin);
+    if (path === '/quotes') return routeQuotes(url, ctx, origin);
+    return J({ ok: false, error: 'not found' }, 404, origin);
+}
+
 export default {
     async fetch(request, env, ctx) {
-        try { return await handle(request, env, ctx); }
-        catch (e) { return json({ ok: false, error: 'worker error: ' + String((e && e.message) || e) }, 500, request.headers.get('Origin') || ''); }
-    }
-};
-
-const handle = async (request, env, ctx) => {
-    {
-        const origin = request.headers.get('Origin') || '';
-        const url = new URL(request.url);
-
-        if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
-        if (request.method !== 'GET') return json({ ok: false, error: 'method' }, 405, origin);
-        if (url.pathname === '/' || url.pathname === '/health') return json({ ok: true, service: 'ewoks-live', version: 'v3-chart-screener', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
-        if (!['/quotes','/chart','/screener'].includes(url.pathname)) return json({ ok: false, error: 'not found' }, 404, origin);
-
-        if (url.pathname === '/chart') {
-            const sym = String(url.searchParams.get('s') || '').toUpperCase().trim();
-            const range = ['1d', '5d', '1mo', '3mo'].includes(url.searchParams.get('range')) ? url.searchParams.get('range') : '1d';
-            const interval = ['1m', '5m', '15m', '30m', '60m', '1d'].includes(url.searchParams.get('interval')) ? url.searchParams.get('interval') : '5m';
-            if (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE') return json({ ok: false, error: 'bad symbol' }, 400, origin);
-            const ysym = sym === 'COMPOSITE' ? '%5EJKSE' : `${sym}.JK`;
-            const cache = caches.default;
-            const ck = new Request(`https://cache.ewoks.local/chart/${ysym}/${range}/${interval}`);
-            const hit = await cache.match(ck);
-            let body;
-            if (hit) body = await hit.json();
-            else {
-                try {
-                    const r = await fetch(`https://query2.finance.yahoo.com/v8/finance/chart/${ysym}?range=${range}&interval=${interval}&includePrePost=false`, { headers: { 'User-Agent': UA, Accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
-                    if (!r.ok) throw new Error(`Yahoo ${r.status}`);
-                    const res = (await r.json())?.chart?.result?.[0];
-                    if (!res) throw new Error('empty');
-                    const q = res.indicators?.quote?.[0] || {};
-                    const ts = res.timestamp || [];
-                    const keep = [];
-                    for (let i = 0; i < ts.length; i++) if (Number.isFinite(q.close?.[i])) keep.push(i);
-                    const pick = (arr) => keep.map((i) => (Number.isFinite(arr?.[i]) ? round(arr[i]) : null));
-                    body = { t: keep.map((i) => ts[i]), o: pick(q.open), h: pick(q.high), l: pick(q.low), c: pick(q.close), v: keep.map((i) => q.volume?.[i] ?? 0),
-                        prev: round(Number(res.meta?.chartPreviousClose ?? res.meta?.previousClose)), price: round(Number(res.meta?.regularMarketPrice)), name: res.meta?.longName || res.meta?.shortName || sym };
-                } catch (e) { return json({ ok: false, error: String(e.message || e) }, 502, origin); }
-                ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(body), { headers: { 'Cache-Control': `max-age=${CACHE_SECONDS}` } })));
-            }
-            return json({ ok: true, ts: new Date().toISOString(), sym, range, interval, ...body }, 200, origin, { 'Cache-Control': 'public, max-age=30' });
+        try {
+            return await handle(request, ctx);
+        } catch (e) {
+            return J({ ok: false, error: 'worker error: ' + String((e && e.message) || e) }, 500, request.headers.get('Origin') || '');
         }
-
-        if (url.pathname === '/screener') {
-            const codes = [...new Set(String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim()))]
-                .filter((t) => /^[A-Z0-9]{2,6}$/.test(t)).slice(0, 1200);
-            if (!codes.length) return json({ ok: false, error: 'no symbols' }, 400, origin);
-            const cache = caches.default;
-            const ck = new Request(`https://cache.ewoks.local/screener/${codes.length}/${codes[0]}-${codes[codes.length - 1]}`);
-            const hit = await cache.match(ck);
-            let q;
-            if (hit) q = await hit.json();
-            else {
-                try { q = await fetchBatchQuotes(codes); }
-                catch (e) { return json({ ok: false, error: String(e.message || e) }, 502, origin); }
-                ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(q), { headers: { 'Cache-Control': `max-age=${CACHE_SECONDS}` } })));
-            }
-            return json({ ok: true, ts: new Date().toISOString(), n: Object.keys(q).length, q }, 200, origin, { 'Cache-Control': 'public, max-age=30' });
-        }
-
-        const tickers = [...new Set(String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim()))]
-            .filter((t) => /^[A-Z0-9]{2,6}$/.test(t))
-            .slice(0, MAX_SYMBOLS);
-        const wantIhsg = url.searchParams.get('ihsg') === '1';
-        if (!tickers.length && !wantIhsg) return json({ ok: false, error: 'no symbols' }, 400, origin);
-
-        const jobs = tickers.map((t) => fetchYahooQuote(`${t}.JK`, ctx).then((q) => [t, q]).catch(() => [t, null]));
-        const ihsgJob = wantIhsg ? fetchYahooQuote('^JKSE', ctx).catch(() => null) : Promise.resolve(null);
-        const [pairs, ihsg] = await Promise.all([Promise.all(jobs), ihsgJob]);
-
-        const quotes = {};
-        for (const [t, q] of pairs) if (q) quotes[t] = q;
-        return json(
-            { ok: true, ts: new Date().toISOString(), quotes, ...(ihsg ? { ihsg } : {}) },
-            200,
-            origin,
-            { 'Cache-Control': 'public, max-age=30' }
-        );
     }
 };
