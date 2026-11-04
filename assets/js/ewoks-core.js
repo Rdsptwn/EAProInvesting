@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261104t0242';
+window.EWOKS_ASSET_V = '20261104t0711';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -952,7 +952,9 @@ window.addEventListener('load', () => {
     if (page === 'kalkulator' && typeof runSimpleCalc === 'function' && document.getElementById('calc-price')) runSimpleCalc();
     if (page === 'jurnal' && typeof renderJournal === 'function') renderJournal();
     if (page === 'watchlist' && typeof openTVChart === 'function' && !window.tvWidgetInstance) {
-        openTVChart('IDX:COMPOSITE');
+        let first = 'IDX:COMPOSITE';
+        try { const q = new URLSearchParams(location.search).get('t'); if (q && /^[A-Za-z0-9]{2,6}$/.test(q)) first = 'IDX:' + q.toUpperCase(); } catch (_) {}
+        openTVChart(first);
     }
 
     document.addEventListener('click', function (e) {
