@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261104t0716';
+window.EWOKS_ASSET_V = '20261104t0719';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -670,6 +670,32 @@ function getEwoksLiveApi() {
     let u = EWOKS_LIVE_API_URL;
     try { u = u || localStorage.getItem('ewoks_live_api') || ''; } catch (_) {}
     return String(u || '').trim().replace(/\/+$/, '');
+}
+
+
+/** Ambil harga banyak saham dari Worker /screener: dipecah per ~120 kode & paralel (ringan untuk Worker gratis). */
+async function ewoksFetchScreener(codes, chunk) {
+    const api = getEwoksLiveApi();
+    if (!api) throw new Error('URL Worker belum diatur');
+    chunk = chunk || 120;
+    const parts = [];
+    for (let i = 0; i < codes.length; i += chunk) parts.push(codes.slice(i, i + chunk));
+    const q = {}; let ok = 0, lastErr = null, ts = null;
+    const one = async (p) => {
+        for (let a = 0; a < 2; a++) {
+            try {
+                const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
+                const r = await fetch(`${api}/screener?s=${p.join(',')}`, { signal: ctl.signal, cache: 'no-store' });
+                clearTimeout(tm);
+                const d = await r.json();
+                if (!d.ok || !d.q) throw new Error(d.error || 'HTTP ' + r.status);
+                Object.assign(q, d.q); ts = ts || d.ts; ok++; return;
+            } catch (e) { lastErr = e; }
+        }
+    };
+    await Promise.all(parts.map(one));
+    if (!ok) throw lastErr || new Error('gagal');
+    return { q, ts: ts || new Date().toISOString(), ok, total: parts.length };
 }
 
 /** Senin–Jumat 08:55–16:30 WIB (sedikit lebih lebar karena data tertunda). */

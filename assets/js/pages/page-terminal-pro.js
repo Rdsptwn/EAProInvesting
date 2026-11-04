@@ -327,12 +327,7 @@
         liveBusy = true;
         if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat…'; }
         try {
-            const ctl = new AbortController();
-            const timer = setTimeout(() => ctl.abort(), 30000);
-            const res = await fetch(`${api}/screener?s=${rows.map((r) => r.ticker).join(',')}`, { signal: ctl.signal, cache: 'no-store' });
-            clearTimeout(timer);
-            const d = await res.json().catch(() => ({}));
-            if (!res.ok || !d.ok) throw new Error(d.error || 'HTTP ' + res.status);
+            const d = await ewoksFetchScreener(rows.map((r) => r.ticker));
             let n = 0;
             for (const r of rows) {
                 const q = d.q && d.q[r.ticker];

@@ -13,8 +13,7 @@
     const fx = (v) => Number(v).toLocaleString('id-ID', { maximumFractionDigits: 0 });
     const shortName = (s) => String(s || '').replace(/^PT\.?\s*/i, '').replace(/\s*Tbk\.?$/i, '').trim();
 
-    // saham layak dilihat: harga >= 50, nilai transaksi >= Rp 500 juta (menyaring saham tidur / gorengan tipis)
-    const liquid = (x) => x.p >= 50 && Number.isFinite(x.chg) && x.p * x.vol >= 5e8;
+        const liquid = (x) => Number.isFinite(x.chg) && x.vol >= 100; // semua saham yang ada transaksi (min. 1 lot)
 
     function pickMovers() {
         const arr = Object.entries(data).map(([t, x]) => ({ t, ...x })).filter(liquid);
@@ -69,7 +68,7 @@
                 <div><div class="text-[11px] font-black uppercase tracking-widest text-emerald-600 mb-1"><i class="fas fa-arrow-trend-up mr-1"></i> Top Gainer</div><div id="hm-gain"></div></div>
                 <div><div class="text-[11px] font-black uppercase tracking-widest text-rose-600 mb-1"><i class="fas fa-arrow-trend-down mr-1"></i> Top Loser</div><div id="hm-loss"></div></div>
             </div>
-            <p class="text-[10px] text-slate-400 mt-4">Hanya saham dengan harga ≥ Rp50 dan nilai transaksi ≥ Rp500 juta. Klik kode untuk buka di Terminal.</p>`;
+            <p class="text-[10px] text-slate-400 mt-4">Semua saham yang bertransaksi hari ini. Klik kode untuk buka di Terminal.</p>`;
         hero.insertAdjacentElement('afterend', sec);
     }
 
@@ -77,7 +76,7 @@
     function renderTape() {
         const host = document.querySelector('.tradingview-widget-container');
         if (!host) return;
-        const top = Object.entries(data).map(([t, x]) => ({ t, v: x.p * x.vol, ok: x.p >= 50 })).filter((x) => x.ok && x.v > 0)
+        const top = Object.entries(data).map(([t, x]) => ({ t, v: x.p * x.vol, ok: true })).filter((x) => x.ok && x.v > 0)
             .sort((a, b) => b.v - a.v).slice(0, 10).map((x) => x.t);
         if (!top.length) return;
         const key = top.join(',');
@@ -116,17 +115,7 @@
         const api = typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '';
         if (!api || !codes.length) return;
         try {
-            let d, last;
-            for (let a = 0; a < 2 && !(d && d.ok && d.q); a++) {
-                try {
-                    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 40000);
-                    const r = await fetch(`${api}/screener?s=${codes.join(',')}`, { signal: ctl.signal, cache: 'no-store' });
-                    clearTimeout(tm);
-                    d = await r.json();
-                    if (!d.ok || !d.q) last = new Error(d.error || 'HTTP ' + r.status);
-                } catch (e) { last = e; }
-            }
-            if (!d || !d.ok || !d.q) throw last || new Error('gagal');
+            const d = await ewoksFetchScreener(codes);
             let c = 0;
             for (const [t, a] of Object.entries(d.q)) {
                 const [p, prev, chg, vol] = a;
@@ -138,7 +127,7 @@
             }
             live = c > 0;
             const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-            stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham`;
+            stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham` + (d.ok < d.total ? ` (${d.ok}/${d.total} bagian)` : '');
         } catch (e) {
             stamp = (live ? 'Live gagal diperbarui' : 'Snapshot harian') + ' (' + (/abort/i.test(String(e.message)) ? 'timeout' : e.message) + ')';
         }
