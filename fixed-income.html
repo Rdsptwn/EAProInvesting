@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261104t0734">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261104t0748">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="fixed-income">
 
@@ -186,8 +186,8 @@
 
                     <div class="lg:col-span-2 premium-card overflow-hidden shadow-sm">
                         <div class="p-6 bg-amber-50 border-b border-amber-100 flex items-center justify-between">
-                            <h3 class="text-lg font-black text-amber-800">Curated Picks 2024-2026</h3>
-                            <span class="bg-amber-200 text-amber-800 text-[10px] font-black px-2 py-1 rounded uppercase shadow-sm">Live Data</span>
+                            <h3 class="text-lg font-black text-amber-800">Rangkuman Imbal Hasil 2026</h3>
+                            <span class="bg-amber-200 text-amber-800 text-[10px] font-black px-2 py-1 rounded uppercase shadow-sm">Data Okt–Nov 2026</span>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
@@ -199,29 +199,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
-                                        <td class="p-4 font-black text-slate-800">SBN Ritel<br><span class="text-[10px] text-emerald-500 font-bold">(SR / ORI / SBR)</span></td>
-                                        <td class="p-4 text-xs text-slate-600">Dijamin 100% oleh Negara. Pajak hanya 10%. Cocok untuk melawan inflasi dengan aman. Kupon dibayar tiap bulan.</td>
-                                        <td class="p-4 text-right font-black text-emerald-600 text-lg">6.50%</td>
+<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">SBN Ritel<br><span class="text-[10px] text-emerald-500 font-bold">(ORI030, SR025, SBR015, ST016)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Dijamin 100% oleh Negara. Pajak kupon final 10%, kupon dibayar tiap bulan. Seri terbaru: ORI030 6,90% (3 th) / 7,00% (6 th); SR025 6,80% / 6,90%; SBR015 minimal 6,75–6,85% (mengambang). <b>ST017 dijual 6 Nov–2 Des 2026</b> (kupon diumumkan sebelum penawaran).</td>
+                                        <td class="p-4 text-right font-black text-emerald-600 text-lg">6,8–7,0%</td>
                                     </tr>
-                                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
-                                        <td class="p-4 font-black text-slate-800">Reksa Dana<br><span class="text-[10px] text-blue-500 font-bold">(Pasar Uang)</span></td>
-                                        <td class="p-4 text-xs text-slate-600">Sangat likuid (bisa dicairkan kapan saja tanpa denda). Tidak ada pajak (bukan objek pajak).</td>
-                                        <td class="p-4 text-right font-black text-blue-600 text-lg">4.50%</td>
+<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">Reksa Dana Pasar Uang<br><span class="text-[10px] text-blue-500 font-bold">(RD)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Sangat likuid, bukan objek pajak. Return 1 tahun sekitar 4,6–5,8% (top Bareksa, Mei 2026); indeks pasar uang Infovesta YTD +3,16% per 30 Sep 2026. Tidak dijamin LPS.</td>
+                                        <td class="p-4 text-right font-black text-blue-600 text-lg">±5%</td>
                                     </tr>
-                                    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
-                                        <td class="p-4 font-black text-slate-800">ETF Saham<br><span class="text-[10px] text-indigo-500 font-bold">(R-LQ45X dll)</span></td>
-                                        <td class="p-4 text-xs text-slate-600">Membeli 45 saham bluechip sekaligus dalam 1 klik. Risiko terbagi (diversifikasi otomatis).</td>
-                                        <td class="p-4 text-right font-black text-indigo-600 text-lg">8-12%*</td>
+<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">Reksa Dana Pendapatan Tetap<br><span class="text-[10px] text-cyan-500 font-bold">(RD)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Return 1 tahun top fund 7,3–9,8% (Mei 2026), tetapi indeks pendapatan tetap Infovesta YTD hanya +0,07% per 30 Sep 2026 karena harga obligasi tertekan.</td>
+                                        <td class="p-4 text-right font-black text-cyan-600 text-lg">7–10%*</td>
                                     </tr>
-                                    <tr id="deposito" class="hover:bg-slate-50 transition-colors bg-white">
-                                        <td class="p-4 font-black text-slate-800">Deposito Bank<br><span class="text-[10px] text-slate-500 font-bold">(Bank Digital)</span></td>
-                                        <td class="p-4 text-xs text-slate-600">Dijamin LPS (maks 2M, rate wajar). Pajak 20%.</td>
-                                        <td class="p-4 text-right font-black text-slate-600 text-lg">5.00%</td>
+<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">ETF Saham<br><span class="text-[10px] text-indigo-500 font-bold">(XIIT, R-LQ45X, XIJI dll)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Satu klik beli keranjang saham bluechip. Perhatian: IHSG turun sekitar 29,8% YTD per 30 Sep 2026; XIIT (IDX30) mencatat return 1 tahun -13,9%.</td>
+                                        <td class="p-4 text-right font-black text-indigo-600 text-lg">Berfluktuasi</td>
+                                    </tr>
+<tr id="deposito" class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">Deposito Bank Digital<br><span class="text-[10px] text-orange-500 font-bold">(Krom, Superbank, Neobank, Allo, SeaBank, Jago, blu)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Bunga bank digital Okt 2026: Krom hingga 8,00%, Superbank 7,50%, Neobank 7,25%, Allo 6,00% (hingga 7,50% di atas Rp500 juta), SeaBank 6,00%, Jago 5,50% (hingga 6,25%). Di atas batas LPS 3,75% simpanan <b>tidak dijamin</b>. Pajak 20%.</td>
+                                        <td class="p-4 text-right font-black text-orange-600 text-lg">5,5–8,0%</td>
+                                    </tr>
+<tr id="deposito-besar" class="border-b border-slate-100 hover:bg-slate-50 transition-colors bg-white">
+                                        <td class="p-4 font-black text-slate-800">Deposito Bank Besar<br><span class="text-[10px] text-slate-500 font-bold">(BRI, BNI, Mandiri)</span></td>
+                                        <td class="p-4 text-xs text-slate-600">Bunga rupiah per 6 Okt 2026: BRI 2,50–3,00%, BNI 2,25–2,75%, Mandiri 2,25–2,50%. Dijamin LPS (batas bunga 3,75%, simpanan maks. Rp2 miliar). Pajak 20%.</td>
+                                        <td class="p-4 text-right font-black text-slate-600 text-lg">2,3–3,0%</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <p class="p-4 text-[9px] text-slate-400 italic bg-white">*Return ETF mengikuti pergerakan index IHSG/LQ45 secara fluktuatif.</p>
+                            <p class="p-4 text-[9px] text-slate-400 italic bg-white">*Return reksa dana dan ETF berfluktuasi mengikuti pasar dan tidak dijamin. Data dikumpulkan dari media keuangan per Okt–Nov 2026; lihat rincian dan sumber di <a href="pasar-global.html" class="text-blue-600 font-bold underline">database instrumen</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -329,7 +339,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261104t0734"></script>
-    <script src="assets/js/pages/page-fixed-income.js?v=20261104t0734"></script>
+    <script src="assets/js/ewoks-core.js?v=20261104t0748"></script>
+    <script src="assets/js/pages/page-fixed-income.js?v=20261104t0748"></script>
 </body>
 </html>

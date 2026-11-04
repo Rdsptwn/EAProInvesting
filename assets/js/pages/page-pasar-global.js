@@ -11,7 +11,10 @@ const PG_CLASS_ORDER = [
     'Reksa Dana Saham',
     'Reksa Dana Pendapatan Tetap',
     'Pasar Uang',
-    'Obligasi Negara / SBN'
+    'Obligasi Negara / SBN',
+    'Deposito',
+    'Reksa Dana Campuran',
+    'Reksa Dana Indeks'
 ];
 const PG_RISK_ORDER = ['Sangat Rendah', 'Rendah', 'Moderat', 'Moderat-Tinggi', 'Tinggi', 'Sangat Tinggi', 'Ekstrem', 'Krisis / Distressed'];
 const PG_TIER_ORDER = ['Developed', 'Emerging', 'Advanced Frontier', 'Frontier', 'Standalone'];
@@ -49,6 +52,30 @@ const PG_CLASS_INFO = {
         risk: 'Rendah, tetapi bukan deposito dan tidak dijamin LPS. Return mengikuti suku bunga jangka pendek.',
         tip: 'Pilih untuk parkir dana. Return biasanya hanya mengejar inflasi, bukan tumbuh jauh di atasnya.'
     },
+    Deposito: {
+        icon: 'fa-piggy-bank',
+        color: 'text-orange-500',
+        what: 'Simpanan berjangka di bank (termasuk bank digital seperti SeaBank, Krom, Jago, Allo, Superbank) dengan bunga tetap selama tenor.',
+        for: 'Dana jangka pendek sampai menengah yang butuh kepastian nilai dan bunga.',
+        risk: 'Sangat rendah, tetapi penjaminan LPS hanya berlaku jika bunga tidak melebihi batas LPS (3,75% p.a. per 1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar. Bunga di atas batas itu tidak dijamin. Bunga kena pajak 20%.',
+        tip: 'Bunga tinggi di bank digital biasanya berlaku untuk tenor tertentu atau saldo tertentu; cek tarif di aplikasi dan sebar dana agar tiap bank di bawah Rp2 miliar.'
+    },
+    'Reksa Dana Campuran': {
+        icon: 'fa-scale-balanced',
+        color: 'text-violet-500',
+        what: 'Reksa dana yang mencampur saham, obligasi, dan pasar uang dengan porsi fleksibel menurut manajer investasi.',
+        for: 'Tujuan menengah–panjang dengan risiko di antara saham dan pendapatan tetap.',
+        risk: 'Moderat–tinggi: nilainya ikut turun saat saham jatuh, dan hasilnya sangat bergantung pada keputusan manajer.',
+        tip: 'Return 1 tahun yang sangat tinggi biasanya mengikuti reli saham; periksa juga kinerjanya saat pasar turun.'
+    },
+    'Reksa Dana Indeks': {
+        icon: 'fa-chart-simple',
+        color: 'text-sky-500',
+        what: 'Reksa dana pasif yang meniru sebuah indeks (mis. SRI-KEHATI, IDX Growth30, MSCI Indonesia Value) dengan biaya relatif rendah.',
+        for: 'Investasi jangka panjang tanpa mengandalkan pemilihan saham oleh manajer.',
+        risk: 'Tinggi: bergerak mengikuti indeks acuannya, naik maupun turun.',
+        tip: 'Bandingkan selisih kinerja dengan indeks acuan (tracking difference) dan biaya pengelolaan.'
+    },
     'Obligasi Negara / SBN': {
         icon: 'fa-landmark',
         color: 'text-rose-500',
@@ -64,7 +91,8 @@ const PG_METRICS = [
     ['AUM', 'Asset Under Management: total dana yang dikelola. Semakin besar biasanya semakin likuid dan kecil risiko ditutup.'],
     ['Expense ratio', 'Biaya pengelolaan tahunan dalam persen dari nilai investasi. 0,10% berarti Rp1 juta dikenai Rp1.000 per tahun. Selisih kecil menjadi besar jika ditumpuk bertahun-tahun.'],
     ['Risiko', 'Penilaian kualitatif dari Sangat Rendah sampai Krisis/Distressed. Itu cuma panduan awal, bukan pengganti membaca prospektus.'],
-    ['Penanda data', 'Titik hijau berarti CAGR dihitung ulang otomatis dari harga pasar. Titik oranye berarti angka arsip yang belum diverifikasi untuk 2026.']
+    ['Penanda data', 'Titik hijau berarti angka dihitung dari harga pasar atau dikumpulkan dari sumber 2026 (bunga deposito, kupon SBN, return reksa dana). Titik oranye berarti angka arsip yang belum diverifikasi untuk 2026.'],
+    ['Return / CAGR', 'Untuk ETF: CAGR dari harga. Untuk deposito: bunga maksimum per tahun. Untuk SBN: kupon tenor terpanjang. Untuk reksa dana: return 1 tahun pada tanggal yang tertera. Jangan dibandingkan langsung antar-jenis; lihat keterangan di panel detail.']
 ];
 
 const PG_TIERS = [
@@ -112,8 +140,9 @@ function pgCagrBadge(i) {
     else if (i.cagr >= 0) bg = 'bg-amber-100 text-amber-800';
     else bg = 'bg-rose-100 text-rose-800';
     const live = i.cagrBasis === 'stooq';
-    const dot = live
-        ? '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1" title="CAGR dihitung dari harga pasar"></span>'
+    const ver = ['bunga', 'kupon', 'return1y'].includes(i.cagrBasis);
+    const dot = live || ver
+        ? `<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1" title="${pgEsc(ver ? (i.metric || 'Data 2026') + ' · ' + (i.dataAsOf || '') : 'CAGR dihitung dari harga pasar')}"></span>`
         : '<span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 mr-1" title="Angka arsip, belum diverifikasi 2026"></span>';
     return `<span class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-black ${bg}">${dot}${i.cagr}%</span>`;
 }
@@ -121,6 +150,8 @@ function pgCagrBadge(i) {
 function pgStatusBadge(i) {
     if (i.status === 'etf-as') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-50 text-emerald-700">Harga pasar</span>';
     if (i.status === 'produk') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-indigo-50 text-indigo-700">Produk UCITS</span>';
+    if (i.status === 'terverifikasi') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-50 text-emerald-700">Data 2026</span>';
+    if (i.status === 'jadwal') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-sky-50 text-sky-700">Jadwal</span>';
     if (i.status === 'indikatif') return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-rose-50 text-rose-700">Indikatif</span>';
     return '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-50 text-amber-700">Arsip</span>';
 }
@@ -229,7 +260,7 @@ function pgRenderTable() {
         ['country', 'Negara', 'hidden md:table-cell'],
         ['tier', 'Tier', 'hidden lg:table-cell'],
         ['assetClass', 'Kelas', 'hidden lg:table-cell'],
-        ['cagr', 'CAGR', ''],
+        ['cagr', 'Return / CAGR', ''],
         ['expense', 'Expense', 'hidden md:table-cell'],
         ['risk', 'Risiko', 'hidden sm:table-cell'],
         ['status', 'Data', 'hidden xl:table-cell']
@@ -267,7 +298,8 @@ function pgRenderTable() {
 function pgRenderSummary() {
     const box = document.getElementById('pgSummaryCards');
     if (!box) return;
-    const withCagr = pgFiltered.filter((i) => Number.isFinite(i.cagr));
+    const comparable = (i) => pgState.cls !== 'ALL' || !['bunga', 'kupon', 'return1y'].includes(i.cagrBasis) || i.assetClass === 'ETF'; // 'Semua' hanya membandingkan CAGR historis
+    const withCagr = pgFiltered.filter((i) => Number.isFinite(i.cagr) && comparable(i));
     const best = withCagr.slice().sort((a, b) => b.cagr - a.cagr)[0];
     const cheap = pgFiltered.filter((i) => Number.isFinite(i.expense) && i.expense > 0).sort((a, b) => a.expense - b.expense)[0];
     const bm = pgData.meta?.benchmarks?.sbn10y;
@@ -287,7 +319,7 @@ function pgRenderSummary() {
 function pgRenderCharts() {
     if (typeof whenChartReady !== 'function') return;
     whenChartReady(() => {
-        const top = pgFiltered.filter((i) => Number.isFinite(i.cagr)).sort((a, b) => b.cagr - a.cagr).slice(0, 10);
+        const top = pgFiltered.filter((i) => Number.isFinite(i.cagr) && (pgState.cls !== 'ALL' || !['bunga', 'kupon', 'return1y'].includes(i.cagrBasis) || i.assetClass === 'ETF')).sort((a, b) => b.cagr - a.cagr).slice(0, 10);
         const ctx1 = document.getElementById('pgCagrChart');
         if (ctx1) {
             if (pgCagrChart) pgCagrChart.destroy();
@@ -330,7 +362,12 @@ function pgSelect(id) {
     const panel = document.getElementById('pgDetailPanel');
     if (!i || !panel) return;
     const info = PG_CLASS_INFO[i.assetClass];
-    const basis = i.cagrBasis === 'stooq'
+    const verified = ['bunga', 'kupon', 'return1y'].includes(i.cagrBasis);
+    const basis = verified
+        ? `${pgEsc(i.metric || 'Data 2026')}${i.dataAsOf ? ', per ' + pgEsc(i.dataAsOf) : ''}. Dikumpulkan dari media keuangan; lihat sumber di bawah.`
+        : i.status === 'jadwal'
+        ? 'Jadwal penawaran; kupon belum diumumkan.'
+        : i.cagrBasis === 'stooq'
         ? `Dihitung dari harga penutupan${i.cagrYears ? ' ' + i.cagrYears + ' tahun' : ''}${i.dataAsOf ? ' sampai ' + pgEsc(i.dataAsOf) : ''} (tanpa dividen).`
         : (i.status === 'produk'
             ? 'Produk nyata (UCITS) yang diperdagangkan di bursa Eropa. Data kinerja belum tersedia di database ini.'
@@ -354,15 +391,19 @@ function pgSelect(id) {
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
             ${cell('Penerbit / Manajer', pgEsc(i.manager), 'text-xs')}
             ${cell('Kelas aset', pgEsc(i.assetClass), 'text-xs')}
-            ${cell('CAGR', i.cagr != null ? i.cagr + '%' : '—')}
+            ${cell(verified ? pgEsc(i.metric || 'Return') : 'CAGR', i.cagr != null ? i.cagr + '%' : '—')}
             ${cell('Expense ratio', i.expense != null ? i.expense + '%' : '—')}
-            ${cell('AUM (arsip)', i.aum ? pgEsc(i.aum) : '—', 'text-xs')}
+            ${cell(verified ? 'AUM' : 'AUM (arsip)', i.aum ? pgEsc(i.aum) : '—', 'text-xs')}
+            ${i.minPlacement ? cell('Setoran awal', pgEsc(i.minPlacement), 'text-xs') : ''}
         </div>
         <h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-5 mb-1"><i class="fas fa-bullseye text-blue-500 mr-1"></i> Bidang & fokus investasi</h5>
         <p class="leading-relaxed text-slate-700">${pgEsc(i.desc)}</p>
         ${info ? `<h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-4 mb-1"><i class="fas ${info.icon} ${info.color} mr-1"></i> Tentang ${pgEsc(i.assetClass)}</h5><p class="leading-relaxed text-slate-600">${pgEsc(info.what)} ${pgEsc(info.risk)}</p>` : ''}
+        ${i.rates ? `<h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-4 mb-2"><i class="fas fa-table text-orange-500 mr-1"></i> Bunga per tenor (% p.a., sebelum pajak)</h5><div class="grid grid-cols-2 sm:grid-cols-4 gap-2">${Object.entries(i.rates).map(([k, v]) => `<div class="bg-orange-50 rounded-xl p-3 text-center"><p class="text-[10px] font-black text-orange-700 uppercase">${pgEsc(k)}</p><p class="text-lg font-black text-slate-800">${v}%</p></div>`).join('')}</div>` : ''}
+        ${i.tenors ? `<h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mt-4 mb-2"><i class="fas fa-table text-rose-500 mr-1"></i> Kupon per tenor (% p.a.)</h5><div class="grid grid-cols-2 sm:grid-cols-4 gap-2">${Object.entries(i.tenors).map(([k, v]) => `<div class="bg-rose-50 rounded-xl p-3 text-center"><p class="text-[10px] font-black text-rose-700 uppercase">${pgEsc(k)}</p><p class="text-lg font-black text-slate-800">${v}%</p></div>`).join('')}</div>` : ''}
         ${warn}
-        <p class="text-[11px] text-slate-500 mt-4 border-t border-slate-100 pt-3"><strong>Data CAGR:</strong> ${basis}</p>`;
+        <p class="text-[11px] text-slate-500 mt-4 border-t border-slate-100 pt-3"><strong>Data:</strong> ${basis}</p>
+        ${i.src && i.src.length ? `<p class="text-[11px] text-slate-500 mt-1"><strong>Sumber:</strong> ${i.src.map((u, n) => `<a href="${pgEsc(u)}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[${n + 1}]</a>`).join(' ')}</p>` : ''}`;
     document.querySelectorAll('#pgTableBody tr').forEach((tr) => {
         tr.classList.toggle('bg-blue-50', parseInt(tr.getAttribute('data-pg-id'), 10) === id);
     });

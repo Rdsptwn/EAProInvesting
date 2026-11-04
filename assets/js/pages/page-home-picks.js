@@ -18,21 +18,23 @@
         const major = yr.map((y) => byT(y.ticker)).filter((i) => i && i.assetClass === 'ETF' && Number.isFinite(i.cagr));
         const growth = major.filter((i) => riskRank(i.risk) <= 4).sort((a, b) => b.cagr - a.cagr)[0];
         const core = major.filter((i) => i !== growth && riskRank(i.risk) >= 2 && riskRank(i.risk) <= 3).sort((a, b) => b.cagr - a.cagr)[0];
-        const rd = I.filter((i) => i.assetClass === 'Reksa Dana Pendapatan Tetap' && Number.isFinite(i.cagr)).sort((a, b) => b.cagr - a.cagr)[0];
-        const sbn = I.filter((i) => i.assetClass === 'Obligasi Negara / SBN' && Number.isFinite(i.cagr)).sort((a, b) => b.cagr - a.cagr)[0];
         const out = [];
         const etf = (i, cat) => i && out.push({ key: i.ticker, kind: 'etf', cat, color: 'indigo', title: i.ticker, sub: i.name, cagr: i.cagr, years: i.cagrYears || 10, risk: i.risk,
             link: `pasar-global.html?q=${encodeURIComponent(i.ticker)}`, linkLabel: 'Buka di Database ETF', yr: yr.find((y) => y.ticker === i.ticker) });
         etf(growth, 'ETF Pertumbuhan');
         etf(core, 'ETF Inti');
-        if (rd) out.push({ key: rd.ticker, kind: 'bars', cat: 'Reksa Dana', color: 'blue', title: rd.name.replace(/Fund|Reksa Dana/gi, '').trim() || rd.ticker, sub: rd.manager || rd.ticker, big: rd.cagr, bigLbl: 'CAGR p.a.', risk: rd.risk, badge: 'ARSIP',
-            link: `pasar-global.html?q=${encodeURIComponent(rd.ticker)}`, linkLabel: 'Buka di Database Reksa Dana', lbl: rd.ticker });
-        const y10 = macro.sbn10y && Number(macro.sbn10y.value);
-        out.push({ key: 'SBN', kind: 'bars', cat: 'Obligasi / SBN', color: 'emerald', title: 'SBN 10 Tahun', sub: sbn ? `Acuan seri FR · contoh ${sbn.ticker}` : 'Surat Berharga Negara',
-            big: Number.isFinite(y10) ? y10 : (sbn && sbn.cagr), bigLbl: 'yield p.a.', risk: 'Rendah', badge: Number.isFinite(y10) ? 'HARIAN' : 'ARSIP', asOf: macro.sbn10y && macro.sbn10y.asOf,
-            link: `pasar-global.html?cls=${encodeURIComponent('Obligasi Negara / SBN')}`, linkLabel: 'Buka di Database SBN', lbl: 'SBN 10Y' });
-        out.push({ key: 'DEPO', kind: 'bars', cat: 'Deposito', color: 'amber', title: 'Deposito Bank', sub: 'Dijamin LPS (maks. Rp2 M)', big: DEPOSITO, bigLbl: 'bunga p.a.', risk: 'Sangat Rendah', badge: 'REFERENSI',
-            link: 'fixed-income.html#deposito', linkLabel: 'Buka di Obligasi & Fixed Income', lbl: 'Deposito' });
+        const ver = (cls, basis) => I.filter((i) => i.assetClass === cls && i.cagrBasis === basis && Number.isFinite(i.cagr)).sort((x, y) => y.cagr - x.cagr);
+        const rds = ver('Reksa Dana Pendapatan Tetap', 'return1y');
+        const sbns = I.filter((i) => i.assetClass === 'Obligasi Negara / SBN' && i.cagrBasis === 'kupon' && Number.isFinite(i.cagr)).sort((x, y) => y.cagr - x.cagr);
+        const deps = ver('Deposito', 'bunga');
+        const rd = rds[0], sb = sbns[0], dp = deps[0];
+        const bar = (arr, key) => arr.map((i) => [(key ? i[key] : i.ticker), i.cagr]);
+        if (rd) out.push({ key: rd.ticker, kind: 'bars', cat: 'Reksa Dana', color: 'blue', title: rd.name, sub: 'Pendapatan tetap · AUM ' + (rd.aum || '—'), big: rd.cagr, bigLbl: 'return 1 th', risk: rd.risk, badge: 'MEI 2026',
+            link: `pasar-global.html?q=${encodeURIComponent(rd.ticker)}`, linkLabel: 'Buka di Database Reksa Dana', chartTitle: 'Return 1 tahun — 5 reksa dana pendapatan tetap teratas (%)', rows: bar(rds.slice(0, 5)), hi: rd.ticker });
+        if (sb) out.push({ key: sb.ticker, kind: 'bars', cat: 'Obligasi / SBN', color: 'emerald', title: sb.ticker, sub: sb.name.replace(/^[A-Z0-9]+\s*/, '').replace(/[()]/g, '') + ' · kupon tetap', big: sb.cagr, bigLbl: 'kupon p.a.', risk: sb.risk, badge: 'KUPON 2026', asOf: 'berikutnya ST017: 6 Nov–2 Des',
+            link: `pasar-global.html?q=${encodeURIComponent(sb.ticker)}`, linkLabel: 'Buka di Database SBN', chartTitle: 'Kupon SBN ritel 2026 — tenor terpanjang (% p.a.)', rows: bar(sbns.slice(0, 6)), hi: sb.ticker });
+        if (dp) out.push({ key: dp.ticker, kind: 'bars', cat: 'Deposito', color: 'amber', title: dp.name.replace(/\s*\(.*$/, ''), sub: 'Bank digital · di atas batas LPS 3,75% tidak dijamin', big: dp.cagr, bigLbl: 'bunga maks.', risk: dp.risk, badge: 'OKT 2026',
+            link: `pasar-global.html?q=${encodeURIComponent(dp.ticker)}`, linkLabel: 'Buka di Database Deposito', chartTitle: 'Bunga deposito maks. — bank digital vs bank besar (% p.a.)', rows: bar(deps), hi: dp.ticker, big4: true });
         return out;
     }
 
@@ -60,7 +62,7 @@
         } else {
             big = `<span class="hp-big">${f1(p.big, 2)}%</span><span class="hp-chg">${p.bigLbl}</span>`;
             badge = `<span class="hp-badge ${p.badge === 'HARIAN' ? 'live' : ''}">${p.badge}</span>`;
-            small = `Risiko ${esc(p.risk)}${p.asOf ? ' · per ' + esc(p.asOf) : ''}`;
+            small = `Risiko ${esc(p.risk)}${p.asOf ? ' · ' + esc(p.asOf) : ''}`;
         }
         return `<div class="hp-card ${active === p.key ? 'on' : ''} hp-${p.color}" role="button" tabindex="0" onclick="homePick('${p.key}')" onkeydown="if(event.key==='Enter')homePick('${p.key}')">
             <div class="hp-top"><span class="hp-cat">${esc(p.cat)}</span>${badge}</div>
@@ -106,12 +108,10 @@
             cfg = { type: 'bar', data: { labels: ys.map((y) => y.year), datasets: [{ data: ys.map((y) => y.return), backgroundColor: ys.map((y) => (y.return >= 0 ? '#16a34a' : '#dc2626')) }] },
                 options: { plugins: { legend: { display: false } }, scales: { x: { ticks: { color: txt }, grid: { display: false } }, y: { ticks: { color: txt, callback: (v) => v + '%' }, grid: { color: grid } } } } };
         } else {
-            const y10 = macro.sbn10y && Number(macro.sbn10y.value), inf = macro.inflation && Number(macro.inflation.value);
-            const rows = [[p.lbl || p.title, p.big, '#2563eb'], ['Deposito', DEPOSITO, '#f59e0b'], ['SBN 10Y', y10, '#10b981'], ['Inflasi', inf, '#ef4444']]
-                .filter((r, i, a) => Number.isFinite(r[1]) && a.findIndex((x) => x[0] === r[0]) === i);
-            note = 'Perbandingan imbal hasil per tahun (%) dengan acuan lain. Data RD/SBN/deposito bukan harga pasar real-time.';
-            cfg = { type: 'bar', data: { labels: rows.map((r) => r[0]), datasets: [{ data: rows.map((r) => r[1]), backgroundColor: rows.map((r) => r[2]), borderRadius: 6 }] },
-                options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { color: txt, callback: (v) => v + '%' }, grid: { color: grid } }, y: { ticks: { color: txt }, grid: { display: false } } } } };
+            const rows = p.rows || [];
+            note = 'Data dikumpulkan dari media keuangan (lihat sumber di database); bukan harga pasar real-time, bisa berubah sewaktu-waktu.';
+            cfg = { type: 'bar', data: { labels: rows.map((r) => r[0]), datasets: [{ data: rows.map((r) => r[1]), backgroundColor: rows.map((r) => (r[0] === p.hi ? '#2563eb' : '#94a3b8')), borderRadius: 6 }] },
+                options: { indexAxis: 'y', plugins: { legend: { display: false }, title: { display: !!p.chartTitle, text: p.chartTitle, color: txt, font: { size: 11 } } }, scales: { x: { ticks: { color: txt, callback: (v) => v + '%' }, grid: { color: grid } }, y: { ticks: { color: txt }, grid: { display: false } } } } };
         }
         $('hp-dtitle').textContent = `${p.title} — ${p.cat}`;
         $('hp-dnote').textContent = note;
@@ -141,7 +141,7 @@
                     <div class="font-black text-sm text-slate-900" id="hp-dtitle"></div>
                     <a id="hp-dlink" href="#" class="ml-auto bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-xl hover:bg-blue-700"></a>
                 </div>
-                <div style="height:220px"><canvas id="hp-canvas"></canvas></div>
+                <div style="height:240px"><canvas id="hp-canvas"></canvas></div>
                 <p id="hp-dnote" class="text-[10px] text-slate-400 mt-2"></p>
             </div>
             <p class="text-[10px] text-slate-400 mt-4">Dipilih otomatis dari data CAGR dan tingkat risiko di database; untuk edukasi, bukan saran membeli. Ketuk kartu untuk grafik, ikon panah untuk langsung ke database.</p>`;
@@ -166,7 +166,7 @@
             } catch (e) { err = /abort/i.test(String(e.message)) ? 'timeout' : String(e.message); }
         }));
         const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-        stampTxt = ok ? `Harga ETF live Yahoo · ${hhmm} WIB · RD, SBN, deposito = data database/harian` : `Harga ETF live belum tersedia (${err || 'Worker'}) — menampilkan data database`;
+        stampTxt = ok ? `Harga ETF live Yahoo · ${hhmm} WIB · RD, SBN, deposito = data database` : `Harga ETF live belum tersedia (${err || 'Worker'}) — menampilkan data database`;
         render();
     }
 

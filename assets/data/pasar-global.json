@@ -1,6 +1,6 @@
 {
  "meta": {
-  "asOf": "2026-11-01",
+  "asOf": "2026-11-04",
   "note": "CAGR ETF AS dihitung ulang otomatis dari harga penutupan bulanan oleh workflow. Instrumen yang baru ditambahkan menampilkan CAGR setelah workflow berjalan. Expense ratio, AUM, serta RD/SBN adalah data arsip dan ditandai belum diverifikasi 2026 sampai diperbarui. Tier Advanced Frontier diisi produk UCITS nyata untuk pasar Uni Eropa kecil (Rumania, Slovenia, Kroasia, Bulgaria); ETF Estonia/Baltik belum ditemukan sehingga baris itu tetap indikatif.",
   "benchmarks": {
    "sbn10y": {
@@ -16,26 +16,41 @@
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
   "builtAt": "2026-11-04T07:27:31.373Z",
-  "stooqUpdated": 203
+  "stooqUpdated": 203,
+  "indonesia2026": {
+   "asOf": "2026-11-04",
+   "lpsRate": {
+    "value": 3.75,
+    "valid": "2026-10-01 s.d. 2027-01-31"
+   },
+   "infovesta": {
+    "asOf": "2026-09-30",
+    "saham": {
+     "sep": -5.47,
+     "ytd": -16.43
+    },
+    "campuran": {
+     "sep": -2.62,
+     "ytd": -7.37
+    },
+    "pendapatanTetap": {
+     "sep": 0.0,
+     "ytd": 0.07
+    },
+    "pasarUang": {
+     "sep": 0.42,
+     "ytd": 3.16
+    },
+    "ihsg": {
+     "sep": -6.96,
+     "ytd": -29.79
+    },
+    "src": "https://investasi.kontan.co.id/news/kinerja-reksadana-september-2026-beragam-mana-yang-masih-tumbuh"
+   },
+   "note": "Deposito, SBN ritel, reksa dana, dan ETF Indonesia dikumpulkan dari artikel media keuangan (CNBC Indonesia, Bareksa, Kontan, Bisnis, Metro TV, Zaipad, StockAnalysis) per Okt–Nov 2026. Bunga bank dapat berubah sewaktu-waktu; reksa dana memakai return 1 tahun per 11 Mei 2026 dan indeks Infovesta per 30 Sep 2026 sebagai pembanding terbaru."
+  }
  },
  "instruments": [
-  {
-   "id": 1,
-   "name": "Sucorinvest Equity Fund",
-   "ticker": "SUCOR-EQ",
-   "country": "Indonesia",
-   "tier": "Emerging",
-   "assetClass": "Reksa Dana Saham",
-   "cagr": 12.8,
-   "aum": "Rp 3.8 T",
-   "expense": 2.1,
-   "risk": "Tinggi",
-   "manager": "PT Sucorinvest Asset Management",
-   "desc": "Fokus investasi saham undervalue berkapitalisasi besar & menengah di Bursa Efek Indonesia.",
-   "status": "arsip",
-   "cagrBasis": "arsip",
-   "dataAsOf": null
-  },
   {
    "id": 2,
    "name": "Sucorinvest Stable Fund",
@@ -4849,6 +4864,1220 @@
    "dataAsOf": "2026-11-03",
    "stooq": "dba.us",
    "cagrYears": 10
+  },
+  {
+   "name": "Krom Bank (Krom Max / Flex)",
+   "ticker": "KROM",
+   "assetClass": "Deposito",
+   "cagr": 8.0,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 7.5,
+    "3 bln": 7.75,
+    "6 bln": 8.0,
+    "12 bln": 8.0
+   },
+   "risk": "Rendah",
+   "manager": "Krom Bank (Krom Max / Flex)",
+   "desc": "Bank digital. Krom Max hingga 8,00% (tenor 6–12 bulan), Krom Flex hingga 7,50%; tarif berlaku sejak 1 Mei 2026. Setoran awal sekitar Rp100 ribu (per Zaipad). Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp100 ribu",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/",
+    "https://deposito.co.id/bunga-deposito-bank-digital-2026/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 264,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Superbank",
+   "ticker": "SUPERBANK",
+   "assetClass": "Deposito",
+   "cagr": 7.5,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 7.5,
+    "3 bln": 7.5,
+    "6 bln": 7.5,
+    "12 bln": 7.5
+   },
+   "risk": "Rendah",
+   "manager": "Superbank",
+   "desc": "Bank digital. Hingga 7,50% untuk penempatan sampai Rp1 miliar (tenor 7 hari–12 bulan), 6,50% di atas Rp1 miliar. Penempatan minimal Rp500 ribu. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp500 ribu",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/",
+    "https://deposito.co.id/bunga-deposito-bank-digital-2026/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 265,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Neobank (Bank Neo Commerce)",
+   "ticker": "NEOBANK",
+   "assetClass": "Deposito",
+   "cagr": 7.25,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 6.0,
+    "3 bln": 6.75,
+    "6 bln": 7.25,
+    "12 bln": 7.25
+   },
+   "risk": "Rendah",
+   "manager": "Neobank (Bank Neo Commerce)",
+   "desc": "Bank digital. Angka dari satu sumber (Zaipad, Okt 2026) untuk penempatan Rp10 juta; cek aplikasi sebelum menempatkan dana. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp100 ribu",
+   "src": [
+    "https://zaipad.com/bank-digital-bunga-tinggi/"
+   ],
+   "dataAsOf": "2026-10",
+   "id": 266,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Allo Bank",
+   "ticker": "ALLO",
+   "assetClass": "Deposito",
+   "cagr": 7.5,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 5.5,
+    "3 bln": 6.0,
+    "6 bln": 6.0,
+    "12 bln": 6.0
+   },
+   "risk": "Rendah",
+   "manager": "Allo Bank",
+   "desc": "Bank digital. 5,50–6,00% untuk penempatan Rp1 juta–Rp100 juta; hingga 7,50% (tenor 3/6/12 bulan) untuk penempatan di atas Rp500 juta, berlaku sejak 17 Sep 2026. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp1 juta",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 267,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "SeaBank (Shopee)",
+   "ticker": "SEABANK",
+   "assetClass": "Deposito",
+   "cagr": 6.0,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 4.75,
+    "3 bln": 5.25,
+    "6 bln": 5.75,
+    "12 bln": 6.0
+   },
+   "risk": "Rendah",
+   "manager": "SeaBank (Shopee)",
+   "desc": "Bank digital terkait ekosistem Shopee. Hingga 6,00% untuk tenor 12 bulan; tenor 1/3/6/12 bulan. Catatan: angka 1 bulan berbeda antar-sumber (4,25% vs 4,75%). Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp1 juta",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/",
+    "https://deposito.co.id/bunga-deposito-bank-digital-2026/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 268,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Bank Jago",
+   "ticker": "JAGO",
+   "assetClass": "Deposito",
+   "cagr": 6.25,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 5.0,
+    "3 bln": 5.5,
+    "6 bln": 5.5,
+    "12 bln": 5.5
+   },
+   "risk": "Rendah",
+   "manager": "Bank Jago",
+   "desc": "Bank digital. 5,00–5,50% untuk penempatan Rp10 juta; hingga 6,25% untuk di atas Rp1 miliar. Tenor 1/3/6/12 bulan. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp1 juta",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/",
+    "https://deposito.co.id/bunga-deposito-bank-digital-2026/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 269,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "blu by BCA Digital",
+   "ticker": "BLU",
+   "assetClass": "Deposito",
+   "cagr": 5.5,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 3.75,
+    "3 bln": 3.75,
+    "6 bln": 3.75,
+    "12 bln": 3.75
+   },
+   "risk": "Sangat Rendah",
+   "manager": "blu by BCA Digital",
+   "desc": "Bank digital milik BCA. 3,75% untuk saldo Rp1–10 juta; tier tinggi hingga 5,50% (tenor 6–12 bulan, minimal Rp1 miliar, naik sejak 22 Sep 2026). Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp1 juta",
+   "src": [
+    "https://www.cnbcindonesia.com/research/20261012170551-128-775459/daftar-terbaru-bunga-deposito-bank-digital-bank-jago--allo-bank",
+    "https://zaipad.com/bank-digital-bunga-tinggi/",
+    "https://deposito.co.id/bunga-deposito-bank-digital-2026/"
+   ],
+   "dataAsOf": "2026-10-12",
+   "id": 270,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Jenius (SMBC Indonesia)",
+   "ticker": "JENIUS",
+   "assetClass": "Deposito",
+   "cagr": 4.25,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 3.75,
+    "3 bln": 4.0,
+    "6 bln": 4.25,
+    "12 bln": 4.25
+   },
+   "risk": "Sangat Rendah",
+   "manager": "Jenius (SMBC Indonesia)",
+   "desc": "Bank digital milik SMBC Indonesia. Penempatan minimal Rp10 juta. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": "Rp10 juta",
+   "src": [
+    "https://zaipad.com/bank-digital-bunga-tinggi/"
+   ],
+   "dataAsOf": "2026-10",
+   "id": 271,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Bank BRI (deposito rupiah)",
+   "ticker": "BRI",
+   "assetClass": "Deposito",
+   "cagr": 3.0,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 3.0,
+    "3 bln": 3.0,
+    "6 bln": 3.0,
+    "12 bln": 2.5
+   },
+   "risk": "Sangat Rendah",
+   "manager": "Bank BRI (deposito rupiah)",
+   "desc": "Bank BUMN besar. Bunga counter rate per 6 Okt 2026; 2,50% untuk tenor 12–36 bulan. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": null,
+   "src": [
+    "https://www.metrotvnews.com/read/KdZCPRJE-cek-bunga-deposito-bri-bni-dan-mandiri-oktober-2026"
+   ],
+   "dataAsOf": "2026-10-06",
+   "id": 272,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Bank BNI (deposito rupiah)",
+   "ticker": "BNI",
+   "assetClass": "Deposito",
+   "cagr": 2.75,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 2.25,
+    "3 bln": 2.5,
+    "6 bln": 2.75,
+    "12 bln": 2.5
+   },
+   "risk": "Sangat Rendah",
+   "manager": "Bank BNI (deposito rupiah)",
+   "desc": "Bank BUMN besar. Bunga counter rate per 6 Okt 2026. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": null,
+   "src": [
+    "https://www.metrotvnews.com/read/KdZCPRJE-cek-bunga-deposito-bri-bni-dan-mandiri-oktober-2026"
+   ],
+   "dataAsOf": "2026-10-06",
+   "id": 273,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Bank Mandiri (deposito rupiah)",
+   "ticker": "MANDIRI",
+   "assetClass": "Deposito",
+   "cagr": 2.5,
+   "cagrBasis": "bunga",
+   "metric": "Bunga deposito maks. p.a.",
+   "rates": {
+    "1 bln": 2.25,
+    "3 bln": 2.25,
+    "6 bln": 2.5,
+    "12 bln": 2.5
+   },
+   "risk": "Sangat Rendah",
+   "manager": "Bank Mandiri (deposito rupiah)",
+   "desc": "Bank BUMN besar. Bunga counter rate per 6 Okt 2026. Penjaminan LPS hanya berlaku jika bunga tidak melebihi batas 3,75% p.a. (1 Okt 2026–31 Jan 2027) dan simpanan maks. Rp2 miliar; bunga di atas batas itu tidak dijamin. Pajak bunga deposito 20%.",
+   "minPlacement": null,
+   "src": [
+    "https://www.metrotvnews.com/read/KdZCPRJE-cek-bunga-deposito-bri-bni-dan-mandiri-oktober-2026"
+   ],
+   "dataAsOf": "2026-10-06",
+   "id": 274,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "ORI030 (T3 6,90% · T6 7,00%)",
+   "ticker": "ORI030",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 7.0,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Obligasi Negara Ritel, kupon tetap dibayar tiap tanggal 15. ORI030T3 jatuh tempo 15 Jul 2029 (6,90%), ORI030T6 jatuh tempo 15 Jul 2032 (7,00%). Ditawarkan 6–30 Jul 2026; hasil penjualan Rp40 triliun dari 102.546 investor. Pajak kupon final 10%.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-07-07/ori030-kupon-69-dan-7-simulasi-cara-beli-jadwal-keuntungan-dan-faq-lengkap",
+    "https://www.bareksa.com/berita/sbn/2026-08-07/ori030-sukses-sambut-sr025-ini-jadwal-penawaran-tenor-dan-syarat-investasinya"
+   ],
+   "dataAsOf": "2026-07-30",
+   "tenors": {
+    "T3": 6.9,
+    "T6": 7.0
+   },
+   "id": 275,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "SR025 Sukuk Ritel (T3 6,80% · T5 6,90%)",
+   "ticker": "SR025",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 6.9,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Sukuk Negara Ritel, kupon tetap dibayar tiap tanggal 10. SR025T3 jatuh tempo 10 Sep 2029 (6,80%), SR025T5 jatuh tempo 10 Sep 2031 (6,90%). Ditawarkan 21 Agu–16 Sep 2026; per 14 Sep terserap sekitar Rp25,54 triliun (88,1% kuota Rp29 triliun). Minimal Rp1 juta.",
+   "src": [
+    "https://investasi.kontan.co.id/news/penjualan-sr025-tembus-rp255-triliun-tapi-kalah-ngebut-dari-ori030",
+    "https://www.bareksa.com/berita/sbn/2026-08-07/ori030-sukses-sambut-sr025-ini-jadwal-penawaran-tenor-dan-syarat-investasinya"
+   ],
+   "dataAsOf": "2026-09-14",
+   "tenors": {
+    "T3": 6.8,
+    "T5": 6.9
+   },
+   "id": 276,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "SBR015 Savings Bond Ritel (min. T2 6,75% · T4 6,85%)",
+   "ticker": "SBR015",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 6.85,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Savings Bond Ritel dengan kupon mengambang berlantai (floating with floor), disesuaikan dengan BI Rate tiap 3 bulan dan tidak di bawah kupon minimal. SBR015T2 jatuh tempo 10 Okt 2028 (minimal 6,75%), SBR015T4 jatuh tempo 10 Okt 2030 (minimal 6,85%). Ditawarkan 28 Sep–22 Okt 2026; hasil Rp17,01 triliun dari 62.529 investor.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-10-27/penjualan-sbr015-capai-rp1701-triliun-st017-siap-ditawarkan-6-november-2026"
+   ],
+   "dataAsOf": "2026-10-26",
+   "tenors": {
+    "T2 (min.)": 6.75,
+    "T4 (min.)": 6.85
+   },
+   "id": 277,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "ST016 Sukuk Tabungan (T2 6,05% · T4 6,25%)",
+   "ticker": "ST016",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 6.25,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Sukuk Tabungan kupon mengambang berlantai. ST016T2 6,05%, ST016T4 6,25%. Ditawarkan 8 Mei–3 Jun 2026; hasil Rp22,617 triliun dari 81.667 investor.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-06-09/st016-laris-terjual-rp226-triliun-investor-siap-incar-ori030-di-tengah-bi-rate-55"
+   ],
+   "dataAsOf": "2026-06-03",
+   "tenors": {
+    "T2": 6.05,
+    "T4": 6.25
+   },
+   "id": 278,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "SR024 Sukuk Ritel (T3 5,55% · T5 5,90%)",
+   "ticker": "SR024",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 5.9,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Sukuk Negara Ritel kupon tetap. SR024T3 5,55%, SR024T5 5,90%. Ditawarkan 6 Mar–15 Apr 2026.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-03-06/kupon-sr024-resmi-555-dan-59-per-tahun-imbal-hasil-fixed-hingga-jatuh-tempo"
+   ],
+   "dataAsOf": "2026-04-15",
+   "tenors": {
+    "T3": 5.55,
+    "T5": 5.9
+   },
+   "id": 279,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "ORI029 (T3 5,45% · T6 5,80%)",
+   "ticker": "ORI029",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": 5.8,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "Obligasi Negara Ritel kupon tetap. ORI029T3 5,45%, ORI029T6 5,80%. Ditawarkan 26 Jan–19 Feb 2026; hasil Rp14,44 triliun dari 42.612 investor.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-02-24/hasil-penjualan-sbn-ori029-capai-rp1444-triliun-sukuk-ritel-sr024-segera-ditawarkan"
+   ],
+   "dataAsOf": "2026-02-19",
+   "tenors": {
+    "T3": 5.45,
+    "T6": 5.8
+   },
+   "id": 280,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "ST017 Sukuk Tabungan (jadwal 6 Nov–2 Des 2026)",
+   "ticker": "ST017",
+   "assetClass": "Obligasi Negara / SBN",
+   "cagr": null,
+   "cagrBasis": "kupon",
+   "metric": "Kupon p.a. (tenor terpanjang)",
+   "risk": "Rendah",
+   "manager": "Kementerian Keuangan RI (DJPPR)",
+   "desc": "AKAN DITAWARKAN: 6 November–2 Desember 2026 (tentatif). ST017T2 jatuh tempo 10 Nov 2028 dan ST017T4 jatuh tempo 10 Nov 2030, kupon mengambang berlantai. Kupon belum diumumkan (paling lambat H-1 penawaran). Minimal Rp1 juta; penetapan hasil 7 Des, setelmen 9 Des 2026.",
+   "src": [
+    "https://www.bareksa.com/berita/sbn/2026-10-27/penjualan-sbr015-capai-rp1701-triliun-st017-siap-ditawarkan-6-november-2026"
+   ],
+   "dataAsOf": "2026-10-27",
+   "status": "jadwal",
+   "id": 281,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Sucorinvest Maxi Fund",
+   "ticker": "SMF",
+   "assetClass": "Reksa Dana Saham",
+   "cagr": 58.38,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 1,17 T",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana saham. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 282,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Bahana Primavera Plus",
+   "ticker": "BPP",
+   "assetClass": "Reksa Dana Saham",
+   "cagr": 18.31,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 56,58 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana saham. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 283,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Schroder Dana Istimewa",
+   "ticker": "SDI",
+   "assetClass": "Reksa Dana Saham",
+   "cagr": 16.98,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 304,19 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana saham. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 284,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Sucorinvest Equity Fund Kelas A",
+   "ticker": "SEFA",
+   "assetClass": "Reksa Dana Saham",
+   "cagr": 18.77,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 1,57 T",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana saham. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 285,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "BNP Paribas Solaris",
+   "ticker": "BPS",
+   "assetClass": "Reksa Dana Saham",
+   "cagr": 4.58,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 344,59 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana saham. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 286,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Trimegah Dana Obligasi Nusantara",
+   "ticker": "TDON",
+   "assetClass": "Reksa Dana Pendapatan Tetap",
+   "cagr": 7.66,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 257,61 M",
+   "risk": "Moderat",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pendapatan tetap. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 287,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Syailendra Sharia Fixed Income Fund Kelas A",
+   "ticker": "SSFIFA",
+   "assetClass": "Reksa Dana Pendapatan Tetap",
+   "cagr": 7.25,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 3,32 T",
+   "risk": "Moderat",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pendapatan tetap. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 288,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "KIM Fixed Income Fund Plus",
+   "ticker": "KFIFP",
+   "assetClass": "Reksa Dana Pendapatan Tetap",
+   "cagr": 9.77,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 5,90 T",
+   "risk": "Moderat",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pendapatan tetap. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 289,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "STAR Stable Amanah Sukuk",
+   "ticker": "SSAS",
+   "assetClass": "Reksa Dana Pendapatan Tetap",
+   "cagr": 7.66,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 1,57 T",
+   "risk": "Moderat",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pendapatan tetap. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 290,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "STAR Stable Income Fund Kelas Utama",
+   "ticker": "SSIFU",
+   "assetClass": "Reksa Dana Pendapatan Tetap",
+   "cagr": 7.51,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 14,03 T",
+   "risk": "Moderat",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pendapatan tetap. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 291,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Syailendra Balanced Opportunity Fund Kelas A",
+   "ticker": "SBOFA",
+   "assetClass": "Reksa Dana Campuran",
+   "cagr": 45.78,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 1,42 T",
+   "risk": "Moderat-Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana campuran. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 292,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Jarvis Balanced Fund",
+   "ticker": "JBF",
+   "assetClass": "Reksa Dana Campuran",
+   "cagr": 44.61,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 134,02 M",
+   "risk": "Moderat-Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana campuran. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 293,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Sucorinvest Citra Dana Berimbang",
+   "ticker": "SCDB",
+   "assetClass": "Reksa Dana Campuran",
+   "cagr": 38.61,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 215,03 M",
+   "risk": "Moderat-Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana campuran. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 294,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Sucorinvest Flexi Fund",
+   "ticker": "SFF",
+   "assetClass": "Reksa Dana Campuran",
+   "cagr": 23.34,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 128,81 M",
+   "risk": "Moderat-Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana campuran. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 295,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "TRIM Syariah Berimbang",
+   "ticker": "TSB",
+   "assetClass": "Reksa Dana Campuran",
+   "cagr": 25.47,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 173,13 M",
+   "risk": "Moderat-Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana campuran. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 296,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Majoris Pasar Uang Syariah Indonesia",
+   "ticker": "MPUSI",
+   "assetClass": "Pasar Uang",
+   "cagr": 4.96,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 2,34 T",
+   "risk": "Rendah",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pasar uang. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 297,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "KIM Money Market Fund",
+   "ticker": "KMMF",
+   "assetClass": "Pasar Uang",
+   "cagr": 5.1,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 1,68 T",
+   "risk": "Rendah",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pasar uang. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 298,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Insight Money Syariah",
+   "ticker": "IMS",
+   "assetClass": "Pasar Uang",
+   "cagr": 5.76,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 658,80 M",
+   "risk": "Rendah",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pasar uang. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 299,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Sucorinvest Sharia Money Market Fund",
+   "ticker": "SSMMF",
+   "assetClass": "Pasar Uang",
+   "cagr": 4.63,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 8,19 T",
+   "risk": "Rendah",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pasar uang. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 300,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Insight Money",
+   "ticker": "IM",
+   "assetClass": "Pasar Uang",
+   "cagr": 5.62,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 537 M",
+   "risk": "Rendah",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana pasar uang. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 301,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "BNP Paribas IDX Growth30",
+   "ticker": "BPIG",
+   "assetClass": "Reksa Dana Indeks",
+   "cagr": 1.98,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 229,54 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana indeks. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 302,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Allianz SRI KEHATI Index Fund",
+   "ticker": "ASKIF",
+   "assetClass": "Reksa Dana Indeks",
+   "cagr": -2.6,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 127,54 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana indeks. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 303,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "BNP Paribas Sri Kehati Kelas RK1",
+   "ticker": "BPSKR",
+   "assetClass": "Reksa Dana Indeks",
+   "cagr": -1.41,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 2,38 T",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana indeks. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 304,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "BRI Indeks Syariah",
+   "ticker": "BIS",
+   "assetClass": "Reksa Dana Indeks",
+   "cagr": -1.37,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 112,11 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana indeks. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 305,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Syailendra MSCI Indonesia Value Index Fund Kelas A",
+   "ticker": "SMIVIFA",
+   "assetClass": "Reksa Dana Indeks",
+   "cagr": -0.69,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (per 11 Mei 2026)",
+   "aum": "Rp 423,32 M",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "Reksa dana indeks. Return 1 tahun per 11 Mei 2026 (sebelum penurunan pasar saham Jun–Sep 2026), AUM per April 2026; urutan skor Bareksa Barometer.",
+   "src": [
+    "https://www.bareksa.com/berita/reksa-dana/2026-05-12/daftar-top-5-reksa-dana-versi-bareksa-barometer-kinerja-april-referensi-mei-2026"
+   ],
+   "dataAsOf": "2026-05-11",
+   "id": 306,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Reksa Dana Premier ETF IDX30",
+   "ticker": "XIIT",
+   "assetClass": "ETF",
+   "cagr": -13.9,
+   "cagrBasis": "return1y",
+   "metric": "Return 1 tahun (termasuk dividen)",
+   "expense": 1.7,
+   "aum": "Rp 1,87 T",
+   "risk": "Tinggi",
+   "manager": "Premier ETF (PT Indo Premier)",
+   "desc": "ETF saham Indonesia yang melacak indeks IDX30 (30 saham bluechip). Harga Rp452 (25 Sep 2026), rentang 52 minggu Rp378–615; berdiri 30 Okt 2012.",
+   "src": [
+    "https://stockanalysis.com/quote/idx/XIIT"
+   ],
+   "dataAsOf": "2026-09-25",
+   "id": 307,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "status": "terverifikasi",
+   "cagrYears": null
+  },
+  {
+   "name": "Premier ETF LQ-45",
+   "ticker": "R-LQ45X",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Indeks LQ45. Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 308,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Premier ETF Syariah Jakarta Islamic Index",
+   "ticker": "XIJI",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Indeks JII (syariah). Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 309,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Premier ETF Indonesia Consumer",
+   "ticker": "XIIC",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Sektor konsumer. Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 310,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Premier ETF Indonesia State-Owned Companies",
+   "ticker": "XISC",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Saham BUMN. Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 311,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Reksa Dana Indeks Nusadana ETF IDX Value30",
+   "ticker": "XNVE",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Indeks IDX Value30. Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 312,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
+  },
+  {
+   "name": "Pinnacle Enhanced Liquid ETF",
+   "ticker": "XPLQ",
+   "assetClass": "ETF",
+   "cagr": null,
+   "cagrBasis": "arsip",
+   "metric": "",
+   "risk": "Tinggi",
+   "manager": "Lihat prospektus manajer investasi",
+   "desc": "ETF yang tercatat di Bursa Efek Indonesia, acuan: Likuid (Pinnacle). Data kinerja belum dikumpulkan; lihat harga live di broker.",
+   "src": [
+    "https://en.wikipedia.org/wiki/List_of_Indonesian_exchange-traded_funds"
+   ],
+   "dataAsOf": "2026-11",
+   "status": "produk",
+   "id": 313,
+   "country": "Indonesia",
+   "tier": "Emerging",
+   "expense": null,
+   "aum": null,
+   "cagrYears": null
   }
  ],
  "yearlyRef": [

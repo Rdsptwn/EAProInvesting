@@ -28,8 +28,8 @@ function renderYieldChart() {
             datasets: [{
                 label: 'Profil Instrumen',
                 data: [
-                    {x: 0.5, y: 5.0, r: 12, label: 'Deposito'},
-                    {x: 1.0, y: 6.5, r: 15, label: 'SBN Ritel'},
+                    {x: 0.5, y: 6.5, r: 12, label: 'Deposito'},
+                    {x: 1.0, y: 7.0, r: 15, label: 'SBN Ritel'},
                     {x: 5.0, y: 8.5, r: 12, label: 'RD Campuran'},
                     {x: 12.0, y: 12.0, r: 20, label: 'IHSG/ETF (Pasar Saham)'},
                     {x: 20.0, y: 25.0, r: 15, label: 'Saham (Trading Aktif)'}
