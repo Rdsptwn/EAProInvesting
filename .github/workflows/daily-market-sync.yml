@@ -98,12 +98,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/js/ewoks-core.js
+          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json assets/js/ewoks-core.js
+          [ -f assets/data/idx-screener.json ] && git add assets/data/idx-screener.json || true
           git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
           fi
           git commit -m "chore(data): daily market sync"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
           git push

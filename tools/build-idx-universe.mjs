@@ -76,9 +76,10 @@ async function tryWiki() {
             const cells = (tr.match(/<t[dh][\s\S]*?<\/t[dh]>/g) || []).map(cellText);
             if (cells.length < 3) continue;
             // kolom: No | Kode | Nama | Tanggal | Jumlah saham | Papan | Sektor
-            const i = cells.findIndex((c, k) => k <= 2 && CODE.test(c));
+            const codeOf = (c) => { const m = String(c).replace(/^IDX\s*:\s*/i, '').trim().match(/^([A-Z]{4})$/); return m ? m[1] : null; };
+            const i = cells.findIndex((c, k) => k <= 2 && codeOf(c));
             if (i < 0) continue;
-            put(cells[i], cells[i + 1], cells[i + 4] || cells[5] || '', cells[i + 5] || cells[6] || '');
+            put(codeOf(cells[i]), cells[i + 1], cells[i + 4] || '', cells[i + 5] || '');
             n++;
         }
         console.log(`Wikipedia: ${n} baris`);
