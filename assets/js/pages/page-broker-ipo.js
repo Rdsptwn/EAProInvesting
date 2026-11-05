@@ -42,7 +42,7 @@
     function filtered() {
         const y = $('ipo-year').value, q = $('ipo-q').value.trim().toLowerCase(), up = $('ipo-up').checked, so = $('ipo-sort').value;
         let a = items.map(enrich).filter((x) => (y === 'ALL' || (x.date || '').startsWith(y))
-            && (!q || x.t.toLowerCase().includes(q) || x.name.toLowerCase().includes(q) || x.lead.concat(x.syn).some((u) => u.toLowerCase().includes(q)))
+            && (!q || x.t.toLowerCase().includes(q) || (x.name || "").toLowerCase().includes(q) || x.lead.concat(x.syn).some((u) => u.toLowerCase().includes(q)))
             && (!up || (Number.isFinite(x.cur) && x.cur > 0)));
         const key = { date: (x) => x.date || '', cur: (x) => x.cur, athg: (x) => x.athG, d1: (x) => x.d1, funds: (x) => x.fundsBn, loss: (x) => (Number.isFinite(x.cur) ? -x.cur : null) }[so];
         a.sort((m, n) => {
@@ -86,7 +86,7 @@
         $('ipo-body').innerHTML = a.map((x) => {
             const uw = x.lead.length ? esc(x.lead.join(', ')) : '<span class="text-slate-300">belum tercatat</span>';
             const main = `<tr class="border-b border-slate-100 hover:bg-slate-50 cursor-pointer bg-white" onclick="ipoToggle('${x.t}')">
-                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}</div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name)}</div></td>
+                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}</div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name || "")}</div></td>
                 <td class="px-3 py-3 whitespace-nowrap text-slate-600 font-semibold">${dmy(x.date)}</td>
                 <td class="px-3 py-3 text-right font-black text-slate-800">${x.price ? 'Rp' + fx(x.price) : '—'}</td>
                 <td class="px-3 py-3 text-right text-slate-600">${x.fundsBn ? 'Rp' + fx(x.fundsBn) + ' M' : '—'}</td>
@@ -98,7 +98,7 @@
             if (open !== x.t) return main;
             const src = (x.src || []).map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[${i + 1}]</a>`).join(' ');
             return main + `<tr class="bg-slate-50 border-b border-slate-200"><td colspan="8" class="px-4 py-3 text-[11px] text-slate-600 leading-relaxed">
-                <b>${esc(x.name)}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
+                <b>${esc(x.name || "")}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
                 <b>Penjamin pelaksana:</b> ${x.lead.length ? esc(x.lead.join(', ')) : 'belum tercatat'} · <b>Penjamin emisi lain:</b> ${x.syn.length ? esc(x.syn.join(', ')) : '—'}<br>
                 ${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada data.</td></tr>';
