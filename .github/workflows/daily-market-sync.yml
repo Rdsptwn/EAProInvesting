@@ -59,6 +59,15 @@ jobs:
             && node -e 'const s=JSON.parse(require("fs").readFileSync("assets/data/idx-screener.json","utf8")); if(!(s.rows.length>=300)) process.exit(1)' \
             || { echo "::warning::idx-screener gagal/tidak valid — pakai versi sebelumnya"; [ -f /tmp/idx-screener.bak ] && cp /tmp/idx-screener.bak assets/data/idx-screener.json || rm -f assets/data/idx-screener.json; }
 
+      # Riwayat IPO (ATH sejak listing, kenaikan vs harga IPO). Gagal = data lama dipertahankan.
+      - name: Build ipo-perf.json (riwayat saham IPO)
+        continue-on-error: true
+        run: |
+          cp assets/data/ipo-perf.json /tmp/ipo-perf.bak 2>/dev/null || true
+          node tools/build-ipo-perf.mjs \
+            && node -e 'const s=JSON.parse(require("fs").readFileSync("assets/data/ipo-perf.json","utf8")); if(!(s.n>=40)) process.exit(1)' \
+            || { echo "::warning::ipo-perf gagal/tidak valid — pakai versi sebelumnya"; [ -f /tmp/ipo-perf.bak ] && cp /tmp/ipo-perf.bak assets/data/ipo-perf.json || rm -f assets/data/ipo-perf.json; }
+
       - name: Build corporate-calendar.json
         continue-on-error: true
         run: |
@@ -100,6 +109,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json assets/js/ewoks-core.js
           [ -f assets/data/idx-screener.json ] && git add assets/data/idx-screener.json || true
+          [ -f assets/data/ipo-perf.json ] && git add assets/data/ipo-perf.json || true
           git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."

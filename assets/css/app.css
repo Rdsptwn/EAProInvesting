@@ -575,3 +575,15 @@ body.dark-mode-override .hp-go{background:#1e3a8a;color:#bfdbfe}
 body.dark-mode-override .hp-detail{background:#0b1220;border-color:#1e293b}
 #deposito:target td{background:#fef9c3 !important}
 body.dark-mode-override #deposito:target td{background:#422006 !important}
+
+/* Broker: tab + database IPO */
+.bk-tab{font-size:.78rem;font-weight:800;padding:.65rem 1.1rem;border-radius:.9rem;background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;cursor:pointer}
+.bk-tab.on{background:#2563eb;color:#fff;border-color:#2563eb}
+.ipo-in{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:1rem;padding:.7rem 1rem;font-size:.75rem;font-weight:700;outline:none;height:46px}
+.ipo-in option{color:#0f172a}
+body.dark-mode-override .bk-tab{background:#1e293b;color:#cbd5e1;border-color:#334155}
+body.dark-mode-override .bk-tab.on{background:#2563eb;color:#fff}
+body.dark-mode-override #broker-pane-ipo .bg-white{background:#0f172a !important}
+body.dark-mode-override #broker-pane-ipo .bg-slate-50{background:#0b1220 !important}
+body.dark-mode-override #broker-pane-ipo .text-slate-800,body.dark-mode-override #broker-pane-ipo .text-slate-700{color:#f1f5f9 !important}
+body.dark-mode-override #broker-pane-ipo .border-slate-100,body.dark-mode-override #broker-pane-ipo .border-slate-200{border-color:#1e293b !important}
