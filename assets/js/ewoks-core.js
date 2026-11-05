@@ -1,9 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-<<<<<<< HEAD
-window.EWOKS_ASSET_V = '20261105t0806';
-=======
-window.EWOKS_ASSET_V = '20261105t0806';
->>>>>>> 17660f6 (Broker: tab Database IPO & Penjamin (151 IPO 2023-2026, harga IPO, penjamin, ATH/return dari Yahoo via Actions))
+window.EWOKS_ASSET_V = '20261105t0807';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
