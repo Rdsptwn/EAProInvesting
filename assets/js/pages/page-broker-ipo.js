@@ -24,10 +24,14 @@
 
     function enrich(x) {
         const p = perf[x.t], price = x.price;
-        const o = { ...x, d1: null, ath: null, athDate: null, athG: null, cur: null, last: null, dd: null, curG: null };
+        const o = { ...x, d1: null, ath: null, athDate: null, athG: null, cur: null, last: null, dd: null, curG: null, sf: 1 };
         if (p && price > 0) {
-            o.d1 = (p[1] / price - 1) * 100; o.ath = p[2]; o.athDate = p[3]; o.athG = (p[2] / price - 1) * 100;
-            o.last = p[4]; o.curG = (p[4] / price - 1) * 100; o.dd = (p[4] / p[2] - 1) * 100;
+            const sf = p[7] > 0 ? p[7] : 1, base = price / sf; // harga IPO setara harga Yahoo (sudah disesuaikan split)
+            o.sf = sf;
+            const d1 = (p[1] / base - 1) * 100;
+            o.d1 = d1 > -30 && d1 < 45 ? d1 : null; // batas auto reject hari pertama; di luar itu data bar pertama tidak andal
+            o.ath = p[2] * sf; o.athDate = p[3]; o.athG = (p[2] / base - 1) * 100;
+            o.last = p[4] * sf; o.curG = (p[4] / base - 1) * 100; o.dd = (p[4] / p[2] - 1) * 100;
         } else if (scr[x.t] && price > 0) { o.last = scr[x.t]; o.curG = (scr[x.t] / price - 1) * 100; }
         o.cur = o.curG;
         return o;
@@ -94,7 +98,7 @@
             return main + `<tr class="bg-slate-50 border-b border-slate-200"><td colspan="8" class="px-4 py-3 text-[11px] text-slate-600 leading-relaxed">
                 <b>${esc(x.name)}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
                 <b>Penjamin pelaksana:</b> ${x.lead.length ? esc(x.lead.join(', ')) : 'belum tercatat'} · <b>Penjamin emisi lain:</b> ${x.syn.length ? esc(x.syn.join(', ')) : '—'}<br>
-                ${x.note ? esc(x.note) + '<br>' : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6])} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
+                ${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada data.</td></tr>';
     };
 
