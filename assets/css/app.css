@@ -587,3 +587,5 @@ body.dark-mode-override #broker-pane-ipo .bg-white{background:#0f172a !important
 body.dark-mode-override #broker-pane-ipo .bg-slate-50{background:#0b1220 !important}
 body.dark-mode-override #broker-pane-ipo .text-slate-800,body.dark-mode-override #broker-pane-ipo .text-slate-700{color:#f1f5f9 !important}
 body.dark-mode-override #broker-pane-ipo .border-slate-100,body.dark-mode-override #broker-pane-ipo .border-slate-200{border-color:#1e293b !important}
+
+.ipo-bd{display:inline-block;font-size:8px;font-weight:900;padding:1px 5px;border-radius:6px;vertical-align:middle;margin-left:4px;letter-spacing:.03em}.ipo-bd.bad{background:#fee2e2;color:#b91c1c}.ipo-bd.idle{background:#fef3c7;color:#b45309}body.dark-mode-override .ipo-bd.bad{background:#7f1d1d;color:#fecaca}body.dark-mode-override .ipo-bd.idle{background:#78350f;color:#fde68a}

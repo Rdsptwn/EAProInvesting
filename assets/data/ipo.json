@@ -1948,7 +1948,10 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/"
-   ]
+   ],
+   "status": "suspen",
+   "statusNote": "Disuspensi BEI (±13 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
+   "statusSrc": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
   },
   {
    "t": "AMMN",
@@ -2175,7 +2178,10 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/"
-   ]
+   ],
+   "status": "suspen",
+   "statusNote": "Disuspensi BEI (±8 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
+   "statusSrc": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
   },
   {
    "t": "AWAN",
@@ -2801,7 +2807,7 @@
   },
   {
    "t": "VTNY",
-   "name": null,
+   "name": "Venteny Fortuna International Tbk",
    "date": "2022-12-15",
    "price": null,
    "shares": null,
@@ -2818,7 +2824,7 @@
   },
   {
    "t": "ISAP",
-   "name": null,
+   "name": "Isra Presisi Indonesia Tbk",
    "date": "2022-12-09",
    "price": null,
    "shares": null,
@@ -2835,7 +2841,7 @@
   },
   {
    "t": "PADA",
-   "name": null,
+   "name": "Personel Alih Daya Tbk",
    "date": "2022-12-08",
    "price": null,
    "shares": null,
@@ -2852,7 +2858,7 @@
   },
   {
    "t": "MMIX",
-   "name": null,
+   "name": "Multi Medika Internasional Tbk",
    "date": "2022-12-06",
    "price": null,
    "shares": null,
@@ -2869,7 +2875,7 @@
   },
   {
    "t": "NINE",
-   "name": null,
+   "name": "Techno9 Indonesia Tbk",
    "date": "2022-12-05",
    "price": null,
    "shares": null,
@@ -2886,7 +2892,7 @@
   },
   {
    "t": "ZATA",
-   "name": null,
+   "name": "Bersama Zatta Jaya Tbk",
    "date": "2022-11-10",
    "price": null,
    "shares": null,
@@ -2903,7 +2909,7 @@
   },
   {
    "t": "KETR",
-   "name": null,
+   "name": "Ketrosden Triasmitra",
    "date": "2022-11-10",
    "price": null,
    "shares": null,
@@ -2920,7 +2926,7 @@
   },
   {
    "t": "PDPP",
-   "name": null,
+   "name": "Primadaya Plastisindo Tbk",
    "date": "2022-11-09",
    "price": null,
    "shares": null,
@@ -2937,7 +2943,7 @@
   },
   {
    "t": "KDTN",
-   "name": null,
+   "name": "Puri Sentul Permai Tbk",
    "date": "2022-11-09",
    "price": null,
    "shares": null,
@@ -2954,7 +2960,7 @@
   },
   {
    "t": "PRAY",
-   "name": null,
+   "name": "Famon Awal Bros Sedaya Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -2971,7 +2977,7 @@
   },
   {
    "t": "CBUT",
-   "name": null,
+   "name": "Citra Borneo Utama Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -2988,7 +2994,7 @@
   },
   {
    "t": "BELI",
-   "name": null,
+   "name": "Global Digital Niaga Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -3005,7 +3011,7 @@
   },
   {
    "t": "MKTR",
-   "name": null,
+   "name": "Menthobi Karyatama Raya Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -3022,7 +3028,7 @@
   },
   {
    "t": "OMED",
-   "name": null,
+   "name": "Jayamas Medica Industri Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -3039,7 +3045,7 @@
   },
   {
    "t": "BSBK",
-   "name": null,
+   "name": "Wulandari Bangun Laksana Tbk",
    "date": "2022-11-08",
    "price": null,
    "shares": null,
@@ -3056,7 +3062,7 @@
   },
   {
    "t": "COAL",
-   "name": null,
+   "name": "Black Diamond Resources Tbk",
    "date": "2022-09-07",
    "price": null,
    "shares": null,
@@ -3073,7 +3079,7 @@
   },
   {
    "t": "CRAB",
-   "name": null,
+   "name": "Toba Surimi Industries Tbk",
    "date": "2022-08-10",
    "price": null,
    "shares": null,
@@ -3090,7 +3096,7 @@
   },
   {
    "t": "MEDS",
-   "name": null,
+   "name": "Hetzer Medical Indonesia Tbk",
    "date": "2022-08-10",
    "price": null,
    "shares": null,
@@ -3107,7 +3113,7 @@
   },
   {
    "t": "KLIN",
-   "name": null,
+   "name": "Klinko Karya Imaji Tbk",
    "date": "2022-08-09",
    "price": 100,
    "shares": null,
@@ -3124,7 +3130,7 @@
   },
   {
    "t": "TOOL",
-   "name": null,
+   "name": "Rohartindo Nusantara Luas Tbk",
    "date": "2022-08-09",
    "price": null,
    "shares": null,
@@ -3141,7 +3147,7 @@
   },
   {
    "t": "BUAH",
-   "name": null,
+   "name": "Segar Kumala Indonesia Tbk",
    "date": "2022-08-09",
    "price": null,
    "shares": null,
@@ -3158,7 +3164,7 @@
   },
   {
    "t": "KKES",
-   "name": null,
+   "name": "Kusuma Kemindo Sentosa Tbk",
    "date": "2022-08-08",
    "price": null,
    "shares": null,
@@ -3175,7 +3181,7 @@
   },
   {
    "t": "ELPI",
-   "name": null,
+   "name": "Pelayaran Nasional Ekalya Purnamasari Tbk",
    "date": "2022-08-08",
    "price": null,
    "shares": null,
@@ -3192,7 +3198,7 @@
   },
   {
    "t": "EURO",
-   "name": null,
+   "name": "Estee Gold Feet Tbk",
    "date": "2022-08-08",
    "price": null,
    "shares": null,
@@ -3209,7 +3215,7 @@
   },
   {
    "t": "MORA",
-   "name": null,
+   "name": "Mora Telematika Indonesia Tbk",
    "date": "2022-08-08",
    "price": null,
    "shares": null,
@@ -3226,7 +3232,7 @@
   },
   {
    "t": "RAFI",
-   "name": null,
+   "name": "Sari Kreasi Boga Tbk",
    "date": "2022-08-05",
    "price": null,
    "shares": null,
@@ -3243,7 +3249,7 @@
   },
   {
    "t": "JARR",
-   "name": null,
+   "name": "Jhonlin Agro Raya Tbk",
    "date": "2022-08-04",
    "price": null,
    "shares": null,
@@ -3260,7 +3266,7 @@
   },
   {
    "t": "AMMS",
-   "name": null,
+   "name": "Agung Menjangan Mas Tbk",
    "date": "2022-08-04",
    "price": 100,
    "shares": null,
@@ -3277,7 +3283,7 @@
   },
   {
    "t": "GULA",
-   "name": null,
+   "name": "Aman Agrindo Tbk",
    "date": "2022-08-03",
    "price": null,
    "shares": null,
@@ -3294,7 +3300,7 @@
   },
   {
    "t": "RCCC",
-   "name": null,
+   "name": "Utama Radar Cahaya Tbk",
    "date": "2022-08-02",
    "price": null,
    "shares": null,
@@ -3311,7 +3317,7 @@
   },
   {
    "t": "HATM",
-   "name": null,
+   "name": "Habco Trans Maritima Tbk",
    "date": "2022-07-26",
    "price": 160,
    "shares": null,
@@ -3328,7 +3334,7 @@
   },
   {
    "t": "KRYA",
-   "name": null,
+   "name": "Bangun Karya Perkasa Jaya Tbk",
    "date": "2022-07-25",
    "price": null,
    "shares": null,
@@ -3345,7 +3351,7 @@
   },
   {
    "t": "AXIO",
-   "name": null,
+   "name": "Tera Data Indonusa Tbk",
    "date": "2022-07-20",
    "price": 140,
    "shares": null,
@@ -3362,7 +3368,7 @@
   },
   {
    "t": "DEWI",
-   "name": null,
+   "name": "Dewi Shri Farmindo Tbk.",
    "date": "2022-07-18",
    "price": 100,
    "shares": null,
@@ -3379,7 +3385,7 @@
   },
   {
    "t": "TRGU",
-   "name": null,
+   "name": "Cerestar Indonesia Tbk",
    "date": "2022-07-08",
    "price": 210,
    "shares": null,
@@ -3396,7 +3402,7 @@
   },
   {
    "t": "ARKO",
-   "name": null,
+   "name": "Arkora Hydro Tbk",
    "date": "2022-07-08",
    "price": 300,
    "shares": null,
@@ -3413,7 +3419,7 @@
   },
   {
    "t": "CHEM",
-   "name": null,
+   "name": "Chemstar Indonesia Tbk",
    "date": "2022-07-08",
    "price": 150,
    "shares": null,
@@ -3430,7 +3436,7 @@
   },
   {
    "t": "SWID",
-   "name": null,
+   "name": "Saraswanti Indoland Development Tbk",
    "date": "2022-07-07",
    "price": 200,
    "shares": null,
@@ -3447,7 +3453,7 @@
   },
   {
    "t": "ASHA",
-   "name": null,
+   "name": "Cilacap Samudera Fishing Industry Tbk",
    "date": "2022-05-27",
    "price": 100,
    "shares": null,
@@ -3464,7 +3470,7 @@
   },
   {
    "t": "OLIV",
-   "name": null,
+   "name": "Atlas Nexus Group Tbk",
    "date": "2022-05-17",
    "price": 100,
    "shares": null,
@@ -3481,7 +3487,7 @@
   },
   {
    "t": "WINR",
-   "name": null,
+   "name": "Winner Nusantara Jaya Tbk",
    "date": "2022-04-25",
    "price": 100,
    "shares": null,
@@ -3498,7 +3504,7 @@
   },
   {
    "t": "IBOS",
-   "name": null,
+   "name": "Indo Boga Sukses Tbk",
    "date": "2022-04-25",
    "price": 100,
    "shares": null,
@@ -3515,7 +3521,7 @@
   },
   {
    "t": "MTMH",
-   "name": null,
+   "name": "Murni Sadar Tbk",
    "date": "2022-04-20",
    "price": 1280,
    "shares": null,
@@ -3532,7 +3538,7 @@
   },
   {
    "t": "TLDN",
-   "name": null,
+   "name": "Teladan Prima Agro Tbk",
    "date": "2022-04-12",
    "price": 580,
    "shares": null,
@@ -3549,7 +3555,7 @@
   },
   {
    "t": "GOTO",
-   "name": null,
+   "name": "GoTo Gojek Tokopedia Tbk",
    "date": "2022-04-11",
    "price": 338,
    "shares": null,
@@ -3566,7 +3572,7 @@
   },
   {
    "t": "SICO",
-   "name": null,
+   "name": "Sigma Energy Compressindo Tbk",
    "date": "2022-04-08",
    "price": 230,
    "shares": null,
@@ -3583,7 +3589,7 @@
   },
   {
    "t": "WIRG",
-   "name": null,
+   "name": "WIR ASIA Tbk",
    "date": "2022-04-04",
    "price": 168,
    "shares": null,
@@ -3600,7 +3606,7 @@
   },
   {
    "t": "BIKE",
-   "name": null,
+   "name": "Bhineka Inovasi Ketahanan Energi Tbk",
    "date": "2022-03-21",
    "price": 170,
    "shares": null,
@@ -3617,7 +3623,7 @@
   },
   {
    "t": "STAA",
-   "name": null,
+   "name": "Sumber Tani Agung Resources Tbk",
    "date": "2022-03-10",
    "price": 600,
    "shares": null,
@@ -3634,7 +3640,7 @@
   },
   {
    "t": "NANO",
-   "name": null,
+   "name": "Nanotech Indonesia Global Tbk",
    "date": "2022-03-10",
    "price": 100,
    "shares": null,
@@ -3651,7 +3657,7 @@
   },
   {
    "t": "SMKM",
-   "name": null,
+   "name": "Sumber Mas Konstruksi Tbk",
    "date": "2022-03-09",
    "price": 264,
    "shares": null,
@@ -3668,7 +3674,7 @@
   },
   {
    "t": "ADCP",
-   "name": null,
+   "name": "Adhi Commuter Properti Tbk",
    "date": "2022-02-23",
    "price": 130,
    "shares": null,
@@ -3685,7 +3691,7 @@
   },
   {
    "t": "NTBK",
-   "name": null,
+   "name": "Nusatama Berkah Tbk",
    "date": "2022-02-09",
    "price": 100,
    "shares": null,
@@ -3702,7 +3708,7 @@
   },
   {
    "t": "ENAK",
-   "name": null,
+   "name": "Champ Resto Indonesia Tbk",
    "date": "2022-02-08",
    "price": 850,
    "shares": null,
@@ -3719,7 +3725,7 @@
   },
   {
    "t": "BAUT",
-   "name": null,
+   "name": "Mitra Angkasa Sejahtera Tbk",
    "date": "2022-01-28",
    "price": 100,
    "shares": null,
@@ -3736,7 +3742,7 @@
   },
   {
    "t": "NETV",
-   "name": null,
+   "name": "MDTV Media Technologies Tbk",
    "date": "2022-01-26",
    "price": 196,
    "shares": null,
@@ -3753,7 +3759,7 @@
   },
   {
    "t": "ASLC",
-   "name": null,
+   "name": "Autopedia Sukses Lestari Tbk",
    "date": "2022-01-25",
    "price": 256,
    "shares": null,
@@ -3770,7 +3776,7 @@
   },
   {
    "t": "SEMA",
-   "name": null,
+   "name": "Semacom Integrated Tbk",
    "date": "2022-01-10",
    "price": 180,
    "shares": null,
@@ -3787,7 +3793,7 @@
   },
   {
    "t": "ADMR",
-   "name": null,
+   "name": "Alamtri Minerals Indonesia Tbk",
    "date": "2022-01-03",
    "price": 100,
    "shares": null,
@@ -3868,7 +3874,10 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
-   ]
+   ],
+   "status": "suspen",
+   "statusNote": "Disuspensi BEI (±22 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
+   "statusSrc": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
   },
   {
    "t": "AVIA",
@@ -4514,7 +4523,10 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
-   ]
+   ],
+   "status": "suspen",
+   "statusNote": "Disuspensi BEI (±10 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
+   "statusSrc": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
   },
   {
    "t": "LFLO",
@@ -4582,7 +4594,10 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
-   ]
+   ],
+   "status": "suspen",
+   "statusNote": "Disuspensi BEI (±16 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
+   "statusSrc": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
   },
   {
    "t": "UNIQ",
@@ -4769,5 +4784,6 @@
     "https://www.cnbcindonesia.com/research/20241223122627-128-598137/rekap-ipo-2024--siapa-si-paling-untung-vs-buntung"
    ]
   }
- ]
+ ],
+ "statusAsOf": "2026-06-30"
 }
