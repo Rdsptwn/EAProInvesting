@@ -29,7 +29,9 @@
             const sf = p[7] > 0 ? p[7] : 1, base = price / sf; // harga IPO setara harga Yahoo (sudah disesuaikan split)
             o.sf = sf;
             const d1 = (p[1] / base - 1) * 100;
-            o.d1 = d1 > -30 && d1 < 45 ? d1 : null; // batas auto reject hari pertama; di luar itu data bar pertama tidak andal
+            const gap = x.date && p[0] ? Math.abs((new Date(p[0]) - new Date(x.date)) / 86400000) : 99;
+            // hari-1 hanya ditampilkan bila bar Yahoo pertama = hari listing dan masih dalam batas auto reject
+            o.d1 = gap <= 3 && d1 > -30 && d1 < 45 ? d1 : null;
             o.ath = p[2] * sf; o.athDate = p[3]; o.athG = (p[2] / base - 1) * 100;
             o.last = p[4] * sf; o.curG = (p[4] / base - 1) * 100; o.dd = (p[4] / p[2] - 1) * 100;
         } else if (scr[x.t] && price > 0) { o.last = scr[x.t]; o.curG = (scr[x.t] / price - 1) * 100; }
