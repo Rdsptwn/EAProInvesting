@@ -1,0 +1,551 @@
+{
+ "asOf": "2026-11-06",
+ "note": "Dikurasi manual dari pengumuman/berita BEI; bukan daftar resmi lengkap. Cek idx.co.id untuk status terkini.",
+ "flags": {
+  "BEBS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±16 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "WIKA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±16 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "TGUK": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±13 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 11 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "ALTO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±>6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "PMMP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±>6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "PTMR": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±>6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "SWAT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±12 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TGRA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±12 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ZBRA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±12 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "KIAS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±11 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "FIMP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±10 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "DPNS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "GLOB": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MENN": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "BIMA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MTPS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TOPS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "INRU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ARTI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "BIKA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "INAF": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MKNT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "POLL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "IPPE": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±22 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ALMI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±20 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "LMSH": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MFMI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MTSM": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "PLIN": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "WICO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "SMCB": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "FASW": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "JSKY": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±47 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "PURE": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±47 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "HOTL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±47 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MAGP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±48 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "CBMF": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±41 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "WSKT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±38 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "CPRI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±36 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "GAMA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±36 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "HKMU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±36 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TECH": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±35 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "HOME": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±77 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "RIMO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±77 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "POOL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±73 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "NUSA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±70 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "POSA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±68 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "KBRI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±87 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "BTEL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±86 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TRIO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±84 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ARMY": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±80 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "SMRU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±78 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TRAM": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±78 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "COWL": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "MTRA": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "SRIL": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "TOYS": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "SBAT": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "TDPM": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (gagal bayar pokok MTN II)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "TELE": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "LCGP": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "SUGI": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "MABA": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "LMAS": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "SKYB": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "ENVY": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "GOLL": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "PLAS": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "TRIL": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "UNIT": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "DUCK": [
+   {
+    "k": "DELIST",
+    "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
+    "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+   }
+  ],
+  "KOIN": [
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 5,7 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "PTDU": [
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 5,6,7 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "AKKU": [
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 1 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "BMAS": [
+   {
+    "k": "RI",
+    "note": "Rights issue: recording 25 Nov 2026, perdagangan/pelaksanaan HMETD 27 Nov–3 Des 2026, harga tebus Rp350, rasio 655:104",
+    "src": "https://bcasekuritas.co.id/latest-news/news/bmas-akan-gelar-rights-issue-287-miliar-saham"
+   }
+  ]
+ }
+}

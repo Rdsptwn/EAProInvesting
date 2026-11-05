@@ -36,10 +36,9 @@
             o.last = p[4] * sf; o.curG = (p[4] / base - 1) * 100; o.dd = (p[4] / p[2] - 1) * 100;
         } else if (scr[x.t] && price > 0) { o.last = scr[x.t]; o.curG = (scr[x.t] / price - 1) * 100; }
         o.cur = o.curG;
-        const sd = scrDate[x.t];
-        if (x.status === 'suspen') { o.stat = 'suspen'; o.statNote = x.statusNote; }
-        else if (sd && scrBuilt && (scrBuilt - new Date(sd)) / 86400000 > 14) { o.stat = 'idle'; o.statNote = `Tak ada transaksi sejak ${dmy(sd)} di data bursa (indikasi suspensi/tidak likuid, belum tentu resmi).`; }
-        else o.stat = 'aktif';
+        const fl = ewoksStatusOf(x.t).filter((f) => f[0] !== 'GOCAP' || true);
+        o.flags = fl;
+        o.stat = fl.some((f) => f[0] !== 'GOCAP') ? 'bermasalah' : 'aktif';
         return o;
     }
 
@@ -97,7 +96,7 @@
         $('ipo-body').innerHTML = a.map((x) => {
             const uw = x.lead.length ? esc(x.lead.join(', ')) : '<span class="text-slate-300">belum tercatat</span>';
             const main = `<tr class="border-b border-slate-100 hover:bg-slate-50 cursor-pointer bg-white" onclick="ipoToggle('${x.t}')">
-                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}${x.stat === 'suspen' ? ' <span class="ipo-bd bad">SUSPEN</span>' : x.stat === 'idle' ? ' <span class="ipo-bd idle">TAK ADA TRANSAKSI</span>' : ''}</div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name || "")}</div></td>
+                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}<div class="st-row">${ewoksStatusBadges(x.t)}</div></div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name || "")}</div></td>
                 <td class="px-3 py-3 whitespace-nowrap text-slate-600 font-semibold">${dmy(x.date)}</td>
                 <td class="px-3 py-3 text-right font-black text-slate-800">${x.price ? 'Rp' + fx(x.price) : '—'}</td>
                 <td class="px-3 py-3 text-right text-slate-600">${x.fundsBn ? 'Rp' + fx(x.fundsBn) + ' M' : '—'}</td>
@@ -111,7 +110,7 @@
             return main + `<tr class="bg-slate-50 border-b border-slate-200"><td colspan="8" class="px-4 py-3 text-[11px] text-slate-600 leading-relaxed">
                 <b>${esc(x.name || "")}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
                 <b>Penjamin pelaksana:</b> ${x.lead.length ? esc(x.lead.join(', ')) : 'belum tercatat'} · <b>Penjamin emisi lain:</b> ${x.syn.length ? esc(x.syn.join(', ')) : '—'}<br>
-                ${x.statNote ? `<b class="text-rose-600">Status:</b> ${esc(x.statNote)}${x.statusSrc ? ` <a href="${esc(x.statusSrc)}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>` : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
+                ${x.flags.length ? x.flags.map((f) => `<b class="text-rose-600">${esc(ewoksStatusLabel(f[0]))}:</b> ${esc(f[1])}${f[2] ? ` <a href="${esc(f[2])}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>`).join('') : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada data.</td></tr>';
     };
 
@@ -119,7 +118,7 @@
         loaded = true;
         try {
             const get = (f) => fetch(`${base()}assets/data/${f}?v=${V()}`, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : Promise.reject(f)));
-            const [ipo, pf, sc] = await Promise.all([get('ipo.json'), get('ipo-perf.json').catch(() => null), get('idx-screener.json').catch(() => null)]);
+            await ewoksStatusLoad(); const [ipo, pf, sc] = await Promise.all([get('ipo.json'), get('ipo-perf.json').catch(() => null), get('idx-screener.json').catch(() => null)]);
             items = ipo.items || [];
             if (pf) { perf = pf.perf || {}; perfAsOf = pf.asOf; }
             if (sc) { scrBuilt = new Date((sc.meta && sc.meta.built) || Date.now()).getTime(); for (const r of sc.rows || []) { scr[r[0]] = r[1]; scrDate[r[0]] = r[10]; } }

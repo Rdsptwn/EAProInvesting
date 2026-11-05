@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261105t2131';
+window.EWOKS_ASSET_V = '20261105t2135';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1034,3 +1034,23 @@ window.addEventListener('load', () => {
     setInterval(() => { if (document.visibilityState === 'visible') fetchNews(); }, 10 * 60 * 1000);
 });
 
+
+/* ===== Penanda status emiten (suspen, delisting, pemantauan khusus, RI, tak ada transaksi, gocap) ===== */
+(function () {
+    const LBL = { SUSPEN: 'SUSPEN', DELIST: 'DELISTING', PPK: 'PEMANTAUAN KHUSUS', RI: 'RI', IDLE: 'TAK ADA TRANSAKSI', GOCAP: 'GOCAP' };
+    let map = null, pr = null, meta = null;
+    window.ewoksStatusLoad = function () {
+        if (pr) return pr;
+        const base = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+        pr = fetch(`${base}assets/data/idx-status.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`, { cache: 'no-store' })
+            .then((r) => (r.ok ? r.json() : null)).then((d) => { map = (d && d.items) || {}; meta = d; return map; }).catch(() => { map = {}; return map; });
+        return pr;
+    };
+    window.ewoksStatusOf = (t) => (map && map[t]) || [];
+    window.ewoksStatusMeta = () => meta;
+    window.ewoksStatusLabel = (k) => LBL[k] || k;
+    const e = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    window.ewoksStatusBadges = function (t) {
+        return ewoksStatusOf(t).map((f) => `<span class="st-bd st-${f[0]}" title="${e(f[1])}">${LBL[f[0]] || f[0]}</span>`).join('');
+    };
+})();

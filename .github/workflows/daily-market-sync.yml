@@ -60,6 +60,10 @@ jobs:
             || { echo "::warning::idx-screener gagal/tidak valid — pakai versi sebelumnya"; [ -f /tmp/idx-screener.bak ] && cp /tmp/idx-screener.bak assets/data/idx-screener.json || rm -f assets/data/idx-screener.json; }
 
       # Riwayat IPO (ATH sejak listing, kenaikan vs harga IPO). Gagal = data lama dipertahankan.
+      - name: Build idx-status.json (penanda suspen/delisting/dll)
+        continue-on-error: true
+        run: node tools/build-idx-status.mjs
+
       - name: Build ipo-perf.json (riwayat saham IPO)
         continue-on-error: true
         run: |
@@ -110,6 +114,7 @@ jobs:
           git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json assets/js/ewoks-core.js
           [ -f assets/data/idx-screener.json ] && git add assets/data/idx-screener.json || true
           [ -f assets/data/ipo-perf.json ] && git add assets/data/ipo-perf.json || true
+          [ -f assets/data/idx-status.json ] && git add assets/data/idx-status.json || true
           git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."

@@ -589,3 +589,7 @@ body.dark-mode-override #broker-pane-ipo .text-slate-800,body.dark-mode-override
 body.dark-mode-override #broker-pane-ipo .border-slate-100,body.dark-mode-override #broker-pane-ipo .border-slate-200{border-color:#1e293b !important}
 
 .ipo-bd{display:inline-block;font-size:8px;font-weight:900;padding:1px 5px;border-radius:6px;vertical-align:middle;margin-left:4px;letter-spacing:.03em}.ipo-bd.bad{background:#fee2e2;color:#b91c1c}.ipo-bd.idle{background:#fef3c7;color:#b45309}body.dark-mode-override .ipo-bd.bad{background:#7f1d1d;color:#fecaca}body.dark-mode-override .ipo-bd.idle{background:#78350f;color:#fde68a}
+
+.st-row{display:flex;flex-wrap:wrap;gap:2px;margin-top:2px}.st-bd{display:inline-block;font-size:8px;font-weight:900;padding:1px 5px;border-radius:6px;letter-spacing:.03em;white-space:nowrap;cursor:help}
+.st-SUSPEN{background:#fee2e2;color:#b91c1c}.st-DELIST{background:#1e293b;color:#f8fafc}.st-PPK{background:#ede9fe;color:#6d28d9}.st-RI{background:#dbeafe;color:#1d4ed8}.st-IDLE{background:#fef3c7;color:#b45309}.st-GOCAP{background:#e2e8f0;color:#475569}
+body.dark-mode-override .st-SUSPEN{background:#7f1d1d;color:#fecaca}body.dark-mode-override .st-DELIST{background:#f1f5f9;color:#0f172a}body.dark-mode-override .st-PPK{background:#4c1d95;color:#ddd6fe}body.dark-mode-override .st-RI{background:#1e3a8a;color:#bfdbfe}body.dark-mode-override .st-IDLE{background:#78350f;color:#fde68a}body.dark-mode-override .st-GOCAP{background:#334155;color:#cbd5e1}

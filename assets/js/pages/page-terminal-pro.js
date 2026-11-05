@@ -166,7 +166,7 @@
         ['🪙 Harga ≤ 500', { pmax: 500, sort: 'chg-desc' }],
         ['🏦 Blue Chip (≥ 5.000)', { pmin: 5000, sort: 'chg-desc' }]
     ];
-    const FIELD = { vmin: 'f-vmin', board: 'f-board', sector: 'f-sector', q: 'f-q', pmin: 'f-pmin', pmax: 'f-pmax', cmin: 'f-cmin', cmax: 'f-cmax', pos: 'f-pos', sr: 'f-sr', sort: 'f-sort', limit: 'f-limit' };
+    const FIELD = { vmin: 'f-vmin', board: 'f-board', status: 'f-status', sector: 'f-sector', q: 'f-q', pmin: 'f-pmin', pmax: 'f-pmax', cmin: 'f-cmin', cmax: 'f-cmax', pos: 'f-pos', sr: 'f-sr', sort: 'f-sort', limit: 'f-limit' };
 
     let info = {}; // kode -> [papan, sektor]
     function rowsFrom(d) {
@@ -209,7 +209,7 @@
     window.tpRunScreener = function () {
         const q = (($('f-q') || {}).value || '').trim().toLowerCase();
         const pmin = num('f-pmin'), pmax = num('f-pmax'), cmin = num('f-cmin'), cmax = num('f-cmax');
-        const vmin = num('f-vmin'), board = ($('f-board') || {}).value, sector = ($('f-sector') || {}).value;
+        const stf = ($('f-status') || {}).value, vmin = num('f-vmin'), board = ($('f-board') || {}).value, sector = ($('f-sector') || {}).value;
         const pos = ($('f-pos') || {}).value, sr = ($('f-sr') || {}).value, sort = ($('f-sort') || {}).value || 'chg-desc';
         const limit = Number(($('f-limit') || {}).value || 50);
         let r = rows.filter((x) => {
@@ -217,6 +217,7 @@
             if (pmin != null && x.price < pmin) return false;
             if (pmax != null && x.price > pmax) return false;
             if (vmin != null && (x.vol == null || x.vol / 100 < vmin)) return false;
+            if (stf) { const k = ewoksStatusOf(x.ticker).map((f) => f[0]); if (stf === 'ANY' ? !k.length : stf === 'OK' ? k.length : !k.includes(stf)) return false; }
             if (board && x.board !== board) return false;
             if (sector && x.sector !== sector) return false;
             if (cmin != null && (x.chg == null || x.chg < cmin)) return false;
@@ -250,7 +251,7 @@
             const chg = x.chg == null ? '—' : `${up ? '+' : ''}${x.chg.toFixed(2)}%`;
             const pos = x.pos == null ? 0 : x.pos;
             return `<tr>
-                <td><button type="button" class="tp-tk" onclick="openTVChart('${x.ticker}')">${esc(x.ticker)}</button></td>
+                <td><button type="button" class="tp-tk" onclick="openTVChart('${x.ticker}')">${esc(x.ticker)}</button><div class="st-row">${ewoksStatusBadges(x.ticker)}</div></td>
                 <td class="tp-nm">${esc(x.name)}</td>
                 <td class="r b">${fmt(x.price)}</td>
                 <td class="r"><span class="tp-chg ${x.chg == null ? '' : up ? 'up' : 'dn'}">${chg}</span></td>
@@ -375,6 +376,7 @@
         } catch (_) {}
         // 2) cadangan: snapshot konglo (±280 emiten)
         if (!fullData) { rows = snap ? buildRows(snap) : []; dataNote = 'baru ±' + rows.length + ' emiten (jalankan workflow "Daily market sync" untuk semua emiten)'; }
+        try { await ewoksStatusLoad(); } catch (_) {}
         paintStatCards(snap);
         fillSelects();
         const dl = $('tp-ticker-list');
