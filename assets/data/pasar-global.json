@@ -15,7 +15,7 @@
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
-  "builtAt": "2026-11-05T21:21:55.898Z",
+  "builtAt": "2026-11-05T21:40:13.344Z",
   "stooqUpdated": 203,
   "indonesia2026": {
    "asOf": "2026-11-04",
@@ -828,7 +828,7 @@
    "country": "Korea",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 9.6,
+   "cagr": 9.5,
    "aum": "$3.8 B",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -1779,7 +1779,7 @@
    "country": "Vietnam",
    "tier": "Frontier",
    "assetClass": "ETF",
-   "cagr": -1.6,
+   "cagr": -1.4,
    "aum": "$110 M",
    "expense": 0.5,
    "risk": "Sangat Tinggi",
@@ -6337,7 +6337,7 @@
     },
     {
      "year": 2026,
-     "return": -5.2
+     "return": -5.3
     }
    ]
   },
