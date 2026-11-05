@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-05",
- "scope": "IPO saham BEI Jan 2022–Okt 2026",
+ "scope": "IPO saham BEI Jan 2021–Okt 2026",
  "uwNote": "Penjamin hanya terisi bila ditemukan di sumber artikel; sebagian emiten belum lengkap.",
  "items": [
   {
@@ -3800,6 +3800,924 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+   ]
+  },
+  {
+   "t": "DRMA",
+   "name": "Dharma Polimetal Tbk",
+   "date": "2021-12-20",
+   "price": 500,
+   "shares": 4705882300,
+   "fundsBn": 2352.94,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BSML",
+   "name": "Bintang Samudera Mandiri Lines Tbk",
+   "date": "2021-12-16",
+   "price": 117,
+   "shares": 1850225000,
+   "fundsBn": 216.48,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "NASI",
+   "name": "Wahana Inti Makmur Tbk",
+   "date": "2021-12-13",
+   "price": 155,
+   "shares": 807400000,
+   "fundsBn": 125.15,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "IPPE",
+   "name": "Indo Pureco Pratama Tbk",
+   "date": "2021-12-09",
+   "price": 100,
+   "shares": 4600000000,
+   "fundsBn": 460.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "AVIA",
+   "name": "Avia Avian Tbk",
+   "date": "2021-12-08",
+   "price": 930,
+   "shares": 61953555600,
+   "fundsBn": 57616.81,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "OBMD",
+   "name": "OBM Drilchem Tbk",
+   "date": "2021-12-08",
+   "price": 180,
+   "shares": 732000000,
+   "fundsBn": 131.76,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "RMKE",
+   "name": "RMK Energy Tbk",
+   "date": "2021-12-07",
+   "price": 206,
+   "shares": 4375000000,
+   "fundsBn": 901.25,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "CMRY",
+   "name": "Cisarua Mountain Dairy Tbk",
+   "date": "2021-12-06",
+   "price": 3080,
+   "shares": 7934683000,
+   "fundsBn": 24438.82,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "WMPP",
+   "name": "Widodo Makmur Perkasa Tbk",
+   "date": "2021-12-06",
+   "price": 160,
+   "shares": 29419000000,
+   "fundsBn": 4707.04,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "TAYS",
+   "name": "Jaya Swarasa Agung Tbk",
+   "date": "2021-12-06",
+   "price": 360,
+   "shares": 1098920000,
+   "fundsBn": 395.61,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "WGSH",
+   "name": "Wira Global Solusi Tbk",
+   "date": "2021-12-06",
+   "price": 140,
+   "shares": 1042500000,
+   "fundsBn": 145.95,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BINO",
+   "name": "Perma Plasindo Tbk",
+   "date": "2021-11-25",
+   "price": 138,
+   "shares": 2175000000,
+   "fundsBn": 300.15,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "DEPO",
+   "name": "Caturkarda Depo Bangunan Tbk",
+   "date": "2021-11-25",
+   "price": 482,
+   "shares": 6790000000,
+   "fundsBn": 3272.78,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "MTEL",
+   "name": "Dayamitra Telekomunikasi Tbk",
+   "date": "2021-11-22",
+   "price": 800,
+   "shares": 83515452844,
+   "fundsBn": 66812.36,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BOBA",
+   "name": "Formosa Ingredient Factory Tbk",
+   "date": "2021-11-01",
+   "price": 280,
+   "shares": 1155750000,
+   "fundsBn": 323.61,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "KUAS",
+   "name": "Ace Oldfields Tbk",
+   "date": "2021-10-25",
+   "price": 195,
+   "shares": 1292570540,
+   "fundsBn": 252.05,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "IDEA",
+   "name": "Idea Indonesia Akademi Tbk",
+   "date": "2021-09-09",
+   "price": 140,
+   "shares": 1062437500,
+   "fundsBn": 148.74,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "CMNT",
+   "name": "Cemindo Gemilang Tbk",
+   "date": "2021-09-08",
+   "price": 680,
+   "shares": 17125504000,
+   "fundsBn": 11645.34,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "GTSI",
+   "name": "GTS Internasional Tbk",
+   "date": "2021-09-08",
+   "price": 100,
+   "shares": 15819142767,
+   "fundsBn": 1581.91,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "RSGK",
+   "name": "Kedoya Adyaraya Tbk",
+   "date": "2021-09-08",
+   "price": 1720,
+   "shares": 929675000,
+   "fundsBn": 1599.04,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "RUNS",
+   "name": "Global Sukses Solusi Tbk",
+   "date": "2021-09-08",
+   "price": 180,
+   "shares": 983557875,
+   "fundsBn": 177.04,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "SBMA",
+   "name": "Surya Biru Murni Acetylene Tbk",
+   "date": "2021-09-08",
+   "price": 180,
+   "shares": 928400000,
+   "fundsBn": 167.11,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "MCOL",
+   "name": "Prima Andalan Mandiri Tbk",
+   "date": "2021-09-07",
+   "price": 1420,
+   "shares": 3555560000,
+   "fundsBn": 5048.9,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "GPSO",
+   "name": "Geoprima Solusi Tbk",
+   "date": "2021-09-06",
+   "price": 180,
+   "shares": 666666600,
+   "fundsBn": 120.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "OILS",
+   "name": "Indo Oil Perkasa Tbk",
+   "date": "2021-09-06",
+   "price": 270,
+   "shares": 454000000,
+   "fundsBn": 122.58,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "HAIS",
+   "name": "Hasnur Internasional Shipping Tbk",
+   "date": "2021-09-01",
+   "price": 300,
+   "shares": 2626250000,
+   "fundsBn": 787.88,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BUKA",
+   "name": "Bukalapak.com Tbk",
+   "date": "2021-08-06",
+   "price": 850,
+   "shares": 25765504800,
+   "fundsBn": 21900.68,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "UVCR",
+   "name": "Trimegah Karya Pratama Tbk",
+   "date": "2021-07-27",
+   "price": 100,
+   "shares": 2000000000,
+   "fundsBn": 200.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "NICL",
+   "name": "PAM Mineral Tbk",
+   "date": "2021-07-09",
+   "price": 100,
+   "shares": 9662500000,
+   "fundsBn": 966.25,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "FLMC",
+   "name": "Falmaco Nonwoven Industri Tbk",
+   "date": "2021-07-08",
+   "price": 200,
+   "shares": 781250000,
+   "fundsBn": 156.25,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BMHS",
+   "name": "Bundamedik Tbk",
+   "date": "2021-07-06",
+   "price": 340,
+   "shares": 8603416176,
+   "fundsBn": 2925.16,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "IPAC",
+   "name": "Era Graharealty Tbk",
+   "date": "2021-06-30",
+   "price": 120,
+   "shares": 949868500,
+   "fundsBn": 113.98,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "MASB",
+   "name": "Bank Multiarta Sentosa Tbk",
+   "date": "2021-06-30",
+   "price": 3360,
+   "shares": 1226902970,
+   "fundsBn": 4122.39,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "ARCI",
+   "name": "Archi Indonesia Tbk",
+   "date": "2021-06-28",
+   "price": 750,
+   "shares": 24835000000,
+   "fundsBn": 18626.25,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "LABA",
+   "name": "Ladangbaja Murni Tbk",
+   "date": "2021-06-10",
+   "price": 125,
+   "shares": 1000000000,
+   "fundsBn": 125.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "TRUE",
+   "name": "Triniti Dinamik Tbk",
+   "date": "2021-06-10",
+   "price": 100,
+   "shares": 7569850000,
+   "fundsBn": 756.99,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "MGLV",
+   "name": "Panca Anugrah Wisesa Tbk",
+   "date": "2021-06-08",
+   "price": 135,
+   "shares": 1900000000,
+   "fundsBn": 256.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "HOPE",
+   "name": "Harapan Duta Pertiwi Tbk",
+   "date": "2021-05-24",
+   "price": 118,
+   "shares": 2129167000,
+   "fundsBn": 251.24,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "LUCY",
+   "name": "Lima Dua Lima Tiga Tbk",
+   "date": "2021-05-05",
+   "price": 100,
+   "shares": 1035000000,
+   "fundsBn": 103.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "NPGF",
+   "name": "Nusa Palapa Gemilang Tbk",
+   "date": "2021-04-14",
+   "price": 100,
+   "shares": 3240235840,
+   "fundsBn": 324.02,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "TAPG",
+   "name": "Triputra Agro Persada Tbk",
+   "date": "2021-04-12",
+   "price": 200,
+   "shares": 19852540000,
+   "fundsBn": 3970.51,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "FIMP",
+   "name": "Fimperkasa Utama Tbk",
+   "date": "2021-04-09",
+   "price": 125,
+   "shares": 400000000,
+   "fundsBn": 50.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "LFLO",
+   "name": "Imago Mulia Persada Tbk",
+   "date": "2021-04-07",
+   "price": 100,
+   "shares": 1300000000,
+   "fundsBn": 130.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "ZYRX",
+   "name": "Zyrexindo Mandiri Buana Tbk",
+   "date": "2021-03-30",
+   "price": 250,
+   "shares": 1333333300,
+   "fundsBn": 333.33,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "SNLK",
+   "name": "Sunter Lakeside Hotel Tbk",
+   "date": "2021-03-29",
+   "price": 150,
+   "shares": 450000000,
+   "fundsBn": 67.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BEBS",
+   "name": "Berkah Beton Sadaya Tbk",
+   "date": "2021-03-10",
+   "price": 100,
+   "shares": 9000000000,
+   "fundsBn": 900.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "UNIQ",
+   "name": "Ulima Nitra Tbk",
+   "date": "2021-03-08",
+   "price": 118,
+   "shares": 3138983000,
+   "fundsBn": 370.4,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "EDGE",
+   "name": "Indointernet Tbk",
+   "date": "2021-02-08",
+   "price": 7375,
+   "shares": 404050000,
+   "fundsBn": 2979.87,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "WMUU",
+   "name": "Widodo Makmur Unggas Tbk",
+   "date": "2021-02-02",
+   "price": 180,
+   "shares": 12941176500,
+   "fundsBn": 2329.41,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "BANK",
+   "name": "Bank Aladin Syariah Tbk",
+   "date": "2021-02-01",
+   "price": 103,
+   "shares": 13061141834,
+   "fundsBn": 1345.3,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "UFOE",
+   "name": "Damai Sejahtera Abadi Tbk",
+   "date": "2021-02-01",
+   "price": 101,
+   "shares": 2287500000,
+   "fundsBn": 231.04,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "DGNS",
+   "name": "Diagnos Laboratorium Utama Tbk",
+   "date": "2021-01-15",
+   "price": 200,
+   "shares": 1250000000,
+   "fundsBn": 250.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "DCII",
+   "name": "DCI Indonesia Tbk",
+   "date": "2021-01-06",
+   "price": 420,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "FAPA",
+   "name": "FAP Agri Tbk",
+   "date": "2021-01-04",
+   "price": 1840,
+   "shares": 3629411800,
+   "fundsBn": 6678.12,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
    ]
   },
   {
