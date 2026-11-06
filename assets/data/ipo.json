@@ -4606,18 +4606,22 @@
    "date": "2021-08-06",
    "price": 850,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 21900,
    "board": null,
    "sector": null,
    "lead": [
     "Mandiri Sekuritas",
     "Buana Capital Sekuritas"
    ],
-   "syn": [],
+   "syn": [
+    "UBS Sekuritas Indonesia",
+    "Mirae Asset Sekuritas Indonesia"
+   ],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://www.idxchannel.com/market-news/segera-melantai-di-bei-bukalapak-tunjuk-4-underwriter/all",
     "https://www.idxchannel.com/market-news/segera-melantai-di-bei-bukalapak-tunjuk-4-underwriter/all"
    ]
   },
