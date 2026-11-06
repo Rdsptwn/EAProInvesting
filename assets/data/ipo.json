@@ -518,7 +518,11 @@
    "fundsBn": 202.94,
    "board": null,
    "sector": "Fertilizer and agrochemical trading",
-   "lead": [],
+   "lead": [
+    "PT Samuel Sekuritas Indonesia",
+    "PT Shinhan Sekuritas Indonesia",
+    "PT BRI Danareksa Sekuritas"
+   ],
    "syn": [],
    "note": "peran lead/sindikasi tidak dibedakan sumber",
    "src": [
@@ -526,7 +530,8 @@
     "https://www.idxchannel.com/market-news/mulai-offering-segini-harga-ipo-dgwg-brrc-dan-hgii/all",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
-    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp"
+    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp",
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=322"
    ]
   },
   {
