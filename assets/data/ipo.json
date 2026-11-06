@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-05",
- "scope": "IPO saham BEI Jan 2020–Okt 2026 (2020 baru 44 dari ±51 emiten)",
+ "scope": "IPO saham BEI Jan 2020–Okt 2026",
  "uwNote": "Penjamin hanya terisi bila ditemukan di sumber artikel; sebagian emiten belum lengkap.",
  "items": [
   {
@@ -5087,6 +5087,22 @@
    ]
   },
   {
+   "t": "WIFI",
+   "name": "Solusi Sinergi Digital Tbk",
+   "date": "2020-12-30",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+   ]
+  },
+  {
    "t": "PMMP",
    "name": "Panca Mitra Multiperdana",
    "date": "2020-12-18",
@@ -5132,6 +5148,38 @@
    "note": "",
    "src": [
     "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PTDU",
+   "name": "Djasa Ubersakti Tbk",
+   "date": "2020-12-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+   ]
+  },
+  {
+   "t": "PLAN",
+   "name": "Planet Properindo Jaya Tbk",
+   "date": "2020-09-15",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
    ]
   },
   {
@@ -5327,6 +5375,39 @@
    ]
   },
   {
+   "t": "PPGL",
+   "name": "Prima Globalindo Logistik Tbk",
+   "date": "2020-07-20",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+   ]
+  },
+  {
+   "t": "SOFA",
+   "name": "Boston Furniture Industries Tbk",
+   "date": "2020-07-07",
+   "price": 100,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
+    "https://market.bisnis.com/read/20200629/192/1259073/listing-7-juli-2020-boston-furniture-banderol-harga-ipo-rp100"
+   ]
+  },
+  {
    "t": "PGUN",
    "name": "Pradiksi Gunatama",
    "date": "2020-07-06",
@@ -5391,6 +5472,22 @@
    ]
   },
   {
+   "t": "CASH",
+   "name": "Cashlez Worldwide Indonesia Tbk",
+   "date": "2020-05-04",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+   ]
+  },
+  {
    "t": "BHAT",
    "name": "Bhakti Multi Artha",
    "date": "2020-04-15",
@@ -5399,11 +5496,14 @@
    "fundsBn": 206.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Jasa Utama Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://pasardana.id/news/2020/4/15/resmi-ipo-bhat-jadi-emiten-ke-26-tahun-2020"
    ]
   },
   {
@@ -5788,6 +5888,23 @@
    "note": "",
    "src": [
     "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PGJO",
+   "name": "Tourindo Guide Indonesia Tbk",
+   "date": "2020-01-08",
+   "price": 80,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
+    "https://market.bisnis.com/read/20200111/7/1189134/ini-pendatang-baru-pasar-saham-di-awal-2020"
    ]
   }
  ],
