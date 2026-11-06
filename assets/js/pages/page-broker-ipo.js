@@ -73,16 +73,27 @@
             + c('Terbaik (ATH)', bestAth ? `${esc(bestAth.t)} ${pct(bestAth.athG)}` : (best ? `${esc(best.t)} ${pct(best.cur)}` : '—'), bestAth ? 'kenaikan tertinggi sejak IPO' : 'return sekarang tertinggi');
     }
 
+    const ALIAS = { 'erdika elit': 'erdikha elit', 'korea investment and': 'kis' };
+    const nk = (n) => { let k = String(n || '').toLowerCase().replace(/\bpt\.?\b|\btbk\.?\b|sekuritas|securities|indonesia|asia|\band\b|[.,]/g, ' ').replace(/\s+/g, ' ').trim(); return ALIAS[k] || k; };
     function uwTable(a) {
-        const m = {};
-        for (const x of a) for (const u of x.lead) { (m[u] = m[u] || []).push(x); }
-        const rows = Object.entries(m).map(([u, xs]) => {
-            const cur = xs.map((x) => x.cur).filter(Number.isFinite);
-            return { u, n: xs.length, funds: xs.reduce((s, x) => s + (x.fundsBn || 0), 0), med: median(cur), win: cur.length ? cur.filter((v) => v > 0).length / cur.length : null, k: cur.length };
-        }).sort((p, q) => q.n - p.n || q.funds - p.funds).slice(0, 12);
-        $('ipo-uw').innerHTML = rows.length ? rows.map((r) => `<tr class="border-t border-slate-100"><td class="py-2 pr-3 font-extrabold text-slate-700">${esc(r.u)}</td><td class="py-2 pr-3 text-right font-black">${r.n}</td><td class="py-2 pr-3 text-right">${r.funds ? 'Rp' + fx(r.funds) + ' M' : '—'}</td><td class="py-2 pr-3 text-right">${r.med == null ? '—' : pct(r.med)}</td><td class="py-2 text-right">${r.win == null ? '—' : Math.round(r.win * 100) + '% <span class="text-slate-400">(' + r.k + ')</span>'}</td></tr>`).join('')
-            : '<tr><td colspan="5" class="py-3 text-slate-400">Belum ada data penjamin.</td></tr>';
+        const reg = (typeof BROKERS !== 'undefined' ? BROKERS : []), rows = {};
+        for (const b of reg) { const k = nk(b.n); if (!rows[k]) rows[k] = { u: b.n, code: b.k, tipe: b.t, lead: [], syn: [] }; }
+        for (const x of a) {
+            for (const [arr, f] of [[x.lead, 'lead'], [x.syn, 'syn']]) for (const u of arr) {
+                const k = nk(u); if (!k) continue;
+                const r = rows[k] || (rows[k] = { u, code: '', tipe: '', lead: [], syn: [] });
+                if (!r[f].includes(x)) r[f].push(x);
+            }
+        }
+        const list = Object.values(rows).map((r) => {
+            const xs = [...new Set(r.lead.concat(r.syn))], cur = xs.map((x) => x.cur).filter(Number.isFinite);
+            return { ...r, nl: r.lead.length, ns: r.syn.length, funds: r.lead.reduce((s, x) => s + (x.fundsBn || 0), 0), med: median(cur), win: cur.length ? cur.filter((v) => v > 0).length / cur.length : null, k: cur.length };
+        }).sort((p, q) => (q.nl + q.ns) - (p.nl + p.ns) || q.funds - p.funds || p.u.localeCompare(q.u));
+        const act = list.filter((r) => r.nl + r.ns > 0).length;
+        $('ipo-uw-note').textContent = `${list.length} sekuritas terlacak (${act} punya rekam jejak IPO di data). Klik baris untuk memfilter daftar IPO.`;
+        $('ipo-uw').innerHTML = list.map((r) => `<tr class="border-t border-slate-100 cursor-pointer hover:bg-slate-50" onclick="ipoUw('${esc(r.u).replace(/'/g, '')}')"><td class="py-2 pr-3 font-extrabold ${r.nl + r.ns ? 'text-slate-700' : 'text-slate-400'}">${esc(r.u)}${r.code ? ` <span class="text-[10px] font-black text-blue-500">${esc(r.code)}</span>` : ''}</td><td class="py-2 pr-3 text-right font-black">${r.nl || '—'}</td><td class="py-2 pr-3 text-right">${r.ns || '—'}</td><td class="py-2 pr-3 text-right">${r.funds ? 'Rp' + fx(r.funds) + ' M' : '—'}</td><td class="py-2 pr-3 text-right">${r.med == null ? '—' : pct(r.med)}</td><td class="py-2 text-right">${r.win == null ? '—' : Math.round(r.win * 100) + '% <span class="text-slate-400">(' + r.k + ')</span>'}</td></tr>`).join('');
     }
+    window.ipoUw = function (n) { $('ipo-q').value = nk(n); ipoRender(); $('ipo-body').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 
     window.ipoToggle = function (t) { open = open === t ? null : t; ipoRender(); };
 

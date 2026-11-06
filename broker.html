@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261106t1243">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261106t1248">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="broker">
 
@@ -243,7 +243,7 @@
                         <div class="p-4 md:p-6 border-b border-slate-200">
                             <div class="flex items-center gap-2 mb-2"><i class="fas fa-ranking-star text-amber-500"></i><h4 class="font-black text-slate-800 text-sm">Peringkat Penjamin Pelaksana Emisi</h4></div>
                             <p class="text-[10px] text-slate-400 mb-3">Dihitung dari IPO yang penjaminnya tercantum di sumber (lead underwriter). Return = posisi sekarang vs harga IPO. Jumlah sampel kecil bisa menyesatkan.</p>
-                            <div class="overflow-x-auto"><table class="w-full text-xs"><thead><tr class="text-left text-[10px] font-black text-slate-500 uppercase"><th class="py-2 pr-3">Penjamin</th><th class="py-2 pr-3 text-right">IPO</th><th class="py-2 pr-3 text-right">Total dana</th><th class="py-2 pr-3 text-right">Median return</th><th class="py-2 text-right">Di atas IPO</th></tr></thead><tbody id="ipo-uw"></tbody></table></div>
+                            <p id="ipo-uw-note" class="text-[10px] text-slate-400 mb-2"></p><div class="overflow-auto max-h-[460px]"><table class="w-full text-xs"><thead class="sticky top-0 bg-white"><tr class="text-left text-[10px] font-black text-slate-500 uppercase"><th class="py-2 pr-3">Sekuritas (kode)</th><th class="py-2 pr-3 text-right">Pelaksana</th><th class="py-2 pr-3 text-right">Penjamin lain</th><th class="py-2 pr-3 text-right">Dana (pelaksana)</th><th class="py-2 pr-3 text-right">Median return</th><th class="py-2 text-right">Di atas IPO</th></tr></thead><tbody id="ipo-uw"></tbody></table></div>
                         </div>
                         <div class="overflow-x-auto max-h-[640px] no-scrollbar">
                             <table class="w-full border-collapse text-xs">
@@ -337,8 +337,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261106t1243"></script>
-    <script src="assets/js/pages/page-broker.js?v=20261106t1243"></script>
-    <script src="assets/js/pages/page-broker-ipo.js?v=20261106t1243"></script>
+    <script src="assets/js/ewoks-core.js?v=20261106t1248"></script>
+    <script src="assets/js/pages/page-broker.js?v=20261106t1248"></script>
+    <script src="assets/js/pages/page-broker-ipo.js?v=20261106t1248"></script>
 </body>
 </html>
