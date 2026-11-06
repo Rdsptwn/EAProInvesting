@@ -15,7 +15,7 @@
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
-  "builtAt": "2026-11-06T13:28:52.330Z",
+  "builtAt": "2026-11-06T17:17:22.460Z",
   "stooqUpdated": 203,
   "indonesia2026": {
    "asOf": "2026-11-04",
@@ -271,7 +271,7 @@
    "status": "etf-as",
    "stooq": "spy.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -281,7 +281,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 18.6,
+   "cagr": 18.8,
    "aum": "$280 B",
    "expense": 0.2,
    "risk": "Tinggi",
@@ -290,7 +290,7 @@
    "status": "etf-as",
    "stooq": "qqq.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -309,7 +309,7 @@
    "status": "etf-as",
    "stooq": "dia.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -319,7 +319,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.5,
+   "cagr": 7.6,
    "aum": "$65 B",
    "expense": 0.19,
    "risk": "Tinggi",
@@ -328,7 +328,7 @@
    "status": "etf-as",
    "stooq": "iwm.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -338,7 +338,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -3.8,
+   "cagr": -3.7,
    "aum": "$52 B",
    "expense": 0.15,
    "risk": "Moderat",
@@ -347,7 +347,7 @@
    "status": "etf-as",
    "stooq": "tlt.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -366,7 +366,7 @@
    "status": "etf-as",
    "stooq": "bnd.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -402,7 +402,7 @@
    "status": "etf-as",
    "stooq": "ewc.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -421,7 +421,7 @@
    "status": "etf-as",
    "stooq": "ewj.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -431,7 +431,7 @@
    "country": "Australia",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 3.6,
+   "cagr": 3.7,
    "aum": "$2.1 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -440,7 +440,7 @@
    "status": "etf-as",
    "stooq": "ewa.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -459,7 +459,7 @@
    "status": "etf-as",
    "stooq": "ews.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -469,7 +469,7 @@
    "country": "UK",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 4.8,
+   "cagr": 4.7,
    "aum": "$3.2 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -478,7 +478,7 @@
    "status": "etf-as",
    "stooq": "ewu.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -488,7 +488,7 @@
    "country": "Germany",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.6,
+   "cagr": 5.3,
    "aum": "$1.8 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -497,7 +497,7 @@
    "status": "etf-as",
    "stooq": "ewg.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -507,7 +507,7 @@
    "country": "France",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.3,
+   "cagr": 6.2,
    "aum": "$1.4 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -516,7 +516,7 @@
    "status": "etf-as",
    "stooq": "ewq.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -526,7 +526,7 @@
    "country": "Switzerland",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.7,
+   "cagr": 8.6,
    "aum": "$1.6 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -535,7 +535,7 @@
    "status": "etf-as",
    "stooq": "ewl.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -545,7 +545,7 @@
    "country": "Netherlands",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10.4,
+   "cagr": 10.5,
    "aum": "$980 M",
    "expense": 0.5,
    "risk": "Moderat",
@@ -554,7 +554,7 @@
    "status": "etf-as",
    "stooq": "ewn.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -564,7 +564,7 @@
    "country": "Israel",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.6,
+   "cagr": 9.1,
    "aum": "$110 M",
    "expense": 0.55,
    "risk": "Moderat-Tinggi",
@@ -573,7 +573,7 @@
    "status": "etf-as",
    "stooq": "eis.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -583,7 +583,7 @@
    "country": "Sweden",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.6,
    "aum": "$420 M",
    "expense": 0.5,
    "risk": "Moderat",
@@ -592,7 +592,7 @@
    "status": "etf-as",
    "stooq": "ewd.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -611,7 +611,7 @@
    "status": "etf-as",
    "stooq": "ewp.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -621,7 +621,7 @@
    "country": "Italy",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10.2,
+   "cagr": 10.1,
    "aum": "$510 M",
    "expense": 0.5,
    "risk": "Moderat-Tinggi",
@@ -630,7 +630,7 @@
    "status": "etf-as",
    "stooq": "ewi.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -640,7 +640,7 @@
    "country": "Hong Kong",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 0.9,
+   "cagr": 1,
    "aum": "$1.2 B",
    "expense": 0.5,
    "risk": "Tinggi",
@@ -649,7 +649,7 @@
    "status": "etf-as",
    "stooq": "ewh.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -668,7 +668,7 @@
    "status": "etf-as",
    "stooq": "enzl.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -678,7 +678,7 @@
    "country": "Austria",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.6,
+   "cagr": 9.5,
    "aum": "$95 M",
    "expense": 0.5,
    "risk": "Moderat",
@@ -687,7 +687,7 @@
    "status": "etf-as",
    "stooq": "ewo.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -706,7 +706,7 @@
    "status": "etf-as",
    "stooq": "mchi.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -716,7 +716,7 @@
    "country": "China",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -4.2,
+   "cagr": -4.1,
    "aum": "$4.1 B",
    "expense": 0.69,
    "risk": "Sangat Tinggi",
@@ -725,7 +725,7 @@
    "status": "etf-as",
    "stooq": "kweb.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -735,7 +735,7 @@
    "country": "India",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 6.4,
+   "cagr": 6.6,
    "aum": "$9.2 B",
    "expense": 0.64,
    "risk": "Tinggi",
@@ -744,7 +744,7 @@
    "status": "etf-as",
    "stooq": "inda.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -771,7 +771,7 @@
    "country": "Brazil",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.5,
+   "cagr": -0.4,
    "aum": "$4.2 B",
    "expense": 0.58,
    "risk": "Sangat Tinggi",
@@ -780,7 +780,7 @@
    "status": "etf-as",
    "stooq": "ewz.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -790,7 +790,7 @@
    "country": "Mexico",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.6,
+   "cagr": 5.7,
    "aum": "$1.9 B",
    "expense": 0.5,
    "risk": "Tinggi",
@@ -799,7 +799,7 @@
    "status": "etf-as",
    "stooq": "eww.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -818,7 +818,7 @@
    "status": "etf-as",
    "stooq": "ksa.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -828,7 +828,7 @@
    "country": "Korea",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 9.5,
+   "cagr": 10,
    "aum": "$3.8 B",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -837,7 +837,7 @@
    "status": "etf-as",
    "stooq": "ewy.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -847,7 +847,7 @@
    "country": "Taiwan",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 10.8,
+   "cagr": 11.3,
    "aum": "$5.1 B",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -856,7 +856,7 @@
    "status": "etf-as",
    "stooq": "ewt.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -866,7 +866,7 @@
    "country": "Turkey",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.4,
+   "cagr": -0.2,
    "aum": "$250 M",
    "expense": 0.59,
    "risk": "Ekstrem",
@@ -875,7 +875,7 @@
    "status": "etf-as",
    "stooq": "tur.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -894,7 +894,7 @@
    "status": "etf-as",
    "stooq": "eza.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -904,7 +904,7 @@
    "country": "UAE",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 2.1,
+   "cagr": 2.2,
    "aum": "$140 M",
    "expense": 0.59,
    "risk": "Moderat-Tinggi",
@@ -913,7 +913,7 @@
    "status": "etf-as",
    "stooq": "uae.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -923,7 +923,7 @@
    "country": "Chile",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.6,
+   "cagr": -0.4,
    "aum": "$320 M",
    "expense": 0.58,
    "risk": "Tinggi",
@@ -932,7 +932,7 @@
    "status": "etf-as",
    "stooq": "ech.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -960,7 +960,7 @@
    "country": "Peru",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 9.5,
+   "cagr": 9.7,
    "aum": "$110 M",
    "expense": 0.58,
    "risk": "Tinggi",
@@ -969,7 +969,7 @@
    "status": "etf-as",
    "stooq": "epu.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -979,7 +979,7 @@
    "country": "Thailand",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.7,
+   "cagr": -0.8,
    "aum": "$310 M",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -988,7 +988,7 @@
    "status": "etf-as",
    "stooq": "thd.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -998,7 +998,7 @@
    "country": "Malaysia",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.7,
+   "cagr": -0.8,
    "aum": "$210 M",
    "expense": 0.5,
    "risk": "Moderat",
@@ -1007,7 +1007,7 @@
    "status": "etf-as",
    "stooq": "ewm.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1017,7 +1017,7 @@
    "country": "Philippines",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -3.4,
+   "cagr": -3.3,
    "aum": "$110 M",
    "expense": 0.58,
    "risk": "Tinggi",
@@ -1026,7 +1026,7 @@
    "status": "etf-as",
    "stooq": "ephe.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1054,7 +1054,7 @@
    "country": "Greece",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 12.9,
+   "cagr": 12.8,
    "aum": "$310 M",
    "expense": 0.65,
    "risk": "Tinggi",
@@ -1063,7 +1063,7 @@
    "status": "etf-as",
    "stooq": "grek.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1073,7 +1073,7 @@
    "country": "Vietnam",
    "tier": "Frontier",
    "assetClass": "ETF",
-   "cagr": 2.3,
+   "cagr": 2.5,
    "aum": "$520 M",
    "expense": 0.66,
    "risk": "Sangat Tinggi",
@@ -1082,7 +1082,7 @@
    "status": "etf-as",
    "stooq": "vnm.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1222,7 +1222,7 @@
    "status": "etf-as",
    "stooq": "argt.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1437,7 +1437,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.2,
+   "cagr": 12.3,
    "aum": "$380 B",
    "expense": 0.03,
    "risk": "Moderat-Tinggi",
@@ -1446,7 +1446,7 @@
    "status": "etf-as",
    "stooq": "vti.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1456,7 +1456,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 16,
+   "cagr": 16.1,
    "aum": "$120 B",
    "expense": 0.04,
    "risk": "Tinggi",
@@ -1465,7 +1465,7 @@
    "status": "etf-as",
    "stooq": "vug.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1484,7 +1484,7 @@
    "status": "etf-as",
    "stooq": "vtv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1494,7 +1494,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.5,
+   "cagr": 9.4,
    "aum": "$60 B",
    "expense": 0.06,
    "risk": "Moderat",
@@ -1503,7 +1503,7 @@
    "status": "etf-as",
    "stooq": "schd.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1522,7 +1522,7 @@
    "status": "etf-as",
    "stooq": "agg.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1532,7 +1532,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.9,
+   "cagr": 12.8,
    "aum": "$65 B",
    "expense": 0.4,
    "risk": "Moderat",
@@ -1541,7 +1541,7 @@
    "status": "etf-as",
    "stooq": "gld.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1560,7 +1560,7 @@
    "status": "etf-as",
    "stooq": "dbc.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1570,7 +1570,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.2,
+   "cagr": 7.4,
    "aum": "$2.8 B",
    "expense": 0.4,
    "risk": "Tinggi",
@@ -1579,7 +1579,7 @@
    "status": "etf-as",
    "stooq": "icln.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1589,7 +1589,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.8,
+   "cagr": 14.1,
    "aum": "$6.5 B",
    "expense": 0.75,
    "risk": "Ekstrem",
@@ -1598,7 +1598,7 @@
    "status": "etf-as",
    "stooq": "arkk.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1608,7 +1608,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 1.6,
+   "cagr": 1.7,
    "aum": "$33 B",
    "expense": 0.35,
    "risk": "Moderat",
@@ -1617,7 +1617,7 @@
    "status": "etf-as",
    "stooq": "jepi.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 6.4
   },
   {
@@ -1627,7 +1627,7 @@
    "country": "Japan",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.1,
+   "cagr": 13.2,
    "aum": "$4.1 B",
    "expense": 0.48,
    "risk": "Moderat",
@@ -1636,7 +1636,7 @@
    "status": "etf-as",
    "stooq": "dxj.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1646,7 +1646,7 @@
    "country": "Europe",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.3,
+   "cagr": 7.2,
    "aum": "$2.5 B",
    "expense": 0.48,
    "risk": "Moderat",
@@ -1655,7 +1655,7 @@
    "status": "etf-as",
    "stooq": "ezu.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1673,7 +1673,7 @@
    "status": "etf-as",
    "stooq": "iefa.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "tier": "Developed",
    "cagrYears": 10
   },
@@ -1692,7 +1692,7 @@
    "status": "etf-as",
    "stooq": "vea.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "tier": "Developed",
    "cagrYears": 10
   },
@@ -1702,7 +1702,7 @@
    "ticker": "VWO",
    "country": "Global",
    "assetClass": "ETF",
-   "cagr": 4.1,
+   "cagr": 4.3,
    "aum": "$75 B",
    "expense": 0.08,
    "risk": "Tinggi",
@@ -1711,7 +1711,7 @@
    "status": "etf-as",
    "stooq": "vwo.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "tier": "Emerging",
    "cagrYears": 10
   },
@@ -1721,7 +1721,7 @@
    "ticker": "IEMG",
    "country": "Global",
    "assetClass": "ETF",
-   "cagr": 5,
+   "cagr": 5.3,
    "aum": "$80 B",
    "expense": 0.09,
    "risk": "Tinggi",
@@ -1730,7 +1730,7 @@
    "status": "etf-as",
    "stooq": "iemg.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "tier": "Emerging",
    "cagrYears": 10
   },
@@ -1741,7 +1741,7 @@
    "country": "India",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.1,
+   "cagr": 5.3,
    "aum": "$650 M",
    "expense": 0.19,
    "risk": "Tinggi",
@@ -1750,7 +1750,7 @@
    "status": "etf-as",
    "stooq": "flin.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 8.7
   },
   {
@@ -1760,7 +1760,7 @@
    "country": "India",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 7.8,
+   "cagr": 7.9,
    "aum": "$3.5 B",
    "expense": 0.85,
    "risk": "Tinggi",
@@ -1769,7 +1769,7 @@
    "status": "etf-as",
    "stooq": "epi.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1779,7 +1779,7 @@
    "country": "Vietnam",
    "tier": "Frontier",
    "assetClass": "ETF",
-   "cagr": -1.4,
+   "cagr": -1.1,
    "aum": "$110 M",
    "expense": 0.5,
    "risk": "Sangat Tinggi",
@@ -1788,7 +1788,7 @@
    "status": "etf-as",
    "stooq": "vnam.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 4.8
   },
   {
@@ -1807,7 +1807,7 @@
    "status": "etf-as",
    "stooq": "sdiv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1945,7 +1945,7 @@
    "status": "etf-as",
    "stooq": "rsp.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1955,7 +1955,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8,
+   "cagr": 7.9,
    "aum": "$55 B",
    "expense": 0.06,
    "risk": "Moderat",
@@ -1964,7 +1964,7 @@
    "status": "etf-as",
    "stooq": "vym.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -1974,7 +1974,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.8,
+   "cagr": 7.9,
    "aum": "$15 B",
    "expense": 0.04,
    "risk": "Tinggi",
@@ -1983,7 +1983,7 @@
    "status": "etf-as",
    "stooq": "scha.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2002,7 +2002,7 @@
    "status": "etf-as",
    "stooq": "pff.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2021,7 +2021,7 @@
    "status": "etf-as",
    "stooq": "bsv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2040,7 +2040,7 @@
    "status": "etf-as",
    "stooq": "biv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2059,7 +2059,7 @@
    "status": "etf-as",
    "stooq": "shy.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2078,7 +2078,7 @@
    "status": "etf-as",
    "stooq": "ief.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2097,7 +2097,7 @@
    "status": "etf-as",
    "stooq": "bil.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2107,7 +2107,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 28.8,
+   "cagr": 29.2,
    "aum": "$18 B",
    "expense": 0.35,
    "risk": "Sangat Tinggi",
@@ -2116,7 +2116,7 @@
    "status": "etf-as",
    "stooq": "smh.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2135,7 +2135,7 @@
    "status": "etf-as",
    "stooq": "igv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2154,7 +2154,7 @@
    "status": "etf-as",
    "stooq": "xlv.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2173,7 +2173,7 @@
    "status": "etf-as",
    "stooq": "xlf.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2183,7 +2183,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.2,
+   "cagr": 5.3,
    "aum": "$38 B",
    "expense": 0.09,
    "risk": "Tinggi",
@@ -2192,7 +2192,7 @@
    "status": "etf-as",
    "stooq": "xle.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2202,7 +2202,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.1,
+   "cagr": 6,
    "aum": "$16 B",
    "expense": 0.09,
    "risk": "Rendah",
@@ -2211,7 +2211,7 @@
    "status": "etf-as",
    "stooq": "xlp.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2221,7 +2221,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10,
+   "cagr": 10.1,
    "aum": "$18 B",
    "expense": 0.09,
    "risk": "Moderat",
@@ -2230,7 +2230,7 @@
    "status": "etf-as",
    "stooq": "xli.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2240,7 +2240,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.4,
+   "cagr": 6.3,
    "aum": "$16 B",
    "expense": 0.09,
    "risk": "Rendah",
@@ -2249,7 +2249,7 @@
    "status": "etf-as",
    "stooq": "xlu.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2268,7 +2268,7 @@
    "status": "etf-as",
    "stooq": "xlb.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2287,7 +2287,7 @@
    "status": "etf-as",
    "stooq": "xlre.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2297,7 +2297,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.6,
+   "cagr": 9.7,
    "aum": "$18 B",
    "expense": 0.09,
    "risk": "Tinggi",
@@ -2306,8 +2306,8 @@
    "status": "etf-as",
    "stooq": "xlc.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
-   "cagrYears": 8.3
+   "dataAsOf": "2026-11-06",
+   "cagrYears": 8.4
   },
   {
    "id": 128,
@@ -2316,7 +2316,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.3,
+   "cagr": 9.5,
    "aum": "$2.1 B",
    "expense": 0.75,
    "risk": "Sangat Tinggi",
@@ -2325,7 +2325,7 @@
    "status": "etf-as",
    "stooq": "lit.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2335,7 +2335,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.5,
+   "cagr": 12.6,
    "aum": "$7.5 B",
    "expense": 0.51,
    "risk": "Tinggi",
@@ -2344,7 +2344,7 @@
    "status": "etf-as",
    "stooq": "fdn.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 10
   },
   {
@@ -2354,7 +2354,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.4,
+   "cagr": 13.3,
    "aum": "$650 M",
    "expense": 0.47,
    "risk": "Tinggi",
@@ -2363,7 +2363,7 @@
    "status": "etf-as",
    "stooq": "ihak.us",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "cagrYears": 7.4
   },
   {
@@ -2611,7 +2611,7 @@
    "country": "Belgium",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 4.7,
+   "cagr": 4.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2619,7 +2619,7 @@
    "desc": "Saham besar dan menengah Belgia.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ewk.us",
    "cagrYears": 10
   },
@@ -2630,7 +2630,7 @@
    "country": "Norway",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.9,
+   "cagr": 6.7,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2638,7 +2638,7 @@
    "desc": "Saham Norwegia, kuat di energi dan perikanan.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "norw.us",
    "cagrYears": 10
   },
@@ -2649,7 +2649,7 @@
    "country": "Denmark",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.3,
+   "cagr": 9.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2657,7 +2657,7 @@
    "desc": "Saham Denmark, didominasi farmasi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "eden.us",
    "cagrYears": 10
   },
@@ -2676,7 +2676,7 @@
    "desc": "Saham besar dan menengah Finlandia.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "efnl.us",
    "cagrYears": 10
   },
@@ -2687,7 +2687,7 @@
    "country": "Ireland",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.6,
+   "cagr": 8.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2695,7 +2695,7 @@
    "desc": "Saham Irlandia.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "eirl.us",
    "cagrYears": 10
   },
@@ -2706,7 +2706,7 @@
    "country": "Poland",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 9.7,
+   "cagr": 9.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -2714,7 +2714,7 @@
    "desc": "Saham Polandia: bank, energi, ritel.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "epol.us",
    "cagrYears": 10
   },
@@ -2725,7 +2725,7 @@
    "country": "Qatar",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.2,
+   "cagr": -0.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -2733,7 +2733,7 @@
    "desc": "Saham Qatar: perbankan dan energi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "qat.us",
    "cagrYears": 10
   },
@@ -2744,7 +2744,7 @@
    "country": "Kuwait",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.6,
+   "cagr": 5.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -2752,7 +2752,7 @@
    "desc": "Saham Kuwait, dominan perbankan.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "kwt.us",
    "cagrYears": 6.1
   },
@@ -2763,7 +2763,7 @@
    "country": "Indonesia",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -8.3,
+   "cagr": -8,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2771,7 +2771,7 @@
    "desc": "Saham Indonesia yang diperdagangkan di bursa AS: bank besar, telekomunikasi, tambang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "eido.us",
    "cagrYears": 10
   },
@@ -2790,7 +2790,7 @@
    "desc": "50 saham besar China yang tercatat di Hong Kong.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "fxi.us",
    "cagrYears": 10
   },
@@ -2809,7 +2809,7 @@
    "desc": "Saham A-Share China (CSI 300) di Shanghai dan Shenzhen.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ashr.us",
    "cagrYears": 10
   },
@@ -2828,7 +2828,7 @@
    "desc": "Saham teknologi China.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "cqqq.us",
    "cagrYears": 10
   },
@@ -2847,7 +2847,7 @@
    "desc": "Saham perusahaan Afrika dan yang berbisnis di Afrika.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "afk.us",
    "cagrYears": 10
   },
@@ -2858,7 +2858,7 @@
    "country": "Latin America",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 1.3,
+   "cagr": 1.4,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2866,7 +2866,7 @@
    "desc": "40 saham besar Amerika Latin.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ilf.us",
    "cagrYears": 10
   },
@@ -2877,7 +2877,7 @@
    "country": "Asia",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.8,
+   "cagr": 6,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2885,7 +2885,7 @@
    "desc": "Saham Asia di luar Jepang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "aaxj.us",
    "cagrYears": 10
   },
@@ -2896,7 +2896,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 4.6,
+   "cagr": 4.7,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2904,7 +2904,7 @@
    "desc": "Saham kapitalisasi kecil pasar berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ewx.us",
    "cagrYears": 10
   },
@@ -2915,7 +2915,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -0.7,
+   "cagr": -0.6,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2923,7 +2923,7 @@
    "desc": "Saham dividen tinggi pasar berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "dvye.us",
    "cagrYears": 10
   },
@@ -2934,7 +2934,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.8,
+   "cagr": 12.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2942,7 +2942,7 @@
    "desc": "500 saham besar AS (S&P 500), biaya sangat rendah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "voo.us",
    "cagrYears": 10
   },
@@ -2953,7 +2953,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.7,
+   "cagr": 12.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2961,7 +2961,7 @@
    "desc": "Indeks S&P 500.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ivv.us",
    "cagrYears": 10
   },
@@ -2972,7 +2972,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.2,
+   "cagr": 8.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -2980,7 +2980,7 @@
    "desc": "Saham kapitalisasi menengah AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ijh.us",
    "cagrYears": 10
   },
@@ -2999,7 +2999,7 @@
    "desc": "Saham kapitalisasi kecil AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ijr.us",
    "cagrYears": 10
   },
@@ -3010,7 +3010,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.3,
+   "cagr": 8.4,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3018,7 +3018,7 @@
    "desc": "Saham kapitalisasi kecil AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vb.us",
    "cagrYears": 10
   },
@@ -3029,7 +3029,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.2,
+   "cagr": 9.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3037,7 +3037,7 @@
    "desc": "Saham kapitalisasi menengah AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vo.us",
    "cagrYears": 10
   },
@@ -3048,7 +3048,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.2,
+   "cagr": 8.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3056,7 +3056,7 @@
    "desc": "Indeks S&P MidCap 400.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "mdy.us",
    "cagrYears": 10
   },
@@ -3067,7 +3067,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.2,
+   "cagr": 11.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3075,7 +3075,7 @@
    "desc": "Perusahaan AS dengan dividen yang naik konsisten.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vig.us",
    "cagrYears": 10
   },
@@ -3094,7 +3094,7 @@
    "desc": "Saham AS dengan pertumbuhan dividen.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "dgro.us",
    "cagrYears": 10
   },
@@ -3113,7 +3113,7 @@
    "desc": "Saham AS berdividen tinggi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "dvy.us",
    "cagrYears": 10
   },
@@ -3132,7 +3132,7 @@
    "desc": "Saham AS berdividen tinggi dan berkualitas.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "hdv.us",
    "cagrYears": 10
   },
@@ -3143,7 +3143,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3151,7 +3151,7 @@
    "desc": "Saham AS dengan dividen naik 20 tahun lebih.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "sdy.us",
    "cagrYears": 10
   },
@@ -3162,7 +3162,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.5,
+   "cagr": 8.4,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3170,7 +3170,7 @@
    "desc": "Perusahaan S&P 500 yang menaikkan dividen 25 tahun berturut-turut.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "nobl.us",
    "cagrYears": 10
   },
@@ -3181,7 +3181,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.2,
+   "cagr": 12.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3189,7 +3189,7 @@
    "desc": "Seluruh pasar saham AS, biaya rendah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "schb.us",
    "cagrYears": 10
   },
@@ -3200,7 +3200,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.6,
+   "cagr": 12.7,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3208,7 +3208,7 @@
    "desc": "Saham besar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "schx.us",
    "cagrYears": 10
   },
@@ -3219,7 +3219,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 16.8,
+   "cagr": 16.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3227,7 +3227,7 @@
    "desc": "Saham pertumbuhan besar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "schg.us",
    "cagrYears": 10
   },
@@ -3246,7 +3246,7 @@
    "desc": "Saham nilai (value) besar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "schv.us",
    "cagrYears": 10
   },
@@ -3265,7 +3265,7 @@
    "desc": "Saham negara maju di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "schf.us",
    "cagrYears": 10
   },
@@ -3276,7 +3276,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 4.2,
+   "cagr": 4.4,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3284,7 +3284,7 @@
    "desc": "Saham pasar berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "sche.us",
    "cagrYears": 10
   },
@@ -3295,7 +3295,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.7,
+   "cagr": 14.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3303,7 +3303,7 @@
    "desc": "Nasdaq-100 dengan biaya lebih rendah dari QQQ.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "qqqm.us",
    "cagrYears": 6
   },
@@ -3322,7 +3322,7 @@
    "desc": "Saham AS berkualitas (ROE tinggi, utang rendah).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "qual.us",
    "cagrYears": 10
   },
@@ -3333,7 +3333,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.7,
+   "cagr": 13,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3341,7 +3341,7 @@
    "desc": "Saham AS dengan momentum harga kuat.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "mtum.us",
    "cagrYears": 10
   },
@@ -3360,7 +3360,7 @@
    "desc": "Saham AS dengan volatilitas rendah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "usmv.us",
    "cagrYears": 10
   },
@@ -3371,7 +3371,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3379,7 +3379,7 @@
    "desc": "Saham S&P 500 dengan volatilitas terendah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "splv.us",
    "cagrYears": 10
   },
@@ -3398,7 +3398,7 @@
    "desc": "Saham AS bervaluasi murah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vlue.us",
    "cagrYears": 10
   },
@@ -3409,7 +3409,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.5,
+   "cagr": 12.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3417,7 +3417,7 @@
    "desc": "Saham AS dengan penilaian ESG baik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "esgu.us",
    "cagrYears": 9.8
   },
@@ -3428,7 +3428,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.6,
+   "cagr": 9.7,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3436,7 +3436,7 @@
    "desc": "Seluruh pasar saham dunia dalam satu ETF.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vt.us",
    "cagrYears": 10
   },
@@ -3447,7 +3447,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10,
+   "cagr": 10.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3455,7 +3455,7 @@
    "desc": "Saham negara maju dan berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "acwi.us",
    "cagrYears": 10
   },
@@ -3474,7 +3474,7 @@
    "desc": "Saham negara maju saja.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "urth.us",
    "cagrYears": 10
   },
@@ -3493,7 +3493,7 @@
    "desc": "Saham negara maju di luar AS dan Kanada.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "efa.us",
    "cagrYears": 10
   },
@@ -3504,7 +3504,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.9,
+   "cagr": 6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3512,7 +3512,7 @@
    "desc": "Seluruh saham dunia di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vxus.us",
    "cagrYears": 10
   },
@@ -3523,7 +3523,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.1,
+   "cagr": 6.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3531,7 +3531,7 @@
    "desc": "Saham dunia di luar AS (maju dan berkembang).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "veu.us",
    "cagrYears": 10
   },
@@ -3550,7 +3550,7 @@
    "desc": "Saham internasional di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ixus.us",
    "cagrYears": 10
   },
@@ -3561,7 +3561,7 @@
    "country": "Europe",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.8,
+   "cagr": 6.7,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3569,7 +3569,7 @@
    "desc": "Saham besar dan menengah Eropa.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vgk.us",
    "cagrYears": 10
   },
@@ -3580,7 +3580,7 @@
    "country": "Developed Asia-Pacific",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.7,
+   "cagr": 5.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3588,7 +3588,7 @@
    "desc": "Saham negara maju kawasan Pasifik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vpl.us",
    "cagrYears": 10
   },
@@ -3607,7 +3607,7 @@
    "desc": "Saham kapitalisasi kecil negara maju di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "scz.us",
    "cagrYears": 10
   },
@@ -3618,7 +3618,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5,
+   "cagr": 5.3,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3626,7 +3626,7 @@
    "desc": "Saham pasar berkembang (China, India, Taiwan, Korea, dll).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "eem.us",
    "cagrYears": 10
   },
@@ -3637,7 +3637,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 3.2,
+   "cagr": 3.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3645,7 +3645,7 @@
    "desc": "Saham pasar berkembang dengan volatilitas rendah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "eemv.us",
    "cagrYears": 10
   },
@@ -3656,7 +3656,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.3,
+   "cagr": 5.7,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3664,7 +3664,7 @@
    "desc": "Saham pasar berkembang tanpa China.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "emxc.us",
    "cagrYears": 9.3
   },
@@ -3675,7 +3675,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 21.7,
+   "cagr": 21.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3683,7 +3683,7 @@
    "desc": "Sektor teknologi informasi AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vgt.us",
    "cagrYears": 10
   },
@@ -3702,7 +3702,7 @@
    "desc": "Sektor kesehatan AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vht.us",
    "cagrYears": 10
   },
@@ -3721,7 +3721,7 @@
    "desc": "Sektor keuangan AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vfh.us",
    "cagrYears": 10
   },
@@ -3732,7 +3732,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.2,
+   "cagr": 5.3,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3740,7 +3740,7 @@
    "desc": "Sektor energi AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vde.us",
    "cagrYears": 10
   },
@@ -3759,7 +3759,7 @@
    "desc": "Sektor industri AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vis.us",
    "cagrYears": 10
   },
@@ -3770,7 +3770,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.5,
+   "cagr": 6.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3778,7 +3778,7 @@
    "desc": "Sektor komunikasi dan media AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vox.us",
    "cagrYears": 10
   },
@@ -3789,7 +3789,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.7,
+   "cagr": 11.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3797,7 +3797,7 @@
    "desc": "Konsumsi sekunder AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vcr.us",
    "cagrYears": 10
   },
@@ -3808,7 +3808,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.6,
+   "cagr": 6.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3816,7 +3816,7 @@
    "desc": "Konsumsi primer (kebutuhan pokok) AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vdc.us",
    "cagrYears": 10
   },
@@ -3835,7 +3835,7 @@
    "desc": "Sektor bahan baku AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vaw.us",
    "cagrYears": 10
   },
@@ -3854,7 +3854,7 @@
    "desc": "Sektor utilitas AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vpu.us",
    "cagrYears": 10
   },
@@ -3873,7 +3873,7 @@
    "desc": "REIT (properti) AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vnq.us",
    "cagrYears": 10
   },
@@ -3884,7 +3884,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -1.5,
+   "cagr": -1.6,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3892,7 +3892,7 @@
    "desc": "REIT dan properti di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vnqi.us",
    "cagrYears": 10
   },
@@ -3903,7 +3903,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 25.8,
+   "cagr": 26.2,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3911,7 +3911,7 @@
    "desc": "Perusahaan semikonduktor.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "soxx.us",
    "cagrYears": 10
   },
@@ -3922,7 +3922,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9,
+   "cagr": 9.2,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3930,7 +3930,7 @@
    "desc": "Perusahaan bioteknologi AS (bobot merata).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "xbi.us",
    "cagrYears": 10
   },
@@ -3941,7 +3941,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.7,
+   "cagr": 8.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3949,7 +3949,7 @@
    "desc": "Perusahaan bioteknologi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ibb.us",
    "cagrYears": 10
   },
@@ -3960,7 +3960,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11,
+   "cagr": 11.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3968,7 +3968,7 @@
    "desc": "Pertahanan dan dirgantara AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ita.us",
    "cagrYears": 10
   },
@@ -3979,7 +3979,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.7,
+   "cagr": 10,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3987,7 +3987,7 @@
    "desc": "Energi surya.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "tan.us",
    "cagrYears": 10
   },
@@ -3998,7 +3998,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10.6,
+   "cagr": 11,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4006,7 +4006,7 @@
    "desc": "Energi bersih dan kendaraan listrik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "qcln.us",
    "cagrYears": 10
   },
@@ -4017,7 +4017,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 3.1,
+   "cagr": 3.6,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4025,7 +4025,7 @@
    "desc": "Perusahaan energi bersih, volatilitas tinggi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "pbw.us",
    "cagrYears": 10
   },
@@ -4036,7 +4036,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.5,
+   "cagr": 9.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4044,7 +4044,7 @@
    "desc": "Penambang dan perusahaan uranium.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ura.us",
    "cagrYears": 10
   },
@@ -4055,7 +4055,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -0.4,
+   "cagr": -0.2,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4063,7 +4063,7 @@
    "desc": "Logam tanah jarang dan strategis.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "remx.us",
    "cagrYears": 10
   },
@@ -4074,7 +4074,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.7,
+   "cagr": 12.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4082,7 +4082,7 @@
    "desc": "Penambang tembaga.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "copx.us",
    "cagrYears": 10
   },
@@ -4093,7 +4093,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 15.2,
+   "cagr": 15.3,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4101,7 +4101,7 @@
    "desc": "Penambang emas besar.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "gdx.us",
    "cagrYears": 10
   },
@@ -4112,7 +4112,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.8,
+   "cagr": 12,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4120,7 +4120,7 @@
    "desc": "Penambang emas kecil.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "gdxj.us",
    "cagrYears": 10
   },
@@ -4131,7 +4131,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.2,
+   "cagr": 11.7,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4139,7 +4139,7 @@
    "desc": "Logam dan pertambangan AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "xme.us",
    "cagrYears": 10
   },
@@ -4158,7 +4158,7 @@
    "desc": "Komputasi awan.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "skyy.us",
    "cagrYears": 10
   },
@@ -4169,7 +4169,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 16.4,
+   "cagr": 16.5,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4177,7 +4177,7 @@
    "desc": "Keamanan siber.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "cibr.us",
    "cagrYears": 10
   },
@@ -4188,7 +4188,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.3,
+   "cagr": 7.5,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4196,7 +4196,7 @@
    "desc": "Robotik dan kecerdasan buatan.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "botz.us",
    "cagrYears": 10
   },
@@ -4215,7 +4215,7 @@
    "desc": "Video game dan esports.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "espo.us",
    "cagrYears": 8
   },
@@ -4226,7 +4226,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 18.3,
+   "cagr": 18.5,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4234,7 +4234,7 @@
    "desc": "Inovasi internet generasi berikutnya, aktif dikelola.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "arkw.us",
    "cagrYears": 10
   },
@@ -4245,7 +4245,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.6,
+   "cagr": 9.7,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4253,7 +4253,7 @@
    "desc": "Genomik dan bioteknologi, aktif dikelola.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "arkg.us",
    "cagrYears": 10
   },
@@ -4264,7 +4264,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.8,
+   "cagr": 9,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4272,7 +4272,7 @@
    "desc": "Inovasi teknologi finansial, aktif dikelola.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "arkf.us",
    "cagrYears": 7.7
   },
@@ -4291,7 +4291,7 @@
    "desc": "Obligasi korporasi AS berperingkat layak investasi.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "lqd.us",
    "cagrYears": 10
   },
@@ -4310,7 +4310,7 @@
    "desc": "Obligasi korporasi AS berimbal hasil tinggi (berisiko lebih besar).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "hyg.us",
    "cagrYears": 10
   },
@@ -4329,7 +4329,7 @@
    "desc": "Obligasi high yield AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "jnk.us",
    "cagrYears": 10
   },
@@ -4348,7 +4348,7 @@
    "desc": "Obligasi pemerintah pasar berkembang berdenominasi dolar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "emb.us",
    "cagrYears": 10
   },
@@ -4359,7 +4359,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -3.1,
+   "cagr": -3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -4367,7 +4367,7 @@
    "desc": "Obligasi negara pasar berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "pcy.us",
    "cagrYears": 10
   },
@@ -4386,7 +4386,7 @@
    "desc": "Obligasi pasar berkembang dalam mata uang lokal (ada risiko kurs).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "emlc.us",
    "cagrYears": 10
   },
@@ -4397,7 +4397,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -1.9,
+   "cagr": -1.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -4405,7 +4405,7 @@
    "desc": "Obligasi pemerintah pasar berkembang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vwob.us",
    "cagrYears": 10
   },
@@ -4416,7 +4416,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -1.4,
+   "cagr": -1.3,
    "aum": null,
    "expense": null,
    "risk": "Rendah",
@@ -4424,7 +4424,7 @@
    "desc": "Obligasi investment grade di luar AS (lindung nilai kurs).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "bndx.us",
    "cagrYears": 10
   },
@@ -4443,7 +4443,7 @@
    "desc": "Obligasi pemerintah negara maju di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "bwx.us",
    "cagrYears": 10
   },
@@ -4454,7 +4454,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -1.1,
+   "cagr": -1.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -4462,7 +4462,7 @@
    "desc": "Obligasi pemerintah negara maju di luar AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "igov.us",
    "cagrYears": 10
   },
@@ -4473,7 +4473,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -0.7,
+   "cagr": -0.6,
    "aum": null,
    "expense": null,
    "risk": "Rendah",
@@ -4481,7 +4481,7 @@
    "desc": "Obligasi AS terindeks inflasi (TIPS).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "tip.us",
    "cagrYears": 10
   },
@@ -4500,7 +4500,7 @@
    "desc": "Obligasi korporasi AS tenor menengah.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vcit.us",
    "cagrYears": 10
   },
@@ -4519,7 +4519,7 @@
    "desc": "Obligasi korporasi AS tenor pendek.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vcsh.us",
    "cagrYears": 10
   },
@@ -4538,7 +4538,7 @@
    "desc": "Treasury AS tenor pendek.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "vgsh.us",
    "cagrYears": 10
   },
@@ -4557,7 +4557,7 @@
    "desc": "Treasury AS semua tenor.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "govt.us",
    "cagrYears": 10
   },
@@ -4576,7 +4576,7 @@
    "desc": "Treasury AS kurang dari satu tahun, mirip kas.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "shv.us",
    "cagrYears": 10
   },
@@ -4595,7 +4595,7 @@
    "desc": "Treasury AS tenor 10-20 tahun.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "tlh.us",
    "cagrYears": 10
   },
@@ -4614,7 +4614,7 @@
    "desc": "Treasury AS tenor sangat panjang, sangat sensitif suku bunga.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "edv.us",
    "cagrYears": 10
   },
@@ -4633,7 +4633,7 @@
    "desc": "Obligasi daerah AS (municipal), bebas pajak federal AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "mub.us",
    "cagrYears": 10
   },
@@ -4652,7 +4652,7 @@
    "desc": "Surat berharga berbasis hipotek AS.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "mbb.us",
    "cagrYears": 10
   },
@@ -4671,7 +4671,7 @@
    "desc": "Obligasi AS agregat.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "spab.us",
    "cagrYears": 10
   },
@@ -4690,7 +4690,7 @@
    "desc": "Pinjaman senior korporasi suku bunga mengambang.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "bkln.us",
    "cagrYears": 10
   },
@@ -4709,7 +4709,7 @@
    "desc": "Harga perak fisik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "slv.us",
    "cagrYears": 10
   },
@@ -4720,7 +4720,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13,
+   "cagr": 12.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -4728,7 +4728,7 @@
    "desc": "Harga emas fisik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "iau.us",
    "cagrYears": 10
   },
@@ -4739,7 +4739,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 15.4,
+   "cagr": 15.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -4747,9 +4747,9 @@
    "desc": "Harga emas fisik dengan biaya lebih rendah dari GLD.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "gldm.us",
-   "cagrYears": 8.3
+   "cagrYears": 8.4
   },
   {
    "id": 258,
@@ -4758,7 +4758,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.1,
+   "cagr": 13,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -4766,7 +4766,7 @@
    "desc": "Emas fisik yang disimpan di brankas.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "sgol.us",
    "cagrYears": 10
   },
@@ -4777,7 +4777,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 4.6,
+   "cagr": 4.7,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4785,7 +4785,7 @@
    "desc": "Platinum fisik.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "pplt.us",
    "cagrYears": 10
   },
@@ -4796,7 +4796,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.3,
+   "cagr": 8.4,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4804,7 +4804,7 @@
    "desc": "Harga tembaga lewat kontrak berjangka.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "cper.us",
    "cagrYears": 10
   },
@@ -4823,7 +4823,7 @@
    "desc": "Harga minyak mentah lewat kontrak berjangka (ada risiko roll yield).",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "uso.us",
    "cagrYears": 10
   },
@@ -4834,7 +4834,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -23.5,
+   "cagr": -23.4,
    "aum": null,
    "expense": null,
    "risk": "Ekstrem",
@@ -4842,7 +4842,7 @@
    "desc": "Harga gas alam lewat kontrak berjangka, sangat fluktuatif.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "ung.us",
    "cagrYears": 10
   },
@@ -4861,7 +4861,7 @@
    "desc": "Komoditas pertanian lewat kontrak berjangka.",
    "status": "etf-as",
    "cagrBasis": "stooq",
-   "dataAsOf": "2026-11-05",
+   "dataAsOf": "2026-11-06",
    "stooq": "dba.us",
    "cagrYears": 10
   },
@@ -6087,7 +6087,7 @@
    "ticker": "SMH",
    "name": "VanEck Semiconductor ETF",
    "focus": "Semikonduktor Global",
-   "cagr10y": 28.8,
+   "cagr10y": 29.2,
    "basis": "pasar",
    "stooq": "smh.us",
    "yearly": [
@@ -6129,7 +6129,7 @@
     },
     {
      "year": 2026,
-     "return": 24.3
+     "return": 28.8
     }
    ]
   },
@@ -6139,7 +6139,7 @@
    "ticker": "QQQ",
    "name": "Invesco QQQ Trust",
    "focus": "Saham AS — Teknologi",
-   "cagr10y": 18.6,
+   "cagr10y": 18.8,
    "basis": "pasar",
    "stooq": "qqq.us",
    "yearly": [
@@ -6181,7 +6181,7 @@
     },
     {
      "year": 2026,
-     "return": 5.3
+     "return": 7.3
     }
    ]
   },
@@ -6233,7 +6233,7 @@
     },
     {
      "year": 2026,
-     "return": 7.5
+     "return": 8.4
     }
    ]
   },
@@ -6243,7 +6243,7 @@
    "ticker": "VTI",
    "name": "Vanguard Total Stock Market",
    "focus": "Saham AS — Total Market",
-   "cagr10y": 12.2,
+   "cagr10y": 12.3,
    "basis": "pasar",
    "stooq": "vti.us",
    "yearly": [
@@ -6285,7 +6285,7 @@
     },
     {
      "year": 2026,
-     "return": 7.5
+     "return": 8.4
     }
    ]
   },
@@ -6295,7 +6295,7 @@
    "ticker": "GLD",
    "name": "SPDR Gold Shares",
    "focus": "Emas",
-   "cagr10y": 12.9,
+   "cagr10y": 12.8,
    "basis": "pasar",
    "stooq": "gld.us",
    "yearly": [
@@ -6337,7 +6337,7 @@
     },
     {
      "year": 2026,
-     "return": -5.3
+     "return": -6.1
     }
    ]
   },
@@ -6347,7 +6347,7 @@
    "ticker": "VT",
    "name": "Vanguard Total World Stock",
    "focus": "Saham Dunia",
-   "cagr10y": 9.6,
+   "cagr10y": 9.7,
    "basis": "pasar",
    "stooq": "vt.us",
    "yearly": [
@@ -6389,7 +6389,7 @@
     },
     {
      "year": 2026,
-     "return": 7.3
+     "return": 8
     }
    ]
   },
@@ -6399,7 +6399,7 @@
    "ticker": "SCHD",
    "name": "Schwab US Dividend Equity",
    "focus": "Dividen AS",
-   "cagr10y": 9.5,
+   "cagr10y": 9.4,
    "basis": "pasar",
    "stooq": "schd.us",
    "yearly": [
@@ -6441,7 +6441,7 @@
     },
     {
      "year": 2026,
-     "return": 29.1
+     "return": 28.7
     }
    ]
   },
@@ -6493,7 +6493,7 @@
     },
     {
      "year": 2026,
-     "return": 36.6
+     "return": 37
     }
    ]
   },
@@ -6503,7 +6503,7 @@
    "ticker": "EEM",
    "name": "iShares MSCI Emerging Markets",
    "focus": "Saham Pasar Emerging",
-   "cagr10y": 5,
+   "cagr10y": 5.3,
    "basis": "pasar",
    "stooq": "eem.us",
    "yearly": [
@@ -6545,7 +6545,7 @@
     },
     {
      "year": 2026,
-     "return": 6.1
+     "return": 8.8
     }
    ]
   },
@@ -6555,7 +6555,7 @@
    "ticker": "VWO",
    "name": "Vanguard FTSE Emerging Markets",
    "focus": "Saham Emerging (FTSE)",
-   "cagr10y": 4.1,
+   "cagr10y": 4.3,
    "basis": "pasar",
    "stooq": "vwo.us",
    "yearly": [
@@ -6597,7 +6597,7 @@
     },
     {
      "year": 2026,
-     "return": 0.9
+     "return": 3.1
     }
    ]
   },
@@ -6701,7 +6701,7 @@
     },
     {
      "year": 2026,
-     "return": -4.2
+     "return": -4.1
     }
    ]
   },
@@ -6753,7 +6753,7 @@
     },
     {
      "year": 2026,
-     "return": -5
+     "return": -5.1
     }
    ]
   },
@@ -6815,7 +6815,7 @@
    "ticker": "TLT",
    "name": "iShares 20+ Year Treasury Bond",
    "focus": "Obligasi AS — Treasuries Panjang",
-   "cagr10y": -3.8,
+   "cagr10y": -3.7,
    "basis": "pasar",
    "stooq": "tlt.us",
    "yearly": [
@@ -6857,7 +6857,7 @@
     },
     {
      "year": 2026,
-     "return": -6
+     "return": -5.8
     }
    ]
   },
@@ -6867,7 +6867,7 @@
    "ticker": "EIDO",
    "name": "iShares MSCI Indonesia ETF",
    "focus": "Saham Indonesia (NYSE)",
-   "cagr10y": -8.3,
+   "cagr10y": -8,
    "basis": "pasar",
    "stooq": "eido.us",
    "yearly": [
@@ -6909,7 +6909,7 @@
     },
     {
      "year": 2026,
-     "return": -47.4
+     "return": -46.1
     }
    ]
   },
