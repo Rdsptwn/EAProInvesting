@@ -10,9 +10,26 @@ const man = rd('idx-status-manual.json');
 let scr = { rows: [], meta: {} };
 try { scr = rd('idx-screener.json'); } catch (_) {}
 const built = new Date((scr.meta && scr.meta.built) || Date.now()).getTime();
+let ev = { items: {} }, cal = { events: [] };
+try { ev = rd('idx-events.json'); } catch (_) {}
+try { cal = rd('corporate-calendar.json'); } catch (_) {}
 const items = {};
 const add = (t, k, n, s) => { (items[t] = items[t] || []).push(s ? [k, n, s] : [k, n]); };
 for (const [t, a] of Object.entries(man.flags)) for (const f of a) add(t, f.k, f.note, f.src);
+const nowMs = Date.now();
+const dmy0 = (s) => new Date(s + 'T00:00:00Z').toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+for (const [t, e] of Object.entries(ev.items || {})) {
+  const ld = (e.div || []).filter((x) => (nowMs - new Date(x[0])) / 86400000 <= 21).pop();
+  if (ld) add(t, 'DIV', `Dividen ex-date ${dmy0(ld[0])}: Rp${ld[1]}/saham (Yahoo Finance)`);
+  const ls = (e.split || []).filter((x) => (nowMs - new Date(x[0])) / 86400000 <= 120).pop();
+  if (ls) add(t, 'SPLIT', `Stock split ${ls[1]} pada ${dmy0(ls[0])} (Yahoo Finance)`);
+}
+for (const c of cal.events || []) {
+  if (!c.ticker || !/^[A-Z0-9]{4}$/.test(c.ticker)) continue;
+  const k = c.kind === 'dividen' ? 'DIV' : 'AKSI';
+  if (k === 'DIV' && (items[c.ticker] || []).some((x) => x[0] === 'DIV')) continue;
+  add(c.ticker, k, `${c.action} · ${dmy0(c.date)} (${c.dateLabel || 'jadwal'})`);
+}
 const dmy = (s) => new Date(s + 'T00:00:00Z').toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 for (const r of scr.rows) {
   const [t, price, , , , , , , , , date] = r;

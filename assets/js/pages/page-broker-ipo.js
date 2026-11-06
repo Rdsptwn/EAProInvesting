@@ -110,7 +110,7 @@
             return main + `<tr class="bg-slate-50 border-b border-slate-200"><td colspan="8" class="px-4 py-3 text-[11px] text-slate-600 leading-relaxed">
                 <b>${esc(x.name || "")}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
                 <b>Penjamin pelaksana:</b> ${x.lead.length ? esc(x.lead.join(', ')) : 'belum tercatat'} · <b>Penjamin emisi lain:</b> ${x.syn.length ? esc(x.syn.join(', ')) : '—'}<br>
-                ${x.flags.length ? x.flags.map((f) => `<b class="text-rose-600">${esc(ewoksStatusLabel(f[0]))}:</b> ${esc(f[1])}${f[2] ? ` <a href="${esc(f[2])}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>`).join('') : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}</td></tr>`;
+                ${x.flags.length ? x.flags.map((f) => `<b class="text-rose-600">${esc(ewoksStatusLabel(f[0]))}:</b> ${esc(f[1])}${f[2] ? ` <a href="${esc(f[2])}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>`).join('') : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}<div class="mt-1">${ewoksStatusLinks(x.t)}</div></td></tr>`;
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada data.</td></tr>';
     };
 
@@ -131,4 +131,12 @@
     }
 
     if (location.hash === '#ipo') document.addEventListener('DOMContentLoaded', () => brokerTab('ipo'));
+})();
+
+document.addEventListener('ewoks-status', () => { try { if (window.ipoRender) ipoRender(true); } catch (_) {} });
+(function () {
+    const q = new URLSearchParams(location.search).get('q');
+    if (!q) return;
+    const go = () => { const el = document.getElementById('ipo-q'); if (!el || !window.ipoRender) return setTimeout(go, 400); el.value = q.toUpperCase(); if (window.brokerTab) brokerTab('ipo'); ipoRender(); };
+    setTimeout(go, 600);
 })();

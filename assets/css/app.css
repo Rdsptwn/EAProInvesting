@@ -593,3 +593,7 @@ body.dark-mode-override #broker-pane-ipo .border-slate-100,body.dark-mode-overri
 .st-row{display:flex;flex-wrap:wrap;gap:2px;margin-top:2px}.st-bd{display:inline-block;font-size:8px;font-weight:900;padding:1px 5px;border-radius:6px;letter-spacing:.03em;white-space:nowrap;cursor:help}
 .st-SUSPEN{background:#fee2e2;color:#b91c1c}.st-DELIST{background:#1e293b;color:#f8fafc}.st-PPK{background:#ede9fe;color:#6d28d9}.st-RI{background:#dbeafe;color:#1d4ed8}.st-IDLE{background:#fef3c7;color:#b45309}.st-GOCAP{background:#e2e8f0;color:#475569}
 body.dark-mode-override .st-SUSPEN{background:#7f1d1d;color:#fecaca}body.dark-mode-override .st-DELIST{background:#f1f5f9;color:#0f172a}body.dark-mode-override .st-PPK{background:#4c1d95;color:#ddd6fe}body.dark-mode-override .st-RI{background:#1e3a8a;color:#bfdbfe}body.dark-mode-override .st-IDLE{background:#78350f;color:#fde68a}body.dark-mode-override .st-GOCAP{background:#334155;color:#cbd5e1}
+
+.st-DIV{background:#dcfce7;color:#166534}.st-SPLIT{background:#cffafe;color:#155e75}.st-UMA{background:#ffedd5;color:#c2410c}.st-AKSI{background:#fce7f3;color:#9d174d}
+body.dark-mode-override .st-DIV{background:#14532d;color:#bbf7d0}body.dark-mode-override .st-SPLIT{background:#164e63;color:#a5f3fc}body.dark-mode-override .st-UMA{background:#7c2d12;color:#fed7aa}body.dark-mode-override .st-AKSI{background:#831843;color:#fbcfe8}
+.st-lk{font-size:9px;font-weight:800;color:#2563eb;margin-right:8px;text-decoration:none}.st-lk:hover{text-decoration:underline}

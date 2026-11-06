@@ -394,3 +394,5 @@
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
     }
 })();
+
+document.addEventListener('ewoks-status', () => { try { tpRunScreener(); } catch (_) {} });

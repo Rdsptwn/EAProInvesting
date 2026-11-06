@@ -88,7 +88,8 @@ function renderGrid(groups = dataGroups) {
         const chips = group.stocks.slice(0, 5).map((s) => {
             const q = typeof getIdxQuote === 'function' ? getIdxQuote(s.ticker) : null;
             const v = q && q.changePct != null ? q.changePct : null;
-            return `<span class="kg-tk"><b>${escapeHtml(s.ticker)}</b><i class="${v == null ? 'flat' : v >= 0 ? 'up' : 'down'}">${v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%'}</i></span>`;
+            const sb = typeof ewoksStatusOf === 'function' ? ewoksStatusOf(s.ticker) : [];
+            return `<span class="kg-tk"><b>${escapeHtml(s.ticker)}</b>${sb.length ? `<em class="st-bd st-${sb[0][0]}" title="${escapeHtml(sb.map((f) => f[1]).join(' | '))}">${sb.length > 1 ? sb.length + '!' : ewoksStatusLabel(sb[0][0])}</em>` : ''}<i class="${v == null ? 'flat' : v >= 0 ? 'up' : 'down'}">${v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%'}</i></span>`;
         }).join('');
         const more = numStocks > 5 ? `<span class="kg-tk more">+${numStocks - 5}</span>` : '';
         const card = document.createElement('button');
@@ -217,6 +218,8 @@ function showDetail(groupId) {
                     <span class="${kgChipClass(pct)}">${kgFmtPct(pct)}</span>
                 </div>
             </div>
+            ${typeof ewoksStatusBadges === 'function' && ewoksStatusOf(stock.ticker).length ? `<div class="st-row" style="margin:6px 0">${ewoksStatusBadges(stock.ticker)}</div>` : ''}
+            ${typeof ewoksStatusLinks === 'function' ? `<div style="margin:4px 0">${ewoksStatusLinks(stock.ticker)}</div>` : ''}
             ${rangeHtml}
             <div class="kg-metrics">
                 <div><p>Kepemilikan</p><b>${escapeHtml(stock.kepemilikan_persen)}</b></div>
@@ -907,3 +910,9 @@ function paintFundaQuarterHeadings() {
 }
 
 paintFundaQuarterHeadings();
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof ewoksStatusLoad === 'function') ewoksStatusLoad().then(() => { try { renderGrid(dataGroups); } catch (_) {} });
+    try { const q = new URLSearchParams(location.search).get('q'); if (q) setTimeout(() => { const el = document.getElementById('kongloSearch'); if (el) { el.value = q; searchKonglo(); } }, 500); } catch (_) {}
+});
+document.addEventListener('ewoks-status', () => { try { searchKonglo(); } catch (_) {} });

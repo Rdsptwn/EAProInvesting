@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261105t2140';
+window.EWOKS_ASSET_V = '20261106t0729';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1037,14 +1037,20 @@ window.addEventListener('load', () => {
 
 /* ===== Penanda status emiten (suspen, delisting, pemantauan khusus, RI, tak ada transaksi, gocap) ===== */
 (function () {
-    const LBL = { SUSPEN: 'SUSPEN', DELIST: 'DELISTING', PPK: 'PEMANTAUAN KHUSUS', RI: 'RI', IDLE: 'TAK ADA TRANSAKSI', GOCAP: 'GOCAP' };
+    const LBL = { SUSPEN: 'SUSPEN', DELIST: 'DELISTING', PPK: 'PEMANTAUAN KHUSUS', RI: 'RI', DIV: 'DIVIDEN', SPLIT: 'SPLIT', UMA: 'UMA', AKSI: 'AKSI KORPORASI', IDLE: 'TAK ADA TRANSAKSI', GOCAP: 'GOCAP' };
     let map = null, pr = null, meta = null;
-    window.ewoksStatusLoad = function () {
-        if (pr) return pr;
+    window.ewoksStatusLoad = function (force) {
+        if (pr && !force) return pr;
         const base = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
         pr = fetch(`${base}assets/data/idx-status.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`, { cache: 'no-store' })
             .then((r) => (r.ok ? r.json() : null)).then((d) => { map = (d && d.items) || {}; meta = d; return map; }).catch(() => { map = {}; return map; });
         return pr;
+    };
+    // refresh otomatis tiap 10 menit; halaman yang mendengarkan 'ewoks-status' me-render ulang
+    setInterval(() => { ewoksStatusLoad(true).then(() => document.dispatchEvent(new CustomEvent('ewoks-status'))); }, 10 * 60 * 1000);
+    window.ewoksStatusLinks = function (t) {
+        const base = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+        return `<a class="st-lk" href="${base}watchlist.html?t=${t}">Terminal</a><a class="st-lk" href="${base}broker.html?q=${t}#ipo">IPO &amp; penjamin</a><a class="st-lk" href="${base}konglo.html?q=${t}">Konglo</a>`;
     };
     window.ewoksStatusOf = (t) => (map && map[t]) || [];
     window.ewoksStatusMeta = () => meta;
