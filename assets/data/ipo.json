@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-05",
- "scope": "IPO saham BEI Jan 2021–Okt 2026",
+ "scope": "IPO saham BEI Jan 2020–Okt 2026 (2020 baru 44 dari ±51 emiten)",
  "uwNote": "Penjamin hanya terisi bila ditemukan di sumber artikel; sebagian emiten belum lengkap.",
  "items": [
   {
@@ -5084,6 +5084,710 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+   ]
+  },
+  {
+   "t": "PMMP",
+   "name": "Panca Mitra Multiperdana",
+   "date": "2020-12-18",
+   "price": 336,
+   "shares": 353000000,
+   "fundsBn": 118.61,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "VICI",
+   "name": "Victoria Care Indonesia",
+   "date": "2020-12-17",
+   "price": 100,
+   "shares": 1008000000,
+   "fundsBn": 100.8,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "ATAP",
+   "name": "Trimitra Prawara Goldland",
+   "date": "2020-12-11",
+   "price": 100,
+   "shares": 250000000,
+   "fundsBn": 25.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "ENZO",
+   "name": "Morenzo Abadi Perkasa",
+   "date": "2020-09-14",
+   "price": 105,
+   "shares": 392000000,
+   "fundsBn": 41.16,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "ROCK",
+   "name": "Rockfields Properti Indonesia",
+   "date": "2020-09-10",
+   "price": 1340,
+   "shares": 287036992,
+   "fundsBn": 384.63,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "HOMI",
+   "name": "Grand House Mulia",
+   "date": "2020-09-10",
+   "price": 380,
+   "shares": 157500000,
+   "fundsBn": 59.85,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "SOHO",
+   "name": "Soho Global Health",
+   "date": "2020-09-08",
+   "price": 1820,
+   "shares": 114381000,
+   "fundsBn": 208.17,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PURI",
+   "name": "Puri Global Sukses",
+   "date": "2020-09-08",
+   "price": 170,
+   "shares": 200000000,
+   "fundsBn": 34.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "BBSI",
+   "name": "Bank Bisnis Internasional",
+   "date": "2020-09-07",
+   "price": 480,
+   "shares": 394764992,
+   "fundsBn": 189.49,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "SCNP",
+   "name": "Selaras Citra Nusantara Perkasa",
+   "date": "2020-09-07",
+   "price": 110,
+   "shares": 500000000,
+   "fundsBn": 55.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "KMDS",
+   "name": "Kurniamitra Duta Sentosa",
+   "date": "2020-09-07",
+   "price": 300,
+   "shares": 160000000,
+   "fundsBn": 48.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PNGO",
+   "name": "Pinago Utama",
+   "date": "2020-08-31",
+   "price": 250,
+   "shares": 156250000,
+   "fundsBn": 39.06,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "TRJA",
+   "name": "Transkon Jaya",
+   "date": "2020-08-27",
+   "price": 250,
+   "shares": 375000000,
+   "fundsBn": 93.75,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "SGER",
+   "name": "Sumber Global Energy",
+   "date": "2020-08-10",
+   "price": 108,
+   "shares": 500000000,
+   "fundsBn": 54.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "TOYS",
+   "name": "Sunindo Adipersada",
+   "date": "2020-08-06",
+   "price": 350,
+   "shares": 425000000,
+   "fundsBn": 148.75,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PGUN",
+   "name": "Pradiksi Gunatama",
+   "date": "2020-07-06",
+   "price": 115,
+   "shares": 900000000,
+   "fundsBn": 103.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "UANG",
+   "name": "Pakuan",
+   "date": "2020-07-06",
+   "price": 125,
+   "shares": 275000000,
+   "fundsBn": 34.38,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "EPAC",
+   "name": "Megalestari Epack Sentosaraya",
+   "date": "2020-07-01",
+   "price": 110,
+   "shares": 250000000,
+   "fundsBn": 27.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "TECH",
+   "name": "Indosterling Technomedia",
+   "date": "2020-06-04",
+   "price": 160,
+   "shares": 251300000,
+   "fundsBn": 40.21,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "BHAT",
+   "name": "Bhakti Multi Artha",
+   "date": "2020-04-15",
+   "price": 103,
+   "shares": 2000000000,
+   "fundsBn": 206.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "BBSS",
+   "name": "Bumi Benowo Sukses Sejahtera",
+   "date": "2020-04-15",
+   "price": 120,
+   "shares": 1300000000,
+   "fundsBn": 156.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "CBMF",
+   "name": "Cahaya Bintang Medan",
+   "date": "2020-04-09",
+   "price": 160,
+   "shares": 375000000,
+   "fundsBn": 60.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "CSMI",
+   "name": "Cia Selera Murni",
+   "date": "2020-04-09",
+   "price": 196,
+   "shares": 184060992,
+   "fundsBn": 36.08,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "RONY",
+   "name": "Aesler Grup Internasional",
+   "date": "2020-04-09",
+   "price": 100,
+   "shares": 250000000,
+   "fundsBn": 25.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "SBAT",
+   "name": "Sejahtera Bintang Abadi Textile",
+   "date": "2020-04-08",
+   "price": 105,
+   "shares": 2550000128,
+   "fundsBn": 267.75,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "KBAG",
+   "name": "Karya Bersama Anugerah",
+   "date": "2020-04-08",
+   "price": 100,
+   "shares": 2150000128,
+   "fundsBn": 215.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "SAMF",
+   "name": "Saraswanti Anugerah Makmur",
+   "date": "2020-03-31",
+   "price": 120,
+   "shares": 775000000,
+   "fundsBn": 93.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "CARE",
+   "name": "Metro Healthcare Indonesia",
+   "date": "2020-03-13",
+   "price": 103,
+   "shares": 10000000000,
+   "fundsBn": 1030.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "AMAN",
+   "name": "Makmur Berkah Amanda",
+   "date": "2020-03-13",
+   "price": 110,
+   "shares": 585000000,
+   "fundsBn": 64.35,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "BESS",
+   "name": "Batulicin Nusantara Maritim",
+   "date": "2020-03-09",
+   "price": 105,
+   "shares": 700000000,
+   "fundsBn": 73.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "ESTA",
+   "name": "Esta Multi Usaha",
+   "date": "2020-03-09",
+   "price": 120,
+   "shares": 200000000,
+   "fundsBn": 24.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "ASPI",
+   "name": "Andalan Sakti Primaindo",
+   "date": "2020-02-17",
+   "price": 105,
+   "shares": 330000000,
+   "fundsBn": 34.65,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "DADA",
+   "name": "Diamond Citra Propertindo",
+   "date": "2020-02-14",
+   "price": 102,
+   "shares": 2147000064,
+   "fundsBn": 218.99,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "IKAN",
+   "name": "Era Mandiri Cemerlang",
+   "date": "2020-02-12",
+   "price": 120,
+   "shares": 333332992,
+   "fundsBn": 40.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "AYLS",
+   "name": "Agro Yasa Lestari",
+   "date": "2020-02-12",
+   "price": 100,
+   "shares": 258703008,
+   "fundsBn": 25.87,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "TAMA",
+   "name": "Lancartama Sejati",
+   "date": "2020-02-10",
+   "price": 175,
+   "shares": 200000000,
+   "fundsBn": 35.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PTPW",
+   "name": "Pratama Widya",
+   "date": "2020-02-07",
+   "price": 650,
+   "shares": 175636992,
+   "fundsBn": 114.16,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "PURA",
+   "name": "Putra Rajawali Kencana",
+   "date": "2020-01-29",
+   "price": 105,
+   "shares": 1800000000,
+   "fundsBn": 189.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "DMND",
+   "name": "Diamond Food Indonesia",
+   "date": "2020-01-22",
+   "price": 915,
+   "shares": 100000000,
+   "fundsBn": 91.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "TRIN",
+   "name": "Perintis Triniti Properti",
+   "date": "2020-01-15",
+   "price": 200,
+   "shares": 1093330048,
+   "fundsBn": 218.67,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "AMOR",
+   "name": "Ashmore Asset Management Indonesia",
+   "date": "2020-01-14",
+   "price": 1900,
+   "shares": 111111000,
+   "fundsBn": 211.11,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "INDO",
+   "name": "Royalindo Investa Wijaya",
+   "date": "2020-01-13",
+   "price": 110,
+   "shares": 861820032,
+   "fundsBn": 94.8,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "AMAR",
+   "name": "Bank Amar Indonesia",
+   "date": "2020-01-09",
+   "price": 174,
+   "shares": 1206070016,
+   "fundsBn": 209.86,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+   ]
+  },
+  {
+   "t": "CSRA",
+   "name": "Cisadane Sawit Raya",
+   "date": "2020-01-09",
+   "price": 125,
+   "shares": 450000000,
+   "fundsBn": 56.25,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "",
+   "src": [
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
    ]
   }
  ],
