@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-05",
- "scope": "IPO saham BEI Jan 2020–Okt 2026",
+ "scope": "IPO saham BEI Jan 2019–Okt 2026 (2019: 55 emiten terdaftar, harga/penjamin masih dilengkapi)",
  "uwNote": "Penjamin: \"pelaksana\" = penjamin utama pada daftar EmitenHub/artikel; \"penjamin lain\" = anggota sindikasi dari halaman riwayat tiap sekuritas (EmitenHub). Pembagian peran dapat meleset dari prospektus.",
  "items": [
   {
@@ -6758,6 +6758,890 @@
    "src": [
     "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
     "https://market.bisnis.com/read/20200111/7/1189134/ini-pendatang-baru-pasar-saham-di-awal-2020"
+   ]
+  },
+  {
+   "t": "GLVA",
+   "name": "Galva Technologies Tbk",
+   "date": "2019-12-23",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "UCID",
+   "name": "Uni-Charm Indonesia Tbk",
+   "date": "2019-12-20",
+   "price": 1500,
+   "shares": 831000000,
+   "fundsBn": 1246.5,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://www.cnbcindonesia.com/market/20191223120648-17-125182/catatan-bei-2019-55-emiten-anyar-listing-di-bei"
+   ]
+  },
+  {
+   "t": "PMJS",
+   "name": "Putra Mandiri Jembar Tbk",
+   "date": "2019-12-18",
+   "price": 125,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://investasi.kontan.co.id/news/putra-mandiri-jembar-tetapkan-harga-ipo-rp-125-per-saham"
+   ]
+  },
+  {
+   "t": "IFII",
+   "name": "Indonesia Fibreboard Industry Tbk",
+   "date": "2019-12-10",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "REAL",
+   "name": "Repower Asia Indonesia Tbk",
+   "date": "2019-12-06",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "IFSH",
+   "name": "Ifishdeco Tbk",
+   "date": "2019-12-05",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "AGAR",
+   "name": "Asia Sejahtera Mina Tbk",
+   "date": "2019-12-02",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "KEJU",
+   "name": "Mulia Boga Raya Tbk",
+   "date": "2019-11-25",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "PSGO",
+   "name": "Palma Serasih Tbk",
+   "date": "2019-11-25",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "TEBE",
+   "name": "Dana Brata Luhur Tbk",
+   "date": "2019-11-18",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "ESIP",
+   "name": "Sinergi Inti Plastindo Tbk",
+   "date": "2019-11-14",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "SINI",
+   "name": "Singaraja Putra Tbk",
+   "date": "2019-11-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "WOWS",
+   "name": "Ginting Jaya Energi Tbk",
+   "date": "2019-11-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "DMMX",
+   "name": "Digital Mediatama Maxima Tbk",
+   "date": "2019-10-21",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "IRRA",
+   "name": "Itama Ranoraya Tbk",
+   "date": "2019-10-15",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "PURE",
+   "name": "Trinitan Metals and Mineral Tbk",
+   "date": "2019-10-09",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "SLIS",
+   "name": "Gaya Abadi Sempurna Tbk",
+   "date": "2019-10-07",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "NZIA",
+   "name": "Nusantara Almazia Tbk",
+   "date": "2019-09-25",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "OPMS",
+   "name": "Optima Prima Metal Sinergi Tbk",
+   "date": "2019-09-23",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "GGRP",
+   "name": "Gunung Raja Paksi Tbk",
+   "date": "2019-09-19",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "TFAS",
+   "name": "Telefast Indonesia Tbk",
+   "date": "2019-09-17",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "BAPI",
+   "name": "Bhakti Agung Propertindo Tbk",
+   "date": "2019-09-16",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "KEEN",
+   "name": "Kencana Energi Lestari Tbk",
+   "date": "2019-09-02",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "HDIT",
+   "name": "Hensel Davest Indonesia Tbk",
+   "date": "2019-07-12",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "SMKL",
+   "name": "Satyamitra Kemas Lestari Tbk",
+   "date": "2019-07-11",
+   "price": 193,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://market.bisnis.com/read/20190626/192/937908/satyamitra-kemas-lestari-tawarkan-harga-ipo-rp193-per-saham"
+   ]
+  },
+  {
+   "t": "ARKA",
+   "name": "Arkha Jayanti Persada Tbk",
+   "date": "2019-07-10",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "INOV",
+   "name": "Inocycle Technology Group Tbk",
+   "date": "2019-07-10",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "EAST",
+   "name": "Eastparc Hotel Tbk",
+   "date": "2019-07-09",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "FUJI",
+   "name": "Fuji Finance Indonesia Tbk",
+   "date": "2019-07-09",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "LIFE",
+   "name": "Asuransi Jiwa Sinarmas MSIG Tbk",
+   "date": "2019-07-09",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "KOTA",
+   "name": "DMS Propertindo Tbk",
+   "date": "2019-07-09",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "BLUE",
+   "name": "Berkah Prima Perkasa Tbk",
+   "date": "2019-07-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "ENVY",
+   "name": "Envy Technologies Indonesia Tbk",
+   "date": "2019-07-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "IPTV",
+   "name": "MNC Vision Networks Tbk",
+   "date": "2019-07-08",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "PAMG",
+   "name": "Bima Sakti Pertiwi Tbk",
+   "date": "2019-07-05",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "ITIC",
+   "name": "Indonesian Tobacco Tbk",
+   "date": "2019-07-04",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "KAYU",
+   "name": "Darmi Bersaudara Tbk",
+   "date": "2019-07-04",
+   "price": null,
+   "shares": null,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "KJEN",
+   "name": "Krida Jaringan Nusantara Tbk",
+   "date": "2019-07-01",
+   "price": 202,
+   "shares": 500000000,
+   "fundsBn": 101.0,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://www.cnbcindonesia.com/market/20190703104140-17-82335/yah-ipo-masih-sepi-peminat-ini-daftar-18-yang-sudah-listing"
+   ]
+  },
+  {
+   "t": "POLU",
+   "name": "Golden Flower Tbk",
+   "date": "2019-06-26",
+   "price": null,
+   "shares": 750000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "SFAN",
+   "name": "Surya Fajar Capital Tbk",
+   "date": "2019-06-19",
+   "price": null,
+   "shares": 1062500000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "CCSI",
+   "name": "Communication Cable Systems Indonesia Tbk",
+   "date": "2019-06-18",
+   "price": null,
+   "shares": 1000000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "BOLA",
+   "name": "Bali Bintang Sejahtera Tbk",
+   "date": "2019-06-17",
+   "price": null,
+   "shares": 6000000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "FITT",
+   "name": "Hotel Fitra International Tbk",
+   "date": "2019-06-11",
+   "price": null,
+   "shares": 600000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "JAST",
+   "name": "Jasnita Telekomindo Tbk",
+   "date": "2019-05-16",
+   "price": null,
+   "shares": 813626700,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "POSA",
+   "name": "Bliss Properti Indonesia Tbk",
+   "date": "2019-05-10",
+   "price": null,
+   "shares": 8388870000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "HRME",
+   "name": "Menteng Heritage Realty Tbk",
+   "date": "2019-04-12",
+   "price": null,
+   "shares": 5958750000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "CPRI",
+   "name": "Capri Nusa Satu Properti Tbk",
+   "date": "2019-04-11",
+   "price": null,
+   "shares": 2433375000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "MTPS",
+   "name": "Meta Epsi Tbk",
+   "date": "2019-04-10",
+   "price": null,
+   "shares": 2082805000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "COCO",
+   "name": "Wahana Interfood Nusantara Tbk",
+   "date": "2019-03-20",
+   "price": null,
+   "shares": 508000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "JAYA",
+   "name": "Armada Berjaya Trans Tbk",
+   "date": "2019-02-21",
+   "price": null,
+   "shares": 375000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "CLAY",
+   "name": "Citra Putra Realty Tbk",
+   "date": "2019-01-18",
+   "price": null,
+   "shares": 2570000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "NATO",
+   "name": "Nusantara Properti Internasional Tbk",
+   "date": "2019-01-18",
+   "price": null,
+   "shares": 8000000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "POLI",
+   "name": "Pollux Investasi Internasional Tbk",
+   "date": "2019-01-10",
+   "price": null,
+   "shares": 2010526400,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "BEEF",
+   "name": "Estika Tata Tiara Tbk",
+   "date": "2019-01-10",
+   "price": null,
+   "shares": 1884312500,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+   ]
+  },
+  {
+   "t": "FOOD",
+   "name": "Sentra Food Indonesia Tbk",
+   "date": "2019-01-08",
+   "price": null,
+   "shares": 650000000,
+   "fundsBn": null,
+   "board": null,
+   "sector": null,
+   "lead": [],
+   "syn": [],
+   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "src": [
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
    ]
   }
  ],
