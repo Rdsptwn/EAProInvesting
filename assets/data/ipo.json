@@ -1,7 +1,7 @@
 {
  "asOf": "2026-11-05",
  "scope": "IPO saham BEI Jan 2020–Okt 2026",
- "uwNote": "Penjamin hanya terisi bila ditemukan di sumber artikel; sebagian emiten belum lengkap.",
+ "uwNote": "Penjamin hanya terisi bila ditemukan di sumber artikel; sebagian emiten belum lengkap. Untuk sebagian emiten (sumber EmitenHub), peran penjamin pelaksana vs penjamin emisi lain tidak dibedakan.",
  "items": [
   {
    "t": "RANS",
@@ -152,12 +152,15 @@
    "fundsBn": 2798.0,
    "board": null,
    "sector": "Banking",
-   "lead": [],
+   "lead": [
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
    "note": "peran tidak dibedakan; dana = 4406612300x635 (hitung), sumber tulis target Rp2,79 triliun",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
-    "https://investortrust.id/market/87926/superbank-supa-tetapkan-harga-ipo-rp-635-per-saham-listing-pekan-depan"
+    "https://investortrust.id/market/87926/superbank-supa-tetapkan-harga-ipo-rp-635-per-saham-listing-pekan-depan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -177,7 +180,8 @@
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.kabarbursa.com/market-hari-ini/rlco-siapkan-ipo-rp150168-per-saham-targetkan-dana-rp105-miliar",
-    "https://market.bisnis.com/read/20251201/192/1933028/eksportir-sarang-burung-walet-abadi-lestari-rlco-banderol-harga-ipo-rp168-per-saham"
+    "https://market.bisnis.com/read/20251201/192/1933028/eksportir-sarang-burung-walet-abadi-lestari-rlco-banderol-harga-ipo-rp168-per-saham",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -196,7 +200,8 @@
    "note": "BCA Sekuritas sebut listing 5 Nov; fortune 6 Nov",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
-    "https://bcasekuritas.co.id/en/latest-news/news/resmi-book-building-pjhb-tawarkan-harga-ipo-di-level-rp330"
+    "https://bcasekuritas.co.id/en/latest-news/news/resmi-book-building-pjhb-tawarkan-harga-ipo-di-level-rp330",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -208,12 +213,17 @@
    "fundsBn": 4660.0,
    "board": null,
    "sector": "Gold mining",
-   "lead": [],
+   "lead": [
+    "Indo Premier Sekuritas",
+    "Trimegah Sekuritas Indonesia",
+    "Sinarmas Sekuritas"
+   ],
    "syn": [],
    "note": "dana 'hingga ~Rp4,66 triliun' (kalkulasi 1.618.023.300 x 2880)",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
-    "https://www.kabarbursa.com/market-hari-ini/merdeka-gold-resources-emas-resmi-tetapkan-harga-ipo-rp2880"
+    "https://www.kabarbursa.com/market-hari-ini/merdeka-gold-resources-emas-resmi-tetapkan-harga-ipo-rp2880",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -235,7 +245,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -257,7 +268,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -279,7 +291,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -301,7 +314,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -323,7 +337,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -335,7 +350,14 @@
    "fundsBn": 2370.0,
    "board": "Papan Pengembangan",
    "sector": "Infrastructure (energy, water, ports, logistics)",
-   "lead": [],
+   "lead": [
+    "BCA Sekuritas",
+    "BNI Sekuritas",
+    "DBS Vickers Sekuritas Indonesia",
+    "Henan Putihrai Sekuritas",
+    "OCBC Sekuritas Indonesia",
+    "Trimegah Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "peran tidak dibedakan; Henan Putihrai porsi terbesar 74.24%; sumber tulis 'DBS Vicker Sekuritas'; shares 'up to 12.48 miliar' pra-listing",
    "src": [
@@ -343,7 +365,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -365,7 +388,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -387,7 +411,8 @@
     "https://market.bisnis.com/read/20250707/7/1890946/8-emiten-baru-cdia-blog-coin-cs-listing-pekan-ini-siap-dongkrak-ihsg",
     "https://www.idxchannel.com/market-news/8-emiten-himpun-dana-ipo-rp338-triliun-sepekan-terbesar-cdia/all",
     "https://databoks.katadata.co.id/en/market/statistics/6873c86a88839/eight-indonesian-companies-recent-ipo-activity-july-8-10-2025",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -407,7 +432,8 @@
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250508/192/1875348/cipta-sarana-medika-dkhh-listing-di-bei-hari-ini-usai-ipo-oversubscribed-190-kali",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -428,7 +454,8 @@
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250330/192/1865798/medela-mdla-patok-harga-ipo-rp188-per-saham",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -440,13 +467,16 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
    "note": "peran tidak dibedakan",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250423/7/1871493/12-emiten-baru-listing-di-bursa-tahun-ini-sahamnya-ada-yang-meroket-350",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -458,14 +488,18 @@
    "fundsBn": null,
    "board": null,
    "sector": "Candy (permen)",
-   "lead": [],
+   "lead": [
+    "CIMB Niaga Sekuritas",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
    "note": "peran tidak dibedakan; harga IPO 2390 hanya dari judul tirto (halaman gagal dibaca)",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
     "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
-    "https://tirto.id/yupi-resmi-melantai-di-bursa-harga-ipo-rp2390-per-lembar-saham-g9Uk"
+    "https://tirto.id/yupi-resmi-melantai-di-bursa-harga-ipo-rp2390-per-lembar-saham-g9Uk",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -486,14 +520,15 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
     "https://market.bisnis.com/read/20250423/7/1871493/12-emiten-baru-listing-di-bursa-tahun-ini-sahamnya-ada-yang-meroket-350",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "KAQI",
    "name": "Jantra Grupo Indonesia Tbk",
    "date": "2025-03-10",
-   "price": null,
+   "price": 118,
    "shares": null,
    "fundsBn": 53.1,
    "board": "Papan Pengembangan",
@@ -506,7 +541,8 @@
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -523,7 +559,11 @@
     "PT Shinhan Sekuritas Indonesia",
     "PT BRI Danareksa Sekuritas"
    ],
-   "syn": [],
+   "syn": [
+    "BRI Danareksa Sekuritas",
+    "Samuel Sekuritas Indonesia",
+    "Shinhan Sekuritas Indonesia"
+   ],
    "note": "peran lead/sindikasi tidak dibedakan sumber",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
@@ -531,7 +571,8 @@
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=322"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=322",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -552,14 +593,15 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "OBAT",
    "name": "Brigit Biofarmaka Teknologi Tbk",
    "date": "2025-01-13",
-   "price": null,
+   "price": 350,
    "shares": null,
    "fundsBn": 59.5,
    "board": null,
@@ -573,7 +615,8 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -585,14 +628,18 @@
    "fundsBn": 260.0,
    "board": null,
    "sector": "Renewable energy holding",
-   "lead": [],
+   "lead": [
+    "OCBC Sekuritas Indonesia",
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "peran lead/sindikasi tidak dibedakan sumber",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.idxchannel.com/market-news/mulai-offering-segini-harga-ipo-dgwg-brrc-dan-hgii/all",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -613,7 +660,8 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.idxchannel.com/market-news/mulai-offering-segini-harga-ipo-dgwg-brrc-dan-hgii/all",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -634,7 +682,8 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
-    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp"
+    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -646,14 +695,18 @@
    "fundsBn": 624.46,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Sucor Sekuritas",
+    "Henan Putihrai Sekuritas"
+   ],
    "syn": [],
    "note": "peran lead/sindikasi tidak dibedakan sumber",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
-    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp"
+    "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91/amp",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -694,7 +747,8 @@
    "note": "",
    "src": [
     "https://www.cnbcindonesia.com/research/20241223122627-128-598137/rekap-ipo-2024--siapa-si-paling-untung-vs-buntung",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=321"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=321",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -714,7 +768,8 @@
    "src": [
     "https://www.idxchannel.com/market-news/saham-ipo-tercuan-di-2024-belum-mampu-kalahkan-emiten-prajogo-pangestu/all",
     "https://www.cnbcindonesia.com/research/20241223122627-128-598137/rekap-ipo-2024--siapa-si-paling-untung-vs-buntung",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=319"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=319",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -733,7 +788,8 @@
    "note": "",
    "src": [
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=317"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=317",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -752,7 +808,8 @@
    "note": "Sumber tulis '12 Nov' tanpa tahun; diasumsikan 2024.",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-ipo-dengan-penguatan-tertinggi-di-2024-00-3dhnm-2z9917/amp",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=318"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=318",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -767,14 +824,17 @@
    "lead": [
     "Henan Putihrai Sekuritas"
    ],
-   "syn": [],
+   "syn": [
+    "CGS International Sekuritas Indonesia"
+   ],
    "note": "",
    "src": [
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
     "https://www.fortuneidn.com/market/daftar-saham-ipo-dengan-penguatan-tertinggi-di-2024-00-3dhnm-2z9917/amp",
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=316"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=316",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -812,7 +872,8 @@
    "note": "",
    "src": [
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=315"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=315",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -831,39 +892,46 @@
    "note": "Hanya nama/ticker terbaca.",
    "src": [
     "https://www.fortuneidn.com/market/daftar-saham-ipo-dengan-penguatan-tertinggi-di-2024-00-3dhnm-2z9917/amp",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=311"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=311",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "DOSS",
    "name": "Global Sukses Digital Tbk",
    "date": "2024-08-07",
-   "price": null,
+   "price": 135,
    "shares": null,
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": "Consumer Cyclicals",
-   "lead": [],
+   "lead": [
+    "Samuel Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
-    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia"
+    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "LABS",
    "name": "UBC Medical Indonesia Tbk",
    "date": "2024-07-10",
-   "price": null,
+   "price": 135,
    "shares": null,
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": "Healthcare",
-   "lead": [],
+   "lead": [
+    "Lotus Andalan Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
-    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia"
+    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -883,23 +951,27 @@
    "src": [
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
     "https://www.fortuneidn.com/market/daftar-saham-ipo-dengan-penguatan-tertinggi-di-2024-00-3dhnm-2z9917/amp",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=310"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=310",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "BLES",
    "name": "Superior Prima Sukses Tbk",
    "date": "2024-07-08",
-   "price": null,
+   "price": 183,
    "shares": null,
    "fundsBn": null,
    "board": "Utama",
    "sector": "Basic Materials",
-   "lead": [],
+   "lead": [
+    "Lotus Andalan Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
-    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia"
+    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -921,7 +993,8 @@
    "note": "",
    "src": [
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=309"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=309",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -940,23 +1013,29 @@
    "note": "",
    "src": [
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=307"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=307",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "PART",
    "name": "Cipta Perdana Lancar Tbk",
    "date": "2024-07-05",
-   "price": null,
+   "price": 105,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "MNC Sekuritas",
+    "Erdikha Elit Sekuritas",
+    "KB Valbury Sekuritas"
+   ],
    "syn": [],
    "note": "Hanya terbaca sbg rencana listing 5 Jul 2024 (harga range 100-105); tidak terkonfirmasi tercatat di sumber rekap, belum diverifikasi.",
    "src": [
-    "https://www.fortuneidn.com/market/daftar-ipo-juli-2024-ada-perusahaan-golf-cucu-soeharto-00-3dhnm-txm4w4/amp"
+    "https://www.fortuneidn.com/market/daftar-ipo-juli-2024-ada-perusahaan-golf-cucu-soeharto-00-3dhnm-txm4w4/amp",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -975,23 +1054,27 @@
    "note": "Tanggal 3 Juli dari idxchannel.",
    "src": [
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=304"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=304",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "BATR",
    "name": "Benteng Api Technic Tbk",
    "date": "2024-06-10",
-   "price": null,
+   "price": 110,
    "shares": null,
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": "Basic Materials",
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
-    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia"
+    "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1010,7 +1093,8 @@
    "note": "",
    "src": [
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=302"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=302",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1033,7 +1117,8 @@
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
     "https://investortrust.id/market/25044/penyedia-jasa-internet-remala-abadi-data-tetapkan-harga-ipo-rp-188-per-saham",
     "https://www.idxchannel.com/market-news/deretan-ipo-terbaik-2024-siapa-jawaranya/all",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=301"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=301",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1053,7 +1138,8 @@
    "src": [
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://market.bisnis.com/read/20240703/7/1779254/alii-dan-nice-raup-dana-ipo-terbesar-pada-semester-i2024",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=299"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=299",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1074,7 +1160,8 @@
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
     "https://market.bisnis.com/read/20240703/7/1779254/alii-dan-nice-raup-dana-ipo-terbesar-pada-semester-i2024",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=298"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=298",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1094,7 +1181,8 @@
    "src": [
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=297"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=297",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1113,7 +1201,8 @@
    "note": "",
    "src": [
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=296"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=296",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1125,13 +1214,17 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": "Consumer Cyclicals",
-   "lead": [],
+   "lead": [
+    "MNC Sekuritas",
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "Bisnis tabel menulis 400 (konflik); dipakai 278 dari kontan.",
    "src": [
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
-    "https://insight.kontan.co.id/news/harga-ipo-baik-dipatok-rp-278-saham-perdana-mkap-dibanderol-rp-115"
+    "https://insight.kontan.co.id/news/harga-ipo-baik-dipatok-rp-278-saham-perdana-mkap-dibanderol-rp-115",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1152,7 +1245,8 @@
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
     "https://market.bisnis.com/read/20240224/7/1743561/tren-saham-ipo-2024-mayoritas-boncos",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=294"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=294",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1210,7 +1304,8 @@
     "https://www.receh.in/2024/01/daftar-saham-baru-ipo-2024-update.html",
     "https://id.wikipedia.org/wiki/Daftar_perusahaan_yang_tercatat_di_Bursa_Efek_Indonesia",
     "https://market.bisnis.com/read/20240224/7/1743561/tren-saham-ipo-2024-mayoritas-boncos",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=293"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=293",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1488,13 +1583,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=6334375000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1506,13 +1604,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=4000000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1524,13 +1625,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Erdikha Elit Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1459200000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1542,14 +1646,17 @@
    "fundsBn": 637.96,
    "board": "Utama",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Premier Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3138823600 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20231108/7/1712456/msti-raup-dana-ipo-rp63796-miliar-cek-target-kinerjanya"
+    "https://market.bisnis.com/read/20231108/7/1712456/msti-raup-dana-ipo-rp63796-miliar-cek-target-kinerjanya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1561,13 +1668,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "OCBC Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1684662500 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1588,25 +1698,29 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://economy.okezone.com/read/2023/10/31/278/2911603/alasan-mnc-sekuritas-bawa-agro-bahari-udng-ipo"
+    "https://economy.okezone.com/read/2023/10/31/278/2911603/alasan-mnc-sekuritas-bawa-agro-bahari-udng-ipo",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "KOKA",
    "name": "Koka Indonesia Tbk.",
    "date": "2023-10-11",
-   "price": 138,
+   "price": 128,
    "shares": null,
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2861333000 (total saham tercatat, bukan saham ditawarkan); harga: bisnis.com 138, mikirduit 128 (belum terverifikasi)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1618,13 +1732,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Elit Sukses Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1100000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1636,13 +1753,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Artha Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=10721709000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1654,13 +1774,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2167500000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1682,7 +1805,8 @@
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
     "https://www.idxchannel.com/market-news/gelar-ipo-barito-renewable-bren-resmi-tunjuk-bni-sekuritas-jadi-underwriter/all",
-    "https://www.receh.in/2023/09/prospektus-ipo-barito-renewables-energy.html"
+    "https://www.receh.in/2023/09/prospektus-ipo-barito-renewables-energy.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1694,13 +1818,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Panca Global Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=4415590000 (total saham tercatat, bukan saham ditawarkan); tgl listing: receh.in 2023-10-07, mikirduit 2023-10-06",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1712,13 +1839,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KB Valbury Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=5280000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1730,13 +1860,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1006000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1757,7 +1890,8 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://stockwatch.id/gelar-ipo-hari-ini-multitrend-indo-bidik-dana-segar-rp14204-miliar/"
+    "https://stockwatch.id/gelar-ipo-hari-ini-multitrend-indo-bidik-dana-segar-rp14204-miliar/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1769,13 +1903,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2650000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1787,13 +1924,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "MNC Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1460000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1815,7 +1955,8 @@
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
     "https://investasi.kontan.co.id/news/mutuagung-lestari-mutu-gelar-ipo-incar-dana-segar-rp-99-miliar",
-    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar"
+    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1827,14 +1968,17 @@
    "fundsBn": 39,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=650000000 (total saham tercatat, bukan saham ditawarkan); saham/dana = maksimal/potensi",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar"
+    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1846,14 +1990,17 @@
    "fundsBn": 270.7,
    "board": "Utama",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Reliance Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=18046450000 (total saham tercatat, bukan saham ditawarkan); saham/dana = maksimal/potensi",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar"
+    "https://market.bisnis.com/read/20230809/7/1682991/saham-humi-mutu-dan-lmax-ipo-hari-ini-terkumpul-dana-rp41152-miliar",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1865,13 +2012,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Erdikha Elit Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=7375720674 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1883,13 +2033,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1075000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1911,7 +2064,8 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230714/192/1674903/erajaya-eraa-antar-sinar-eka-selaras-eral-ipo-bidik-dana-rp42538-miliar"
+    "https://market.bisnis.com/read/20230714/192/1674903/erajaya-eraa-antar-sinar-eka-selaras-eral-ipo-bidik-dana-rp42538-miliar",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1932,7 +2086,8 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://www.receh.in/2023/07/jadwal-dan-prospektus-ipo-itsec-asia.html"
+    "https://www.receh.in/2023/07/jadwal-dan-prospektus-ipo-itsec-asia.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1944,13 +2099,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3948133300 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1962,13 +2120,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Lotus Andalan Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1040740800 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -1992,7 +2153,8 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230726/192/1678272/ipo-cinema-xxi-cnma-di-harga-rp270-ada-peluang-cuan-dividen"
+    "https://market.bisnis.com/read/20230726/192/1678272/ipo-cinema-xxi-cnma-di-harga-rp270-ada-peluang-cuan-dividen",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2004,13 +2166,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Victoria Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1250000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2031,7 +2196,8 @@
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://www.receh.in/2023/07/prospektus-ipo-mandiri-herindo-maha.html"
+    "https://www.receh.in/2023/07/prospektus-ipo-mandiri-herindo-maha.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2043,14 +2209,17 @@
    "fundsBn": 151.5,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=7500000000 (total saham tercatat, bukan saham ditawarkan); potensi dana (kontan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://insight.kontan.co.id/news/sinergi-inti-andalan-prima-inet-patok-harga-ipo-rp-101"
+    "https://insight.kontan.co.id/news/sinergi-inti-andalan-prima-inet-patok-harga-ipo-rp-101",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2062,13 +2231,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2892000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2080,13 +2252,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1545000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2098,13 +2273,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Artha Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1600000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2116,13 +2294,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Semesta Indovest Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3571429000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ],
    "status": "suspen",
    "statusNote": "Disuspensi BEI (±13 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
@@ -2150,7 +2331,8 @@
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
     "https://market.bisnis.com/read/20230620/192/1667239/amman-mineral-ammn-pasang-harga-ipo-rp1695-raup-dana-rp107-triliun",
-    "https://market.bisnis.com/read/20230530/192/1660700/grup-medco-medc-amman-mineral-siap-ipo-gandeng-4-sekuritas"
+    "https://market.bisnis.com/read/20230530/192/1660700/grup-medco-medc-amman-mineral-siap-ipo-gandeng-4-sekuritas",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2162,13 +2344,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=5727800000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2180,13 +2365,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Samuel Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=43750000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2198,13 +2386,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Panin Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2165000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2216,13 +2407,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=9610000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2234,13 +2428,16 @@
    "fundsBn": null,
    "board": "Utama",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "MNC Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=8750000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2252,14 +2449,17 @@
    "fundsBn": 43.2,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Panin Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=2000000000 (total saham tercatat, bukan saham ditawarkan); saham/dana = penawaran (bisnis.com pra-IPO)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya"
+    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2271,14 +2471,17 @@
    "fundsBn": 217.43,
    "board": "Utama",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=6194200000 (total saham tercatat, bukan saham ditawarkan); saham/dana = penawaran (bisnis.com pra-IPO)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya"
+    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2290,14 +2493,17 @@
    "fundsBn": 154.75,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=7737500000 (total saham tercatat, bukan saham ditawarkan); saham/dana = penawaran (bisnis.com pra-IPO)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya"
+    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2309,14 +2515,17 @@
    "fundsBn": 65.25,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3262500000 (total saham tercatat, bukan saham ditawarkan); saham/dana = penawaran (bisnis.com pra-IPO)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya"
+    "https://market.bisnis.com/read/20230503/192/1652389/4-calon-emiten-mpxl-jati-raam-dooh-antre-ipo-cek-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2328,13 +2537,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Victoria Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3478020000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2346,13 +2558,16 @@
    "fundsBn": null,
    "board": "Akselerasi",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=1434000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ],
    "status": "suspen",
    "statusNote": "Disuspensi BEI (±8 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
@@ -2370,13 +2585,16 @@
    "lead": [
     "Sucor Sekuritas"
    ],
-   "syn": [],
+   "syn": [
+    "Samuel Sekuritas Indonesia"
+   ],
    "note": "listedSharesTotal(receh.in)=3435000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
-    "https://keuangan.kontan.co.id/news/sucor-sekuritas-bidik-bawa-10-perusahaan-ipo-tahun-ini"
+    "https://keuangan.kontan.co.id/news/sucor-sekuritas-bidik-bawa-10-perusahaan-ipo-tahun-ini",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2399,7 +2617,8 @@
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
     "https://www.cnbcindonesia.com/market/20230412120255-17-429247/tok-harga-ipo-merdeka-battery-rp-795-per-saham",
-    "https://stockwatch.id/perkuat-modal-merdeka-battery-materials-lepas-saham-ke-publik-melalui-ipo/"
+    "https://stockwatch.id/perkuat-modal-merdeka-battery-materials-lepas-saham-ke-publik-melalui-ipo/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2417,14 +2636,17 @@
     "Credit Suisse Sekuritas Indonesia",
     "Mandiri Sekuritas"
    ],
-   "syn": [],
+   "syn": [
+    "BNP Paribas Securities Indonesia"
+   ],
    "note": "listedSharesTotal(receh.in)=63098600000 (total saham tercatat, bukan saham ditawarkan); receh.in prospektus: penjamin emisi efek Mandiri Sekuritas, UOB Kay Hian Sekuritas, Citigroup Sekuritas Indonesia, Credit Suisse Sekuritas Indonesia, DBS Vickers Sekuritas Indonesia, OCBC Sekuritas Indonesia, BNP Paribas Sekuritas Indonesia (lead/sindikasi tidak dipisah; Mandiri Sekuritas = partisipan admin); saham maks 12.095.341.463 (dana target Rp15,12 T, bukan realisasi)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
     "https://www.mikirduit.com/saham-ipo-2023/",
     "https://www.receh.in/2023/03/prospektus-ipo-pt-trimegah-bangun.html",
-    "https://stockwatch.id/incar-dana-segar-rp9997-triliun-trimegah-bangun-persada-pasang-harga-ipo-rp1-250-per-saham"
+    "https://stockwatch.id/incar-dana-segar-rp9997-triliun-trimegah-bangun-persada-pasang-harga-ipo-rp1-250-per-saham",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -2436,13 +2658,16 @@
    "fundsBn": null,
    "board": "Pengembangan",
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "listedSharesTotal(receh.in)=3425000000 (total saham tercatat, bukan saham ditawarkan)",
    "src": [
     "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
     "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
-    "https://www.mikirduit.com/saham-ipo-2023/"
+    "https://www.mikirduit.com/saham-ipo-2023/",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3023,13 +3248,16 @@
    "fundsBn": 338.32,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BRI Danareksa Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://economy.okezone.com/read/2022/12/12/278/2725250/ipo-venteny-fortuna-patok-harga-rp360-per-saham?page=all"
+    "https://economy.okezone.com/read/2022/12/12/278/2725250/ipo-venteny-fortuna-patok-harga-rp360-per-saham?page=all",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3050,7 +3278,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221116/192/1599028/cek-rincian-ipo-4-calon-emiten-pada-mmix-nine-isap",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=158"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=158",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3071,7 +3300,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221116/192/1599028/cek-rincian-ipo-4-calon-emiten-pada-mmix-nine-isap",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=159"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=159",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3091,7 +3321,8 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://market.bisnis.com/read/20221201/192/1604209/produsen-masker-multi-medika-mmix-patok-harga-ipo-rp190-per-saham"
+    "https://market.bisnis.com/read/20221201/192/1604209/produsen-masker-multi-medika-mmix-patok-harga-ipo-rp190-per-saham",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3112,7 +3343,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221129/192/1603224/techno9-nine-tetapkan-harga-ipo-rp75-per-saham",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=156"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=156",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3133,7 +3365,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=155"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=155",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3145,13 +3378,16 @@
    "fundsBn": 127.86,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan"
+    "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3172,7 +3408,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=150"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=150",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3193,7 +3430,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=157"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=157",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3214,7 +3452,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=151"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=151",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3237,7 +3476,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana"
+    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3261,7 +3501,8 @@
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
     "https://market.bisnis.com/read/20221030/192/1592899/daftar-11-ipo-terkini-di-bursa-cek-potensi-saham-ratusan-perak",
     "https://www.e-ipo.co.id/pipeline/get-additional-info?id=152",
-    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana"
+    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3273,13 +3514,16 @@
    "fundsBn": 300.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan"
+    "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3302,7 +3546,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana"
+    "https://emitennews.com/news/serempak-enam-calon-emiten-gelar-penawaran-umum-perdana-hari-ini-pilih-mana",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3317,13 +3562,16 @@
    "lead": [
     "Artha Sekuritas Indonesia"
    ],
-   "syn": [],
+   "syn": [
+    "KGI Sekuritas Indonesia"
+   ],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://market.bisnis.com/read/20221112/192/1597387/kinerja-10-saham-baru-di-bursa-beli-hingga-omed-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=148"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=148",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3343,7 +3591,8 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=146"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=146",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3355,13 +3604,16 @@
    "fundsBn": 58.5,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya"
+    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3373,13 +3625,16 @@
    "fundsBn": 39.06,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Wanteg Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya"
+    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3399,7 +3654,8 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=140"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=140",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3420,7 +3676,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=141"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=141",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3432,13 +3689,16 @@
    "fundsBn": 77.6,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Reliance Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya"
+    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3459,7 +3719,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=142"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=142",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3480,7 +3741,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=137"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=137",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3492,13 +3754,16 @@
    "fundsBn": 35.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya"
+    "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3520,7 +3785,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=133"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=133",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3542,7 +3808,8 @@
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
     "https://momsmoney.kontan.co.id/news/7-saham-ipo-sudah-bisa-dipesan-ini-daftar-harganya",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=136"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=136",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3562,7 +3829,8 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=135"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=135",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3574,29 +3842,35 @@
    "fundsBn": 24.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "GULA",
    "name": "Aman Agrindo Tbk",
    "date": "2022-08-03",
-   "price": null,
+   "price": 250,
    "shares": null,
    "fundsBn": 53.5,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3616,7 +3890,8 @@
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=134"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=134",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3628,29 +3903,35 @@
    "fundsBn": 224.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "KRYA",
    "name": "Bangun Karya Perkasa Jaya Tbk",
    "date": "2022-07-25",
-   "price": null,
+   "price": 125,
    "shares": null,
    "fundsBn": 40.62,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3662,12 +3943,15 @@
    "fundsBn": 145.6,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BNI Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3679,12 +3963,15 @@
    "fundsBn": 70.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3696,12 +3983,15 @@
    "fundsBn": 315.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Semesta Indovest Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3716,12 +4006,15 @@
    "lead": [
     "Mirae Asset Sekuritas Indonesia"
    ],
-   "syn": [],
+   "syn": [
+    "Lotus Andalan Sekuritas"
+   ],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
     "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
-    "https://market.bisnis.com/read/20230116/7/1618460/mirae-asset-sekuritas-bakal-kawal-10-emiten-ipo-tahun-2023"
+    "https://market.bisnis.com/read/20230116/7/1618460/mirae-asset-sekuritas-bakal-kawal-10-emiten-ipo-tahun-2023",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3733,12 +4026,15 @@
    "fundsBn": 75.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3750,12 +4046,15 @@
    "fundsBn": 68.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Shinhan Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3767,12 +4066,15 @@
    "fundsBn": 125.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3784,12 +4086,15 @@
    "fundsBn": 40.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3801,12 +4106,15 @@
    "fundsBn": 150.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Aartha Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3818,12 +4126,15 @@
    "fundsBn": 160.73,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3835,12 +4146,15 @@
    "fundsBn": 325.14,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BCA Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3852,12 +4166,15 @@
    "fundsBn": 300.35,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BNI Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3869,12 +4186,15 @@
    "fundsBn": 13729.56,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Premier Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3886,12 +4206,15 @@
    "fundsBn": 62.1,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3903,12 +4226,15 @@
    "fundsBn": 431.9,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Ciptadana Sekuritas Asia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3920,12 +4246,15 @@
    "fundsBn": 54.96,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Trimegah Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3937,12 +4266,15 @@
    "fundsBn": 542.02,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "CIMB Niaga Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -3954,12 +4286,15 @@
    "fundsBn": 128.5,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://market.bisnis.com/read/20221231/192/1613700/daftar-59-ipo-dan-emiten-baru-2022-goto-paling-jumbo",
-    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan"
+    "https://www.idxchannel.com/market-news/intip-kinerja-saham-ipo-di-2022-mana-yang-paling-cuan",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4136,7 +4471,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=67"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=67",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4148,12 +4484,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4173,7 +4512,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=63"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=63",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4194,7 +4534,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=66"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=66",
+    "https://emitenhub.com/jadwal-ipo"
    ],
    "status": "suspen",
    "statusNote": "Disuspensi BEI (±22 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
@@ -4217,7 +4558,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=64"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=64",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4229,12 +4571,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "KGI Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4246,12 +4591,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4272,7 +4620,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=61"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=61",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4295,7 +4644,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=53"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=53",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4316,7 +4666,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=57"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=57",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4336,7 +4687,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=55"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=55",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4357,7 +4709,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=54"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=54",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4377,7 +4730,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=56"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=56",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4398,7 +4752,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=52"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=52",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4418,7 +4773,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=50"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=50",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4438,7 +4794,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=49"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=49",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4450,12 +4807,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4467,12 +4827,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Ciptadana Sekuritas Asia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4492,7 +4855,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=47"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=47",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4504,19 +4868,22 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Buana Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
    "t": "RUNS",
    "name": "Global Sukses Solusi Tbk",
    "date": "2021-09-08",
-   "price": 180,
+   "price": 254,
    "shares": null,
    "fundsBn": null,
    "board": null,
@@ -4530,7 +4897,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=48"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=48",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4550,7 +4918,8 @@
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
-    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=46"
+    "https://www.e-ipo.co.id/pipeline/get-additional-info?id=46",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4562,12 +4931,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Buana Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4579,12 +4951,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Surya Fajar Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4596,12 +4971,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Korea Investment and Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4613,12 +4991,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "RHB Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4643,7 +5024,8 @@
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
     "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
     "https://www.idxchannel.com/market-news/segera-melantai-di-bei-bukalapak-tunjuk-4-underwriter/all",
-    "https://www.idxchannel.com/market-news/segera-melantai-di-bei-bukalapak-tunjuk-4-underwriter/all"
+    "https://www.idxchannel.com/market-news/segera-melantai-di-bei-bukalapak-tunjuk-4-underwriter/all",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4655,12 +5037,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Surya Fajar Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4672,12 +5057,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4689,12 +5077,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Victoria Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4706,12 +5097,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Ciptadana Sekuritas Asia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4723,12 +5117,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4740,12 +5137,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BCA Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4757,12 +5157,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BNI Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4774,12 +5177,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4791,12 +5197,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4808,12 +5217,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4825,12 +5237,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4842,12 +5257,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4859,12 +5277,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4876,12 +5297,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Ciptadana Sekuritas Asia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4893,12 +5317,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Wanteg Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ],
    "status": "suspen",
    "statusNote": "Disuspensi BEI (±10 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
@@ -4913,12 +5340,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4930,12 +5360,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BNI Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4947,12 +5380,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Victoria Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -4964,12 +5400,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mirae Asset Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ],
    "status": "suspen",
    "statusNote": "Disuspensi BEI (±16 bulan per 30 Jun 2026, masuk daftar berpotensi delisting)",
@@ -4984,12 +5423,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Surya Fajar Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -5001,12 +5443,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BCA Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -5018,12 +5463,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "CGS-CIMB Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
@@ -5035,12 +5483,15 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "NH Korindo Sekuritas Indonesia"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://finance.detik.com/bursa-dan-valas/d-5877211/daftar-54-perusahaan-yang-ipo-di-2021-kinerjanya-memble-atau-moncer",
-    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html"
+    "https://www.receh.in/2021/06/daftar-saham-ipo-2021.html",
+    "https://emitenhub.com/jadwal-ipo"
    ]
   },
   {
