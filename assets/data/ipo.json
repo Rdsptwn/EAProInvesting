@@ -11344,16 +11344,17 @@
    "t": "EMTK",
    "name": "Elang Mahkota Teknologi Tbk",
    "date": "2010-01-12",
-   "price": null,
+   "price": 720,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/siap-lakukan-ekspansi-bisnis-begini-sejarah-saham-emtk/all"
    ]
   },
   {
@@ -11428,16 +11429,23 @@
    "t": "DSSA",
    "name": "Dian Swastatika Sentosa Tbk",
    "date": "2009-12-10",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1500,
+   "shares": 100000000,
+   "fundsBn": 150.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "OSK Nusadana Sekuritas",
+    "HD Capital",
+    "Sinarmas Sekuritas",
+    "Victoria Sekuritas",
+    "Yulie Sekurindo"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1257582/saham-perdana-dian-swastatika-menguat-rp-250"
    ]
   },
   {
@@ -11634,11 +11642,16 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "CLSA Sekuritas Indonesia",
+    "Nusadana Capital Indonesia",
+    "Sinarmas Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan). Harga final IPO belum ditemukan (artikel hanya rentang penawaran).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-936909/bsd-tawarkan-harga-ipo-rp-388-800"
    ]
   },
   {
@@ -11925,16 +11938,17 @@
    "t": "WIKA",
    "name": "Wijaya Karya Tbk",
    "date": "2007-10-29",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 420,
+   "shares": 1846154000,
+   "fundsBn": 775.38,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/tengok-sejarah-saham-wika-bumn-karya-yang-melantai-sejak-2007/all"
    ]
   },
   {
@@ -12733,16 +12747,17 @@
    "t": "SCMA",
    "name": "Surya Citra Media Tbk",
    "date": "2002-07-16",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1100,
+   "shares": 375000000,
+   "fundsBn": 412.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/sejarah-saham-scma-emiten-yang-ipo-di-tahun-2002/all"
    ]
   },
   {
