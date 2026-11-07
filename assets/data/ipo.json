@@ -718,7 +718,7 @@
    "t": "YOII",
    "name": "Asuransi Digital Bersama Tbk",
    "date": "2025-01-08",
-   "price": null,
+   "price": 100,
    "shares": null,
    "fundsBn": 41.2,
    "board": null,
@@ -732,7 +732,8 @@
     "https://www.fortuneidn.com/market/daftar-saham-yang-ipo-di-2025-resmi-melantai-di-bei-d7w03-00-fykp7-zm3s6v",
     "https://www.fortuneidn.com/market/perusahaan-ipo-januari-2025-intip-harga-sahamnya-00-mv2nm-1v7c91",
     "https://market.bisnis.com/read/20250310/192/1859706/10-emiten-baru-sudah-melantai-di-bei-ipo-siapa-paling-jumbo",
-    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara"
+    "https://market.bisnis.com/read/20250714/7/1892911/sederet-perusahaan-sekuritas-raup-cuan-underwriter-ipo-siapa-jawara",
+    "https://www.emitennews.com/news/asuransi-digital-yoii-pasang-harga-perdana-ipo-rp100-per-lembar"
    ]
   },
   {
@@ -5898,16 +5899,18 @@
    "t": "WIFI",
    "name": "Solusi Sinergi Digital Tbk",
    "date": "2020-12-30",
-   "price": null,
+   "price": 530,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 83,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
    "note": "",
    "src": [
-    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
+    "https://market.bisnis.com/read/20201222/192/1334076/besok-solusi-sinergi-digital-wifi-tawarkan-saham-ipo-rp530",
+    "https://market.bisnis.com/read/20201230/192/1336820/resmi-melantai-di-bei-solusi-sinergi-digital-wifi-raup-dana-ipo-rp83-miliar"
    ]
   },
   {
@@ -5964,14 +5967,15 @@
    "date": "2020-12-08",
    "price": null,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 30,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
    "note": "",
    "src": [
-    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
+    "https://market.bisnis.com/read/20201208/192/1327865/djasa-ubersakti-ptdu-kantongi-rp30-miliar-dari-ipo"
    ]
   },
   {
