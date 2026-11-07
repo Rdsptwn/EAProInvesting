@@ -10701,16 +10701,21 @@
    "t": "ERAA",
    "name": "Erajaya Swasembada Tbk",
    "date": "2011-12-14",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1000,
+   "shares": 920000000,
+   "fundsBn": 920.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Buana Capital Sekuritas",
+    "Credit Suisse Sekuritas Indonesia",
+    "J.P. Morgan Sekuritas Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://cfi.co/asia-pacific/2011/12/erajaya-raises-100-million-from-indonesian-ipo/"
    ]
   },
   {
@@ -11166,16 +11171,17 @@
    "t": "TBIG",
    "name": "Tower Bersama Infrastructure Tbk",
    "date": "2010-10-26",
-   "price": null,
+   "price": 2025,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/cetak-laba-rp826-m-awal-tahun-simak-sejarah-saham-tbig/all"
    ]
   },
   {
@@ -11931,16 +11937,17 @@
    "t": "ACES",
    "name": "Aspirasi Hidup Indonesia Tbk",
    "date": "2007-11-06",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 820,
+   "shares": 515000000,
+   "fundsBn": 422.3,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.receh.in/2022/04/profil-dan-sejarah-emiten-ace-hardware.html"
    ]
   },
   {
