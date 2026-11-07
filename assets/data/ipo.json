@@ -9523,16 +9523,20 @@
    "t": "MDKA",
    "name": "Merdeka Copper Gold Tbk",
    "date": "2015-06-19",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 2000,
+   "shares": 420000000,
+   "fundsBn": 840,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Premier Sekuritas",
+    "Bahana Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin pelaksana sesuai artikel.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://investasi.kontan.co.id/news/beri-harga-rp-2000-merdeka-copper-pangkas-target"
    ]
   },
   {
@@ -11173,16 +11177,22 @@
    "t": "ICBP",
    "name": "Indofood CBP Sukses Makmur Tbk",
    "date": "2010-10-07",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 5395,
+   "shares": 1170000000,
+   "fundsBn": 6291,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Kim Eng Sekuritas",
+    "Credit Suisse Sekuritas Indonesia",
+    "Deutsche Sekuritas Indonesia",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin pelaksana sesuai artikel.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://economy.okezone.com/read/2010/10/07/278/380083/ipo-icbp-jadi-saham-berkapitalisasi-terbesar"
    ]
   },
   {
@@ -11497,16 +11507,17 @@
    "t": "AMRT",
    "name": "Sumber Alfaria Trijaya Tbk",
    "date": "2009-01-15",
-   "price": null,
+   "price": 395,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/simak-sejarah-saham-amrt-emiten-dengan-pendapatan-rp229-triliun-di-q1-2022/all"
    ]
   },
   {
@@ -11545,16 +11556,19 @@
    "t": "ADRO",
    "name": "Adaro Energy Tbk",
    "date": "2008-07-16",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1100,
+   "shares": 11139000000,
+   "fundsBn": 12253,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin pelaksana sesuai artikel.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-952622/saham-adaro-dibandrol-rp-1-100"
    ]
   },
   {
@@ -12505,16 +12519,21 @@
    "t": "PGAS",
    "name": "Perusahaan Gas Negara Tbk",
    "date": "2003-12-15",
-   "price": null,
+   "price": 1500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danareksa Sekuritas",
+    "Credit Suisse First Boston",
+    "ABN Amro Asia Securities"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin pelaksana sesuai artikel.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.petromindo.com/news/article/pgn-ipo-price-set-at-rp1-500-per-share"
    ]
   },
   {
@@ -13244,16 +13263,17 @@
    "t": "BBCA",
    "name": "Bank Central Asia Tbk",
    "date": "2000-05-31",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1400,
+   "shares": 662400000,
+   "fundsBn": 927,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO (sebelum stock split; halaman menyesuaikan) dan data lain dari media, belum dicek ke prospektus. Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/sudah-24-tahun-melantai-di-bursa-intip-harga-saham-bbca-pertama-kali-ipo/all"
    ]
   },
   {
