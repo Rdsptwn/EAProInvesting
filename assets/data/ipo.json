@@ -9328,16 +9328,17 @@
    "t": "KINO",
    "name": "Kino Indonesia Tbk",
    "date": "2015-12-11",
-   "price": null,
+   "price": 3800,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 869.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
@@ -9376,16 +9377,17 @@
    "t": "DPUM",
    "name": "Dua Putra Utama Makmur Tbk",
    "date": "2015-12-08",
-   "price": null,
+   "price": 550,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
@@ -9504,16 +9506,17 @@
    "t": "DMAS",
    "name": "Puradelta Lestari Tbk",
    "date": "2015-06-29",
-   "price": null,
+   "price": 210,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 1000.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
@@ -9536,32 +9539,34 @@
    "t": "MMLP",
    "name": "Mega Manunggal Property Tbk",
    "date": "2015-06-12",
-   "price": null,
+   "price": 585,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 1000.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
    "t": "PPRO",
    "name": "PP Properti Tbk",
    "date": "2015-05-19",
-   "price": null,
+   "price": 185,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 907.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
