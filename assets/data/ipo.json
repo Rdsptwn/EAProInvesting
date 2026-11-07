@@ -9965,16 +9965,20 @@
    "t": "SIDO",
    "name": "Industri Jamu dan Farmasi Sido Muncul Tbk",
    "date": "2013-12-18",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 580,
+   "shares": 1500000000,
+   "fundsBn": 870,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Kresna Graha Sekurindo",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.liputan6.com/saham/read/771130/sido-muncul-tetapkan-harga-saham-perdana-rp-580saham"
    ]
   },
   {
@@ -13508,16 +13512,17 @@
    "t": "BVIC",
    "name": "Bank Victoria International Tbk",
    "date": "1999-06-30",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 100,
+   "shares": 250000000,
+   "fundsBn": 25.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/kode-saham-milik-bank-victoria-yuk-intip-sejarah-saham-bvic/all"
    ]
   },
   {
