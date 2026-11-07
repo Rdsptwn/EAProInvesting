@@ -6764,16 +6764,17 @@
    "t": "GLVA",
    "name": "Galva Technologies Tbk",
    "date": "2019-12-23",
-   "price": null,
+   "price": 225,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 67.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
@@ -6782,15 +6783,16 @@
    "date": "2019-12-20",
    "price": 1500,
    "shares": 831000000,
-   "fundsBn": 1246.5,
+   "fundsBn": 1250.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
     "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
-    "https://www.cnbcindonesia.com/market/20191223120648-17-125182/catatan-bei-2019-55-emiten-anyar-listing-di-bei"
+    "https://www.cnbcindonesia.com/market/20191223120648-17-125182/catatan-bei-2019-55-emiten-anyar-listing-di-bei",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
@@ -6799,351 +6801,373 @@
    "date": "2019-12-18",
    "price": 125,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 17.2,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
     "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
-    "https://investasi.kontan.co.id/news/putra-mandiri-jembar-tetapkan-harga-ipo-rp-125-per-saham"
+    "https://investasi.kontan.co.id/news/putra-mandiri-jembar-tetapkan-harga-ipo-rp-125-per-saham",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "IFII",
    "name": "Indonesia Fibreboard Industry Tbk",
    "date": "2019-12-10",
-   "price": null,
+   "price": 105,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 148.27,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "REAL",
    "name": "Repower Asia Indonesia Tbk",
    "date": "2019-12-06",
-   "price": null,
+   "price": 100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 250.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "IFSH",
    "name": "Ifishdeco Tbk",
    "date": "2019-12-05",
-   "price": null,
+   "price": 440,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "AGAR",
    "name": "Asia Sejahtera Mina Tbk",
    "date": "2019-12-02",
-   "price": null,
+   "price": 105,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 27.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "KEJU",
    "name": "Mulia Boga Raya Tbk",
    "date": "2019-11-25",
-   "price": null,
+   "price": 750,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 75.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "PSGO",
    "name": "Palma Serasih Tbk",
    "date": "2019-11-25",
-   "price": null,
+   "price": 105,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 299.25,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "TEBE",
    "name": "Dana Brata Luhur Tbk",
    "date": "2019-11-18",
-   "price": null,
+   "price": 1096,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 38.36,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "ESIP",
    "name": "Sinergi Inti Plastindo Tbk",
    "date": "2019-11-14",
-   "price": null,
+   "price": 163,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 30.97,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "SINI",
    "name": "Singaraja Putra Tbk",
    "date": "2019-11-08",
-   "price": null,
+   "price": 108,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 18.9,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "WOWS",
    "name": "Ginting Jaya Energi Tbk",
    "date": "2019-11-08",
-   "price": null,
+   "price": 450,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 337.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "DMMX",
    "name": "Digital Mediatama Maxima Tbk",
    "date": "2019-10-21",
-   "price": null,
+   "price": 230,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 619.23,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "IRRA",
    "name": "Itama Ranoraya Tbk",
    "date": "2019-10-15",
-   "price": null,
+   "price": 374,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 149.6,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "PURE",
    "name": "Trinitan Metals and Mineral Tbk",
    "date": "2019-10-09",
-   "price": null,
+   "price": 300,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 100.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "SLIS",
    "name": "Gaya Abadi Sempurna Tbk",
    "date": "2019-10-07",
-   "price": null,
+   "price": 115,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 57.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "NZIA",
    "name": "Nusantara Almazia Tbk",
    "date": "2019-09-25",
-   "price": null,
+   "price": 220,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 101.53,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "OPMS",
    "name": "Optima Prima Metal Sinergi Tbk",
    "date": "2019-09-23",
-   "price": null,
+   "price": 135,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 54.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "GGRP",
    "name": "Gunung Raja Paksi Tbk",
    "date": "2019-09-19",
-   "price": null,
+   "price": 840,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 1033.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "TFAS",
    "name": "Telefast Indonesia Tbk",
    "date": "2019-09-17",
-   "price": null,
+   "price": 180,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 74.99,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "BAPI",
    "name": "Bhakti Agung Propertindo Tbk",
    "date": "2019-09-16",
-   "price": null,
+   "price": 150,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 251.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "KEEN",
    "name": "Kencana Energi Lestari Tbk",
    "date": "2019-09-02",
-   "price": null,
+   "price": 396,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 290.371,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "HDIT",
    "name": "Hensel Davest Indonesia Tbk",
    "date": "2019-07-12",
-   "price": null,
+   "price": 525,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 200.1,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
@@ -7152,207 +7176,220 @@
    "date": "2019-07-11",
    "price": 193,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 125.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
     "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
-    "https://market.bisnis.com/read/20190626/192/937908/satyamitra-kemas-lestari-tawarkan-harga-ipo-rp193-per-saham"
+    "https://market.bisnis.com/read/20190626/192/937908/satyamitra-kemas-lestari-tawarkan-harga-ipo-rp193-per-saham",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "ARKA",
    "name": "Arkha Jayanti Persada Tbk",
    "date": "2019-07-10",
-   "price": null,
+   "price": 236,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 118.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "INOV",
    "name": "Inocycle Technology Group Tbk",
    "date": "2019-07-10",
-   "price": null,
+   "price": 250,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 152.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "EAST",
    "name": "Eastparc Hotel Tbk",
    "date": "2019-07-09",
-   "price": null,
+   "price": 133,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 54.88,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "FUJI",
    "name": "Fuji Finance Indonesia Tbk",
    "date": "2019-07-09",
-   "price": null,
+   "price": 110,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "LIFE",
    "name": "Asuransi Jiwa Sinarmas MSIG Tbk",
    "date": "2019-07-09",
-   "price": null,
+   "price": 12100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 4760.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "KOTA",
    "name": "DMS Propertindo Tbk",
    "date": "2019-07-09",
-   "price": null,
+   "price": 200,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 186.6,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "BLUE",
    "name": "Berkah Prima Perkasa Tbk",
    "date": "2019-07-08",
-   "price": null,
+   "price": 130,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 21.84,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "ENVY",
    "name": "Envy Technologies Indonesia Tbk",
    "date": "2019-07-08",
-   "price": null,
+   "price": 370,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 222.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "IPTV",
    "name": "MNC Vision Networks Tbk",
    "date": "2019-07-08",
-   "price": null,
+   "price": 240,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 840.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "PAMG",
    "name": "Bima Sakti Pertiwi Tbk",
    "date": "2019-07-05",
-   "price": null,
+   "price": 100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 62.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "ITIC",
    "name": "Indonesian Tobacco Tbk",
    "date": "2019-07-04",
-   "price": null,
+   "price": 219,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 60.02,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "KAYU",
    "name": "Darmi Bersaudara Tbk",
    "date": "2019-07-04",
-   "price": null,
+   "price": 150,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 22.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
@@ -7360,288 +7397,306 @@
    "name": "Krida Jaringan Nusantara Tbk",
    "date": "2019-07-01",
    "price": 202,
-   "shares": 500000000,
-   "fundsBn": 101.0,
+   "shares": null,
+   "fundsBn": 30.3,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Harga IPO dari berita; penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
     "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
-    "https://www.cnbcindonesia.com/market/20190703104140-17-82335/yah-ipo-masih-sepi-peminat-ini-daftar-18-yang-sudah-listing"
+    "https://www.cnbcindonesia.com/market/20190703104140-17-82335/yah-ipo-masih-sepi-peminat-ini-daftar-18-yang-sudah-listing",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "POLU",
    "name": "Golden Flower Tbk",
    "date": "2019-06-26",
-   "price": null,
-   "shares": 750000000,
+   "price": 288,
+   "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "SFAN",
    "name": "Surya Fajar Capital Tbk",
    "date": "2019-06-19",
-   "price": null,
-   "shares": 1062500000,
-   "fundsBn": null,
+   "price": 188,
+   "shares": null,
+   "fundsBn": 39.95,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "CCSI",
    "name": "Communication Cable Systems Indonesia Tbk",
    "date": "2019-06-18",
-   "price": null,
-   "shares": 1000000000,
+   "price": 250,
+   "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "BOLA",
    "name": "Bali Bintang Sejahtera Tbk",
    "date": "2019-06-17",
-   "price": null,
-   "shares": 6000000000,
-   "fundsBn": null,
+   "price": 175,
+   "shares": null,
+   "fundsBn": 350.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "FITT",
    "name": "Hotel Fitra International Tbk",
    "date": "2019-06-11",
-   "price": null,
-   "shares": 600000000,
-   "fundsBn": null,
+   "price": 102,
+   "shares": null,
+   "fundsBn": 22.44,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "JAST",
    "name": "Jasnita Telekomindo Tbk",
    "date": "2019-05-16",
-   "price": null,
-   "shares": 813626700,
-   "fundsBn": null,
+   "price": 246,
+   "shares": null,
+   "fundsBn": 50.03,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "POSA",
    "name": "Bliss Properti Indonesia Tbk",
    "date": "2019-05-10",
-   "price": null,
-   "shares": 8388870000,
-   "fundsBn": null,
+   "price": 150,
+   "shares": null,
+   "fundsBn": 255.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "HRME",
    "name": "Menteng Heritage Realty Tbk",
    "date": "2019-04-12",
-   "price": null,
-   "shares": 5958750000,
-   "fundsBn": null,
+   "price": 105,
+   "shares": null,
+   "fundsBn": 125.13,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "CPRI",
    "name": "Capri Nusa Satu Properti Tbk",
    "date": "2019-04-11",
-   "price": null,
-   "shares": 2433375000,
-   "fundsBn": null,
+   "price": 125,
+   "shares": null,
+   "fundsBn": 85.42,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "MTPS",
    "name": "Meta Epsi Tbk",
    "date": "2019-04-10",
-   "price": null,
-   "shares": 2082805000,
-   "fundsBn": null,
+   "price": 320,
+   "shares": null,
+   "fundsBn": 200.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "COCO",
    "name": "Wahana Interfood Nusantara Tbk",
    "date": "2019-03-20",
-   "price": null,
-   "shares": 508000000,
-   "fundsBn": null,
+   "price": 198,
+   "shares": null,
+   "fundsBn": 33.26,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "JAYA",
    "name": "Armada Berjaya Trans Tbk",
    "date": "2019-02-21",
-   "price": null,
-   "shares": 375000000,
-   "fundsBn": null,
+   "price": 288,
+   "shares": null,
+   "fundsBn": 43.2,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "CLAY",
    "name": "Citra Putra Realty Tbk",
    "date": "2019-01-18",
-   "price": null,
-   "shares": 2570000000,
-   "fundsBn": null,
+   "price": 180,
+   "shares": null,
+   "fundsBn": 93.6,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "NATO",
    "name": "Nusantara Properti Internasional Tbk",
    "date": "2019-01-18",
-   "price": null,
-   "shares": 8000000000,
-   "fundsBn": null,
+   "price": 103,
+   "shares": null,
+   "fundsBn": 206.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "POLI",
    "name": "Pollux Investasi Internasional Tbk",
    "date": "2019-01-10",
-   "price": null,
-   "shares": 2010526400,
-   "fundsBn": null,
+   "price": 1635,
+   "shares": null,
+   "fundsBn": 657.44,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "BEEF",
    "name": "Estika Tata Tiara Tbk",
    "date": "2019-01-10",
-   "price": null,
-   "shares": 1884312500,
-   "fundsBn": null,
+   "price": 340,
+   "shares": null,
+   "fundsBn": 128.13,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
    "t": "FOOD",
    "name": "Sentra Food Indonesia Tbk",
    "date": "2019-01-08",
-   "price": null,
-   "shares": 650000000,
-   "fundsBn": null,
+   "price": 135,
+   "shares": null,
+   "fundsBn": 20.25,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data 2019 baru sebagian: daftar & tanggal listing dari EddyElly; harga/penjamin belum terverifikasi.",
+   "note": "Harga & dana IPO dari Kumparan (belum dicek ke prospektus); penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html"
+    "https://www.eddyelly.com/2019/01/initial-public-offering-ipo-2019.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-bei-intip-kinerja-55-emiten-baru-sepanjang-2019-1sYGPA5aQhn"
    ]
   },
   {
