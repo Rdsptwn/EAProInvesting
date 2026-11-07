@@ -7664,768 +7664,816 @@
    "t": "ZONE",
    "name": "Mega Perintis Tbk",
    "date": "2018-12-12",
-   "price": null,
+   "price": 298,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 58.7,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "URBN",
    "name": "Urban Jakarta Propertindo Tbk",
    "date": "2018-12-10",
-   "price": null,
+   "price": 1200,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 430.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SOTS",
    "name": "Satria Mega Kencana Tbk",
    "date": "2018-12-10",
-   "price": null,
+   "price": 165,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 66.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "LUCK",
    "name": "Sentral Mitra Informatika Tbk",
    "date": "2018-11-28",
-   "price": null,
+   "price": 285,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 44.06,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "DIVA",
    "name": "Distribusi Voucher Nusantara Tbk",
    "date": "2018-11-27",
-   "price": null,
+   "price": 2950,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 632.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "POLA",
    "name": "Pool Advista Finance Tbk",
    "date": "2018-11-16",
-   "price": null,
+   "price": 135,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 108.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "DEAL",
    "name": "Dewata Freight International Tbk",
    "date": "2018-11-09",
-   "price": null,
+   "price": 150,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 45.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SOSS",
    "name": "Shield On Service Tbk",
    "date": "2018-11-06",
-   "price": null,
+   "price": 275,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 41.25,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SATU",
    "name": "Kota Satu Properti Tbk",
    "date": "2018-11-05",
-   "price": null,
+   "price": 117,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 58.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "CAKK",
    "name": "Cahayaputra Asa Keramik Tbk",
    "date": "2018-10-31",
-   "price": null,
+   "price": 168,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 50.4,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "YELO",
    "name": "Yelooo Integra Datanet Tbk",
    "date": "2018-10-29",
-   "price": null,
+   "price": 375,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 48.75,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SKRN",
    "name": "Superkrane Mitra Utama Tbk",
    "date": "2018-10-11",
-   "price": null,
+   "price": 700,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 210.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "GOOD",
    "name": "Garudafood Putra Putri Jaya Tbk",
    "date": "2018-10-10",
-   "price": null,
+   "price": 1284,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 979.48,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "MPRO",
    "name": "Propertindo Mulia Investama Tbk",
    "date": "2018-10-09",
-   "price": null,
+   "price": 110,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 164.17,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SURE",
    "name": "Super Energy Tbk",
    "date": "2018-10-05",
-   "price": null,
+   "price": 155,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 37.2,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SAPX",
    "name": "Satria Antaran Prima Tbk",
    "date": "2018-10-03",
-   "price": null,
+   "price": 250,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 108.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "CITY",
    "name": "Natura City Developments Tbk",
    "date": "2018-09-28",
-   "price": null,
+   "price": 120,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 312.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "PANI",
    "name": "Pratama Abadi Nusa Industri Tbk",
    "date": "2018-09-18",
-   "price": null,
+   "price": 108,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 16.2,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "DIGI",
    "name": "Arkadia Digital Media Tbk",
    "date": "2018-09-18",
-   "price": null,
+   "price": 200,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 30.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "MOLI",
    "name": "Madusari Murni Indah Tbk",
    "date": "2018-08-30",
-   "price": null,
+   "price": 580,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 203.58,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "LAND",
    "name": "Trimitra Propertindo Tbk",
    "date": "2018-08-23",
-   "price": null,
+   "price": 390,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 301.59,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "ANDI",
    "name": "Andira Agro Tbk",
    "date": "2018-08-16",
-   "price": null,
+   "price": 200,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 100.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "FILM",
    "name": "MD Pictures Tbk",
    "date": "2018-08-07",
-   "price": null,
+   "price": 210,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 274.63,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "NFCX",
    "name": "NFC Indonesia Tbk",
    "date": "2018-07-12",
-   "price": null,
+   "price": 1850,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 308.33,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "MGRO",
    "name": "Mahkota Grup Tbk",
    "date": "2018-07-12",
-   "price": null,
+   "price": 225,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 158.32,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "POLL",
    "name": "Pollux Properti Indonesia Tbk",
    "date": "2018-07-11",
-   "price": null,
+   "price": 615,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 767.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "RISE",
    "name": "Jaya Sukses Makmur Sentosa Tbk",
    "date": "2018-07-09",
-   "price": null,
+   "price": 100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 40.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "IPCC",
    "name": "Indonesia Kendaraan Terminal Tbk",
    "date": "2018-07-09",
-   "price": null,
+   "price": 1640,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 835.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "BPTR",
    "name": "Batavia Prosperindo Trans Tbk",
    "date": "2018-07-09",
-   "price": null,
+   "price": 100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 40.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "TCPI",
    "name": "Transcoal Pacific Tbk",
    "date": "2018-07-06",
-   "price": null,
+   "price": 138,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 138.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "MAPA",
    "name": "MAP Aktif Adiperkasa Tbk",
    "date": "2018-07-05",
-   "price": null,
+   "price": 2100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 897.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "TNCA",
    "name": "Trimuda Nuansa Citra Tbk",
    "date": "2018-06-28",
-   "price": null,
+   "price": 150,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 30.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "MSIN",
    "name": "MNC Studios International Tbk",
    "date": "2018-06-08",
-   "price": null,
+   "price": 500,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 780.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SWAT",
    "name": "Sriwahana Adityakarta Tbk",
    "date": "2018-06-08",
-   "price": null,
+   "price": 160,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 106.27,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "TUGU",
    "name": "Asuransi Tugu Pratama Indonesia Tbk",
    "date": "2018-05-28",
-   "price": null,
+   "price": 3850,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 684.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "TRUK",
    "name": "Guna Timur Raya Tbk",
    "date": "2018-05-23",
-   "price": null,
+   "price": 230,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 34.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "PZZA",
    "name": "Sarimelati Kencana Tbk",
    "date": "2018-05-23",
-   "price": null,
+   "price": 1100,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 664.81,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "HEAL",
    "name": "Medikaloka Hermina Tbk",
    "date": "2018-05-16",
-   "price": null,
+   "price": 3700,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 1300.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "PRIM",
    "name": "Royal Prima Tbk",
    "date": "2018-05-15",
-   "price": null,
+   "price": 500,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 975.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "SPTO",
    "name": "Surya Pertiwi Tbk",
    "date": "2018-05-14",
-   "price": null,
+   "price": 1160,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 812.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "BTPS",
    "name": "Bank BTPN Syariah Tbk",
    "date": "2018-05-08",
-   "price": null,
+   "price": 975,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 751.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "NICK",
    "name": "Charnic Capital Tbk",
    "date": "2018-05-02",
-   "price": null,
+   "price": 200,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 40.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "DFAM",
    "name": "Dafam Property Indonesia Tbk",
    "date": "2018-04-27",
-   "price": null,
+   "price": 115,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "GHON",
    "name": "Gihon Telekomunikasi Indonesia Tbk",
    "date": "2018-04-09",
-   "price": null,
+   "price": 1170,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 178.87,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "INPS",
    "name": "Indah Prakasa Sentosa Tbk",
    "date": "2018-04-06",
-   "price": null,
+   "price": 276,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 41.4,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "HELI",
    "name": "Jaya Trishindo Tbk",
    "date": "2018-03-27",
-   "price": null,
+   "price": 110,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 27.5,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "BOSS",
    "name": "Borneo Olah Sarana Sukses Tbk",
    "date": "2018-02-15",
-   "price": null,
+   "price": 400,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 160.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
    "t": "LCKM",
    "name": "LCK Global Kedaton Tbk",
    "date": "2018-01-16",
-   "price": null,
+   "price": 208,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 41.6,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html"
+    "https://www.eddyelly.com/2018/01/initial-public-offering-ipo-2018.html",
+    "https://kumparan.com/kumparanbisnis/kaleidoskop-57-perusahaan-ipo-di-2018-simak-pergerakan-sahamnya-1546255293454196636"
    ]
   },
   {
@@ -8448,16 +8496,17 @@
    "t": "IPCM",
    "name": "Jasa Armada Indonesia Tbk",
    "date": "2017-12-22",
-   "price": null,
+   "price": 380,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 461.89,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
@@ -8528,352 +8577,374 @@
    "t": "PSSI",
    "name": "Pelita Samudera Shipping Tbk",
    "date": "2017-12-05",
-   "price": null,
+   "price": 135,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "WEGE",
    "name": "Wika Gedung Tbk",
    "date": "2017-11-30",
-   "price": null,
+   "price": 290,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "PPRE",
    "name": "PP Presisi Tbk",
    "date": "2017-11-24",
-   "price": null,
+   "price": 430,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MCAS",
    "name": "M Cash Integrasi Tbk",
    "date": "2017-11-01",
-   "price": null,
+   "price": 1385,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "ZINC",
    "name": "Kapuas Prima Coal Tbk",
    "date": "2017-10-16",
-   "price": null,
+   "price": 140,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MTWI",
    "name": "Malacca Trust Wuwungan Insurance Tbk",
    "date": "2017-10-11",
-   "price": null,
+   "price": 100,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "GMFI",
    "name": "Garuda Maintenance Facility Aero Asia Tbk",
    "date": "2017-10-10",
-   "price": null,
+   "price": 400,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "KIOS",
    "name": "Kioson Komersial Indonesia Tbk",
    "date": "2017-10-05",
-   "price": null,
+   "price": 300,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "BELL",
    "name": "Trisula Textile Industries Tbk",
    "date": "2017-10-03",
-   "price": null,
+   "price": 150,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MDKI",
    "name": "Emdeki Utama Tbk",
    "date": "2017-09-25",
-   "price": null,
+   "price": 600,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "NASA",
    "name": "Ayana Land International Tbk",
    "date": "2017-08-07",
-   "price": null,
+   "price": 103,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MARK",
    "name": "Mark Dynamics Indonesia Tbk",
    "date": "2017-07-12",
-   "price": null,
+   "price": 250,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MPOW",
    "name": "Megapower Makmur Tbk",
    "date": "2017-07-05",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "HOKI",
    "name": "Buyung Poetra Sembada Tbk",
    "date": "2017-06-22",
-   "price": null,
+   "price": 310,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "HRTA",
    "name": "Hartadinata Abadi Tbk",
    "date": "2017-06-21",
-   "price": null,
+   "price": 300,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MAPB",
    "name": "Map Boga Adiperkasa Tbk",
    "date": "2017-06-21",
-   "price": null,
+   "price": 1680,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "WOOD",
    "name": "Integra Indocabinet Tbk",
    "date": "2017-06-21",
-   "price": null,
+   "price": 260,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "KMTR",
    "name": "Kirana Megatara Tbk",
    "date": "2017-06-19",
-   "price": null,
+   "price": 458,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "TOPS",
    "name": "Totalindo Eka Persada Tbk",
    "date": "2017-06-16",
-   "price": null,
+   "price": 310,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "FIRE",
    "name": "Alfa Energi Investama Tbk",
    "date": "2017-06-09",
-   "price": null,
+   "price": 500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "TGRA",
    "name": "Terregra Asia Energy Tbk",
    "date": "2017-05-16",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "CSIS",
    "name": "Cahayasakti Investindo Sukses Tbk",
    "date": "2017-05-10",
-   "price": null,
+   "price": 300,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
@@ -8896,64 +8967,68 @@
    "t": "CLEO",
    "name": "Sariguna Primatirta Tbk",
    "date": "2017-05-05",
-   "price": null,
+   "price": 115,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "MINA",
    "name": "Sanurhasta Mitra Tbk",
    "date": "2017-04-28",
-   "price": null,
+   "price": 105,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "CARS",
    "name": "Industri dan Perdagangan Bintraco Dharma Tbk",
    "date": "2017-04-10",
-   "price": null,
+   "price": 1750,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
    "t": "PORT",
    "name": "Nusantara Pelabuhan Handal Tbk",
    "date": "2017-03-16",
-   "price": null,
+   "price": 535,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://economy.okezone.com/read/2017/12/11/278/1828374/kilas-balik-ipo-2017-pertama-kalinya-bei-kedatangan-35-emiten-baru"
    ]
   },
   {
