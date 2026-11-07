@@ -9006,16 +9006,17 @@
    "t": "TAMU",
    "name": "Pelayaran Tamarin Samudra Tbk",
    "date": "2017-05-10",
-   "price": null,
+   "price": 110,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html"
+    "https://www.eddyelly.com/2017/03/initial-public-offering-ipo-2017.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
@@ -9124,17 +9125,18 @@
    "t": "AGII",
    "name": "Samator Indo Gas Tbk",
    "date": "2016-09-28",
-   "price": 1100,
+   "price": 1500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO Rp1500 (Bareksa); sumber lain menulis Rp1100, jadi angka ini perlu dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://www.liputan6.com/saham/read/2691222/melihat-kinerja-saham-emiten-baru-sepanjang-2016"
+    "https://www.liputan6.com/saham/read/2691222/melihat-kinerja-saham-emiten-baru-sepanjang-2016",
+    "https://www.bareksa.com/berita/berita-ekonomi-terkini/2016-12-28/saham-saham-yang-ipo-tahun-2016-ini-harganya-naik-3-kali-lipat/amp"
    ]
   },
   {
@@ -9192,17 +9194,18 @@
    "t": "OASA",
    "name": "Protech Mitra Perkasa Tbk",
    "date": "2016-07-18",
-   "price": 270,
+   "price": 190,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO Rp190 (Bareksa); sumber lain menulis Rp270, jadi angka ini perlu dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://www.liputan6.com/saham/read/2691222/melihat-kinerja-saham-emiten-baru-sepanjang-2016"
+    "https://www.liputan6.com/saham/read/2691222/melihat-kinerja-saham-emiten-baru-sepanjang-2016",
+    "https://www.bareksa.com/berita/berita-ekonomi-terkini/2016-12-28/saham-saham-yang-ipo-tahun-2016-ini-harganya-naik-3-kali-lipat/amp"
    ]
   },
   {
@@ -10700,32 +10703,34 @@
    "t": "GWSA",
    "name": "Greenwood Sejahtera Tbk",
    "date": "2011-12-23",
-   "price": null,
+   "price": 250,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "BAJA",
    "name": "Saranacentral Bajatama Tbk",
    "date": "2011-12-21",
-   "price": null,
+   "price": 250,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
@@ -10753,336 +10758,357 @@
    "t": "ABMM",
    "name": "ABM Investama Tbk",
    "date": "2011-12-06",
-   "price": null,
+   "price": 3750,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "CASS",
    "name": "Cardig Aero Services Tbk",
    "date": "2011-12-05",
-   "price": null,
+   "price": 400,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "VIVA",
    "name": "Visi Media Asia Tbk",
    "date": "2011-11-21",
-   "price": null,
+   "price": 300,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "GEMS",
    "name": "Golden Energy Mines Tbk",
    "date": "2011-11-17",
-   "price": null,
+   "price": 2500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "ARII",
    "name": "Atlas Resources Tbk",
    "date": "2011-11-08",
-   "price": null,
+   "price": 1500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "SUPR",
    "name": "Solusi Tunas Pratama Tbk",
    "date": "2011-10-11",
-   "price": null,
+   "price": 3400,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "STAR",
    "name": "Buana Artha Anugerah Tbk",
    "date": "2011-07-13",
-   "price": null,
+   "price": 102,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "ALDO",
    "name": "Alkindo Naratama Tbk",
    "date": "2011-07-12",
-   "price": null,
+   "price": 225,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "PTIS",
    "name": "Indo Straits Tbk",
    "date": "2011-07-12",
-   "price": null,
+   "price": 950,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "SDMU",
    "name": "Sidomulyo Selaras Tbk",
    "date": "2011-07-12",
-   "price": null,
+   "price": 225,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "TIFA",
    "name": "KDB Tifa Finance Tbk",
    "date": "2011-07-08",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "MTLA",
    "name": "Metropolitan Land Tbk",
    "date": "2011-06-20",
-   "price": null,
+   "price": 240,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "SIMP",
    "name": "Salim Ivomas Pratama Tbk",
    "date": "2011-06-09",
-   "price": null,
+   "price": 1100,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "JAWA",
    "name": "Jaya Agra Wattie Tbk",
    "date": "2011-05-30",
-   "price": null,
+   "price": 500,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "BULL",
    "name": "Buana Lintas Lautan Tbk",
    "date": "2011-05-23",
-   "price": null,
+   "price": 155,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "HDFA",
    "name": "Radana Bhaskara Finance Tbk",
    "date": "2011-05-10",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "SRAJ",
    "name": "Sejahteraraya Anugrahjaya Tbk",
    "date": "2011-04-11",
-   "price": null,
+   "price": 120,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "MBSS",
    "name": "Mitrabahtera Segara Sejati Tbk",
    "date": "2011-04-06",
-   "price": null,
+   "price": 1600,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "GIAA",
    "name": "Garuda Indonesia (Persero) Tbk",
    "date": "2011-02-11",
-   "price": null,
+   "price": 750,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "MBTO",
    "name": "Martina Berto Tbk",
    "date": "2011-01-13",
-   "price": null,
+   "price": 740,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
    "t": "EMDE",
    "name": "Megapolitan Developments Tbk",
    "date": "2011-01-12",
-   "price": null,
+   "price": 250,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1803153/25-emiten-ipo-selama-2011-ada-yang-untung-ada-yang-buntung"
    ]
   },
   {
