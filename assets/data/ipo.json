@@ -9589,16 +9589,17 @@
    "t": "MIKA",
    "name": "Mitra Keluarga Karyasehat Tbk",
    "date": "2015-03-24",
-   "price": null,
+   "price": 17000,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO dari media (harga sebelum stock split; halaman menyesuaikan otomatis). Dana = harga × saham ditawarkan (hitungan, bukan angka resmi). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://jakartaglobe.id/context/indonesias-top-ipos-2015"
    ]
   },
   {
@@ -11364,16 +11365,20 @@
    "t": "BBTN",
    "name": "Bank Tabungan Negara (Persero) Tbk",
    "date": "2009-12-17",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 800,
+   "shares": 2360000000,
+   "fundsBn": 1888.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mandiri Sekuritas",
+    "CIMB Sekuritas Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO dari media (harga sebelum stock split; halaman menyesuaikan otomatis). Dana = harga × saham ditawarkan (hitungan, bukan angka resmi). Penjamin pelaksana dari Antara.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.antaranews.com/berita/164497/harga-saham-ipo-btn-rp800-per-lembar"
    ]
   },
   {
@@ -12516,16 +12521,17 @@
    "t": "BBRI",
    "name": "Bank Rakyat Indonesia (Persero) Tbk",
    "date": "2003-11-10",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 875,
+   "shares": 3810000000,
+   "fundsBn": 3333.75,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO dari media (harga sebelum stock split; halaman menyesuaikan otomatis). Dana = harga × saham ditawarkan (hitungan, bukan angka resmi). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://keuangan.kontan.co.id/news/22-tahun-melantai-di-bursa-efek-indonesia-harga-saham-bbri-telah-naik-48-kali"
    ]
   },
   {
@@ -12548,16 +12554,17 @@
    "t": "BMRI",
    "name": "Bank Mandiri (Persero) Tbk",
    "date": "2003-07-14",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 675,
+   "shares": 4000000000,
+   "fundsBn": 2700.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO dari media (harga sebelum stock split; halaman menyesuaikan otomatis). Dana = harga × saham ditawarkan (hitungan, bukan angka resmi). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/sejarah-saham-bmri-emiten-perbankan-negara-dengan-laba-rp20-t-di-q1-2022/all"
    ]
   },
   {
@@ -12596,16 +12603,17 @@
    "t": "PTBA",
    "name": "Bukit Asam Tbk",
    "date": "2002-12-23",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 575,
+   "shares": 346500000,
+   "fundsBn": 199.24,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO dari media (harga sebelum stock split; halaman menyesuaikan otomatis). Dana = harga × saham ditawarkan (hitungan, bukan angka resmi). Penjamin belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.petromindo.com/news/article/ptba-to-offer-346-5-million-ipo-shares"
    ]
   },
   {
