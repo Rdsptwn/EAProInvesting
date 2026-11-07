@@ -1,0 +1,9 @@
+name: probe-idx
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in https://www.idx.co.id/media/7331/kjen-prospektus-ipo-2019.pdf https://www.sahamu.com/emiten/ipo/saham-ipo-2019-di-bursa-efek-indonesia/ https://britama.com/index.php/2019/07/daftar-perusahaan-yang-melakukan-penawaran-umum-perdana-ipo-di-tahun-2019/ https://emitenhub.com/underwriters; do
+            echo "$u"; curl -sL -A "Mozilla/5.0" -o /tmp/o -w "%{http_code} %{size_download}\n" "$u"; done
