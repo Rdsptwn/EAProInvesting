@@ -11295,16 +11295,17 @@
    "t": "TOWR",
    "name": "Sarana Menara Nusantara Tbk",
    "date": "2010-03-08",
-   "price": null,
+   "price": 1050,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.idxchannel.com/market-news/intip-sejarah-saham-towr-aksi-korporasi-hingga-laporan-keuangannya/all"
    ]
   },
   {
@@ -11612,11 +11613,16 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danareksa Sekuritas",
+    "Indo Premier Sekuritas",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan). Harga IPO belum ditemukan.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.petromindo.com/news/article/indika-to-go-public-in-june-2008"
    ]
   },
   {
@@ -11783,16 +11789,19 @@
    "t": "ITMG",
    "name": "Indo Tambangraya Megah Tbk",
    "date": "2007-12-18",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 14000,
+   "shares": 225985000,
+   "fundsBn": 3163.79,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UBS Sekuritas Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-864492/saham-perdana-indo-tambangraya-dilego-pada-rp-14-000"
    ]
   },
   {
@@ -11863,16 +11872,21 @@
    "t": "JSMR",
    "name": "Jasa Marga Tbk",
    "date": "2007-11-12",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 1700,
+   "shares": 2040000000,
+   "fundsBn": 3468.0,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Bahana Sekuritas",
+    "Danareksa Sekuritas",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850838/jasa-marga-nangkring-di-papan-utama-bej"
    ]
   },
   {
