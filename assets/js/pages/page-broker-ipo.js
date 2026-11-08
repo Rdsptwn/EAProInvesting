@@ -36,7 +36,8 @@
             o.last = p[4] * sf; o.curG = (p[4] / base - 1) * 100; o.dd = (p[4] / p[2] - 1) * 100;
             // riwayat harga Yahoo tidak mulai di sekitar tanggal IPO (mulai jauh sesudah / sebelum, mis. riwayat induk):
             // return "sejak IPO", ATH, dan drawdown tidak sebanding dengan harga IPO, jadi tidak ditampilkan
-            if (gap > 100) { o.mism = true; o.last = p[4]; o.d1 = null; o.ath = null; o.athDate = null; o.athG = null; o.curG = null; o.dd = null; }
+            const ratio = p[1] / base; // penutupan pertama Yahoo vs harga IPO (setara split); di luar 0,34x-8x = skala harga tidak cocok (aksi korporasi tak terbaca / harga IPO salah)
+            if (gap > 100 || ratio < 0.34 || ratio > 8) { o.mism = gap > 100 ? 'tgl' : 'skala'; o.ratio = ratio; o.last = p[4]; o.d1 = null; o.ath = null; o.athDate = null; o.athG = null; o.curG = null; o.dd = null; }
         } else if (scr[x.t] && price > 0) { o.last = scr[x.t]; o.curG = (scr[x.t] / price - 1) * 100; }
         o.cur = o.curG;
         const fl = ewoksStatusOf(x.t).filter((f) => f[0] !== 'GOCAP' || true);
@@ -123,7 +124,7 @@
                 <td class="px-3 py-3 text-right text-slate-600">${x.fundsBn ? 'Rp' + fx(x.fundsBn) + ' M' : '—'}</td>
                 <td class="px-3 py-3 text-slate-600 font-semibold max-w-[220px]">${uw}</td>
                 <td class="px-3 py-3 text-right">${pct(x.d1)}</td>
-                <td class="px-3 py-3 text-right whitespace-nowrap">${Number.isFinite(x.ath) ? `<div class="font-bold text-slate-700">${fx(x.ath)}</div><div class="text-[10px]">${pct(x.athG)} · ${dmy(x.athDate)}</div>` : x.mism ? '<span class="text-amber-500 text-[10px] font-bold" title="Riwayat harga tidak mulai di bulan IPO, jadi ATH dan return sejak IPO tidak ditampilkan.">⚠ riwayat harga tidak sebanding</span>' : '<span class="text-slate-300">—</span>'}</td>
+                <td class="px-3 py-3 text-right whitespace-nowrap">${Number.isFinite(x.ath) ? `<div class="font-bold text-slate-700">${fx(x.ath)}</div><div class="text-[10px]">${pct(x.athG)} · ${dmy(x.athDate)}</div>` : x.mism ? '<span class="text-amber-500 text-[10px] font-bold" title="Riwayat harga tidak mulai di bulan IPO atau skalanya tidak cocok dengan harga IPO, jadi ATH dan return sejak IPO tidak ditampilkan.">⚠ riwayat harga tidak sebanding</span>' : '<span class="text-slate-300">—</span>'}</td>
                 <td class="px-3 py-3 text-right whitespace-nowrap">${Number.isFinite(x.last) ? `<div class="font-bold text-slate-700">${fx(x.last)}</div><div class="text-[10px]">${pct(x.curG)}${Number.isFinite(x.dd) ? ` · <span class="text-slate-400">dari ATH ${x.dd.toFixed(0)}%</span>` : ''}</div>` : '<span class="text-slate-300">—</span>'}</td>
             </tr>`;
             if (open !== x.t) return main;
@@ -131,7 +132,7 @@
             return main + `<tr class="bg-slate-50 border-b border-slate-200"><td colspan="8" class="px-4 py-3 text-[11px] text-slate-600 leading-relaxed">
                 <b>${esc(x.name || "")}</b> · ${esc(x.sector || '—')} · papan ${esc(x.board || '—')} · saham ditawarkan ${x.shares ? fx(x.shares) : '—'}<br>
                 <b>Penjamin pelaksana:</b> ${x.lead.length ? esc(x.lead.join(', ')) : 'belum tercatat'} · <b>Penjamin emisi lain:</b> ${x.syn.length ? esc(x.syn.join(', ')) : '—'}<br>
-                ${x.flags.length ? x.flags.map((f) => `<b class="text-rose-600">${esc(ewoksStatusLabel(f[0]))}:</b> ${esc(f[1])}${f[2] ? ` <a href="${esc(f[2])}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>`).join('') : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${x.mism ? `<b class="text-amber-600">Riwayat harga tidak sebanding:</b> data harga mulai ${dmy(perf[x.t][0])}, sedangkan IPO ${dmy(x.date)}. Return sejak IPO, ATH, dan drawdown tidak ditampilkan; kolom Sekarang memakai harga pasar terakhir apa adanya.<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}<div class="mt-1">${ewoksStatusLinks(x.t)}</div></td></tr>`;
+                ${x.flags.length ? x.flags.map((f) => `<b class="text-rose-600">${esc(ewoksStatusLabel(f[0]))}:</b> ${esc(f[1])}${f[2] ? ` <a href="${esc(f[2])}" target="_blank" rel="noopener" class="text-blue-600 hover:underline">[sumber]</a>` : ''}<br>`).join('') : ''}${x.note ? esc(x.note) + '<br>' : ''}${x.sf !== 1 ? `Disesuaikan stock split (faktor ${x.sf.toLocaleString('id-ID')}).<br>` : ''}${x.mism ? `<b class="text-amber-600">Riwayat harga tidak sebanding:</b> ${x.mism === 'skala' ? `penutupan pertama di data harga ${fx(perf[x.t][1], 1)} vs harga IPO setara ${fx(x.price / x.sf, 1)} (selisih ${x.ratio < 1 ? (1 / x.ratio).toFixed(1) + 'x lebih rendah' : x.ratio.toFixed(1) + 'x lebih tinggi'}), kemungkinan aksi korporasi tidak terbaca` : `data harga mulai ${dmy(perf[x.t][0])}, sedangkan IPO ${dmy(x.date)}`}. Return sejak IPO, ATH, dan drawdown tidak ditampilkan; kolom Sekarang memakai harga pasar terakhir apa adanya.<br>` : ''}${Number.isFinite(x.ath) ? `Terendah sejak IPO: ${fx(perf[x.t][6] * x.sf)} · ATH ${fx(x.ath)} (${dmy(x.athDate)}).<br>` : ''}Sumber: ${src || '—'}<div class="mt-1">${ewoksStatusLinks(x.t)}</div></td></tr>`;
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-400">Tidak ada data.</td></tr>';
     };
 
