@@ -11511,17 +11511,22 @@
    "t": "PTPP",
    "name": "PP (Persero) Tbk",
    "date": "2010-02-09",
-   "price": null,
-   "shares": null,
+   "price": 560,
+   "shares": 1038977024,
    "fundsBn": 581.82,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mandiri Sekuritas",
+    "Danareksa Sekuritas",
+    "DBS Vickers Securities Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Dana Rp581,82 miliar sesuai Bareksa.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://www.bareksa.com/berita/berita-ekonomi-terkini/2014-10-08/realisasi-dana-penerbitan-saham-perdana-pt-pp-baru-65-atau-rp365-miliar"
+    "https://www.bareksa.com/berita/berita-ekonomi-terkini/2014-10-08/realisasi-dana-penerbitan-saham-perdana-pt-pp-baru-65-atau-rp365-miliar",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
