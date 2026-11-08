@@ -13106,16 +13106,19 @@
    "t": "ABBA",
    "name": "Mahaka Media Tbk",
    "date": "2002-04-03",
-   "price": null,
+   "price": 105,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Rifan Financindo Advisori"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Harga IPO & penjamin dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Dana dan jumlah saham IPO tidak tercantum di Stockbit. Tanggal listing Stockbit: 3 Apr 2002.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
