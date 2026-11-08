@@ -11386,16 +11386,19 @@
    "name": "Sarana Menara Nusantara Tbk",
    "date": "2010-03-08",
    "price": 1050,
-   "shares": null,
-   "fundsBn": null,
+   "shares": 112232500,
+   "fundsBn": 117.844,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Dinamika Usahajaya Sekuritas"
+   ],
    "syn": [],
-   "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://www.idxchannel.com/market-news/intip-sejarah-saham-towr-aksi-korporasi-hingga-laporan-keuangannya/all"
+    "https://www.idxchannel.com/market-news/intip-sejarah-saham-towr-aksi-korporasi-hingga-laporan-keuangannya/all",
+    "https://finance.detik.com/bursa-dan-valas/d-1312245/sarana-menara-nusantara-ipo-rp-117-844-miliar"
    ]
   },
   {
@@ -11840,16 +11843,17 @@
    "t": "ELSA",
    "name": "Elnusa Tbk",
    "date": "2008-02-06",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 400,
+   "shares": 1460000000,
+   "fundsBn": 584,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Dana = harga × saham (hitungan); artikel menyebut kisaran Rp481–620 miliar.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-880911/harga-saham-elnusa-rp-400"
    ]
   },
   {
