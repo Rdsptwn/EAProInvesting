@@ -10520,16 +10520,20 @@
    "name": "Bank Pembangunan Daerah Jawa Timur Tbk",
    "date": "2012-07-12",
    "price": 430,
-   "shares": null,
-   "fundsBn": null,
+   "shares": 2983000000,
+   "fundsBn": 1282.69,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Bahana Sekuritas",
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "Harga penawaran IPO dari Republika; dana tidak diisi karena artikel hanya menyebut target.",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli",
+    "https://investasi.kontan.co.id/news/bank-jatim-lepas-2983-miliar-saham-dalam-ipo"
    ]
   },
   {
@@ -11654,16 +11658,20 @@
    "t": "BYAN",
    "name": "Bayan Resources Tbk",
    "date": "2008-08-12",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 5800,
+   "shares": 833300000,
+   "fundsBn": 4830,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Merrill Lynch Indonesia",
+    "Trimegah Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Detik menulis 958 juta saham; FinanceAsia 833,3 juta (dipakai karena cocok dengan dana Rp4,83 triliun).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.financeasia.com/article/bayan-resources-ipo-draws-strong-demand/117771"
    ]
   },
   {
@@ -11811,16 +11819,20 @@
    "t": "BTPN",
    "name": "Bank SMBC Indonesia Tbk",
    "date": "2008-03-12",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 2850,
+   "shares": 267960220,
+   "fundsBn": 763.69,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "CIMB-GK Securities Indonesia",
+    "BNI Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Seluruh saham dijual pemegang saham (PPA), bukan saham baru.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-902583/harga-saham-btpn-rp-2-850"
    ]
   },
   {
