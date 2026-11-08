@@ -10501,9 +10501,9 @@
    "t": "ASSA",
    "name": "Adi Sarana Armada Tbk",
    "date": "2012-11-12",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 390,
+   "shares": 1360000000,
+   "fundsBn": 530,
    "board": null,
    "sector": null,
    "lead": [
@@ -10511,10 +10511,11 @@
     "Buana Capital"
    ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://ekonomi.republika.co.id/berita/mbrnc2/adi-sarana-armada-ipo-4003-persen-saham"
+    "https://ekonomi.republika.co.id/berita/mbrnc2/adi-sarana-armada-ipo-4003-persen-saham",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
