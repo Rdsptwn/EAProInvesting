@@ -9838,7 +9838,7 @@
    "t": "LINK",
    "name": "Link Net Tbk",
    "date": "2014-07-02",
-   "price": null,
+   "price": 1600,
    "shares": null,
    "fundsBn": null,
    "board": null,
@@ -9850,6 +9850,7 @@
    "note": "Data IPO dari media, belum dicek ke prospektus. Harga IPO belum ditemukan.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.indonesia-investments.com/news/todays-headlines/link-net-conducted-successful-ipo-on-the-indonesia-stock-exchange/item2063",
     "https://www.indonesia-investments.com/news/todays-headlines/link-net-conducted-successful-ipo-on-the-indonesia-stock-exchange/item2063"
    ]
   },
@@ -10501,18 +10502,22 @@
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Bahana Sekuritas",
+    "Buana Capital"
+   ],
    "syn": [],
    "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/mbrnc2/adi-sarana-armada-ipo-4003-persen-saham"
    ]
   },
   {
    "t": "BSSR",
    "name": "Baramulti Suksessarana Tbk",
    "date": "2012-11-08",
-   "price": null,
+   "price": 1950,
    "shares": null,
    "fundsBn": null,
    "board": null,
@@ -10521,7 +10526,8 @@
    "syn": [],
    "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.petromindo.com/news/article/baramulti-s-shares-price-drops-in-trading-debut"
    ]
   },
   {
@@ -11491,14 +11497,15 @@
    "date": "2010-02-09",
    "price": null,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 581.82,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
    "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.bareksa.com/berita/berita-ekonomi-terkini/2014-10-08/realisasi-dana-penerbitan-saham-perdana-pt-pp-baru-65-atau-rp365-miliar"
    ]
   },
   {
