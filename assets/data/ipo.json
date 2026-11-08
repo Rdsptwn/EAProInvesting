@@ -13744,16 +13744,19 @@
    "t": "BMSR",
    "name": "Bintang Mitra Semestaraya Tbk",
    "date": "1999-12-29",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 500,
+   "shares": 130000000,
+   "fundsBn": 65,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danatama Makmur Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing Stockbit: 29 Des 1999.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
