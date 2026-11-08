@@ -10740,16 +10740,19 @@
    "t": "ESSA",
    "name": "ESSA Industries Indonesia Tbk",
    "date": "2012-02-01",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 610,
+   "shares": 250000000,
+   "fundsBn": 152,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Equator Securities"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Penjamin terafiliasi dengan emiten.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
