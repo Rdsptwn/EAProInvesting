@@ -10037,16 +10037,20 @@
    "t": "PNBS",
    "name": "Bank Panin Dubai Syariah Tbk",
    "date": "2014-01-15",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 100,
+   "shares": 4750000128,
+   "fundsBn": 475,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Evergreen Capital",
+    "RHB OSK Securities Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing Stockbit: 15 Jan 2014.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
