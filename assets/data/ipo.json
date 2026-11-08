@@ -12255,16 +12255,19 @@
    "t": "SDRA",
    "name": "Bank Woori Saudara Indonesia 1906 Tbk",
    "date": "2006-12-15",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 115,
+   "shares": 500000000,
+   "fundsBn": 57.5,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Kresna Graha Sekurindo"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Dana = harga × saham (hitungan).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-720455/bank-saudara-jadi-emiten-pamungkas-2006"
    ]
   },
   {
@@ -12303,16 +12306,19 @@
    "t": "TOTL",
    "name": "Total Bangun Persada Tbk",
    "date": "2006-07-25",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 345,
+   "shares": 850000000,
+   "fundsBn": 293.3,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "CLSA Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Termasuk 550 juta saham sekunder; dana dasar Rp293,3 miliar (belum termasuk greenshoe).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://www.financeasia.com/article/construction-company-completes-first-2006-indonesian-ipo-with-international-tranc/42231"
    ]
   },
   {
@@ -12336,15 +12342,18 @@
    "name": "Bank KB Indonesia Tbk",
    "date": "2006-07-10",
    "price": null,
-   "shares": null,
+   "shares": 2049144500,
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "ABN Amro Asia Securities Indonesia"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Harga IPO belum ditemukan.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-358820/bank-bukopin-catatkan-sahamnya-di-bursa-6-juli"
    ]
   },
   {
@@ -13277,16 +13286,17 @@
    "t": "DOID",
    "name": "Delta Dunia Makmur Tbk",
    "date": "2001-06-15",
-   "price": null,
+   "price": 150,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Hanya harga IPO yang tersedia (satu artikel); jumlah saham dan dana belum ada.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-1191317/doid-bintang-baru-lantai-bursa"
    ]
   },
   {
