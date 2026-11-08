@@ -12586,15 +12586,18 @@
    "name": "Pembangunan Jaya Ancol Tbk",
    "date": "2004-07-02",
    "price": null,
-   "shares": null,
+   "shares": 127000000,
    "fundsBn": null,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Danareksa Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Harga final belum ditemukan (artikel hanya rentang Rp975–1.325).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-158477/saham-jaya-ancol-ditawarkan-rp-975-rp-1-325-saham"
    ]
   },
   {
