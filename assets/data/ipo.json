@@ -11182,16 +11182,19 @@
    "t": "MIDI",
    "name": "Midi Utama Indonesia Tbk",
    "date": "2010-11-30",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 275,
+   "shares": 432353000,
+   "fundsBn": 118.9,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Premier Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://economy.okezone.com/read/2010/11/30/278/398454/listing-di-bei-saham-alfa-midi-melesat-18-18"
    ]
   },
   {
@@ -11216,30 +11219,34 @@
    "date": "2010-11-11",
    "price": null,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 2240,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Harga final IPO belum ditemukan (artikel lain hanya memuat rentang Rp350–450).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://m.jpnn.com/news/ipo-agung-podomoro-rp-224-triliun"
    ]
   },
   {
    "t": "KRAS",
    "name": "Krakatau Steel (Persero) Tbk",
    "date": "2010-11-10",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 850,
+   "shares": 3155000000,
+   "fundsBn": 2681.75,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Bahana Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Dana = harga × saham (hitungan, bukan angka artikel).",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://nasional.kontan.co.id/news/bahana-harga-saham-ipo-krakatau-steel-sudah-premium-1"
    ]
   },
   {
