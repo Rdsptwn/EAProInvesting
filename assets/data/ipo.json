@@ -5969,17 +5969,20 @@
    "t": "PTDU",
    "name": "Djasa Ubersakti Tbk",
    "date": "2020-12-08",
-   "price": null,
+   "price": 100,
    "shares": null,
    "fundsBn": 30,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mirae Asset Sekuritas"
+   ],
    "syn": [],
    "note": "",
    "src": [
     "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
-    "https://market.bisnis.com/read/20201208/192/1327865/djasa-ubersakti-ptdu-kantongi-rp30-miliar-dari-ipo"
+    "https://market.bisnis.com/read/20201208/192/1327865/djasa-ubersakti-ptdu-kantongi-rp30-miliar-dari-ipo",
+    "https://investasi.kontan.co.id/news/djasa-ubersakti-ptdu-akan-listing-di-bei-hari-ini-cermati-profilnya-berikut"
    ]
   },
   {
