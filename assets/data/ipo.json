@@ -11604,17 +11604,20 @@
    "t": "NIKL",
    "name": "Pelat Timah Nusantara Tbk",
    "date": "2009-12-14",
-   "price": null,
-   "shares": null,
-   "fundsBn": 164.017,
+   "price": 325,
+   "shares": 504670016,
+   "fundsBn": 164,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Bahana Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2"
+    "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
