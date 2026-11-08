@@ -5900,16 +5900,19 @@
    "name": "Solusi Sinergi Digital Tbk",
    "date": "2020-12-30",
    "price": 530,
-   "shares": null,
+   "shares": 156550000,
    "fundsBn": 83,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Indo Capital Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
     "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
     "https://market.bisnis.com/read/20201222/192/1334076/besok-solusi-sinergi-digital-wifi-tawarkan-saham-ipo-rp530",
+    "https://market.bisnis.com/read/20201230/192/1336820/resmi-melantai-di-bei-solusi-sinergi-digital-wifi-raup-dana-ipo-rp83-miliar",
     "https://market.bisnis.com/read/20201230/192/1336820/resmi-melantai-di-bei-solusi-sinergi-digital-wifi-raup-dana-ipo-rp83-miliar"
    ]
   },
@@ -5940,9 +5943,10 @@
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Penjamin belum ada.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://www.cnbcindonesia.com/market/20201208204606-17-207801/victoria-care-indonesia-segera-ipo-catat-jadwalnya"
    ]
   },
   {
@@ -6297,30 +6301,34 @@
    "date": "2020-06-04",
    "price": 160,
    "shares": 251300000,
-   "fundsBn": 40.21,
+   "fundsBn": 40.2,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Penjamin belum ada.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://market.bisnis.com/read/20200603/192/1248127/listing-4-juni-2020-indosterling-technomedia-pasang-harga-rp160"
    ]
   },
   {
    "t": "CASH",
    "name": "Cashlez Worldwide Indonesia Tbk",
    "date": "2020-05-04",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 350,
+   "shares": 250000000,
+   "fundsBn": 87.5,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Sinarmas Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html"
+    "https://www.eddyelly.com/2020/01/initial-public-offering-ipo-2020.html",
+    "https://wartaekonomi.co.id/read283145/di-tengah-corona-startup-pembayaran-digital-ini-gelar-ipo-segini-jumlah-saham-yang-dilepas"
    ]
   },
   {
@@ -6668,15 +6676,19 @@
    "name": "Perintis Triniti Properti",
    "date": "2020-01-15",
    "price": 200,
-   "shares": 1093330048,
+   "shares": 648830000,
    "fundsBn": 218.67,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Royal Investium Sekuritas",
+    "Mirae Asset Sekuritas Indonesia"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Dana total tidak disebut artikel.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://investasi.kontan.co.id/news/lima-perusahaan-ini-akan-melantai-di-bei-pada-januari-2020"
    ]
   },
   {
@@ -6684,15 +6696,18 @@
    "name": "Ashmore Asset Management Indonesia",
    "date": "2020-01-14",
    "price": 1900,
-   "shares": 111111000,
+   "shares": 111110000,
    "fundsBn": 211.11,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Mandiri Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://investasi.kontan.co.id/news/lima-perusahaan-ini-akan-melantai-di-bei-pada-januari-2020"
    ]
   },
   {
@@ -6700,15 +6715,18 @@
    "name": "Royalindo Investa Wijaya",
    "date": "2020-01-13",
    "price": 110,
-   "shares": 861820032,
+   "shares": 861820000,
    "fundsBn": 94.8,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BCA Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://investasi.kontan.co.id/news/lima-perusahaan-ini-akan-melantai-di-bei-pada-januari-2020"
    ]
   },
   {
@@ -6716,15 +6734,18 @@
    "name": "Bank Amar Indonesia",
    "date": "2020-01-09",
    "price": 174,
-   "shares": 1206070016,
+   "shares": 1210000000,
    "fundsBn": 209.86,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus. Seluruh saham dijual pemegang saham (Tolaram), bukan saham baru.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://investasi.kontan.co.id/news/lima-perusahaan-ini-akan-melantai-di-bei-pada-januari-2020"
    ]
   },
   {
@@ -6732,15 +6753,18 @@
    "name": "Cisadane Sawit Raya",
    "date": "2020-01-09",
    "price": 125,
-   "shares": 450000000,
-   "fundsBn": 56.25,
+   "shares": 410000000,
+   "fundsBn": 51.25,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "UOB Kay Hian Sekuritas"
+   ],
    "syn": [],
-   "note": "",
+   "note": "Data IPO dari media, belum dicek ke prospektus.",
    "src": [
-    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1"
+    "https://investasi.kontan.co.id/news/inilah-emiten-dengan-emisi-ipo-terbesar-sepanjang-2020-1",
+    "https://investasi.kontan.co.id/news/lima-perusahaan-ini-akan-melantai-di-bei-pada-januari-2020"
    ]
   },
   {
