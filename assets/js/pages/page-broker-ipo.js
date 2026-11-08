@@ -99,15 +99,22 @@
 
     window.ipoMore = function () { shown += 50; ipoRender(true); };
 
+    const cmpChip = (x) => [['H', x.price], ['D', x.fundsBn], ['P', x.lead && x.lead.length]].map(([l, v]) => `<span class="cmp-bd ${v ? 'cmp-ok' : 'cmp-no'}">${l}</span>`).join('');
+    function cmpSummary(all) {
+        const n = all.length, c = (f) => all.filter(f).length, e = $('ipo-cmp');
+        if (!e) return;
+        e.textContent = n ? `Kelengkapan data di daftar ini (${n} emiten): harga IPO ${c((x) => x.price)}, dana ${c((x) => x.fundsBn)}, penjamin ${c((x) => x.lead && x.lead.length)}. Kolom yang kosong berarti belum ada sumber, bukan nol.` : '';
+    }
+
     window.ipoRender = function (keep) {
         if (keep !== true) shown = 50;
         const all = filtered(), a = all.slice(0, shown);
-        cards(all); uwTable(all);
+        cards(all); uwTable(all); cmpSummary(all);
         const mb = $('ipo-more'); mb.classList.toggle('hidden', all.length <= shown); mb.textContent = `Tampilkan lebih banyak (${shown} dari ${all.length})`;
         $('ipo-body').innerHTML = a.map((x) => {
             const uw = x.lead.length ? esc(x.lead.join(', ')) : '<span class="text-slate-300">belum tercatat</span>';
             const main = `<tr class="border-b border-slate-100 hover:bg-slate-50 cursor-pointer bg-white" onclick="ipoToggle('${x.t}')">
-                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}<div class="st-row">${ewoksStatusBadges(x.t)}</div></div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name || "")}</div></td>
+                <td class="px-4 py-3"><div class="font-black text-blue-600">${esc(x.t)}<div class="st-row">${ewoksStatusBadges(x.t)}</div><div class="cmp-row" title="Kelengkapan data: H=harga IPO, D=dana, P=penjamin. Hijau = ada, abu-abu = belum ada sumber.">${cmpChip(x)}</div></div><div class="text-[10px] text-slate-500 font-semibold max-w-[200px] truncate">${esc(x.name || "")}</div></td>
                 <td class="px-3 py-3 whitespace-nowrap text-slate-600 font-semibold">${dmy(x.date)}</td>
                 <td class="px-3 py-3 text-right font-black text-slate-800">${x.price ? 'Rp' + fx(x.price) : '—'}</td>
                 <td class="px-3 py-3 text-right text-slate-600">${x.fundsBn ? 'Rp' + fx(x.fundsBn) + ' M' : '—'}</td>

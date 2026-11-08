@@ -597,3 +597,5 @@ body.dark-mode-override .st-SUSPEN{background:#7f1d1d;color:#fecaca}body.dark-mo
 .st-DIV{background:#dcfce7;color:#166534}.st-SPLIT{background:#cffafe;color:#155e75}.st-UMA{background:#ffedd5;color:#c2410c}.st-AKSI{background:#fce7f3;color:#9d174d}
 body.dark-mode-override .st-DIV{background:#14532d;color:#bbf7d0}body.dark-mode-override .st-SPLIT{background:#164e63;color:#a5f3fc}body.dark-mode-override .st-UMA{background:#7c2d12;color:#fed7aa}body.dark-mode-override .st-AKSI{background:#831843;color:#fbcfe8}
 .st-lk{font-size:9px;font-weight:800;color:#2563eb;margin-right:8px;text-decoration:none}.st-lk:hover{text-decoration:underline}
+
+.cmp-row{display:flex;gap:2px;margin-top:2px}.cmp-bd{display:inline-block;font-size:8px;font-weight:900;line-height:1;padding:2px 4px;border-radius:4px;cursor:help}.cmp-ok{background:#dcfce7;color:#15803d}.cmp-no{background:#f1f5f9;color:#94a3b8}body.dark-mode-override .cmp-ok{background:#14532d;color:#86efac}body.dark-mode-override .cmp-no{background:#1e293b;color:#64748b}
