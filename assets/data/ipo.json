@@ -13495,7 +13495,7 @@
   {
    "t": "PANS",
    "name": "Panin Sekuritas Tbk",
-   "date": "2000-12-31",
+   "date": "2000-05-31",
    "price": 550,
    "shares": 80000000,
    "fundsBn": 44,
@@ -13505,7 +13505,7 @@
     "Trimegah Sekuritas"
    ],
    "syn": [],
-   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing Stockbit: 31 Mei 2000.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing dikoreksi dari 31 Des 2000 ke 31 Mei 2000 sesuai Stockbit.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
     "Stockbit – Profile (tangkapan layar pengguna)"
