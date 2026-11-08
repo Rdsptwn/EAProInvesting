@@ -10519,96 +10519,102 @@
    "t": "BJTM",
    "name": "Bank Pembangunan Daerah Jawa Timur Tbk",
    "date": "2012-07-12",
-   "price": null,
+   "price": 430,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
    "t": "ALTO",
    "name": "Tri Banyan Tirta Tbk",
    "date": "2012-07-10",
-   "price": null,
+   "price": 210,
    "shares": null,
-   "fundsBn": null,
+   "fundsBn": 630.0,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
    "t": "GLOB",
    "name": "Globe Kita Terang Tbk",
    "date": "2012-07-10",
-   "price": null,
+   "price": 1150,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
    "t": "MSKY",
    "name": "MNC Sky Vision Tbk",
    "date": "2012-07-09",
-   "price": null,
+   "price": 1520,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
    "t": "TOBA",
    "name": "TBS Energi Utama Tbk",
    "date": "2012-07-06",
-   "price": null,
+   "price": 1900,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
    "t": "KOBX",
    "name": "Kobexindo Tractors Tbk",
    "date": "2012-07-05",
-   "price": null,
+   "price": 400,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://ekonomi.republika.co.id/berita/m6mibh/tujuh-perusahaan-listing-bei-diawal-juli"
    ]
   },
   {
@@ -11998,16 +12004,17 @@
    "t": "PTSN",
    "name": "Sat Nusapersada Tbk",
    "date": "2007-11-08",
-   "price": null,
+   "price": 580,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
@@ -12048,80 +12055,85 @@
    "t": "GPRA",
    "name": "Perdana Gapura Prima Tbk",
    "date": "2007-10-10",
-   "price": null,
+   "price": 310,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "BACA",
    "name": "Bank Capital Indonesia Tbk",
    "date": "2007-10-04",
-   "price": null,
+   "price": 150,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "DEWA",
    "name": "Darma Henwa Tbk",
    "date": "2007-09-26",
-   "price": null,
+   "price": 335,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "PKPK",
    "name": "Paragon Karya Perkasa Tbk",
    "date": "2007-07-11",
-   "price": null,
+   "price": 400,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "MCOR",
    "name": "Bank China Construction Bank Indonesia Tbk",
    "date": "2007-07-03",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
@@ -12145,64 +12157,68 @@
    "t": "SGRO",
    "name": "Sampoerna Agro Tbk",
    "date": "2007-06-18",
-   "price": null,
+   "price": 2340,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "BKDP",
    "name": "Bukit Darmo Property Tbk",
    "date": "2007-06-15",
-   "price": null,
+   "price": 120,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "WEHA",
    "name": "Weha Transportasi Indonesia Tbk",
    "date": "2007-05-31",
-   "price": null,
+   "price": 245,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
    "t": "BISI",
    "name": "Bisi International Tbk",
    "date": "2007-05-28",
-   "price": null,
+   "price": 200,
    "shares": null,
    "fundsBn": null,
    "board": null,
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga & dana IPO dari media (belum dicek ke prospektus); penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "https://finance.detik.com/bursa-dan-valas/d-850448/bisi-jawara-saham-baru"
    ]
   },
   {
