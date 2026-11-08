@@ -13680,7 +13680,7 @@
    "sector": null,
    "lead": [],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang. Stockbit (Profile) menulis harga IPO 0 dan dana/saham/penjamin kosong untuk emiten ini; belum ada sumber lain. Tanggal listing Stockbit: 25 Feb 2000.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
    ]
