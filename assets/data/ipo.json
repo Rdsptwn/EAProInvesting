@@ -11828,16 +11828,20 @@
    "t": "VRNA",
    "name": "Verena Multi Finance Tbk",
    "date": "2008-06-25",
-   "price": null,
-   "shares": null,
-   "fundsBn": null,
+   "price": 100,
+   "shares": 460000000,
+   "fundsBn": 46,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "Evergreen Capital",
+    "Victoria Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing Stockbit: 25 Jun 2008.",
    "src": [
-    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html"
+    "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
