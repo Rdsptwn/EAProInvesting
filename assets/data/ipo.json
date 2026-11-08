@@ -11681,17 +11681,21 @@
    "t": "BWPT",
    "name": "Eagle High Plantations Tbk",
    "date": "2009-10-27",
-   "price": null,
-   "shares": null,
-   "fundsBn": 666.05,
+   "price": 550,
+   "shares": 1211009024,
+   "fundsBn": 666,
    "board": null,
    "sector": null,
-   "lead": [],
+   "lead": [
+    "BNP Paribas Securities Indonesia",
+    "Danareksa Sekuritas"
+   ],
    "syn": [],
-   "note": "Data historis: hanya kode, nama, tanggal listing (EddyElly). Harga IPO & penjamin belum ada. Hanya emiten yang kodenya masih tercatat sekarang.",
+   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus. Tanggal listing Stockbit: 27 Okt 2009.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2"
+    "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2",
+    "Stockbit – Profile (tangkapan layar pengguna)"
    ]
   },
   {
