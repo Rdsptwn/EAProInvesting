@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T14:41:40.773Z",
+  "updated": "2026-11-09T20:32:47.083Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
     {
@@ -15,20 +15,6 @@
       "kind": "dividen",
       "date": "2026-11-06",
       "dateLabel": "Pembayaran"
-    },
-    {
-      "ticker": "MEDC",
-      "action": "Estimasi ex-date dividen (~Rp28,45)",
-      "kind": "dividen",
-      "date": "2026-11-10",
-      "dateLabel": "Estimasi"
-    },
-    {
-      "ticker": "TPIA",
-      "action": "Estimasi ex-date dividen (~Rp3,84)",
-      "kind": "dividen",
-      "date": "2026-11-10",
-      "dateLabel": "Estimasi"
     },
     {
       "ticker": "ITMG",
