@@ -1,0 +1,20 @@
+{
+ "asOf": "2026-11-11",
+ "session": "intraday 13:54 WIB",
+ "source": "Stockbit (input manual)",
+ "all": {
+  "value": 72570000000000.0,
+  "volume": 30460000000.0,
+  "freq": 857920
+ },
+ "regular": {
+  "value": 5440000000000.0,
+  "volume": 12680000000.0,
+  "freq": 855690
+ },
+ "nego": {
+  "value": 67130000000000.0,
+  "volume": 17780000000.0,
+  "freq": 402
+ }
+}

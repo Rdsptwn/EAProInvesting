@@ -9,5 +9,16 @@
   "value": 7.64,
   "asOf": "2026-10-30"
  },
- "builtAt": "2026-11-10T17:34:45.391Z"
+ "builtAt": "2026-11-10T17:34:45.391Z",
+ "biRate": {
+  "value": 5.75,
+  "asOf": "2026-11-11",
+  "source": "Stockbit (input manual)"
+ },
+ "fedRate": {
+  "low": 3.75,
+  "high": 4.0,
+  "asOf": "2026-11-11",
+  "source": "Stockbit (input manual)"
+ }
 }

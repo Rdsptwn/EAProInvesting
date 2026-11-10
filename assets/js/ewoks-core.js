@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261110t2128';
+window.EWOKS_ASSET_V = '20261110t2148';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -883,7 +883,9 @@ function startEwoksLivePolling() {
 async function loadMacroIndicators() {
     const infEl = document.getElementById('inflasi-dash');
     const sbnEl = document.getElementById('sbn-yield-dash');
-    if (!infEl && !sbnEl) return;
+    const biEl = document.getElementById('bi-rate-dash');
+    const fedEl = document.getElementById('fed-rate-dash');
+    if (!infEl && !sbnEl && !biEl && !fedEl) return;
     try {
         const res = await fetch(ewoksAssetUrl('assets/data/macro.json'), { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -896,6 +898,15 @@ async function loadMacroIndicators() {
             infEl.innerText = `${m.inflation.value.toFixed(2).replace('.', ',')}% YoY`;
             infEl.title = `Inflasi tahunan periode ${m.inflation.label || m.inflation.period}`;
         }
+        const pct = (v) => `${Number(v).toFixed(2).replace('.', ',')}%`;
+        if (biEl && Number.isFinite(m?.biRate?.value)) {
+            biEl.innerText = pct(m.biRate.value);
+            biEl.title = `BI 7-Day Reverse Repo Rate per ${fmtDate(m.biRate.asOf)}`;
+        }
+        if (fedEl && Number.isFinite(m?.fedRate?.low) && Number.isFinite(m?.fedRate?.high)) {
+            fedEl.innerText = `${m.fedRate.low.toFixed(2).replace('.', ',')}\u2013${pct(m.fedRate.high)}`;
+            fedEl.title = `Target Fed Funds Rate per ${fmtDate(m.fedRate.asOf)}`;
+        }
         if (sbnEl && Number.isFinite(m?.sbn10y?.value)) {
             sbnEl.innerText = `${m.sbn10y.value.toFixed(2)}%`;
             sbnEl.title = `Yield SBN 10 tahun per ${fmtDate(m.sbn10y.asOf)}`;
@@ -903,6 +914,39 @@ async function loadMacroIndicators() {
         }
     } catch (e) {
         console.warn('macro.json', e);
+    }
+}
+
+/** Aktivitas perdagangan: All Market / Regular / Nego dari assets/data/market-activity.json. */
+async function loadMarketActivity() {
+    const grid = document.getElementById('mkt-activity-grid');
+    if (!grid) return;
+    const asOfEl = document.getElementById('mkt-activity-asof');
+    const idn = (v, d = 2) => Number(v).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const money = (v) => (v >= 1e12 ? `${idn(v / 1e12)} T` : v >= 1e9 ? `${idn(v / 1e9)} M` : `${idn(v / 1e6)} Jt`);
+    const qty = (v) => (v >= 1e9 ? `${idn(v / 1e9)} M` : v >= 1e6 ? `${idn(v / 1e6)} Jt` : v >= 1e3 ? `${idn(v / 1e3)} Rb` : idn(v, 0));
+    const freq = (v) => (v >= 1e3 ? `${idn(v / 1e3)} Rb` : idn(v, 0));
+    try {
+        const res = await fetch(ewoksAssetUrl('assets/data/market-activity.json'), { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const d = await res.json();
+        const cols = [['All Market', d.all], ['Regular', d.regular], ['Nego', d.nego]].filter(([, x]) => x && Number.isFinite(x.value));
+        if (!cols.length) throw new Error('kosong');
+        grid.innerHTML = cols.map(([name, x]) => `
+            <div class="rounded-lg border border-slate-200 p-4">
+                <div class="font-semibold text-slate-900 mb-2">${name}</div>
+                <dl class="space-y-1 tabular-nums">
+                    <div class="flex justify-between"><dt class="text-slate-500">Nilai</dt><dd class="font-medium text-slate-900">${money(x.value)}</dd></div>
+                    <div class="flex justify-between"><dt class="text-slate-500">Volume</dt><dd class="font-medium text-slate-900">${qty(x.volume)}</dd></div>
+                    <div class="flex justify-between"><dt class="text-slate-500">Frekuensi</dt><dd class="font-medium text-slate-900">${freq(x.freq)}</dd></div>
+                </dl>
+            </div>`).join('');
+        const dt = new Date(`${d.asOf}T00:00:00+07:00`);
+        const when = Number.isNaN(dt.getTime()) ? d.asOf : dt.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Jakarta' });
+        if (asOfEl) asOfEl.textContent = `per ${when}${d.session ? ` (${d.session})` : ''} \u00b7 sumber: ${d.source || 'BEI'}`;
+    } catch (e) {
+        console.warn('market-activity.json', e);
+        if (asOfEl) asOfEl.textContent = 'Data belum tersedia';
     }
 }
 
@@ -1090,6 +1134,7 @@ window.addEventListener('load', () => {
     updateClock();
     fetchRealIHSG();
     loadMacroIndicators();
+    loadMarketActivity();
     startEwoksLivePolling();
     fetchNews();
 

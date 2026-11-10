@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t2128">
-    <link rel="stylesheet" href="assets/css/editorial.css?v=20261110t2128">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t2148">
+    <link rel="stylesheet" href="assets/css/editorial.css?v=20261110t2148">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="home">
 
@@ -184,6 +184,14 @@
                                 <span class="text-sm font-bold text-slate-700 tooltip-trigger">SBN Yield (Avg) <span class="tooltip-text">Imbal hasil rata-rata Surat Berharga Negara saat ini.</span></span>
                                 <span class="stat-badge bg-amber-100 text-amber-700" id="sbn-yield-dash">—</span>
                             </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-blue-50 shadow-sm">
+                                <span class="text-sm font-bold text-slate-700 tooltip-trigger">BI 7-Day RR Rate <span class="tooltip-text">Suku bunga acuan Bank Indonesia (BI-7 Day Reverse Repo Rate).</span></span>
+                                <span class="stat-badge bg-blue-100 text-blue-700" id="bi-rate-dash">—</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-blue-50 shadow-sm">
+                                <span class="text-sm font-bold text-slate-700 tooltip-trigger">Fed Rate <span class="tooltip-text">Target suku bunga acuan bank sentral AS (Federal Funds Rate).</span></span>
+                                <span class="stat-badge bg-blue-100 text-blue-700" id="fed-rate-dash">—</span>
+                            </div>
                             
                             <div class="mt-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
                                 <div class="flex justify-between items-end mb-2">
@@ -207,6 +215,15 @@
                     </div>
                 </div>
             </div>
+
+            <section id="mkt-activity" class="premium-card p-5 md:p-6 mb-6" aria-label="Aktivitas perdagangan seluruh pasar">
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+                    <h3 class="text-lg font-bold text-slate-900">Aktivitas Perdagangan</h3>
+                    <span class="text-xs text-slate-500" id="mkt-activity-asof">Memuat…</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm" id="mkt-activity-grid"></div>
+                <p class="text-xs text-slate-500 mt-3">Regular = perdagangan pasar reguler; Nego = pasar negosiasi dan tunai (transaksi blok, tidak mencerminkan permintaan harian). Volume dalam lembar saham.</p>
+            </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 <div class="premium-card p-6 md:p-8">
@@ -411,8 +428,8 @@
 
 
     <script>window.EWOKS_FINNHUB_TOKEN = ""; /* isi token Finnhub (gratis): https://finnhub.io/register */</script>
-    <script src="assets/js/pages/page-home-movers.js?v=20261110t2128" defer></script>
-    <script src="assets/js/pages/page-home-picks.js?v=20261110t2128" defer></script>
-    <script src="assets/js/ewoks-core.js?v=20261110t2128"></script>
+    <script src="assets/js/pages/page-home-movers.js?v=20261110t2148" defer></script>
+    <script src="assets/js/pages/page-home-picks.js?v=20261110t2148" defer></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t2148"></script>
 </body>
 </html>
