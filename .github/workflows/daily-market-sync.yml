@@ -1,17 +1,13 @@
-# Sinkron harian IHSG, harga emiten, kalender korporasi, dan pasar global.
-# Jalan Senin–Jumat 09:00, 13:00, dan 17:00 WIB. Bisa juga manual:
+# Sinkron IHSG, harga emiten, kalender korporasi, dan pasar global.
+# Jalan tiap jam 09:00–17:00 WIB, Senin–Jumat. (All Market/Regular/Nego ada di market-activity-intraday.yml.) Bisa juga manual:
 # Actions → Daily market sync → Run workflow
 
 name: Daily market sync
 
 on:
   schedule:
-    # 02:00 UTC = 09:00 WIB (buka sesi 1), Senin–Jumat
-    - cron: '0 2 * * 1-5'
-    # 06:00 UTC = 13:00 WIB (jelang sesi 2), Senin–Jumat
-    - cron: '0 6 * * 1-5'
-    # 10:00 UTC = 17:00 WIB (setelah tutup), Senin–Jumat
-    - cron: '0 10 * * 1-5'
+    # Tiap jam, 09:00–17:00 WIB (02:00–10:00 UTC), Senin–Jumat
+    - cron: '0 2-10 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -103,14 +99,6 @@ jobs:
             && node -e 'JSON.parse(require("fs").readFileSync("assets/data/pasar-global.json", "utf8"))' \
             || { echo "::warning::pasar-global gagal/tidak valid — pakai versi sebelumnya"; cp /tmp/pasar-global.bak assets/data/pasar-global.json; }
 
-      - name: Build market-activity.json (All Market / Regular / Nego dari BEI, data penutupan)
-        # data penutupan baru terbit setelah bursa tutup (16:00 WIB) -> hanya jalan di sesi 10 UTC / manual
-        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 * * 1-5'
-        continue-on-error: true
-        run: |
-          npm i --no-save playwright >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
-          node tools/build-market-activity.mjs
-
       - name: Bump cache version (hanya kalau data berubah)
         run: |
           if git diff --quiet -- assets/data; then
@@ -123,7 +111,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/market-activity.json assets/data/idx-universe.json
+          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json
           [ -f assets/data/idx-screener.json ] && git add assets/data/idx-screener.json || true
           [ -f assets/data/ipo-perf.json ] && git add assets/data/ipo-perf.json || true
           [ -f assets/data/idx-status.json ] && git add assets/data/idx-status.json || true
