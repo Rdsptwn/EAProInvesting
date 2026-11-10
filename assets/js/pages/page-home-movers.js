@@ -13,10 +13,10 @@
     const fx = (v) => Number(v).toLocaleString('id-ID', { maximumFractionDigits: 0 });
     const shortName = (s) => String(s || '').replace(/^PT\.?\s*/i, '').replace(/\s*Tbk\.?$/i, '').trim();
 
-        // Filter likuiditas: harga >= Rp50 dan nilai transaksi >= Rp1 miliar. Tanpa ini peringkat % didominasi
-        // saham gocap/tipis (1 tick Rp1 pada harga Rp50 = 2%) yang hanya diperdagangkan beberapa juta rupiah.
-        const MIN_VALUE = 1e9, MIN_PRICE = 50;
-        const liquid = (x) => Number.isFinite(x.chg) && x.p >= MIN_PRICE && x.vol * x.p >= MIN_VALUE;
+        // Filter likuiditas: hanya nilai transaksi >= Rp1 miliar. Harga saham (termasuk di bawah Rp50) tidak difilter;
+        // yang penting jumlah transaksinya, supaya saham tipis yang hanya laku beberapa juta rupiah tidak mendominasi.
+        const MIN_VALUE = 1e9;
+        const liquid = (x) => Number.isFinite(x.chg) && x.vol * x.p >= MIN_VALUE;
 
     function pickMovers() {
         const arr = Object.entries(data).map(([t, x]) => ({ t, ...x })).filter(liquid);
