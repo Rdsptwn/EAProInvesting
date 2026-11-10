@@ -60,7 +60,9 @@ async function main() {
         const composite = (idx?.data || []).find((x) => x.IndexCode === 'COMPOSITE');
         const agg = aggregate(rows);
         if (!valid(agg, composite)) throw new Error('tidak lolos validasi silang: ' + JSON.stringify({ agg, composite }));
-        fs.writeFileSync(outPath, JSON.stringify({ session: 'penutupan', source: 'BEI (idx.id)', ...agg, builtAt: new Date().toISOString() }, null, 1));
+        const wib = new Date(Date.now() + 7 * 3600e3).toISOString();
+        const session = `diambil ${wib.slice(11, 13)}.${wib.slice(14, 16)} WIB`;
+        fs.writeFileSync(outPath, JSON.stringify({ session, source: 'BEI (idx.id)', ...agg, builtAt: new Date().toISOString() }, null, 1));
         console.log(`market-activity: ${agg.asOf} all=${(agg.all.value / 1e12).toFixed(2)}T reg=${(agg.regular.value / 1e12).toFixed(2)}T nego=${(agg.nego.value / 1e12).toFixed(2)}T`);
     } finally { await b.close(); }
 }
