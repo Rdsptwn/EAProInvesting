@@ -285,11 +285,14 @@
         if (typeof watchlist === 'undefined') return;
         if (watchlist.some((w) => w.ticker === tk)) { showToast(`${tk} sudah ada di Watchlist`, 'warning'); return; }
         const x = rows.find((r) => r.ticker === tk);
-        const target = x ? Math.round(Number.isFinite(x.support) && x.support > 0 ? x.support : x.price) : '';
+        // Target beli = support (min close 20 hari) dibulatkan ke BAWAH ke fraksi BEI. Jika support tidak valid, target dikosongkan:
+        // memakai harga sekarang sebagai target membuat watchlist langsung berstatus "TARGET HIT" palsu.
+        const sup = x && Number.isFinite(x.support) && x.support > 0 ? ewoksRoundTick(x.support, 'down') : null;
+        const target = sup != null ? sup : '';
         watchlist.push({ id: Date.now(), ticker: tk, price: String(target), note: 'Dari Screener', foreign: '' });
         try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
         if (typeof renderWatchlist === 'function') renderWatchlist();
-        showToast(`${tk} ditambahkan (target beli ${fmt(target)} = support)`, 'success');
+        showToast(target === '' ? `${tk} ditambahkan (isi target beli sendiri: support belum tersedia)` : `${tk} ditambahkan (target beli ${fmt(target)} = support)`, 'success');
     };
     window.tpGetFiltered = () => filtered;
 

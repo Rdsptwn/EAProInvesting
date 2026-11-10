@@ -2,56 +2,49 @@
 let compoundChartRetry = 0;
 
 function calcCompound() {
-    const modalAwal = parseFloat(document.getElementById('cmp-awal').value) || 0;
-    const setoran = parseFloat(document.getElementById('cmp-bulanan').value) || 0;
-    const tahun = parseFloat(document.getElementById('cmp-tahun').value) || 0;
-    const returnTahunan = parseFloat(document.getElementById('cmp-return').value) || 0;
+    const num = (id) => { const v = parseFloat(document.getElementById(id)?.value); return Number.isFinite(v) ? v : 0; };
+    const modalAwal = Math.max(0, num('cmp-awal'));
+    const setoran = Math.max(0, num('cmp-bulanan'));
+    const tahun = Math.min(60, Math.max(0, num('cmp-tahun')));
+    const returnTahunan = num('cmp-return');
+    const inflasi = num('cmp-inflasi');
 
-    const bulan = tahun * 12;
-    const rateBulan = returnTahunan / 100 / 12;
+    // Return tahunan dianggap EFEKTIF per tahun; tarif bulanan setara = (1+r)^(1/12)-1
+    // (r/12 akan menggandakan bunga dan menghasilkan return efektif lebih tinggi dari input).
+    const g = 1 + returnTahunan / 100;
+    const rateBulan = g > 0 ? Math.pow(g, 1 / 12) - 1 : -1;
+    // Setoran di akhir bulan (ordinary annuity). FV setelah m bulan:
+    const fv = (m) => {
+        const grow = Math.pow(1 + rateBulan, m);
+        return modalAwal * grow + (Math.abs(rateBulan) < 1e-12 ? setoran * m : setoran * ((grow - 1) / rateBulan));
+    };
 
-    let futureValue = modalAwal * Math.pow(1 + rateBulan, bulan);
-    let futureSetoran = setoran * ((Math.pow(1 + rateBulan, bulan) - 1) / rateBulan);
-
-    if (rateBulan === 0) {
-        futureValue = modalAwal;
-        futureSetoran = setoran * bulan;
-    }
-
-    const totalAkhir = futureValue + futureSetoran;
-    const totalSetor = modalAwal + (setoran * bulan);
+    const bulan = Math.round(tahun * 12);
+    const totalAkhir = fv(bulan);
+    const totalSetor = modalAwal + setoran * bulan;
     const totalBunga = totalAkhir - totalSetor;
 
     document.getElementById('res-cmp-pokok').innerText = "Rp " + Math.round(totalSetor).toLocaleString('id-ID');
-    document.getElementById('res-cmp-bunga').innerText = "Rp " + Math.round(totalBunga).toLocaleString('id-ID');
+    document.getElementById('res-cmp-bunga').innerText = (totalBunga < 0 ? "-" : "") + "Rp " + Math.abs(Math.round(totalBunga)).toLocaleString('id-ID');
     document.getElementById('res-cmp-total').innerText = "Rp " + Math.round(totalAkhir).toLocaleString('id-ID');
+    const realEl = document.getElementById('res-cmp-real');
+    if (realEl) {
+        const deflator = Math.pow(1 + inflasi / 100, tahun);
+        realEl.innerText = "Rp " + Math.round(totalAkhir / deflator).toLocaleString('id-ID');
+    }
 
     let labels = [];
     let dataPokok = [];
     let dataBunga = [];
-    
-    let currentPokok = modalAwal;
-    
-    for(let i=0; i<=tahun; i++) {
+    for (let i = 0; i <= tahun; i++) {
         labels.push('Thn ' + i);
-        if(i === 0) {
-            dataPokok.push(currentPokok);
-            dataBunga.push(0);
-        } else {
-            currentPokok += (setoran * 12);
-            let fvThn = modalAwal * Math.pow(1 + rateBulan, i * 12);
-            let fsThn = setoran * ((Math.pow(1 + rateBulan, i * 12) - 1) / rateBulan);
-            if(rateBulan === 0) {
-                fvThn = modalAwal;
-                fsThn = setoran * i * 12;
-            }
-            let currentTotal = fvThn + fsThn;
-            
-            dataPokok.push(currentPokok);
-            dataBunga.push(currentTotal - currentPokok);
-        }
+        const pokok = modalAwal + setoran * 12 * i;
+        dataPokok.push(pokok);
+        dataBunga.push(fv(i * 12) - pokok);
     }
-    
+    // Bunga negatif (return < 0) tidak bisa ditumpuk di bar; tampilkan nol dan biarkan total akhir yang menjelaskan.
+    dataBunga = dataBunga.map(v => Math.max(0, v));
+
     renderCompoundChart(labels, dataPokok, dataBunga);
 }
 

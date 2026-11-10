@@ -4,14 +4,27 @@ function runSimpleCalc() {
     const l = parseFloat(document.getElementById('calc-lot').value) || 0;
     const tpP = parseFloat(document.getElementById('calc-tp').value) || 0;
     const slP = parseFloat(document.getElementById('calc-sl').value) || 0;
-    const tpPrice = p + (p * (tpP / 100));
-    const slPrice = p - (p * (slP / 100));
-    const gain = (tpPrice - p) * l * 100;
-    const loss = (p - slPrice) * l * 100;
-    document.getElementById('res-tp-price').innerText = `@${Math.round(tpPrice).toLocaleString('id-ID')}`;
-    document.getElementById('res-sl-price').innerText = `@${Math.round(slPrice).toLocaleString('id-ID')}`;
+    const F = EWOKS_FEE_DEFAULT;
+    // Harga target/stop harus kelipatan fraksi BEI.
+    const tpPrice = p > 0 ? ewoksRoundTick(p * (1 + tpP / 100), 'near') : 0;
+    const slPrice = p > 0 ? Math.max(0, ewoksRoundTick(p * (1 - slP / 100), 'near')) : 0;
+    const shares = l * 100;
+    // Hasil BERSIH: fee beli + fee jual + PPh final 0,1% atas nilai jual.
+    const gain = p > 0 ? ewoksTradeNet(p, tpPrice, l, F.buy, F.sell, F.tax).net : 0;
+    const loss = p > 0 ? -ewoksTradeNet(p, slPrice, l, F.buy, F.sell, F.tax).net : 0;
+    document.getElementById('res-tp-price').innerText = `@${tpPrice.toLocaleString('id-ID')}`;
+    document.getElementById('res-sl-price').innerText = `@${slPrice.toLocaleString('id-ID')}`;
     document.getElementById('res-gain').innerText = Math.round(gain).toLocaleString('id-ID');
-    document.getElementById('res-risk').innerText = Math.round(loss).toLocaleString('id-ID');
+    document.getElementById('res-risk').innerText = Math.round(Math.max(loss, 0)).toLocaleString('id-ID');
+    const rrEl = document.getElementById('res-rr');
+    if (rrEl) {
+        if (p > 0 && l > 0 && loss > 0 && gain > 0) {
+            const rr = gain / loss;
+            rrEl.innerText = `Net R:R = 1 : ${rr.toLocaleString('id-ID', { maximumFractionDigits: 2 })} · win rate impas ≈ ${(100 / (1 + rr)).toLocaleString('id-ID', { maximumFractionDigits: 0 })}% (sudah termasuk fee & pajak)`;
+        } else {
+            rrEl.innerText = '';
+        }
+    }
 }
 
 function calculateAvg(type) {
@@ -20,7 +33,7 @@ function calculateAvg(type) {
     const newPrice = parseFloat(document.getElementById(`avg-${type}-price`).value) || 0;
     const newLot = parseFloat(document.getElementById(`avg-${type}-lot`).value) || 0;
     
-    if(oldPrice > 0 && oldLot > 0 && newPrice > 0 && newLot > 0) {
+    if(oldPrice > 0 && oldLot > 0 && newPrice > 0 && newLot > 0 && Number.isInteger(oldLot) && Number.isInteger(newLot)) {
         const totalCost = (oldPrice * oldLot * 100) + (newPrice * newLot * 100);
         const totalLot = oldLot + newLot;
         const newAvg = totalCost / (totalLot * 100);
@@ -33,7 +46,7 @@ function calculateAvg(type) {
         const box = document.getElementById('avg-result-box');
         box.style.borderColor = type === 'up' ? '#10b981' : '#2563eb';
     } else {
-        showToast("Mohon isi Harga Beli & Lot di menu Trading Plan serta input baru (tidak boleh minus/nol)!", "error");
+        showToast("Mohon isi Harga Beli & Lot di menu Trading Plan serta input baru (lot bilangan bulat, tidak boleh minus/nol)!", "error");
     }
 }
 
@@ -44,14 +57,29 @@ function calculateSizing() {
     const sl = parseFloat(document.getElementById('ps-sl').value) || 0;
 
     if(modal > 0 && entry > 0 && sl > 0 && entry > sl && riskPct > 0) {
+        const F = EWOKS_FEE_DEFAULT;
         const maxLossRp = modal * (riskPct / 100);
-        const lossPerShare = entry - sl;
-        const maxShares = maxLossRp / lossPerShare;
-        const maxLot = Math.floor(maxShares / 100);
-        
+        // Rugi per lembar jika SL kena = selisih harga + fee beli + fee jual + pajak final jual.
+        const lossPerShare = (entry - sl) + entry * F.buy / 100 + sl * (F.sell + F.tax) / 100;
+        const lotByRisk = Math.floor(maxLossRp / lossPerShare / 100);
+        // Batas modal: nilai beli + fee beli tidak boleh melebihi dana.
+        const lotByCapital = Math.floor(modal / (entry * (1 + F.buy / 100)) / 100);
+        const maxLot = Math.max(0, Math.min(lotByRisk, lotByCapital));
+        const posValue = maxLot * 100 * entry;
+        const realLoss = maxLot * 100 * lossPerShare;
+
         document.getElementById('ps-result').classList.remove('hidden');
         document.getElementById('res-ps-lot').innerText = maxLot.toLocaleString('id-ID') + " Lot";
-        document.getElementById('res-ps-loss').innerText = "Rp " + Math.round(maxLossRp).toLocaleString('id-ID');
+        document.getElementById('res-ps-loss').innerText = "Rp " + Math.round(realLoss).toLocaleString('id-ID');
+        const note = document.getElementById('res-ps-note');
+        if (note) {
+            const parts = [`Nilai posisi Rp ${Math.round(posValue).toLocaleString('id-ID')} (${(posValue / modal * 100).toLocaleString('id-ID', { maximumFractionDigits: 1 })}% dari modal)`];
+            if (lotByCapital < lotByRisk) parts.push('dibatasi oleh modal, bukan oleh batas risiko');
+            if (maxLot === 0) parts.push('modal/risiko terlalu kecil untuk 1 lot pada jarak SL ini');
+            if (entry % ewoksTickSize(entry) !== 0 || sl % ewoksTickSize(sl) !== 0) parts.push('perhatian: harga entry/SL belum kelipatan fraksi BEI');
+            parts.push('rugi sudah termasuk fee & pajak; gap harga/slippage tidak dihitung');
+            note.innerText = parts.join(' · ');
+        }
     } else {
         showToast("Data Sizing tidak valid. Pastikan Modal > 0 dan Entry Price lebih besar dari SL.", "warning");
     }

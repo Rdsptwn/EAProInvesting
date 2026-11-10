@@ -15,18 +15,26 @@ function calculateRetirement() {
         return;
     }
 
-    const futureMonthlyExp = exp * Math.pow((1 + inflation), yearsToRetire);
-    const monthlyReturn = returns / 12;
+    // Tarif bulanan efektif (bukan r/12) supaya konsisten dengan pertumbuhan tahunan.
+    const mRate = (annual) => Math.pow(1 + annual, 1 / 12) - 1;
+    const futureMonthlyExp = exp * Math.pow(1 + inflation, yearsToRetire);
+
+    // Masa pensiun: pengeluaran terus naik oleh inflasi sementara dana diinvestasikan, jadi
+    // didiskon dengan return RIIL = (1+r)/(1+i)-1. Penarikan di AWAL bulan (annuity-due).
+    const realAnnual = (1 + returns) / (1 + inflation) - 1;
+    const rr = mRate(realAnnual);
     const totalMonths = yearsInRetirement * 12;
-    const totalFund = monthlyReturn > 0
-        ? futureMonthlyExp * ((1 - Math.pow(1 + monthlyReturn, -totalMonths)) / monthlyReturn)
+    const totalFund = Math.abs(rr) > 1e-9
+        ? futureMonthlyExp * ((1 - Math.pow(1 + rr, -totalMonths)) / rr) * (1 + rr)
         : futureMonthlyExp * totalMonths;
 
-    const futureSavings = savings * Math.pow((1 + returns), yearsToRetire);
-    const gap = totalFund - futureSavings;
+    // Masa kerja: tabungan tumbuh dengan return nominal; iuran bulanan di akhir bulan, nominal tetap.
+    const nr = mRate(returns);
     const workMonths = yearsToRetire * 12;
+    const futureSavings = savings * Math.pow(1 + returns, yearsToRetire);
+    const gap = totalFund - futureSavings;
     const monthlyInvest = gap <= 0 ? 0
-        : (monthlyReturn > 0 ? (gap * monthlyReturn) / (Math.pow(1 + monthlyReturn, workMonths) - 1) : gap / workMonths);
+        : (Math.abs(nr) > 1e-9 ? (gap * nr) / (Math.pow(1 + nr, workMonths) - 1) : gap / workMonths);
 
     document.getElementById('res-total-fund').innerText = Math.round(totalFund).toLocaleString('id-ID');
     document.getElementById('res-monthly-future').innerText = `Masa Depan: Rp ${Math.round(futureMonthlyExp).toLocaleString('id-ID')}/bln`;

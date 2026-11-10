@@ -23,14 +23,22 @@ function calcRRR() {
     }
 }
 
+function saveJournal() {
+    try { localStorage.setItem('ewoks_journal', JSON.stringify(journal)); return true; }
+    catch (_) { showToast('Gagal menyimpan ke penyimpanan peramban (penuh/mode privat). Data hanya ada selama halaman terbuka.', 'error'); return false; }
+}
+
 function addJournal() {
     const date = document.getElementById('jr-date').value;
     const ticker = document.getElementById('jr-ticker').value.toUpperCase().trim();
     const lot = parseFloat(document.getElementById('jr-lot').value);
     const buy = parseFloat(document.getElementById('jr-buy').value);
     const sell = parseFloat(document.getElementById('jr-sell').value);
-    const feeRaw = parseFloat(document.getElementById('jr-fee').value);
-    const fee = Number.isFinite(feeRaw) && feeRaw >= 0 ? feeRaw : 0.4;
+    const slRaw = parseFloat(document.getElementById('jr-sl')?.value);
+    const pct = (id, def) => { const v = parseFloat(document.getElementById(id)?.value); return Number.isFinite(v) && v >= 0 ? v : def; };
+    const feeBuy = pct('jr-fee', EWOKS_FEE_DEFAULT.buy);
+    const feeSell = pct('jr-fee-sell', EWOKS_FEE_DEFAULT.sell);
+    const tax = EWOKS_FEE_DEFAULT.tax;
     const reason = document.getElementById('jr-reason').value;
     const emotion = document.getElementById('jr-emotion').value;
     const screenshot = document.getElementById('jr-screenshot').value.trim();
@@ -43,21 +51,23 @@ function addJournal() {
         showToast("Kesalahan Validasi: Harga dan Lot tidak boleh bernilai negatif atau nol!", "error");
         return;
     }
+    if(!Number.isInteger(lot)) {
+        showToast("Lot harus bilangan bulat (1 lot = 100 lembar).", "error");
+        return;
+    }
+    if(date > ewoksTodayWIB()) {
+        showToast("Tanggal trade tidak boleh di masa depan.", "error");
+        return;
+    }
 
-    const grossValueBuy = buy * lot * 100;
-    const grossValueSell = sell * lot * 100;
-    const totalFee = (grossValueBuy + grossValueSell) * (fee / 100);
-    const grossPnL = grossValueSell - grossValueBuy;
-    const netPnL = grossPnL - totalFee;
-    const isWin = netPnL > 0;
+    const r = ewoksTradeNet(buy, sell, lot, feeBuy, feeSell, tax);
+    let id = Date.now();
+    while (journal.some(x => x.id === id)) id += 1;
+    const entry = { id, date, ticker, lot, buy, sell, feeBuy, feeSell, tax, reason, emotion, screenshot, netPnL: r.net, isWin: r.net > 0 };
+    if (Number.isFinite(slRaw) && slRaw > 0 && slRaw < buy) entry.sl = slRaw; // untuk menghitung R-multiple
+    journal.unshift(entry);
+    saveJournal();
 
-    journal.unshift({
-        id: Date.now(),
-        date, ticker, lot, buy, sell, fee, reason, emotion, screenshot, netPnL, isWin
-    });
-
-    localStorage.setItem('ewoks_journal', JSON.stringify(journal));
-    
     document.getElementById('jr-ticker').value = '';
     document.getElementById('jr-lot').value = '';
     document.getElementById('jr-buy').value = '';
@@ -66,9 +76,43 @@ function addJournal() {
     document.getElementById('jr-sl').value = '';
     document.getElementById('jr-screenshot').value = '';
     document.getElementById('rr-indicator').innerHTML = '';
-    
+
     showToast("Catatan Trade berhasil disimpan ke Jurnal!", "success");
     renderJournal();
+}
+
+/** Urutan kronologis stabil: tanggal, lalu id (waktu input) sebagai pemisah trade pada hari yang sama. */
+function sortJournalChrono(list) {
+    return [...list].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.id - b.id));
+}
+
+/** Metrik standar manajer investasi dari daftar trade (net setelah fee & pajak). */
+function computeJournalMetrics(list) {
+    const sorted = sortJournalChrono(list);
+    const wins = sorted.filter(j => j.netPnL > 0), losses = sorted.filter(j => j.netPnL < 0);
+    const be = sorted.length - wins.length - losses.length;
+    const gw = wins.reduce((a, j) => a + j.netPnL, 0);
+    const gl = losses.reduce((a, j) => a + Math.abs(j.netPnL), 0);
+    const n = sorted.length;
+    const avgWin = wins.length ? gw / wins.length : 0;
+    const avgLoss = losses.length ? gl / losses.length : 0;
+    let eq = 0, peak = 0, mdd = 0;
+    sorted.forEach(j => { eq += j.netPnL; peak = Math.max(peak, eq); mdd = Math.min(mdd, eq - peak); });
+    const rs = sorted.filter(j => j.sl && j.sl < j.buy).map(j => {
+        const risk = (j.buy - j.sl) * j.lot * 100;
+        return j.netPnL / risk;
+    });
+    return {
+        n, wins: wins.length, losses: losses.length, be,
+        net: eq, gw, gl, avgWin, avgLoss,
+        winRate: n ? wins.length / n : 0,
+        expectancy: n ? (gw - gl) / n : 0,
+        profitFactor: gl > 0 ? gw / gl : (gw > 0 ? Infinity : 0),
+        payoff: avgLoss > 0 ? avgWin / avgLoss : (avgWin > 0 ? Infinity : 0),
+        mdd,
+        avgR: rs.length ? rs.reduce((a, b) => a + b, 0) / rs.length : null,
+        nR: rs.length
+    };
 }
 
 function renderJurnalCharts(journalData) {
@@ -78,7 +122,7 @@ function renderJurnalCharts(journalData) {
         return;
     }
 
-    const sorted = [...journalData].sort((a,b) => new Date(a.date) - new Date(b.date));
+    const sorted = sortJournalChrono(journalData);
     let equity = [];
     let labels = [];
     let currentEq = 0;
@@ -89,7 +133,7 @@ function renderJurnalCharts(journalData) {
         currentEq += j.netPnL;
         equity.push(currentEq);
         labels.push(`${j.ticker} (${j.date.split('-').slice(1).join('/')})`);
-        if(j.isWin) wins++; else losses++;
+        if(j.netPnL > 0) wins++; else if(j.netPnL < 0) losses++;
     });
 
     const ctxEq = document.getElementById('equityChart');
@@ -150,7 +194,7 @@ function renderJournal(searchQuery = '') {
     let filteredJournal = journal;
     if(searchQuery) {
         const q = searchQuery.toLowerCase();
-        filteredJournal = journal.filter(j => j.ticker.toLowerCase().includes(q));
+        filteredJournal = journal.filter(j => String(j.ticker || '').toLowerCase().includes(q));
     }
     
     if(filteredJournal.length === 0) {
@@ -161,6 +205,7 @@ function renderJournal(searchQuery = '') {
         document.getElementById('jr-total-win').innerText = '0';
         document.getElementById('jr-total-loss').innerText = '0';
         document.getElementById('jr-total-modal').innerText = '0';
+        ['jr-net','jr-expectancy','jr-pf','jr-mdd','jr-avgr'].forEach(id => { const el = document.getElementById(id); if (el) el.innerText = '–'; });
         
         if(window.equityChartInstance) window.equityChartInstance.destroy();
         if(window.winLossChartInstance) window.winLossChartInstance.destroy();
@@ -168,28 +213,26 @@ function renderJournal(searchQuery = '') {
     }
     
     emptyState.classList.add('hide');
-    let wins = 0, totalWinRp = 0, totalLossRp = 0, totalModal = 0;
+    let totalModal = 0;
 
     tbody.innerHTML = filteredJournal.map(j => {
-        if(j.isWin) { wins++; totalWinRp += j.netPnL; }
-        else { totalLossRp += Math.abs(j.netPnL); }
-
         totalModal += (j.buy * j.lot * 100);
 
-        const pnlColor = j.isWin ? 'text-emerald-500' : 'text-rose-500';
-        const pnlSign = j.isWin ? '+' : '';
+        const pnlColor = j.netPnL > 0 ? 'text-emerald-500' : (j.netPnL < 0 ? 'text-rose-500' : 'text-slate-500');
+        const pnlSign = j.netPnL > 0 ? '+' : '';
         const safeShot = /^https?:\/\//i.test(j.screenshot || '') ? escapeHtml(j.screenshot) : '';
         const screenHTML = safeShot ? `<a href="${safeShot}" rel="noopener noreferrer" target="_blank" class="text-blue-500 hover:text-blue-700 ml-1 tooltip-trigger"><i class="fas fa-image"></i><span class="tooltip-text">Lihat Chart Entry</span></a>` : '';
+        const id = Number(j.id);
 
         return `
         <tr class="border-b border-slate-100 hover:bg-slate-50/50 bg-white transition-colors">
             <td class="p-4">
                 <span class="font-black text-blue-600 text-sm flex items-center">${escapeHtml(j.ticker)} ${screenHTML}</span>
-                <span class="text-[9px] text-slate-400 font-bold">${j.date}</span>
+                <span class="text-[9px] text-slate-400 font-bold">${escapeHtml(j.date)}</span>
             </td>
             <td class="p-4">
-                <p class="text-xs font-bold text-slate-700">B: <span class="text-slate-500">${j.buy}</span> | S: <span class="text-slate-500">${j.sell}</span></p>
-                <p class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">${j.lot} Lot</p>
+                <p class="text-xs font-bold text-slate-700">B: <span class="text-slate-500">${Number(j.buy)}</span> | S: <span class="text-slate-500">${Number(j.sell)}</span></p>
+                <p class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">${Number(j.lot)} Lot</p>
             </td>
             <td class="p-4">
                 <span class="bg-purple-50 text-purple-600 border border-purple-100 px-2 py-0.5 rounded text-[9px] font-black uppercase inline-block mb-1">${escapeHtml(j.reason)}</span><br>
@@ -199,18 +242,28 @@ function renderJournal(searchQuery = '') {
                 ${pnlSign}Rp ${Math.round(j.netPnL).toLocaleString('id-ID')}
             </td>
             <td class="p-4 text-center flex flex-col gap-1 items-center justify-center">
-                <button onclick="shareWhatsAppJournal(${j.id})" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors tooltip-trigger" title="Share WA"><i class="fab fa-whatsapp"></i></button>
-                <button onclick="deleteJournal(${j.id})" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-500 hover:bg-rose-100 transition-colors tooltip-trigger" title="Hapus"><i class="fas fa-trash"></i></button>
+                <button onclick="shareWhatsAppJournal(${id})" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors tooltip-trigger" title="Share WA"><i class="fab fa-whatsapp"></i></button>
+                <button onclick="deleteJournal(${id})" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-500 hover:bg-rose-100 transition-colors tooltip-trigger" title="Hapus"><i class="fas fa-trash"></i></button>
             </td>
         </tr>
         `;
     }).join('');
 
-    document.getElementById('jr-total-trade').innerText = filteredJournal.length;
-    document.getElementById('jr-win-rate').innerText = Math.round((wins / filteredJournal.length) * 100) + '%';
-    document.getElementById('jr-total-win').innerText = formatAbbreviated(totalWinRp);
-    document.getElementById('jr-total-loss').innerText = formatAbbreviated(totalLossRp);
-    document.getElementById('jr-total-modal').innerText = formatAbbreviated(totalModal);
+    const m = computeJournalMetrics(filteredJournal);
+    const rp = (v) => (v < 0 ? '-' : '') + 'Rp ' + formatAbbreviated(Math.abs(v));
+    const set = (id, t) => { const el = document.getElementById(id); if (el) el.innerText = t; };
+    set('jr-total-trade', String(m.n));
+    set('jr-win-rate', (m.winRate * 100).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + '%' + (m.be ? ` (+${m.be} BEP)` : ''));
+    set('jr-total-win', formatAbbreviated(m.gw));
+    set('jr-total-loss', formatAbbreviated(m.gl));
+    set('jr-total-modal', formatAbbreviated(totalModal));
+    set('jr-net', rp(m.net));
+    set('jr-expectancy', rp(m.expectancy));
+    set('jr-pf', m.profitFactor === Infinity ? '∞' : m.profitFactor.toLocaleString('id-ID', { maximumFractionDigits: 2 }));
+    set('jr-mdd', m.mdd < 0 ? rp(m.mdd) : 'Rp 0');
+    set('jr-avgr', m.avgR === null ? 'n/a' : m.avgR.toLocaleString('id-ID', { maximumFractionDigits: 2 }) + 'R');
+    const sub = document.getElementById('jr-sample-note');
+    if (sub) sub.innerText = (searchQuery ? `Subset filter "${searchQuery}" · ` : '') + `n=${m.n} trade` + (m.n < 30 ? ' — sampel kecil, metrik belum stabil secara statistik' : '') + (m.nR ? ` · Avg R dari ${m.nR} trade ber-SL` : ' · isi Stop Loss untuk mengaktifkan Avg R');
 
     renderJurnalCharts(filteredJournal);
 }
@@ -230,14 +283,14 @@ function loadMacroNotes() {
 function shareWhatsAppJournal(id) {
     const j = journal.find(x => x.id === id);
     if (!j) return;
-    const status = j.isWin ? "✅ PROFIT" : "❌ LOSS";
+    const status = j.netPnL > 0 ? "✅ PROFIT" : (j.netPnL < 0 ? "❌ LOSS" : "➖ BEP");
     const msg = `*JURNAL TRADING: ${j.ticker}*\nStatus: ${status}\n\nHarga Beli: Rp ${j.buy}\nHarga Jual: Rp ${j.sell}\nLot: ${j.lot} Lot\nNet PnL: Rp ${Math.round(j.netPnL).toLocaleString('id-ID')}\n\nSetup: ${j.reason}\nPsikologi: ${j.emotion}\n\n_Ewoks Academy Suite_`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 
 function deleteJournal(id) {
     journal = journal.filter(j => j.id !== id);
-    localStorage.setItem('ewoks_journal', JSON.stringify(journal));
+    saveJournal();
     renderJournal(document.getElementById('jr-search').value);
     showToast('Data trade berhasil dihapus', 'success');
 }
@@ -259,13 +312,13 @@ function exportJournalCSV() {
         if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; // cegah formula injection di Excel
         return '"' + t.replace(/"/g, '""') + '"';
     };
-    let csv = "Tanggal,Emiten,Lot,Buy,Sell,Fee(%),Alasan Entry,Psikologi/Emosi,Link Gambar,Net PnL,Status\n";
-    journal.forEach(j => {
-        const status = j.isWin ? 'WIN' : 'LOSS';
-        csv += [q(j.date), q(j.ticker), j.lot, j.buy, j.sell, j.fee, q(j.reason), q(j.emotion), q(j.screenshot || '-'), j.netPnL, status].join(',') + "\n";
+    let csv = "Tanggal,Emiten,Lot,Buy,Sell,Fee Beli(%),Fee Jual(%),Pajak Jual(%),Stop Loss,Alasan Entry,Psikologi/Emosi,Link Gambar,Net PnL (Rp),Status\n";
+    sortJournalChrono(journal).forEach(j => {
+        const status = j.netPnL > 0 ? 'WIN' : (j.netPnL < 0 ? 'LOSS' : 'BEP');
+        csv += [q(j.date), q(j.ticker), j.lot, j.buy, j.sell, j.feeBuy, j.feeSell, j.tax, j.sl ?? '', q(j.reason), q(j.emotion), q(j.screenshot || '-'), j.netPnL, status].join(',') + "\n";
     });
     const link = document.createElement("a");
-    link.setAttribute("href", URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })));
+    link.setAttribute("href", URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' })));
     link.setAttribute("download", "Jurnal_Trading_Ewoks.csv");
     document.body.appendChild(link);
     link.click();

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261109t2136">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0043">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="kalkulator">
 
@@ -230,7 +230,7 @@
                                     <button onclick="calculateSizing()" class="w-full bg-purple-600 text-white py-3.5 rounded-xl font-bold text-[10px] hover:bg-purple-700 transition-colors uppercase shadow-md">Hitung Lot</button>
                                 </div>
                             </div>
-                            <div id="ps-result" class="hidden mt-4 p-4 border-l-[4px] border-purple-600 bg-white shadow-sm flex justify-between items-center rounded-r-xl">
+                            <div id="ps-result" class="hidden mt-4 p-4 border-l-[4px] border-purple-600 bg-white shadow-sm flex flex-wrap justify-between items-center rounded-r-xl">
                                  <div>
                                      <p class="text-[10px] text-slate-400 font-bold uppercase">MAKSIMAL BELI:</p>
                                      <p class="text-xl font-black text-slate-900" id="res-ps-lot">0 Lot</p>
@@ -239,6 +239,7 @@
                                     <p class="text-[10px] text-slate-400 font-bold uppercase">RUGI MAKSIMAL:</p>
                                     <p class="text-sm font-bold text-rose-500" id="res-ps-loss">Rp 0</p>
                                  </div>
+                                 <p class="basis-full mt-2 text-[10px] text-slate-400 font-medium leading-relaxed" id="res-ps-note"></p>
                             </div>
                         </div>
 
@@ -281,16 +282,17 @@
 
                     <div class="space-y-6 lg:sticky lg:top-24">
                         <div class="premium-card p-6 md:p-8 border-l-[6px] border-emerald-500 shadow-sm">
-                            <span class="text-[10px] font-black text-emerald-600 uppercase mb-2 block">Estimasi Profit</span>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase mb-2 block">Estimasi Profit Bersih</span>
                             <h4 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Rp <span id="res-gain">0</span></h4>
                             <div class="bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-lg text-xs md:text-sm font-black text-emerald-700 inline-block shadow-inner" id="res-tp-price">@0</div>
                         </div>
                         
                         <div class="premium-card p-6 md:p-8 border-l-[6px] border-rose-500 shadow-sm">
-                            <span class="text-[10px] font-black text-rose-600 uppercase mb-2 block">Risiko Maksimal</span>
+                            <span class="text-[10px] font-black text-rose-600 uppercase mb-2 block">Risiko Maksimal Bersih</span>
                             <h4 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Rp <span id="res-risk">0</span></h4>
                             <div class="bg-rose-50 border border-rose-200 px-4 py-2 rounded-lg text-xs md:text-sm font-black text-rose-700 inline-block shadow-inner" id="res-sl-price">@0</div>
                         </div>
+                        <p id="res-rr" class="text-[11px] font-bold text-slate-500 px-1"></p>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <button onclick="shareWhatsAppCalc()" class="btn-action bg-emerald-600 text-white py-4 md:py-5 rounded-2xl font-black text-xs uppercase flex items-center justify-center gap-3 shadow-lg hover:bg-emerald-700 transition-colors">
@@ -384,7 +386,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261109t2136"></script>
-    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261109t2136"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0043"></script>
+    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0043"></script>
 </body>
 </html>

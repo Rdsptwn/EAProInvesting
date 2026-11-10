@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261109t2136">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0043">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="jurnal">
 
@@ -184,7 +184,7 @@
 
                 <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <div class="premium-card p-5 text-center border-b-4 border-indigo-500 hover:-translate-y-1 transition-transform">
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Total Modal <span class="tooltip-text">Akumulasi modal yg digunakan dari seluruh jurnal</span></p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Total Nilai Beli <span class="tooltip-text">Jumlah nilai beli seluruh trade (turnover). Modal yang diputar ulang terhitung berkali-kali, jadi ini bukan modal awal atau equity.</span></p>
                         <p class="text-xl font-black text-indigo-600 mt-2 truncate" id="jr-total-modal">0</p>
                     </div>
                     <div class="premium-card p-5 text-center border-b-4 border-purple-500 hover:-translate-y-1 transition-transform">
@@ -192,18 +192,42 @@
                         <p class="text-2xl font-black text-slate-900 mt-1" id="jr-total-trade">0</p>
                     </div>
                     <div class="premium-card p-5 text-center border-b-4 border-emerald-500 hover:-translate-y-1 transition-transform">
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Win Rate</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Win Rate <span class="tooltip-text">Win rate saja menyesatkan: 50% dengan rata-rata rugi = rata-rata untung berarti expectancy nol. Lihat Expectancy dan Profit Factor.</span></p>
                         <p class="text-2xl font-black text-emerald-600 mt-1" id="jr-win-rate">0%</p>
                     </div>
                     <div class="premium-card p-5 text-center border-b-4 border-blue-500 hover:-translate-y-1 transition-transform">
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Cuan (Rp)</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Profit Trade Menang (Rp)</p>
                         <p class="text-xl font-black text-blue-600 mt-2 truncate" id="jr-total-win">0</p>
                     </div>
                     <div class="premium-card p-5 text-center border-b-4 border-rose-500 hover:-translate-y-1 transition-transform">
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Rugi (Rp)</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Rugi Trade Kalah (Rp)</p>
                         <p class="text-xl font-black text-rose-600 mt-2 truncate" id="jr-total-loss">0</p>
                     </div>
                 </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-2">
+                    <div class="premium-card p-5 text-center border-b-4 border-slate-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Net P&amp;L <span class="tooltip-text">Total untung-rugi bersih setelah fee broker dan PPh final penjualan.</span></p>
+                        <p class="text-xl font-black text-slate-800 mt-2 truncate" id="jr-net">–</p>
+                    </div>
+                    <div class="premium-card p-5 text-center border-b-4 border-slate-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Expectancy / Trade <span class="tooltip-text">Rata-rata hasil bersih per trade = (total profit - total rugi) / jumlah trade. Positif = sistem berekspektasi untung.</span></p>
+                        <p class="text-xl font-black text-slate-800 mt-2 truncate" id="jr-expectancy">–</p>
+                    </div>
+                    <div class="premium-card p-5 text-center border-b-4 border-slate-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Profit Factor <span class="tooltip-text">Total profit dibagi total rugi. Di bawah 1 = merugi, 1,5 ke atas umumnya dianggap sehat (pada sampel yang cukup besar).</span></p>
+                        <p class="text-xl font-black text-slate-800 mt-2" id="jr-pf">–</p>
+                    </div>
+                    <div class="premium-card p-5 text-center border-b-4 border-slate-500">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Max Drawdown (Rp) <span class="tooltip-text">Penurunan terdalam kurva ekuitas kumulatif dari puncaknya, dalam rupiah. Persentase tidak dapat dihitung karena modal awal tidak dicatat.</span></p>
+                        <p class="text-xl font-black text-rose-600 mt-2 truncate" id="jr-mdd">–</p>
+                    </div>
+                    <div class="premium-card p-5 text-center border-b-4 border-slate-500 col-span-2 lg:col-span-1">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Rata-rata R <span class="tooltip-text">Hasil bersih dibagi risiko awal (beli - stop loss). Hanya trade yang mengisi Stop Loss yang dihitung.</span></p>
+                        <p class="text-xl font-black text-slate-800 mt-2" id="jr-avgr">–</p>
+                    </div>
+                </div>
+                <p id="jr-sample-note" class="text-[10px] text-slate-400 font-medium mb-6"></p>
 
                 <div class="premium-card p-6 bg-slate-50 border-amber-100 mb-6">
                     <h4 class="text-xs font-black text-slate-900 mb-4 uppercase tracking-widest flex items-center gap-2">
@@ -275,10 +299,17 @@
                             </div>
                             <div id="rr-indicator" class="text-[10px] font-bold text-slate-500 italic mt-0"></div>
 
-                            <div>
-                                <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">FEE BROKER (%) - TOTAL B/S</label>
-                                <input type="number" id="jr-fee" value="0.4" step="0.01" min="0" class="input-pro border border-slate-200 bg-white !py-2.5 !text-sm">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">FEE BELI (%)</label>
+                                    <input type="number" id="jr-fee" value="0.15" step="0.01" min="0" class="input-pro border border-slate-200 bg-white !py-2.5 !text-sm">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">FEE JUAL (%)</label>
+                                    <input type="number" id="jr-fee-sell" value="0.15" step="0.01" min="0" class="input-pro border border-slate-200 bg-white !py-2.5 !text-sm">
+                                </div>
                             </div>
+                            <p class="text-[10px] text-slate-400 font-medium -mt-1">Fee per sisi transaksi, sudah termasuk levy BEI/KPEI/KSEI sesuai broker Anda. PPh final 0,1% atas nilai jual ditambahkan otomatis. Cek tarif broker Anda; angka bawaan hanya contoh umum.</p>
                             
                             <div>
                                 <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">LINK SCREENSHOT CHART (OPSIONAL)</label>
@@ -419,7 +450,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261109t2136"></script>
-    <script src="assets/js/pages/page-jurnal.js?v=20261109t2136"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0043"></script>
+    <script src="assets/js/pages/page-jurnal.js?v=20261110t0043"></script>
 </body>
 </html>

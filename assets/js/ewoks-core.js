@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261109t2136';
+window.EWOKS_ASSET_V = '20261110t0043';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -35,8 +35,77 @@ function readStoredArray(key) {
         return [];
     }
 }
+/** Tanggal hari ini di zona WIB (YYYY-MM-DD); toISOString() memakai UTC dan salah hari sebelum 07:00 WIB. */
+function ewoksTodayWIB() {
+    try { return new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Jakarta' }); }
+    catch (_) { return new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10); }
+}
+/** Biaya transaksi default (persen): fee broker beli, fee broker jual, PPh final penjualan saham (0,1%). */
+const EWOKS_FEE_DEFAULT = { buy: 0.15, sell: 0.15, tax: 0.1 };
+/** Fraksi harga BEI (papan Utama/Pengembangan): <200:1, 200-<500:2, 500-<2000:5, 2000-<5000:10, >=5000:25. */
+function ewoksTickSize(price) {
+    if (price < 200) return 1;
+    if (price < 500) return 2;
+    if (price < 2000) return 5;
+    if (price < 5000) return 10;
+    return 25;
+}
+/** Bulatkan harga ke kelipatan fraksi: mode 'down' | 'up' | 'near'. */
+function ewoksRoundTick(price, mode) {
+    const t = ewoksTickSize(price);
+    const q = price / t;
+    const k = mode === 'down' ? Math.floor(q + 1e-9) : mode === 'up' ? Math.ceil(q - 1e-9) : Math.round(q);
+    return k * t;
+}
+/** P&L bersih satu round-trip: fee dihitung per sisi, pajak final hanya atas nilai jual. */
+function ewoksTradeNet(buy, sell, lot, feeBuyPct, feeSellPct, taxPct) {
+    const bv = buy * lot * 100, sv = sell * lot * 100;
+    const feeAmt = bv * feeBuyPct / 100 + sv * feeSellPct / 100;
+    const taxAmt = sv * taxPct / 100;
+    const gross = sv - bv;
+    return { gross, feeAmt, taxAmt, net: Math.round(gross - feeAmt - taxAmt) };
+}
+/** Validasi + migrasi entri jurnal (dari localStorage atau file impor). Entri tidak valid dibuang. */
+function ewoksNormalizeJournal(arr) {
+    if (!Array.isArray(arr)) return [];
+    const used = new Set();
+    const out = [];
+    arr.forEach((r) => {
+        if (!r || typeof r !== 'object') return;
+        const ticker = String(r.ticker || '').toUpperCase().trim();
+        const date = String(r.date || '');
+        const lot = Number(r.lot), buy = Number(r.buy), sell = Number(r.sell);
+        if (!/^[A-Z0-9.\-]{1,12}$/.test(ticker) || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+        if (![lot, buy, sell].every((x) => Number.isFinite(x) && x > 0)) return;
+        let id = Number.isSafeInteger(Number(r.id)) ? Number(r.id) : Date.now();
+        while (used.has(id)) id += 1;
+        used.add(id);
+        const e = {
+            id, date, ticker, lot, buy, sell,
+            reason: String(r.reason || '').slice(0, 120),
+            emotion: String(r.emotion || '').slice(0, 120),
+            screenshot: /^https?:\/\//i.test(String(r.screenshot || '')) ? String(r.screenshot).slice(0, 500) : ''
+        };
+        const sl = Number(r.sl);
+        if (Number.isFinite(sl) && sl > 0 && sl < buy) e.sl = sl;
+        if (Number.isFinite(Number(r.feeSell))) {
+            e.feeBuy = Math.max(0, Number(r.feeBuy) || 0);
+            e.feeSell = Math.max(0, Number(r.feeSell) || 0);
+            e.tax = Math.max(0, Number(r.tax) || 0);
+        } else {
+            // Format lama: satu angka "fee total B/S" yang dulu dikenakan penuh di kedua sisi (biaya 2x lipat).
+            const f = Math.max(0, Number(r.fee));
+            const half = (Number.isFinite(f) ? f : 0.4) / 2;
+            e.feeBuy = half; e.feeSell = half; e.tax = 0;
+        }
+        e.netPnL = ewoksTradeNet(buy, sell, lot, e.feeBuy, e.feeSell, e.tax).net;
+        e.isWin = e.netPnL > 0;
+        out.push(e);
+    });
+    return out;
+}
 let history = readStoredArray('calc_history');
-let journal = readStoredArray('ewoks_journal');
+let journal = ewoksNormalizeJournal(readStoredArray('ewoks_journal'));
 let watchlist = readStoredArray('ewoks_watchlist');
 // --- BACKUP & RESTORE DATA (JSON) ---
 function exportBackup() {
@@ -51,7 +120,7 @@ function exportBackup() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Ewoks_Backup_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `Ewoks_Backup_${ewoksTodayWIB()}.json`;
     a.click();
     URL.revokeObjectURL(url);
     showToast("Backup berhasil diunduh!", "success");
@@ -65,7 +134,7 @@ function importBackup(e) {
         try {
             const data = JSON.parse(event.target.result);
             if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('format');
-            if(Array.isArray(data.journal)) localStorage.setItem('ewoks_journal', JSON.stringify(data.journal));
+            if(Array.isArray(data.journal)) localStorage.setItem('ewoks_journal', JSON.stringify(ewoksNormalizeJournal(data.journal)));
             if(Array.isArray(data.watchlist)) localStorage.setItem('ewoks_watchlist', JSON.stringify(data.watchlist));
             if(Array.isArray(data.history)) localStorage.setItem('calc_history', JSON.stringify(data.history));
             if(typeof data.macroNotes === 'string' && data.macroNotes) localStorage.setItem('ewoks_macro_notes', data.macroNotes);
@@ -906,9 +975,13 @@ function getBrokerBadge(kode) {
 // --- UTILITIES & SYSTEM ---
 function formatAbbreviated(num) {
     const n = Number(num) || 0;
-    if (n >= 1000000000) return (n / 1000000000).toFixed(2) + ' Miliar';
-    if (n >= 1000000) return (n / 1000000).toFixed(2) + ' Juta';
-    if (n >= 1000) return (n / 1000).toFixed(1) + ' Ribu';
+    const a = Math.abs(n);
+    const f = (v, d) => v.toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
+    // Naik satu tingkat bila pembulatan menghasilkan 1000 (mis. 999.996 -> "1,00 Juta", bukan "1000,0 Ribu").
+    if (a >= 1e12 || Math.round(a / 1e7) >= 100000) return f(n / 1e12, 2) + ' Triliun';
+    if (a >= 1e9 || Math.round(a / 1e4) >= 100000) return f(n / 1e9, 2) + ' Miliar';
+    if (a >= 1e6 || Math.round(a / 100) >= 10000) return f(n / 1e6, 2) + ' Juta';
+    if (a >= 1e3) return f(n / 1e3, 1) + ' Ribu';
     return Math.round(n).toLocaleString('id-ID');
 }
 
@@ -1008,7 +1081,7 @@ window.addEventListener('load', () => {
         });
     });
 
-    const today = new Date().toISOString().split('T')[0];
+    const today = ewoksTodayWIB();
     const tgl = document.getElementById('tanggal');
     const jr = document.getElementById('jr-date');
     if (tgl) tgl.value = today;

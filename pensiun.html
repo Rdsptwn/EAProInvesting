@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261109t2136">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0043">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="pensiun">
 
@@ -267,10 +267,17 @@
                                     <input type="number" id="cmp-tahun" placeholder="10" value="10" class="input-pro border border-slate-200 bg-white" oninput="calcCompound()" min="1" max="50">
                                 </div>
                             </div>
-                            <div>
-                                <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">Asumsi Return / Tahun (%)</label>
-                                <input type="number" id="cmp-return" placeholder="10" value="10" step="0.5" class="input-pro border border-slate-200 bg-white" oninput="calcCompound()">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">Return Efektif / Tahun (%)</label>
+                                    <input type="number" id="cmp-return" placeholder="10" value="10" step="0.5" class="input-pro border border-slate-200 bg-white" oninput="calcCompound()">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">Inflasi / Tahun (%)</label>
+                                    <input type="number" id="cmp-inflasi" placeholder="3" value="3" step="0.5" class="input-pro border border-slate-200 bg-white" oninput="calcCompound()">
+                                </div>
                             </div>
+                            <p class="text-[10px] text-slate-400 font-medium">Return bersifat asumsi (bukan jaminan, belum dikurangi biaya/pajak, tidak ada risiko rugi dalam simulasi). Setoran dihitung di akhir tiap bulan.</p>
                         </div>
 
                         <div class="mt-6 h-48 w-full border border-slate-100 rounded-xl p-2 bg-slate-50/50 shadow-inner">
@@ -289,6 +296,10 @@
                             <div class="flex justify-between items-center">
                                 <p class="text-[10px] font-bold text-slate-400 uppercase">Nilai Akhir (Future Value):</p>
                                 <p class="text-xl font-black text-white" id="res-cmp-total">Rp 214.628.210</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-700">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase">Setara Daya Beli Hari Ini (riil):</p>
+                                <p class="text-sm font-black text-amber-300" id="res-cmp-real">Rp 0</p>
                             </div>
                         </div>
                     </div>
@@ -421,8 +432,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261109t2136"></script>
-    <script src="assets/js/pages/page-compound-darurat.js?v=20261109t2136"></script>
-    <script src="assets/js/pages/page-pensiun.js?v=20261109t2136"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0043"></script>
+    <script src="assets/js/pages/page-compound-darurat.js?v=20261110t0043"></script>
+    <script src="assets/js/pages/page-pensiun.js?v=20261110t0043"></script>
 </body>
 </html>
