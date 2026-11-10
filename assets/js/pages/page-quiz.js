@@ -99,6 +99,13 @@ function renderQuizQuestion() {
     container.innerHTML = html;
 }
 
+// Pemformat angka lokal: formatNumber() hanya ada di page-bandar.js dan tidak dimuat di halaman kuis, sehingga hasil kuis
+// gagal tampil (ReferenceError) bagi siapa pun yang total investasinya < 3x pengeluaran bulanan.
+function quizFmt(num) {
+    const n = Number(num);
+    return Number.isFinite(n) ? Math.round(n).toLocaleString('id-ID') : '0';
+}
+
 function selectAnswer(score) {
     quizAnswers.push(score);
     currentQIndex++;
@@ -106,7 +113,12 @@ function selectAnswer(score) {
     if(currentQIndex < quizQuestions.length) {
         renderQuizQuestion();
     } else {
-        calculateComplexResult();
+        try {
+            calculateComplexResult();
+        } catch (err) {
+            console.error('Gagal menghitung hasil kuis', err);
+            showToast('Maaf, hasil kuis gagal ditampilkan. Muat ulang halaman dan coba lagi.', 'error');
+        }
     }
 }
 
@@ -149,7 +161,7 @@ function calculateComplexResult() {
 
     if(emergencyRatio < 3) {
         healthStatus = "SANGAT BERISIKO";
-        healthWarning = `<li class="p-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-xl mb-3"><i class="fas fa-exclamation-triangle mr-2"></i><b>Dana Darurat Kurang!</b> Total investasi Anda (${formatNumber(userData.capital)}) tidak sampai 3x pengeluaran bulanan. <b>Kami paksa alokasi Cash/RDPU Anda diperbesar</b> agar Anda tidak terpaksa Cut Loss saham saat butuh uang mendadak.</li>`;
+        healthWarning = `<li class="p-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-xl mb-3"><i class="fas fa-exclamation-triangle mr-2"></i><b>Dana Darurat Kurang!</b> Total investasi Anda (${quizFmt(userData.capital)}) tidak sampai 3x pengeluaran bulanan. <b>Kami paksa alokasi Cash/RDPU Anda diperbesar</b> agar Anda tidak terpaksa Cut Loss saham saat butuh uang mendadak.</li>`;
         // Override safety
         baseAllo.rdp += 30;
         baseAllo.saham = Math.max(0, baseAllo.saham - 20);
@@ -170,11 +182,13 @@ function calculateComplexResult() {
     let finalRdp = 100 - (finalSaham + finalSbn + finalEmas);
 
     let alloHtml = healthWarning;
+    const disclaimerLi = `<li class="text-[11px] text-slate-400 italic">Alokasi di atas contoh ilustrasi untuk edukasi berdasarkan jawaban kuis singkat, bukan rekomendasi investasi pribadi. Pertimbangkan berkonsultasi dengan perencana keuangan berizin.</li>`;
     if(finalSaham > 0) alloHtml += `<li>🔴 <b class="text-slate-900">${finalSaham}% Saham / ETF</b> (Pertumbuhan modal, dividen. Pilih Bluechip/Growth)</li>`;
     if(finalSbn > 0) alloHtml += `<li>🟡 <b class="text-slate-900">${finalSbn}% SBN / Obligasi Ritel</b> (Imbal hasil tetap, dijamin Negara; cek yield terbaru di halaman Fixed Income)</li>`;
     if(finalRdp > 0) alloHtml += `<li>🟢 <b class="text-slate-900">${finalRdp}% Reksa Dana Pasar Uang / Deposito</b> (Sangat likuid, untuk dana darurat & peluru serok bawah)</li>`;
     if(finalEmas > 0) alloHtml += `<li>🟠 <b class="text-slate-900">${finalEmas}% Emas / Logam Mulia</b> (Safe haven, pelindung krisis makro)</li>`;
 
+    alloHtml += disclaimerLi;
     document.getElementById('res-title').innerText = profile;
     document.getElementById('res-desc').innerText = desc;
     

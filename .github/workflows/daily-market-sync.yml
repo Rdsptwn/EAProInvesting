@@ -115,16 +115,21 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json assets/js/ewoks-core.js
+          git add assets/data/market-snapshot.json assets/data/corporate-calendar.json assets/data/pasar-global.json assets/data/macro.json assets/data/idx-universe.json
           [ -f assets/data/idx-screener.json ] && git add assets/data/idx-screener.json || true
           [ -f assets/data/ipo-perf.json ] && git add assets/data/ipo-perf.json || true
           [ -f assets/data/idx-status.json ] && git add assets/data/idx-status.json || true
           [ -f assets/data/idx-events.json ] && git add assets/data/idx-events.json || true
-          git add -u -- '*.html'
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
           fi
+          # Buang bump versi lokal (HTML + ewoks-core.js): bump diulang SETELAH rebase supaya tidak bentrok
+          # dengan commit lain yang juga mengubah nomor versi di file HTML.
+          git checkout -- '*.html' assets/js/ewoks-core.js
           git commit -m "chore(data): daily market sync"
-          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
           git push

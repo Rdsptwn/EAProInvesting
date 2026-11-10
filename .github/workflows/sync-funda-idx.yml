@@ -58,12 +58,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/funda-idx.json assets/js/ewoks-core.js
-          git add -u -- '*.html'
+          git add assets/data/funda-idx.json
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
           fi
+          git checkout -- '*.html' assets/js/ewoks-core.js
           git commit -m "chore(data): sync lapkeu funda-idx (harian)"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
           git push
