@@ -179,3 +179,37 @@ function calcRebalance() {
             : `Perlu menjual total sekitar Rp ${Math.abs(Math.round(sells)).toLocaleString('id-ID')} dari kelas berlebih (merah), kecuali ditambah setoran baru.`);
 }
 document.addEventListener('DOMContentLoaded', () => { if (document.getElementById('rb-body') || document.getElementById('rb-v0')) calcRebalance(); });
+
+
+// --- PROFIL RISIKO ---
+// Indeks profil: 0 Konservatif, 1 Moderat-Konservatif, 2 Moderat, 3 Moderat-Agresif, 4 Agresif (contoh ilustrasi).
+const RISK_PROFILES = [
+    { name: 'Konservatif', alloc: [10, 30, 50, 10], range: 'saham 5–15%, obligasi/SBN 25–35%, pasar uang 45–55%' },
+    { name: 'Moderat-Konservatif', alloc: [25, 35, 30, 10], range: 'saham 20–30%, obligasi/SBN 30–40%, pasar uang 25–35%' },
+    { name: 'Moderat', alloc: [45, 30, 15, 10], range: 'saham 40–50%, obligasi/SBN 25–35%, pasar uang 10–20%' },
+    { name: 'Moderat-Agresif', alloc: [60, 25, 5, 10], range: 'saham 55–65%, obligasi/SBN 20–30%, pasar uang 0–10%' },
+    { name: 'Agresif', alloc: [75, 15, 5, 5], range: 'saham 70–80%, obligasi/SBN 10–20%, pasar uang 0–10%' }
+];
+let rpCurrent = null;
+function calcRiskProfile() {
+    const sel = [...document.querySelectorAll('select[id^="rp-q"]')];
+    const box = document.getElementById('rp-result');
+    if (!sel.length || !box) return;
+    const cap = sel.filter(e => e.dataset.kind === 'cap'), tol = sel.filter(e => e.dataset.kind === 'tol');
+    if (sel.some(e => !e.value)) { box.classList.add('hidden'); rpCurrent = null; return; }
+    const avg = (a) => a.reduce((s, e) => s + Number(e.value), 0) / a.length; // 1..4
+    const toIdx = (v) => Math.round((v - 1) / 3 * 4); // 1..4 -> 0..4
+    const ci = toIdx(avg(cap)), ti = toIdx(avg(tol));
+    const idx = Math.min(ci, ti);
+    rpCurrent = RISK_PROFILES[idx];
+    box.classList.remove('hidden');
+    document.getElementById('rp-profile').innerText = rpCurrent.name;
+    document.getElementById('rp-detail').innerText = `Kapasitas risiko: ${RISK_PROFILES[ci].name} · Toleransi risiko: ${RISK_PROFILES[ti].name}. Profil akhir mengikuti yang lebih rendah` + (ci !== ti ? (ci < ti ? ' (keuangan Anda membatasi, meski mental Anda lebih berani).' : ' (kenyamanan Anda membatasi, meski keuangan Anda sanggup).') : '.');
+    document.getElementById('rp-alloc').innerText = `Contoh ilustrasi alokasi: ${rpCurrent.range}, sisanya emas/lainnya.`;
+}
+function applyRiskProfileToRebalance() {
+    if (!rpCurrent) return;
+    rpCurrent.alloc.forEach((v, i) => { const el = document.getElementById('rb-t' + i); if (el) el.value = v; });
+    calcRebalance();
+    document.getElementById('rb-note')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}

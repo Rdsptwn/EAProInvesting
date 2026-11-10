@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0707">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0709">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="kalkulator">
 
@@ -361,6 +361,44 @@
                 </div>
                 <p id="rb-note" class="text-[11px] font-bold text-slate-600 mt-4 leading-relaxed"></p>
                 <p class="text-[10px] text-slate-400 font-medium mt-2 leading-relaxed">Rebalancing berbasis ambang (toleransi) lebih hemat biaya daripada kalender kaku. Jual saham dikenai fee dan PPh final 0,1%, dan menjual instrumen lain bisa kena pajak atau penalti. Pertimbangkan mengarahkan setoran baru ke kelas yang kurang sebelum menjual.</p>
+
+            <div class="premium-card p-6 md:p-8 mt-8 border-t-4 border-amber-500 shadow-sm bg-white">
+                <h3 class="text-xl font-black text-slate-900 mb-1 flex items-center gap-2"><i class="fas fa-user-shield text-amber-500"></i> Profil Risiko</h3>
+                <p class="text-xs text-slate-500 font-medium mb-4">Praktik manajer investasi memisahkan <strong>kapasitas risiko</strong> (seberapa besar kerugian yang sanggup ditanggung keuangan Anda) dari <strong>toleransi risiko</strong> (seberapa tenang Anda menghadapi turunnya nilai). Profil akhir mengikuti yang lebih rendah. Ini kuesioner edukasi singkat, bukan penilaian resmi.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="rp-q0" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">1. Kapan dana ini mungkin dibutuhkan?</label>
+                        <select id="rp-q0" data-kind="cap" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Kurang dari 2 tahun</option><option value="2">2–5 tahun</option><option value="3">5–10 tahun</option><option value="4">Lebih dari 10 tahun</option></select>
+                    </div>
+                    <div>
+                        <label for="rp-q1" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">2. Seberapa stabil penghasilan Anda?</label>
+                        <select id="rp-q1" data-kind="cap" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Tidak tetap / bisa hilang sewaktu-waktu</option><option value="2">Cukup stabil tapi tanggungan banyak</option><option value="3">Stabil, tanggungan wajar</option><option value="4">Sangat stabil dan ada sumber penghasilan lain</option></select>
+                    </div>
+                    <div>
+                        <label for="rp-q2" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">3. Dana darurat (6–12 bulan pengeluaran) di luar dana ini?</label>
+                        <select id="rp-q2" data-kind="cap" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Belum ada</option><option value="2">Kurang dari 3 bulan</option><option value="3">3–6 bulan</option><option value="4">Lebih dari 6 bulan</option></select>
+                    </div>
+                    <div>
+                        <label for="rp-q3" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">4. Portofolio Anda turun 20% dalam sebulan. Reaksi Anda?</label>
+                        <select id="rp-q3" data-kind="tol" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Jual semua agar tenang</option><option value="2">Jual sebagian</option><option value="3">Tahan dan tunggu pulih</option><option value="4">Tambah beli karena lebih murah</option></select>
+                    </div>
+                    <div>
+                        <label for="rp-q4" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">5. Pengalaman berinvestasi di saham/reksa dana?</label>
+                        <select id="rp-q4" data-kind="tol" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Belum pernah</option><option value="2">Kurang dari 1 tahun</option><option value="3">1–5 tahun, pernah melewati penurunan pasar</option><option value="4">Lebih dari 5 tahun, pernah melewati krisis</option></select>
+                    </div>
+                    <div>
+                        <label for="rp-q5" class="text-[10px] font-black text-slate-400 uppercase mb-1 block">6. Tujuan utama investasi ini?</label>
+                        <select id="rp-q5" data-kind="tol" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Menjaga nilai uang, hindari rugi</option><option value="2">Pertumbuhan stabil dengan rugi kecil</option><option value="3">Pertumbuhan tinggi, rugi sementara wajar</option><option value="4">Memaksimalkan hasil, siap rugi besar</option></select>
+                    </div>
+                </div>
+                <div id="rp-result" class="hidden mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Hasil</p>
+                    <p class="text-lg font-black text-slate-900 mt-1" id="rp-profile">-</p>
+                    <p class="text-[11px] text-slate-600 font-medium mt-1" id="rp-detail"></p>
+                    <p class="text-[11px] text-slate-600 font-medium mt-2" id="rp-alloc"></p>
+                    <button onclick="applyRiskProfileToRebalance()" class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-xl text-[11px] font-black uppercase">Pakai sebagai target rebalancing</button>
+                </div>
+                <p class="text-[10px] text-slate-400 font-medium mt-3 leading-relaxed">Rentang alokasi hanyalah contoh ilustrasi untuk belajar, bukan rekomendasi. Kondisi tiap orang berbeda; pertimbangkan berkonsultasi dengan perencana keuangan berizin.</p>
             </div>
         </section>
 
@@ -442,7 +480,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261110t0707"></script>
-    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0707"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0709"></script>
+    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0709"></script>
 </body>
 </html>
