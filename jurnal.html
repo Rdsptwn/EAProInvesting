@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0048">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0707">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="jurnal">
 
@@ -226,6 +226,11 @@
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 tooltip-trigger">Rata-rata R <span class="tooltip-text">Hasil bersih dibagi risiko awal (beli - stop loss). Hanya trade yang mengisi Stop Loss yang dihitung.</span></p>
                         <p class="text-xl font-black text-slate-800 mt-2" id="jr-avgr">–</p>
                     </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 mb-1">
+                    <label for="jr-capital" class="text-[10px] font-black text-slate-400 uppercase">Modal awal (Rp, opsional)</label>
+                    <input type="number" id="jr-capital" min="0" placeholder="mis. 50000000" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-48" oninput="saveJournalCapital()">
+                    <span class="text-[10px] text-slate-400 font-medium">Dengan modal awal, Net P&amp;L dan Max Drawdown tampil juga dalam persen.</span>
                 </div>
                 <p id="jr-sample-note" class="text-[10px] text-slate-400 font-medium mb-6"></p>
 
@@ -450,7 +455,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261110t0048"></script>
-    <script src="assets/js/pages/page-jurnal.js?v=20261110t0048"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0707"></script>
+    <script src="assets/js/pages/page-jurnal.js?v=20261110t0707"></script>
 </body>
 </html>

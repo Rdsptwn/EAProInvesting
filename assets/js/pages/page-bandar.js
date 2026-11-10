@@ -11,12 +11,9 @@ function checkBrokerHeatmap(e) {
 }
 
 function getTickSize(price) {
+    // Fraksi harga BEI: <200:1, 200-<500:2, 500-<2000:5, 2000-<5000:10, >=5000:25 (batas bawah termasuk di fraksi berikutnya).
     const p = Number(price) || 0;
-    if (p <= 200) return 1;
-    if (p <= 500) return 2;
-    if (p <= 2000) return 5;
-    if (p <= 5000) return 10;
-    return 25;
+    return typeof ewoksTickSize === 'function' ? ewoksTickSize(p) : (p < 200 ? 1 : p < 500 ? 2 : p < 2000 ? 5 : p < 5000 ? 10 : 25);
 }
 
 function handleBuyAvgChange(e) {
@@ -74,8 +71,11 @@ function formatNumber(num) {
     const papanCountLow = papanCountHigh / 2;
     const fivePercent = buyAvg * 0.05;
 
-    const targetHigh = buyAvg + fivePercent + (papanCountHigh * tick);
-    const targetLow = buyAvg + (papanCountLow * tick);
+    // Skenario heuristik (bukan prediksi): dibulatkan ke fraksi harga BEI yang berlaku di level hasilnya.
+    const rawHigh = buyAvg + fivePercent + (papanCountHigh * tick);
+    const rawLow = buyAvg + (papanCountLow * tick);
+    const targetHigh = typeof ewoksRoundTick === 'function' ? ewoksRoundTick(rawHigh, 'near') : rawHigh;
+    const targetLow = typeof ewoksRoundTick === 'function' ? ewoksRoundTick(rawLow, 'near') : rawLow;
     const percentLow = ((targetLow - buyAvg) / buyAvg) * 100;
     const percentHigh = ((targetHigh - buyAvg) / buyAvg) * 100;
 
@@ -88,7 +88,7 @@ function formatNumber(num) {
     };
 
     history.unshift(result);
-    localStorage.setItem('calc_history', JSON.stringify(history));
+    try { localStorage.setItem('calc_history', JSON.stringify(history)); } catch (_) { /* penyimpanan penuh/privat */ }
     showToast("Perhitungan Bandar selesai", "success");
     renderHistory();
 }
@@ -128,16 +128,17 @@ function renderHistory() {
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
-                    <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Target Low</p>
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Skenario Rendah</p>
                     <p class="text-lg font-black text-emerald-600">Rp ${formatNumber(res.targetLow)}</p>
                     <p class="text-[10px] font-bold text-emerald-500">+${(res.percentLow || 0).toFixed(2)}%</p>
                 </div>
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
-                    <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Target High</p>
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Skenario Tinggi</p>
                     <p class="text-lg font-black text-blue-600">Rp ${formatNumber(res.targetHigh)}</p>
                     <p class="text-[10px] font-bold text-blue-500">+${(res.percentHigh || 0).toFixed(2)}%</p>
                 </div>
             </div>
+            <p class="text-[10px] text-slate-400 font-medium mt-3 leading-relaxed">Skenario heuristik: jumlah papan yang bisa ditembus oleh lot beli dengan antrean bid/offer saat ini, ditambah buffer tetap 5%. Antrean berubah tiap detik dan bisa dipasang lalu dihapus (spoofing), sehingga ini bukan prediksi harga dan bukan jaminan.</p>
         </div>
     `).join('');
 }
@@ -145,11 +146,11 @@ function renderHistory() {
 function shareWhatsAppBandar(ts) {
     const r = history.find(h => h.timestamp === ts);
     if (!r) return;
-    const text = `*TARGET REALISTIS SAHAM ${r.emiten}*\n` +
+    const text = `*SKENARIO HEURISTIK (BUKAN PREDIKSI) ${r.emiten}*\n` +
                  `Broker: ${r.broker}\n` +
                  `Buy Avg: Rp ${formatNumber(r.buyAvg)}\n\n` +
-                 `🟢 *Target Low:* Rp ${formatNumber(r.targetLow)} (+${(r.percentLow || 0).toFixed(2)}%)\n` +
-                 `🔵 *Target High:* Rp ${formatNumber(r.targetHigh)} (+${(r.percentHigh || 0).toFixed(2)}%)\n\n` +
+                 `🟢 *Skenario Rendah:* Rp ${formatNumber(r.targetLow)} (+${(r.percentLow || 0).toFixed(2)}%)\n` +
+                 `🔵 *Skenario Tinggi:* Rp ${formatNumber(r.targetHigh)} (+${(r.percentHigh || 0).toFixed(2)}%)\n\n` +
                  `_Analyzed with Ewoks Academy Suite_`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
 }
@@ -177,7 +178,7 @@ function exportHistoryCSV() {
     }
     
     let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "Tanggal,Emiten,Broker,Buy Lot,Buy Avg,Bid Terendah,Offer Tertinggi,Total Bid,Total Offer,Target Low,Target High\n";
+    csvContent += "Tanggal,Emiten,Broker,Buy Lot,Buy Avg,Bid Terendah,Offer Tertinggi,Total Bid,Total Offer,Skenario Rendah,Skenario Tinggi\n";
     
     history.forEach(row => {
         const rowData = [
@@ -201,6 +202,6 @@ function exportHistoryCSV() {
 function copyRes(ts) {
     const r = history.find(h => h.timestamp === ts);
     if (!r) return;
-    const text = `TARGET REALISTIS SAHAM ${r.emiten}\nTarget Low: Rp ${formatNumber(r.targetLow)} (+${(r.percentLow || 0).toFixed(2)}%)\nTarget High: Rp ${formatNumber(r.targetHigh)} (+${(r.percentHigh || 0).toFixed(2)}%)\n\nEwoks Academy Suite`;
+    const text = `SKENARIO HEURISTIK (BUKAN PREDIKSI) ${r.emiten}\nSkenario Rendah: Rp ${formatNumber(r.targetLow)} (+${(r.percentLow || 0).toFixed(2)}%)\nSkenario Tinggi: Rp ${formatNumber(r.targetHigh)} (+${(r.percentHigh || 0).toFixed(2)}%)\n\nEwoks Academy Suite`;
     navigator.clipboard.writeText(text).then(() => showToast('Data disalin ke clipboard!', 'success'));
 }

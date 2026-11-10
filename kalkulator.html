@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0048">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0707">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="kalkulator">
 
@@ -306,6 +306,62 @@
                 </div>
 
             </div>
+
+            <div class="premium-card p-6 md:p-8 mt-8 border-t-4 border-indigo-500 shadow-sm bg-white">
+                <h3 class="text-xl font-black text-slate-900 mb-1 flex items-center gap-2"><i class="fas fa-balance-scale text-indigo-500"></i> Alokasi Aset &amp; Rebalancing</h3>
+                <p class="text-xs text-slate-500 font-medium mb-4">Bandingkan komposisi portofolio sekarang dengan target alokasi Anda (misalnya dari Investment Policy Statement pribadi), lalu lihat berapa yang perlu dibeli atau dijual untuk kembali ke target. Contoh angka hanya ilustrasi, bukan rekomendasi komposisi.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                <th class="pb-2">Kelas aset</th><th class="pb-2">Nilai sekarang (Rp)</th><th class="pb-2">Target (%)</th><th class="pb-2">Porsi sekarang</th><th class="pb-2">Beli (+) / Jual (-)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-slate-100">
+                                <td class="py-2 pr-3 font-extrabold text-slate-700 text-xs">Saham</td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-v0" value="40000000" min="0" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[110px]" oninput="calcRebalance()" aria-label="Nilai Saham (Rp)"></td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-t0" value="60" min="0" max="100" step="1" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[70px]" oninput="calcRebalance()" aria-label="Target Saham (%)"></td>
+                                <td class="py-2 pr-2 text-xs font-bold text-slate-600" id="rb-c0">-</td>
+                                <td class="py-2 text-xs font-black" id="rb-a0">-</td>
+                            </tr>
+                            <tr class="border-t border-slate-100">
+                                <td class="py-2 pr-3 font-extrabold text-slate-700 text-xs">Obligasi / SBN</td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-v1" value="30000000" min="0" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[110px]" oninput="calcRebalance()" aria-label="Nilai Obligasi / SBN (Rp)"></td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-t1" value="25" min="0" max="100" step="1" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[70px]" oninput="calcRebalance()" aria-label="Target Obligasi / SBN (%)"></td>
+                                <td class="py-2 pr-2 text-xs font-bold text-slate-600" id="rb-c1">-</td>
+                                <td class="py-2 text-xs font-black" id="rb-a1">-</td>
+                            </tr>
+                            <tr class="border-t border-slate-100">
+                                <td class="py-2 pr-3 font-extrabold text-slate-700 text-xs">Pasar uang / Deposito</td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-v2" value="20000000" min="0" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[110px]" oninput="calcRebalance()" aria-label="Nilai Pasar uang / Deposito (Rp)"></td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-t2" value="10" min="0" max="100" step="1" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[70px]" oninput="calcRebalance()" aria-label="Target Pasar uang / Deposito (%)"></td>
+                                <td class="py-2 pr-2 text-xs font-bold text-slate-600" id="rb-c2">-</td>
+                                <td class="py-2 text-xs font-black" id="rb-a2">-</td>
+                            </tr>
+                            <tr class="border-t border-slate-100">
+                                <td class="py-2 pr-3 font-extrabold text-slate-700 text-xs">Emas & lainnya</td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-v3" value="10000000" min="0" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[110px]" oninput="calcRebalance()" aria-label="Nilai Emas & lainnya (Rp)"></td>
+                                <td class="py-2 pr-2"><input type="number" id="rb-t3" value="5" min="0" max="100" step="1" class="input-pro bg-white border border-slate-200 !py-2 !text-xs w-full min-w-[70px]" oninput="calcRebalance()" aria-label="Target Emas & lainnya (%)"></td>
+                                <td class="py-2 pr-2 text-xs font-bold text-slate-600" id="rb-c3">-</td>
+                                <td class="py-2 text-xs font-black" id="rb-a3">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">Setoran baru yang akan dimasukkan (Rp, opsional)</label>
+                        <input type="number" id="rb-new" value="0" min="0" class="input-pro bg-white border border-slate-200 !py-2.5 !text-sm" oninput="calcRebalance()">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black text-slate-400 uppercase mb-1 block">Batas toleransi penyimpangan (poin %)</label>
+                        <input type="number" id="rb-band" value="5" min="0" step="1" class="input-pro bg-white border border-slate-200 !py-2.5 !text-sm" oninput="calcRebalance()">
+                    </div>
+                </div>
+                <p id="rb-note" class="text-[11px] font-bold text-slate-600 mt-4 leading-relaxed"></p>
+                <p class="text-[10px] text-slate-400 font-medium mt-2 leading-relaxed">Rebalancing berbasis ambang (toleransi) lebih hemat biaya daripada kalender kaku. Jual saham dikenai fee dan PPh final 0,1%, dan menjual instrumen lain bisa kena pajak atau penalti. Pertimbangkan mengarahkan setoran baru ke kelas yang kurang sebelum menjual.</p>
+            </div>
         </section>
 
 
@@ -386,7 +442,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261110t0048"></script>
-    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0048"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0707"></script>
+    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0707"></script>
 </body>
 </html>

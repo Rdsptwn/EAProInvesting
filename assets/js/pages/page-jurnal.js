@@ -23,6 +23,20 @@ function calcRRR() {
     }
 }
 
+function getJournalCapital() {
+    try { const v = parseFloat(localStorage.getItem('ewoks_jr_capital')); return Number.isFinite(v) && v > 0 ? v : 0; } catch (_) { return 0; }
+}
+function saveJournalCapital() {
+    const v = parseFloat(document.getElementById('jr-capital')?.value);
+    try { if (Number.isFinite(v) && v > 0) localStorage.setItem('ewoks_jr_capital', String(v)); else localStorage.removeItem('ewoks_jr_capital'); } catch (_) {}
+    renderJournal(document.getElementById('jr-search')?.value || '');
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('jr-capital');
+    const c = getJournalCapital();
+    if (el && c > 0) el.value = c;
+});
+
 function saveJournal() {
     try { localStorage.setItem('ewoks_journal', JSON.stringify(journal)); return true; }
     catch (_) { showToast('Gagal menyimpan ke penyimpanan peramban (penuh/mode privat). Data hanya ada selama halaman terbuka.', 'error'); return false; }
@@ -109,7 +123,7 @@ function computeJournalMetrics(list) {
         expectancy: n ? (gw - gl) / n : 0,
         profitFactor: gl > 0 ? gw / gl : (gw > 0 ? Infinity : 0),
         payoff: avgLoss > 0 ? avgWin / avgLoss : (avgWin > 0 ? Infinity : 0),
-        mdd,
+        mdd, peak,
         avgR: rs.length ? rs.reduce((a, b) => a + b, 0) / rs.length : null,
         nR: rs.length
     };
@@ -257,10 +271,12 @@ function renderJournal(searchQuery = '') {
     set('jr-total-win', formatAbbreviated(m.gw));
     set('jr-total-loss', formatAbbreviated(m.gl));
     set('jr-total-modal', formatAbbreviated(totalModal));
-    set('jr-net', rp(m.net));
+    const cap = getJournalCapital();
+    const pctTxt = (x) => x.toLocaleString('id-ID', { maximumFractionDigits: 2 }) + '%';
+    set('jr-net', rp(m.net) + (cap > 0 ? ` (${pctTxt(m.net / cap * 100)})` : ''));
     set('jr-expectancy', rp(m.expectancy));
     set('jr-pf', m.profitFactor === Infinity ? '∞' : m.profitFactor.toLocaleString('id-ID', { maximumFractionDigits: 2 }));
-    set('jr-mdd', m.mdd < 0 ? rp(m.mdd) : 'Rp 0');
+    set('jr-mdd', m.mdd < 0 ? rp(m.mdd) + (cap > 0 ? ` (${pctTxt(m.mdd / (cap + m.peak) * 100)})` : '') : (cap > 0 ? 'Rp 0 (0%)' : 'Rp 0'));
     set('jr-avgr', m.avgR === null ? 'n/a' : m.avgR.toLocaleString('id-ID', { maximumFractionDigits: 2 }) + 'R');
     const sub = document.getElementById('jr-sample-note');
     if (sub) sub.innerText = (searchQuery ? `Subset filter "${searchQuery}" · ` : '') + `n=${m.n} trade` + (m.n < 30 ? ' — sampel kecil, metrik belum stabil secara statistik' : '') + (m.nR ? ` · Avg R dari ${m.nR} trade ber-SL` : ' · isi Stop Loss untuk mengaktifkan Avg R');

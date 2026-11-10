@@ -71,7 +71,7 @@
         const c = (t, v, s) => `<div class="bg-white rounded-2xl border border-slate-200 p-3"><div class="text-[10px] font-black text-slate-400 uppercase">${t}</div><div class="text-xl font-black text-slate-800 mt-1">${v}</div><div class="text-[10px] text-slate-500 font-semibold mt-0.5">${s}</div></div>`;
         const bad = a.filter((x) => x.stat !== 'aktif').length;
         $('ipo-cards').innerHTML = c('Jumlah IPO', fx(a.length), `${a.filter((x) => x.price).length} punya harga IPO`)
-            + c('Di atas harga IPO', w.length ? `${Math.round(up / w.length * 100)}%` : '—', `${up} dari ${w.length} yang punya harga sekarang`)
+            + c('Di atas harga IPO', w.length ? `${Math.round(up / w.length * 100)}%` : '—', `${up} dari ${w.length} yang masih tercatat & punya harga`)
             + c('Median return sekarang', med == null ? '—' : pct(med), 'terhadap harga IPO')
             + c('Suspen / tak aktif', fx(bad), 'tetap ditampilkan sebagai rekam jejak')
             + c('Terbaik (ATH)', bestAth ? `${esc(bestAth.t)} ${pct(bestAth.athG)}` : (best ? `${esc(best.t)} ${pct(best.cur)}` : '—'), bestAth ? 'kenaikan tertinggi sejak IPO' : 'return sekarang tertinggi');
@@ -107,7 +107,7 @@
     function cmpSummary(all) {
         const n = all.length, c = (f) => all.filter(f).length, e = $('ipo-cmp');
         if (!e) return;
-        e.textContent = n ? `Kelengkapan data di daftar ini (${n} emiten): harga IPO ${c((x) => x.price)}, dana ${c((x) => x.fundsBn)}, penjamin ${c((x) => x.lead && x.lead.length)}. Kolom yang kosong berarti belum ada sumber, bukan nol.` : '';
+        e.textContent = n ? `Kelengkapan data di daftar ini (${n} emiten): harga IPO ${c((x) => x.price)}, dana ${c((x) => x.fundsBn)}, penjamin ${c((x) => x.lead && x.lead.length)}. Kolom yang kosong berarti belum ada sumber, bukan nol. Peringatan bias penyintas: data hanya memuat emiten yang masih tercatat sekarang (yang sudah delisting tidak ada), sehingga persentase di atas harga IPO, median return, dan win rate penjamin cenderung terlalu optimistis. Peringkat penjamin hanya mencakup IPO yang penjaminnya sudah terisi.` : '';
     }
 
     window.ipoRender = function (keep) {

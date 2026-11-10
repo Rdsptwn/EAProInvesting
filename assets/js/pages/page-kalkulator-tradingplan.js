@@ -136,3 +136,46 @@ function fallbackCopyTradingPlan(text) {
     document.body.removeChild(ta);
 }
 
+
+
+// --- ALOKASI ASET & REBALANCING ---
+function calcRebalance() {
+    const n = 4;
+    const v = [], t = [];
+    for (let i = 0; i < n; i++) {
+        v.push(Math.max(0, parseFloat(document.getElementById('rb-v' + i)?.value) || 0));
+        t.push(Math.max(0, parseFloat(document.getElementById('rb-t' + i)?.value) || 0));
+    }
+    const add = Math.max(0, parseFloat(document.getElementById('rb-new')?.value) || 0);
+    const band = Math.max(0, parseFloat(document.getElementById('rb-band')?.value) || 0);
+    const cur = v.reduce((a, b) => a + b, 0);
+    const tSum = t.reduce((a, b) => a + b, 0);
+    const total = cur + add;
+    const note = document.getElementById('rb-note');
+    const rp = (x) => (x < 0 ? '-' : '+') + 'Rp ' + Math.abs(Math.round(x)).toLocaleString('id-ID');
+    const out = [];
+    for (let i = 0; i < n; i++) {
+        const share = cur > 0 ? v[i] / cur * 100 : 0;
+        const dev = share - t[i];
+        const tv = total * (t[i] / 100);
+        const delta = tv - v[i];
+        const c = document.getElementById('rb-c' + i), a = document.getElementById('rb-a' + i);
+        if (c) c.innerText = cur > 0 ? share.toLocaleString('id-ID', { maximumFractionDigits: 1 }) + '%' : '-';
+        if (a) {
+            a.innerText = tSum === 100 && total > 0 ? rp(delta) : '-';
+            a.className = 'py-2 text-xs font-black ' + (Math.abs(dev) > band ? (delta >= 0 ? 'text-emerald-600' : 'text-rose-600') : 'text-slate-400');
+        }
+        out.push({ dev, delta });
+    }
+    if (!note) return;
+    if (tSum !== 100) { note.innerText = `Total target ${tSum.toLocaleString('id-ID')}% — harus tepat 100% untuk menghitung rebalancing.`; return; }
+    if (cur <= 0) { note.innerText = 'Isi nilai portofolio sekarang.'; return; }
+    const off = out.filter(o => Math.abs(o.dev) > band).length;
+    const sells = out.filter(o => o.delta < 0).reduce((s, o) => s + o.delta, 0);
+    note.innerText = off === 0
+        ? `Semua kelas aset masih dalam toleransi ${band} poin dari target: belum perlu rebalancing.`
+        : `${off} kelas aset melewati toleransi ${band} poin. ` + (add > 0 && add >= -sells
+            ? 'Setoran baru cukup untuk menutup kekurangan tanpa menjual apa pun (arahkan ke kelas bertanda hijau).'
+            : `Perlu menjual total sekitar Rp ${Math.abs(Math.round(sells)).toLocaleString('id-ID')} dari kelas berlebih (merah), kecuali ditambah setoran baru.`);
+}
+document.addEventListener('DOMContentLoaded', () => { if (document.getElementById('rb-body') || document.getElementById('rb-v0')) calcRebalance(); });

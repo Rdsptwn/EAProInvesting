@@ -434,36 +434,26 @@ function computeKongloDerivedMetrics(d, sector) {
         : 0;
 
     const mult = getKongloSectorMultiples(sector);
-    const netLi = fundaNum(d.net[li]);
-    const eqLi = fundaNum(d.eq[li]);
-    const assetLi = fundaNum(d.asset[li]);
-    const revLi = fundaNum(d.rev[li]);
+    // Basis valuasi = tahun fiskal penuh terakhir. Kolom terakhir (indeks 6) adalah SATU kuartal: laba kuartal x PER tahunan
+    // menghasilkan nilai ~4x lebih rendah dari semestinya.
+    const vi = li === 6 && fundaYearHasData(d, 5) ? 5 : li;
+    const netLi = fundaNum(d.net[vi]);
+    const eqLi = fundaNum(d.eq[vi]);
+    const assetLi = fundaNum(d.asset[vi]);
+    const revLi = fundaNum(d.rev[vi]);
 
-    const sotpCore = netLi * mult.per;
+    // Dua metode (PER dan PBV) dirata-ratakan. Komponen "aset surplus" dibuang: (aset - ekuitas) = total LIABILITAS,
+    // bukan aset non-operasi, dan sudah tercermin di ekuitas.
+    const sotpCore = netLi > 0 ? netLi * mult.per : null;
     const sotpBook = eqLi * mult.pbv;
-    const surplusAssets = Math.max(0, assetLi - eqLi);
-    const sotpInvest = surplusAssets * 0.15;
-    const totalSotp = sotpCore * 0.55 + sotpBook * 0.35 + sotpInvest * 0.1;
+    const totalSotp = sotpCore != null ? (sotpCore + sotpBook) / 2 : sotpBook;
 
-    const intrinsic = totalSotp;
-    let mosCalc = null;
-    if (eqLi >= FUNDA_MIN_TRILIUN && intrinsic > eqLi) {
-        mosCalc = +Math.min(50, Math.max(0, ((intrinsic - eqLi) / intrinsic) * 100)).toFixed(1);
-    } else if (eqLi >= FUNDA_MIN_TRILIUN && intrinsic > 0) {
-        mosCalc = 0;
-    }
+    // Rasio nilai indikatif terhadap ekuitas buku. Bukan margin of safety: itu membutuhkan harga pasar dan jumlah saham.
+    const mosCalc = eqLi >= FUNDA_MIN_TRILIUN && totalSotp > 0 ? +(totalSotp / eqLi).toFixed(2) : null;
 
-    let zscore = 3.5;
-    const hasAnyData = [0, 1, 2, 3, 4, 5, 6].some((k) => fundaYearHasData(d, k));
-    if (!hasAnyData) zscore = null;
-    if (hasAnyData && !isBank && assetLi >= FUNDA_MIN_TRILIUN && eqLi >= FUNDA_MIN_TRILIUN) {
-        const tl = Math.max(assetLi - eqLi, assetLi * 0.01);
-        const wc = assetLi * 0.1;
-        const re = netLi / assetLi;
-        const ebit = netLi * 1.15;
-        zscore = 1.2 * (wc / assetLi) + 1.4 * re + 3.3 * (ebit / assetLi) + 0.6 * (eqLi / tl) + 1.0 * (revLi / assetLi);
-        zscore = +Math.min(6, Math.max(0.5, zscore)).toFixed(2);
-    }
+    // Altman Z-score tidak dihitung: butuh modal kerja, laba ditahan dan EBIT yang tidak ada di data (dulu diisi asumsi
+    // 10% aset dan laba x 1,15, sehingga skor tampak resmi padahal karangan).
+    const zscore = null;
 
     return {
         isBank,
@@ -480,24 +470,17 @@ function computeKongloDerivedMetrics(d, sector) {
             segments: [
                 {
                     name: `Bisnis Inti (${sector})`,
-                    method: 'PER × Laba Bersih',
-                    multiple: `${mult.per}× (${mult.label})`,
-                    detail: `${formatFundaAmount(netLi)} × ${mult.per}`,
-                    value: sotpCore
+                    method: 'PER x Laba Bersih tahun fiskal penuh',
+                    multiple: sotpCore != null ? `${mult.per}x (${mult.label})` : 'n/m (laba negatif/nol)',
+                    detail: sotpCore != null ? `${formatFundaAmount(netLi)} x ${mult.per}` : FUNDA_EMPTY,
+                    value: sotpCore != null ? sotpCore : 0
                 },
                 {
                     name: 'Nilai Buku Ekuitas (Fair PBV)',
-                    method: 'PBV × Total Ekuitas',
-                    multiple: `${mult.pbv}×`,
-                    detail: `${formatFundaAmount(eqLi)} × ${mult.pbv}`,
+                    method: 'PBV x Total Ekuitas',
+                    multiple: `${mult.pbv}x`,
+                    detail: `${formatFundaAmount(eqLi)} x ${mult.pbv}`,
                     value: sotpBook
-                },
-                {
-                    name: 'Aset Surplus / Non-Operasi',
-                    method: 'Diskon 15% (Aset−Ekuitas)',
-                    multiple: FUNDA_EMPTY,
-                    detail: `${formatFundaAmount(surplusAssets)} × 0.15`,
-                    value: sotpInvest
                 }
             ],
             total: totalSotp
@@ -659,7 +642,7 @@ function renderFundaView(d, ticker, company, sector) {
     `;
 
     const dash = document.getElementById('funda-valuation-dashboard');
-    let zStatus = zscore == null ? "Data belum tersedia" : zscore >= 3 ? "Aman (Green Zone)" : (zscore >= 1.8 ? "Waspada (Grey Zone)" : "Bahaya (Red Zone)");
+    let zStatus = zscore == null ? "Tidak dihitung: butuh laba ditahan, modal kerja, EBIT" : zscore >= 3 ? "Aman (Green Zone)" : (zscore >= 1.8 ? "Waspada (Grey Zone)" : "Bahaya (Red Zone)");
     let zColor = zscore == null ? "text-slate-400" : zscore >= 3 ? "text-emerald-400" : (zscore >= 1.8 ? "text-amber-400" : "text-rose-400");
     const npmLatest = m.latestNpm != null ? `${m.latestNpm}%` : FUNDA_EMPTY;
     const roeLatest = m.latestRoe != null ? `${m.latestRoe}%` : FUNDA_EMPTY;
@@ -667,9 +650,9 @@ function renderFundaView(d, ticker, company, sector) {
 
     dash.innerHTML = `
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center shadow-lg hover:border-emerald-500 transition-colors">
-            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center justify-center gap-1"><i class="fas fa-shield-alt text-emerald-500"></i> Margin of Safety</p>
-            <p class="text-2xl md:text-3xl font-black text-emerald-400 my-1">${mos}${mos === FUNDA_EMPTY ? '' : '%'}</p>
-            <p class="text-[10px] text-slate-500">Dari SOTP vs nilai buku ekuitas</p>
+            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center justify-center gap-1"><i class="fas fa-shield-alt text-emerald-500"></i> Nilai Indikatif / Buku</p>
+            <p class="text-2xl md:text-3xl font-black text-emerald-400 my-1">${mos}${mos === FUNDA_EMPTY ? '' : 'x'}</p>
+            <p class="text-[10px] text-slate-500">SOTP kasar ÷ ekuitas buku (bukan target harga)</p>
         </div>
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center shadow-lg hover:border-blue-500 transition-colors">
             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1 flex items-center justify-center gap-1"><i class="fas fa-heartbeat text-blue-500"></i> Altman Z-Score</p>
@@ -688,7 +671,7 @@ function renderFundaView(d, ticker, company, sector) {
         </div>
     `;
 
-    const levLabel = m.isBank ? 'Equity Multiplier (Aset/Ekuitas)' : 'DER (Hutang/Ekuitas)';
+    const levLabel = m.isBank ? 'Equity Multiplier (Aset/Ekuitas)' : 'DER (Total Liabilitas/Ekuitas)';
     const mBody = document.getElementById('funda-metrics-body');
     mBody.innerHTML = `
         <tr class="hover:bg-slate-800/30">
