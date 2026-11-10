@@ -1,20 +1,21 @@
 {
- "asOf": "2026-11-11",
- "session": "intraday 13:54 WIB",
- "source": "Stockbit (input manual)",
+ "session": "penutupan",
+ "source": "BEI (idx.id)",
+ "asOf": "2026-10-30",
  "all": {
-  "value": 72570000000000.0,
-  "volume": 30460000000.0,
-  "freq": 857920
+  "value": 11636760471140,
+  "volume": 36655770051,
+  "freq": 1176619
  },
  "regular": {
-  "value": 5440000000000.0,
-  "volume": 12680000000.0,
-  "freq": 855690
+  "value": 10543735824200,
+  "volume": 34738314300,
+  "freq": 1176097
  },
  "nego": {
-  "value": 67130000000000.0,
-  "volume": 17780000000.0,
-  "freq": 402
- }
+  "value": 1093024646939.9999,
+  "volume": 1917455751,
+  "freq": 522
+ },
+ "builtAt": "2026-11-10T22:03:01.847Z"
 }
