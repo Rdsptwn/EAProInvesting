@@ -191,18 +191,30 @@ const RISK_PROFILES = [
     { name: 'Agresif', alloc: [75, 15, 5, 5], range: 'saham 70–80%, obligasi/SBN 10–20%, pasar uang 0–10%' }
 ];
 let rpCurrent = null;
-function calcRiskProfile() {
+function calcRiskProfile(explicit) {
     const sel = [...document.querySelectorAll('select[id^="rp-q"]')];
     const box = document.getElementById('rp-result');
+    const status = document.getElementById('rp-status');
     if (!sel.length || !box) return;
     const cap = sel.filter(e => e.dataset.kind === 'cap'), tol = sel.filter(e => e.dataset.kind === 'tol');
-    if (sel.some(e => !e.value)) { box.classList.add('hidden'); rpCurrent = null; return; }
+    const missing = sel.map((e, i) => (e.value ? 0 : i + 1)).filter(Boolean);
+    sel.forEach(e => e.classList.toggle('!border-amber-500', explicit === true && !e.value));
+    if (status) {
+        status.innerText = missing.length
+            ? `Terjawab ${sel.length - missing.length}/${sel.length}. Lengkapi pertanyaan nomor ${missing.join(', ')} untuk melihat hasil.`
+            : `Terjawab ${sel.length}/${sel.length}.`;
+        status.className = 'text-[11px] font-bold ' + (missing.length && explicit === true ? 'text-amber-600' : 'text-slate-500');
+    }
+    if (missing.length) { box.classList.add('hidden'); rpCurrent = null; return; }
     const avg = (a) => a.reduce((s, e) => s + Number(e.value), 0) / a.length; // 1..4
     const toIdx = (v) => Math.round((v - 1) / 3 * 4); // 1..4 -> 0..4
     const ci = toIdx(avg(cap)), ti = toIdx(avg(tol));
     const idx = Math.min(ci, ti);
     rpCurrent = RISK_PROFILES[idx];
+    // Hasil berada di bawah form; tanpa scroll, pengguna (terutama di HP) mengira hasilnya tidak keluar.
+    const wasHidden = box.classList.contains('hidden');
     box.classList.remove('hidden');
+    if (wasHidden || explicit === true) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
     document.getElementById('rp-profile').innerText = rpCurrent.name;
     document.getElementById('rp-detail').innerText = `Kapasitas risiko: ${RISK_PROFILES[ci].name} · Toleransi risiko: ${RISK_PROFILES[ti].name}. Profil akhir mengikuti yang lebih rendah` + (ci !== ti ? (ci < ti ? ' (keuangan Anda membatasi, meski mental Anda lebih berani).' : ' (kenyamanan Anda membatasi, meski keuangan Anda sanggup).') : '.');
     document.getElementById('rp-alloc').innerText = `Contoh ilustrasi alokasi: ${rpCurrent.range}, sisanya emas/lainnya.`;

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0709">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0740">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="kalkulator">
 
@@ -391,6 +391,10 @@
                         <select id="rp-q5" data-kind="tol" class="input-pro border border-slate-200 bg-white !py-2.5 !text-xs w-full" onchange="calcRiskProfile()"><option value="">Pilih…</option><option value="1">Menjaga nilai uang, hindari rugi</option><option value="2">Pertumbuhan stabil dengan rugi kecil</option><option value="3">Pertumbuhan tinggi, rugi sementara wajar</option><option value="4">Memaksimalkan hasil, siap rugi besar</option></select>
                     </div>
                 </div>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <button type="button" onclick="calcRiskProfile(true)" class="bg-amber-500 text-white px-5 py-2.5 rounded-xl text-[11px] font-black uppercase">Lihat Hasil</button>
+                    <span id="rp-status" class="text-[11px] font-bold text-slate-500" role="status" aria-live="polite">Terjawab 0/6</span>
+                </div>
                 <div id="rp-result" class="hidden mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200">
                     <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Hasil</p>
                     <p class="text-lg font-black text-slate-900 mt-1" id="rp-profile">-</p>
@@ -480,7 +484,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261110t0709"></script>
-    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0709"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t0740"></script>
+    <script src="assets/js/pages/page-kalkulator-tradingplan.js?v=20261110t0740"></script>
 </body>
 </html>
