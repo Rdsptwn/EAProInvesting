@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261110t0927">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261110t1326">
+    <link rel="stylesheet" href="assets/css/editorial.css?v=20261110t1326">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="edukasi">
 
@@ -89,7 +90,7 @@
                 <img src="assets/img/logo-ea.svg" alt="EA — Ewoks Academy" width="40" height="40" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-200/60">
                 <div>
                     <h1 class="text-xl font-extrabold tracking-tight text-slate-900">Ewoks<span class="text-blue-600">Academy</span></h1>
-                    <p class="text-[10px] font-bold text-blue-600 tracking-[0.2em] uppercase">Professional Suite</p>
+                    <p class="text-xs font-semibold text-blue-600">Riset &amp; perencanaan investasi</p>
                 </div>
             </div>
             
@@ -212,28 +213,16 @@
                 </div>
 
                 <div id="edu-dasar" class="edu-tab-content block space-y-8">
-                    <div class="premium-card p-6 md:p-10 overflow-hidden relative shadow-sm">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-2 h-8 bg-red-600 rounded-full"></div>
-                            <h2 class="text-xl md:text-2xl font-black text-slate-900">Dashboard Makro Indonesia</h2>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-                            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 text-center md:text-left hover:border-blue-400 transition-colors shadow-sm">
-                                <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3 block">Est. Inflasi 2024</span>
-                                <div class="text-3xl md:text-4xl font-black text-slate-900 mb-2">2.80%</div>
-                                <p class="text-[10px] text-slate-500 font-bold uppercase tooltip-trigger">Fokus: Ketahanan Pangan<span class="tooltip-text">Inflasi dijaga lewat operasi beras/pangan subsidi.</span></p>
-                            </div>
-                            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 text-center md:text-left hover:border-blue-400 transition-colors shadow-sm">
-                                <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3 block">Proj. Inflasi 2025</span>
-                                <div class="text-3xl md:text-4xl font-black text-slate-900 mb-2">2.92%</div>
-                                <p class="text-[10px] text-slate-500 font-bold uppercase tooltip-trigger">Target: Konsumsi Domestik<span class="tooltip-text">Rangsang daya beli ritel di tengah pelemahan suku bunga.</span></p>
-                            </div>
-                            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-200 text-center md:text-left hover:border-blue-400 transition-colors shadow-sm">
-                                <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3 block">Proj. Inflasi 2026</span>
-                                <div class="text-3xl md:text-4xl font-black text-slate-900 mb-2">4.76%</div>
-                                <p class="text-[10px] text-slate-500 font-bold uppercase tooltip-trigger">Visi: Stabilitas Jangka Panjang<span class="tooltip-text">Angka perkiraan atas jika program ambisius menekan defisit fiscal.</span></p>
-                            </div>
-                        </div>
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl mb-2">Mulai dari sini: tiga hal sebelum memilih saham</h2>
+                        <p class="text-sm text-slate-500 mb-6 max-w-2xl">Hasil investasi jangka panjang lebih ditentukan oleh hal-hal berikut daripada oleh pilihan satu-dua saham.</p>
+                        <ol class="space-y-5 max-w-3xl text-sm text-slate-700">
+                            <li><strong>1. Dana darurat dan utang dulu.</strong> Siapkan dana tunai setara 6 bulan pengeluaran (3 bulan jika penghasilan sangat stabil) dan lunasi utang berbunga tinggi sebelum membeli aset berisiko. Hitung di <a href="pensiun.html" class="underline">kalkulator dana darurat</a>.</li>
+                            <li><strong>2. Alokasi aset menentukan sebagian besar hasil.</strong> Proporsi antara saham, obligasi, emas, dan kas disesuaikan dengan horizon waktu dan kemampuan menanggung penurunan, bukan dengan prediksi pasar. Cek profil Anda di <a href="quiz.html" class="underline">kuis profil risiko</a>.</li>
+                            <li><strong>3. Biaya, pajak, dan inflasi menggerus hasil.</strong> Fee transaksi, pajak penjualan, dan inflasi harus dihitung. Hasil nominal 8% dengan inflasi 3% berarti hasil riil sekitar 4,9%.</li>
+                        </ol>
+                        <div class="ed-callout mt-6 max-w-3xl">Angka makro (inflasi, suku bunga BI, kurs) berubah setiap bulan, jadi tidak ditulis permanen di halaman ini. Rujuk langsung ke <a href="https://www.bi.go.id" class="underline" target="_blank" rel="noopener">Bank Indonesia</a> dan <a href="https://www.bps.go.id" class="underline" target="_blank" rel="noopener">BPS</a> untuk data terbaru.</div>
+                        <div class="ed-callout ed-risk mt-4 max-w-3xl">Semua materi di halaman ini bersifat edukasi. Tidak ada metode analisis yang menjamin hasil, dan Anda bisa kehilangan sebagian atau seluruh modal.</div>
                     </div>
 
                     <div class="premium-card p-6 md:p-10 border-blue-200 bg-blue-50/20 shadow-sm">
@@ -333,7 +322,7 @@
                         <p class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Fundamental 101</p>
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Apa Itu Analisis Fundamental?</h2>
                         <p class="text-sm md:text-base text-slate-600 mb-6 max-w-3xl leading-relaxed">
-                            Analisis fundamental adalah metode untuk mengevaluasi **nilai intrinsik** sebuah saham. Tujuannya adalah mencari tahu apakah harga saham saat ini sedang <i>undervalued</i> (murah) atau <i>overvalued</i> (mahal) dibandingkan dengan kinerja nyata bisnisnya. Jika Teknikal melihat "Harga & Volume", Fundamental melihat "Bisnis & Keuangan".
+                            Analisis fundamental adalah metode untuk mengevaluasi <strong>nilai intrinsik</strong> sebuah saham. Tujuannya adalah mencari tahu apakah harga saham saat ini sedang <i>undervalued</i> (murah) atau <i>overvalued</i> (mahal) dibandingkan dengan kinerja nyata bisnisnya. Jika Teknikal melihat "Harga & Volume", Fundamental melihat "Bisnis & Keuangan".
                         </p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -420,7 +409,7 @@
                                         <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
                                             <div class="text-2xl mb-2">💼</div>
                                             <h4 class="font-bold text-blue-900 mb-2 text-xs md:text-sm">Ekuitas (Equity)</h4>
-                                            <p class="text-[11px] md:text-xs text-blue-800 leading-relaxed">Nilai kekayaan bersih perusahaan.<br><strong>Rumus Pasti: Aset = Hutang + Ekuitas.</strong> Modal riil milik pemegang saham.</p>
+                                            <p class="text-[11px] md:text-xs text-blue-800 leading-relaxed">Nilai kekayaan bersih perusahaan.<br><strong>Persamaan akuntansi: Aset = Liabilitas + Ekuitas.</strong> Modal riil milik pemegang saham.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -578,7 +567,7 @@
 
                                 <div class="bg-slate-800/80 p-4 rounded-xl mt-4 border border-slate-700 shadow-inner">
                                     <h4 class="font-bold text-orange-400 mb-2 flex items-center text-xs md:text-sm"><span class="mr-2">⚖️</span> Fakta Pasar</h4>
-                                    <p class="text-xs md:text-sm text-slate-300 italic leading-relaxed">"Harga saham dalam jangka pendek dipengaruhi oleh SENTIMEN dan Supply/Demand, tetapi dalam jangka panjang pasti akan mengikuti FUNDAMENTAL laba perusahaannya." - Peter Lynch</p>
+                                    <p class="text-xs md:text-sm text-slate-300 italic leading-relaxed">"Harga saham dalam jangka pendek dipengaruhi oleh SENTIMEN dan Supply/Demand, tetapi dalam jangka panjang cenderung mengikuti FUNDAMENTAL laba perusahaannya." - Peter Lynch</p>
                                 </div>
                             </div>
                         </div>
@@ -3764,8 +3753,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261110t0927"></script>
-    <script src="assets/js/pages/page-edu-quiz.js?v=20261110t0927"></script>
-    <script src="assets/js/pages/page-edukasi.js?v=20261110t0927"></script>
+    <script src="assets/js/ewoks-core.js?v=20261110t1326"></script>
+    <script src="assets/js/pages/page-edu-quiz.js?v=20261110t1326"></script>
+    <script src="assets/js/pages/page-edukasi.js?v=20261110t1326"></script>
 </body>
 </html>

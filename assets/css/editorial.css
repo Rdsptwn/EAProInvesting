@@ -1,0 +1,206 @@
+/*
+ * Editorial theme — lapisan gaya yang dimuat SETELAH app.css dan Tailwind.
+ * Tujuan: terlihat seperti media/riset keuangan (kertas, tinta, garis tipis, serif untuk judul),
+ * bukan dashboard serba-berwarna. Satu warna aksen (tinta biru tua); hijau/merah hanya untuk naik/turun.
+ * Berlaku untuk mode terang; mode gelap (body.dark-mode-override) tetap memakai aturan lama di app.css.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap');
+
+:root {
+    --ed-paper: #faf9f6;
+    --ed-card: #ffffff;
+    --ed-ink: #1b1b19;
+    --ed-muted: #5c5b56;
+    --ed-faint: #8a8982;
+    --ed-line: #e3e1d9;
+    --ed-line-strong: #cfccc2;
+    --ed-accent: #1f3a5f;
+    --ed-accent-soft: #eef1f5;
+    --ed-up: #1b7f4b;
+    --ed-down: #b3261e;
+    --ed-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --ed-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* ---------- Dasar ---------- */
+body:not(.dark-mode-override) {
+    background-color: var(--ed-paper);
+    color: var(--ed-ink);
+    font-family: var(--ed-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+body:not(.dark-mode-override) h1,
+body:not(.dark-mode-override) h2,
+body:not(.dark-mode-override) h3 {
+    font-family: var(--ed-serif);
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+}
+body:not(.dark-mode-override) h4 { font-weight: 600 !important; }
+body:not(.dark-mode-override) table,
+body:not(.dark-mode-override) .tabular { font-variant-numeric: tabular-nums; }
+
+/* ---------- Tipografi: hilangkan "label kapital tebal berukuran mungil" ---------- */
+body:not(.dark-mode-override) .font-black,
+body:not(.dark-mode-override) .font-extrabold { font-weight: 600 !important; }
+body:not(.dark-mode-override) .font-bold { font-weight: 600 !important; }
+body:not(.dark-mode-override) .uppercase { text-transform: none !important; }
+body:not(.dark-mode-override) .tracking-widest,
+body:not(.dark-mode-override) .tracking-wider,
+body:not(.dark-mode-override) .tracking-wide { letter-spacing: 0 !important; }
+body:not(.dark-mode-override) .italic { font-style: normal; }
+body:not(.dark-mode-override) .text-\[8px\],
+body:not(.dark-mode-override) .text-\[9px\] { font-size: 12px !important; }
+body:not(.dark-mode-override) .text-\[10px\] { font-size: 12.5px !important; }
+body:not(.dark-mode-override) .text-\[11px\] { font-size: 13px !important; }
+body:not(.dark-mode-override) .text-xs { font-size: 13px; }
+body:not(.dark-mode-override) label { color: var(--ed-muted); }
+
+/* ---------- Bentuk: sudut kecil, garis tipis, tanpa bayangan ---------- */
+body:not(.dark-mode-override) .rounded-3xl,
+body:not(.dark-mode-override) .rounded-2xl { border-radius: 10px !important; }
+body:not(.dark-mode-override) .rounded-xl { border-radius: 8px !important; }
+body:not(.dark-mode-override) .rounded-lg { border-radius: 6px !important; }
+body:not(.dark-mode-override) .rounded-t-xl { border-top-left-radius: 6px !important; border-top-right-radius: 6px !important; }
+body:not(.dark-mode-override) .shadow-sm,
+body:not(.dark-mode-override) .shadow,
+body:not(.dark-mode-override) .shadow-md,
+body:not(.dark-mode-override) .shadow-lg,
+body:not(.dark-mode-override) .shadow-xl,
+body:not(.dark-mode-override) .shadow-2xl { box-shadow: none !important; }
+body:not(.dark-mode-override) [class*="shadow-"][class*="/"] { box-shadow: none !important; }
+body:not(.dark-mode-override) .premium-card,
+body:not(.dark-mode-override) .glass-card,
+body:not(.dark-mode-override) .tp-card,
+body:not(.dark-mode-override) .kg-card,
+body:not(.dark-mode-override) .kg-stat {
+    background: var(--ed-card);
+    border: 1px solid var(--ed-line) !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+body:not(.dark-mode-override) .premium-card[class*="border-t-4"],
+body:not(.dark-mode-override) .premium-card[class*="border-b-4"],
+body:not(.dark-mode-override) .premium-card[class*="border-l-4"] { border-width: 1px !important; }
+body:not(.dark-mode-override) [class*="border-b-4"],
+body:not(.dark-mode-override) [class*="border-t-4"] { border-bottom-width: 1px; border-top-width: 1px; }
+body:not(.dark-mode-override) .hover\:-translate-y-1:hover,
+body:not(.dark-mode-override) .hover\:-translate-y-0\.5:hover { transform: none !important; }
+body:not(.dark-mode-override) .animate-pulse,
+body:not(.dark-mode-override) .animate-bounce,
+body:not(.dark-mode-override) .animate-spin-slow { animation: none !important; }
+
+/* ---------- Warna: satu aksen, sisanya netral ---------- */
+body:not(.dark-mode-override) .bg-slate-50,
+body:not(.dark-mode-override) .bg-gray-50 { background-color: #f4f3ee; }
+body:not(.dark-mode-override) .bg-slate-100 { background-color: #eceae3; }
+body:not(.dark-mode-override) .border-slate-100,
+body:not(.dark-mode-override) .border-slate-200 { border-color: var(--ed-line); }
+body:not(.dark-mode-override) .text-slate-400,
+body:not(.dark-mode-override) .text-slate-500 { color: var(--ed-muted); }
+
+/* biru/indigo/ungu/violet/sky/cyan/teal dekoratif -> aksen tinta */
+body:not(.dark-mode-override) :is(.text-blue-300,.text-blue-400,.text-blue-500,.text-blue-600,.text-blue-700,.text-indigo-400,.text-indigo-500,.text-indigo-600,.text-indigo-700,.text-purple-400,.text-purple-500,.text-purple-600,.text-purple-700,.text-violet-500,.text-violet-600,.text-sky-500,.text-sky-600,.text-cyan-500,.text-cyan-600,.text-teal-500,.text-teal-600) { color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) :is(.bg-blue-500,.bg-blue-600,.bg-blue-700,.bg-indigo-500,.bg-indigo-600,.bg-indigo-700,.bg-purple-500,.bg-purple-600,.bg-violet-600,.bg-sky-500,.bg-sky-600,.bg-cyan-600,.bg-teal-600) { background-color: var(--ed-accent) !important; color: #fff; }
+body:not(.dark-mode-override) :is(.bg-blue-50,.bg-blue-100,.bg-indigo-50,.bg-indigo-100,.bg-purple-50,.bg-purple-100,.bg-violet-50,.bg-sky-50,.bg-sky-100,.bg-cyan-50,.bg-teal-50,.bg-amber-50,.bg-amber-100,.bg-orange-50,.bg-orange-100,.bg-yellow-50,.bg-yellow-100,.bg-pink-50,.bg-pink-100) { background-color: var(--ed-accent-soft) !important; }
+body:not(.dark-mode-override) :is(.border-blue-100,.border-blue-200,.border-blue-300,.border-blue-400,.border-indigo-100,.border-indigo-200,.border-purple-100,.border-purple-200,.border-violet-100,.border-sky-100,.border-sky-200,.border-amber-100,.border-amber-200,.border-orange-100,.border-orange-200,.border-yellow-200,.border-pink-100,.border-pink-200) { border-color: var(--ed-line-strong) !important; }
+body:not(.dark-mode-override) :is(.text-amber-500,.text-amber-600,.text-amber-700,.text-orange-500,.text-orange-600,.text-yellow-600,.text-pink-500,.text-pink-600) { color: #6b5a2e !important; }
+body:not(.dark-mode-override) :is(.hover\:bg-blue-600:hover,.hover\:bg-blue-700:hover,.hover\:bg-indigo-600:hover,.hover\:bg-purple-600:hover) { background-color: #162b47 !important; color: #fff !important; }
+body:not(.dark-mode-override) :is(.hover\:border-blue-400:hover,.hover\:border-blue-500:hover,.hover\:border-purple-500:hover,.hover\:border-indigo-500:hover,.hover\:border-emerald-500:hover) { border-color: var(--ed-accent) !important; }
+
+/* hijau/merah: hanya makna naik/turun dan status; hilangkan latar pastel besar */
+body:not(.dark-mode-override) :is(.text-emerald-500,.text-emerald-600,.text-emerald-700,.text-green-500,.text-green-600) { color: var(--ed-up) !important; }
+body:not(.dark-mode-override) :is(.text-rose-500,.text-rose-600,.text-rose-700,.text-red-500,.text-red-600) { color: var(--ed-down) !important; }
+body:not(.dark-mode-override) :is(.bg-emerald-50,.bg-emerald-100,.bg-green-50,.bg-green-100) { background-color: #eef4f0 !important; }
+body:not(.dark-mode-override) :is(.bg-rose-50,.bg-rose-100,.bg-red-50,.bg-red-100) { background-color: #f6eeed !important; }
+body:not(.dark-mode-override) :is(.bg-emerald-500,.bg-emerald-600,.bg-green-500,.bg-green-600) { background-color: var(--ed-up) !important; }
+body:not(.dark-mode-override) :is(.bg-rose-500,.bg-rose-600,.bg-red-500,.bg-red-600) { background-color: var(--ed-down) !important; }
+
+/* gradien dan teks gradien -> datar */
+body:not(.dark-mode-override) [class*="bg-gradient-to"] { background-image: none !important; background-color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) .gradient-text { background: none !important; -webkit-text-fill-color: currentColor !important; color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) .wa-floating-card { background: var(--ed-card) !important; border: 1px solid var(--ed-line); }
+
+/* blok gelap besar (slate-900/800) yang dipakai sebagai hiasan -> tinta biru tua */
+body:not(.dark-mode-override) main .bg-slate-900,
+body:not(.dark-mode-override) main .bg-slate-800 { background-color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) main :is(.bg-slate-900,.bg-slate-800) .text-slate-400 { color: #c9d3e0 !important; }
+
+/* ---------- Ikon dekoratif disembunyikan (ikon tetap di tombol aksi) ---------- */
+body:not(.dark-mode-override) :is(h1,h2,h3,h4,h5,label,th,.nav-link,.dropdown-item,.stat-badge,.tooltip-trigger,.kg-stat-label) > :is(i.fas,i.far,i.fab,i.fa-solid,i.fa-regular) { display: none; }
+body:not(.dark-mode-override) :is(p,span).uppercase > :is(i.fas,i.far) { display: none; }
+body:not(.dark-mode-override) .nav-link .fa-chevron-down,
+body:not(.dark-mode-override) .nav-link .fa-angle-down { display: inline-block !important; }
+
+/* ---------- Navigasi ---------- */
+body:not(.dark-mode-override) header,
+body:not(.dark-mode-override) nav.bg-white { background: var(--ed-paper) !important; border-bottom: 1px solid var(--ed-line); box-shadow: none !important; backdrop-filter: none !important; }
+body:not(.dark-mode-override) .nav-link { border-radius: 6px; font-weight: 500 !important; color: var(--ed-muted); }
+body:not(.dark-mode-override) .nav-link:hover { background: var(--ed-accent-soft); color: var(--ed-accent); }
+body:not(.dark-mode-override) .nav-link.active,
+body:not(.dark-mode-override) .nav-link.bg-blue-600 { background: transparent !important; color: var(--ed-accent) !important; box-shadow: inset 0 -2px 0 var(--ed-accent) !important; border-radius: 0; }
+body:not(.dark-mode-override) .dropdown-content { border: 1px solid var(--ed-line) !important; border-radius: 8px !important; box-shadow: 0 8px 24px rgba(27,27,25,.08) !important; background: var(--ed-card) !important; }
+body:not(.dark-mode-override) .dropdown-item { border-radius: 6px; font-weight: 500 !important; }
+body:not(.dark-mode-override) .dropdown-item:hover,
+body:not(.dark-mode-override) .dropdown-item.active { background: var(--ed-accent-soft) !important; color: var(--ed-accent) !important; }
+
+/* ---------- Tombol & input ---------- */
+body:not(.dark-mode-override) button.rounded-full { border-radius: 8px !important; }
+body:not(.dark-mode-override) .btn-action,
+body:not(.dark-mode-override) button[class*="bg-blue-"],
+body:not(.dark-mode-override) button[class*="bg-indigo-"],
+body:not(.dark-mode-override) button[class*="bg-emerald-"],
+body:not(.dark-mode-override) button[class*="bg-slate-900"],
+body:not(.dark-mode-override) a[class*="bg-blue-6"] { box-shadow: none !important; }
+body:not(.dark-mode-override) .input-pro { background: var(--ed-card); border: 1px solid var(--ed-line-strong) !important; border-radius: 6px !important; box-shadow: none !important; font-family: var(--ed-sans); }
+body:not(.dark-mode-override) .input-pro:focus { border-color: var(--ed-accent) !important; outline: 2px solid rgba(31,58,95,.15); }
+body:not(.dark-mode-override) select { font-family: var(--ed-sans); }
+
+/* ---------- Tab ---------- */
+body:not(.dark-mode-override) .edu-tab-btn,
+body:not(.dark-mode-override) .funda-tab-btn { border-radius: 0 !important; background: transparent !important; color: var(--ed-muted) !important; border: 0 !important; border-bottom: 2px solid transparent !important; font-weight: 500 !important; }
+body:not(.dark-mode-override) .edu-tab-btn:hover { color: var(--ed-ink) !important; background: transparent !important; }
+body:not(.dark-mode-override) .edu-tab-btn[class*="bg-blue-600"] { color: var(--ed-accent) !important; border-bottom-color: var(--ed-accent) !important; font-weight: 600 !important; }
+body:not(.dark-mode-override) .f-tab-active { border-bottom: 2px solid var(--ed-accent) !important; color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) .f-tab-inactive { border-bottom: 2px solid transparent; }
+
+/* ---------- Tabel ---------- */
+body:not(.dark-mode-override) table { border-collapse: collapse; }
+body:not(.dark-mode-override) th { font-weight: 600 !important; color: var(--ed-muted); border-bottom: 1px solid var(--ed-line-strong) !important; }
+body:not(.dark-mode-override) td { border-color: var(--ed-line); }
+body:not(.dark-mode-override) tbody tr:hover { background: #f4f3ee; }
+
+/* ---------- Footer ---------- */
+body:not(.dark-mode-override) footer { background: #f1efe8 !important; border-top: 1px solid var(--ed-line) !important; color: var(--ed-muted) !important; }
+body:not(.dark-mode-override) footer h3,
+body:not(.dark-mode-override) footer h4 { color: var(--ed-ink) !important; }
+body:not(.dark-mode-override) footer .text-white { color: var(--ed-ink) !important; }
+body:not(.dark-mode-override) footer :is(.text-slate-400,.text-slate-500) { color: var(--ed-muted) !important; }
+body:not(.dark-mode-override) footer .border-slate-700,
+body:not(.dark-mode-override) footer .border-slate-800 { border-color: var(--ed-line) !important; }
+
+/* ---------- Artikel edukasi: lebar baca nyaman ---------- */
+body:not(.dark-mode-override) .edu-tab-content p,
+body:not(.dark-mode-override) .edu-tab-content li { line-height: 1.7; }
+body:not(.dark-mode-override) .edu-tab-content > .premium-card > p { max-width: 68ch; }
+body:not(.dark-mode-override) .edu-tab-content h2 { font-size: 1.6rem; line-height: 1.25; }
+body:not(.dark-mode-override) .edu-tab-content h3 { font-size: 1.2rem; }
+.ed-callout { border-left: 3px solid var(--ed-accent); background: var(--ed-accent-soft); padding: .9rem 1rem; border-radius: 0 6px 6px 0; font-size: .95rem; color: var(--ed-ink); }
+.ed-callout strong { font-weight: 600; }
+.ed-callout.ed-risk { border-left-color: var(--ed-down); background: #f6eeed; }
+.ed-kicker { font-size: .85rem; color: var(--ed-muted); margin-bottom: .25rem; }
+
+/* ---------- Hero (blok gelap) ---------- */
+body:not(.dark-mode-override) .hero-card { background-color: #17304f !important; border-radius: 10px !important; }
+body:not(.dark-mode-override) .hero-card > .absolute { display: none; }
+body:not(.dark-mode-override) .hero-card :is(h1,h2,h3) { color: #fff; }
+body:not(.dark-mode-override) .hero-card :is(.text-blue-500,.text-blue-400) { color: #a9c1e3 !important; }
+body:not(.dark-mode-override) .hero-card span[class*="bg-blue-"] { background: transparent !important; padding-left: 0; padding-right: 0; color: #a9c1e3 !important; border-radius: 0; }
+body:not(.dark-mode-override) .hero-card button[class*="bg-blue-"] { background: #fff !important; color: var(--ed-accent) !important; }
+body:not(.dark-mode-override) .hero-card button[class*="bg-slate-"] { background: transparent !important; border: 1px solid rgba(255,255,255,.4) !important; color: #fff !important; }
+body:not(.dark-mode-override) .hero-card button i { display: none; }
+body:not(.dark-mode-override) .hm-chip { border-radius: 6px !important; }
+body:not(.dark-mode-override) .hm-chip.on { background: var(--ed-accent) !important; color: #fff !important; }
+body:not(.dark-mode-override) .edu-tab-content .hover\:bg-blue-600:hover { color: #fff !important; }
