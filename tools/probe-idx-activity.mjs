@@ -1,23 +1,24 @@
 import { chromium } from 'playwright';
-const PAGE = 'https://www.idx.id/en/market-data/statistical-reports/digital-statistic/monthly/equity-trading-by-market/daily-stock-trading-by-type-of-market';
+const PAGES = [
+  'https://www.idx.id/en/',
+  'https://www.idx.id/en/market-data/trading-summary/stock-summary/',
+  'https://www.idx.id/en/market-data/market-summary/',
+  'https://www.idx.id/en/market-data/trading-summary/',
+];
 const b = await chromium.launch();
-const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', locale: 'en-US' });
-const pg = await ctx.newPage();
-pg.on('request', (r) => { if (/GetApiData/.test(r.url())) console.log('REQ', r.url()); });
-await pg.goto(PAGE, { waitUntil: 'networkidle', timeout: 60000 }); await pg.waitForTimeout(3000);
-// UI: pilih bulan lewat date picker
-try {
-  await pg.click('input.mx-input'); await pg.waitForTimeout(800);
-  console.log('MONTH CELLS:', await pg.evaluate(() => [...document.querySelectorAll('.mx-table-month td')].map((c) => c.outerHTML.slice(0, 140)).join('\n')));
-  await pg.locator('.mx-table-month td', { hasText: 'Oct' }).first().click(); await pg.waitForTimeout(800);
-  console.log('INPUT VALUE', await pg.inputValue('input.mx-input'));
-  await pg.getByText('Apply').first().click(); await pg.waitForTimeout(5000);
-  console.log('TABLE', (await pg.evaluate(() => document.querySelectorAll('table')[0]?.innerText || '')).slice(0, 600));
-  // November (bulan berjalan)
-  await pg.click('input.mx-input'); await pg.waitForTimeout(800);
-  await pg.locator('.mx-table-month td', { hasText: 'Nov' }).first().click(); await pg.waitForTimeout(800);
-  console.log('INPUT VALUE NOV', await pg.inputValue('input.mx-input'));
-  await pg.getByText('Apply').first().click(); await pg.waitForTimeout(5000);
-  console.log('TABLE NOV', (await pg.evaluate(() => document.querySelectorAll('table')[0]?.innerText || '')).slice(0, 900));
-} catch (e) { console.log('ui err', e.message); }
+for (const url of PAGES) {
+  console.log('\n=== PAGE', url);
+  const ctx = await b.newContext({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', locale: 'en-US' });
+  const pg = await ctx.newPage();
+  pg.on('response', async (r) => {
+    const u = r.url();
+    if (/\/primary\//.test(u) && !/home\/content/.test(u)) { let t = ''; try { t = (await r.text()).slice(0, 500).replace(/\s+/g, ' '); } catch {} console.log('RESP', r.status(), u.replace('https://www.idx.id', ''), '\n    ', t); }
+  });
+  try {
+    const x = await pg.goto(url, { waitUntil: 'networkidle', timeout: 45000 }); console.log('status', x?.status());
+    await pg.waitForTimeout(5000);
+    console.log('TEXT:', (await pg.evaluate(() => document.body.innerText)).replace(/\s+/g, ' ').slice(0, 700));
+  } catch (e) { console.log('ERR', e.message); }
+  await ctx.close();
+}
 await b.close();
