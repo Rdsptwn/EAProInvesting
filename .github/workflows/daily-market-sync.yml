@@ -103,9 +103,13 @@ jobs:
             && node -e 'JSON.parse(require("fs").readFileSync("assets/data/pasar-global.json", "utf8"))' \
             || { echo "::warning::pasar-global gagal/tidak valid — pakai versi sebelumnya"; cp /tmp/pasar-global.bak assets/data/pasar-global.json; }
 
-      - name: Build market-activity.json (All Market / Regular / Nego dari BEI)
+      - name: Build market-activity.json (All Market / Regular / Nego dari BEI, data penutupan)
+        # data penutupan baru terbit setelah bursa tutup (16:00 WIB) -> hanya jalan di sesi 10 UTC / manual
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 * * 1-5'
         continue-on-error: true
-        run: node tools/build-market-activity.mjs
+        run: |
+          npm i --no-save playwright >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
+          node tools/build-market-activity.mjs
 
       - name: Bump cache version (hanya kalau data berubah)
         run: |
