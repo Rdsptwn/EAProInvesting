@@ -28,9 +28,10 @@ const UA =
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 function corsHeaders(origin) {
+    // Data harga bersifat publik & hanya GET: domain yang tidak terdaftar tetap boleh membaca (tanpa kredensial).
     const ok = ALLOWED_ORIGINS.includes(origin);
     return {
-        'Access-Control-Allow-Origin': ok ? origin : ALLOWED_ORIGINS[0],
+        'Access-Control-Allow-Origin': ok ? origin : '*',
         'Access-Control-Allow-Methods': 'GET, OPTIONS',
         Vary: 'Origin'
     };

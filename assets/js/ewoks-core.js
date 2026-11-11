@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261111t0704';
+window.EWOKS_ASSET_V = '20261111t0759';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -861,7 +861,7 @@ async function refreshLiveQuotes(force = false) {
     } catch (e) {
         console.warn('Harga live gagal, pakai snapshot:', e.message);
         const m = String(e.message || '');
-        window.__ewoksLiveErr = /Failed to fetch|NetworkError|Load failed/i.test(m) ? 'diblokir CORS/jaringan: cek ALLOWED_ORIGINS di Worker' : m;
+        window.__ewoksLiveErr = /Failed to fetch|NetworkError|Load failed/i.test(m) ? `tidak tersambung ke Worker dari ${location.origin}; coba muat ulang` : m;
         try { paintDataStamps(await loadEwoksMarketSnapshot()); } catch (_) {}
         return false;
     } finally {

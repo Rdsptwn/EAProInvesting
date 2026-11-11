@@ -20,7 +20,7 @@ harus mengembalikan JSON berisi harga.
 
 ## Catatan
 
-- Domain web yang boleh memanggil Worker diatur di `ALLOWED_ORIGINS` (bagian atas file).
+- Domain di `ALLOWED_ORIGINS` (bagian atas file) menerima CORS khusus; domain lain tetap boleh membaca data publik (GET) lewat `*`.
   Kalau pindah domain, tambahkan di sana lalu deploy ulang.
 - Batas gratis Cloudflare: 100 ribu request/hari. Tiap simbol di-cache 60 detik di edge (web memanggil tiap 10 menit).
 - API Yahoo ini tidak resmi dan bisa berubah/diblok sewaktu-waktu. Kalau gagal, web otomatis
