@@ -212,11 +212,37 @@ async function handle(request, ctx) {
     const path = url.pathname;
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v5-global', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v6-cron', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);
     return J({ ok: false, error: 'not found' }, 404, origin);
+}
+
+// ---------- Pemicu jadwal tepat waktu untuk GitHub Actions ----------
+// Jadwal (cron) bawaan GitHub sering tertunda berjam-jam; Cron Trigger Cloudflare tepat waktu.
+// Butuh secret GH_TOKEN (fine-grained PAT, repo ini saja, izin Actions: Read and write). Lihat worker/README.md.
+const GH_REPO = 'Rdsptwn/EAProInvesting';
+const GH_REF = 'main';
+const GH_WORKFLOWS = ['daily-market-sync.yml', 'market-activity-intraday.yml'];
+
+async function triggerWorkflows(env) {
+    if (!env || !env.GH_TOKEN) { console.log('GH_TOKEN belum diisi, lewati.'); return; }
+    for (const wf of GH_WORKFLOWS) {
+        const r = await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${wf}/dispatches`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${env.GH_TOKEN}`,
+                Accept: 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'User-Agent': 'ewoks-live-cron',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ref: GH_REF }),
+            signal: AbortSignal.timeout(10000),
+        });
+        console.log(wf, r.status, r.status === 204 ? 'ok' : (await r.text()).slice(0, 200));
+    }
 }
 
 export default {
@@ -226,5 +252,9 @@ export default {
         } catch (e) {
             return J({ ok: false, error: 'worker error: ' + String((e && e.message) || e) }, 500, request.headers.get('Origin') || '');
         }
-    }
+    },
+    // Cron Trigger: picu workflow data (lihat README).
+    async scheduled(event, env, ctx) {
+        ctx.waitUntil(triggerWorkflows(env).catch((e) => console.log('trigger gagal:', e && e.message)));
+    },
 };
