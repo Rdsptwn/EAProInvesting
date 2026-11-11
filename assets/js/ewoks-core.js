@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261111t0418';
+window.EWOKS_ASSET_V = '20261111t0419';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -925,7 +925,7 @@ async function loadMarketActivity() {
     const idn = (v, d = 2) => Number(v).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
     const money = (v) => (v >= 1e12 ? `${idn(v / 1e12)} T` : v >= 1e9 ? `${idn(v / 1e9)} M` : `${idn(v / 1e6)} Jt`);
     const qty = (v) => (v >= 1e9 ? `${idn(v / 1e9)} M` : v >= 1e6 ? `${idn(v / 1e6)} Jt` : v >= 1e3 ? `${idn(v / 1e3)} Rb` : idn(v, 0));
-    const freq = (v) => (v >= 1e3 ? `${idn(v / 1e3)} Rb` : idn(v, 0));
+    const freq = (v) => (v >= 1e6 ? `${idn(v / 1e6)} Jt` : v >= 1e3 ? `${idn(v / 1e3)} Rb` : idn(v, 0));
     try {
         const res = await fetch(ewoksAssetUrl('assets/data/market-activity.json'), { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -943,7 +943,7 @@ async function loadMarketActivity() {
             </div>`).join('');
         const dt = new Date(`${d.asOf}T00:00:00+07:00`);
         const when = Number.isNaN(dt.getTime()) ? d.asOf : dt.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Jakarta' });
-        if (asOfEl) asOfEl.textContent = `per ${when}${d.session ? ` (${d.session})` : ''} \u00b7 sumber: ${d.source || 'BEI'}`;
+        if (asOfEl) asOfEl.textContent = `Data penutupan ${when}${d.session ? ` \u00b7 ${d.session}` : ''} \u00b7 sumber: ${d.source || 'BEI'}`;
     } catch (e) {
         console.warn('market-activity.json', e);
         if (asOfEl) asOfEl.textContent = 'Data belum tersedia';
