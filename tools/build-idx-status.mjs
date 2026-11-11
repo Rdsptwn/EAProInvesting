@@ -16,6 +16,10 @@ try { cal = rd('corporate-calendar.json'); } catch (_) {}
 const items = {};
 const add = (t, k, n, s) => { (items[t] = items[t] || []).push(s ? [k, n, s] : [k, n]); };
 for (const [t, a] of Object.entries(man.flags)) for (const f of a) add(t, f.k, f.note, f.src);
+try {
+  const hsc = rd('idx-hsc.json');
+  for (const t of hsc.tickers || []) add(t, 'HSC', 'High Shareholding Concentration: saham terkonsentrasi di segelintir pemegang, free float riil tipis (daftar dari pengguna, belum diverifikasi ke BEI/KSEI)');
+} catch (_) {}
 const nowMs = Date.now();
 const dmy0 = (s) => new Date(s + 'T00:00:00Z').toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 for (const [t, e] of Object.entries(ev.items || {})) {

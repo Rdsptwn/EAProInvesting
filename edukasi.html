@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261111t0804">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261111t0804">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261111t0805">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261111t0805">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="edukasi">
 
@@ -751,6 +751,22 @@
                 </div>
 
                 <div id="edu-kamus" class="edu-tab-content hidden space-y-8">
+                    <div id="kamus-hsc" class="premium-card p-6 md:p-8 border-t-4 border-pink-600">
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">HSC itu apa sih? (High Shareholding Concentration)</h3>
+                        <p class="text-sm text-slate-600 mb-5 max-w-3xl">Bayangin satu kue yang hampir semuanya dipegang beberapa orang saja. Sisanya cuma remah-remah yang dibagi ke banyak orang. Nah, saham HSC itu kayak gitu: <strong>hampir semua lembarnya dipegang segelintir pemilik</strong>, jadi yang beneran beredar di pasar cuma sedikit.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div class="ed-callout"><strong>Kenapa bisa masuk?</strong><br>Kalau 10 pemegang saham terbesar menguasai sekitar 92,5% atau lebih. Walau di atas kertas ada "free float", biasanya sahamnya nyangkut di pemilik strategis, jadi yang bisa diperjualbelikan sedikit banget.</div>
+                            <div class="ed-callout"><strong>Dampaknya apa?</strong><br>Bobotnya di indeks (IHSG dan indeks tematik) bisa dikurangi atau dikeluarkan. Reksa dana indeks jadi harus jual, dan indeks global seperti MSCI bisa menurunkan bobotnya. Harga gampang loncat atau anjlok karena barangnya tipis.</div>
+                            <div class="ed-callout ed-risk"><strong>Risikonya buat kamu</strong><br>Harga bisa digoreng pakai modal kecil, dan pas panik susah banget keluar karena antrean beli kosong (hard to exit).</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mt-4">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100"><strong class="text-slate-900">Belum punya sahamnya?</strong>
+                                <ul class="mt-2 space-y-1 text-slate-600 list-disc pl-5"><li>Jangan buru-buru ikut naik, kenaikan di saham tipis sering bukan sinyal sehat.</li><li>Lihat antrean jual-beli (bid-ask) dan nilai transaksi harian. Kalau tipis, jangan masuk besar.</li></ul></div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100"><strong class="text-slate-900">Sudah punya?</strong>
+                                <ul class="mt-2 space-y-1 text-slate-600 list-disc pl-5"><li>Tentukan batas rugi (stop loss) dan target untung dari awal.</li><li>Pantau rencana pemilik: secondary offering, rights issue, atau stock split bisa menambah saham publik.</li></ul></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-4">Di Terminal &amp; Watchlist, saham HSC diberi tanda <span class="st-bd st-HSC">HSC</span> dan bisa difilter lewat "Status emiten". Daftarnya berasal dari dokumen yang dikirim pengguna dan belum dicocokkan dengan pengumuman resmi BEI/KSEI, jadi cek idx.co.id sebelum mengambil keputusan. Materi ini edukasi, bukan saran beli atau jual.</p>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="premium-card p-6 border-t-4 border-blue-600 shadow-sm hover:shadow-md transition-shadow">
                             <h4 class="font-black text-slate-900 mb-2 uppercase text-sm">Saham Blue Chip (1st Liner)</h4>
@@ -3753,8 +3769,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261111t0804"></script>
-    <script src="assets/js/pages/page-edu-quiz.js?v=20261111t0804"></script>
-    <script src="assets/js/pages/page-edukasi.js?v=20261111t0804"></script>
+    <script src="assets/js/ewoks-core.js?v=20261111t0805"></script>
+    <script src="assets/js/pages/page-edu-quiz.js?v=20261111t0805"></script>
+    <script src="assets/js/pages/page-edukasi.js?v=20261111t0805"></script>
 </body>
 </html>
