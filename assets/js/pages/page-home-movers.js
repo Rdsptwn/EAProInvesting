@@ -132,7 +132,8 @@
             const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
             stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham` + (d.ok < d.total ? ` (${d.ok}/${d.total} bagian)` : '');
         } catch (e) {
-            stamp = (live ? 'Live gagal diperbarui' : 'Snapshot harian') + ' (' + (/abort/i.test(String(e.message)) ? 'timeout' : e.message) + ')';
+            stamp = (live ? 'Live belum diperbarui, memakai data terakhir' : 'Snapshot harian, harga live belum tersedia');
+            console.warn('Live screener:', e && e.message);
         }
         renderMovers();
         renderTape();
