@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T10:03:00.610Z",
+  "updated": "2026-11-13T17:38:16.914Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
     {
@@ -8,13 +8,6 @@
       "kind": "dividen",
       "date": "2026-11-06",
       "dateLabel": "Ex-Date"
-    },
-    {
-      "ticker": "BBRI",
-      "action": "Bayar Dividen (est.)",
-      "kind": "dividen",
-      "date": "2026-11-06",
-      "dateLabel": "Pembayaran"
     },
     {
       "ticker": "AMMN",
