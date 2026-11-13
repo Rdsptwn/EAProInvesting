@@ -39,9 +39,11 @@ memicu workflow tepat waktu lewat Cron Trigger (gratis).
 2. Cloudflare → Workers & Pages → Worker `ewoks-live` → **Settings → Variables and Secrets → Add** →
    Type **Secret**, nama `GH_TOKEN`, isi token tadi → **Deploy**. Jangan menaruh token di kode atau chat.
 3. Tempel ulang isi `worker/yahoo-proxy.js` (versi `v6-cron`) → **Deploy**.
-4. **Settings → Trigger Events → Add → Cron Triggers**, isi: `0 2-10 * * 1-5`
+4. **Settings → Trigger Events → Add → Cron Triggers**, isi: `0 2-10 * * MON-FRI`
    (UTC; = tiap jam 09:00–17:00 WIB, Senin–Jumat). Simpan.
 5. Cek: tab **Observability/Logs** Worker, atau tab **Actions** GitHub; run bertipe `workflow_dispatch` muncul tiap jam.
 
 Uji manual tanpa menunggu jam: di halaman Worker → **Triggers → Cron Triggers → Test/Trigger** (atau `wrangler dev --test-scheduled`).
 Jadwal GitHub bawaan dibiarkan sebagai cadangan; workflow memakai antrean yang sama sehingga tidak bertabrakan.
+
+> **Penting:** di Cloudflare, angka hari dimulai dari Minggu = 1 (bukan Senin = 1 seperti cron biasa). Jadi `1-5` berarti Minggu–Kamis dan Jumat tidak jalan. Selalu pakai nama hari: `MON-FRI`.
