@@ -15,7 +15,7 @@
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
-  "builtAt": "2026-11-13T17:40:24.210Z",
+  "builtAt": "2026-11-16T02:04:25.592Z",
   "stooqUpdated": 203,
   "indonesia2026": {
    "asOf": "2026-11-04",
@@ -338,7 +338,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -4,
+   "cagr": -4.1,
    "aum": "$52 B",
    "expense": 0.15,
    "risk": "Moderat",
@@ -357,7 +357,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -1.3,
+   "cagr": -1.4,
    "aum": "$110 B",
    "expense": 0.03,
    "risk": "Rendah",
@@ -412,7 +412,7 @@
    "country": "Japan",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.2,
+   "cagr": 6.3,
    "aum": "$15 B",
    "expense": 0.5,
    "risk": "Moderat",
@@ -640,7 +640,7 @@
    "country": "Hong Kong",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 0.8,
+   "cagr": 0.9,
    "aum": "$1.2 B",
    "expense": 0.5,
    "risk": "Tinggi",
@@ -735,7 +735,7 @@
    "country": "India",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 6.6,
+   "cagr": 6.7,
    "aum": "$9.2 B",
    "expense": 0.64,
    "risk": "Tinggi",
@@ -790,7 +790,7 @@
    "country": "Mexico",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.8,
+   "cagr": 5.7,
    "aum": "$1.9 B",
    "expense": 0.5,
    "risk": "Tinggi",
@@ -828,7 +828,7 @@
    "country": "Korea",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 10.2,
+   "cagr": 10.3,
    "aum": "$3.8 B",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -847,7 +847,7 @@
    "country": "Taiwan",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 12.1,
+   "cagr": 12.2,
    "aum": "$5.1 B",
    "expense": 0.59,
    "risk": "Tinggi",
@@ -1017,7 +1017,7 @@
    "country": "Philippines",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -3.8,
+   "cagr": -3.7,
    "aum": "$110 M",
    "expense": 0.58,
    "risk": "Tinggi",
@@ -1213,7 +1213,7 @@
    "country": "Argentina",
    "tier": "Standalone",
    "assetClass": "ETF",
-   "cagr": 12.1,
+   "cagr": 12.3,
    "aum": "$120 M",
    "expense": 0.59,
    "risk": "Ekstrem",
@@ -1570,7 +1570,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.9,
+   "cagr": 7,
    "aum": "$2.8 B",
    "expense": 0.4,
    "risk": "Tinggi",
@@ -1627,7 +1627,7 @@
    "country": "Japan",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.6,
+   "cagr": 13.7,
    "aum": "$4.1 B",
    "expense": 0.48,
    "risk": "Moderat",
@@ -1683,7 +1683,7 @@
    "ticker": "VEA",
    "country": "Global",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.8,
    "aum": "$120 B",
    "expense": 0.05,
    "risk": "Moderat",
@@ -1760,7 +1760,7 @@
    "country": "India",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 8,
+   "cagr": 8.1,
    "aum": "$3.5 B",
    "expense": 0.85,
    "risk": "Tinggi",
@@ -2107,7 +2107,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 29.7,
+   "cagr": 29.8,
    "aum": "$18 B",
    "expense": 0.35,
    "risk": "Sangat Tinggi",
@@ -2183,7 +2183,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 5.6,
+   "cagr": 5.7,
    "aum": "$38 B",
    "expense": 0.09,
    "risk": "Tinggi",
@@ -2335,7 +2335,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.8,
+   "cagr": 12.9,
    "aum": "$7.5 B",
    "expense": 0.51,
    "risk": "Tinggi",
@@ -2354,7 +2354,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.5,
+   "cagr": 13.6,
    "aum": "$650 M",
    "expense": 0.47,
    "risk": "Tinggi",
@@ -2649,7 +2649,7 @@
    "country": "Denmark",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.2,
+   "cagr": 9.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2687,7 +2687,7 @@
    "country": "Ireland",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.6,
+   "cagr": 8.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2782,7 +2782,7 @@
    "country": "China",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -1.2,
+   "cagr": -1.1,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2839,7 +2839,7 @@
    "country": "Africa",
    "tier": "Frontier",
    "assetClass": "ETF",
-   "cagr": 2.8,
+   "cagr": 2.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2877,7 +2877,7 @@
    "country": "Asia",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 6.2,
+   "cagr": 6.3,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2896,7 +2896,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 4.8,
+   "cagr": 4.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -2934,7 +2934,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13,
+   "cagr": 13.1,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3067,7 +3067,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.4,
+   "cagr": 11.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3105,7 +3105,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.4,
+   "cagr": 6.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3124,7 +3124,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3181,7 +3181,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 12.4,
+   "cagr": 12.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3219,7 +3219,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 17.1,
+   "cagr": 17.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3238,7 +3238,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.2,
+   "cagr": 8.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3257,7 +3257,7 @@
    "country": "Developed Markets",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.8,
+   "cagr": 6.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3276,7 +3276,7 @@
    "country": "Emerging Markets",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 4.5,
+   "cagr": 4.6,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3295,7 +3295,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 14.5,
+   "cagr": 14.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3333,7 +3333,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 13.5,
+   "cagr": 13.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3352,7 +3352,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.8,
+   "cagr": 8.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3390,7 +3390,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10.5,
+   "cagr": 10.6,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3428,7 +3428,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.8,
+   "cagr": 9.9,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3447,7 +3447,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 10.2,
+   "cagr": 10.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3504,7 +3504,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.1,
+   "cagr": 6.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3675,7 +3675,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 22,
+   "cagr": 22.1,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3713,7 +3713,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 9.4,
+   "cagr": 9.5,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3808,7 +3808,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.7,
+   "cagr": 6.8,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -3903,7 +3903,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 27.1,
+   "cagr": 27.3,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3979,7 +3979,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 8.9,
+   "cagr": 9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4112,7 +4112,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 11.2,
+   "cagr": 11.1,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4150,7 +4150,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 15.8,
+   "cagr": 15.9,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -4226,7 +4226,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 18.7,
+   "cagr": 18.8,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -4492,7 +4492,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": -0.8,
+   "cagr": -0.9,
    "aum": null,
    "expense": null,
    "risk": "Rendah",
@@ -6087,7 +6087,7 @@
    "ticker": "SMH",
    "name": "VanEck Semiconductor ETF",
    "focus": "Semikonduktor Global",
-   "cagr10y": 29.7,
+   "cagr10y": 29.8,
    "basis": "pasar",
    "stooq": "smh.us",
    "yearly": [
@@ -6129,7 +6129,7 @@
     },
     {
      "year": 2026,
-     "return": 33.6
+     "return": 35.2
     }
    ]
   },
@@ -6181,7 +6181,7 @@
     },
     {
      "year": 2026,
-     "return": 10.1
+     "return": 10.7
     }
    ]
   },
@@ -6233,7 +6233,7 @@
     },
     {
      "year": 2026,
-     "return": 10.2
+     "return": 10.6
     }
    ]
   },
@@ -6285,7 +6285,7 @@
     },
     {
      "year": 2026,
-     "return": 10.3
+     "return": 10.7
     }
    ]
   },
@@ -6337,7 +6337,7 @@
     },
     {
      "year": 2026,
-     "return": -10.2
+     "return": -10.3
     }
    ]
   },
@@ -6347,7 +6347,7 @@
    "ticker": "VT",
    "name": "Vanguard Total World Stock",
    "focus": "Saham Dunia",
-   "cagr10y": 9.8,
+   "cagr10y": 9.9,
    "basis": "pasar",
    "stooq": "vt.us",
    "yearly": [
@@ -6389,7 +6389,7 @@
     },
     {
      "year": 2026,
-     "return": 9.7
+     "return": 10.1
     }
    ]
   },
@@ -6441,7 +6441,7 @@
     },
     {
      "year": 2026,
-     "return": 31.2
+     "return": 31.7
     }
    ]
   },
@@ -6451,7 +6451,7 @@
    "ticker": "IXC",
    "name": "iShares Global Energy",
    "focus": "Energi Global",
-   "cagr10y": 5.6,
+   "cagr10y": 5.7,
    "basis": "pasar",
    "stooq": "ixc.us",
    "yearly": [
@@ -6493,7 +6493,7 @@
     },
     {
      "year": 2026,
-     "return": 40.8
+     "return": 41.5
     }
    ]
   },
@@ -6545,7 +6545,7 @@
     },
     {
      "year": 2026,
-     "return": 10.6
+     "return": 11.4
     }
    ]
   },
@@ -6597,7 +6597,7 @@
     },
     {
      "year": 2026,
-     "return": 4.5
+     "return": 4.9
     }
    ]
   },
@@ -6701,7 +6701,7 @@
     },
     {
      "year": 2026,
-     "return": -4.5
+     "return": -4.6
     }
    ]
   },
@@ -6753,7 +6753,7 @@
     },
     {
      "year": 2026,
-     "return": -6.6
+     "return": -6.7
     }
    ]
   },
@@ -6805,7 +6805,7 @@
     },
     {
      "year": 2026,
-     "return": -4.7
+     "return": -4.8
     }
    ]
   },
@@ -6815,7 +6815,7 @@
    "ticker": "TLT",
    "name": "iShares 20+ Year Treasury Bond",
    "focus": "Obligasi AS — Treasuries Panjang",
-   "cagr10y": -4,
+   "cagr10y": -4.1,
    "basis": "pasar",
    "stooq": "tlt.us",
    "yearly": [
@@ -6857,7 +6857,7 @@
     },
     {
      "year": 2026,
-     "return": -8.8
+     "return": -8.9
     }
    ]
   },
