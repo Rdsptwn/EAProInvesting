@@ -18,7 +18,10 @@ const add = (t, k, n, s) => { (items[t] = items[t] || []).push(s ? [k, n, s] : [
 for (const [t, a] of Object.entries(man.flags)) for (const f of a) add(t, f.k, f.note, f.src);
 try {
   const hsc = rd('idx-hsc.json');
-  for (const t of hsc.tickers || []) add(t, 'HSC', 'High Shareholding Concentration: saham terkonsentrasi di segelintir pemegang, free float riil tipis (daftar dari pengguna, belum diverifikasi ke BEI/KSEI)');
+  const flagNote = { 1: ' (belum melaporkan penurunan konsentrasi)', 2: ' (penurunan via repo saham)', 3: ' (proses voluntary delisting)' };
+  for (const [t, v] of Object.entries(hsc.items || {})) {
+    add(t, 'HSC', `High Shareholding Concentration: 10 pemegang saham terbesar menguasai ${String(v.p).replace('.', ',')}% per 30 Okt 2026${v.new ? ' (baru masuk daftar)' : ''}${flagNote[v.flag] || ''}. Sumber: pengumuman BEI/KSEI 11 Nov 2026`);
+  }
 } catch (_) {}
 const nowMs = Date.now();
 const dmy0 = (s) => new Date(s + 'T00:00:00Z').toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });

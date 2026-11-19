@@ -38,7 +38,7 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 
 Tampilan memakai tema **Aurora**: terang atau gelap, kartu kaca, gradien indigo–magenta–aqua, ilustrasi grafik animasi di beranda. Animasi otomatis mati bila perangkat memilih *reduced motion*.
 
-**Penanda status emiten.** Terminal menampilkan badge UMA, suspensi, notasi khusus, dan **HSC** (High Shareholding Concentration; daftar masih dari pengguna dan belum diverifikasi ke BEI/KSEI), dapat difilter lewat "Status emiten".
+**Penanda status emiten.** Terminal menampilkan badge UMA, suspensi, notasi khusus, dan **HSC** (High Shareholding Concentration; 383 emiten sesuai pengumuman resmi BEI/KSEI 11 Nov 2026, lengkap dengan persentase konsentrasi), dapat difilter lewat "Status emiten".
 
 ## 🔄 Update Data Otomatis
 
