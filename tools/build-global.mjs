@@ -140,7 +140,7 @@ export const FEEDS = [
     { id: 'bbc-biz', n: 'BBC Business', url: 'https://feeds.bbci.co.uk/news/business/rss.xml', lang: 'en', topic: 'bisnis' },
     { id: 'cnbc', n: 'CNBC', url: 'https://www.cnbc.com/id/100003114/device/rss/rss.html', lang: 'en', topic: 'pasar' },
     { id: 'mw', n: 'MarketWatch', url: 'https://feeds.content.dowjones.io/public/rss/mw_topstories', lang: 'en', topic: 'pasar' },
-    { id: 'yf', n: 'Yahoo Finance', url: 'https://finance.yahoo.com/news/rssindex', lang: 'en', topic: 'pasar' },
+    { id: 'guardian', n: 'The Guardian Business', url: 'https://www.theguardian.com/business/rss', lang: 'en', topic: 'bisnis' },
     { id: 'cnbcid', n: 'CNBC Indonesia', url: 'https://www.cnbcindonesia.com/market/rss', lang: 'id', topic: 'pasar' },
 ];
 const ent = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (_, c) => String.fromCharCode(+c));
