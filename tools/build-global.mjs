@@ -92,25 +92,23 @@ export function parseConstituents(html) {
     return best;
 }
 function parseTable(tblHtml) {
-    const tbl = [tblHtml];
-    const rows = tbl[0].match(/<tr[\s\S]*?<\/tr>/gi) || [];
-    const clean = (c) => strip(c).replace(/\[\w+\]/g, '').trim();
+    const rows = tblHtml.match(/<tr[\s\S]*?<\/tr>/gi) || [];
+    const clean = (c) => strip(c).replace(/\[[\w ]+\]/g, '').trim();
     let idx = null; const out = []; const seen = new Set();
     for (const row of rows) {
-        const ths = row.match(/<th[\s\S]*?<\/th>/gi);
-        if (ths && ths.length >= 2 && !idx) {
-            const names = ths.map((x) => clean(x).toLowerCase());
+        const cells = row.match(/<t[dh][\s\S]*?<\/t[dh]>/gi) || [];
+        if (cells.length < 2) continue;
+        if (!idx) {
+            const names = cells.map((x) => clean(x).toLowerCase());
             const sym = names.findIndex((n) => /^(symbol|ticker)/.test(n));
             if (sym < 0) continue;
             idx = { sym, name: names.findIndex((n) => /^(security|company|name)/.test(n)), sector: names.findIndex((n) => /gics sector|^industry|^sector/.test(n)) };
             continue;
         }
-        const tds = row.match(/<td[\s\S]*?<\/td>/gi);
-        if (!tds || !idx) continue;
-        let t = clean(tds[idx.sym] || '').toUpperCase().replace(/^.*:\s*/, '').replace(/\./g, '-');
+        let t = clean(cells[idx.sym] || '').toUpperCase().replace(/^.*:\s*/, '').replace(/\./g, '-');
         if (!/^[A-Z0-9-]{1,7}$/.test(t) || seen.has(t)) continue;
         seen.add(t);
-        out.push({ t, n: idx.name >= 0 ? clean(tds[idx.name] || '') : '', s: idx.sector >= 0 ? sectorId(clean(tds[idx.sector] || '')) : '' });
+        out.push({ t, n: idx.name >= 0 ? clean(cells[idx.name] || '') : '', s: idx.sector >= 0 ? sectorId(clean(cells[idx.sector] || '')) : '' });
     }
     return out;
 }
@@ -124,8 +122,9 @@ async function buildMembers() {
         try {
             const res = await fetch(`https://en.wikipedia.org/wiki/${page}`, { headers: { ...UA, Accept: 'text/html' }, signal: AbortSignal.timeout(30000) });
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            const list = parseConstituents(await res.text());
-            if (list.length < min) throw new Error('hanya ' + list.length + ' baris (min ' + min + ')');
+            const html = await res.text();
+            const list = parseConstituents(html);
+            if (list.length < min) { const tb = html.match(/<table[\s\S]*?<\/table>/gi) || []; const hd = tb.map((x) => ((x.match(/<tr[\s\S]*?<\/tr>/i) || [''])[0].replace(/<[^>]+>/g, '|').replace(/\s+/g, ' ').slice(0, 90))).filter((x) => /symbol|ticker/i.test(x)); throw new Error('hanya ' + list.length + ' baris (min ' + min + '); html ' + html.length + ' byte, ' + tb.length + ' tabel; header: ' + JSON.stringify(hd.slice(0, 3))); }
             out[k] = list.map((x) => x.t);
             list.forEach((x) => { out.info[x.t] = { n: x.n || (out.info[x.t] || {}).n || '', s: x.s || (out.info[x.t] || {}).s || '' }; });
             changed = true; console.log('members', k, list.length);
