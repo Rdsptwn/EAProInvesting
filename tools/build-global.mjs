@@ -124,7 +124,7 @@ async function buildMembers() {
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const html = await res.text();
             const list = parseConstituents(html);
-            if (list.length < min) { const tb = html.match(/<table[\s\S]*?<\/table>/gi) || []; const hd = tb.map((x) => ((x.match(/<tr[\s\S]*?<\/tr>/i) || [''])[0].replace(/<[^>]+>/g, '|').replace(/\s+/g, ' ').slice(0, 90))).filter((x) => /symbol|ticker/i.test(x)); throw new Error('hanya ' + list.length + ' baris (min ' + min + '); html ' + html.length + ' byte, ' + tb.length + ' tabel; header: ' + JSON.stringify(hd.slice(0, 3))); }
+            if (list.length < min) { const tb = html.match(/<table[\s\S]*?<\/table>/gi) || []; const hd = tb.map((x) => ((x.match(/<tr[\s\S]*?<\/tr>/i) || [''])[0].replace(/<[^>]+>/g, '|').replace(/\s+/g, ' ').slice(0, 90))).filter((x) => /symbol|ticker/i.test(x)); throw new Error('hanya ' + list.length + ' baris (min ' + min + '); html ' + html.length + ' byte, ' + tb.length + ' tabel; header: ' + JSON.stringify(hd.slice(0, 3)) + '; sampel: ' + JSON.stringify((() => { const m = html.match(/(ADBE|AMGN)[\s\S]{0,200}/); const pos = m ? html.indexOf(m[0]) : -1; return pos < 0 ? 'tak ditemukan' : html.slice(Math.max(0, pos - 700), pos + 200).replace(/\s+/g, ' '); })())); }
             out[k] = list.map((x) => x.t);
             list.forEach((x) => { out.info[x.t] = { n: x.n || (out.info[x.t] || {}).n || '', s: x.s || (out.info[x.t] || {}).s || '' }; });
             changed = true; console.log('members', k, list.length);
