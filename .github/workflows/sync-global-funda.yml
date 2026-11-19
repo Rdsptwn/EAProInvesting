@@ -1,0 +1,38 @@
+# Sinkron laporan keuangan saham AS (mode Global → tab Funda). Sehari sekali; bisa manual lewat Actions.
+name: Sync global funda
+
+on:
+  schedule:
+    - cron: '30 12 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-global-funda
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build global-funda.json
+        run: node tools/build-global.mjs funda
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          [ -f assets/data/global-funda.json ] && git add assets/data/global-funda.json || true
+          if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
+          git commit -m "chore(data): sync global funda"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
+          git push

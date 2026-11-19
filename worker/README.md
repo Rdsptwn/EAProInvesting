@@ -47,3 +47,11 @@ Uji manual tanpa menunggu jam: di halaman Worker → **Triggers → Cron Trigger
 Jadwal GitHub bawaan dibiarkan sebagai cadangan; workflow memakai antrean yang sama sehingga tidak bertabrakan.
 
 > **Penting:** di Cloudflare, angka hari dimulai dari Minggu = 1 (bukan Senin = 1 seperti cron biasa). Jadi `1-5` berarti Minggu–Kamis dan Jumat tidak jalan. Selalu pakai nama hari: `MON-FRI`.
+
+
+## Rute `/gquotes` (mode Global, v7)
+
+`GET /gquotes?s=TSLA,NVDA,GC=F,^GSPC` mengembalikan `{ ok, ts, n, q: { TSLA: [harga, penutupan_lalu, persen, volume] } }`
+untuk simbol global (saham AS, futures komoditas, indeks, kripto, kurs). Maks 150 simbol per panggilan, cache 60 detik di edge.
+Halaman Global memanggilnya tiap 60 detik saat tab terlihat. **Setelah mengubah kode Worker, deploy ulang** (Edit code → Deploy),
+lalu cek `/health`: `version` harus `v7-global`.

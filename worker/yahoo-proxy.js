@@ -7,6 +7,8 @@
  * GET /screener?s=AALI,ABBA,...   (hingga ~1000 kode; satu panggilan batch ke Yahoo, cache 60 dtk)
  *   -> { ok, ts, n, q: { AALI: [price, prevClose, changePct, volume], ... } }
  *
+ * GET /gquotes?s=TSLA,NVDA,GC=F,^GSPC   (simbol global, maks 150) -> { ok, ts, n, q: { TSLA: [price, prevClose, changePct, volume] } }
+ *
  * GET /chart?s=BBCA|COMPOSITE&range=1d&interval=5m  (tambah &g=1 untuk simbol global, mis. QQQ)   -> { ok, t[], o[], h[], l[], c[], v[], prev, price, name }
  *
  * - Maks 40 ticker per request (/quotes) (batas subrequest Worker gratis = 50).
@@ -95,19 +97,19 @@ async function getYahooSession() {
     return sess;
 }
 
-async function fetchBatchQuotes(codes) {
+async function fetchBatchQuotes(codes, suffix = '.JK') {
     const sess = await getYahooSession();
     const out = {};
     const chunks = [];
     for (let i = 0; i < codes.length; i += 200) chunks.push(codes.slice(i, i + 200));
     await Promise.all(chunks.map(async (ch) => {
-        const syms = ch.map((c) => `${c}.JK`).join(',');
+        const syms = ch.map((c) => `${c}${suffix}`).join(',');
         const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(syms)}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketChangePercent,regularMarketVolume&crumb=${encodeURIComponent(sess.crumb)}`;
         const res = await fetch(url, { headers: { 'User-Agent': UA, Cookie: sess.cookie, Accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
         if (!res.ok) throw new Error(`Yahoo ${res.status}`);
         const list = (await res.json())?.quoteResponse?.result || [];
         for (const q of list) {
-            const code = String(q.symbol || '').replace(/\.JK$/, '');
+            const code = suffix ? String(q.symbol || '').replace(new RegExp(suffix.replace('.', '\\.') + '$'), '') : String(q.symbol || '');
             const price = Number(q.regularMarketPrice);
             if (!code || !Number.isFinite(price) || price <= 0) continue;
             const prev = Number(q.regularMarketPreviousClose);
@@ -191,6 +193,34 @@ async function routeScreener(url, ctx, origin) {
     return J({ ok: true, ts: new Date().toISOString(), n: Object.keys(q).length, q: q }, 200, origin, true);
 }
 
+// ---- Saham/komoditas/indeks GLOBAL: GET /gquotes?s=TSLA,NVDA,GC=F,^GSPC  (maks 150 simbol)
+//  -> { ok, ts, n, q: { TSLA: [price, prevClose, changePct, volume], ... } }
+async function routeGQuotes(url, ctx, origin) {
+    const raw = String(url.searchParams.get('s') || '').toUpperCase().split(',').map((t) => t.trim());
+    const syms = [...new Set(raw)].filter((t) => /^[A-Z0-9.^=-]{1,14}$/.test(t)).slice(0, 150);
+    if (!syms.length) return J({ ok: false, error: 'no symbols' }, 400, origin);
+    let h = 0; const joined = syms.join(',');
+    for (let i = 0; i < joined.length; i++) h = (h * 31 + joined.charCodeAt(i)) | 0;
+    const cache = caches.default;
+    const ck = new Request('https://cache.ewoks.local/gquotes/' + syms.length + '/' + h);
+    const hit = await cache.match(ck);
+    let q;
+    if (hit) {
+        q = await hit.json();
+    } else {
+        try {
+            q = await fetchBatchQuotes(syms, '');
+        } catch (e) {
+            // cadangan: chart per simbol (batas subrequest Worker gratis)
+            q = {};
+            await Promise.all(syms.slice(0, 40).map((t) => fetchYahooQuote(t, ctx).then((x) => { q[t] = [x.price, x.prevClose, x.changePct, null]; }).catch(() => {})));
+            if (!Object.keys(q).length) return J({ ok: false, error: String((e && e.message) || e) }, 502, origin);
+        }
+        ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(q), { headers: { 'Cache-Control': 'max-age=' + CACHE_SECONDS } })));
+    }
+    return J({ ok: true, ts: new Date().toISOString(), n: Object.keys(q).length, q: q }, 200, origin, true);
+}
+
 async function routeQuotes(url, ctx, origin) {
     const tickers = codesFrom(url, MAX_SYMBOLS);
     const wantIhsg = url.searchParams.get('ihsg') === '1';
@@ -213,10 +243,11 @@ async function handle(request, ctx) {
     const path = url.pathname;
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v6-cron', routes: ['/quotes', '/screener', '/chart'] }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v7-global', routes: ['/quotes', '/screener', '/chart', '/gquotes'] }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);
+    if (path === '/gquotes') return routeGQuotes(url, ctx, origin);
     return J({ ok: false, error: 'not found' }, 404, origin);
 }
 

@@ -216,9 +216,57 @@ async function buildIpo() {
     writeSafe('global-ipo.json', { meta: { source: 'Nasdaq IPO Calendar', built: new Date().toISOString(), months, note: 'Jadwal bisa berubah; cek prospektus (SEC EDGAR) sebelum membeli.' }, items }, items.length >= 1, 'ipo');
 }
 
+
+/* ---------- 5. Funda saham AS (Yahoo fundamentals-timeseries) ---------- */
+export const FUNDA_TYPES = ['TotalRevenue', 'GrossProfit', 'OperatingIncome', 'NetIncome', 'TotalAssets', 'StockholdersEquity', 'FreeCashFlow', 'OperatingCashFlow', 'DilutedEPS', 'TotalDebt'];
+export function parseTimeseries(json) {
+    const by = {};
+    for (const block of json?.timeseries?.result || []) {
+        const type = block?.meta?.type?.[0];
+        if (type) by[type] = block[type] || [];
+    }
+    return by;
+}
+async function fetchFunda(sym) {
+    const types = [...FUNDA_TYPES.map((t) => 'annual' + t), 'trailingTotalRevenue', 'trailingNetIncome', 'trailingDilutedEPS', 'trailingFreeCashFlow'].join(',');
+    const url = `https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/${encodeURIComponent(sym)}?symbol=${encodeURIComponent(sym)}&type=${types}&period1=${Math.floor(Date.UTC(2020, 0, 1) / 1000)}&period2=${Math.floor(Date.now() / 1000) + 86400 * 400}`;
+    for (let a = 0; a < 3; a++) {
+        try {
+            const res = await fetch(url, { headers: { ...UA, Accept: 'application/json' }, signal: AbortSignal.timeout(20000) });
+            if (res.status === 429) { await sleep(2500 * (a + 1)); continue; }
+            if (!res.ok) return null;
+            return parseTimeseries(await res.json());
+        } catch (e) { await sleep(700 * (a + 1)); }
+    }
+    return null;
+}
+const rawv = (r) => (r && r.reportedValue && Number.isFinite(Number(r.reportedValue.raw)) ? Number(r.reportedValue.raw) : null);
+export function shapeFunda(by, years) {
+    const ser = (type, div = 1e9, d = 2) => years.map((y) => {
+        const row = (by['annual' + type] || []).find((r) => String(r.asOfDate).slice(0, 4) === String(y));
+        const v = rawv(row); return v == null ? null : +(v / div).toFixed(d);
+    });
+    const ttm = (type, div = 1e9, d = 2) => { const rows = (by['trailing' + type] || []).slice().sort((a, b) => String(b.asOfDate).localeCompare(String(a.asOfDate))); const v = rawv(rows[0]); return v == null ? null : +(v / div).toFixed(d); };
+    const out = { rev: ser('TotalRevenue'), gp: ser('GrossProfit'), op: ser('OperatingIncome'), ni: ser('NetIncome'), asset: ser('TotalAssets'), eq: ser('StockholdersEquity'), fcf: ser('FreeCashFlow'), ocf: ser('OperatingCashFlow'), debt: ser('TotalDebt'), eps: ser('DilutedEPS', 1, 2), ttm: { rev: ttm('TotalRevenue'), ni: ttm('NetIncome'), eps: ttm('DilutedEPS', 1, 2), fcf: ttm('FreeCashFlow') } };
+    return out;
+}
+async function buildFunda() {
+    const uni = JSON.parse(fs.readFileSync(D('global-universe.json'), 'utf8')).items.filter((u) => u.s !== 'ETF');
+    const nowY = new Date().getUTCFullYear();
+    const years = [nowY - 5, nowY - 4, nowY - 3, nowY - 2, nowY - 1, nowY].filter((y) => y >= 2020);
+    const res = await pool(uni, (u) => fetchFunda(u.t), 5);
+    const t = {};
+    uni.forEach((u, i) => { const by = res[i]; if (!by) return; const f = shapeFunda(by, years); if (f.rev.some((v) => v != null) || f.ni.some((v) => v != null)) t[u.t] = { n: u.n, s: u.s, ...f }; });
+    let old = {};
+    try { old = JSON.parse(fs.readFileSync(D('global-funda.json'), 'utf8')).t || {}; } catch (_) {}
+    for (const k of Object.keys(old)) if (!t[k]) t[k] = old[k];
+    writeSafe('global-funda.json', { meta: { source: 'Yahoo Finance (fundamentals-timeseries)', built: new Date().toISOString(), years, unit: 'USD miliar (EPS dalam USD)', note: 'Laporan tahunan fiskal; kolom TTM = 12 bulan terakhir. Beberapa emiten tidak punya semua pos.' }, t },
+        Object.keys(t).length >= Math.min(30, uni.length * 0.3), 'funda');
+}
+
 /* ---------- main ---------- */
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
     const want = process.argv.slice(2);
-    const all = { screener: buildScreener, commodities: buildCommodities, news: buildNews, ipo: buildIpo };
-    for (const k of want.length ? want : Object.keys(all)) { if (all[k]) await all[k](); }
+    const all = { screener: buildScreener, commodities: buildCommodities, news: buildNews, ipo: buildIpo, funda: buildFunda };
+    for (const k of want.length ? want : ['screener', 'commodities', 'news', 'ipo']) { if (all[k]) await all[k](); }
 }
