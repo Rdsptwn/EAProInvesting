@@ -1,0 +1,59 @@
+# Sinkron mode Global: saham & ETF AS, komoditas/indeks dunia, berita RSS, kalender IPO AS.
+# Jalan tiap 2 jam, Senin–Jumat (cukup untuk jam bursa AS dan berita). Bisa manual: Actions → Sync global → Run workflow
+
+name: Sync global
+
+on:
+  schedule:
+    - cron: '20 */2 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-global
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Tiap bagian gagal-aman: sumber error = file lama dipertahankan (skrip tidak menimpa dengan kosong).
+      - name: Build global-*.json
+        run: node tools/build-global.mjs
+
+      - name: Bump cache version (hanya kalau data berubah)
+        run: |
+          if git diff --quiet -- assets/data; then
+            echo "Data tidak berubah — skip bump cache."
+          else
+            node tools/bump-asset-version.mjs
+          fi
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          for f in global-screener global-commodities global-news global-ipo; do [ -f assets/data/$f.json ] && git add assets/data/$f.json || true; done
+          if git diff --staged --quiet; then
+            echo "Tidak ada perubahan data — skip commit."
+            exit 0
+          fi
+          git checkout -- '*.html' assets/js/ewoks-core.js
+          git commit -m "chore(data): sync global"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
+          git push

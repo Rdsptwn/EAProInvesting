@@ -1,0 +1,685 @@
+{
+ "note": "Daftar awal saham & ETF AS yang sering dicari investor Indonesia. Tambah baris di sini lalu jalankan workflow Sync global.",
+ "items": [
+  {
+   "t": "AAPL",
+   "n": "Apple",
+   "s": "Teknologi"
+  },
+  {
+   "t": "MSFT",
+   "n": "Microsoft",
+   "s": "Teknologi"
+  },
+  {
+   "t": "NVDA",
+   "n": "NVIDIA",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "GOOGL",
+   "n": "Alphabet (Google)",
+   "s": "Teknologi"
+  },
+  {
+   "t": "AMZN",
+   "n": "Amazon",
+   "s": "Konsumer"
+  },
+  {
+   "t": "META",
+   "n": "Meta Platforms",
+   "s": "Teknologi"
+  },
+  {
+   "t": "TSLA",
+   "n": "Tesla",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "AVGO",
+   "n": "Broadcom",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "ORCL",
+   "n": "Oracle",
+   "s": "Teknologi"
+  },
+  {
+   "t": "NFLX",
+   "n": "Netflix",
+   "s": "Media"
+  },
+  {
+   "t": "AMD",
+   "n": "AMD",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "INTC",
+   "n": "Intel",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "QCOM",
+   "n": "Qualcomm",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "MU",
+   "n": "Micron",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "TSM",
+   "n": "TSMC (ADR)",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "ASML",
+   "n": "ASML (ADR)",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "ARM",
+   "n": "Arm Holdings",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "CRM",
+   "n": "Salesforce",
+   "s": "Teknologi"
+  },
+  {
+   "t": "ADBE",
+   "n": "Adobe",
+   "s": "Teknologi"
+  },
+  {
+   "t": "PLTR",
+   "n": "Palantir",
+   "s": "Teknologi"
+  },
+  {
+   "t": "SNOW",
+   "n": "Snowflake",
+   "s": "Teknologi"
+  },
+  {
+   "t": "NOW",
+   "n": "ServiceNow",
+   "s": "Teknologi"
+  },
+  {
+   "t": "PANW",
+   "n": "Palo Alto Networks",
+   "s": "Teknologi"
+  },
+  {
+   "t": "CRWD",
+   "n": "CrowdStrike",
+   "s": "Teknologi"
+  },
+  {
+   "t": "SHOP",
+   "n": "Shopify",
+   "s": "Teknologi"
+  },
+  {
+   "t": "UBER",
+   "n": "Uber",
+   "s": "Teknologi"
+  },
+  {
+   "t": "ABNB",
+   "n": "Airbnb",
+   "s": "Konsumer"
+  },
+  {
+   "t": "SPOT",
+   "n": "Spotify",
+   "s": "Media"
+  },
+  {
+   "t": "COIN",
+   "n": "Coinbase",
+   "s": "Keuangan & Kripto"
+  },
+  {
+   "t": "MSTR",
+   "n": "Strategy (MicroStrategy)",
+   "s": "Keuangan & Kripto"
+  },
+  {
+   "t": "HOOD",
+   "n": "Robinhood",
+   "s": "Keuangan"
+  },
+  {
+   "t": "SOFI",
+   "n": "SoFi",
+   "s": "Keuangan"
+  },
+  {
+   "t": "RBLX",
+   "n": "Roblox",
+   "s": "Media"
+  },
+  {
+   "t": "DIS",
+   "n": "Walt Disney",
+   "s": "Media"
+  },
+  {
+   "t": "JPM",
+   "n": "JPMorgan Chase",
+   "s": "Keuangan"
+  },
+  {
+   "t": "BAC",
+   "n": "Bank of America",
+   "s": "Keuangan"
+  },
+  {
+   "t": "WFC",
+   "n": "Wells Fargo",
+   "s": "Keuangan"
+  },
+  {
+   "t": "GS",
+   "n": "Goldman Sachs",
+   "s": "Keuangan"
+  },
+  {
+   "t": "MS",
+   "n": "Morgan Stanley",
+   "s": "Keuangan"
+  },
+  {
+   "t": "V",
+   "n": "Visa",
+   "s": "Keuangan"
+  },
+  {
+   "t": "MA",
+   "n": "Mastercard",
+   "s": "Keuangan"
+  },
+  {
+   "t": "PYPL",
+   "n": "PayPal",
+   "s": "Keuangan"
+  },
+  {
+   "t": "BRK-B",
+   "n": "Berkshire Hathaway B",
+   "s": "Keuangan"
+  },
+  {
+   "t": "BLK",
+   "n": "BlackRock",
+   "s": "Keuangan"
+  },
+  {
+   "t": "AXP",
+   "n": "American Express",
+   "s": "Keuangan"
+  },
+  {
+   "t": "XOM",
+   "n": "Exxon Mobil",
+   "s": "Energi"
+  },
+  {
+   "t": "CVX",
+   "n": "Chevron",
+   "s": "Energi"
+  },
+  {
+   "t": "COP",
+   "n": "ConocoPhillips",
+   "s": "Energi"
+  },
+  {
+   "t": "OXY",
+   "n": "Occidental",
+   "s": "Energi"
+  },
+  {
+   "t": "SLB",
+   "n": "SLB (Schlumberger)",
+   "s": "Energi"
+  },
+  {
+   "t": "NEE",
+   "n": "NextEra Energy",
+   "s": "Utilitas"
+  },
+  {
+   "t": "FSLR",
+   "n": "First Solar",
+   "s": "Energi Bersih"
+  },
+  {
+   "t": "ENPH",
+   "n": "Enphase",
+   "s": "Energi Bersih"
+  },
+  {
+   "t": "LLY",
+   "n": "Eli Lilly",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "NVO",
+   "n": "Novo Nordisk (ADR)",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "JNJ",
+   "n": "Johnson & Johnson",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "PFE",
+   "n": "Pfizer",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "MRK",
+   "n": "Merck",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "ABBV",
+   "n": "AbbVie",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "UNH",
+   "n": "UnitedHealth",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "TMO",
+   "n": "Thermo Fisher",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "AMGN",
+   "n": "Amgen",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "MRNA",
+   "n": "Moderna",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "WMT",
+   "n": "Walmart",
+   "s": "Konsumer"
+  },
+  {
+   "t": "COST",
+   "n": "Costco",
+   "s": "Konsumer"
+  },
+  {
+   "t": "HD",
+   "n": "Home Depot",
+   "s": "Konsumer"
+  },
+  {
+   "t": "NKE",
+   "n": "Nike",
+   "s": "Konsumer"
+  },
+  {
+   "t": "SBUX",
+   "n": "Starbucks",
+   "s": "Konsumer"
+  },
+  {
+   "t": "MCD",
+   "n": "McDonald's",
+   "s": "Konsumer"
+  },
+  {
+   "t": "KO",
+   "n": "Coca-Cola",
+   "s": "Konsumer"
+  },
+  {
+   "t": "PEP",
+   "n": "PepsiCo",
+   "s": "Konsumer"
+  },
+  {
+   "t": "PG",
+   "n": "Procter & Gamble",
+   "s": "Konsumer"
+  },
+  {
+   "t": "LULU",
+   "n": "Lululemon",
+   "s": "Konsumer"
+  },
+  {
+   "t": "TGT",
+   "n": "Target",
+   "s": "Konsumer"
+  },
+  {
+   "t": "BA",
+   "n": "Boeing",
+   "s": "Industri"
+  },
+  {
+   "t": "CAT",
+   "n": "Caterpillar",
+   "s": "Industri"
+  },
+  {
+   "t": "GE",
+   "n": "GE Aerospace",
+   "s": "Industri"
+  },
+  {
+   "t": "LMT",
+   "n": "Lockheed Martin",
+   "s": "Industri"
+  },
+  {
+   "t": "RTX",
+   "n": "RTX",
+   "s": "Industri"
+  },
+  {
+   "t": "DE",
+   "n": "Deere",
+   "s": "Industri"
+  },
+  {
+   "t": "UPS",
+   "n": "UPS",
+   "s": "Industri"
+  },
+  {
+   "t": "F",
+   "n": "Ford",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "GM",
+   "n": "General Motors",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "RIVN",
+   "n": "Rivian",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "LCID",
+   "n": "Lucid",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "NIO",
+   "n": "NIO (ADR)",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "BABA",
+   "n": "Alibaba (ADR)",
+   "s": "China"
+  },
+  {
+   "t": "PDD",
+   "n": "PDD Holdings (ADR)",
+   "s": "China"
+  },
+  {
+   "t": "JD",
+   "n": "JD.com (ADR)",
+   "s": "China"
+  },
+  {
+   "t": "BIDU",
+   "n": "Baidu (ADR)",
+   "s": "China"
+  },
+  {
+   "t": "TCEHY",
+   "n": "Tencent (OTC)",
+   "s": "China"
+  },
+  {
+   "t": "XPEV",
+   "n": "XPeng (ADR)",
+   "s": "China"
+  },
+  {
+   "t": "SE",
+   "n": "Sea Ltd",
+   "s": "Asia Tenggara"
+  },
+  {
+   "t": "GRAB",
+   "n": "Grab Holdings",
+   "s": "Asia Tenggara"
+  },
+  {
+   "t": "TM",
+   "n": "Toyota (ADR)",
+   "s": "Otomotif & EV"
+  },
+  {
+   "t": "SONY",
+   "n": "Sony (ADR)",
+   "s": "Teknologi"
+  },
+  {
+   "t": "T",
+   "n": "AT&T",
+   "s": "Telekomunikasi"
+  },
+  {
+   "t": "VZ",
+   "n": "Verizon",
+   "s": "Telekomunikasi"
+  },
+  {
+   "t": "FCX",
+   "n": "Freeport-McMoRan",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "NEM",
+   "n": "Newmont",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "GOLD",
+   "n": "Barrick Mining",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "SCCO",
+   "n": "Southern Copper",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "VALE",
+   "n": "Vale (ADR)",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "RIO",
+   "n": "Rio Tinto (ADR)",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "BHP",
+   "n": "BHP (ADR)",
+   "s": "Pertambangan"
+  },
+  {
+   "t": "CCJ",
+   "n": "Cameco",
+   "s": "Energi"
+  },
+  {
+   "t": "UEC",
+   "n": "Uranium Energy",
+   "s": "Energi"
+  },
+  {
+   "t": "OKLO",
+   "n": "Oklo",
+   "s": "Energi"
+  },
+  {
+   "t": "SMCI",
+   "n": "Super Micro",
+   "s": "Teknologi"
+  },
+  {
+   "t": "DELL",
+   "n": "Dell",
+   "s": "Teknologi"
+  },
+  {
+   "t": "IBM",
+   "n": "IBM",
+   "s": "Teknologi"
+  },
+  {
+   "t": "CSCO",
+   "n": "Cisco",
+   "s": "Teknologi"
+  },
+  {
+   "t": "RDDT",
+   "n": "Reddit",
+   "s": "Media"
+  },
+  {
+   "t": "APP",
+   "n": "AppLovin",
+   "s": "Teknologi"
+  },
+  {
+   "t": "DDOG",
+   "n": "Datadog",
+   "s": "Teknologi"
+  },
+  {
+   "t": "NET",
+   "n": "Cloudflare",
+   "s": "Teknologi"
+  },
+  {
+   "t": "ANET",
+   "n": "Arista Networks",
+   "s": "Teknologi"
+  },
+  {
+   "t": "LRCX",
+   "n": "Lam Research",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "AMAT",
+   "n": "Applied Materials",
+   "s": "Semikonduktor"
+  },
+  {
+   "t": "RKLB",
+   "n": "Rocket Lab",
+   "s": "Industri"
+  },
+  {
+   "t": "IONQ",
+   "n": "IonQ",
+   "s": "Teknologi"
+  },
+  {
+   "t": "SPY",
+   "n": "SPDR S&P 500 ETF",
+   "s": "ETF"
+  },
+  {
+   "t": "QQQ",
+   "n": "Invesco QQQ (Nasdaq 100)",
+   "s": "ETF"
+  },
+  {
+   "t": "VOO",
+   "n": "Vanguard S&P 500 ETF",
+   "s": "ETF"
+  },
+  {
+   "t": "VTI",
+   "n": "Vanguard Total Market ETF",
+   "s": "ETF"
+  },
+  {
+   "t": "IWM",
+   "n": "iShares Russell 2000",
+   "s": "ETF"
+  },
+  {
+   "t": "GLD",
+   "n": "SPDR Gold Shares",
+   "s": "ETF"
+  },
+  {
+   "t": "SLV",
+   "n": "iShares Silver Trust",
+   "s": "ETF"
+  },
+  {
+   "t": "USO",
+   "n": "United States Oil Fund",
+   "s": "ETF"
+  },
+  {
+   "t": "EEM",
+   "n": "iShares MSCI Emerging",
+   "s": "ETF"
+  },
+  {
+   "t": "EIDO",
+   "n": "iShares MSCI Indonesia",
+   "s": "ETF"
+  },
+  {
+   "t": "IBIT",
+   "n": "iShares Bitcoin Trust",
+   "s": "ETF"
+  },
+  {
+   "t": "ARKK",
+   "n": "ARK Innovation",
+   "s": "ETF"
+  },
+  {
+   "t": "SOXX",
+   "n": "iShares Semiconductor",
+   "s": "ETF"
+  },
+  {
+   "t": "TLT",
+   "n": "iShares 20Y+ Treasury",
+   "s": "ETF"
+  },
+  {
+   "t": "SCHD",
+   "n": "Schwab US Dividend",
+   "s": "ETF"
+  }
+ ]
+}

@@ -283,3 +283,11 @@ body .glass-card[class*="bg-gradient-to"] :is(h1, h2, h3, p, span, li) { color: 
 body .glass-card[class*="bg-gradient-to-br"] { background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
 body .glass-card[class*="bg-gradient-to-r"] { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
 body .glass-card[class*="bg-gradient-to-b"]:not([class*="bg-gradient-to-br"]) { background-image: linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
+
+/* ---- Switcher IHSG | Global ---- */
+.mode-switch{display:inline-flex;padding:3px;border-radius:999px;background:rgba(100,116,139,.14);gap:2px;margin-right:.5rem}
+.mode-switch button{font-size:.72rem;font-weight:800;padding:.32rem .85rem;border-radius:999px;color:#64748b;transition:background .2s,color .2s}
+.mode-switch button.on{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;box-shadow:0 4px 14px -4px rgba(99,102,241,.6)}
+.mode-switch button:focus-visible{outline:2px solid #6366f1;outline-offset:2px}
+body.dark-mode-override .mode-switch{background:rgba(255,255,255,.1)}
+body.dark-mode-override .mode-switch button:not(.on){color:#cbd5e1}

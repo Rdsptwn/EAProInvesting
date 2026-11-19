@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261119t1007">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t1007">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261119t1555">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t1555">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="home">
 
@@ -152,6 +152,13 @@
     <main class="flex-grow max-w-[1600px] w-full mx-auto px-4 md:px-6 py-6 md:py-8">
 
         <section id="page-home" class="max-w-7xl mx-auto">
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="font-extrabold text-slate-900 text-sm md:text-base">Komoditas &amp; kurs hari ini</h2>
+                    <button onclick="showPage('global')" class="text-xs font-bold text-blue-600">Mode Global →</button>
+                </div>
+                <div id="home-commodities" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"></div>
+            </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
                 <div class="lg:col-span-2 bg-slate-900 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden flex flex-col justify-center shadow-2xl hero-card transition-all duration-500">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[120px] opacity-20 -mr-20 -mt-20"></div>
@@ -437,8 +444,12 @@
 
 
     <script>window.EWOKS_FINNHUB_TOKEN = ""; /* isi token Finnhub (gratis): https://finnhub.io/register */</script>
-    <script src="assets/js/pages/page-home-movers.js?v=20261119t1007" defer></script>
-    <script src="assets/js/pages/page-home-picks.js?v=20261119t1007" defer></script>
-    <script src="assets/js/ewoks-core.js?v=20261119t1007"></script>
+    <script src="assets/js/pages/page-home-movers.js?v=20261119t1555" defer></script>
+    <script src="assets/js/pages/page-home-picks.js?v=20261119t1555" defer></script>
+    <script src="assets/js/ewoks-core.js?v=20261119t1555"></script>
+    <script src="assets/js/pages/page-global.js?v=20261119t1555"></script>
+    <script>
+    (function(){var el=document.getElementById('home-commodities');if(el&&window.EwoksGlobal)EwoksGlobal.renderCommodities(el,['brent','gold','silver','coal','copper','usdidr']);})();
+    </script>
 </body>
 </html>

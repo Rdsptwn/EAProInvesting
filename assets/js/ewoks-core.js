@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261119t1007';
+window.EWOKS_ASSET_V = '20261119t1555';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -278,7 +278,8 @@ function showPage(pageId) {
         bandar: 'bandar.html',
         konglo: 'konglo.html',
         broker: 'broker.html',
-        'pasar-global': 'pasar-global.html'
+        'pasar-global': 'pasar-global.html',
+        global: 'global.html'
     };
     const url = routes[pageId];
     if (url) window.location.href = EwoksSiteContext.basePath + url;
@@ -1177,4 +1178,20 @@ window.addEventListener('load', () => {
     window.ewoksStatusBadges = function (t) {
         return ewoksStatusOf(t).map((f) => `<span class="st-bd st-${f[0]}" title="${e(f[1])}">${LBL[f[0]] || f[0]}</span>`).join('');
     };
+})();
+
+/* ---- Switcher mode IHSG | Global (disisipkan ke semua header) ---- */
+(function () {
+    function init() {
+        var isGlobal = document.body && document.body.getAttribute('data-page') === 'global';
+        try { localStorage.setItem('ewoks_mode', isGlobal ? 'global' : 'idx'); } catch (_) {}
+        var html = '<div class="mode-switch" role="group" aria-label="Pilih pasar">' +
+            '<button type="button" class="' + (isGlobal ? '' : 'on') + '" onclick="showPage(\'home\')" aria-pressed="' + !isGlobal + '">IHSG</button>' +
+            '<button type="button" class="' + (isGlobal ? 'on' : '') + '" onclick="showPage(\'global\')" aria-pressed="' + isGlobal + '">Global</button></div>';
+        var m = document.querySelector('header.md\\:hidden .flex.items-center.justify-between');
+        if (m && !m.querySelector('.mode-switch')) { var btn = m.querySelector('button'); var w = document.createElement('div'); w.innerHTML = html; if (btn) m.insertBefore(w.firstChild, btn); }
+        var d = document.querySelector('header.hidden.md\\:block nav');
+        if (d && !d.querySelector('.mode-switch')) { var w2 = document.createElement('div'); w2.innerHTML = html; d.insertBefore(w2.firstChild, d.firstChild); }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
