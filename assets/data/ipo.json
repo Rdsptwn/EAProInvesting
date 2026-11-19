@@ -11440,16 +11440,16 @@
    "price": 260,
    "shares": 857142528,
    "fundsBn": 223,
-   "board": null,
-   "sector": null,
+   "board": "Pengembangan",
+   "sector": "Hotel dan resor (Jasa Konsumsi)",
    "lead": [
     "Danareksa Sekuritas"
    ],
    "syn": [],
-   "note": "Data IPO dari tab Profil Stockbit (dikirim pengguna), belum dicek ke prospektus.",
+   "note": "Cocok dengan Stockbit (Profil, 30 Okt 2026): harga Rp260 x 857.142.528 saham = Rp222,9 miliar, sama dengan dana IPO Rp223 miliar. Papan Pengembangan; penjamin emisi Danareksa Sekuritas; biro administrasi PT EDI Indonesia.",
    "src": [
     "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
-    "Stockbit – Profile (tangkapan layar pengguna)"
+    "Stockbit – Profile (tangkapan layar pengguna, 30 Okt 2026)"
    ]
   },
   {
