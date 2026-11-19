@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261119t0313">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t0313">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261119t0316">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t0316">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="bandarmology-edu">
 
@@ -246,25 +246,58 @@
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 rounded bg-indigo-100 text-indigo-600 flex items-center justify-center font-black shrink-0"><i class="fas fa-globe"></i></div>
                             <div>
-                                <p class="font-bold text-slate-800 text-sm">Broker Asing / Institusi (AK, BK, CS, KZ, RX)</p>
+                                <p class="font-bold text-slate-800 text-sm">Broker Asing / Institusi (AK, BK, KZ, RX, YU)</p>
                                 <p class="text-xs text-slate-500 mt-1">Modal raksasa (Triliunan). Bergerak pasif dan akumulasi dalam waktu lama (berminggu-minggu). Jika mereka konsisten *Net Buy* di suatu saham Bluechip, arah tren biasanya akan naik secara stabil (Foreign Flow).</p>
                             </div>
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 rounded bg-rose-100 text-rose-600 flex items-center justify-center font-black shrink-0"><i class="fas fa-user-friends"></i></div>
                             <div>
-                                <p class="font-bold text-slate-800 text-sm">Broker Ritel Dominan (YP, PD, CC, NI, XC)</p>
+                                <p class="font-bold text-slate-800 text-sm">Broker Ritel Dominan (YP, PD, CC, NI, XC, XL)</p>
                                 <p class="text-xs text-slate-500 mt-1">Modal tersebar di banyak orang. Sifatnya reaktif, sering scalping harian, dan sangat FOMO terhadap berita/pom-pom. Jika broker ini mendominasi *Net Buy* sementara asing jualan, saham tersebut rawan dibanting turun.</p>
                             </div>
                         </li>
                         <li class="flex gap-4 items-start">
                             <div class="w-8 h-8 rounded bg-amber-100 text-amber-600 flex items-center justify-center font-black shrink-0"><i class="fas fa-user-ninja"></i></div>
                             <div>
-                                <p class="font-bold text-slate-800 text-sm">Broker Lokal Agresif / "Bandar" (MG, dkk)</p>
+                                <p class="font-bold text-slate-800 text-sm">Broker lokal yang sering terlihat agresif di saham kecil</p>
                                 <p class="text-xs text-slate-500 mt-1">Sering menjadi *Market Maker* di saham-saham 2nd atau 3rd liner (gorengan). Sangat agresif melakukan HAKA (Hajar Kanan) untuk mengerek harga dalam hitungan menit, namun bisa HAKI dengan sangat cepat.</p>
                             </div>
                         </li>
                     </ul>
+                </div>
+
+
+                <div id="cara-baca-broker-summary" class="premium-card p-6 md:p-8 shadow-sm bg-white dark-mode-card border-t-4 border-t-indigo-500 mb-8">
+                    <h3 class="text-xl md:text-2xl font-black text-indigo-600 mb-2 flex items-center gap-3"><i class="fas fa-table-list"></i> Cara Membaca Broker Summary (Versi Santai)</h3>
+                    <p class="text-sm text-slate-600 mb-5 max-w-3xl">Broker summary itu semacam "buku kas" satu saham: siapa (kode broker) beli berapa lot, siapa jual berapa lot, di harga rata-rata berapa. Kita nggak bisa tahu <strong>siapa orangnya</strong>, cuma tahu <strong>lewat pintu broker mana</strong> transaksinya masuk. Jadi tugas kita membaca pola, bukan menebak nama.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <p class="font-bold text-slate-800 mb-2">Langkah 1: Cari "siapa dominan"</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">Lihat 3 sampai 5 broker pembeli terbesar dan 3 sampai 5 penjual terbesar. Kalau pembelinya sedikit tapi besar-besar, sedangkan penjualnya tersebar di banyak broker, itu tanda <em>akumulasi</em>: barang pelan-pelan berpindah dari banyak tangan ke sedikit tangan.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <p class="font-bold text-slate-800 mb-2">Langkah 2: Bandingkan harga rata-rata</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">Kalau harga rata-rata pembeli besar jauh di bawah harga sekarang, mereka sudah untung dan bisa kapan saja jualan. Kalau harga sekarang masih dekat dengan rata-rata mereka, tekanan jual biasanya lebih ringan.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <p class="font-bold text-slate-800 mb-2">Langkah 3: Lihat konsistensinya</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">Satu hari itu cuma kebetulan. Cek beberapa hari sampai beberapa minggu: apakah broker yang sama terus net buy, atau cuma muncul sekali lalu hilang? Pola yang berulang jauh lebih berarti.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <p class="font-bold text-slate-800 mb-2">Langkah 4: Cocokkan dengan harga dan volume</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">Akumulasi dengan harga yang tenang di area bawah biasanya lebih sehat daripada "akumulasi" saat harga sudah melonjak jauh. Kalau harga naik tinggi sementara broker besar justru net sell, hati-hati: itu bisa tanda distribusi.</p>
+                        </div>
+                    </div>
+                    <div class="ed-callout ed-risk mt-5 text-sm"><strong>Jebakan yang sering bikin salah baca</strong>
+                        <ul class="mt-2 space-y-1 list-disc pl-5 text-xs">
+                            <li>Satu kode broker dipakai ribuan nasabah. Broker ritel besar yang net buy belum tentu satu "bandar", bisa jadi ribuan ritel yang kompak FOMO.</li>
+                            <li>Transaksi silang (cross) dan nego bisa membuat satu broker tampak beli dan jual besar sekaligus tanpa perubahan kepemilikan sebenarnya.</li>
+                            <li>Broker summary bukan ramalan. Pola yang bagus tetap bisa gagal kalau berita atau kondisi pasar berubah.</li>
+                            <li>Di saham dengan kepemilikan terkonsentrasi (lihat tanda HSC), barang yang beredar tipis sehingga satu transaksi saja bisa terlihat "besar".</li>
+                        </ul>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4">Ringkasnya: pakai broker summary sebagai <strong>satu dari beberapa petunjuk</strong>, bareng laporan keuangan, tren harga, dan manajemen risiko. Tentukan batas rugi sebelum masuk. Materi ini edukasi, bukan saran beli atau jual.</p>
                 </div>
 
                 <div class="premium-card p-6 md:p-8 shadow-sm bg-white dark-mode-card border-t-4 border-t-blue-500 mt-8">
@@ -596,6 +629,6 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261119t0313"></script>
+    <script src="assets/js/ewoks-core.js?v=20261119t0316"></script>
 </body>
 </html>
