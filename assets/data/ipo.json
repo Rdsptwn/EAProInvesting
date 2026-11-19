@@ -11688,8 +11688,8 @@
       "price": 1500,
       "shares": 100000000,
       "fundsBn": 150,
-      "board": null,
-      "sector": null,
+      "board": "Utama",
+      "sector": "Energi (Minyak, Gas & Batu Bara)",
       "lead": [
         "OSK Nusadana Sekuritas",
         "HD Capital",
@@ -11698,11 +11698,12 @@
         "Yulie Sekurindo"
       ],
       "syn": [],
-      "note": "Data IPO dari media, belum dicek ke prospektus; dana = harga × saham ditawarkan (hitungan).",
+      "note": "Cocok dengan Profil Stockbit: 100.000.000 saham × Rp1.500 = Rp150 miliar. Stockbit mencantumkan penjamin HD Capital, Sinarmas, Victoria, Yulie Sekurindo (tanpa OSK Nusadana; media lama menyebut OSK). Papan Utama, free float 20,98%.",
       "src": [
         "https://www.eddyelly.com/2013/05/tanggal-daftar-ipo-emiten.html",
         "https://finance.detik.com/bursa-dan-valas/d-1257582/saham-perdana-dian-swastatika-menguat-rp-250",
-        "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2"
+        "https://finance.detik.com/bursa-dan-valas/d-1267857/emisi-ipo-2009-anjlok-84-2",
+        "Stockbit – Profile (tangkapan layar pengguna)"
       ]
     },
     {
