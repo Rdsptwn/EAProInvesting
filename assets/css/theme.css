@@ -70,7 +70,7 @@ body.dark-mode-override :is(.text-slate-900, .text-slate-800, .text-slate-700, .
 body.dark-mode-override :is(.text-slate-600, .text-slate-500, .text-slate-400, .text-slate-300) { color: var(--muted) !important; }
 
 /* ---------- Kartu kaca ---------- */
-body :is(.premium-card, .glass-card, .tp-card, .kg-card, .kg-stat) {
+body :is(.premium-card, .glass-card, .tp-card, .kg-card, .kg-stat):not([class*="bg-gradient-to"]) {
     background: var(--card) !important;
     border: 1px solid var(--line) !important;
     border-radius: 18px !important;
@@ -144,7 +144,7 @@ body :is(.dropdown-item:hover, .dropdown-item.active) { background: var(--tint) 
 /* ---------- Tab, chip, tabel ---------- */
 body :is(.edu-tab-btn, .funda-tab-btn) { border-radius: 10px !important; background: transparent !important; color: var(--muted) !important; border: 1px solid transparent !important; font-weight: 500 !important; }
 body :is(.edu-tab-btn, .funda-tab-btn):hover { background: var(--tint) !important; color: var(--brand-text) !important; }
-body .edu-tab-btn.bg-blue-600, body .f-tab-active, body .tp-tab.active { background: var(--grad) !important; color: #fff !important; border-color: transparent !important; box-shadow: 0 8px 20px -10px rgba(91, 75, 255, .8) !important; }
+body .edu-tab-btn.bg-blue-600, body .f-tab-active { background: var(--grad) !important; color: #fff !important; border-color: transparent !important; box-shadow: 0 8px 20px -10px rgba(91, 75, 255, .8) !important; }
 body :is(.tp-go, .tp-chip.on, .hm-chip.on, .bk-tab.on) { background: var(--grad) !important; color: #fff !important; border-color: transparent !important; }
 body :is(.tp-tk, .tpl-sym, .hp-go) { color: var(--brand-text) !important; background: var(--tint) !important; }
 body :is(.hm-chip, .tp-chip) { border-radius: 10px !important; }
@@ -247,7 +247,6 @@ body.dark-mode-override :is(.btn-action.bg-emerald-50, .btn-action.bg-blue-50) {
 body:not(.dark-mode-override) .btn-action:is(.bg-emerald-50, .bg-blue-50, .bg-slate-200) { background-image: none !important; background-color: rgba(15, 122, 77, .12) !important; color: #0a6a45 !important; box-shadow: none !important; }
 body :is(button, a).text-slate-500:hover { color: var(--brand-text) !important; }
 body.dark-mode-override :is(.text-slate-500.hover\:text-blue-600, .hover\:text-blue-600) { color: #c9c3ff; }
-body .tp-tab.active em, body .tp-tab.active :is(i, span) { color: rgba(255, 255, 255, .92) !important; }
 body.dark-mode-override button.text-slate-500 { color: #c9c4ee !important; }
 @media (min-width: 1024px) { body .hero-card .relative.z-10 { max-width: 56%; } body .hero-card .hero-title { font-size: clamp(2.4rem, 3.6vw, 3.4rem) !important; line-height: 1.08 !important; } }
 body .hero-card .hero-art { right: 3%; width: min(40%, 380px); }
@@ -271,3 +270,16 @@ body .premium-card:is(.bg-slate-900, .bg-slate-800) :is(.text-slate-900, .text-s
 #funda-extra-list .kg-btn { display: inline-flex; gap: .4rem; align-items: baseline; padding: .4rem .7rem; border-radius: 10px; background: var(--tint); color: var(--brand-text); border: 1px solid var(--line); cursor: pointer; transition: transform .15s ease, border-color .15s ease; }
 #funda-extra-list .kg-btn:hover { transform: translateY(-1px); border-color: var(--volt); }
 #funda-extra-list .kg-btn span { color: var(--muted); max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Tab bergaris bawah (Terminal) */
+body .tp-tab { background: transparent !important; color: var(--muted) !important; border-radius: 0 !important; border-bottom: 3px solid transparent !important; }
+body .tp-tab em { color: var(--muted) !important; }
+body .tp-tab.active { color: var(--brand-text) !important; border-bottom-color: var(--volt) !important; }
+/* Kartu/blok bergradien: teks tetap terang */
+body [class*="bg-gradient-to"]:not(.premium-card):not(.glass-card) :is(.text-blue-100, .text-blue-200, .text-blue-300, .text-blue-400, .text-indigo-200, .text-indigo-300) { color: #c9c4ff !important; }
+body [class*="bg-gradient-to"] :is(.text-slate-400, .text-slate-300, .text-slate-500) { color: #c5c2ea !important; }
+body .glass-card[class*="bg-gradient-to"], body .premium-card[class*="bg-gradient-to"] { border: 0 !important; box-shadow: var(--shadow) !important; border-radius: 18px !important; }
+body .glass-card[class*="bg-gradient-to"] :is(h1, h2, h3, p, span, li) { color: inherit; }
+body .glass-card[class*="bg-gradient-to-br"] { background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
+body .glass-card[class*="bg-gradient-to-r"] { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
+body .glass-card[class*="bg-gradient-to-b"]:not([class*="bg-gradient-to-br"]) { background-image: linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-to)) !important; }
