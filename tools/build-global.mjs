@@ -132,6 +132,19 @@ async function buildMembers() {
                 break;
             } catch (e) { console.error('members', k, page, e.message); }
         }
+        if (!ok && k === 'ndx') {
+            try {
+                const res = await fetch('https://api.nasdaq.com/api/quote/list-type/nasdaq100', { headers: { ...UA, Accept: 'application/json, text/plain, */*', Origin: 'https://www.nasdaq.com', Referer: 'https://www.nasdaq.com/' }, signal: AbortSignal.timeout(30000) });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const j = await res.json();
+                const rows = j?.data?.data?.rows || [];
+                const list = rows.map((r) => ({ t: String(r.symbol || '').toUpperCase().replace(/\./g, '-'), n: r.companyName || '' })).filter((x) => /^[A-Z0-9-]{1,7}$/.test(x.t));
+                if (list.length < min) throw new Error('hanya ' + list.length);
+                out.ndx = list.map((x) => x.t);
+                list.forEach((x) => { const o = out.info[x.t] || {}; out.info[x.t] = { n: o.n || x.n, s: o.s || '' }; });
+                changed = true; ok = true; console.log('members ndx nasdaq.com', list.length);
+            } catch (e) { console.error('members ndx nasdaq.com', e.message); }
+        }
         if (!ok) console.error('members', k, '— pakai data lama');
     }
     writeSafe('global-index-members.json', out, changed || out.spx.length > 0, 'members');
