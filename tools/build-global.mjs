@@ -86,8 +86,13 @@ function writeSafe(file, obj, ok, label) {
 const SECTOR_ID = { 'information technology': 'Teknologi', financials: 'Keuangan', 'health care': 'Kesehatan', 'consumer discretionary': 'Konsumer', 'consumer staples': 'Konsumer', industrials: 'Industri', energy: 'Energi', utilities: 'Utilitas', 'real estate': 'Properti', materials: 'Bahan Baku', 'communication services': 'Komunikasi', technology: 'Teknologi', 'consumer services': 'Konsumer', 'telecommunications': 'Komunikasi', 'basic materials': 'Bahan Baku' };
 const sectorId = (x) => { const k = String(x || '').toLowerCase().replace(/\s+/g, ' ').trim(); return SECTOR_ID[k] || (x ? String(x).trim() : ''); };
 export function parseConstituents(html) {
-    const tbl = String(html || '').match(/<table[^>]*id="constituents"[\s\S]*?<\/table>/i);
-    if (!tbl) return [];
+    const tables = String(html || '').match(/<table[\s\S]*?<\/table>/gi) || [];
+    let best = [];
+    for (const t of tables) { const r = parseTable(t); if (r.length > best.length) best = r; }
+    return best;
+}
+function parseTable(tblHtml) {
+    const tbl = [tblHtml];
     const rows = tbl[0].match(/<tr[\s\S]*?<\/tr>/gi) || [];
     const clean = (c) => strip(c).replace(/\[\w+\]/g, '').trim();
     let idx = null; const out = []; const seen = new Set();
