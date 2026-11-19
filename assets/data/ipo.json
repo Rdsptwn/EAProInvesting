@@ -2363,10 +2363,10 @@
       "name": "Amman Mineral Internasional Tbk.",
       "date": "2023-07-07",
       "price": 1695,
-      "shares": null,
-      "fundsBn": 10700,
+      "shares": 6328208800,
+      "fundsBn": 10726,
       "board": "Utama",
-      "sector": null,
+      "sector": "Barang Baku (Tembaga & emas)",
       "lead": [
         "BNI Sekuritas",
         "CLSA Sekuritas Indonesia",
@@ -2374,10 +2374,11 @@
         "Mandiri Sekuritas"
       ],
       "syn": [
-        "Samuel Sekuritas Indonesia",
-        "BRI Danareksa Sekuritas"
+        "BRI Danareksa Sekuritas",
+        "Maybank Sekuritas Indonesia",
+        "Samuel Sekuritas Indonesia"
       ],
-      "note": "listedSharesTotal(receh.in)=71915881656 (total saham tercatat, bukan saham ditawarkan); dana 10,7 triliun dari judul bisnis.com 2023-06-20 (isi tidak dibaca); penjamin pelaksana dari artikel pra-IPO bisnis.com 2023-05-30 (nama sumber: PT DBS Vickers Indonesia); sindikasi tidak disebut",
+      "note": "Cocok dengan Profil Stockbit: 6.328.208.800 saham × Rp1.695 = Rp10.726 miliar. Penjamin emisi di Stockbit tercatat 7 sekuritas (4 pelaksana dari media + BRI Danareksa, Maybank, Samuel). Papan Utama, free float 22,74%.",
       "src": [
         "https://www.receh.in/2023/12/saham-ipo-terbaru-daftar-lengkap.html",
         "https://market.bisnis.com/read/20231113/7/1713773/aduh-mayoritas-saham-emiten-yang-baru-ipo-2023-anjlok-mengapa",
@@ -2385,7 +2386,8 @@
         "https://market.bisnis.com/read/20230620/192/1667239/amman-mineral-ammn-pasang-harga-ipo-rp1695-raup-dana-rp107-triliun",
         "https://market.bisnis.com/read/20230530/192/1660700/grup-medco-medc-amman-mineral-siap-ipo-gandeng-4-sekuritas",
         "https://emitenhub.com/jadwal-ipo",
-        "https://emitenhub.com/underwriters"
+        "https://emitenhub.com/underwriters",
+        "Stockbit – Profile (tangkapan layar pengguna)"
       ]
     },
     {
