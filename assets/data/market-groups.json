@@ -1,0 +1,458 @@
+{
+ "global": {
+  "spx": {
+   "n": "S&P 500",
+   "d": "500 perusahaan terbesar di bursa Amerika. Di bawah ini anggota S&P 500 yang ada di daftar pantauan kami (bukan seluruh 500).",
+   "t": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "TSLA",
+    "AVGO",
+    "ORCL",
+    "NFLX",
+    "AMD",
+    "INTC",
+    "QCOM",
+    "MU",
+    "CRM",
+    "ADBE",
+    "PLTR",
+    "NOW",
+    "PANW",
+    "CRWD",
+    "UBER",
+    "ABNB",
+    "COIN",
+    "HOOD",
+    "DIS",
+    "JPM",
+    "BAC",
+    "WFC",
+    "GS",
+    "MS",
+    "V",
+    "MA",
+    "PYPL",
+    "BRK-B",
+    "BLK",
+    "AXP",
+    "XOM",
+    "CVX",
+    "COP",
+    "OXY",
+    "SLB",
+    "NEE",
+    "FSLR",
+    "ENPH",
+    "LLY",
+    "JNJ",
+    "PFE",
+    "MRK",
+    "ABBV",
+    "UNH",
+    "TMO",
+    "AMGN",
+    "MRNA",
+    "WMT",
+    "COST",
+    "HD",
+    "NKE",
+    "SBUX",
+    "MCD",
+    "KO",
+    "PEP",
+    "PG",
+    "LULU",
+    "TGT",
+    "BA",
+    "CAT",
+    "GE",
+    "LMT",
+    "RTX",
+    "DE",
+    "UPS",
+    "F",
+    "GM",
+    "T",
+    "VZ",
+    "FCX",
+    "NEM",
+    "DELL",
+    "IBM",
+    "CSCO",
+    "SMCI",
+    "DDOG",
+    "ANET",
+    "LRCX",
+    "AMAT",
+    "APP"
+   ]
+  },
+  "ndx": {
+   "n": "Nasdaq",
+   "d": "Saham teknologi dan pertumbuhan yang tercatat di Nasdaq (anggota Nasdaq 100 dalam daftar pantauan kami).",
+   "t": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "TSLA",
+    "AVGO",
+    "NFLX",
+    "AMD",
+    "INTC",
+    "QCOM",
+    "MU",
+    "ASML",
+    "ARM",
+    "ADBE",
+    "PLTR",
+    "CRWD",
+    "PANW",
+    "SHOP",
+    "ABNB",
+    "COST",
+    "PEP",
+    "SBUX",
+    "AMGN",
+    "CSCO",
+    "DDOG",
+    "ANET",
+    "LRCX",
+    "AMAT",
+    "APP",
+    "MSTR",
+    "PDD"
+   ]
+  },
+  "dji": {
+   "n": "Dow Jones",
+   "d": "30 perusahaan raksasa Amerika. Yang tampil adalah anggota Dow yang ada di daftar pantauan kami.",
+   "t": [
+    "AAPL",
+    "AMGN",
+    "AXP",
+    "BA",
+    "CAT",
+    "CRM",
+    "CSCO",
+    "CVX",
+    "DIS",
+    "GS",
+    "HD",
+    "IBM",
+    "JNJ",
+    "JPM",
+    "KO",
+    "MCD",
+    "MRK",
+    "MSFT",
+    "NKE",
+    "NVDA",
+    "PG",
+    "UNH",
+    "V",
+    "VZ",
+    "WMT",
+    "AMZN"
+   ]
+  },
+  "brent": {
+   "n": "Minyak Brent",
+   "d": "Saham dan dana yang naik-turunnya banyak dipengaruhi harga minyak.",
+   "t": [
+    "XOM",
+    "CVX",
+    "COP",
+    "OXY",
+    "SLB",
+    "USO"
+   ]
+  },
+  "wti": {
+   "n": "Minyak WTI",
+   "d": "Saham dan dana yang naik-turunnya banyak dipengaruhi harga minyak.",
+   "t": [
+    "XOM",
+    "CVX",
+    "COP",
+    "OXY",
+    "SLB",
+    "USO"
+   ]
+  },
+  "gas": {
+   "n": "Gas Alam",
+   "d": "Perusahaan migas yang pendapatannya ikut harga gas.",
+   "t": [
+    "XOM",
+    "CVX",
+    "COP",
+    "OXY",
+    "SLB"
+   ]
+  },
+  "gold": {
+   "n": "Emas",
+   "d": "Penambang emas dan dana emas. Biasanya bergerak searah harga emas, dengan ayunan lebih besar.",
+   "t": [
+    "NEM",
+    "GOLD",
+    "GLD"
+   ]
+  },
+  "silver": {
+   "n": "Perak",
+   "d": "Dana perak dan penambang logam mulia.",
+   "t": [
+    "SLV",
+    "NEM",
+    "GOLD"
+   ]
+  },
+  "copper": {
+   "n": "Tembaga",
+   "d": "Penambang tembaga dan logam dasar.",
+   "t": [
+    "FCX",
+    "SCCO",
+    "BHP",
+    "RIO",
+    "VALE"
+   ]
+  },
+  "coal": {
+   "n": "Batu bara",
+   "d": "Hampir tidak ada saham batu bara besar di AS yang ada di daftar kami. Untuk batu bara, buka mode IHSG: ADRO, PTBA, ITMG, dan kawan-kawan.",
+   "t": []
+  },
+  "usdidr": {
+   "n": "USD/IDR",
+   "d": "Saham dan dana yang terkait Indonesia dan Asia Tenggara, yang nilainya ikut dipengaruhi kurs rupiah.",
+   "t": [
+    "EIDO",
+    "SE",
+    "GRAB"
+   ]
+  },
+  "dxy": {
+   "n": "Indeks Dolar",
+   "d": "Dolar kuat biasanya menekan emas, komoditas, dan pasar berkembang. Yang tampil adalah dana yang sensitif terhadap hal itu.",
+   "t": [
+    "GLD",
+    "EEM",
+    "EIDO"
+   ]
+  },
+  "btc": {
+   "n": "Bitcoin",
+   "d": "Saham dan dana yang naik-turunnya terkait kripto.",
+   "t": [
+    "COIN",
+    "MSTR",
+    "HOOD",
+    "IBIT"
+   ]
+  },
+  "eth": {
+   "n": "Ethereum",
+   "d": "Saham dan dana yang naik-turunnya terkait kripto.",
+   "t": [
+    "COIN",
+    "MSTR",
+    "HOOD",
+    "IBIT"
+   ]
+  },
+  "n225": {
+   "n": "Nikkei 225",
+   "d": "Perusahaan Jepang yang tercatat di Amerika (ADR).",
+   "t": [
+    "TM",
+    "SONY"
+   ]
+  },
+  "hsi": {
+   "n": "Hang Seng",
+   "d": "Perusahaan China/Hong Kong yang tercatat di Amerika (ADR).",
+   "t": [
+    "BABA",
+    "JD",
+    "BIDU",
+    "PDD",
+    "NIO",
+    "XPEV",
+    "TCEHY"
+   ]
+  },
+  "sti": {
+   "n": "STI Singapura",
+   "d": "Perusahaan Asia Tenggara yang tercatat di Amerika.",
+   "t": [
+    "SE",
+    "GRAB"
+   ]
+  },
+  "ftse": {
+   "n": "FTSE 100",
+   "d": "Perusahaan Inggris/Eropa yang tercatat di Amerika (ADR).",
+   "t": [
+    "RIO",
+    "BHP",
+    "NVO",
+    "ASML"
+   ]
+  },
+  "dax": {
+   "n": "DAX",
+   "d": "Perusahaan Eropa yang tercatat di Amerika (ADR).",
+   "t": [
+    "ASML",
+    "NVO"
+   ]
+  },
+  "vix": {
+   "n": "VIX",
+   "d": "Indeks ketakutan: naik saat pasar panik. Dana besar yang biasanya jadi acuan pasar AS.",
+   "t": [
+    "SPY",
+    "QQQ",
+    "VOO",
+    "TLT"
+   ]
+  },
+  "ust10": {
+   "n": "Yield US Treasury 10Y",
+   "d": "Saat yield naik, harga obligasi turun. Dana obligasi dan saham bank paling terasa.",
+   "t": [
+    "TLT",
+    "JPM",
+    "BAC",
+    "SCHD"
+   ]
+  }
+ },
+ "idx": {
+  "ihsg": {
+   "n": "IHSG",
+   "d": "30 saham dengan nilai transaksi terbesar hari ini. Mereka yang paling menggerakkan IHSG.",
+   "top": 30
+  },
+  "gold": {
+   "n": "Emas",
+   "d": "Saham penambang emas dan tembaga-emas yang biasanya mengikuti harga emas.",
+   "t": [
+    "ANTM",
+    "MDKA",
+    "BRMS",
+    "PSAB",
+    "ARCI",
+    "HRTA",
+    "AMMN"
+   ]
+  },
+  "silver": {
+   "n": "Perak",
+   "d": "Belum ada saham perak murni di BEI. Yang terdekat adalah penambang logam mulia.",
+   "t": [
+    "ANTM",
+    "MDKA",
+    "BRMS",
+    "PSAB"
+   ]
+  },
+  "brent": {
+   "n": "Minyak",
+   "d": "Saham migas dan jasa migas yang pendapatannya ikut harga minyak.",
+   "t": [
+    "MEDC",
+    "ELSA",
+    "ENRG",
+    "PGAS",
+    "AKRA",
+    "RAJA",
+    "APEX"
+   ]
+  },
+  "wti": {
+   "n": "Minyak",
+   "d": "Saham migas dan jasa migas yang pendapatannya ikut harga minyak.",
+   "t": [
+    "MEDC",
+    "ELSA",
+    "ENRG",
+    "PGAS",
+    "AKRA",
+    "RAJA",
+    "APEX"
+   ]
+  },
+  "gas": {
+   "n": "Gas Alam",
+   "d": "Saham gas dan migas.",
+   "t": [
+    "PGAS",
+    "RAJA",
+    "MEDC",
+    "ELSA",
+    "AKRA"
+   ]
+  },
+  "coal": {
+   "n": "Batu bara",
+   "d": "Saham batu bara BEI yang harga jualnya mengikuti batu bara Newcastle.",
+   "t": [
+    "ADRO",
+    "AADI",
+    "ADMR",
+    "PTBA",
+    "ITMG",
+    "BUMI",
+    "INDY",
+    "HRUM",
+    "BYAN",
+    "GEMS",
+    "TOBA",
+    "DOID"
+   ]
+  },
+  "copper": {
+   "n": "Tembaga",
+   "d": "Saham tembaga dan tambang logam.",
+   "t": [
+    "AMMN",
+    "MDKA",
+    "ANTM"
+   ]
+  },
+  "usdidr": {
+   "n": "USD/IDR",
+   "d": "Eksportir biasanya diuntungkan saat rupiah melemah, karena pendapatannya dalam dolar.",
+   "t": [
+    "ANTM",
+    "INCO",
+    "PTBA",
+    "ITMG",
+    "AALI",
+    "LSIP",
+    "ADRO"
+   ]
+  },
+  "btc": {
+   "n": "Bitcoin",
+   "d": "Belum ada saham kripto di BEI.",
+   "t": []
+  },
+  "eth": {
+   "n": "Ethereum",
+   "d": "Belum ada saham kripto di BEI.",
+   "t": []
+  }
+ }
+}

@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261120t0500">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261120t0500">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261120t0520">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261120t0520">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="global">
 
@@ -157,16 +157,22 @@
                 <div id="g-commodities" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"></div>
                 <h3 class="font-extrabold text-slate-900 mb-3">Indeks, kurs &amp; kripto</h3>
                 <div id="g-indices" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8"></div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                    <div class="premium-card glass-card rounded-3xl p-5 border border-slate-200">
-                        <h3 class="font-extrabold text-slate-900 mb-3">Top naik &amp; turun hari ini</h3>
-                        <div id="g-movers" class="grid grid-cols-2 gap-4 text-sm"></div>
+                <section class="premium-card p-5 md:p-6 mb-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
+                        <h3 class="text-lg font-black text-slate-900">Top naik &amp; turun hari ini</h3>
+                        <div class="flex gap-2"><button type="button" id="gm-n5" class="hm-chip on" onclick="gMoversN(5)">Top 5</button><button type="button" id="gm-n10" class="hm-chip" onclick="gMoversN(10)">Top 10</button></div>
                     </div>
-                    <div class="premium-card glass-card rounded-3xl p-5 border border-slate-200">
-                        <div class="flex items-center justify-between mb-3"><h3 class="font-extrabold text-slate-900">Berita terbaru</h3><button class="text-xs font-bold text-blue-600" data-goto="berita">Lihat semua</button></div>
-                        <div id="g-news-mini" class="space-y-3 text-sm"></div>
+                    <p id="gm-stamp" class="text-[10px] font-bold text-blue-600 mb-4"></p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div><div class="text-[11px] font-black uppercase tracking-widest text-emerald-600 mb-1"><i class="fas fa-arrow-trend-up mr-1"></i> Top naik</div><div id="gm-gain"></div></div>
+                        <div><div class="text-[11px] font-black uppercase tracking-widest text-rose-600 mb-1"><i class="fas fa-arrow-trend-down mr-1"></i> Top turun</div><div id="gm-loss"></div></div>
                     </div>
-                </div>
+                    <p class="text-[10px] text-slate-400 mt-4">Dari saham &amp; ETF di daftar pantauan (bukan seluruh pasar AS). Klik kode untuk melihat grafik dan fundamental.</p>
+                </section>
+                <section class="premium-card p-5 md:p-6 mb-2">
+                    <div class="flex items-center justify-between mb-3"><h3 class="text-lg font-black text-slate-900">Berita terbaru</h3><button class="text-xs font-bold text-blue-600" data-goto="berita">Lihat semua</button></div>
+                    <div id="g-news-mini" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-sm"></div>
+                </section>
             </div>
 
             <div id="g-screener" class="hidden">
@@ -281,7 +287,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261120t0500"></script>
-    <script src="assets/js/pages/page-global.js?v=20261120t0500"></script>
+    <script src="assets/js/ewoks-core.js?v=20261120t0520"></script>
+    <script src="assets/js/pages/page-global.js?v=20261120t0520"></script>
 </body>
 </html>

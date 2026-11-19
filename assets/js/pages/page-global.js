@@ -31,11 +31,11 @@
     }
     function card(it, extra) {
         var up = (it.chg || 0) >= 0;
-        return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200">' +
+        return '<div data-grp="' + esc(it.id) + '" role="button" tabindex="0" class="premium-card glass-card rounded-2xl p-4 border border-slate-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition">' +
             '<div class="flex items-start justify-between gap-2"><div class="min-w-0"><div class="text-[11px] font-bold text-slate-500 truncate">' + esc(it.n) + '</div>' +
             '<div class="text-xl font-black text-slate-900 mt-0.5">' + priceFmt(it) + '</div>' +
             '<div class="text-[10px] text-slate-400">' + esc(it.u || '') + '</div></div>' + spark(it.spark, up) + '</div>' +
-            '<div class="mt-1 text-xs">' + pct(it.chg) + (extra ? '<div class="text-[11px] text-slate-500 mt-1">' + extra + '</div>' : '') + '</div></div>';
+            '<div class="mt-1 text-xs">' + pct(it.chg) + (extra ? '<div class="text-[11px] text-slate-500 mt-1">' + extra + '</div>' : '') + '</div><div class="text-[10px] font-bold text-blue-600 mt-2">Lihat saham terkait ›</div></div>';
     }
 
     /* ---------- Harga live (Worker /gquotes) ---------- */
@@ -112,6 +112,50 @@
     }
     window.EwoksGlobal = { renderCommodities: renderCommodities, get: get, onLive: function (f) { onLive.push(f); } };
 
+    /* ---------- Daftar saham terkait (klik indeks / komoditas) ---------- */
+    var IS_IDX = document.body.getAttribute('data-page') === 'home';
+    function shortName(n) { return String(n || '').replace(/^PT\.?\s*/i, '').replace(/\s*Tbk\.?$/i, '').trim(); }
+    function pill(c) { if (!Number.isFinite(c)) return '<span class="text-slate-400 text-xs">–</span>'; var up = c >= 0; return '<span class="inline-block min-w-[64px] text-center text-[11px] font-black px-2 py-1 rounded-lg ' + (up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700') + '">' + (up ? '+' : '') + c.toFixed(2) + '%</span>'; }
+    function closeGrp() { var m = document.getElementById('grp-modal'); if (m) m.classList.add('hidden'); document.body.style.overflow = ''; }
+    function openGrp(id) {
+        Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json')]).then(function (res) {
+            var def = res[0][IS_IDX ? 'idx' : 'global'][id];
+            if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
+            var rows = [];
+            if (IS_IDX) {
+                var all = res[1].rows.filter(function (r) { return Number.isFinite(r[1]) && r[1] > 0; });
+                var by = {}; all.forEach(function (r) { by[r[0]] = r; });
+                var pick = def.top ? all.slice().sort(function (a, b) { return (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0)); }).slice(0, def.top) : (def.t || []).map(function (t) { return by[t]; }).filter(Boolean);
+                rows = pick.map(function (r) { return { t: r[0], n: shortName(r[11]), p: r[1], c: r[3], href: 'watchlist.html?t=' + r[0] }; });
+            } else {
+                var by2 = {}; res[1].rows.forEach(function (r) { by2[r[0]] = r; });
+                rows = (def.t || []).map(function (t) { return by2[t]; }).filter(Boolean).map(function (r) {
+                    var l = live[r[0]];
+                    return { t: r[0], n: r[10], p: l && Number.isFinite(l[0]) ? l[0] : r[1], c: l && Number.isFinite(l[2]) ? l[2] : r[3], href: '#saham-' + encodeURIComponent(r[0]) };
+                });
+            }
+            rows.sort(function (a, b) { return (b.c || -99) - (a.c || -99); });
+            var m = document.getElementById('grp-modal');
+            if (!m) {
+                m = document.createElement('div'); m.id = 'grp-modal';
+                m.className = 'fixed inset-0 z-[100] bg-slate-900/70 backdrop-blur-sm flex items-end md:items-center justify-center md:p-4';
+                document.body.appendChild(m);
+                m.addEventListener('click', function (e) { if (e.target === m || e.target.closest('[data-close]')) closeGrp(); var a = e.target.closest('a[data-row]'); if (a) closeGrp(); });
+                document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeGrp(); });
+            }
+            var cur = IS_IDX ? 'Rp' : '$';
+            m.innerHTML = '<div class="premium-card glass-card w-full md:max-w-2xl max-h-[88vh] flex flex-col rounded-t-3xl md:rounded-3xl border border-slate-200 overflow-hidden" role="dialog" aria-modal="true" aria-label="' + esc(def.n) + '">' +
+                '<div class="p-5 pb-3 border-b border-slate-100 flex items-start justify-between gap-3"><div><div class="text-[11px] font-black text-blue-600">Saham terkait</div><h3 class="text-xl font-black text-slate-900">' + esc(def.n) + '</h3><p class="text-xs text-slate-500 mt-1 max-w-md">' + esc(def.d) + '</p></div><button data-close aria-label="Tutup" class="text-3xl leading-none text-slate-400 hover:text-slate-700">&times;</button></div>' +
+                '<div class="overflow-y-auto p-2 md:p-3">' + (rows.length ? rows.map(function (r) {
+                    return '<a data-row href="' + r.href + '" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"><span class="font-black text-sm text-slate-900 w-16">' + esc(r.t) + '</span><span class="flex-1 min-w-0 text-xs text-slate-500 truncate">' + esc(r.n) + '</span><span class="text-sm font-bold text-slate-700">' + cur + (IS_IDX ? Number(r.p).toLocaleString('id-ID', { maximumFractionDigits: 0 }) : fmt(r.p)) + '</span>' + pill(r.c) + '</a>';
+                }).join('') : '<p class="p-6 text-sm text-slate-500 text-center">Belum ada saham yang cocok di daftar pantauan.</p>') + '</div>' +
+                '<div class="px-5 py-3 border-t border-slate-100 text-[10px] text-slate-400">' + (IS_IDX ? 'Snapshot harian · ' : '') + 'Klik saham untuk melihat fundamental. Hubungan dengan komoditas/indeks bersifat umum, bukan rekomendasi.</div></div>';
+            m.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+        });
+    }
+    document.addEventListener('click', function (e) { var c = e.target.closest('[data-grp]'); if (c) openGrp(c.getAttribute('data-grp')); });
+    document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('[data-grp]')) { e.preventDefault(); openGrp(e.target.getAttribute('data-grp')); } });
+
     var root = document.getElementById('page-global');
     if (!root) return;
 
@@ -137,6 +181,7 @@
     window.addEventListener('hashchange', show);
     root.addEventListener('click', function (e) {
         var g = e.target.closest('[data-goto]'); if (g) { e.preventDefault(); location.hash = g.dataset.goto; return; }
+        if (e.target.closest('[data-star]')) return;
         var c = e.target.closest('[data-chart]'); if (c) { e.preventDefault(); location.hash = 'saham-' + encodeURIComponent(c.dataset.chart); }
     });
 
@@ -147,18 +192,28 @@
             var ids = ['spx', 'ndx', 'dji', 'n225', 'hsi', 'sti', 'ftse', 'dax', 'vix', 'ust10', 'dxy', 'btc', 'eth'];
             var by = {}; d.items.forEach(function (x) { by[x.id] = x; });
             document.getElementById('g-indices').innerHTML = ids.filter(function (i) { return by[i]; }).map(function (i) {
-                var it = by[i]; return '<div class="premium-card glass-card rounded-2xl p-3 border border-slate-200"><div class="text-[11px] font-bold text-slate-500 truncate">' + esc(it.n) + '</div><div class="font-black text-slate-900">' + fmt(it.price, it.price >= 1000 ? 0 : 2) + '</div><div class="text-xs">' + pct(it.chg) + '</div></div>';
+                var it = by[i]; return '<div data-grp="' + esc(i) + '" role="button" tabindex="0" class="premium-card glass-card rounded-2xl p-3 border border-slate-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition"><div class="text-[11px] font-bold text-slate-500 truncate">' + esc(it.n) + '</div><div class="font-black text-slate-900">' + fmt(it.price, it.price >= 1000 ? 0 : 2) + '</div><div class="text-xs">' + pct(it.chg) + '</div></div>';
             }).join('');
         }).catch(function () {});
         get('global-screener.json').then(function (d) {
             window.__gRows = d.rows; startLive();
-            function paintMovers() {
-            var rows = d.rows.filter(function (r) { return r[11] !== 'ETF' && Number.isFinite(r[3]); }).sort(function (a, b) { return b[3] - a[3]; });
-            var li = function (r) { return '<li class="flex justify-between gap-2"><a href="#" data-chart="' + esc(r[0]) + '" class="font-bold text-slate-800 hover:text-blue-600">' + esc(r[0]) + '</a>' + pct(r[3]) + '</li>'; };
-            document.getElementById('g-movers').innerHTML = '<div><div class="text-[11px] font-bold text-emerald-600 mb-1">Naik</div><ul class="space-y-1">' + rows.slice(0, 6).map(li).join('') + '</ul></div><div><div class="text-[11px] font-bold text-rose-600 mb-1">Turun</div><ul class="space-y-1">' + rows.slice(-6).reverse().map(li).join('') + '</ul></div>';
+            var N = 5; try { if (+localStorage.getItem('ewoks_gmovers_n') === 10) N = 10; } catch (_) {}
+            function row(r, up) {
+                return '<a href="#" data-chart="' + esc(r[0]) + '" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"><span class="font-black text-xs text-slate-900 w-14">' + esc(r[0]) + '</span><span class="flex-1 min-w-0 text-[11px] text-slate-500 font-medium truncate">' + esc(r[10]) + '</span><span class="text-xs font-bold text-slate-700">$' + fmt(r[1]) + '</span><span class="text-[11px] font-black w-16 text-right ' + (up ? 'text-emerald-600' : 'text-rose-600') + '">' + (up ? '+' : '') + r[3].toFixed(2) + '%</span></a>';
             }
+            function paintMovers() {
+                var rows = d.rows.filter(function (r) { return r[11] !== 'ETF' && Number.isFinite(r[3]) && Number.isFinite(r[1]); });
+                var g = rows.filter(function (r) { return r[3] > 0; }).sort(function (a, b) { return b[3] - a[3]; }).slice(0, N);
+                var l = rows.filter(function (r) { return r[3] < 0; }).sort(function (a, b) { return a[3] - b[3]; }).slice(0, N);
+                document.getElementById('gm-gain').innerHTML = g.map(function (r) { return row(r, true); }).join('') || '<p class="text-xs text-slate-400 p-3">Belum ada data.</p>';
+                document.getElementById('gm-loss').innerHTML = l.map(function (r) { return row(r, false); }).join('') || '<p class="text-xs text-slate-400 p-3">Belum ada data.</p>';
+                document.getElementById('gm-stamp').textContent = liveBadge() || ('Snapshot ' + ago(d.meta.built));
+                document.getElementById('gm-n5').classList.toggle('on', N === 5);
+                document.getElementById('gm-n10').classList.toggle('on', N === 10);
+            }
+            window.gMoversN = function (v) { N = v; try { localStorage.setItem('ewoks_gmovers_n', v); } catch (_) {} paintMovers(); };
             paintMovers(); onLive.push(paintMovers);
-        }).catch(function () { document.getElementById('g-movers').innerHTML = '<div class="col-span-2 text-slate-500">Data saham AS belum tersedia.</div>'; });
+        }).catch(function () { document.getElementById('gm-gain').innerHTML = '<p class="text-sm text-slate-500 p-3">Data saham AS belum tersedia.</p>'; });
         get('global-news.json').then(function (d) {
             document.getElementById('g-news-mini').innerHTML = d.items.slice(0, 6).map(newsRow).join('');
         }).catch(function () { document.getElementById('g-news-mini').innerHTML = '<div class="text-slate-500">Berita belum tersedia.</div>'; });
@@ -219,12 +274,12 @@
         document.getElementById('gs-body').innerHTML = part.map(function (r) {
             var on = w.indexOf(r[0]) >= 0;
             var rng = r[5] && r[6] ? '<span class="text-[11px] text-slate-500">' + fmt(r[5], 0) + '–' + fmt(r[6], 0) + '</span>' : '–';
-            return '<tr class="border-t border-slate-100"><td class="p-3"><button data-star="' + esc(r[0]) + '" aria-label="Watchlist" class="' + (on ? 'text-amber-400' : 'text-slate-300') + '"><i class="fas fa-star"></i></button></td>' +
-                '<td class="p-3"><a href="#" data-chart="' + esc(r[0]) + '" data-name="' + esc(r[10]) + '" class="font-extrabold text-slate-900 hover:text-blue-600">' + esc(r[0]) + '</a><div class="text-[11px] text-slate-500 max-w-[200px] truncate">' + esc(r[10]) + '</div></td>' +
+            return '<tr data-chart="' + esc(r[0]) + '" class="border-t border-slate-100 cursor-pointer hover:bg-slate-50/60"><td class="p-3"><button data-star="' + esc(r[0]) + '" aria-label="Watchlist" class="' + (on ? 'text-amber-400' : 'text-slate-300') + '"><i class="fas fa-star"></i></button></td>' +
+                '<td class="p-3"><div class="font-extrabold text-slate-900">' + esc(r[0]) + '</div><div class="text-[11px] text-slate-500 max-w-[200px] truncate">' + esc(r[10]) + '</div></td>' +
                 '<td class="p-3 text-right font-bold">' + fmt(r[1]) + '</td><td class="p-3 text-right">' + pct(r[3]) + '</td>' +
                 '<td class="p-3 text-right hidden sm:table-cell">' + pct(r[4]) + '</td><td class="p-3 text-right hidden md:table-cell">' + rng + '</td>' +
                 '<td class="p-3 text-right hidden md:table-cell text-[11px] text-slate-500">' + (r[7] ? (r[7] >= 1e6 ? (r[7] / 1e6).toFixed(1) + ' jt' : Math.round(r[7] / 1e3) + ' rb') : '–') + '</td>' +
-                '<td class="p-3 text-right whitespace-nowrap"><a class="text-xs font-bold text-blue-600" href="#" data-chart="' + esc(r[0]) + '" data-name="' + esc(r[10]) + '">Detail</a> <a class="text-xs font-bold text-slate-500 ml-2" target="_blank" rel="noopener" href="' + yh(r[0]) + '">Yahoo</a></td></tr>';
+                '<td class="p-3 text-right whitespace-nowrap"><span class="hidden sm:inline-block text-[11px] font-black px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700">Cek fundamental ›</span><span class="sm:hidden text-indigo-600 font-black">›</span></td></tr>';
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-500">Tidak ada yang cocok.</td></tr>';
         document.getElementById('gs-more').classList.toggle('hidden', list.length <= S.shown);
     }

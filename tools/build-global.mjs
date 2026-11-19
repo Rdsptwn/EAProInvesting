@@ -110,6 +110,7 @@ export const MARKETS = [
     { id: 'dxy', g: 'kurs', n: 'Indeks Dolar (DXY)', s: 'DX-Y.NYB', u: '' },
     { id: 'btc', g: 'kripto', n: 'Bitcoin', s: 'BTC-USD', u: 'USD' },
     { id: 'eth', g: 'kripto', n: 'Ethereum', s: 'ETH-USD', u: 'USD' },
+    { id: 'ihsg', g: 'indeks', n: 'IHSG', s: '^JKSE', u: '' },
     { id: 'spx', g: 'indeks', n: 'S&P 500', s: '^GSPC', u: '' },
     { id: 'ndx', g: 'indeks', n: 'Nasdaq Composite', s: '^IXIC', u: '' },
     { id: 'dji', g: 'indeks', n: 'Dow Jones', s: '^DJI', u: '' },
