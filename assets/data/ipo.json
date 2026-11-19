@@ -762,20 +762,21 @@
       "name": "Adaro Andalan Indonesia Tbk",
       "date": "2024-12-05",
       "price": 5550,
-      "shares": null,
-      "fundsBn": 4320,
-      "board": null,
-      "sector": null,
+      "shares": 778689200,
+      "fundsBn": 4322,
+      "board": "Utama",
+      "sector": "Energi (Minyak, Gas & Batu Bara)",
       "lead": [
         "Trimegah Sekuritas Indonesia"
       ],
       "syn": [],
-      "note": "Penawaran 5 Des 2024; listing date tidak terbaca.",
+      "note": "Cocok dengan Profil Stockbit: 778.689.200 saham × Rp5.550 = Rp4.322 miliar (hitungan Rp4.321,7 miliar). Listing 5 Des 2024, penjamin Trimegah Sekuritas, Papan Utama, free float 18,73%.",
       "src": [
         "https://www.idxchannel.com/market-news/saham-ipo-tercuan-di-2024-belum-mampu-kalahkan-emiten-prajogo-pangestu/all",
         "https://www.cnbcindonesia.com/research/20241223122627-128-598137/rekap-ipo-2024--siapa-si-paling-untung-vs-buntung",
         "https://www.e-ipo.co.id/pipeline/get-additional-info?id=319",
-        "https://emitenhub.com/jadwal-ipo"
+        "https://emitenhub.com/jadwal-ipo",
+        "Stockbit – Profile (tangkapan layar pengguna)"
       ]
     },
     {
