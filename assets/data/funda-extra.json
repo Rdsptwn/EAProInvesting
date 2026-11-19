@@ -132,11 +132,6 @@
    "s": "Barang Konsumsi"
   },
   {
-   "t": "CINT",
-   "n": "Chitose Internasional",
-   "s": "Barang Konsumsi"
-  },
-  {
    "t": "KINO",
    "n": "Kino Indonesia",
    "s": "Barang Konsumsi"
@@ -362,11 +357,6 @@
    "s": "Industri Dasar & Material"
   },
   {
-   "t": "BELL",
-   "n": "Trisula Textile Industries",
-   "s": "Industri Dasar & Material"
-  },
-  {
    "t": "SMRA",
    "n": "Summarecon Agung",
    "s": "Properti"
@@ -397,11 +387,6 @@
    "s": "Properti"
   },
   {
-   "t": "EMDE",
-   "n": "Megapolitan Developments",
-   "s": "Properti"
-  },
-  {
    "t": "TOTL",
    "n": "Total Bangun Persada",
    "s": "Properti"
@@ -427,11 +412,6 @@
    "s": "Transportasi"
   },
   {
-   "t": "NELY",
-   "n": "Pelayaran Nelly Dwi Putri",
-   "s": "Transportasi"
-  },
-  {
    "t": "TCPI",
    "n": "Transcoal Pacific",
    "s": "Transportasi"
@@ -439,11 +419,6 @@
   {
    "t": "ADMF",
    "n": "Adira Dinamika Multi Finance",
-   "s": "Keuangan Non-Bank"
-  },
-  {
-   "t": "MFIN",
-   "n": "Mandala Multifinance",
    "s": "Keuangan Non-Bank"
   },
   {
