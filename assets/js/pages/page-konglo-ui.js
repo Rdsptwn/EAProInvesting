@@ -899,3 +899,37 @@ document.addEventListener('DOMContentLoaded', () => {
     try { const q = new URLSearchParams(location.search).get('q'); if (q) setTimeout(() => { const el = document.getElementById('kongloSearch'); if (el) { el.value = q; searchKonglo(); } }, 500); } catch (_) {}
 });
 document.addEventListener('ewoks-status', () => { try { searchKonglo(); } catch (_) {} });
+
+
+// --- Lapkeu emiten di luar peta konglomerat (assets/data/funda-extra.json) ---
+(function fundaExtraInit() {
+    let items = [];
+    const list = () => document.getElementById('funda-extra-list');
+    function esc(t) { return String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    function paint() {
+        const box = list();
+        if (!box) return;
+        const q = (document.getElementById('funda-extra-q')?.value || '').trim().toLowerCase();
+        const rows = items.filter((x) => !q || x.t.toLowerCase().includes(q) || x.n.toLowerCase().includes(q) || x.s.toLowerCase().includes(q));
+        box.innerHTML = rows.map((x) => `<button type="button" class="kg-btn" data-t="${esc(x.t)}" title="${esc(x.n)} · ${esc(x.s)}"><strong>${esc(x.t)}</strong> <span class="text-xs">${esc(x.n)}</span></button>`).join('');
+        document.getElementById('funda-extra-empty')?.classList.toggle('hidden', rows.length > 0);
+    }
+    async function init() {
+        const box = list();
+        if (!box) return;
+        try {
+            const base = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+            const res = await fetch(`${base}assets/data/funda-extra.json?v=${window.EWOKS_ASSET_V || '1'}`);
+            items = (await res.json()).items || [];
+        } catch (_) { items = []; }
+        paint();
+        document.getElementById('funda-extra-q')?.addEventListener('input', paint);
+        box.addEventListener('click', (e) => {
+            const b = e.target.closest('button[data-t]');
+            if (!b) return;
+            const it = items.find((x) => x.t === b.dataset.t);
+            if (it && typeof showFunda === 'function') showFunda(it.t, it.n, it.s);
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();

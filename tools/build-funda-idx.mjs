@@ -54,7 +54,10 @@ const MAX_ROA = 35;
 const ALL_TYPES = [...ANNUAL_TYPES, ...QUARTERLY_TYPES].join(',');
 
 const src = fs.readFileSync(srcPath, 'utf8');
-const tickers = [...new Set([...src.matchAll(/ticker:\s*"([A-Z0-9]+)"/g)].map((m) => m[1]))].sort();
+const extraPath = path.join(root, 'assets/data/funda-extra.json');
+const EXTRA = fs.existsSync(extraPath) ? JSON.parse(fs.readFileSync(extraPath, 'utf8')).items || [] : [];
+const EXTRA_SECTOR = Object.fromEntries(EXTRA.map((x) => [x.t, x.s]));
+const tickers = [...new Set([...src.matchAll(/ticker:\s*"([A-Z0-9]+)"/g)].map((m) => m[1]).concat(EXTRA.map((x) => x.t)))].sort();
 
 function sleep(ms) {
     return new Promise((r) => setTimeout(r, ms));
@@ -448,7 +451,7 @@ function normalize(ticker, byType, isBank, fxUsdIdr, divYield, legacy) {
 
 function sectorForTicker(ticker, srcText) {
     const m = srcText.match(new RegExp(`ticker:\\s*"${ticker}"[^}]+sector:\\s*"([^"]+)"`));
-    return m ? m[1] : '';
+    return m ? m[1] : EXTRA_SECTOR[ticker] || '';
 }
 
 async function main() {

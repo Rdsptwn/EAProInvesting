@@ -266,3 +266,8 @@ body .premium-card:is(.bg-slate-900, .bg-slate-800) header { background: transpa
 body .premium-card:is(.bg-slate-900, .bg-slate-800) :is(.text-blue-500, .text-blue-400) { color: #b9b0ff !important; }
 body .premium-card:is(.bg-slate-900, .bg-slate-800) :is(.text-slate-400, .text-slate-500, .text-slate-300) { color: #c5c2ea !important; }
 body .premium-card:is(.bg-slate-900, .bg-slate-800) :is(.text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600) { color: #ecebff !important; }
+
+/* Chip emiten (Lapkeu emiten lain) */
+#funda-extra-list .kg-btn { display: inline-flex; gap: .4rem; align-items: baseline; padding: .4rem .7rem; border-radius: 10px; background: var(--tint); color: var(--brand-text); border: 1px solid var(--line); cursor: pointer; transition: transform .15s ease, border-color .15s ease; }
+#funda-extra-list .kg-btn:hover { transform: translateY(-1px); border-color: var(--volt); }
+#funda-extra-list .kg-btn span { color: var(--muted); max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

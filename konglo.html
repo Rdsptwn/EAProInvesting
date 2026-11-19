@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261119t0316">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t0316">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261119t0320">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t0320">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="konglo">
 
@@ -208,6 +208,18 @@
                                 </div>
                         </div>
                     </div>
+
+                    <section id="funda-extra" class="premium-card no-hover-lift p-5 md:p-6 mb-12" aria-labelledby="funda-extra-title">
+                        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-4">
+                            <div>
+                                <h3 id="funda-extra-title" class="text-lg font-black text-slate-900">Lapkeu emiten lain</h3>
+                                <p class="text-xs text-slate-500 max-w-2xl">Saham likuid di luar peta konglomerat: perbankan, konsumsi, kesehatan, energi, properti, dan lainnya. Sumber data sama (Yahoo Finance), diperbarui otomatis.</p>
+                            </div>
+                            <input id="funda-extra-q" type="search" placeholder="Cari kode atau nama, mis. UNVR" class="input-pro w-full md:w-72 px-3 py-2 text-sm" autocomplete="off">
+                        </div>
+                        <div id="funda-extra-list" class="flex flex-wrap gap-2"></div>
+                        <p id="funda-extra-empty" class="text-xs text-slate-500 mt-3 hidden">Tidak ada emiten yang cocok.</p>
+                    </section>
                 </div>
 
                 <div id="konglo-detail-view" class="hide premium-card no-hover-lift overflow-hidden shadow-sm" hidden style="display:none">
@@ -437,9 +449,9 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261119t0316"></script>
-    <script src="assets/js/pages/page-konglo-data-funda.js?v=20261119t0316"></script>
-    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20261119t0316"></script>
-    <script src="assets/js/pages/page-konglo-ui.js?v=20261119t0316"></script>
+    <script src="assets/js/ewoks-core.js?v=20261119t0320"></script>
+    <script src="assets/js/pages/page-konglo-data-funda.js?v=20261119t0320"></script>
+    <script src="assets/js/pages/page-konglo-funda-fetch.js?v=20261119t0320"></script>
+    <script src="assets/js/pages/page-konglo-ui.js?v=20261119t0320"></script>
 </body>
 </html>

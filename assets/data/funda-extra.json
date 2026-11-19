@@ -1,0 +1,455 @@
+{
+ "note": "Emiten likuid di luar Peta Konglomerat; dipakai untuk lapkeu (Yahoo) dan pencarian lapkeu.",
+ "items": [
+  {
+   "t": "BTPS",
+   "n": "Bank BTPN Syariah",
+   "s": "Perbankan"
+  },
+  {
+   "t": "BJTM",
+   "n": "Bank Pembangunan Daerah Jawa Timur",
+   "s": "Perbankan"
+  },
+  {
+   "t": "BJBR",
+   "n": "Bank Pembangunan Daerah Jawa Barat dan Banten",
+   "s": "Perbankan"
+  },
+  {
+   "t": "ARTO",
+   "n": "Bank Jago",
+   "s": "Perbankan"
+  },
+  {
+   "t": "BNLI",
+   "n": "Bank Permata",
+   "s": "Perbankan"
+  },
+  {
+   "t": "BBKP",
+   "n": "Bank KB Bukopin",
+   "s": "Perbankan"
+  },
+  {
+   "t": "BNII",
+   "n": "Bank Maybank Indonesia",
+   "s": "Perbankan"
+  },
+  {
+   "t": "SDRA",
+   "n": "Bank Woori Saudara Indonesia 1906",
+   "s": "Perbankan"
+  },
+  {
+   "t": "AMAR",
+   "n": "Bank Amar Indonesia",
+   "s": "Perbankan"
+  },
+  {
+   "t": "ISAT",
+   "n": "Indosat Ooredoo Hutchison",
+   "s": "Telekomunikasi & Teknologi"
+  },
+  {
+   "t": "LINK",
+   "n": "Link Net",
+   "s": "Telekomunikasi & Teknologi"
+  },
+  {
+   "t": "ATIC",
+   "n": "Anabatic Technologies",
+   "s": "Telekomunikasi & Teknologi"
+  },
+  {
+   "t": "IRSX",
+   "n": "Folago Global Nusantara",
+   "s": "Telekomunikasi & Teknologi"
+  },
+  {
+   "t": "MARK",
+   "n": "Mark Dynamics Indonesia",
+   "s": "Telekomunikasi & Teknologi"
+  },
+  {
+   "t": "UNVR",
+   "n": "Unilever Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "MYOR",
+   "n": "Mayora Indah",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "GGRM",
+   "n": "Gudang Garam",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "HMSP",
+   "n": "H.M. Sampoerna",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "ULTJ",
+   "n": "Ultrajaya Milk Industry",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "CMRY",
+   "n": "Cisarua Mountain Dairy",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "GOOD",
+   "n": "Garudafood Putra Putri Jaya",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "CEKA",
+   "n": "Wilmar Cahaya Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "DLTA",
+   "n": "Delta Djakarta",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "MLBI",
+   "n": "Multi Bintang Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "WIIM",
+   "n": "Wismilak Inti Makmur",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "STTP",
+   "n": "Siantar Top",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "CINT",
+   "n": "Chitose Internasional",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "KINO",
+   "n": "Kino Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "TCID",
+   "n": "Mandom Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "HOKI",
+   "n": "Buyung Poetra Sembada",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "ADES",
+   "n": "Akasha Wira International",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "AISA",
+   "n": "FKS Food Sejahtera",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "CPIN",
+   "n": "Charoen Pokphand Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "JPFA",
+   "n": "Japfa Comfeed Indonesia",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "TBLA",
+   "n": "Tunas Baru Lampung",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "SGRO",
+   "n": "Sampoerna Agro",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "SSMS",
+   "n": "Sawit Sumbermas Sarana",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "SMSM",
+   "n": "Selamat Sempana Perkasa",
+   "s": "Barang Konsumsi"
+  },
+  {
+   "t": "MAPI",
+   "n": "Mitra Adiperkasa",
+   "s": "Ritel"
+  },
+  {
+   "t": "MAPA",
+   "n": "MAP Aktif Adiperkasa",
+   "s": "Ritel"
+  },
+  {
+   "t": "MAPB",
+   "n": "MAP Boga Adiperkasa",
+   "s": "Ritel"
+  },
+  {
+   "t": "ACES",
+   "n": "Aspirasi Hidup Indonesia",
+   "s": "Ritel"
+  },
+  {
+   "t": "AMRT",
+   "n": "Sumber Alfaria Trijaya",
+   "s": "Ritel"
+  },
+  {
+   "t": "MIDI",
+   "n": "Midi Utama Indonesia",
+   "s": "Ritel"
+  },
+  {
+   "t": "CSAP",
+   "n": "Catur Sentosa Adiprana",
+   "s": "Ritel"
+  },
+  {
+   "t": "KLBF",
+   "n": "Kalbe Farma",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "SIDO",
+   "n": "Industri Jamu dan Farmasi Sido Muncul",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "MIKA",
+   "n": "Mitra Keluarga Karyasehat",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "SRAJ",
+   "n": "Sejahteraraya Anugrahjaya",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "PRAY",
+   "n": "Famon Awal Bros Sedaya",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "TSPC",
+   "n": "Tempo Scan Pacific",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "DVLA",
+   "n": "Darya-Varia Laboratoria",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "PRDA",
+   "n": "Prodia Widyahusada",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "MERK",
+   "n": "Merck",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "PYFA",
+   "n": "Pyridam Farma",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "CARE",
+   "n": "Metro Healthcare Indonesia",
+   "s": "Kesehatan"
+  },
+  {
+   "t": "HRUM",
+   "n": "Harum Energy",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "INDY",
+   "n": "Indika Energy",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "AKRA",
+   "n": "AKR Corporindo",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "DOID",
+   "n": "Delta Dunia Makmur",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "KKGI",
+   "n": "Resource Alam Indonesia",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "BSSR",
+   "n": "Baramulti Suksessarana",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "SMMT",
+   "n": "Golden Eagle Energy",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "HEXA",
+   "n": "Hexindo Adiperkasa",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "MBAP",
+   "n": "Mitrabara Adiperdana",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "KEEN",
+   "n": "Kencana Energi Lestari",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "PSAB",
+   "n": "J Resources Asia Pasifik",
+   "s": "Energi & Pertambangan"
+  },
+  {
+   "t": "INTP",
+   "n": "Indocement Tunggal Prakarsa",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "INDR",
+   "n": "Indo-Rama Synthetics",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "ARNA",
+   "n": "Arwana Citramulia",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "AMFG",
+   "n": "Asahimas Flat Glass",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "SCCO",
+   "n": "Supreme Cable Manufacturing and Commerce",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "BELL",
+   "n": "Trisula Textile Industries",
+   "s": "Industri Dasar & Material"
+  },
+  {
+   "t": "SMRA",
+   "n": "Summarecon Agung",
+   "s": "Properti"
+  },
+  {
+   "t": "ASRI",
+   "n": "Alam Sutera Realty",
+   "s": "Properti"
+  },
+  {
+   "t": "APLN",
+   "n": "Agung Podomoro Land",
+   "s": "Properti"
+  },
+  {
+   "t": "JRPT",
+   "n": "Jaya Real Property",
+   "s": "Properti"
+  },
+  {
+   "t": "RDTX",
+   "n": "Roda Vivatex",
+   "s": "Properti"
+  },
+  {
+   "t": "GPRA",
+   "n": "Perdana Gapuraprima",
+   "s": "Properti"
+  },
+  {
+   "t": "EMDE",
+   "n": "Megapolitan Developments",
+   "s": "Properti"
+  },
+  {
+   "t": "TOTL",
+   "n": "Total Bangun Persada",
+   "s": "Properti"
+  },
+  {
+   "t": "INPP",
+   "n": "Indonesian Paradise Property",
+   "s": "Properti"
+  },
+  {
+   "t": "SMDR",
+   "n": "Samudera Indonesia",
+   "s": "Transportasi"
+  },
+  {
+   "t": "TMAS",
+   "n": "Temas",
+   "s": "Transportasi"
+  },
+  {
+   "t": "BIRD",
+   "n": "Blue Bird",
+   "s": "Transportasi"
+  },
+  {
+   "t": "NELY",
+   "n": "Pelayaran Nelly Dwi Putri",
+   "s": "Transportasi"
+  },
+  {
+   "t": "TCPI",
+   "n": "Transcoal Pacific",
+   "s": "Transportasi"
+  },
+  {
+   "t": "ADMF",
+   "n": "Adira Dinamika Multi Finance",
+   "s": "Keuangan Non-Bank"
+  },
+  {
+   "t": "MFIN",
+   "n": "Mandala Multifinance",
+   "s": "Keuangan Non-Bank"
+  },
+  {
+   "t": "BBLD",
+   "n": "Buana Finance",
+   "s": "Keuangan Non-Bank"
+  }
+ ]
+}
