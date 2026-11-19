@@ -118,10 +118,12 @@
     function pill(c) { if (!Number.isFinite(c)) return '<span class="text-slate-400 text-xs">–</span>'; var up = c >= 0; return '<span class="inline-block min-w-[64px] text-center text-[11px] font-black px-2 py-1 rounded-lg ' + (up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700') + '">' + (up ? '+' : '') + c.toFixed(2) + '%</span>'; }
     function closeGrp() { var m = document.getElementById('grp-modal'); if (m) m.classList.add('hidden'); document.body.style.overflow = ''; }
     function openGrp(id) {
-        Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json')]).then(function (res) {
+        Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json'), IS_IDX ? Promise.resolve(null) : get('global-index-members.json').catch(function () { return null; })]).then(function (res) {
             var def = res[0][IS_IDX ? 'idx' : 'global'][id];
             if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
             var rows = [];
+            var mem = res[2];
+            if (mem && mem[id] && mem[id].length >= 20) { def = { n: def.n, d: def.n + ': daftar anggota lengkap (' + mem[id].length + ' perusahaan). Yang belum tampil harganya berarti datanya belum tersedia di Yahoo.', t: mem[id] }; }
             if (IS_IDX) {
                 var all = res[1].rows.filter(function (r) { return Number.isFinite(r[1]) && r[1] > 0; });
                 var by = {}; all.forEach(function (r) { by[r[0]] = r; });

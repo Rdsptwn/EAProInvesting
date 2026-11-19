@@ -23,12 +23,14 @@ jobs:
         with:
           node-version: '20'
       - name: Build global-funda.json
-        run: node tools/build-global.mjs funda
+        run: |
+          node tools/build-global.mjs members
+          node tools/build-global.mjs funda
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          [ -f assets/data/global-funda.json ] && git add assets/data/global-funda.json || true
+          for x in global-funda global-index-members; do [ -f assets/data/$x.json ] && git add assets/data/$x.json || true; done
           if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
           git commit -m "chore(data): sync global funda"
           git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"

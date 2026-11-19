@@ -81,9 +81,71 @@ function writeSafe(file, obj, ok, label) {
     return true;
 }
 
+
+/* ---------- 0. Anggota indeks (S&P 500, Nasdaq-100, Dow 30) dari Wikipedia ---------- */
+const SECTOR_ID = { 'information technology': 'Teknologi', financials: 'Keuangan', 'health care': 'Kesehatan', 'consumer discretionary': 'Konsumer', 'consumer staples': 'Konsumer', industrials: 'Industri', energy: 'Energi', utilities: 'Utilitas', 'real estate': 'Properti', materials: 'Bahan Baku', 'communication services': 'Komunikasi', technology: 'Teknologi', 'consumer services': 'Konsumer', 'telecommunications': 'Komunikasi', 'basic materials': 'Bahan Baku' };
+const sectorId = (x) => { const k = String(x || '').toLowerCase().replace(/\s+/g, ' ').trim(); return SECTOR_ID[k] || (x ? String(x).trim() : ''); };
+export function parseConstituents(html) {
+    const tbl = String(html || '').match(/<table[^>]*id="constituents"[\s\S]*?<\/table>/i);
+    if (!tbl) return [];
+    const rows = tbl[0].match(/<tr[\s\S]*?<\/tr>/gi) || [];
+    const clean = (c) => strip(c).replace(/\[\w+\]/g, '').trim();
+    let idx = null; const out = []; const seen = new Set();
+    for (const row of rows) {
+        const ths = row.match(/<th[\s\S]*?<\/th>/gi);
+        if (ths && ths.length >= 2 && !idx) {
+            const names = ths.map((x) => clean(x).toLowerCase());
+            const sym = names.findIndex((n) => /^(symbol|ticker)/.test(n));
+            if (sym < 0) continue;
+            idx = { sym, name: names.findIndex((n) => /^(security|company|name)/.test(n)), sector: names.findIndex((n) => /gics sector|^industry|^sector/.test(n)) };
+            continue;
+        }
+        const tds = row.match(/<td[\s\S]*?<\/td>/gi);
+        if (!tds || !idx) continue;
+        let t = clean(tds[idx.sym] || '').toUpperCase().replace(/^.*:\s*/, '').replace(/\./g, '-');
+        if (!/^[A-Z0-9-]{1,7}$/.test(t) || seen.has(t)) continue;
+        seen.add(t);
+        out.push({ t, n: idx.name >= 0 ? clean(tds[idx.name] || '') : '', s: idx.sector >= 0 ? sectorId(clean(tds[idx.sector] || '')) : '' });
+    }
+    return out;
+}
+const MEMBER_PAGES = { spx: ['List_of_S%26P_500_companies', 450], ndx: ['Nasdaq-100', 80], dji: ['Dow_Jones_Industrial_Average', 25] };
+async function buildMembers() {
+    let old = {};
+    try { old = JSON.parse(fs.readFileSync(D('global-index-members.json'), 'utf8')); } catch (_) {}
+    const out = { meta: { source: 'Wikipedia (daftar anggota indeks)', built: new Date().toISOString() }, spx: old.spx || [], ndx: old.ndx || [], dji: old.dji || [], info: old.info || {} };
+    let changed = false;
+    for (const [k, [page, min]] of Object.entries(MEMBER_PAGES)) {
+        try {
+            const res = await fetch(`https://en.wikipedia.org/wiki/${page}`, { headers: { ...UA, Accept: 'text/html' }, signal: AbortSignal.timeout(30000) });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const list = parseConstituents(await res.text());
+            if (list.length < min) throw new Error('hanya ' + list.length + ' baris (min ' + min + ')');
+            out[k] = list.map((x) => x.t);
+            list.forEach((x) => { out.info[x.t] = { n: x.n || (out.info[x.t] || {}).n || '', s: x.s || (out.info[x.t] || {}).s || '' }; });
+            changed = true; console.log('members', k, list.length);
+        } catch (e) { console.error('members', k, e.message, '— pakai data lama'); }
+    }
+    writeSafe('global-index-members.json', out, changed || out.spx.length > 0, 'members');
+}
+function loadUniverse() {
+    const base = JSON.parse(fs.readFileSync(D('global-universe.json'), 'utf8')).items;
+    let mem = null;
+    try { mem = JSON.parse(fs.readFileSync(D('global-index-members.json'), 'utf8')); } catch (_) {}
+    if (!mem) return base;
+    const have = new Set(base.map((x) => x.t));
+    const extra = [];
+    for (const t of new Set([...(mem.spx || []), ...(mem.ndx || []), ...(mem.dji || [])])) {
+        if (have.has(t)) continue;
+        const i = mem.info[t] || {};
+        extra.push({ t, n: i.n || t, s: i.s || '' });
+    }
+    return [...base, ...extra];
+}
+
 /* ---------- 1. Screener ---------- */
 async function buildScreener() {
-    const uni = JSON.parse(fs.readFileSync(D('global-universe.json'), 'utf8')).items;
+    const uni = loadUniverse();
     const res = await pool(uni, (u) => fetchChart(u.t, '3mo'), 8);
     const rows = [];
     uni.forEach((u, i) => {
@@ -252,7 +314,7 @@ export function shapeFunda(by, years) {
     return out;
 }
 async function buildFunda() {
-    const uni = JSON.parse(fs.readFileSync(D('global-universe.json'), 'utf8')).items.filter((u) => u.s !== 'ETF');
+    const uni = loadUniverse().filter((u) => u.s !== 'ETF');
     const nowY = new Date().getUTCFullYear();
     const years = [nowY - 5, nowY - 4, nowY - 3, nowY - 2, nowY - 1, nowY].filter((y) => y >= 2020);
     const res = await pool(uni, (u) => fetchFunda(u.t), 5);
@@ -268,6 +330,6 @@ async function buildFunda() {
 /* ---------- main ---------- */
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
     const want = process.argv.slice(2);
-    const all = { screener: buildScreener, commodities: buildCommodities, news: buildNews, ipo: buildIpo, funda: buildFunda };
-    for (const k of want.length ? want : ['screener', 'commodities', 'news', 'ipo']) { if (all[k]) await all[k](); }
+    const all = { screener: buildScreener, commodities: buildCommodities, news: buildNews, ipo: buildIpo, funda: buildFunda, members: buildMembers };
+    for (const k of want.length ? want : ['members', 'screener', 'commodities', 'news', 'ipo']) { if (all[k]) await all[k](); }
 }

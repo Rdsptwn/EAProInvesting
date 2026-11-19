@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          for f in global-screener global-commodities global-news global-ipo; do [ -f assets/data/$f.json ] && git add assets/data/$f.json || true; done
+          for f in global-index-members global-screener global-commodities global-news global-ipo; do [ -f assets/data/$f.json ] && git add assets/data/$f.json || true; done
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
