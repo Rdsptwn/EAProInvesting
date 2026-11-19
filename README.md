@@ -30,13 +30,15 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 | | Modul | Isi |
 |---|---|---|
 | 🏠 | **Beranda** | IHSG, sentimen pasar, inflasi, yield SBN, **BI 7-Day RR Rate**, **Fed Rate**, aktivitas perdagangan (All Market / Regular / Nego), top gainer-loser, berita, kalender korporasi |
-| 🧭 | **Peta Konglo** | Grup konglomerat, kepemilikan emiten, harga, laporan keuangan 2020–2026 |
-| 🌏 | **Pasar Global** | 130+ ETF, reksa dana, dan SBN: klasifikasi pasar, CAGR, return per tahun |
-| 🏦 | **Broker** | Database 91 broker BEI (ritel, asing, lokal) |
+| 🧭 | **Peta Konglo** | Grup konglomerat, kepemilikan emiten, harga, logo, dan laporan keuangan 2020–2026 untuk 348 emiten (termasuk 85 saham likuid non-konglo lewat kotak "Lapkeu emiten lain") |
+| 🌏 | **Pasar Global** | 309 instrumen (ETF, reksa dana, SBN): klasifikasi pasar, CAGR, return per tahun |
+| 🏦 | **Broker** | Database 91 broker BEI aktif (ritel, asing, lokal) dengan label kategori bandarmologi |
 | 📚 | **Edukasi** | Makro dan saham, laporan keuangan, fixed income, bandarmologi, kuis profil risiko |
 | 🧮 | **Tools** | Terminal watchlist dan screener, jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
 
 Tampilan memakai tema **Aurora**: terang atau gelap, kartu kaca, gradien indigo–magenta–aqua, ilustrasi grafik animasi di beranda. Animasi otomatis mati bila perangkat memilih *reduced motion*.
+
+**Penanda status emiten.** Terminal menampilkan badge UMA, suspensi, notasi khusus, dan **HSC** (High Shareholding Concentration; daftar masih dari pengguna dan belum diverifikasi ke BEI/KSEI), dapat difilter lewat "Status emiten".
 
 ## 🔄 Update Data Otomatis
 
