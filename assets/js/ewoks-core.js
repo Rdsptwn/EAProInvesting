@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261119t0304';
+window.EWOKS_ASSET_V = '20261119t0313';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1007,8 +1007,8 @@ function fetchLiveMarketData() {
 }
 
 function getBrokerBadge(kode) {
-    const asing = ['AK', 'BK', 'CS', 'RX', 'KZ', 'CG', 'YU'];
-    const ritel = ['YP', 'PD', 'CC', 'NI', 'XC'];
+    const asing = ['AK', 'BK', 'RX', 'KZ', 'YU', 'AI', 'GW', 'HD', 'DP', 'ZP', 'TP'];
+    const ritel = ['YP', 'PD', 'CC', 'NI', 'XC', 'XL', 'AG', 'SQ'];
     if (asing.includes(kode)) return '<span class="bg-indigo-100 text-indigo-700 text-[9px] px-2 py-1 rounded font-bold ml-2">Asing/Institusi</span>';
     if (ritel.includes(kode)) return '<span class="bg-rose-100 text-rose-700 text-[9px] px-2 py-1 rounded font-bold ml-2">Dominan Ritel</span>';
     return '<span class="bg-slate-100 text-slate-500 text-[9px] px-2 py-1 rounded font-bold ml-2">Standar Lokal</span>';

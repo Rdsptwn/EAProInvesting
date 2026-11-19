@@ -32,7 +32,7 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 | 🏠 | **Beranda** | IHSG, sentimen pasar, inflasi, yield SBN, **BI 7-Day RR Rate**, **Fed Rate**, aktivitas perdagangan (All Market / Regular / Nego), top gainer-loser, berita, kalender korporasi |
 | 🧭 | **Peta Konglo** | Grup konglomerat, kepemilikan emiten, harga, laporan keuangan 2020–2026 |
 | 🌏 | **Pasar Global** | 130+ ETF, reksa dana, dan SBN: klasifikasi pasar, CAGR, return per tahun |
-| 🏦 | **Broker** | Database 94 broker BEI (ritel, asing, lokal) |
+| 🏦 | **Broker** | Database 91 broker BEI (ritel, asing, lokal) |
 | 📚 | **Edukasi** | Makro dan saham, laporan keuangan, fixed income, bandarmologi, kuis profil risiko |
 | 🧮 | **Tools** | Terminal watchlist dan screener, jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
 
