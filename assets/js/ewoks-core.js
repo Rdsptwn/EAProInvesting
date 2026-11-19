@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261120t0450';
+window.EWOKS_ASSET_V = '20261120t0500';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1220,5 +1220,7 @@ window.addEventListener('load', () => {
             ewoksGlobalNavMark(((location.hash || '').replace('#', '').split('-')[0]) === 'saham' ? 'screener' : (location.hash || '#ringkasan').replace('#', ''));
         }
     }
+    function remark() { if (!isGlobal()) return; var h = (location.hash || '').replace('#', ''); ewoksGlobalNavMark(h.indexOf('saham-') === 0 ? 'screener' : (h || 'ringkasan')); }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    window.addEventListener('load', function () { remark(); setTimeout(remark, 400); });
 })();

@@ -178,7 +178,7 @@
             document.getElementById('gs-meta').textContent = d.rows.length + ' saham & ETF · Yahoo Finance · diperbarui ' + ago(d.meta.built) + ' · harga tertunda';
             var secs = {}; d.rows.forEach(function (r) { if (r[11]) secs[r[11]] = (secs[r[11]] || 0) + 1; });
             var box = document.getElementById('gs-sectors');
-            box.innerHTML = '<button class="kg-btn active" data-s="">Semua</button>' + Object.keys(secs).sort().map(function (s) { return '<button class="kg-btn" data-s="' + esc(s) + '">' + esc(s) + '</button>'; }).join('');
+            box.innerHTML = '<button class="kg-btn active shrink-0" data-s="">Semua</button>' + Object.keys(secs).sort().map(function (s) { return '<button class="kg-btn shrink-0" data-s="' + esc(s) + '">' + esc(s) + '</button>'; }).join('');
             box.addEventListener('click', function (e) { var b = e.target.closest('[data-s]'); if (!b) return; S.sector = b.dataset.s; S.shown = 50; box.querySelectorAll('button').forEach(function (x) { x.classList.toggle('active', x === b); }); draw(); });
             document.getElementById('gs-q').addEventListener('input', function (e) { S.q = e.target.value.trim().toLowerCase(); S.shown = 50; draw(); });
             document.getElementById('gs-sort').addEventListener('change', function (e) { S.sort = e.target.value; draw(); });
@@ -280,7 +280,10 @@
     var gfChart = null;
     function fundaHtml(k, f, d, isEtf) {
         if (!f) return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 text-sm text-slate-500">' + (isEtf ? 'ETF/dana tidak punya laporan keuangan seperti perusahaan. Lihat komposisi dan biaya di situs penerbit ETF.' : 'Data fundamental untuk ' + esc(k) + ' belum tersedia (belum masuk sync atau Yahoo tidak punya datanya).') + '</div>';
-        var yrs = d.meta.years, r0 = symInfo(k), price = r0 ? r0[1] : null;
+        var keep = d.meta.years.map(function (y, i) { return ['rev', 'ni', 'asset', 'eq'].some(function (kk) { return Number.isFinite(f[kk][i]); }); });
+        var pick = function (a) { return a.filter(function (_, i) { return keep[i]; }); };
+        var yrs = pick(d.meta.years), r0 = symInfo(k), price = r0 ? r0[1] : null;
+        var F = {}; ['rev', 'gp', 'op', 'ni', 'asset', 'eq', 'debt', 'ocf', 'fcf', 'eps'].forEach(function (kk) { F[kk] = pick(f[kk]); });
         var rev = f.ttm.rev != null ? f.ttm.rev : last(f.rev), ni = f.ttm.ni != null ? f.ttm.ni : last(f.ni);
         var fcf = f.ttm.fcf != null ? f.ttm.fcf : last(f.fcf);
         var pe = price && f.ttm.eps > 0 ? price / f.ttm.eps : null;
@@ -297,12 +300,12 @@
             '<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">' + cards.map(function (c) { return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200"><div class="text-[11px] font-bold text-slate-500">' + c[0] + '</div><div class="text-xl font-black text-slate-900 mt-1">' + c[1] + '</div></div>'; }).join('') + '</div>' +
             '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 mb-5"><div style="height:240px"><canvas id="gf-canvas"></canvas></div></div>' +
             '<div class="overflow-x-auto premium-card glass-card rounded-2xl border border-slate-200"><table class="w-full text-sm"><thead><tr class="text-[11px] text-slate-500"><th class="p-2 text-left">USD miliar</th>' + yrs.map(function (y) { return '<th class="p-2 text-right">' + y + '</th>'; }).join('') + '</tr></thead><tbody>' +
-            row('Pendapatan', f.rev) + row('Laba kotor', f.gp) + row('Laba operasi', f.op) + row('Laba bersih', f.ni) + row('Total aset', f.asset) + row('Ekuitas', f.eq) + row('Total utang', f.debt) + row('Arus kas operasi', f.ocf) + row('Arus kas bebas', f.fcf) + row('EPS (USD)', f.eps, 2) + '</tbody></table></div>' +
+            row('Pendapatan', F.rev) + row('Laba kotor', F.gp) + row('Laba operasi', F.op) + row('Laba bersih', F.ni) + row('Total aset', F.asset) + row('Ekuitas', F.eq) + row('Total utang', F.debt) + row('Arus kas operasi', F.ocf) + row('Arus kas bebas', F.fcf) + row('EPS (USD)', F.eps, 2) + '</tbody></table></div>' +
             '<p class="text-[11px] text-slate-500 mt-3">' + esc(d.meta.source) + ' · diperbarui ' + ago(d.meta.built) + ' · ' + esc(d.meta.unit) + '. ' + esc(d.meta.note || '') + ' Hanya edukasi, bukan rekomendasi.</p>';
     }
     function drawFundaChart(f, d) {
         var cv = document.getElementById('gf-canvas'); if (!cv || !f || !window.Chart) return;
-        try { if (gfChart) gfChart.destroy(); gfChart = new Chart(cv, { type: 'bar', data: { labels: d.meta.years, datasets: [{ label: 'Pendapatan', data: f.rev, backgroundColor: '#6366f1' }, { label: 'Laba bersih', data: f.ni, backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } }); } catch (_) {}
+        try { if (gfChart) gfChart.destroy(); var ix = d.meta.years.map(function (y, i) { return i; }).filter(function (i) { return Number.isFinite(f.rev[i]) || Number.isFinite(f.ni[i]); }); gfChart = new Chart(cv, { type: 'bar', data: { labels: ix.map(function (i) { return d.meta.years[i]; }), datasets: [{ label: 'Pendapatan', data: ix.map(function (i) { return f.rev[i]; }), backgroundColor: '#6366f1' }, { label: 'Laba bersih', data: ix.map(function (i) { return f.ni[i]; }), backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } }); } catch (_) {}
     }
 
     /* ---------- IPO AS ---------- */
