@@ -112,23 +112,27 @@ function parseTable(tblHtml) {
     }
     return out;
 }
-const MEMBER_PAGES = { spx: ['List_of_S%26P_500_companies', 450], ndx: ['Nasdaq-100', 80], dji: ['Dow_Jones_Industrial_Average', 25] };
+const MEMBER_PAGES = { spx: [['List_of_S%26P_500_companies'], 450], ndx: [['List_of_Nasdaq-100_companies', 'Nasdaq-100'], 80], dji: [['List_of_Dow_Jones_Industrial_Average_companies', 'Dow_Jones_Industrial_Average'], 25] };
 async function buildMembers() {
     let old = {};
     try { old = JSON.parse(fs.readFileSync(D('global-index-members.json'), 'utf8')); } catch (_) {}
     const out = { meta: { source: 'Wikipedia (daftar anggota indeks)', built: new Date().toISOString() }, spx: old.spx || [], ndx: old.ndx || [], dji: old.dji || [], info: old.info || {} };
     let changed = false;
-    for (const [k, [page, min]] of Object.entries(MEMBER_PAGES)) {
-        try {
-            const res = await fetch(`https://en.wikipedia.org/wiki/${page}`, { headers: { ...UA, Accept: 'text/html' }, signal: AbortSignal.timeout(30000) });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            const html = await res.text();
-            const list = parseConstituents(html);
-            if (list.length < min) { const tb = html.match(/<table[\s\S]*?<\/table>/gi) || []; const hd = tb.map((x) => ((x.match(/<tr[\s\S]*?<\/tr>/i) || [''])[0].replace(/<[^>]+>/g, '|').replace(/\s+/g, ' ').slice(0, 90))).filter((x) => /symbol|ticker/i.test(x)); throw new Error('hanya ' + list.length + ' baris (min ' + min + '); html ' + html.length + ' byte, ' + tb.length + ' tabel; header: ' + JSON.stringify(hd.slice(0, 3)) + '; sampel: ' + JSON.stringify((() => { const m = html.match(/(ADBE|AMGN)[\s\S]{0,200}/); const pos = m ? html.indexOf(m[0]) : -1; return pos < 0 ? 'tak ditemukan' : html.slice(Math.max(0, pos - 700), pos + 200).replace(/\s+/g, ' '); })())); }
-            out[k] = list.map((x) => x.t);
-            list.forEach((x) => { out.info[x.t] = { n: x.n || (out.info[x.t] || {}).n || '', s: x.s || (out.info[x.t] || {}).s || '' }; });
-            changed = true; console.log('members', k, list.length);
-        } catch (e) { console.error('members', k, e.message, '— pakai data lama'); }
+    for (const [k, [pages, min]] of Object.entries(MEMBER_PAGES)) {
+        let ok = false;
+        for (const page of pages) {
+            try {
+                const res = await fetch(`https://en.wikipedia.org/wiki/${page}`, { headers: { ...UA, Accept: 'text/html' }, signal: AbortSignal.timeout(30000) });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const list = parseConstituents(await res.text());
+                if (list.length < min) throw new Error('hanya ' + list.length + ' baris (min ' + min + ')');
+                out[k] = list.map((x) => x.t);
+                list.forEach((x) => { out.info[x.t] = { n: x.n || (out.info[x.t] || {}).n || '', s: x.s || (out.info[x.t] || {}).s || '' }; });
+                changed = true; ok = true; console.log('members', k, page, list.length);
+                break;
+            } catch (e) { console.error('members', k, page, e.message); }
+        }
+        if (!ok) console.error('members', k, '— pakai data lama');
     }
     writeSafe('global-index-members.json', out, changed || out.spx.length > 0, 'members');
 }
