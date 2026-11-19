@@ -115,65 +115,30 @@
     var root = document.getElementById('page-global');
     if (!root) return;
 
-    /* ---------- Modal grafik harga (Worker /chart?g=1) ---------- */
-    var RANGES = [['1d', '5m', '1H'], ['5d', '15m', '5H'], ['1mo', '1d', '1B'], ['3mo', '1d', '3B']];
-    var pcChart = null, pcSym = '', pcRange = 0;
-    function openChart(sym, name) {
-        pcSym = sym; pcRange = 0;
-        var m = document.getElementById('gp-modal');
-        if (!m) {
-            m = document.createElement('div'); m.id = 'gp-modal';
-            m.className = 'fixed inset-0 z-[100] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4';
-            m.innerHTML = '<div class="premium-card glass-card rounded-3xl w-full max-w-3xl p-5 border border-slate-200 relative" role="dialog" aria-modal="true" aria-labelledby="gp-title">' +
-                '<button id="gp-close" aria-label="Tutup" class="absolute top-3 right-4 text-2xl text-slate-400 hover:text-slate-700">&times;</button>' +
-                '<div id="gp-title" class="font-black text-xl text-slate-900"></div><div id="gp-sub" class="text-sm text-slate-500 mb-3"></div>' +
-                '<div id="gp-tabs" class="flex gap-2 mb-3">' + RANGES.map(function (r, i) { return '<button class="kg-btn' + (i ? '' : ' active') + '" data-r="' + i + '">' + r[2] + '</button>'; }).join('') + '</div>' +
-                '<div style="height:300px;position:relative"><canvas id="gp-canvas"></canvas><div id="gp-msg" class="absolute inset-0 flex items-center justify-center text-sm text-slate-500 text-center px-6"></div></div>' +
-                '<div class="mt-3 flex gap-4 text-xs font-bold"><a id="gp-tv" target="_blank" rel="noopener" class="text-blue-600">Buka di TradingView</a><a id="gp-yh" target="_blank" rel="noopener" class="text-slate-500">Yahoo Finance</a></div></div>';
-            document.body.appendChild(m);
-            m.addEventListener('click', function (e) { if (e.target === m || e.target.id === 'gp-close') closeChart(); });
-            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeChart(); });
-            m.querySelector('#gp-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-r]'); if (!b) return; pcRange = +b.dataset.r; m.querySelectorAll('#gp-tabs button').forEach(function (x) { x.classList.toggle('active', x === b); }); loadChart(); });
-        }
-        m.classList.remove('hidden');
-        m.querySelectorAll('#gp-tabs button').forEach(function (x, i) { x.classList.toggle('active', i === 0); });
-        document.getElementById('gp-title').textContent = sym + (name ? ' · ' + name : '');
-        document.getElementById('gp-tv').href = 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym.replace('-', '.'));
-        document.getElementById('gp-yh').href = yh(sym);
-        loadChart();
-    }
-    function closeChart() { var m = document.getElementById('gp-modal'); if (m) m.classList.add('hidden'); }
-    function loadChart() {
-        var api = liveApi(), msg = document.getElementById('gp-msg'), r = RANGES[pcRange], sym = pcSym;
-        msg.textContent = 'Memuat grafik…';
-        if (!api) { msg.textContent = 'Grafik butuh Worker live. Gunakan tombol TradingView di bawah.'; return; }
-        fetch(api + '/chart?g=1&s=' + encodeURIComponent(sym) + '&range=' + r[0] + '&interval=' + r[1], { cache: 'no-store' }).then(function (x) { return x.json(); }).then(function (d) {
-            if (sym !== pcSym || !d.ok || !d.c || d.c.length < 2) throw new Error('kosong');
-            msg.textContent = '';
-            var labels = d.t.map(function (t) { var dt = new Date(t * 1000); return r[0] === '1d' || r[0] === '5d' ? dt.toLocaleString('id-ID', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : dt.toLocaleDateString('id-ID', { day: '2-digit', month: 'short' }); });
-            var up = d.c[d.c.length - 1] >= (d.prev || d.c[0]);
-            var col = up ? '#10b981' : '#f43f5e';
-            document.getElementById('gp-sub').innerHTML = fmt(d.price) + ' USD · ' + pct(d.prev ? (d.price - d.prev) / d.prev * 100 : null) + ' vs penutupan lalu';
-            if (pcChart) pcChart.destroy();
-            if (!window.Chart) { msg.textContent = 'Pustaka grafik belum termuat.'; return; }
-            pcChart = new Chart(document.getElementById('gp-canvas'), { type: 'line', data: { labels: labels, datasets: [{ data: d.c, borderColor: col, backgroundColor: col + '22', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15 }] },
-                options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } }, interaction: { mode: 'index', intersect: false }, scales: { x: { ticks: { maxTicksLimit: 6, maxRotation: 0 }, grid: { display: false } }, y: { ticks: { maxTicksLimit: 6 } } } } });
-        }).catch(function () { msg.textContent = 'Grafik belum tersedia (Worker belum v7 atau pasar tutup). Pakai tombol TradingView di bawah.'; });
-    }
-    root.addEventListener('click', function (e) { var c = e.target.closest('[data-chart]'); if (c) { e.preventDefault(); openChart(c.dataset.chart, c.dataset.name || ''); } });
-
-    /* ---------- Tab ---------- */
-    var TABS = ['ringkasan', 'screener', 'funda', 'ipo', 'berita'];
+    /* ---------- Tab (menu ada di header; halaman ini mengikuti #hash) ---------- */
+    var TABS = ['ringkasan', 'screener', 'ipo', 'berita', 'detail'];
     var loaded = {};
-    function show(tab) {
-        if (TABS.indexOf(tab) < 0) tab = 'ringkasan';
-        TABS.forEach(function (t) { document.getElementById('g-' + t).classList.toggle('hidden', t !== tab); });
-        document.querySelectorAll('#g-tabs [data-tab]').forEach(function (b) { b.classList.toggle('active', b.dataset.tab === tab); });
-        try { history.replaceState(null, '', '#' + tab); } catch (_) {}
-        if (!loaded[tab]) { loaded[tab] = true; ({ ringkasan: initSummary, screener: initScreener, funda: initFunda, ipo: initIpo, berita: initNews })[tab](); }
+    function parseHash() {
+        var h = (location.hash || '').replace('#', '');
+        var m = h.match(/^saham-(.+)$/);
+        if (m) return { tab: 'detail', sym: decodeURIComponent(m[1]).toUpperCase() };
+        if (h === 'funda') h = 'screener';
+        return { tab: TABS.indexOf(h) >= 0 && h !== 'detail' ? h : 'ringkasan' };
     }
-    document.querySelectorAll('#g-tabs [data-tab]').forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tab); }); });
-    root.addEventListener('click', function (e) { var g = e.target.closest('[data-goto]'); if (g) show(g.dataset.goto); });
+    function show() {
+        var st = parseHash(), tab = st.tab;
+        TABS.forEach(function (t) { document.getElementById('g-' + t).classList.toggle('hidden', t !== tab); });
+        document.getElementById('g-heading').classList.toggle('hidden', tab === 'detail');
+        if (window.ewoksGlobalNavMark) ewoksGlobalNavMark(tab === 'detail' ? 'screener' : tab);
+        window.scrollTo(0, 0);
+        if (tab === 'detail') { initDetail(st.sym); return; }
+        if (!loaded[tab]) { loaded[tab] = true; ({ ringkasan: initSummary, screener: initScreener, ipo: initIpo, berita: initNews })[tab](); }
+    }
+    window.addEventListener('hashchange', show);
+    root.addEventListener('click', function (e) {
+        var g = e.target.closest('[data-goto]'); if (g) { e.preventDefault(); location.hash = g.dataset.goto; return; }
+        var c = e.target.closest('[data-chart]'); if (c) { e.preventDefault(); location.hash = 'saham-' + encodeURIComponent(c.dataset.chart); }
+    });
 
     /* ---------- Ringkasan ---------- */
     function initSummary() {
@@ -189,7 +154,7 @@
             window.__gRows = d.rows; startLive();
             function paintMovers() {
             var rows = d.rows.filter(function (r) { return r[11] !== 'ETF' && Number.isFinite(r[3]); }).sort(function (a, b) { return b[3] - a[3]; });
-            var li = function (r) { return '<li class="flex justify-between gap-2"><a href="' + yh(r[0]) + '" target="_blank" rel="noopener" class="font-bold text-slate-800 hover:text-blue-600">' + esc(r[0]) + '</a>' + pct(r[3]) + '</li>'; };
+            var li = function (r) { return '<li class="flex justify-between gap-2"><a href="#" data-chart="' + esc(r[0]) + '" class="font-bold text-slate-800 hover:text-blue-600">' + esc(r[0]) + '</a>' + pct(r[3]) + '</li>'; };
             document.getElementById('g-movers').innerHTML = '<div><div class="text-[11px] font-bold text-emerald-600 mb-1">Naik</div><ul class="space-y-1">' + rows.slice(0, 6).map(li).join('') + '</ul></div><div><div class="text-[11px] font-bold text-rose-600 mb-1">Turun</div><ul class="space-y-1">' + rows.slice(-6).reverse().map(li).join('') + '</ul></div>';
             }
             paintMovers(); onLive.push(paintMovers);
@@ -259,52 +224,85 @@
                 '<td class="p-3 text-right font-bold">' + fmt(r[1]) + '</td><td class="p-3 text-right">' + pct(r[3]) + '</td>' +
                 '<td class="p-3 text-right hidden sm:table-cell">' + pct(r[4]) + '</td><td class="p-3 text-right hidden md:table-cell">' + rng + '</td>' +
                 '<td class="p-3 text-right hidden md:table-cell text-[11px] text-slate-500">' + (r[7] ? (r[7] >= 1e6 ? (r[7] / 1e6).toFixed(1) + ' jt' : Math.round(r[7] / 1e3) + ' rb') : '–') + '</td>' +
-                '<td class="p-3 text-right whitespace-nowrap"><a class="text-xs font-bold text-blue-600" href="#" data-chart="' + esc(r[0]) + '" data-name="' + esc(r[10]) + '">Grafik</a> <a class="text-xs font-bold text-slate-500 ml-2" target="_blank" rel="noopener" href="' + yh(r[0]) + '">Yahoo</a></td></tr>';
+                '<td class="p-3 text-right whitespace-nowrap"><a class="text-xs font-bold text-blue-600" href="#" data-chart="' + esc(r[0]) + '" data-name="' + esc(r[10]) + '">Detail</a> <a class="text-xs font-bold text-slate-500 ml-2" target="_blank" rel="noopener" href="' + yh(r[0]) + '">Yahoo</a></td></tr>';
         }).join('') || '<tr><td colspan="8" class="p-6 text-center text-slate-500">Tidak ada yang cocok.</td></tr>';
         document.getElementById('gs-more').classList.toggle('hidden', list.length <= S.shown);
     }
 
-    /* ---------- Funda saham AS ---------- */
-    var gfChart = null;
-    function initFunda() {
-        get('global-screener.json').then(function (r) { window.__gRows = r.rows; startLive(); }).catch(function () {});
-        get('global-funda.json').then(function (d) {
-            var keys = Object.keys(d.t).sort();
-            document.getElementById('gf-list').innerHTML = keys.map(function (k) { return '<option value="' + esc(k) + '">' + esc(d.t[k].n) + '</option>'; }).join('');
-            document.getElementById('gf-note').textContent = d.meta.source + ' · diperbarui ' + ago(d.meta.built) + ' · ' + d.meta.unit + '. ' + (d.meta.note || '') + ' Hanya edukasi, bukan rekomendasi.';
-            var inp = document.getElementById('gf-q');
-            function pick() { var k = inp.value.trim().toUpperCase(); if (d.t[k]) showFunda(d, k); }
-            inp.addEventListener('input', pick); inp.addEventListener('change', pick);
-            var h = (location.hash.match(/funda:([A-Z.-]+)/) || [])[1]; if (h && d.t[h]) { inp.value = h; pick(); }
-        }).catch(function () { document.getElementById('gf-body').innerHTML = '<div class="text-sm text-slate-500 premium-card glass-card rounded-2xl p-4 border border-slate-200">Data funda belum tersedia. Jalankan workflow <b>Sync global funda</b> di GitHub Actions.</div>'; });
-    }
+    /* ---------- Detail saham: grafik + fundamental dalam satu halaman ---------- */
+    var RANGES = [['1d', '5m', '1H'], ['5d', '15m', '5H'], ['1mo', '1d', '1B'], ['3mo', '1d', '3B']];
+    var pcChart = null, pcSym = '', pcRange = 0;
     function last(a) { for (var i = a.length - 1; i >= 0; i--) if (Number.isFinite(a[i])) return a[i]; return null; }
     function ratio(a, b) { return Number.isFinite(a) && Number.isFinite(b) && b !== 0 ? a / b * 100 : null; }
-    function showFunda(d, k) {
-        var f = d.t[k], yrs = d.meta.years;
-        var price = null; if (window.__gRows) window.__gRows.forEach(function (r) { if (r[0] === k) price = r[1]; });
+    function symInfo(sym) { var o = null; (window.__gRows || []).forEach(function (r) { if (r[0] === sym) o = r; }); return o; }
+    function initDetail(sym) {
+        var box = document.getElementById('g-detail');
+        pcSym = sym; pcRange = 0;
+        Promise.all([get('global-screener.json').then(function (r) { window.__gRows = r.rows; startLive(); }).catch(function () {}), get('global-funda.json').catch(function () { return null; })]).then(function (res) {
+            var fd = res[1], row = symInfo(sym), f = fd && fd.t && fd.t[sym];
+            var name = (row && row[10]) || (f && f.n) || '', isEtf = row && row[11] === 'ETF';
+            box.innerHTML =
+                '<button data-goto="screener" class="text-sm font-bold text-blue-600 mb-3">← Kembali ke screener</button>' +
+                '<div class="flex flex-wrap items-end gap-x-4 gap-y-1 mb-1"><h2 class="text-2xl md:text-3xl font-black text-slate-900">' + esc(sym) + '</h2><span class="text-slate-500">' + esc(name) + (row && row[11] ? ' · ' + esc(row[11]) : '') + '</span></div>' +
+                '<div id="gd-price" class="mb-4 text-sm"></div>' +
+                '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 mb-5">' +
+                '<div id="gp-tabs" class="flex gap-2 mb-3">' + RANGES.map(function (r, i) { return '<button class="kg-btn' + (i ? '' : ' active') + '" data-r="' + i + '">' + r[2] + '</button>'; }).join('') + '</div>' +
+                '<div style="height:300px;position:relative"><canvas id="gp-canvas"></canvas><div id="gp-msg" class="absolute inset-0 flex items-center justify-center text-sm text-slate-500 text-center px-6"></div></div>' +
+                '<div class="mt-3 flex gap-4 text-xs font-bold"><a target="_blank" rel="noopener" class="text-blue-600" href="https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym.replace('-', '.')) + '">Chart lengkap di TradingView</a><a target="_blank" rel="noopener" class="text-slate-500" href="' + yh(sym) + '">Yahoo Finance</a></div></div>' +
+                '<div id="gd-funda"></div>';
+            box.querySelector('#gp-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-r]'); if (!b) return; pcRange = +b.dataset.r; box.querySelectorAll('#gp-tabs button').forEach(function (x) { x.classList.toggle('active', x === b); }); loadChart(); });
+            paintPrice(); loadChart();
+            document.getElementById('gd-funda').innerHTML = fundaHtml(sym, f, fd, isEtf);
+            drawFundaChart(f, fd);
+            onLive.push(function () { if (pcSym === sym && !document.getElementById('g-detail').classList.contains('hidden')) { paintPrice(); var fe = document.getElementById('gd-funda'); if (fe && f) fe.innerHTML = fundaHtml(sym, f, fd, isEtf); drawFundaChart(f, fd); } });
+        });
+    }
+    function paintPrice() {
+        var r = symInfo(pcSym), el = document.getElementById('gd-price'); if (!el) return;
+        el.innerHTML = r ? '<span class="text-3xl font-black text-slate-900">$' + fmt(r[1]) + '</span> <span class="ml-2">' + pct(r[3]) + '</span> <span class="text-[11px] text-slate-500 ml-2">' + (liveBadge() || 'snapshot') + '</span>' : '';
+    }
+    function loadChart() {
+        var api = liveApi(), msg = document.getElementById('gp-msg'), r = RANGES[pcRange], sym = pcSym;
+        if (!msg) return;
+        msg.textContent = 'Memuat grafik…';
+        if (!api) { msg.textContent = 'Grafik butuh Worker live. Pakai tombol TradingView di bawah.'; return; }
+        fetch(api + '/chart?g=1&s=' + encodeURIComponent(sym) + '&range=' + r[0] + '&interval=' + r[1], { cache: 'no-store' }).then(function (x) { return x.json(); }).then(function (d) {
+            if (sym !== pcSym || !d.ok || !d.c || d.c.length < 2) throw new Error('kosong');
+            msg.textContent = '';
+            var labels = d.t.map(function (t) { var dt = new Date(t * 1000); return r[0] === '1d' || r[0] === '5d' ? dt.toLocaleString('id-ID', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : dt.toLocaleDateString('id-ID', { day: '2-digit', month: 'short' }); });
+            var col = d.c[d.c.length - 1] >= (d.prev || d.c[0]) ? '#10b981' : '#f43f5e';
+            if (pcChart) pcChart.destroy();
+            if (!window.Chart) { msg.textContent = 'Pustaka grafik belum termuat.'; return; }
+            pcChart = new Chart(document.getElementById('gp-canvas'), { type: 'line', data: { labels: labels, datasets: [{ data: d.c, borderColor: col, backgroundColor: col + '22', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15 }] },
+                options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } }, interaction: { mode: 'index', intersect: false }, scales: { x: { ticks: { maxTicksLimit: 6, maxRotation: 0 }, grid: { display: false } }, y: { ticks: { maxTicksLimit: 6 } } } } });
+        }).catch(function () { msg.textContent = 'Grafik belum tersedia (Worker belum v7 atau pasar tutup). Pakai tombol TradingView di bawah.'; });
+    }
+    var gfChart = null;
+    function fundaHtml(k, f, d, isEtf) {
+        if (!f) return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 text-sm text-slate-500">' + (isEtf ? 'ETF/dana tidak punya laporan keuangan seperti perusahaan. Lihat komposisi dan biaya di situs penerbit ETF.' : 'Data fundamental untuk ' + esc(k) + ' belum tersedia (belum masuk sync atau Yahoo tidak punya datanya).') + '</div>';
+        var yrs = d.meta.years, r0 = symInfo(k), price = r0 ? r0[1] : null;
         var rev = f.ttm.rev != null ? f.ttm.rev : last(f.rev), ni = f.ttm.ni != null ? f.ttm.ni : last(f.ni);
+        var fcf = f.ttm.fcf != null ? f.ttm.fcf : last(f.fcf);
         var pe = price && f.ttm.eps > 0 ? price / f.ttm.eps : null;
         var cards = [
             ['Pendapatan' + (f.ttm.rev != null ? ' (TTM)' : ''), rev != null ? '$' + fmt(rev, 1) + ' M' : '–'],
             ['Laba bersih' + (f.ttm.ni != null ? ' (TTM)' : ''), ni != null ? '$' + fmt(ni, 1) + ' M' : '–'],
             ['Margin laba bersih', ratio(ni, rev) != null ? fmt(ratio(ni, rev), 1) + '%' : '–'],
             ['ROE', ratio(last(f.ni), last(f.eq)) != null ? fmt(ratio(last(f.ni), last(f.eq)), 1) + '%' : '–'],
-            ['Arus kas bebas', (f.ttm.fcf != null ? f.ttm.fcf : last(f.fcf)) != null ? '$' + fmt(f.ttm.fcf != null ? f.ttm.fcf : last(f.fcf), 1) + ' M' : '–'],
-            ['P/E (harga ÷ EPS TTM)', pe != null ? fmt(pe, 1) + '×' : 'n.a.']
+            ['Arus kas bebas', fcf != null ? '$' + fmt(fcf, 1) + ' M' : '–'],
+            ['P/E (harga ÷ EPS TTM)', pe != null ? fmt(pe, 1) + '×' : 'n.a. (rugi / tidak ada)']
         ];
         function row(label, arr, dd) { return '<tr class="border-t border-slate-100"><td class="p-2 font-bold text-slate-700">' + label + '</td>' + arr.map(function (v) { return '<td class="p-2 text-right">' + (Number.isFinite(v) ? fmt(v, dd == null ? 1 : dd) : '–') + '</td>'; }).join('') + '</tr>'; }
-        document.getElementById('gf-body').innerHTML =
-            '<div class="mb-3 flex items-center gap-3 flex-wrap"><span class="text-2xl font-black text-slate-900">' + esc(k) + '</span> <span class="text-slate-500">' + esc(f.n) + ' · ' + esc(f.s || '') + '</span><button data-chart="' + esc(k) + '" data-name="' + esc(f.n) + '" class="kg-btn">Grafik harga</button></div>' +
+        return '<h3 class="font-extrabold text-slate-900 mb-3">Fundamental</h3>' +
             '<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">' + cards.map(function (c) { return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200"><div class="text-[11px] font-bold text-slate-500">' + c[0] + '</div><div class="text-xl font-black text-slate-900 mt-1">' + c[1] + '</div></div>'; }).join('') + '</div>' +
             '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 mb-5"><div style="height:240px"><canvas id="gf-canvas"></canvas></div></div>' +
             '<div class="overflow-x-auto premium-card glass-card rounded-2xl border border-slate-200"><table class="w-full text-sm"><thead><tr class="text-[11px] text-slate-500"><th class="p-2 text-left">USD miliar</th>' + yrs.map(function (y) { return '<th class="p-2 text-right">' + y + '</th>'; }).join('') + '</tr></thead><tbody>' +
-            row('Pendapatan', f.rev) + row('Laba kotor', f.gp) + row('Laba operasi', f.op) + row('Laba bersih', f.ni) + row('Total aset', f.asset) + row('Ekuitas', f.eq) + row('Total utang', f.debt) + row('Arus kas operasi', f.ocf) + row('Arus kas bebas', f.fcf) + row('EPS (USD)', f.eps, 2) + '</tbody></table></div>';
-        try {
-            if (gfChart) gfChart.destroy();
-            if (window.Chart) gfChart = new Chart(document.getElementById('gf-canvas'), { type: 'bar', data: { labels: yrs, datasets: [{ label: 'Pendapatan', data: f.rev, backgroundColor: '#6366f1' }, { label: 'Laba bersih', data: f.ni, backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } });
-        } catch (_) {}
-        try { history.replaceState(null, '', '#funda:' + k); } catch (_) {}
+            row('Pendapatan', f.rev) + row('Laba kotor', f.gp) + row('Laba operasi', f.op) + row('Laba bersih', f.ni) + row('Total aset', f.asset) + row('Ekuitas', f.eq) + row('Total utang', f.debt) + row('Arus kas operasi', f.ocf) + row('Arus kas bebas', f.fcf) + row('EPS (USD)', f.eps, 2) + '</tbody></table></div>' +
+            '<p class="text-[11px] text-slate-500 mt-3">' + esc(d.meta.source) + ' · diperbarui ' + ago(d.meta.built) + ' · ' + esc(d.meta.unit) + '. ' + esc(d.meta.note || '') + ' Hanya edukasi, bukan rekomendasi.</p>';
+    }
+    function drawFundaChart(f, d) {
+        var cv = document.getElementById('gf-canvas'); if (!cv || !f || !window.Chart) return;
+        try { if (gfChart) gfChart.destroy(); gfChart = new Chart(cv, { type: 'bar', data: { labels: d.meta.years, datasets: [{ label: 'Pendapatan', data: f.rev, backgroundColor: '#6366f1' }, { label: 'Laba bersih', data: f.ni, backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } }); } catch (_) {}
     }
 
     /* ---------- IPO AS ---------- */
@@ -337,5 +335,5 @@
         }).catch(function () { document.getElementById('gn-body').innerHTML = '<div class="text-sm text-slate-500 premium-card glass-card rounded-2xl p-4 border border-slate-200 col-span-full">Berita belum tersedia. Jalankan workflow <b>Sync global</b> di GitHub Actions.</div>'; });
     }
 
-    var h0 = (location.hash || '').replace('#', '').split(':')[0]; show(h0 || 'ringkasan');
+    show();
 })();

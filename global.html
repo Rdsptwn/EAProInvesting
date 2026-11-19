@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261119t1938">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261119t1938">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261120t0450">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261120t0450">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="global">
 
@@ -147,18 +147,9 @@
 
     <main class="flex-grow max-w-[1600px] w-full mx-auto px-4 md:px-6 py-6 md:py-8">
         <section id="page-global" class="max-w-7xl mx-auto">
-            <div class="mb-6">
+            <div id="g-heading" class="mb-6">
                 <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-900">Mode Global</h2>
                 <p class="text-sm text-slate-500 mt-1 max-w-2xl">Saham &amp; ETF Amerika, komoditas, indeks dunia, IPO luar negeri, dan berita internasional. Data dari Yahoo Finance, Nasdaq, dan RSS publik; tertunda dan hanya untuk edukasi.</p>
-            </div>
-
-            <div id="g-tabs" class="flex gap-1 overflow-x-auto border-b border-slate-200 mb-6" role="tablist">
-                <button class="tp-tab active" data-tab="ringkasan" role="tab">Ringkasan</button>
-                <button class="tp-tab" data-tab="screener" role="tab">Screener saham AS</button>
-                <button class="tp-tab" data-tab="funda" role="tab">Funda saham AS</button>
-                <button class="tp-tab" data-tab="ipo" role="tab">IPO AS</button>
-                <button class="tp-tab" data-tab="berita" role="tab">Berita dunia</button>
-                <a class="tp-tab" href="pasar-global.html">ETF, Reksa Dana &amp; SBN</a>
             </div>
 
             <div id="g-ringkasan">
@@ -166,7 +157,7 @@
                 <div id="g-commodities" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"></div>
                 <h3 class="font-extrabold text-slate-900 mb-3">Indeks, kurs &amp; kripto</h3>
                 <div id="g-indices" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8"></div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                     <div class="premium-card glass-card rounded-3xl p-5 border border-slate-200">
                         <h3 class="font-extrabold text-slate-900 mb-3">Top naik &amp; turun hari ini</h3>
                         <div id="g-movers" class="grid grid-cols-2 gap-4 text-sm"></div>
@@ -198,14 +189,7 @@
                 <button id="gs-more" class="hidden mt-4 mx-auto block px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold">Tampilkan lebih banyak</button>
             </div>
 
-            <div id="g-funda" class="hidden">
-                <div class="flex flex-col md:flex-row gap-3 mb-4">
-                    <input id="gf-q" list="gf-list" type="search" placeholder="Ketik kode (TSLA, AAPL, NVDA...)" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm" autocomplete="off">
-                    <datalist id="gf-list"></datalist>
-                </div>
-                <div id="gf-body"><div class="text-sm text-slate-500">Pilih saham untuk melihat laporan keuangan tahunan, margin, ROE, dan P/E.</div></div>
-                <p id="gf-note" class="text-[11px] text-slate-500 mt-4"></p>
-            </div>
+            <div id="g-detail" class="hidden"></div>
 
             <div id="g-ipo" class="hidden">
                 <p class="text-xs text-slate-500 mb-4">Kalender IPO Amerika dari Nasdaq. Jadwal dan harga bisa berubah. Baca prospektus di SEC EDGAR sebelum membeli. IPO AS umumnya baru bisa dibeli lewat broker/aplikasi yang menyediakan akses IPO.</p>
@@ -297,7 +281,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261119t1938"></script>
-    <script src="assets/js/pages/page-global.js?v=20261119t1938"></script>
+    <script src="assets/js/ewoks-core.js?v=20261120t0450"></script>
+    <script src="assets/js/pages/page-global.js?v=20261120t0450"></script>
 </body>
 </html>
