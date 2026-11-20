@@ -291,3 +291,6 @@ body .glass-card[class*="bg-gradient-to-b"]:not([class*="bg-gradient-to-br"]) { 
 .mode-switch button:focus-visible{outline:2px solid #6366f1;outline-offset:2px}
 body.dark-mode-override .mode-switch{background:rgba(255,255,255,.1)}
 body.dark-mode-override .mode-switch button:not(.on){color:#cbd5e1}
+@media (max-width:640px){.mode-switch{margin-right:.25rem}.mode-switch button{font-size:.62rem;padding:.28rem .45rem}}
+html[data-mode="bitcoin"] .mode-switch button.on{background:linear-gradient(135deg,#f59e0b,#ea580c);box-shadow:0 4px 14px -4px rgba(245,158,11,.6)}
+html[data-mode="forex"] .mode-switch button.on{background:linear-gradient(135deg,#0d9488,#0891b2);box-shadow:0 4px 14px -4px rgba(13,148,136,.6)}

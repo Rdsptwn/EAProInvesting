@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261120t1955';
+window.EWOKS_ASSET_V = '20261120t2030';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1180,47 +1180,59 @@ window.addEventListener('load', () => {
     };
 })();
 
-/* ---- Mode IHSG | Global: switcher + menu atas yang ikut berganti ---- */
+/* ---- Mode IHSG | Global | Bitcoin | Forex: switcher + menu atas yang ikut berganti ---- */
 (function () {
-    var GNAV = [['ringkasan', 'fa-globe', 'Ringkasan'], ['screener', 'fa-chart-line', 'Saham AS'], ['ipo', 'fa-rocket', 'IPO AS'], ['berita', 'fa-newspaper', 'Berita'], ['invest', 'fa-coins', 'Investasi Global']];
-    var GLOBAL_PAGES = ['global', 'pasar-global'];
+    var NAVS = {
+        global: [['ringkasan', 'fa-globe', 'Ringkasan'], ['screener', 'fa-chart-line', 'Saham AS'], ['ipo', 'fa-rocket', 'IPO AS'], ['berita', 'fa-newspaper', 'Berita'], ['invest', 'fa-coins', 'Investasi Global']],
+        bitcoin: [['ringkasan', 'fa-bitcoin-sign', 'Ringkasan'], ['koin', 'fa-coins', 'Koin'], ['emas', 'fa-ring', 'Emas Digital'], ['berita', 'fa-newspaper', 'Berita']],
+        forex: [['ringkasan', 'fa-earth-asia', 'Ringkasan'], ['pasangan', 'fa-arrow-right-arrow-left', 'Pasangan'], ['emas', 'fa-ring', 'XAU/USD'], ['kalkulator', 'fa-calculator', 'Kalkulator Pip']]
+    };
+    var MODES = [['idx', 'IHSG', 'index.html'], ['global', 'Global', 'global.html'], ['bitcoin', 'Bitcoin', 'bitcoin.html'], ['forex', 'Forex', 'forex.html']];
+    var PAGE_MODE = { home: 'idx', global: 'global', 'pasar-global': 'global', bitcoin: 'bitcoin', forex: 'forex' };
     function page() { return document.body && document.body.getAttribute('data-page'); }
-    function isGlobal() { return GLOBAL_PAGES.indexOf(page()) >= 0; }
+    function mode() { return PAGE_MODE[page()] || 'idx'; }
     var base = function () { return (window.EwoksSiteContext && EwoksSiteContext.basePath) || ''; };
     window.gNav = function (t) {
         if (t === 'invest') { location.href = base() + 'pasar-global.html'; return; }
-        if (page() === 'global') { location.hash = t; } else { location.href = base() + 'global.html#' + t; }
+        var m = mode(), file = m === 'global' ? 'global.html' : m + '.html';
+        if (page() === m) { location.hash = t; } else { location.href = base() + file + '#' + t; }
     };
     window.ewoksGlobalNavMark = function (tab) {
         var cur = page() === 'pasar-global' ? 'invest' : tab;
         document.querySelectorAll('[data-gnav]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-gnav') === cur); });
     };
-    function switcher(g) {
-        return '<div class="mode-switch" role="group" aria-label="Pilih pasar">' +
-            '<button type="button" class="' + (g ? '' : 'on') + '" onclick="location.href=\'' + base() + 'index.html\'" aria-pressed="' + !g + '">IHSG</button>' +
-            '<button type="button" class="' + (g ? 'on' : '') + '" onclick="location.href=\'' + base() + 'global.html\'" aria-pressed="' + g + '">Global</button></div>';
+    function switcher(m) {
+        return '<div class="mode-switch" role="group" aria-label="Pilih pasar">' + MODES.map(function (x) {
+            return '<button type="button" class="' + (x[0] === m ? 'on' : '') + '" onclick="location.href=\'' + base() + x[2] + '\'" aria-pressed="' + (x[0] === m) + '">' + x[1] + '</button>';
+        }).join('') + '</div>';
     }
     function init() {
-        var g = isGlobal();
-        try { localStorage.setItem('ewoks_mode', g ? 'global' : 'idx'); } catch (_) {}
-        var m = document.querySelector('header.md\\:hidden .flex.items-center.justify-between');
-        if (m && !m.querySelector('.mode-switch')) { var btn = m.querySelector('button'); var w = document.createElement('div'); w.innerHTML = switcher(g); if (btn) m.insertBefore(w.firstChild, btn); }
+        var m = mode(), nav = NAVS[m];
+        try { localStorage.setItem('ewoks_mode', m); } catch (_) {}
+        document.documentElement.setAttribute('data-mode', m);
+        var mh = document.querySelector('header.md\\:hidden .flex.items-center.justify-between');
+        if (mh && !mh.querySelector('.mode-switch')) { var btn = mh.querySelector('button'); var w = document.createElement('div'); w.innerHTML = switcher(m); if (btn) mh.insertBefore(w.firstChild, btn); }
         var d = document.querySelector('header.hidden.md\\:block nav');
         if (d) {
-            if (g) {
-                d.innerHTML = switcher(true) + GNAV.map(function (n) { return '<button onclick="gNav(\'' + n[0] + '\')" data-gnav="' + n[0] + '" class="nav-link"><i class="fas ' + n[1] + '"></i> ' + n[2] + '</button>'; }).join('') +
+            if (nav) {
+                d.innerHTML = switcher(m) + nav.map(function (n) { return '<button onclick="gNav(\'' + n[0] + '\')" data-gnav="' + n[0] + '" class="nav-link"><i class="fas ' + n[1] + '"></i> ' + n[2] + '</button>'; }).join('') +
                     '<button onclick="toggleDarkMode()" class="ml-2 w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors" aria-label="Mode gelap"><i class="fas fa-moon" id="theme-icon"></i></button>';
-            } else if (!d.querySelector('.mode-switch')) { var w2 = document.createElement('div'); w2.innerHTML = switcher(false); d.insertBefore(w2.firstChild, d.firstChild); }
+            } else if (!d.querySelector('.mode-switch')) { var w2 = document.createElement('div'); w2.innerHTML = switcher('idx'); d.insertBefore(w2.firstChild, d.firstChild); }
         }
-        if (g) {
+        if (nav) {
             var bn = document.querySelector('.bottom-nav');
-            if (bn) bn.innerHTML = GNAV.map(function (n) { return '<button onclick="gNav(\'' + n[0] + '\')" data-gnav="' + n[0] + '" class="mobile-nav-btn flex-1"><i class="fas ' + n[1] + ' text-lg"></i><span class="text-[9px] font-black uppercase">' + (n[0] === 'invest' ? 'Invest' : n[2]) + '</span></button>'; }).join('');
+            if (bn) bn.innerHTML = nav.map(function (n) { return '<button onclick="gNav(\'' + n[0] + '\')" data-gnav="' + n[0] + '" class="mobile-nav-btn flex-1"><i class="fas ' + n[1] + ' text-lg"></i><span class="text-[9px] font-bold">' + n[2] + '</span></button>'; }).join('');
             var dm = document.querySelector('header.md\\:hidden');
             if (dm) dm.querySelectorAll('.dropdown-content').forEach(function (x) { x.style.display = 'none'; });
-            ewoksGlobalNavMark(((location.hash || '').replace('#', '').split('-')[0]) === 'saham' ? 'screener' : (location.hash || '#ringkasan').replace('#', ''));
+            remark();
         }
     }
-    function remark() { if (!isGlobal()) return; var h = (location.hash || '').replace('#', ''); ewoksGlobalNavMark(h.indexOf('saham-') === 0 ? 'screener' : (h || 'ringkasan')); }
+    function remark() {
+        var m = mode(); if (!NAVS[m]) return;
+        var h = (location.hash || '').replace('#', '');
+        ewoksGlobalNavMark(h.indexOf('saham-') === 0 ? 'screener' : (h || 'ringkasan'));
+    }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    window.addEventListener('hashchange', remark);
     window.addEventListener('load', function () { remark(); setTimeout(remark, 400); });
 })();
