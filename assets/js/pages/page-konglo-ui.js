@@ -24,6 +24,40 @@ function kgLogoImg(domain, cls) {
     return `<img class="${cls}" src="https://www.google.com/s2/favicons?domain=${domain}&sz=128" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`;
 }
 
+/** Logo emiten: file lokal dulu (assets/img/logos), lalu favicon domain, lalu inisial. */
+function kgTickerLogo(ticker, cls) {
+    const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+    const t = String(ticker).replace(/[^A-Z0-9]/gi, '');
+    const dom = kgLogoDomain('tickers', ticker);
+    const fb = dom && /^[a-z0-9.-]+$/i.test(dom) ? `this.onerror=function(){this.remove()};this.src='https://www.google.com/s2/favicons?domain=${dom}&sz=128'` : 'this.remove()';
+    return `<img class="${cls}" src="${base}assets/img/logos/${t}.webp" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="${fb}">`;
+}
+
+/** Profil konglo (siapa, kekayaan tercatat + sumber, bidang usaha). */
+let kgProfil = null;
+function kgLoadProfil(cb) {
+    if (kgProfil) return cb();
+    const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+    fetch(`${base}assets/data/konglo-profil.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => { kgProfil = j || { g: {} }; cb(); })
+        .catch(() => { kgProfil = { g: {} }; cb(); });
+}
+function kgRenderProfil(groupId) {
+    const box = document.getElementById('detail-profile');
+    if (!box) return;
+    const p = kgProfil && kgProfil.g ? kgProfil.g[groupId] : null;
+    if (!p) { box.innerHTML = ''; return; }
+    const src = p.url && /^https?:\/\//.test(p.url) ? `<a href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" class="underline">${escapeHtml(p.src || 'sumber')}</a>` : escapeHtml(p.src || '');
+    const fields = (p.fields || []).map((f) => `<span class="kg-pf">${escapeHtml(f)}</span>`).join('');
+    box.innerHTML = `<div class="kg-prof premium-card">
+        <p class="kg-prof-who">${escapeHtml(p.who || '')}</p>
+        <div class="kg-prof-row"><div><p class="kg-more-h">Kekayaan tercatat</p><b class="kg-prof-w">${escapeHtml(p.wealth || '—')}</b></div>
+        <div class="kg-prof-s"><p class="kg-more-h">Sumber &amp; tanggal</p><span>${src}</span></div></div>
+        ${fields ? `<div class="kg-prof-f">${fields}</div>` : ''}
+        <p class="kg-prof-n">Angka bukan nilai pasti dan cepat berubah mengikuti harga saham. Keyakinan data: ${escapeHtml(p.conf || '—')}.</p></div>`;
+}
+
 function kgHue(str) {
     let h = 0;
     for (const c of String(str)) h = (h * 31 + c.charCodeAt(0)) % 360;
@@ -170,6 +204,7 @@ function showDetail(groupId) {
         if (lg) t.insertAdjacentHTML('beforebegin', lg.replace('<img ', '<img id="detail-logo" style="width:44px;height:44px;margin:1rem 0 0;display:block" '));
     }
     document.getElementById('detail-desc').innerText = group.desc;
+    kgLoadProfil(() => kgRenderProfil(groupId));
     const priceNote = document.getElementById('detail-price-note');
     if (priceNote) {
         const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;
@@ -208,7 +243,7 @@ function showDetail(groupId) {
             stockItem.className = 'kg-stock premium-card no-hover-lift dark-mode-card';
             stockItem.innerHTML = `
             <div class="kg-stock-head">
-                <span class="kg-tkbadge" style="background:hsl(${hue} 80% 94%);color:hsl(${hue} 60% 32%)">${escapeHtml(stock.ticker)}</span>${kgLogoImg(kgLogoDomain('tickers', stock.ticker), 'kg-clogo')}
+                <span class="kg-tkbadge" style="background:hsl(${hue} 80% 94%);color:hsl(${hue} 60% 32%)">${escapeHtml(stock.ticker)}</span>${kgTickerLogo(stock.ticker, 'kg-clogo')}
                 <div class="min-w-0 flex-1">
                     <p class="kg-name">${escapeHtml(company)}</p>
                     <p class="kg-sub">${escapeHtml(stock.sector)}</p>

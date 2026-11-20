@@ -3,6 +3,16 @@
 // --- DATA KONGLOMERAT ---
 const dataGroups = [
     {
+        id: "tommy-winata",
+        name: "Tomy Winata (Artha Graha)",
+        desc: "Pendiri Artha Graha Network: perbankan, kawasan SCBD Jakarta, perhotelan, dan properti.",
+        stocks: [
+            { ticker: "INPC", company: "PT Bank Artha Graha Internasional Tbk", sector: "Keuangan", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Bank milik jaringan Artha Graha.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
+            { ticker: "ECII", company: "PT Electronic City Indonesia Tbk", sector: "Konsumer Siklikal", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Ritel elektronik, terafiliasi jaringan Artha Graha.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
+            { ticker: "JIHD", company: "PT Jakarta International Hotels & Development Tbk", sector: "Konsumer Siklikal", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Hotel dan properti, terafiliasi jaringan Artha Graha.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
+        ]
+    },
+    {
         id: "aguan",
         name: "Aguan Group (Agung Sedayu)",
         desc: "Grup properti raksasa yang dikomandoi oleh Sugianto Kusuma (Aguan). Ekspansi agresif ke pasar modal dalam beberapa tahun terakhir, sering bermitra dengan Salim Group.",
@@ -167,6 +177,7 @@ const dataGroups = [
         name: "EMTK Group",
         desc: "Keluarga Eddy Kusnadi Sariaatmadja. Konglomerasi raksasa ekosistem teknologi, kesehatan, dan digital.",
         stocks: [
+            { ticker: "SUPA", company: "PT Supra Boga Lestari Tbk", sector: "Konsumer Primer", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Bagian dari portofolio emiten grup.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
             { ticker: "BBHI", company: "PT Allo Bank Indonesia Tbk", sector: "Perbankan & Keuangan Digital", ownership: "Grup EMTK dan Bukalapak memiliki porsi investasi strategis di bank ini.", kepemilikan_persen: "Konsorsium Minoritas", sejarah: "EMTK beraliansi dengan CT Corp dan Salim di Allo Bank.", tahun_masuk: "2021", broker_afiliasi: "YP, PD", free_float: "15.0%" },
             { ticker: "BUKA", company: "PT Bukalapak.com Tbk", sector: "E-Commerce", ownership: "EMTK adalah pemegang saham institusi terbesar di BUKA.", kepemilikan_persen: "23.9%", sejarah: "Investasi andalan EMTK di sektor tech sejak sebelum IPO.", tahun_masuk: "2015", broker_afiliasi: "YP, CC", free_float: "55.0%" },
             { ticker: "CASS", company: "PT Cahaya Aero Services Tbk", sector: "Aviasi & Logistik", ownership: "Grup EMTK mengakuisisi porsi mayoritas (sekitar 51%) untuk ekspansi bisnis logistik.", kepemilikan_persen: "51.0%", sejarah: "Diversifikasi bisnis EMTK ke layanan aviasi dan logistik (sejalan dengan MRA).", tahun_masuk: "2024", broker_afiliasi: "YP", free_float: "49.0%" },
@@ -258,6 +269,7 @@ const dataGroups = [
         name: "Low Tuck Kwong Group",
         desc: "Pengusaha batu bara visioner. Mengendalikan salah satu tambang batu bara termurah dan efisien.",
         stocks: [
+            { ticker: "MAHA", company: "PT Mandiri Herindo Adiperkasa Tbk", sector: "Energi", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Bagian dari portofolio emiten grup.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
             { ticker: "BYAN", company: "PT Bayan Resources Tbk", sector: "Pertambangan (Batu Bara)", ownership: "Low Tuck Kwong adalah pemegang saham pengendali absolut (>60%).", kepemilikan_persen: "61.0%", sejarah: "Tambang batu bara dengan kalori menengah yang biaya produksinya sangat efisien.", tahun_masuk: "2008", broker_afiliasi: "YP, CC", free_float: "10.5%" },
             { ticker: "MYOH", company: "PT Samindo Resources Tbk", sector: "Kontraktor Pertambangan", ownership: "Low Tuck Kwong memiliki saham signifikan (di atas 10%) sebagai investasi strategis batu bara.", kepemilikan_persen: "14.2%", sejarah: "Kontraktor tambang yang memiliki kemitraan historis dengan ekosistem LTK.", tahun_masuk: "2010-an", broker_afiliasi: "YP, PD", free_float: "25.0%" },
             { ticker: "TRJA", company: "PT Transkon Jaya Tbk", sector: "Penyewaan Kendaraan Tambang", ownership: "Afiliasi/investasi yang mendukung ekosistem tambang Low Tuck Kwong.", kepemilikan_persen: "Afiliasi", sejarah: "Vendor kendaraan spesialis tambang yang disuntik modal oleh ekosistem LTK.", tahun_masuk: "2023", broker_afiliasi: "YP", free_float: "20.0%" },
@@ -399,6 +411,8 @@ const dataGroups = [
         name: "Sinarmas Group",
         desc: "Keluarga Eka Tjipta Widjaja. Pulp & paper, agribisnis, properti, telekomunikasi.",
         stocks: [
+            { ticker: "LINK", company: "PT Link Net Tbk", sector: "Infrastruktur", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Bagian dari portofolio emiten grup.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
+            { ticker: "BOLA", company: "PT Bali Bintang Sejahtera Tbk", sector: "Konsumer Siklikal", ownership: "Tercatat sebagai emiten afiliasi grup (daftar Stockbit, Nov 2026). Persentase kepemilikan belum diverifikasi.", kepemilikan_persen: "—", sejarah: "Bagian dari portofolio emiten grup.", tahun_masuk: "—", broker_afiliasi: "—", free_float: "—" },
             { ticker: "ADMG", company: "PT Polychem Indonesia Tbk", sector: "Manufaktur", ownership: "Tekstil dan kimia.", kepemilikan_persen: "Afiliasi", sejarah: "Afiliasi bahan kimia tekstil Sinar Mas.", tahun_masuk: "1990-an", broker_afiliasi: "CC", free_float: "30.0%" },
             { ticker: "BSDE", company: "PT Bumi Serpong Damai Tbk", sector: "Properti & Real Estat", ownership: "Pemegang saham mayoritas adalah PT Paraga Artamida (Keluarga Widjaja).", kepemilikan_persen: "60.0%", sejarah: "Pengembang kota mandiri BSD City, crown jewel properti Sinar Mas.", tahun_masuk: "2008", broker_afiliasi: "CS, RX", free_float: "40.0%" },
             { ticker: "BSIM", company: "PT Bank Sinarmas Tbk", sector: "Perbankan", ownership: "Lini bisnis perbankan utama milik grup Sinar Mas.", kepemilikan_persen: "59.0%", sejarah: "Awalnya Bank Shinta, diakuisisi Sinar Mas untuk layanan finansial grup.", tahun_masuk: "2005", broker_afiliasi: "DH", free_float: "41.0%" },
