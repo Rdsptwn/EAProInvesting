@@ -73,7 +73,7 @@
     function liveBadge() {
         if (liveOk === null) return '';
         if (!liveOk) return 'Harga live belum tersedia, memakai data snapshot';
-        return '● Live (tertunda ±15 menit) · ' + liveTs.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+        return '● Live · ' + liveTs.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
     }
     function mergeItem(it) {
         var l = it.s && live[it.s]; if (!l) return it;
@@ -125,8 +125,9 @@
     function shortName(n) { return String(n || '').replace(/^PT\.?\s*/i, '').replace(/\s*Tbk\.?$/i, '').trim(); }
     function pill(c) { if (!Number.isFinite(c)) return '<span class="text-slate-400 text-xs">–</span>'; var up = c >= 0; return '<span class="inline-block min-w-[64px] text-center text-[11px] font-black px-2 py-1 rounded-lg ' + (up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700') + '">' + (up ? '+' : '') + c.toFixed(2) + '%</span>'; }
     function closeGrp() { var m = document.getElementById('grp-modal'); if (m) m.classList.add('hidden'); document.body.style.overflow = ''; }
-    var SY = null;
-    function loadSy() { if (SY || !IS_IDX) return Promise.resolve(); return get('syariah.json').then(function (d) { SY = {}; (d.t || []).forEach(function (t) { SY[t] = 1; }); }).catch(function () { SY = {}; }); }
+    var SY = null, SYD = null;
+    var IX_NAME = { ISSI: ['Saham Syariah (ISSI)', true], JII: ['JII · Jakarta Islamic Index (30)', true], JII70: ['JII70 (70 saham syariah)', true], SHAGROW: ['IDX Sharia Growth', true], MESBUMN17: ['IDX-MES BUMN 17 (syariah)', true], VESTA28: ['IDX VESTA28', false], ECONOMIC30: ['Economic 30', false], SRIKEHATI: ['SRI-KEHATI', false], ESGQ: ['ESG Quality 45 KEHATI', false], ESGS: ['ESG Sector Leaders KEHATI', false], INVESTOR33: ['Investor33', false] };
+    function loadSy() { if (SY || !IS_IDX) return Promise.resolve(); return get('syariah.json').then(function (d) { SY = {}; SYD = d; (d.t || []).forEach(function (t) { SY[t] = 1; }); }).catch(function () { SY = {}; }); }
     function openGrp(id) {
         loadSy().then(function () { openGrp2(id); });
     }
@@ -139,11 +140,11 @@
                 else { res[1].rows.forEach(function (r) { if (r[11] === sn && r[11] !== 'ETF') st.push(r[0]); }); }
                 def = { n: 'Sektor ' + (IS_IDX ? (SEC_ID[sn] || sn) : sn), d: st.length + ' saham di sektor ini. Diurutkan dari yang paling naik.', t: st };
             }
-            if (id === 'issi') { var sl = Object.keys(SY || {}); def = { n: 'Saham Syariah (ISSI)', d: sl.length + ' saham dalam Daftar Efek Syariah OJK. Sumber daftar: BEI. Bukan fatwa; cek ulang di sumber resmi.', t: sl }; }
+            if (/^ix:/.test(id) && SYD) { var ik = id.slice(3), il = (SYD.lists && SYD.lists[ik]) || []; var inm = IX_NAME[ik] || [ik, false]; def = { n: inm[0], d: il.length + ' saham. Periode efektif ' + (SYD.period || '-') + ' (' + (SYD.source || 'BEI') + '). ' + (inm[1] ? 'Bukan fatwa; daftar resmi ada di OJK/BEI.' : ''), t: il }; }
             if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
             var rows = [];
             var mem = res[2];
-            if (mem && mem[id] && mem[id].length >= 20) { def = { n: def.n, d: def.n + ': daftar anggota lengkap (' + mem[id].length + ' perusahaan). Yang belum tampil harganya berarti datanya belum tersedia di Yahoo.', t: mem[id] }; }
+            if (mem && mem[id] && mem[id].length >= 20) { def = { n: def.n, d: def.n + ': daftar anggota lengkap (' + mem[id].length + ' perusahaan). Yang belum tampil harganya berarti datanya belum tersedia.', t: mem[id] }; }
             if (IS_IDX) {
                 var all = res[1].rows.filter(function (r) { return Number.isFinite(r[1]) && r[1] > 0; });
                 var by = {}; all.forEach(function (r) { by[r[0]] = r; });
@@ -209,7 +210,7 @@
                 }).join('') + '<p class="text-[10px] text-slate-400 mt-2">Rata-rata perubahan harga, dibobot nilai transaksi. Klik sektor untuk melihat sahamnya.</p>';
             }).catch(function () { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; });
         }
-        if (IS_IDX) get('syariah.json').then(function (d) { if (d && d.t && d.t.length) el.insertAdjacentHTML('beforebegin', '<button type="button" data-grp="issi" class="hm-chip mb-3">Saham syariah (ISSI) · ' + d.t.length + ' ›</button>'); }).catch(function () {});
+        if (IS_IDX) get('syariah.json').then(function (d) { if (!d || !d.lists) return; var order = ['ISSI', 'JII', 'JII70', 'SHAGROW', 'MESBUMN17', 'VESTA28', 'ECONOMIC30', 'SRIKEHATI', 'ESGQ', 'ESGS', 'INVESTOR33']; el.insertAdjacentHTML('beforebegin', '<div class="flex flex-wrap gap-2 mb-3">' + order.filter(function (k) { return d.lists[k]; }).map(function (k) { return '<button type="button" data-grp="ix:' + k + '" class="hm-chip">' + esc(IX_NAME[k][0].replace(/ \(.*\)/, '')) + ' · ' + d.lists[k].length + '</button>'; }).join('') + '</div>'); }).catch(function () {});
         paint(); startLive(); onLive.push(paint);
     }
     window.EwoksGlobal.renderSectors = renderSectors;
@@ -325,7 +326,7 @@
     function initScreener() {
         get('global-screener.json').then(function (d) {
             S.rows = d.rows; window.__gRows = d.rows; startLive();
-            document.getElementById('gs-meta').textContent = d.rows.length + ' saham & ETF · Yahoo Finance · diperbarui ' + ago(d.meta.built) + ' · harga tertunda';
+            document.getElementById('gs-meta').textContent = d.rows.length + ' saham & ETF · diperbarui ' + ago(d.meta.built);
             var secs = {}; d.rows.forEach(function (r) { if (r[11]) secs[r[11]] = (secs[r[11]] || 0) + 1; });
             var box = document.getElementById('gs-sectors');
             box.innerHTML = '<button class="kg-btn active shrink-0" data-s="">Semua</button>' + Object.keys(secs).sort().map(function (s) { return '<button class="kg-btn shrink-0" data-s="' + esc(s) + '">' + esc(s) + '</button>'; }).join('');
@@ -346,7 +347,7 @@
     function nearLo(r) { return r[5] ? r[1] / r[5] : 99; }
     function applyLive() {
         S.rows.forEach(function (r) { var l = live[r[0]]; if (l && Number.isFinite(l[0])) { r[1] = l[0]; if (Number.isFinite(l[1])) r[2] = l[1]; if (Number.isFinite(l[2])) r[3] = l[2]; if (Number.isFinite(l[3]) && l[3] > 0) r[7] = l[3]; } });
-        var m = document.getElementById('gs-meta'); if (m && S.rows.length) m.textContent = S.rows.length + ' saham & ETF · Yahoo Finance · ' + (liveBadge() || 'snapshot') + ' · harga tertunda';
+        var m = document.getElementById('gs-meta'); if (m && S.rows.length) m.textContent = S.rows.length + ' saham & ETF · ' + (liveBadge() || 'snapshot');
     }
     function draw() {
         applyLive();

@@ -170,7 +170,7 @@
             } catch (e) { err = /abort/i.test(String(e.message)) ? 'timeout' : String(e.message); }
         }));
         const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-        stampTxt = ok ? `Harga ETF live Yahoo · ${hhmm} WIB · RD, SBN, deposito = data database` : `Harga ETF live belum tersedia (${err || 'Worker'}) — menampilkan data database`;
+        stampTxt = ok ? `Harga ETF live · ${hhmm} WIB · RD, SBN, deposito = data database` : `Harga ETF live belum tersedia (${err || 'Worker'}) — menampilkan data database`;
         render();
     }
 

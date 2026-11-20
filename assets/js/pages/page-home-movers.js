@@ -130,7 +130,7 @@
             }
             live = c > 0;
             const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-            stamp = `Live Yahoo · ${hhmm} WIB · ${c} saham` + (d.ok < d.total ? ` (${d.ok}/${d.total} bagian)` : '');
+            stamp = `Live · ${hhmm} WIB · ${c} saham` + (d.ok < d.total ? ` (${d.ok}/${d.total} bagian)` : '');
         } catch (e) {
             stamp = (live ? 'Live belum diperbarui, memakai data terakhir' : 'Snapshot harian, harga live belum tersedia');
             console.warn('Live screener:', e && e.message);
