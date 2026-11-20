@@ -144,7 +144,7 @@
             if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
             var rows = [];
             var mem = res[2];
-            if (mem && mem[id] && mem[id].length >= 20) { def = { n: def.n, d: def.n + ': daftar anggota lengkap (' + mem[id].length + ' perusahaan). Yang belum tampil harganya berarti datanya belum tersedia.', t: mem[id] }; }
+            if (mem && mem[id] && mem[id].length >= 20) { def = { n: def.n, d: def.n + ': daftar anggota lengkap (' + mem[id].length + ' perusahaan). Yang belum tampil harganya berarti datanya belum tersedia.' + (id === 'rut' && mem.meta && mem.meta.rutNote ? ' ' + mem.meta.rutNote : ''), t: mem[id] }; }
             if (IS_IDX) {
                 var all = res[1].rows.filter(function (r) { return Number.isFinite(r[1]) && r[1] > 0; });
                 var by = {}; all.forEach(function (r) { by[r[0]] = r; });

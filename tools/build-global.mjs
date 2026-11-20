@@ -176,15 +176,35 @@ async function buildMembers() {
         }
         if (!ok) console.error('members', k, '— pakai data lama');
     }
+    let rutOk = false, rutNote = '';
     try {
-        const res = await fetch('https://www.ishares.com/us/products/239710/ishares-russell-2000-etf/1467271812596.ajax?fileType=csv&fileName=IWM_holdings&dataType=fund', { headers: { ...UA, Accept: 'text/csv,*/*' }, signal: AbortSignal.timeout(40000) });
+        const res = await fetch('https://www.ishares.com/us/products/239710/ishares-russell-2000-etf/1467271812596.ajax?fileType=csv&fileName=IWM_holdings&dataType=fund', { headers: { ...UA, Accept: 'text/csv,*/*', Referer: 'https://www.ishares.com/' }, signal: AbortSignal.timeout(40000) });
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        const list = parseIsharesHoldings(await res.text());
-        if (list.length < 1200) throw new Error('hanya ' + list.length + ' baris');
+        const txt = await res.text();
+        const list = parseIsharesHoldings(txt);
+        if (list.length < 1200) throw new Error('hanya ' + list.length + ' baris; awal respons: ' + JSON.stringify(txt.slice(0, 160)));
         out.rut = list.map((x) => x.t);
         list.forEach((x) => { const o = out.info[x.t] || {}; out.info[x.t] = { n: o.n || x.n, s: o.s || x.s }; });
-        changed = true; console.log('members rut', list.length);
-    } catch (e) { console.error('members rut', e.message, '— pakai data lama'); out.rut = old.rut || []; }
+        changed = true; rutOk = true; rutNote = 'iShares IWM (daftar resmi ETF Russell 2000)'; console.log('members rut iShares', list.length);
+    } catch (e) { console.error('members rut iShares', e.message); }
+    if (!rutOk) {
+        // Cadangan: saham AS kapitalisasi peringkat ±1001–3000 (nasdaq.com), mendekati Russell 2000 tetapi BUKAN daftar resmi
+        try {
+            const res = await fetch('https://api.nasdaq.com/api/screener/stocks?tableonly=true&limit=10000&offset=0&download=true', { headers: { ...UA, Accept: 'application/json, text/plain, */*', Origin: 'https://www.nasdaq.com', Referer: 'https://www.nasdaq.com/' }, signal: AbortSignal.timeout(60000) });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const j = await res.json();
+            const rows = (j?.data?.rows || j?.data?.table?.rows || [])
+                .map((r) => ({ t: String(r.symbol || '').trim().toUpperCase().replace(/\./g, '-'), n: r.name || '', s: sectorId(r.sector || ''), cap: Number(String(r.marketCap || '').replace(/[^0-9.]/g, '')), c: String(r.country || '') }))
+                .filter((r) => /^[A-Z]{1,5}(-[A-Z])?$/.test(r.t) && r.cap > 0 && /united states/i.test(r.c) && !/ETF|Fund|Trust|Warrant|Unit|Preferred/i.test(r.n))
+                .sort((a, b) => b.cap - a.cap);
+            if (rows.length < 2500) throw new Error('hanya ' + rows.length + ' baris');
+            const list = rows.slice(1000, 3000);
+            out.rut = list.map((x) => x.t);
+            list.forEach((x) => { const o = out.info[x.t] || {}; out.info[x.t] = { n: o.n || x.n, s: o.s || x.s }; });
+            changed = true; rutNote = 'Perkiraan: saham AS kapitalisasi peringkat 1.001–3.000 (nasdaq.com). Bukan daftar resmi Russell 2000.'; console.log('members rut perkiraan nasdaq.com', list.length);
+        } catch (e) { console.error('members rut nasdaq.com', e.message, '— pakai data lama'); out.rut = old.rut || []; rutNote = old.meta?.rutNote || ''; }
+    }
+    out.meta.rutNote = rutNote;
     writeSafe('global-index-members.json', out, changed || out.spx.length > 0, 'members');
 }
 function loadUniverse() {
