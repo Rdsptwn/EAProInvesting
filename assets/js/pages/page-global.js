@@ -125,7 +125,12 @@
     function shortName(n) { return String(n || '').replace(/^PT\.?\s*/i, '').replace(/\s*Tbk\.?$/i, '').trim(); }
     function pill(c) { if (!Number.isFinite(c)) return '<span class="text-slate-400 text-xs">–</span>'; var up = c >= 0; return '<span class="inline-block min-w-[64px] text-center text-[11px] font-black px-2 py-1 rounded-lg ' + (up ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700') + '">' + (up ? '+' : '') + c.toFixed(2) + '%</span>'; }
     function closeGrp() { var m = document.getElementById('grp-modal'); if (m) m.classList.add('hidden'); document.body.style.overflow = ''; }
+    var SY = null;
+    function loadSy() { if (SY || !IS_IDX) return Promise.resolve(); return get('syariah.json').then(function (d) { SY = {}; (d.t || []).forEach(function (t) { SY[t] = 1; }); }).catch(function () { SY = {}; }); }
     function openGrp(id) {
+        loadSy().then(function () { openGrp2(id); });
+    }
+    function openGrp2(id) {
         Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json'), IS_IDX ? Promise.resolve(null) : get('global-index-members.json').catch(function () { return null; })]).then(function (res) {
             var def = res[0][IS_IDX ? 'idx' : 'global'][id];
             if (/^sec:/.test(id)) {
@@ -134,6 +139,7 @@
                 else { res[1].rows.forEach(function (r) { if (r[11] === sn && r[11] !== 'ETF') st.push(r[0]); }); }
                 def = { n: 'Sektor ' + (IS_IDX ? (SEC_ID[sn] || sn) : sn), d: st.length + ' saham di sektor ini. Diurutkan dari yang paling naik.', t: st };
             }
+            if (id === 'issi') { var sl = Object.keys(SY || {}); def = { n: 'Saham Syariah (ISSI)', d: sl.length + ' saham dalam Daftar Efek Syariah OJK. Sumber daftar: BEI. Bukan fatwa; cek ulang di sumber resmi.', t: sl }; }
             if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
             var rows = [];
             var mem = res[2];
@@ -142,7 +148,7 @@
                 var all = res[1].rows.filter(function (r) { return Number.isFinite(r[1]) && r[1] > 0; });
                 var by = {}; all.forEach(function (r) { by[r[0]] = r; });
                 var pick = def.top ? all.slice().sort(function (a, b) { return (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0)); }).slice(0, def.top) : (def.t || []).map(function (t) { return by[t]; }).filter(Boolean);
-                rows = pick.map(function (r) { return { t: r[0], n: shortName(r[11]), p: r[1], c: r[3], href: 'watchlist.html?t=' + r[0] }; });
+                rows = pick.map(function (r) { return { sy: SY && SY[r[0]], t: r[0], n: shortName(r[11]), p: r[1], c: r[3], href: 'watchlist.html?t=' + r[0] }; });
             } else {
                 var by2 = {}; res[1].rows.forEach(function (r) { by2[r[0]] = r; });
                 rows = (def.t || []).map(function (t) { return by2[t]; }).filter(Boolean).map(function (r) {
@@ -163,7 +169,7 @@
             m.innerHTML = '<div class="premium-card glass-card w-full md:max-w-2xl max-h-[88vh] flex flex-col rounded-t-3xl md:rounded-3xl border border-slate-200 overflow-hidden" role="dialog" aria-modal="true" aria-label="' + esc(def.n) + '">' +
                 '<div class="p-5 pb-3 border-b border-slate-100 flex items-start justify-between gap-3"><div><div class="text-[11px] font-black text-blue-600">Saham terkait</div><h3 class="text-xl font-black text-slate-900">' + esc(def.n) + '</h3><p class="text-xs text-slate-500 mt-1 max-w-md">' + esc(def.d) + '</p></div><button data-close aria-label="Tutup" class="text-3xl leading-none text-slate-400 hover:text-slate-700">&times;</button></div>' +
                 '<div class="overflow-y-auto p-2 md:p-3">' + (rows.length ? rows.map(function (r) {
-                    return '<a data-row href="' + r.href + '" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"><span class="font-black text-sm text-slate-900 w-16">' + esc(r.t) + '</span><span class="flex-1 min-w-0 text-xs text-slate-500 truncate">' + esc(r.n) + '</span><span class="text-sm font-bold text-slate-700">' + cur + (IS_IDX ? Number(r.p).toLocaleString('id-ID', { maximumFractionDigits: 0 }) : fmt(r.p)) + '</span>' + pill(r.c) + '</a>';
+                    return '<a data-row href="' + r.href + '" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"><span class="font-black text-sm text-slate-900 w-16">' + esc(r.t) + (r.sy ? '<i class="ml-1 text-[9px] font-black text-emerald-600 not-italic" title="Saham syariah (ISSI)">S</i>' : '') + '</span><span class="flex-1 min-w-0 text-xs text-slate-500 truncate">' + esc(r.n) + '</span><span class="text-sm font-bold text-slate-700">' + cur + (IS_IDX ? Number(r.p).toLocaleString('id-ID', { maximumFractionDigits: 0 }) : fmt(r.p)) + '</span>' + pill(r.c) + '</a>';
                 }).join('') : '<p class="p-6 text-sm text-slate-500 text-center">Belum ada saham yang cocok di daftar pantauan.</p>') + '</div>' +
                 '<div class="px-5 py-3 border-t border-slate-100 text-[10px] text-slate-400">' + (IS_IDX ? 'Snapshot harian · ' : '') + 'Klik saham untuk melihat fundamental. Hubungan dengan komoditas/indeks bersifat umum, bukan rekomendasi.</div></div>';
             m.classList.remove('hidden'); document.body.style.overflow = 'hidden';
@@ -203,6 +209,7 @@
                 }).join('') + '<p class="text-[10px] text-slate-400 mt-2">Rata-rata perubahan harga, dibobot nilai transaksi. Klik sektor untuk melihat sahamnya.</p>';
             }).catch(function () { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; });
         }
+        if (IS_IDX) get('syariah.json').then(function (d) { if (d && d.t && d.t.length) el.insertAdjacentHTML('beforebegin', '<button type="button" data-grp="issi" class="hm-chip mb-3">Saham syariah (ISSI) · ' + d.t.length + ' ›</button>'); }).catch(function () {});
         paint(); startLive(); onLive.push(paint);
     }
     window.EwoksGlobal.renderSectors = renderSectors;

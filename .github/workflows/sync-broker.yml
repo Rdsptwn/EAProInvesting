@@ -1,0 +1,38 @@
+# Ranking broker (total nilai/volume/frekuensi) dari BEI. Dijalankan setelah bursa tutup (16:40 & 18:40 WIB), Senin–Jumat.
+name: Sync ranking broker
+
+on:
+  schedule:
+    - cron: '40 9,11 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-market-sync
+  cancel-in-progress: false
+
+jobs:
+  broker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install Playwright
+        run: npm i --no-save playwright >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
+      - name: Build broker-ranking.json
+        run: node tools/build-broker-ranking.mjs
+      - name: Build syariah.json (ISSI)
+        continue-on-error: true
+        run: node tools/build-syariah.mjs
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/broker-ranking.json assets/data/syariah.json 2>/dev/null || git add assets/data/broker-ranking.json
+          if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
+          git commit -m "chore(data): ranking broker"
+          for i in 1 2 3; do git pull --rebase -q && git push && break || sleep 5; done

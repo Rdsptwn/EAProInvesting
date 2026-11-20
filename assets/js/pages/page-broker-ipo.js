@@ -8,14 +8,47 @@
     let items = [], perf = {}, perfAsOf = '', scr = {}, scrDate = {}, scrBuilt = 0, shown = 50, loaded = false, open = null;
 
     window.brokerTab = function (t) {
-        const ipo = t === 'ipo';
-        $('broker-pane-list').classList.toggle('hidden', ipo);
+        const ipo = t === 'ipo', rank = t === 'rank';
+        $('broker-pane-list').classList.toggle('hidden', ipo || rank);
         $('broker-pane-ipo').classList.toggle('hidden', !ipo);
-        $('bk-tab-list').classList.toggle('on', !ipo);
+        $('broker-pane-rank').classList.toggle('hidden', !rank);
+        $('bk-tab-list').classList.toggle('on', !ipo && !rank);
         $('bk-tab-ipo').classList.toggle('on', ipo);
+        $('bk-tab-rank').classList.toggle('on', rank);
         if (ipo && !loaded) load();
-        try { history.replaceState(null, '', ipo ? '#ipo' : location.pathname + location.search); } catch (_) {}
+        if (rank) loadRank();
+        try { history.replaceState(null, '', ipo ? '#ipo' : rank ? '#ranking' : location.pathname + location.search); } catch (_) {}
     };
+
+    /* ---------- Ranking broker harian ---------- */
+    let rankData = null, rankSort = 'value';
+    const fmtB = (v) => (v >= 1e12 ? (v / 1e12).toLocaleString('id-ID', { maximumFractionDigits: 2 }) + ' T' : v >= 1e9 ? (v / 1e9).toLocaleString('id-ID', { maximumFractionDigits: 2 }) + ' M' : (v / 1e6).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + ' jt');
+    const fmtV = (v) => (v >= 1e9 ? (v / 1e9).toLocaleString('id-ID', { maximumFractionDigits: 2 }) + ' M' : (v / 1e6).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + ' jt');
+    function drawRank() {
+        const box = $('rank-body'); if (!rankData) return;
+        const col = { value: 2, volume: 3, freq: 4 }[rankSort];
+        const rows = rankData.rows.slice().sort((a, b) => b[col] - a[col]);
+        const tot = rows.reduce((t, r) => t + r[2], 0) || 1;
+        const info = (typeof BROKERS !== 'undefined' ? BROKERS : []).reduce((m, b) => { m[b.k] = b; return m; }, {});
+        box.innerHTML = rows.map((r, i) => {
+            const nm = (info[r[0]] && info[r[0]].n) || r[1];
+            const kind = info[r[0]] ? info[r[0]].t : '';
+            return `<tr class="border-t border-slate-100"><td class="px-3 py-2 text-slate-400 text-xs">${i + 1}</td><td class="px-3 py-2 font-black text-slate-900">${r[0]}</td><td class="px-3 py-2 text-xs text-slate-600">${nm}${kind ? ` <span class="text-[10px] text-slate-400">· ${kind}</span>` : ''}</td><td class="px-3 py-2 text-right font-bold">${fmtB(r[2])}</td><td class="px-3 py-2 text-right text-xs text-slate-500">${(r[2] / tot * 100).toFixed(1)}%</td><td class="px-3 py-2 text-right">${fmtV(r[3])}</td><td class="px-3 py-2 text-right">${Number(r[4]).toLocaleString('id-ID')}</td></tr>`;
+        }).join('');
+        ['value', 'volume', 'freq'].forEach((k) => $('rank-s-' + k).classList.toggle('on', k === rankSort));
+    }
+    window.rankSortBy = (k) => { rankSort = k; drawRank(); };
+    function loadRank() {
+        if (rankData) return;
+        fetch(`assets/data/broker-ranking.json?t=${Date.now()}`, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : null)).then((d) => {
+            if (!d || !d.rows || !d.rows.length) throw new Error('kosong');
+            rankData = d;
+            const dt = new Date(d.asOf + 'T00:00:00').toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            $('rank-stamp').textContent = `Data perdagangan ${dt} · ${d.session || ''} · sumber ${d.source}`;
+            drawRank();
+        }).catch(() => { $('rank-stamp').textContent = 'Data ranking broker belum tersedia. Akan terisi otomatis setelah bursa tutup.'; $('rank-body').innerHTML = ''; });
+    }
+    if (location.hash === '#ranking') document.addEventListener('DOMContentLoaded', () => brokerTab('rank'));
 
     const fx = (n, d = 0) => (Number.isFinite(n) ? Number(n).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—');
     const pct = (v) => (Number.isFinite(v) ? `<span class="${v >= 0 ? 'text-emerald-600' : 'text-rose-600'} font-black">${v >= 0 ? '+' : ''}${v.toLocaleString('id-ID', { maximumFractionDigits: v > 999 ? 0 : 1 })}%</span>` : '<span class="text-slate-300">—</span>');
