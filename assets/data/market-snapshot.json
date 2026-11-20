@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Yahoo Finance",
-    "built": "2026-11-20T05:01:49.941Z",
+    "built": "2026-11-20T06:01:52.668Z",
     "tz": "WIB",
     "tickerCount": 279
   },
@@ -2760,7 +2760,7 @@
       "prevClose": 462,
       "changePct": -3.46,
       "high52": 815,
-      "low52": 444,
+      "low52": 442,
       "support": 446,
       "resistance": 515,
       "avg": 530,
