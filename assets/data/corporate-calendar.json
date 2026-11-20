@@ -1,14 +1,7 @@
 {
-  "updated": "2026-11-20T10:02:39.291Z",
+  "updated": "2026-11-20T18:29:06.122Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
-    {
-      "ticker": "UNTR",
-      "action": "Ex-Date dividen Rp430/saham",
-      "kind": "dividen",
-      "date": "2026-11-06",
-      "dateLabel": "Ex-Date"
-    },
     {
       "ticker": "BREN",
       "action": "Pantau keterbukaan emiten",
