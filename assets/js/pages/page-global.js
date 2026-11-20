@@ -91,7 +91,7 @@
                 var it = by[id]; if (!it) return '';
                 return card(it, id === 'gold' && gram ? '≈ Rp' + gram.toLocaleString('id-ID') + '/gram' : '');
             }).join('');
-            if (t.opts && t.opts.stamp) t.opts.stamp.textContent = (liveBadge() || ('Snapshot ' + ago(commData.meta.built))) + ' · ' + (commData.meta.note || '');
+            if (t.opts && t.opts.stamp) t.opts.stamp.textContent = (liveBadge() || ('Snapshot ' + ago(commData.meta.built)));
         });
         onLive.forEach(function (f) { try { f(); } catch (_) {} });
     }
@@ -128,6 +128,12 @@
     function openGrp(id) {
         Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json'), IS_IDX ? Promise.resolve(null) : get('global-index-members.json').catch(function () { return null; })]).then(function (res) {
             var def = res[0][IS_IDX ? 'idx' : 'global'][id];
+            if (/^sec:/.test(id)) {
+                var sn = id.slice(4), st = [];
+                if (IS_IDX) { var inf = res[1].info || {}; res[1].rows.forEach(function (r) { if (inf[r[0]] && inf[r[0]][1] === sn && r[1] > 0) st.push(r[0]); }); }
+                else { res[1].rows.forEach(function (r) { if (r[11] === sn && r[11] !== 'ETF') st.push(r[0]); }); }
+                def = { n: 'Sektor ' + (IS_IDX ? (SEC_ID[sn] || sn) : sn), d: st.length + ' saham di sektor ini. Diurutkan dari yang paling naik.', t: st };
+            }
             if (!def) { def = { n: id, d: 'Belum ada daftar saham terkait.', t: [] }; }
             var rows = [];
             var mem = res[2];
@@ -144,7 +150,7 @@
                     return { t: r[0], n: r[10], p: l && Number.isFinite(l[0]) ? l[0] : r[1], c: l && Number.isFinite(l[2]) ? l[2] : r[3], href: '#saham-' + encodeURIComponent(r[0]) };
                 });
             }
-            rows.sort(function (a, b) { return (b.c || -99) - (a.c || -99); });
+            rows.sort(function (a, b) { return (b.c || -99) - (a.c || -99); }); if (rows.length > 300) rows = rows.slice(0, 300);
             var m = document.getElementById('grp-modal');
             if (!m) {
                 m = document.createElement('div'); m.id = 'grp-modal';
@@ -165,6 +171,41 @@
     }
     document.addEventListener('click', function (e) { var c = e.target.closest('[data-grp]'); if (c) openGrp(c.getAttribute('data-grp')); });
     document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('[data-grp]')) { e.preventDefault(); openGrp(e.target.getAttribute('data-grp')); } });
+
+
+    /* ---------- Performa sektor (bar ala Stockbit, klik = daftar saham) ---------- */
+    var SEC_ID = { 'Energy': 'Energi', 'Basic Materials': 'Bahan Baku', 'Industrials': 'Perindustrian', 'Consumer Non-Cyclicals': 'Konsumer Primer', 'Consumer Cyclicals': 'Konsumer Siklikal', 'Healthcare': 'Kesehatan', 'Financials': 'Keuangan', 'Properties & Real Estate': 'Properti', 'Technology': 'Teknologi', 'Infrastructure': 'Infrastruktur', 'Transportation & Logistics': 'Transportasi & Logistik' };
+    function sectorStats() {
+        return Promise.all([IS_IDX ? get('idx-screener.json') : get('global-screener.json')]).then(function (r) {
+            var d = r[0], acc = {};
+            d.rows.forEach(function (x) {
+                var sec, c, w;
+                if (IS_IDX) { var inf = d.info && d.info[x[0]]; sec = inf && inf[1]; c = x[3]; w = x[1] * (x[9] || 0); }
+                else { sec = x[11]; if (sec === 'ETF') return; var l = live[x[0]]; c = l && Number.isFinite(l[2]) ? l[2] : x[3]; w = x[1] * (x[7] || 0); }
+                if (!sec || !Number.isFinite(c) || !(x[1] > 0) || Math.abs(c) > 60) return;
+                var a = acc[sec] || (acc[sec] = { n: sec, sw: 0, s: 0, cnt: 0, up: 0, dn: 0 });
+                var ww = w > 0 ? w : 1; a.sw += ww; a.s += c * ww; a.cnt++; if (c > 0) a.up++; else if (c < 0) a.dn++;
+            });
+            return Object.keys(acc).map(function (k) { var a = acc[k]; a.avg = a.s / a.sw; return a; }).sort(function (a, b) { return b.avg - a.avg; });
+        });
+    }
+    function renderSectors(el) {
+        function paint() {
+            sectorStats().then(function (list) {
+                if (!list.length) { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; return; }
+                var mx = Math.max.apply(null, list.map(function (a) { return Math.abs(a.avg); })) || 1;
+                el.innerHTML = list.map(function (a) {
+                    var w = Math.max(3, Math.abs(a.avg) / mx * 100), up = a.avg >= 0;
+                    return '<div data-grp="sec:' + esc(a.n) + '" role="button" tabindex="0" class="flex items-center gap-3 py-2 px-1 rounded-lg cursor-pointer hover:bg-slate-50">' +
+                        '<div class="w-36 sm:w-44 shrink-0 text-sm font-bold text-slate-700 truncate">' + esc(IS_IDX ? (SEC_ID[a.n] || a.n) : a.n) + '<div class="text-[10px] font-medium text-slate-400">' + a.cnt + ' saham · ' + a.up + ' naik · ' + a.dn + ' turun</div></div>' +
+                        '<div class="flex-1 h-5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full rounded-full ' + (up ? 'bg-emerald-500' : 'bg-rose-500') + '" style="width:' + w.toFixed(1) + '%"></div></div>' +
+                        '<div class="w-16 text-right text-sm font-black ' + (up ? 'text-emerald-600' : 'text-rose-600') + '">' + (up ? '+' : '') + a.avg.toFixed(2) + '%</div></div>';
+                }).join('') + '<p class="text-[10px] text-slate-400 mt-2">Rata-rata perubahan harga, dibobot nilai transaksi. Klik sektor untuk melihat sahamnya.</p>';
+            }).catch(function () { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; });
+        }
+        paint(); startLive(); onLive.push(paint);
+    }
+    window.EwoksGlobal.renderSectors = renderSectors;
 
     var root = document.getElementById('page-global');
     if (!root) return;
@@ -195,16 +236,52 @@
         var c = e.target.closest('[data-chart]'); if (c) { e.preventDefault(); location.hash = 'saham-' + encodeURIComponent(c.dataset.chart); }
     });
 
+
+    /* ---------- Daftar pasar ala Stockbit: Indeks | Komoditas | Mata Uang | Kripto ---------- */
+    var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸', vix: '🇺🇸', ust10: '🇺🇸', dxy: '🇺🇸', ihsg: '🇮🇩', n225: '🇯🇵', hsi: '🇭🇰', sti: '🇸🇬', ftse: '🇬🇧', dax: '🇩🇪', kospi: '🇰🇷', sse: '🇨🇳', szse: '🇨🇳', cac: '🇫🇷', stoxx: '🇪🇺', asx: '🇦🇺', twii: '🇹🇼', sensex: '🇮🇳', nifty: '🇮🇳', klci: '🇲🇾', set: '🇹🇭', bvsp: '🇧🇷', tsx: '🇨🇦',
+        usdidr: '🇺🇸', sgdidr: '🇸🇬', euridr: '🇪🇺', audidr: '🇦🇺', cnyidr: '🇨🇳', jpyidr: '🇯🇵', gbpidr: '🇬🇧', myridr: '🇲🇾', hkdidr: '🇭🇰', saridr: '🇸🇦', krwidr: '🇰🇷', thbidr: '🇹🇭', inridr: '🇮🇳', nzdidr: '🇳🇿', chfidr: '🇨🇭', eurusd: '🇪🇺', gbpusd: '🇬🇧', usdjpy: '🇯🇵', audusd: '🇦🇺', usdcny: '🇨🇳', usdsgd: '🇸🇬',
+        brent: '🛢️', wti: '🛢️', gas: '🔥', coal: '⚫', gold: '🥇', silver: '🥈', copper: '🟠', platinum: '⚪', palladium: '⚪', aluminium: '🔩', zinc: '🔩', nickel: '🔩', tin: '🔩', cpo: '🌴', rubber: '🛞', heating: '🛢️', gasoline: '⛽', cotton: '☁️', rice: '🌾', lumber: '🪵', wheat: '🌾', corn: '🌽', soy: '🫘', sugar: '🍬', coffee: '☕', cocoa: '🍫', btc: '₿', eth: 'Ξ', sol: '◎', bnb: '◆', xrp: '✕' };
+    var MK_TABS = [['indeks', 'Indeks'], ['komoditas', 'Komoditas'], ['kurs', 'Mata uang'], ['kripto', 'Kripto']];
+    var MK_PRIO = ['spx', 'ndx', 'dji', 'rut', 'ihsg', 'n225', 'hsi', 'kospi', 'sse', 'dax', 'ftse', 'cac', 'sti', 'vix', 'ust10', 'dxy', 'usdidr'];
+    var mkTab = 'indeks', mkGroups = {};
+    try { var sv = localStorage.getItem('ewoks_gmk'); if (sv) mkTab = sv; } catch (_) {}
+    function mkRow(it) {
+        var up = (it.chg || 0) >= 0, has = mkGroups[it.id];
+        var d = it.price >= 1000 ? 0 : (it.price >= 10 ? 2 : 4);
+        var attr = has ? ' data-grp="' + esc(it.id) + '" role="button" tabindex="0"' : '';
+        return '<div' + attr + ' class="flex items-center gap-3 py-2.5 border-b border-slate-100 ' + (has ? 'cursor-pointer hover:bg-slate-50' : '') + ' rounded-lg px-1">' +
+            '<span class="w-9 h-9 shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-lg">' + (FLAG[it.id] || '•') + '</span>' +
+            '<div class="min-w-0 flex-1"><div class="text-sm font-bold text-slate-800 truncate">' + esc(it.n) + '</div><div class="text-[10px] text-slate-400 truncate">' + esc(it.s || '') + (it.u ? ' · ' + esc(it.u) : '') + (has ? ' · saham terkait ›' : '') + '</div></div>' +
+            '<span class="hidden sm:block">' + spark(it.spark, up) + '</span>' +
+            '<div class="text-right shrink-0"><div class="text-sm font-black text-slate-900">' + fmt(it.price, d) + '</div><div class="text-xs">' + pct(it.chg) + '</div></div></div>';
+    }
+    function paintMarkets() {
+        if (!commData) return;
+        var all = commData.items.map(mergeItem);
+        var gold = all.filter(function (x) { return x.id === 'gold'; })[0], idr = all.filter(function (x) { return x.id === 'usdidr'; })[0];
+        var tabs = document.getElementById('gk-tabs');
+        tabs.innerHTML = MK_TABS.map(function (t) { return '<button type="button" class="hm-chip shrink-0 ' + (t[0] === mkTab ? 'on' : '') + '" data-mk="' + t[0] + '">' + t[1] + '</button>'; }).join('');
+        var items = all.filter(function (x) { return x.g === mkTab; });
+        items.sort(function (a, b) { var ia = MK_PRIO.indexOf(a.id), ib = MK_PRIO.indexOf(b.id); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); });
+        var html = items.map(mkRow).join('');
+        if (mkTab === 'komoditas' && gold && idr) html = '<div class="md:col-span-2 text-[11px] text-slate-500 pb-2">Emas ≈ Rp' + Math.round(gold.price * idr.price / 31.1034768).toLocaleString('id-ID') + '/gram (harga dunia × kurs, bukan harga toko)</div>' + html;
+        document.getElementById('gk-list').innerHTML = html || '<p class="text-sm text-slate-500 p-3">Belum ada data.</p>';
+        document.getElementById('gk-stamp').textContent = liveBadge() || (commData.meta ? 'Snapshot ' + ago(commData.meta.built) : '');
+    }
+    function initMarkets() {
+        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; })]).then(function (r) {
+            commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
+            paintMarkets(); startLive(); onLive.push(paintMarkets);
+        }).catch(function () { document.getElementById('gk-list').innerHTML = '<p class="text-sm text-slate-500 p-3">Data pasar belum tersedia. Jalankan workflow Sync global.</p>'; });
+        document.getElementById('gk-tabs').addEventListener('click', function (e) {
+            var b = e.target.closest('[data-mk]'); if (!b) return; mkTab = b.dataset.mk; try { localStorage.setItem('ewoks_gmk', mkTab); } catch (_) {} paintMarkets();
+        });
+    }
+
     /* ---------- Ringkasan ---------- */
     function initSummary() {
-        renderCommodities(document.getElementById('g-commodities'), ['brent', 'wti', 'gold', 'silver', 'copper', 'gas', 'coal', 'usdidr'], { stamp: document.getElementById('g-stamp') });
-        get('global-commodities.json').then(function (d) {
-            var ids = ['spx', 'ndx', 'dji', 'n225', 'hsi', 'sti', 'ftse', 'dax', 'vix', 'ust10', 'dxy', 'btc', 'eth'];
-            var by = {}; d.items.forEach(function (x) { by[x.id] = x; });
-            document.getElementById('g-indices').innerHTML = ids.filter(function (i) { return by[i]; }).map(function (i) {
-                var it = by[i]; return '<div data-grp="' + esc(i) + '" role="button" tabindex="0" class="premium-card glass-card rounded-2xl p-3 border border-slate-200 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition"><div class="text-[11px] font-bold text-slate-500 truncate">' + esc(it.n) + '</div><div class="font-black text-slate-900">' + fmt(it.price, it.price >= 1000 ? 0 : 2) + '</div><div class="text-xs">' + pct(it.chg) + '</div></div>';
-            }).join('');
-        }).catch(function () {});
+        initMarkets();
+        renderSectors(document.getElementById('g-sectors'));
         get('global-screener.json').then(function (d) {
             window.__gRows = d.rows; startLive();
             var N = 5; try { if (+localStorage.getItem('ewoks_gmovers_n') === 10) N = 10; } catch (_) {}

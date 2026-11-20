@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261120t1510">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261120t1510">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261120t1600">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261120t1600">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="global">
 
@@ -149,14 +149,20 @@
         <section id="page-global" class="max-w-7xl mx-auto">
             <div id="g-heading" class="mb-6">
                 <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-900">Mode Global</h2>
-                <p class="text-sm text-slate-500 mt-1 max-w-2xl">Saham &amp; ETF Amerika, komoditas, indeks dunia, IPO luar negeri, dan berita internasional. Data dari Yahoo Finance, Nasdaq, dan RSS publik; tertunda dan hanya untuk edukasi.</p>
             </div>
 
             <div id="g-ringkasan">
-                <div id="g-stamp" class="text-[11px] text-slate-500 mb-3"></div>
-                <div id="g-commodities" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"></div>
-                <h3 class="font-extrabold text-slate-900 mb-3">Indeks, kurs &amp; kripto</h3>
-                <div id="g-indices" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8"></div>
+                                <section class="premium-card p-4 md:p-5 mb-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                        <div id="gk-tabs" class="flex gap-2 overflow-x-auto"></div>
+                        <span id="gk-stamp" class="text-[10px] font-bold text-blue-600"></span>
+                    </div>
+                    <div id="gk-list" class="grid grid-cols-1 md:grid-cols-2 gap-x-6"></div>
+                </section>
+                <section class="premium-card p-5 md:p-6 mb-6">
+                    <h3 class="text-lg font-black text-slate-900 mb-3">Performa sektor hari ini</h3>
+                    <div id="g-sectors"></div>
+                </section>
                 <section class="premium-card p-5 md:p-6 mb-6">
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
                         <h3 class="text-lg font-black text-slate-900">Top naik &amp; turun hari ini</h3>
@@ -287,7 +293,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261120t1510"></script>
-    <script src="assets/js/pages/page-global.js?v=20261120t1510"></script>
+    <script src="assets/js/ewoks-core.js?v=20261120t1600"></script>
+    <script src="assets/js/pages/page-global.js?v=20261120t1600"></script>
 </body>
 </html>

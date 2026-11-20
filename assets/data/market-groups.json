@@ -419,6 +419,32 @@
     "HSY",
     "MDLZ"
    ]
+  },
+  "aluminium": {
+   "n": "Aluminium",
+   "d": "Produsen aluminium AS yang ada di daftar pantauan.",
+   "t": [
+    "AA"
+   ]
+  },
+  "cotton": {
+   "n": "Kapas",
+   "d": "Saham terkait kapas/tekstil.",
+   "t": [
+    "VFC",
+    "NKE",
+    "LULU"
+   ]
+  },
+  "cpo": {
+   "n": "CPO",
+   "d": "Saham minyak nabati/agribisnis AS.",
+   "t": [
+    "ADM",
+    "BG",
+    "CTVA",
+    "DE"
+   ]
   }
  },
  "idx": {
@@ -608,6 +634,80 @@
    "t": [
     "MYOR",
     "CMRY"
+   ]
+  },
+  "nickel": {
+   "n": "Nikel",
+   "d": "Emiten tambang & pengolah nikel di BEI.",
+   "t": [
+    "INCO",
+    "ANTM",
+    "MDKA",
+    "NCKL",
+    "MBMA",
+    "HRUM",
+    "NICL",
+    "PSAB",
+    "TINS"
+   ]
+  },
+  "tin": {
+   "n": "Timah",
+   "d": "Emiten timah di BEI.",
+   "t": [
+    "TINS",
+    "ANTM"
+   ]
+  },
+  "cpo": {
+   "n": "CPO (Minyak Sawit)",
+   "d": "Emiten perkebunan sawit di BEI. Harga CPO menggerakkan saham-saham ini.",
+   "t": [
+    "AALI",
+    "LSIP",
+    "SIMP",
+    "TAPG",
+    "DSNG",
+    "SSMS",
+    "SGRO",
+    "PALM",
+    "BWPT",
+    "TBLA",
+    "JAWA",
+    "ANJT",
+    "GZCO",
+    "SMAR",
+    "UNSP",
+    "MGRO"
+   ]
+  },
+  "aluminium": {
+   "n": "Aluminium",
+   "d": "Emiten aluminium di BEI.",
+   "t": [
+    "INAI",
+    "ALMI",
+    "BRMS"
+   ]
+  },
+  "rubber": {
+   "n": "Karet",
+   "d": "Emiten karet di BEI.",
+   "t": [
+    "GJTL",
+    "BRAM",
+    "SIMP",
+    "MAGP"
+   ]
+  },
+  "zinc": {
+   "n": "Seng",
+   "d": "Emiten terkait seng/logam dasar di BEI.",
+   "t": [
+    "NICL",
+    "ANTM",
+    "BRMS",
+    "DKFT"
    ]
   }
  }
