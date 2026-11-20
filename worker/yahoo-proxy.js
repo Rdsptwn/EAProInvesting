@@ -34,7 +34,8 @@ function corsHeaders(origin) {
     const ok = ALLOWED_ORIGINS.includes(origin);
     return {
         'Access-Control-Allow-Origin': ok ? origin : '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
         Vary: 'Origin'
     };
 }
@@ -237,13 +238,82 @@ async function routeQuotes(url, ctx, origin) {
     return J(out, 200, origin, true);
 }
 
-async function handle(request, ctx) {
+// ---------- Asisten tanya-jawab (POST /ask) ----------
+// Butuh SALAH SATU: secret GEMINI_KEY (Google AI Studio, gratis) ATAU binding Workers AI bernama "AI" (gratis 10.000 neuron/hari).
+const SYSTEM_PROMPT = [
+    'Kamu adalah "Asisten Ewoks", pemandu edukasi investasi di situs Ewoks Academy (Indonesia).',
+    'Jawab dalam Bahasa Indonesia yang santai tapi jelas, ringkas (maks ±180 kata), pakai poin bila membantu.',
+    'Bidangmu: dasar saham IHSG & global, analisa teknikal/fundamental dasar, reksa dana, obligasi, kripto, forex, manajemen risiko, psikologi trading, cara memakai fitur situs (Peta Konglo, Watchlist/Terminal, Kalkulator, Jurnal, Mode Global/Bitcoin/Forex).',
+    'Aturan: jangan memberi rekomendasi beli/jual pasti atau menjanjikan untung; jangan mengarang angka, harga, atau berita terkini (bilang tidak punya data real-time dan arahkan ke halaman terkait di situs); jangan bantu penipuan, manipulasi harga, atau insider trading.',
+    'Untuk pertanyaan yang tidak terkait investasi/keuangan/situs, tolak dengan sopan satu kalimat.',
+    'Selalu ingatkan singkat bahwa ini edukasi bukan saran investasi bila pertanyaannya meminta keputusan transaksi.'
+].join(' ');
+const ASK_LIMIT_PER_HOUR = 25;
+
+async function rateLimited(request) {
+    try {
+        const ip = request.headers.get('CF-Connecting-IP') || 'x';
+        const key = new Request('https://ask.rl.local/' + encodeURIComponent(ip) + '/' + Math.floor(Date.now() / 3600000));
+        const c = caches.default;
+        const hit = await c.match(key);
+        const n = hit ? parseInt(await hit.text(), 10) || 0 : 0;
+        if (n >= ASK_LIMIT_PER_HOUR) return true;
+        await c.put(key, new Response(String(n + 1), { headers: { 'Cache-Control': 'max-age=3600' } }));
+    } catch (_) { /* abaikan */ }
+    return false;
+}
+
+async function routeAsk(request, env, origin) {
+    if (!ALLOWED_ORIGINS.includes(origin)) return J({ ok: false, error: 'origin' }, 403, origin);
+    let body;
+    try { body = await request.json(); } catch (_) { return J({ ok: false, error: 'json' }, 400, origin); }
+    const q = String((body && body.q) || '').trim().slice(0, 700);
+    if (q.length < 2) return J({ ok: false, error: 'pertanyaan kosong' }, 400, origin);
+    const hist = (Array.isArray(body.hist) ? body.hist : []).slice(-6).map((m) => ({ role: m.r === 'a' ? 'assistant' : 'user', content: String(m.t || '').slice(0, 700) }));
+    const page = String(body.page || '').slice(0, 60);
+    if (await rateLimited(request)) return J({ ok: false, error: 'Terlalu banyak pertanyaan dari perangkat ini. Coba lagi sekitar 1 jam.' }, 429, origin);
+    const sys = SYSTEM_PROMPT + (page ? ' Pengguna sedang membuka halaman: ' + page + '.' : '');
+    try {
+        if (env && env.GEMINI_KEY) {
+            const model = env.GEMINI_MODEL || 'gemini-2.0-flash';
+            const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_KEY },
+                body: JSON.stringify({
+                    systemInstruction: { parts: [{ text: sys }] },
+                    contents: hist.concat([{ role: 'user', content: q }]).map((m) => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] })),
+                    generationConfig: { maxOutputTokens: 600, temperature: 0.5 }
+                }),
+                signal: AbortSignal.timeout(25000)
+            });
+            if (!r.ok) throw new Error('gemini ' + r.status);
+            const j = await r.json();
+            const text = (((j.candidates || [])[0] || {}).content || {}).parts;
+            const out = text ? text.map((p) => p.text || '').join('').trim() : '';
+            if (!out) throw new Error('jawaban kosong');
+            return J({ ok: true, a: out, by: 'gemini' }, 200, origin);
+        }
+        if (env && env.AI) {
+            const model = env.AI_MODEL || '@cf/meta/llama-3.1-8b-instruct';
+            const res = await env.AI.run(model, { messages: [{ role: 'system', content: sys }].concat(hist, [{ role: 'user', content: q }]), max_tokens: 600, temperature: 0.5 });
+            const out = String((res && (res.response || res.result)) || '').trim();
+            if (!out) throw new Error('jawaban kosong');
+            return J({ ok: true, a: out, by: 'workers-ai' }, 200, origin);
+        }
+        return J({ ok: false, error: 'Asisten belum diaktifkan di server (isi secret GEMINI_KEY atau binding AI).', code: 'not_configured' }, 503, origin);
+    } catch (e) {
+        return J({ ok: false, error: 'Asisten sedang sibuk, coba lagi sebentar.', detail: String((e && e.message) || e) }, 502, origin);
+    }
+}
+
+async function handle(request, ctx, env) {
     const origin = request.headers.get('Origin') || '';
     const url = new URL(request.url);
     const path = url.pathname;
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    if (request.method === 'POST' && path === '/ask') return routeAsk(request, env, origin);
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v7-global', routes: ['/quotes', '/screener', '/chart', '/gquotes'] }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v8-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: !!(env && (env.GEMINI_KEY || env.AI)) }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);
@@ -280,7 +350,7 @@ async function triggerWorkflows(env) {
 export default {
     async fetch(request, env, ctx) {
         try {
-            return await handle(request, ctx);
+            return await handle(request, ctx, env);
         } catch (e) {
             return J({ ok: false, error: 'worker error: ' + String((e && e.message) || e) }, 500, request.headers.get('Origin') || '');
         }

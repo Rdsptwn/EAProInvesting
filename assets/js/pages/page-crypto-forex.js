@@ -110,9 +110,10 @@
         coins.forEach(function (c) { var t = by[c.k + 'USDT']; if (t && +t.lastPrice > 0) { c.price = +t.lastPrice; c.chg = +t.priceChangePercent; any = true; } });
         return any;
     }
+    var bnOk = null;
     function btcLiveTick() {
-        var syms = coins.filter(function (c) { return !NOCHART[c.k] || true; }).map(function (c) { return '"' + c.k + 'USDT"'; });
-        jget('https://api.binance.com/api/v3/ticker/24hr?symbols=[' + syms.join(',') + ']', 7000).then(function (arr) { return applyBinance(arr); }).catch(function () {
+        var req = bnOk ? jget('https://api.binance.com/api/v3/ticker/24hr?symbols=[' + bnOk.join(',') + ']', 7000) : jget('https://api.binance.com/api/v3/ticker/24hr', 15000).then(function (all) { var have = {}; all.forEach(function (t) { have[t.symbol] = 1; }); bnOk = coins.filter(function (c) { return have[c.k + 'USDT']; }).map(function (c) { return '"' + c.k + 'USDT"'; }); return all; });
+        req.then(function (arr) { return applyBinance(arr); }).catch(function () {
             // cadangan: Worker (Yahoo) bila Binance tidak terjangkau
             return gquotes(coins.map(function (c) { return c.s; })).then(function (qq) { var any = false; coins.forEach(function (c) { var r = qq[c.s]; if (r) { c.price = r[0]; c.chg = r[2]; any = true; } }); return any; });
         }).then(function (ok) {
@@ -136,7 +137,17 @@
             $('c-news').innerHTML = items.length ? items.map(function (n) { return '<a href="' + esc(n.link) + '" target="_blank" rel="noopener noreferrer" class="block rounded-2xl bg-slate-800/70 hover:bg-slate-800 p-4"><div class="text-[11px] text-amber-300 font-bold">' + esc(n.src) + '</div><div class="font-bold text-white text-sm mt-1">' + esc(n.title) + '</div><div class="text-xs text-slate-400 mt-1 line-clamp-2">' + esc(n.desc || '') + '</div></a>'; }).join('') : '<p class="text-sm text-slate-400">Belum ada berita kripto di umpan saat ini. Lihat berita pasar di Mode Global.</p>';
         }).catch(function () {});
     }
-    function btcTabHook(h) { if (h === 'emas' && !btcTabHook.g) { btcTabHook.g = 1; tv($('c-gchart'), 'OANDA:XAUUSD', 'dark'); } }
+    function listingInit() {
+        get('crypto-listings.json').then(function (d) {
+            var ago = function (ts) { if (!ts) return ''; var m = Math.round((Date.now() - ts) / 60000); return m < 60 ? m + ' menit lalu' : m < 1440 ? Math.round(m / 60) + ' jam lalu' : Math.round(m / 1440) + ' hari lalu'; };
+            $('c-list').innerHTML = (d.items || []).map(function (n) {
+                var del = n.kind === 'delisting';
+                return '<a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" class="block rounded-2xl bg-slate-800/70 hover:bg-slate-800 p-4"><div class="flex items-center gap-2 text-[11px] font-bold"><span class="px-2 py-0.5 rounded-full ' + (del ? 'bg-rose-500/20 text-rose-300' : 'bg-emerald-500/20 text-emerald-300') + '">' + (del ? 'Delisting' : 'Listing') + '</span><span class="text-amber-300">' + esc(n.src) + '</span><span class="text-slate-500 ml-auto">' + ago(n.ts) + '</span></div><div class="text-sm font-bold text-white mt-2">' + esc(n.title) + '</div></a>';
+            }).join('') || '<p class="text-sm text-slate-400">Belum ada pengumuman.</p>';
+            $('c-trend').innerHTML = d.trending && d.trending.length ? '<div class="text-[11px] text-slate-400 mb-2">Sedang ramai dicari (CoinGecko)</div><div class="flex flex-wrap gap-2">' + d.trending.map(function (c) { return '<span class="px-3 py-1.5 rounded-full bg-slate-800 text-xs font-bold text-white">' + esc(c.s) + ' <span class="text-slate-400 font-normal">' + esc(c.n) + '</span>' + (c.chg != null ? ' ' + pct(c.chg) : '') + '</span>'; }).join('') + '</div>' : '';
+        }).catch(function () { $('c-list').innerHTML = '<p class="text-sm text-slate-400">Data listing belum tersedia. Akan terisi setelah workflow sinkron berikutnya.</p>'; });
+    }
+    function btcTabHook(h) { if (h === 'listing' && !btcTabHook.l) { btcTabHook.l = 1; listingInit(); } if (h === 'emas' && !btcTabHook.g) { btcTabHook.g = 1; tv($('c-gchart'), 'OANDA:XAUUSD', 'dark'); } }
 
     /* ======================= FOREX ======================= */
     var fx = [], fxG = 'major', fxQ = '', fxSel = 'EURUSD', live = (window.__fxLive = {});

@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261120t2036';
+window.EWOKS_ASSET_V = '20261121b';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1183,22 +1183,26 @@ window.addEventListener('load', () => {
 /* ---- Mode IHSG | Global | Bitcoin | Forex: switcher + menu atas yang ikut berganti ---- */
 (function () {
     var NAVS = {
-        global: [['ringkasan', 'fa-globe', 'Ringkasan'], ['screener', 'fa-chart-line', 'Saham AS'], ['ipo', 'fa-rocket', 'IPO AS'], ['berita', 'fa-newspaper', 'Berita'], ['invest', 'fa-coins', 'Investasi Global']],
-        bitcoin: [['ringkasan', 'fa-bitcoin-sign', 'Ringkasan'], ['koin', 'fa-coins', 'Koin'], ['emas', 'fa-ring', 'Emas Digital'], ['berita', 'fa-newspaper', 'Berita']],
-        forex: [['ringkasan', 'fa-earth-asia', 'Ringkasan'], ['pasangan', 'fa-arrow-right-arrow-left', 'Pasangan'], ['emas', 'fa-ring', 'XAU/USD'], ['kalkulator', 'fa-calculator', 'Kalkulator Pip']]
+        global: [['ringkasan', 'fa-globe', 'Ringkasan'], ['screener', 'fa-chart-line', 'Saham AS'], ['ipo', 'fa-rocket', 'IPO AS'], ['berita', 'fa-newspaper', 'Berita'], ['jurnal', 'fa-book', 'Jurnal'], ['invest', 'fa-coins', 'Investasi Global']],
+        bitcoin: [['ringkasan', 'fa-bitcoin-sign', 'Ringkasan'], ['koin', 'fa-coins', 'Koin'], ['listing', 'fa-bullhorn', 'Listing Baru'], ['emas', 'fa-ring', 'Emas Digital'], ['berita', 'fa-newspaper', 'Berita'], ['jurnal', 'fa-book', 'Jurnal']],
+        forex: [['ringkasan', 'fa-earth-asia', 'Ringkasan'], ['pasangan', 'fa-arrow-right-arrow-left', 'Pasangan'], ['emas', 'fa-ring', 'XAU/USD'], ['kalkulator', 'fa-calculator', 'Kalkulator Pip'], ['jurnal', 'fa-book', 'Jurnal']]
     };
     var MODES = [['idx', 'IHSG', 'index.html'], ['global', 'Global', 'global.html'], ['bitcoin', 'Bitcoin', 'bitcoin.html'], ['forex', 'Forex', 'forex.html']];
     var PAGE_MODE = { home: 'idx', global: 'global', 'pasar-global': 'global', bitcoin: 'bitcoin', forex: 'forex' };
     function page() { return document.body && document.body.getAttribute('data-page'); }
-    function mode() { return PAGE_MODE[page()] || 'idx'; }
+    function mode() {
+        if (page() === 'jurnal-pasar') { var q = (location.search.match(/m=(\w+)/) || [])[1], sv = ''; try { sv = localStorage.getItem('ewoks_mode') || ''; } catch (_) {} q = q || sv; return NAVS[q] ? q : 'global'; }
+        return PAGE_MODE[page()] || 'idx';
+    }
     var base = function () { return (window.EwoksSiteContext && EwoksSiteContext.basePath) || ''; };
     window.gNav = function (t) {
         if (t === 'invest') { location.href = base() + 'pasar-global.html'; return; }
+        if (t === 'jurnal') { location.href = base() + 'jurnal-pasar.html?m=' + mode(); return; }
         var m = mode(), file = m === 'global' ? 'global.html' : m + '.html';
         if (page() === m) { location.hash = t; } else { location.href = base() + file + '#' + t; }
     };
     window.ewoksGlobalNavMark = function (tab) {
-        var cur = page() === 'pasar-global' ? 'invest' : tab;
+        var cur = page() === 'pasar-global' ? 'invest' : page() === 'jurnal-pasar' ? 'jurnal' : tab;
         document.querySelectorAll('[data-gnav]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-gnav') === cur); });
     };
     function switcher(m) {
@@ -1235,4 +1239,65 @@ window.addEventListener('load', () => {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
     window.addEventListener('hashchange', remark);
     window.addEventListener('load', function () { remark(); setTimeout(remark, 400); });
+})();
+
+/* ======================================================================
+ * ASISTEN TANYA-JAWAB — widget mengambang, memanggil Worker POST /ask.
+ * Riwayat hanya di sessionStorage (hilang saat tab ditutup). Teks dirender aman (textContent).
+ * ====================================================================== */
+(function () {
+    'use strict';
+    if (window.__ewoksChat) return; window.__ewoksChat = 1;
+    var KEY = 'ewoks_chat_hist', hist = [], busy = false;
+    try { hist = JSON.parse(sessionStorage.getItem(KEY) || '[]') || []; } catch (_) { hist = []; }
+    function save() { try { sessionStorage.setItem(KEY, JSON.stringify(hist.slice(-20))); } catch (_) {} }
+    function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+
+    function init() {
+        var st = document.createElement('style');
+        st.textContent = '.ec-fab{position:fixed;right:16px;bottom:84px;z-index:60;width:52px;height:52px;border-radius:50%;border:0;background:#10b981;color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer}' +
+            '.ec-box{position:fixed;right:16px;bottom:146px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 180px));display:none;flex-direction:column;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);overflow:hidden;font-size:13px}' +
+            '.ec-box.open{display:flex}.ec-h{padding:10px 12px;background:#111c33;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;font-weight:600}' +
+            '.ec-h button{background:none;border:0;color:#94a3b8;cursor:pointer;font-size:16px}.ec-m{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}' +
+            '.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
+            '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-f input{flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px;color:#e2e8f0;font-size:13px;min-width:0}' +
+            '.ec-f button{background:#10b981;border:0;border-radius:8px;color:#04130d;padding:0 12px;font-weight:600;cursor:pointer}.ec-f button:disabled{opacity:.5}' +
+            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:1024px){.ec-fab{bottom:24px}.ec-box{bottom:88px}}';
+        document.head.appendChild(st);
+        var fab = el('button', 'ec-fab', '💬'); fab.setAttribute('aria-label', 'Tanya Asisten Ewoks');
+        var box = el('div', 'ec-box');
+        var h = el('div', 'ec-h'); h.appendChild(el('span', '', 'Asisten Ewoks'));
+        var x = el('button', '', '✕'); x.setAttribute('aria-label', 'Tutup'); h.appendChild(x);
+        var m = el('div', 'ec-m');
+        var f = el('form', 'ec-f'); var inp = el('input'); inp.placeholder = 'Tanya soal investasi atau fitur web…'; inp.maxLength = 700; inp.autocomplete = 'off';
+        var sb = el('button', '', 'Kirim'); sb.type = 'submit'; f.appendChild(inp); f.appendChild(sb);
+        box.appendChild(h); box.appendChild(m); box.appendChild(f);
+        box.appendChild(el('div', 'ec-n', 'Edukasi, bukan saran investasi. Jawaban AI bisa keliru — cek ulang.'));
+        document.body.appendChild(fab); document.body.appendChild(box);
+
+        function add(role, t) { var b = el('div', 'ec-b ' + (role === 'u' ? 'ec-u' : 'ec-a'), t); m.appendChild(b); m.scrollTop = m.scrollHeight; return b; }
+        if (!hist.length) add('a', 'Halo! Tanya apa saja soal dasar saham, reksa dana, kripto, forex, manajemen risiko, atau cara pakai fitur di web ini. Aku tidak memberi sinyal beli/jual.');
+        hist.forEach(function (i) { add(i.r, i.t); });
+        fab.onclick = function () { box.classList.toggle('open'); if (box.classList.contains('open')) { inp.focus(); m.scrollTop = m.scrollHeight; } };
+        x.onclick = function () { box.classList.remove('open'); };
+        f.onsubmit = async function (e) {
+            e.preventDefault(); var q = inp.value.trim(); if (!q || busy) return;
+            var api = (typeof getEwoksLiveApi === 'function') ? getEwoksLiveApi() : '';
+            inp.value = ''; add('u', q);
+            if (!api) { add('a', 'Server asisten belum diatur.'); return; }
+            busy = true; sb.disabled = true; var w = add('a', 'Mengetik…');
+            try {
+                var ctl = new AbortController(); var tm = setTimeout(function () { ctl.abort(); }, 30000);
+                var r = await fetch(api + '/ask', { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctl.signal,
+                    body: JSON.stringify({ q: q, hist: hist.slice(-6), page: document.body.getAttribute('data-page') || location.pathname.split('/').pop() }) });
+                clearTimeout(tm);
+                var d = await r.json().catch(function () { return {}; });
+                var ans = d && d.ok ? d.a : (d && d.code === 'not_configured' ? 'Asisten belum diaktifkan oleh pemilik situs.' : (d && d.error) || 'Gagal menghubungi asisten.');
+                w.textContent = ans;
+                if (d && d.ok) { hist.push({ r: 'u', t: q }); hist.push({ r: 'a', t: ans }); save(); }
+            } catch (_) { w.textContent = 'Koneksi bermasalah atau terlalu lama. Coba lagi.'; }
+            busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight;
+        };
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
