@@ -16,7 +16,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          for x in global-funda global-index-members; do [ -f assets/data/$x.json ] && git add assets/data/$x.json || true; done
+          git add assets/data/global-funda assets/data/global-index-members.json 2>/dev/null || true
           if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
           git commit -m "chore(data): sync global funda"
           git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"

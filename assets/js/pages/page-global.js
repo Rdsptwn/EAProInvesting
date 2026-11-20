@@ -44,8 +44,16 @@
     function liveSymbols() {
         var out = [];
         if (commData) commData.items.forEach(function (x) { if (x.s) out.push(x.s); });
-        if (window.__gRows) window.__gRows.forEach(function (r) { out.push(r[0]); });
-        return out.filter(function (v, i, a) { return a.indexOf(v) === i; });
+        var want = window.__gWant || {};
+        Object.keys(want).forEach(function (k) { (want[k] || []).forEach(function (t) { out.push(t); }); });
+        return out.filter(function (v, i, a) { return a.indexOf(v) === i; }).slice(0, 200);
+    }
+    var wantT = null;
+    function want(key, arr) {
+        window.__gWant = window.__gWant || {};
+        var same = (window.__gWant[key] || []).join(',') === arr.join(',');
+        window.__gWant[key] = arr;
+        if (!same) { clearTimeout(wantT); wantT = setTimeout(function () { if (liveTimer) liveTick(); }, 400); }
     }
     function liveFetch() {
         var api = liveApi(), syms = liveSymbols();
@@ -207,6 +215,7 @@
                 var rows = d.rows.filter(function (r) { return r[11] !== 'ETF' && Number.isFinite(r[3]) && Number.isFinite(r[1]); });
                 var g = rows.filter(function (r) { return r[3] > 0; }).sort(function (a, b) { return b[3] - a[3]; }).slice(0, N);
                 var l = rows.filter(function (r) { return r[3] < 0; }).sort(function (a, b) { return a[3] - b[3]; }).slice(0, N);
+                want('movers', g.concat(l).map(function (r) { return r[0]; }));
                 document.getElementById('gm-gain').innerHTML = g.map(function (r) { return row(r, true); }).join('') || '<p class="text-xs text-slate-400 p-3">Belum ada data.</p>';
                 document.getElementById('gm-loss').innerHTML = l.map(function (r) { return row(r, false); }).join('') || '<p class="text-xs text-slate-400 p-3">Belum ada data.</p>';
                 document.getElementById('gm-stamp').textContent = liveBadge() || ('Snapshot ' + ago(d.meta.built));
@@ -273,6 +282,7 @@
             return (x - y) * k[1];
         });
         var part = list.slice(0, S.shown);
+        want('screener', part.map(function (r) { return r[0]; }));
         document.getElementById('gs-body').innerHTML = part.map(function (r) {
             var on = w.indexOf(r[0]) >= 0;
             var rng = r[5] && r[6] ? '<span class="text-[11px] text-slate-500">' + fmt(r[5], 0) + '–' + fmt(r[6], 0) + '</span>' : '–';
@@ -294,8 +304,8 @@
     function symInfo(sym) { var o = null; (window.__gRows || []).forEach(function (r) { if (r[0] === sym) o = r; }); return o; }
     function initDetail(sym) {
         var box = document.getElementById('g-detail');
-        pcSym = sym; pcRange = 0;
-        Promise.all([get('global-screener.json').then(function (r) { window.__gRows = r.rows; startLive(); }).catch(function () {}), get('global-funda.json').catch(function () { return null; })]).then(function (res) {
+        pcSym = sym; pcRange = 0; want('detail', [sym]);
+        Promise.all([get('global-screener.json').then(function (r) { window.__gRows = r.rows; startLive(); }).catch(function () {}), get('global-funda/' + (/^[A-Z]/.test(sym) ? sym[0] : '0') + '.json').catch(function () { return null; })]).then(function (res) {
             var fd = res[1], row = symInfo(sym), f = fd && fd.t && fd.t[sym];
             var name = (row && row[10]) || (f && f.n) || '', isEtf = row && row[11] === 'ETF';
             box.innerHTML =

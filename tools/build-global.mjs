@@ -112,11 +112,40 @@ function parseTable(tblHtml) {
     }
     return out;
 }
+function parseCsv(text) {
+    const rows = []; let row = [], cur = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (q) { if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; }
+        else if (c === '"') q = true;
+        else if (c === ',') { row.push(cur); cur = ''; }
+        else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+        else if (c !== '\r') cur += c;
+    }
+    if (cur || row.length) { row.push(cur); rows.push(row); }
+    return rows;
+}
+export function parseIsharesHoldings(text) {
+    const rows = parseCsv(String(text || '').replace(/^\uFEFF/, ''));
+    const hi = rows.findIndex((r) => r.some((x) => x.trim() === 'Ticker') && r.some((x) => x.trim() === 'Name'));
+    if (hi < 0) return [];
+    const H = rows[hi].map((x) => x.trim());
+    const it = H.indexOf('Ticker'), inm = H.indexOf('Name'), isec = H.indexOf('Sector'), iac = H.indexOf('Asset Class');
+    const out = [], seen = new Set();
+    for (const r of rows.slice(hi + 1)) {
+        if (iac >= 0 && (r[iac] || '').trim() !== 'Equity') continue;
+        const t = String(r[it] || '').trim().toUpperCase().replace(/\./g, '-');
+        if (!/^[A-Z][A-Z0-9-]{0,6}$/.test(t) || seen.has(t)) continue;
+        seen.add(t);
+        out.push({ t, n: (r[inm] || '').trim(), s: sectorId((r[isec] || '').trim()) });
+    }
+    return out;
+}
 const MEMBER_PAGES = { spx: [['List_of_S%26P_500_companies'], 450], ndx: [['List_of_Nasdaq-100_companies', 'Nasdaq-100'], 80], dji: [['List_of_Dow_Jones_Industrial_Average_companies', 'Dow_Jones_Industrial_Average'], 25] };
 async function buildMembers() {
     let old = {};
     try { old = JSON.parse(fs.readFileSync(D('global-index-members.json'), 'utf8')); } catch (_) {}
-    const out = { meta: { source: 'Wikipedia (daftar anggota indeks)', built: new Date().toISOString() }, spx: old.spx || [], ndx: old.ndx || [], dji: old.dji || [], info: old.info || {} };
+    const out = { meta: { source: 'Wikipedia (daftar anggota indeks)', built: new Date().toISOString() }, spx: old.spx || [], ndx: old.ndx || [], dji: old.dji || [], rut: old.rut || [], info: old.info || {} };
     let changed = false;
     for (const [k, [pages, min]] of Object.entries(MEMBER_PAGES)) {
         let ok = false;
@@ -147,6 +176,15 @@ async function buildMembers() {
         }
         if (!ok) console.error('members', k, '— pakai data lama');
     }
+    try {
+        const res = await fetch('https://www.ishares.com/us/products/239710/ishares-russell-2000-etf/1467271812596.ajax?fileType=csv&fileName=IWM_holdings&dataType=fund', { headers: { ...UA, Accept: 'text/csv,*/*' }, signal: AbortSignal.timeout(40000) });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const list = parseIsharesHoldings(await res.text());
+        if (list.length < 1200) throw new Error('hanya ' + list.length + ' baris');
+        out.rut = list.map((x) => x.t);
+        list.forEach((x) => { const o = out.info[x.t] || {}; out.info[x.t] = { n: o.n || x.n, s: o.s || x.s }; });
+        changed = true; console.log('members rut', list.length);
+    } catch (e) { console.error('members rut', e.message, '— pakai data lama'); out.rut = old.rut || []; }
     writeSafe('global-index-members.json', out, changed || out.spx.length > 0, 'members');
 }
 function loadUniverse() {
@@ -156,7 +194,7 @@ function loadUniverse() {
     if (!mem) return base;
     const have = new Set(base.map((x) => x.t));
     const extra = [];
-    for (const t of new Set([...(mem.spx || []), ...(mem.ndx || []), ...(mem.dji || [])])) {
+    for (const t of new Set([...(mem.spx || []), ...(mem.ndx || []), ...(mem.dji || []), ...(mem.rut || [])])) {
         if (have.has(t)) continue;
         const i = mem.info[t] || {};
         extra.push({ t, n: i.n || t, s: i.s || '' });
@@ -189,12 +227,21 @@ export const MARKETS = [
     { id: 'copper', g: 'komoditas', n: 'Tembaga', s: 'HG=F', u: 'USD/lb' },
     { id: 'gas', g: 'komoditas', n: 'Gas Alam', s: 'NG=F', u: 'USD/MMBtu' },
     { id: 'coal', g: 'komoditas', n: 'Batu Bara Newcastle', s: 'MTF=F', u: 'USD/ton' },
+    { id: 'platinum', g: 'komoditas', n: 'Platina', s: 'PL=F', u: 'USD/oz' },
+    { id: 'palladium', g: 'komoditas', n: 'Paladium', s: 'PA=F', u: 'USD/oz' },
+    { id: 'wheat', g: 'komoditas', n: 'Gandum', s: 'ZW=F', u: 'USc/bushel' },
+    { id: 'corn', g: 'komoditas', n: 'Jagung', s: 'ZC=F', u: 'USc/bushel' },
+    { id: 'soy', g: 'komoditas', n: 'Kedelai', s: 'ZS=F', u: 'USc/bushel' },
+    { id: 'sugar', g: 'komoditas', n: 'Gula', s: 'SB=F', u: 'USc/lb' },
+    { id: 'coffee', g: 'komoditas', n: 'Kopi', s: 'KC=F', u: 'USc/lb' },
+    { id: 'cocoa', g: 'komoditas', n: 'Kakao', s: 'CC=F', u: 'USD/ton' },
     { id: 'usdidr', g: 'kurs', n: 'USD/IDR', s: 'IDR=X', u: 'Rp' },
     { id: 'dxy', g: 'kurs', n: 'Indeks Dolar (DXY)', s: 'DX-Y.NYB', u: '' },
     { id: 'btc', g: 'kripto', n: 'Bitcoin', s: 'BTC-USD', u: 'USD' },
     { id: 'eth', g: 'kripto', n: 'Ethereum', s: 'ETH-USD', u: 'USD' },
     { id: 'ihsg', g: 'indeks', n: 'IHSG', s: '^JKSE', u: '' },
     { id: 'spx', g: 'indeks', n: 'S&P 500', s: '^GSPC', u: '' },
+    { id: 'rut', g: 'indeks', n: 'Russell 2000', s: '^RUT', u: '' },
     { id: 'ndx', g: 'indeks', n: 'Nasdaq Composite', s: '^IXIC', u: '' },
     { id: 'dji', g: 'indeks', n: 'Dow Jones', s: '^DJI', u: '' },
     { id: 'n225', g: 'indeks', n: 'Nikkei 225', s: '^N225', u: '' },
@@ -341,11 +388,17 @@ async function buildFunda() {
     const res = await pool(uni, (u) => fetchFunda(u.t), 5);
     const t = {};
     uni.forEach((u, i) => { const by = res[i]; if (!by) return; const f = shapeFunda(by, years); if (f.rev.some((v) => v != null) || f.ni.some((v) => v != null)) t[u.t] = { n: u.n, s: u.s, ...f }; });
-    let old = {};
-    try { old = JSON.parse(fs.readFileSync(D('global-funda.json'), 'utf8')).t || {}; } catch (_) {}
+    const shardOf = (t) => (/^[A-Z]/.test(t) ? t[0] : '0');
+    fs.mkdirSync(D('global-funda'), { recursive: true });
+    const old = {};
+    for (const f of fs.existsSync(D('global-funda')) ? fs.readdirSync(D('global-funda')) : []) { try { Object.assign(old, JSON.parse(fs.readFileSync(D('global-funda/' + f), 'utf8')).t || {}); } catch (_) {} }
     for (const k of Object.keys(old)) if (!t[k]) t[k] = old[k];
-    writeSafe('global-funda.json', { meta: { source: 'Yahoo Finance (fundamentals-timeseries)', built: new Date().toISOString(), years, unit: 'USD miliar (EPS dalam USD)', note: 'Laporan tahunan fiskal; kolom TTM = 12 bulan terakhir. Beberapa emiten tidak punya semua pos.' }, t },
-        Object.keys(t).length >= Math.min(30, uni.length * 0.3), 'funda');
+    if (Object.keys(t).length < Math.min(30, uni.length * 0.3)) { console.error('funda: hasil tidak layak — file lama dipertahankan'); return; }
+    const shards = {};
+    for (const [k, v] of Object.entries(t)) (shards[shardOf(k)] ||= {})[k] = v;
+    const meta = { source: 'Yahoo Finance (fundamentals-timeseries)', built: new Date().toISOString(), years, unit: 'USD miliar (EPS dalam USD)', note: 'Laporan tahunan fiskal; kolom TTM = 12 bulan terakhir. Beberapa emiten tidak punya semua pos.' };
+    for (const [sh, obj] of Object.entries(shards)) fs.writeFileSync(D('global-funda/' + sh + '.json'), JSON.stringify({ meta, t: obj }));
+    console.log('funda: ' + Object.keys(t).length + ' emiten dalam ' + Object.keys(shards).length + ' file');
 }
 
 /* ---------- main ---------- */

@@ -336,6 +336,89 @@
     "BAC",
     "SCHD"
    ]
+  },
+  "rut": {
+   "n": "Russell 2000",
+   "d": "Saham perusahaan kecil AS.",
+   "t": []
+  },
+  "platinum": {
+   "n": "Platina",
+   "d": "Belum ada saham platina besar di daftar kami. Dana logam mulia (GLD, SLV) biasanya bergerak searah.",
+   "t": [
+    "GLD",
+    "SLV"
+   ]
+  },
+  "palladium": {
+   "n": "Paladium",
+   "d": "Dipakai untuk katalis mobil. Saham otomotif dan logam mulia ikut terpengaruh.",
+   "t": [
+    "GM",
+    "F",
+    "NEM"
+   ]
+  },
+  "wheat": {
+   "n": "Gandum",
+   "d": "Perusahaan pertanian dan pangan yang terdampak harga gandum.",
+   "t": [
+    "ADM",
+    "CTVA",
+    "DE",
+    "MOS",
+    "GIS",
+    "KHC"
+   ]
+  },
+  "corn": {
+   "n": "Jagung",
+   "d": "Produsen pupuk, benih, dan alat pertanian yang terdampak harga jagung.",
+   "t": [
+    "ADM",
+    "CTVA",
+    "DE",
+    "MOS",
+    "CF"
+   ]
+  },
+  "soy": {
+   "n": "Kedelai",
+   "d": "Pengolah dan produsen pertanian yang terdampak harga kedelai.",
+   "t": [
+    "ADM",
+    "CTVA",
+    "DE",
+    "MOS",
+    "BG"
+   ]
+  },
+  "sugar": {
+   "n": "Gula",
+   "d": "Perusahaan makanan dan minuman yang memakai gula sebagai bahan baku.",
+   "t": [
+    "KO",
+    "PEP",
+    "HSY",
+    "MDLZ"
+   ]
+  },
+  "coffee": {
+   "n": "Kopi",
+   "d": "Perusahaan kopi dan minuman yang terdampak harga biji kopi.",
+   "t": [
+    "SBUX",
+    "KDP",
+    "KO"
+   ]
+  },
+  "cocoa": {
+   "n": "Kakao",
+   "d": "Produsen cokelat dan permen yang terdampak harga kakao.",
+   "t": [
+    "HSY",
+    "MDLZ"
+   ]
   }
  },
  "idx": {
@@ -453,6 +536,79 @@
    "n": "Ethereum",
    "d": "Belum ada saham kripto di BEI.",
    "t": []
+  },
+  "platinum": {
+   "n": "Platina",
+   "d": "Belum ada saham platina murni di BEI. Penambang logam mulia terdekat.",
+   "t": [
+    "ANTM",
+    "MDKA",
+    "BRMS"
+   ]
+  },
+  "palladium": {
+   "n": "Paladium",
+   "d": "Belum ada saham paladium di BEI. Penambang logam terdekat.",
+   "t": [
+    "ANTM",
+    "MDKA"
+   ]
+  },
+  "wheat": {
+   "n": "Gandum",
+   "d": "Produsen mi dan tepung yang memakai gandum impor. Harga gandum naik biasanya menekan margin.",
+   "t": [
+    "INDF",
+    "ICBP",
+    "MYOR"
+   ]
+  },
+  "corn": {
+   "n": "Jagung",
+   "d": "Pakan ternak dan unggas memakai jagung. Harga jagung naik menekan margin mereka.",
+   "t": [
+    "JPFA",
+    "CPIN",
+    "MAIN",
+    "SIPD"
+   ]
+  },
+  "soy": {
+   "n": "Kedelai",
+   "d": "Bahan baku pakan dan makanan olahan. Harga kedelai naik berdampak ke margin pakan dan pangan.",
+   "t": [
+    "CPIN",
+    "JPFA",
+    "MYOR",
+    "ICBP"
+   ]
+  },
+  "sugar": {
+   "n": "Gula",
+   "d": "Perusahaan makanan dan minuman yang memakai gula sebagai bahan baku.",
+   "t": [
+    "MYOR",
+    "ULTJ",
+    "ICBP",
+    "INDF",
+    "CLEO"
+   ]
+  },
+  "coffee": {
+   "n": "Kopi",
+   "d": "Belum ada saham kopi murni di BEI. Yang terdekat adalah produsen makanan minuman.",
+   "t": [
+    "MYOR",
+    "ULTJ"
+   ]
+  },
+  "cocoa": {
+   "n": "Kakao",
+   "d": "Produsen makanan dan cokelat yang terdampak harga kakao.",
+   "t": [
+    "MYOR",
+    "CMRY"
+   ]
   }
  }
 }
