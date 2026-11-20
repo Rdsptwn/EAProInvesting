@@ -11,9 +11,17 @@ import { fileURLToPath, pathToFileURL } from 'url';
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outPath = path.join(root, 'assets/data/syariah.json');
 const PAGES = [
-    'https://www.idx.id/en/market-data/stocks-data/sharia-stock-list/',
-    'https://www.idx.id/en/market-data/stocks-data/syariah-stock-list/',
+    'https://www.idx.id/id/data-pasar/data-saham/indeks-saham/',
+    'https://www.idx.id/en/market-data/stocks-data/stock-indices/',
     'https://www.idx.id/en/market-data/index-data/index-constituent/',
+];
+// endpoint tebakan (dicoba di dalam halaman); hasil yang berisi >=300 kode dipakai
+const GUESS = [
+    '/primary/StockData/GetIndexConstituent?indexCode=ISSI',
+    '/primary/StockData/GetConstituent?indexCode=ISSI',
+    '/primary/StockData/GetIndexStock?indexCode=ISSI&start=0&length=9999',
+    '/primary/TradingSummary/GetIndexConstituent?indexCode=ISSI&length=9999&start=0',
+    '/primary/StockData/GetSyariahStock?length=9999&start=0',
 ];
 const CODE = /^[A-Z]{4}$/;
 
@@ -41,12 +49,19 @@ async function main() {
         for (const url of PAGES) {
             const pg = await ctx.newPage();
             const caught = [];
+            pg.on('response', (r) => { if (/json/.test(r.headers()['content-type'] || '') && /idx\.(id|co\.id)/.test(r.url())) console.log('  xhr', r.url().slice(0, 150)); });
             pg.on('response', async (r) => { try { if (/json/.test(r.headers()['content-type'] || '') && /idx\.(id|co\.id)/.test(r.url())) { const codes = extractCodes(await r.json()); if (codes.length) caught.push({ u: r.url(), codes }); } } catch (_) {} });
             try { await pg.goto(url, { waitUntil: 'networkidle', timeout: 60000 }); await pg.waitForTimeout(4000); } catch (e) { console.log('gagal buka', url, e.message); }
+            for (const g of GUESS) {
+                const j = await pg.evaluate(async (u) => { try { const r = await fetch(u, { headers: { Accept: 'application/json' } }); return r.ok ? await r.json() : null; } catch { return null; } }, g);
+                const codes = j ? extractCodes(j) : [];
+                console.log('  tebak', g, codes.length);
+                if (codes.length) caught.push({ u: 'issi:' + g, codes });
+            }
             await pg.close();
             console.log(url, caught.map((c) => `${c.u.split('?')[0]}=${c.codes.length}`).join(' ') || '(tidak ada JSON daftar kode)');
             const best = caught.sort((a, c) => c.codes.length - a.codes.length)[0];
-            if (best && /sharia|syariah|issi/i.test(url + best.u) && best.codes.length >= 300 && best.codes.length > found.length) { found = best.codes; src = best.u; }
+            if (best && /issi/i.test(best.u) && best.codes.length >= 300 && best.codes.length > found.length) { found = best.codes; src = best.u; }
         }
     } finally { await b.close(); }
     if (found.length < 300) {
