@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19T10:05:49.702Z",
+  "updated": "2026-11-20T02:02:45.971Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
     {
@@ -8,20 +8,6 @@
       "kind": "dividen",
       "date": "2026-11-06",
       "dateLabel": "Ex-Date"
-    },
-    {
-      "ticker": "AMMN",
-      "action": "Pantau aksi korporasi",
-      "kind": "rups",
-      "date": "2026-11-12",
-      "dateLabel": "IDX"
-    },
-    {
-      "ticker": "BI",
-      "action": "Rapat Dewan Gubernur BI (BI-Rate)",
-      "kind": "rups",
-      "date": "2026-11-19",
-      "dateLabel": "Estimasi"
     },
     {
       "ticker": "BREN",
