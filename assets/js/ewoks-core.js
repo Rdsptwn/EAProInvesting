@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261121t0316';
+window.EWOKS_ASSET_V = '20261121c';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1255,14 +1255,14 @@ window.addEventListener('load', () => {
 
     function init() {
         var st = document.createElement('style');
-        st.textContent = '.ec-fab{position:fixed;right:16px;bottom:84px;z-index:60;width:52px;height:52px;border-radius:50%;border:0;background:#10b981;color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer}' +
-            '.ec-box{position:fixed;right:16px;bottom:146px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 180px));display:none;flex-direction:column;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);overflow:hidden;font-size:13px}' +
+        st.textContent = '.ec-fab{position:fixed;right:24px;bottom:160px;z-index:60;width:52px;height:52px;border-radius:50%;border:0;background:#10b981;color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer}' +
+            '.ec-box{position:fixed;right:16px;bottom:222px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 180px));display:none;flex-direction:column;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);overflow:hidden;font-size:13px}' +
             '.ec-box.open{display:flex}.ec-h{padding:10px 12px;background:#111c33;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;font-weight:600}' +
             '.ec-h button{background:none;border:0;color:#94a3b8;cursor:pointer;font-size:16px}.ec-m{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}' +
             '.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
             '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-f input{flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px;color:#e2e8f0;font-size:13px;min-width:0}' +
             '.ec-f button{background:#10b981;border:0;border-radius:8px;color:#04130d;padding:0 12px;font-weight:600;cursor:pointer}.ec-f button:disabled{opacity:.5}' +
-            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:1024px){.ec-fab{bottom:24px}.ec-box{bottom:88px}}';
+            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:104px}.ec-box{bottom:166px}}';
         document.head.appendChild(st);
         var fab = el('button', 'ec-fab', '💬'); fab.setAttribute('aria-label', 'Tanya Asisten Ewoks');
         var box = el('div', 'ec-box');

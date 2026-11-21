@@ -26,11 +26,15 @@ jobs:
         run: |
           node tools/build-global.mjs members
           node tools/build-global.mjs funda
+      - name: Build global-syariah.json (estimasi)
+        continue-on-error: true
+        run: node tools/build-global-syariah.mjs
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/global-funda assets/data/global-index-members.json 2>/dev/null || true
+          git add assets/data/global-funda assets/data/global-index-members.json assets/data/global-syariah.json 2>/dev/null || true
           if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
           git commit -m "chore(data): sync global funda"
           git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"

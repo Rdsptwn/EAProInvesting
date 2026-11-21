@@ -35,7 +35,7 @@ function corsHeaders(origin) {
     return {
         'Access-Control-Allow-Origin': ok ? origin : '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Headers': 'Content-Type, X-Bot-Key',
         Vary: 'Origin'
     };
 }
@@ -263,47 +263,76 @@ async function rateLimited(request) {
     return false;
 }
 
+// Rantai penyedia AI: dicoba berurutan; kalau satu kena limit/gagal, lanjut ke berikutnya.
+// Kuota Gemini & Groq berlaku PER PROYEK/KUNCI (dibagi semua pengunjung), jadi rantai + cache ini penting.
+async function askGemini(env, sys, msgs) {
+    const model = env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_KEY },
+        body: JSON.stringify({
+            systemInstruction: { parts: [{ text: sys }] },
+            contents: msgs.map((m) => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] })),
+            generationConfig: { maxOutputTokens: 600, temperature: 0.5 }
+        }),
+        signal: AbortSignal.timeout(25000)
+    });
+    if (!r.ok) throw new Error('gemini ' + r.status);
+    const j = await r.json();
+    const parts = (((j.candidates || [])[0] || {}).content || {}).parts;
+    return parts ? parts.map((p) => p.text || '').join('').trim() : '';
+}
+async function askGroq(env, sys, msgs) {
+    const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + env.GROQ_KEY },
+        body: JSON.stringify({ model: env.GROQ_MODEL || 'llama-3.3-70b-versatile', messages: [{ role: 'system', content: sys }].concat(msgs), max_tokens: 600, temperature: 0.5 }),
+        signal: AbortSignal.timeout(25000)
+    });
+    if (!r.ok) throw new Error('groq ' + r.status);
+    const j = await r.json();
+    return String((((j.choices || [])[0] || {}).message || {}).content || '').trim();
+}
+async function askCfAi(env, sys, msgs) {
+    const res = await env.AI.run(env.AI_MODEL || '@cf/meta/llama-3.1-8b-instruct', { messages: [{ role: 'system', content: sys }].concat(msgs), max_tokens: 600, temperature: 0.5 });
+    return String((res && (res.response || res.result)) || '').trim();
+}
+
 async function routeAsk(request, env, origin) {
-    if (!ALLOWED_ORIGINS.includes(origin)) return J({ ok: false, error: 'origin' }, 403, origin);
+    // Bot server-ke-server (mis. bot WhatsApp) memakai header X-Bot-Key = secret BOT_KEY; browser harus dari origin terdaftar.
+    const botKey = request.headers.get('X-Bot-Key') || '';
+    const isBot = !!(env && env.BOT_KEY && botKey && botKey === env.BOT_KEY);
+    if (!isBot && !ALLOWED_ORIGINS.includes(origin)) return J({ ok: false, error: 'origin' }, 403, origin);
     let body;
     try { body = await request.json(); } catch (_) { return J({ ok: false, error: 'json' }, 400, origin); }
     const q = String((body && body.q) || '').trim().slice(0, 700);
     if (q.length < 2) return J({ ok: false, error: 'pertanyaan kosong' }, 400, origin);
     const hist = (Array.isArray(body.hist) ? body.hist : []).slice(-6).map((m) => ({ role: m.r === 'a' ? 'assistant' : 'user', content: String(m.t || '').slice(0, 700) }));
     const page = String(body.page || '').slice(0, 60);
-    if (await rateLimited(request)) return J({ ok: false, error: 'Terlalu banyak pertanyaan dari perangkat ini. Coba lagi sekitar 1 jam.' }, 429, origin);
-    const sys = SYSTEM_PROMPT + (page ? ' Pengguna sedang membuka halaman: ' + page + '.' : '');
-    try {
-        if (env && env.GEMINI_KEY) {
-            const model = env.GEMINI_MODEL || 'gemini-2.0-flash';
-            const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_KEY },
-                body: JSON.stringify({
-                    systemInstruction: { parts: [{ text: sys }] },
-                    contents: hist.concat([{ role: 'user', content: q }]).map((m) => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.content }] })),
-                    generationConfig: { maxOutputTokens: 600, temperature: 0.5 }
-                }),
-                signal: AbortSignal.timeout(25000)
-            });
-            if (!r.ok) throw new Error('gemini ' + r.status);
-            const j = await r.json();
-            const text = (((j.candidates || [])[0] || {}).content || {}).parts;
-            const out = text ? text.map((p) => p.text || '').join('').trim() : '';
-            if (!out) throw new Error('jawaban kosong');
-            return J({ ok: true, a: out, by: 'gemini' }, 200, origin);
-        }
-        if (env && env.AI) {
-            const model = env.AI_MODEL || '@cf/meta/llama-3.1-8b-instruct';
-            const res = await env.AI.run(model, { messages: [{ role: 'system', content: sys }].concat(hist, [{ role: 'user', content: q }]), max_tokens: 600, temperature: 0.5 });
-            const out = String((res && (res.response || res.result)) || '').trim();
-            if (!out) throw new Error('jawaban kosong');
-            return J({ ok: true, a: out, by: 'workers-ai' }, 200, origin);
-        }
-        return J({ ok: false, error: 'Asisten belum diaktifkan di server (isi secret GEMINI_KEY atau binding AI).', code: 'not_configured' }, 503, origin);
-    } catch (e) {
-        return J({ ok: false, error: 'Asisten sedang sibuk, coba lagi sebentar.', detail: String((e && e.message) || e) }, 502, origin);
+    // cache jawaban untuk pertanyaan yang sama (tanpa riwayat) -> hemat kuota bersama
+    const cache = caches.default;
+    const ck = new Request('https://ask.cache.local/' + encodeURIComponent(q.toLowerCase().replace(/\s+/g, ' ')));
+    if (!hist.length) {
+        try { const hit = await cache.match(ck); if (hit) return J({ ok: true, a: await hit.text(), by: 'cache' }, 200, origin); } catch (_) {}
     }
+    if (!isBot && await rateLimited(request)) return J({ ok: false, error: 'Terlalu banyak pertanyaan dari perangkat ini. Coba lagi sekitar 1 jam.' }, 429, origin);
+    const sys = SYSTEM_PROMPT + (page ? ' Konteks: ' + page + '.' : '') + (isBot ? ' Jawaban dikirim lewat WhatsApp: tanpa markdown tebal berlebihan, singkat.' : ' Pengguna sedang membuka halaman: ' + page + '.');
+    const msgs = hist.concat([{ role: 'user', content: q }]);
+    const chain = [];
+    if (env && env.GEMINI_KEY) chain.push(['gemini', askGemini]);
+    if (env && env.GROQ_KEY) chain.push(['groq', askGroq]);
+    if (env && env.AI) chain.push(['workers-ai', askCfAi]);
+    if (!chain.length) return J({ ok: false, error: 'Asisten belum diaktifkan di server (isi GEMINI_KEY / GROQ_KEY atau binding AI).', code: 'not_configured' }, 503, origin);
+    let last = '';
+    for (const [name, fn] of chain) {
+        try {
+            const out = await fn(env, sys, msgs);
+            if (!out) throw new Error('kosong');
+            if (!hist.length) { try { await cache.put(ck, new Response(out, { headers: { 'Cache-Control': 'max-age=21600' } })); } catch (_) {} }
+            return J({ ok: true, a: out, by: name }, 200, origin);
+        } catch (e) { last += name + ':' + String((e && e.message) || e) + ' '; }
+    }
+    return J({ ok: false, error: 'Asisten lagi penuh (kuota gratis habis). Coba lagi beberapa menit lagi.', detail: last.trim() }, 503, origin);
 }
 
 async function handle(request, ctx, env) {
@@ -313,7 +342,7 @@ async function handle(request, ctx, env) {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method === 'POST' && path === '/ask') return routeAsk(request, env, origin);
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v8-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: !!(env && (env.GEMINI_KEY || env.AI)) }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v8-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);

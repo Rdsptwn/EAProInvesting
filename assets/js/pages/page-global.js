@@ -320,7 +320,10 @@
     }
 
     /* ---------- Screener ---------- */
-    var S = { rows: [], sector: '', q: '', sort: 'chg-d', star: false, shown: 50 };
+    var S = { rows: [], sector: '', q: '', sort: 'chg-d', star: false, sy: false, shown: 50 };
+    var GSY = null; // estimasi syariah global: {ok:Set, no:{t:kode}}
+    function loadGsy() { return get('global-syariah.json').then(function (d) { GSY = { ok: {}, no: d.no || {} }; (d.ok || []).forEach(function (t) { GSY.ok[t] = 1; }); return d; }).catch(function () { GSY = { ok: {}, no: {} }; }); }
+    function gsyWhy(c) { if (!c) return ''; if (c === 's') return 'sektor keuangan konvensional'; if (c.indexOf('b:') === 0) return 'bisnis inti: ' + c.slice(2); if (c.indexOf('u:') === 0) return 'utang ±' + c.slice(2) + '% dari aset (batas 33%)'; return ''; }
     function watch() { try { return JSON.parse(localStorage.getItem('ewoks_gwatch') || '[]'); } catch (_) { return []; } }
     function saveWatch(a) { try { localStorage.setItem('ewoks_gwatch', JSON.stringify(a)); } catch (_) {} }
     function initScreener() {
@@ -334,12 +337,13 @@
             document.getElementById('gs-q').addEventListener('input', function (e) { S.q = e.target.value.trim().toLowerCase(); S.shown = 50; draw(); });
             document.getElementById('gs-sort').addEventListener('change', function (e) { S.sort = e.target.value; draw(); });
             document.getElementById('gs-star').addEventListener('change', function (e) { S.star = e.target.checked; draw(); });
+            var sy = document.getElementById('gs-sy'); if (sy) sy.addEventListener('change', function (e) { S.sy = e.target.checked; S.shown = 50; if (S.sy && !GSY) loadGsy().then(draw); else draw(); });
             document.getElementById('gs-more').addEventListener('click', function () { S.shown += 50; draw(); });
             document.getElementById('gs-body').addEventListener('click', function (e) {
                 var b = e.target.closest('[data-star]'); if (!b) return;
                 var w = watch(), t = b.dataset.star, i = w.indexOf(t); if (i < 0) w.push(t); else w.splice(i, 1); saveWatch(w); draw();
             });
-            draw(); onLive.push(function () { if (!document.getElementById('g-screener').classList.contains('hidden')) draw(); });
+            loadGsy().then(draw); draw(); onLive.push(function () { if (!document.getElementById('g-screener').classList.contains('hidden')) draw(); });
         }).catch(function () { document.getElementById('gs-body').innerHTML = '<tr><td colspan="8" class="p-6 text-center text-slate-500">Data saham AS belum tersedia. Jalankan workflow <b>Sync global</b> di GitHub Actions.</td></tr>'; });
     }
     var KEY = { 'chg-d': [3, -1], 'chg-a': [3, 1], 'm1-d': [4, -1], 'vol-d': [7, -1], 't-a': [0, 1] };
@@ -355,6 +359,7 @@
         var list = S.rows.filter(function (r) {
             if (S.sector && r[11] !== S.sector) return false;
             if (S.star && w.indexOf(r[0]) < 0) return false;
+            if (S.sy && !(GSY && GSY.ok[r[0]])) return false;
             if (q && (r[0] + ' ' + r[10] + ' ' + r[11]).toLowerCase().indexOf(q) < 0) return false;
             return true;
         });
@@ -372,7 +377,7 @@
             var on = w.indexOf(r[0]) >= 0;
             var rng = r[5] && r[6] ? '<span class="text-[11px] text-slate-500">' + fmt(r[5], 0) + '–' + fmt(r[6], 0) + '</span>' : '–';
             return '<tr data-chart="' + esc(r[0]) + '" class="border-t border-slate-100 cursor-pointer hover:bg-slate-50/60"><td class="p-3"><button data-star="' + esc(r[0]) + '" aria-label="Watchlist" class="' + (on ? 'text-amber-400' : 'text-slate-300') + '"><i class="fas fa-star"></i></button></td>' +
-                '<td class="p-3"><div class="font-extrabold text-slate-900">' + esc(r[0]) + '</div><div class="text-[11px] text-slate-500 max-w-[200px] truncate">' + esc(r[10]) + '</div></td>' +
+                '<td class="p-3"><div class="font-extrabold text-slate-900">' + esc(r[0]) + (GSY && GSY.ok[r[0]] ? '<i class="ml-1 text-[9px] font-black text-emerald-600 not-italic" title="Estimasi syariah (bukan fatwa)">S*</i>' : '') + '</div><div class="text-[11px] text-slate-500 max-w-[200px] truncate">' + esc(r[10]) + '</div></td>' +
                 '<td class="p-3 text-right font-bold">' + fmt(r[1]) + '</td><td class="p-3 text-right">' + pct(r[3]) + '</td>' +
                 '<td class="p-3 text-right hidden sm:table-cell">' + pct(r[4]) + '</td><td class="p-3 text-right hidden md:table-cell">' + rng + '</td>' +
                 '<td class="p-3 text-right hidden md:table-cell text-[11px] text-slate-500">' + (r[7] ? (r[7] >= 1e6 ? (r[7] / 1e6).toFixed(1) + ' jt' : Math.round(r[7] / 1e3) + ' rb') : '–') + '</td>' +
@@ -396,13 +401,14 @@
             box.innerHTML =
                 '<button data-goto="screener" class="text-sm font-bold text-blue-600 mb-3">← Kembali ke screener</button>' +
                 '<div class="flex flex-wrap items-end gap-x-4 gap-y-1 mb-1"><h2 class="text-2xl md:text-3xl font-black text-slate-900">' + esc(sym) + '</h2><span class="text-slate-500">' + esc(name) + (row && row[11] ? ' · ' + esc(row[11]) : '') + '</span></div>' +
-                '<div id="gd-price" class="mb-4 text-sm"></div>' +
+                '<div id="gd-sy" class="mb-2 text-xs"></div>' + '<div id="gd-price" class="mb-4 text-sm"></div>' +
                 '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 mb-5">' +
                 '<div id="gp-tabs" class="flex gap-2 mb-3">' + RANGES.map(function (r, i) { return '<button class="kg-btn' + (i ? '' : ' active') + '" data-r="' + i + '">' + r[2] + '</button>'; }).join('') + '</div>' +
                 '<div style="height:300px;position:relative"><canvas id="gp-canvas"></canvas><div id="gp-msg" class="absolute inset-0 flex items-center justify-center text-sm text-slate-500 text-center px-6"></div></div>' +
                 '<div class="mt-3 flex gap-4 text-xs font-bold"><a target="_blank" rel="noopener" class="text-blue-600" href="https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym.replace('-', '.')) + '">Chart lengkap di TradingView</a><a target="_blank" rel="noopener" class="text-slate-500" href="' + yh(sym) + '">Yahoo Finance</a></div></div>' +
                 '<div id="gd-funda"></div>';
             box.querySelector('#gp-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-r]'); if (!b) return; pcRange = +b.dataset.r; box.querySelectorAll('#gp-tabs button').forEach(function (x) { x.classList.toggle('active', x === b); }); loadChart(); });
+            (GSY ? Promise.resolve() : loadGsy()).then(function () { var e = document.getElementById('gd-sy'); if (!e || isEtf) return; var ok = GSY.ok[sym], why = gsyWhy(GSY.no[sym]); e.innerHTML = ok ? '<span class="font-bold text-emerald-600">Syariah (estimasi): lolos saringan</span> <span class="text-slate-400">· hitungan otomatis (sektor, bisnis inti, utang/aset ≤ 33%), bukan fatwa. Cek DSN-MUI/penyedia resmi sebelum memutuskan.</span>' : (why ? '<span class="font-bold text-rose-500">Syariah (estimasi): tidak lolos</span> <span class="text-slate-400">· ' + esc(why) + '</span>' : '<span class="text-slate-400">Syariah (estimasi): data belum cukup untuk dinilai.</span>'); });
             paintPrice(); loadChart();
             document.getElementById('gd-funda').innerHTML = fundaHtml(sym, f, fd, isEtf);
             drawFundaChart(f, fd);
