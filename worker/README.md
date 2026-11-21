@@ -54,4 +54,19 @@ Jadwal GitHub bawaan dibiarkan sebagai cadangan; workflow memakai antrean yang s
 `GET /gquotes?s=TSLA,NVDA,GC=F,^GSPC` mengembalikan `{ ok, ts, n, q: { TSLA: [harga, penutupan_lalu, persen, volume] } }`
 untuk simbol global (saham AS, futures komoditas, indeks, kripto, kurs). Maks 150 simbol per panggilan, cache 60 detik di edge.
 Halaman Global memanggilnya tiap 60 detik saat tab terlihat. **Setelah mengubah kode Worker, deploy ulang** (Edit code → Deploy),
-lalu cek `/health`: `version` harus `v7-global`.
+lalu cek `/health`: `version` harus `v8-ask` (v8 menambah `POST /ask`, lihat bawah).
+
+## Rute `POST /ask` (asisten AI, v8)
+
+Isi satu atau lebih (dicoba berurutan; yang kena limit dilewati):
+
+| Cara | Setelan di Worker |
+|------|-------------------|
+| Gemini (gratis, Google AI Studio) | Secret `GEMINI_KEY` (opsional `GEMINI_MODEL`) |
+| Groq (gratis) | Secret `GROQ_KEY` (opsional `GROQ_MODEL`) |
+| Workers AI | Binding AI bernama `AI` (opsional `AI_MODEL`) |
+| Bot server-ke-server (mis. WhatsApp) | Secret `BOT_KEY`; bot mengirim header `X-Bot-Key` |
+
+- Browser hanya boleh dari origin situs; batas 25 pertanyaan/jam per perangkat; jawaban pertanyaan yang sama di-cache 6 jam.
+- Kuota Gemini/Groq berlaku **per proyek**, dibagi semua pengunjung.
+- Cek `/health`: bidang `ai` memuat penyedia yang aktif.

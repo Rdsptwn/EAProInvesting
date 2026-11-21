@@ -31,10 +31,14 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 |---|---|---|
 | 🏠 | **Beranda** | IHSG, sentimen pasar, inflasi, yield SBN, **BI 7-Day RR Rate**, **Fed Rate**, aktivitas perdagangan (All Market / Regular / Nego), top gainer-loser, berita, kalender korporasi |
 | 🧭 | **Peta Konglo** | Grup konglomerat, kepemilikan emiten, harga, logo, dan laporan keuangan 2020–2026 untuk 348 emiten (termasuk 85 saham likuid non-konglo lewat kotak "Lapkeu emiten lain") |
-| 🌏 | **Pasar Global** | 309 instrumen (ETF, reksa dana, SBN): klasifikasi pasar, CAGR, return per tahun |
+| 🌏 | **Pasar Global** | Mode **IHSG / Global / Bitcoin / Forex**: 2.649 saham & ETF AS dengan fundamental, indeks dunia dan saham terkaitnya, komoditas, kurs, sektor, filter **Syariah (estimasi)**, 309 instrumen ETF/reksa dana/SBN |
+| ₿ | **Bitcoin & Kripto** | 162 koin, Fear & Greed, tab Listing (pengumuman Binance + trending), harga live Binance |
+| 💱 | **Forex & Emas** | 31 pasangan, XAU/USD, XAG/USD, PAXG, XAUT |
+| 📓 | **Jurnal Multi-pasar** | Jurnal Global, Bitcoin, dan Forex dengan statistik, kurva equity, ekspor/impor |
+| 💬 | **Asisten tanya-jawab** | Widget chat gratis (edukasi, bukan sinyal) lewat Worker `/ask`; otak yang sama bisa dipakai bot WA |
 | 🏦 | **Broker** | Database 91 broker BEI aktif (ritel, asing, lokal) dengan label kategori bandarmologi |
 | 📚 | **Edukasi** | Makro dan saham, laporan keuangan, fixed income, bandarmologi, kuis profil risiko |
-| 🧮 | **Tools** | Terminal watchlist dan screener, jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
+| 🧮 | **Tools** | Terminal watchlist dan screener (dengan **rekomendasi bot BoW** otomatis), jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
 
 Tampilan memakai tema **Aurora**: terang atau gelap, kartu kaca, gradien indigo–magenta–aqua, ilustrasi grafik animasi di beranda. Animasi otomatis mati bila perangkat memilih *reduced motion*.
 
@@ -49,6 +53,9 @@ Bot GitHub Actions meng-commit data ke repo, jadi situs berisi data terbaru tanp
 | IHSG, harga emiten, kalender korporasi, inflasi, yield SBN, BI Rate, Fed Rate, ETF | Tiap jam, Senin–Jumat (09.00–17.00 WIB) | `daily-market-sync` |
 | Aktivitas perdagangan BEI (nilai, volume, frekuensi) | Tiap jam, Senin–Jumat | `market-activity-intraday` |
 | Laporan keuangan emiten | Senin–Jumat 18.30 WIB | `sync-funda-idx` |
+| Peringkat broker BEI | Harian | `sync-broker` |
+| Global: screener, indeks dunia, komoditas, kripto, forex, listing kripto | Harian + manual | `sync-global` |
+| Fundamental global dan estimasi syariah | Berkala | `sync-global-funda` |
 | Cache aset (`?v=`) | Setiap data berubah | otomatis |
 
 **Soal kesegaran data.** BEI hanya menerbitkan ringkasan perdagangan **setelah penutupan**, jadi kartu Aktivitas Perdagangan menampilkan data penutupan terakhir beserta jam pengecekan, bukan angka real-time. Harga saham dan IHSG yang lebih dekat ke real-time datang dari Worker di bawah.
@@ -62,6 +69,12 @@ Bot GitHub Actions meng-commit data ke repo, jadi situs berisi data terbaru tanp
 Harga IHSG dan emiten diperbarui tiap 10 menit saat jam bursa lewat Cloudflare Worker gratis (data IDX di Yahoo tertunda ±10 menit). Tanpa Worker, situs memakai snapshot terakhir. Bila koneksi ke Worker gagal, kartu Market Sentiment mencantumkan alasannya.
 Panduan pasang: [`worker/README.md`](worker/README.md).
 
+**Asisten AI (Worker v8).** Rute `POST /ask` memakai rantai penyedia gratis Gemini → Groq → Workers AI, dengan cache jawaban dan batas per perangkat. Secret: `GEMINI_KEY`, `GROQ_KEY` (opsional), `BOT_KEY` (untuk bot WA). Kuota penyedia gratis dibagi semua pengunjung.
+
+## 📋 Status & Daftar Tertunda
+
+Ringkasan update yang menunggu tindakan dan data yang belum terisi ada di [`docs/STATUS.md`](docs/STATUS.md).
+
 ## 🗂️ Struktur Proyek
 
 ```text
@@ -74,7 +87,8 @@ Panduan pasang: [`worker/README.md`](worker/README.md).
 │   ├── js/pages/            Logika per halaman
 │   ├── data/                JSON hasil bot (snapshot, lapkeu, macro, pasar-global)
 │   └── img/                 Logo EA dan banner
-├── tools/                   Skrip build data (Node 20+)
+├── tools/                   Skrip build data (Node 20+, plus import-bei-indices.py)
+├── docs/STATUS.md           Daftar update tertunda dan data belum terisi
 ├── worker/                  Cloudflare Worker proxy harga live
 └── .github/workflows/       Sinkron data otomatis
 ```
@@ -87,11 +101,15 @@ node tools/build-funda-idx.mjs --force # laporan keuangan
 node tools/build-pasar-global.mjs      # CAGR + return tahunan ETF
 node tools/build-macro.mjs             # inflasi, yield SBN, BI Rate, Fed Rate
 node tools/build-market-activity.mjs   # aktivitas BEI (butuh Playwright)
+node tools/build-global.mjs [members|screener|commodities|crypto|forex|intl|news|ipo|funda]
+node tools/build-global-syariah.mjs    # estimasi syariah global
+node tools/build-crypto-listings.mjs   # berita listing kripto
+python3 tools/import-bei-indices.py <folder xlsx BEI>  # LQ45, IDX80, ISSI, dll.
 node tools/bump-asset-version.mjs      # ganti versi cache
 ```
 
 Situs ini statis, jadi cukup buka lewat server file apa saja (misalnya `npx serve`).
-Jurnal dan watchlist tersimpan di browser (localStorage); gunakan Backup/Restore di situs.
+Jurnal dan watchlist tersimpan di browser (localStorage), per browser dan per perangkat, bukan per IP; gunakan Backup/Restore atau Ekspor/Impor di situs untuk memindahkan.
 
 ## 🚀 Deploy
 
