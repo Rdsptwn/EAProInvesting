@@ -621,3 +621,7 @@ body.dark-mode-override .st-DIV{background:#14532d;color:#bbf7d0}body.dark-mode-
 
 /* Jam WIB di header dimatikan: menimpa nama brand. Waktu tetap tampil di kartu data pasar. */
 #liveClock { display: none !important; }
+/* Layar lebar: jam di pojok kiri atas (ruang kosong di samping header), tidak menimpa brand */
+@media (min-width: 1500px) {
+  #liveClock { display: flex !important; position: fixed; left: 16px; top: 24px; z-index: 55; }
+}
