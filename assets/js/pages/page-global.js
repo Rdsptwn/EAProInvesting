@@ -289,9 +289,15 @@
         document.getElementById('gk-stamp').textContent = liveBadge() || (commData.meta ? 'Snapshot ' + ago(commData.meta.built) : '');
     }
     function initMarkets() {
-        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('global-intl.json').catch(function () { return null; })]).then(function (r) {
+        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('global-intl.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('idx-screener.json').catch(function () { return null; })]).then(function (r) {
             commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
             if (r[2] && r[2].groups) { INTL = r[2].groups; Object.keys(INTL).forEach(function (k) { mkGroups[k] = mkGroups[k] || {}; }); }
+            if (!IS_IDX && r[3] && r[3].rows) {
+                // Database yang sama dengan mode IHSG: 30 saham IDX dengan nilai transaksi terbesar
+                var top = r[3].rows.filter(function (x) { return Number.isFinite(x[1]) && x[1] > 0; }).sort(function (a, b) { return (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0)); }).slice(0, 30);
+                INTL = INTL || {}; INTL.ihsg = { n: 'IHSG', d: '30 saham dengan nilai transaksi terbesar (data yang sama dengan mode IHSG). Harga dalam rupiah.', items: top.map(function (x) { return { t: x[0], n: shortName(x[11]), p: x[1], c: x[3], cur: 'Rp' }; }) };
+                mkGroups.ihsg = mkGroups.ihsg || {};
+            }
             paintMarkets(); startLive(); onLive.push(paintMarkets);
         }).catch(function () { document.getElementById('gk-list').innerHTML = '<p class="text-sm text-slate-500 p-3">Data pasar belum tersedia. Jalankan workflow Sync global.</p>'; });
         document.getElementById('gk-tabs').addEventListener('click', function (e) {
