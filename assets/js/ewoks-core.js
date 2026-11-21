@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261121h';
+window.EWOKS_ASSET_V = '20261121i';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1262,7 +1262,7 @@ window.addEventListener('load', () => {
             '.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
             '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-f input{flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px;color:#e2e8f0;font-size:13px;min-width:0}' +
             '.ec-f button{background:#10b981;border:0;border-radius:8px;color:#04130d;padding:0 12px;font-weight:600;cursor:pointer}.ec-f button:disabled{opacity:.5}' +
-            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:104px}.ec-box{bottom:166px}}@media(min-width:1500px){.ec-fab{top:18px;bottom:auto;right:16px}.ec-box{top:76px;bottom:auto;right:16px;height:min(520px,calc(100vh - 100px))}}';
+            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:104px}.ec-box{bottom:166px}}@media(min-width:1500px){.ec-fab{top:14px;bottom:auto;right:16px}.ec-box{top:74px;bottom:auto;right:16px;height:min(520px,calc(100vh - 110px))}}';
         document.head.appendChild(st);
         var fab = el('button', 'ec-fab', '💬'); fab.setAttribute('aria-label', 'Tanya Asisten Ewoks');
         var box = el('div', 'ec-box');
@@ -1274,6 +1274,13 @@ window.addEventListener('load', () => {
         box.appendChild(h); box.appendChild(m); box.appendChild(f);
         box.appendChild(el('div', 'ec-n', 'Edukasi, bukan saran investasi. Jawaban AI bisa keliru — cek ulang.'));
         document.body.appendChild(fab); document.body.appendChild(box);
+        // Layar lebar: pindahkan ke dalam header sticky supaya sejajar dengan jam dan ikut menempel saat scroll
+        function place() {
+            var wide = window.matchMedia('(min-width:1500px)').matches, tgt = document.body;
+            if (wide) { var hs = document.querySelectorAll('header'); for (var i = 0; i < hs.length; i++) { if (hs[i].offsetHeight > 0 && hs[i].classList.contains('md:block') && hs[i].classList.contains('sticky')) { tgt = hs[i]; break; } } }
+            if (fab.parentNode !== tgt) { tgt.appendChild(fab); tgt.appendChild(box); }
+        }
+        place(); window.addEventListener('resize', place);
 
         function add(role, t) { var b = el('div', 'ec-b ' + (role === 'u' ? 'ec-u' : 'ec-a'), t); m.appendChild(b); m.scrollTop = m.scrollHeight; return b; }
         if (!hist.length) add('a', 'Halo! Tanya apa saja soal dasar saham, reksa dana, kripto, forex, manajemen risiko, atau cara pakai fitur di web ini. Aku tidak memberi sinyal beli/jual.');
