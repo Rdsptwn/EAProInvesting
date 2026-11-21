@@ -143,7 +143,7 @@
         m.classList.remove('hidden'); document.body.style.overflow = 'hidden';
     }
     function openGrp2(id) {
-        if (!IS_IDX && INTL && INTL[id]) return openIntl(id);
+        if (INTL && INTL[id]) return openIntl(id);
         Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json'), IS_IDX ? Promise.resolve(null) : get('global-index-members.json').catch(function () { return null; })]).then(function (res) {
             var def = res[0][IS_IDX ? 'idx' : 'global'][id];
             if (/^sec:/.test(id)) {
@@ -227,6 +227,80 @@
     }
     window.EwoksGlobal.renderSectors = renderSectors;
 
+var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸', vix: '🇺🇸', ust10: '🇺🇸', dxy: '🇺🇸', ihsg: '🇮🇩', n225: '🇯🇵', hsi: '🇭🇰', sti: '🇸🇬', ftse: '🇬🇧', dax: '🇩🇪', kospi: '🇰🇷', sse: '🇨🇳', szse: '🇨🇳', cac: '🇫🇷', stoxx: '🇪🇺', asx: '🇦🇺', twii: '🇹🇼', sensex: '🇮🇳', nifty: '🇮🇳', klci: '🇲🇾', set: '🇹🇭', bvsp: '🇧🇷', tsx: '🇨🇦',
+        usdidr: '🇺🇸', sgdidr: '🇸🇬', euridr: '🇪🇺', audidr: '🇦🇺', cnyidr: '🇨🇳', jpyidr: '🇯🇵', gbpidr: '🇬🇧', myridr: '🇲🇾', hkdidr: '🇭🇰', saridr: '🇸🇦', krwidr: '🇰🇷', thbidr: '🇹🇭', inridr: '🇮🇳', nzdidr: '🇳🇿', chfidr: '🇨🇭', eurusd: '🇪🇺', gbpusd: '🇬🇧', usdjpy: '🇯🇵', audusd: '🇦🇺', usdcny: '🇨🇳', usdsgd: '🇸🇬',
+        brent: '🛢️', wti: '🛢️', gas: '🔥', coal: '⚫', gold: '🥇', silver: '🥈', copper: '🟠', platinum: '⚪', palladium: '⚪', aluminium: '🔩', zinc: '🔩', nickel: '🔩', tin: '🔩', cpo: '🌴', rubber: '🛞', heating: '🛢️', gasoline: '⛽', cotton: '☁️', rice: '🌾', lumber: '🪵', wheat: '🌾', corn: '🌽', soy: '🫘', sugar: '🍬', coffee: '☕', cocoa: '🍫', btc: '₿', eth: 'Ξ', sol: '◎', bnb: '◆', xrp: '✕' };
+    var MK_TABS = [['indeks', 'Indeks'], ['komoditas', 'Komoditas'], ['kurs', 'Mata uang'], ['kripto', 'Kripto']];
+    var MK_PRIO = ['spx', 'ndx', 'dji', 'rut', 'ihsg', 'n225', 'hsi', 'kospi', 'sse', 'dax', 'ftse', 'cac', 'sti', 'vix', 'ust10', 'dxy', 'usdidr'];
+    
+    if (IS_IDX) MK_PRIO = ['ihsg', 'spx', 'ndx', 'dji', 'n225', 'hsi', 'kospi', 'sse', 'dax', 'ftse', 'cac', 'sti', 'vix', 'ust10', 'dxy', 'usdidr'];
+    var mkTab = 'indeks', mkView = 'ticker', mkGroups = {};
+    try { var sv = localStorage.getItem('ewoks_gmk'); if (sv && MK_TABS.some(function (t) { return t[0] === sv; })) mkTab = sv; if (localStorage.getItem('ewoks_gmk_view') === 'grid') mkView = 'grid'; } catch (_) {}
+    var mkHost = null, mkAuto = { pos: 0, hold: 0, wait: 0 };
+    function mkCard(it) {
+        var up = (it.chg || 0) >= 0, has = mkGroups[it.id];
+        var d = it.price >= 1000 ? 0 : (it.price >= 10 ? 2 : 4);
+        var attr = has ? ' data-grp="' + esc(it.id) + '" role="button" tabindex="0"' : '';
+        var wide = mkView === 'ticker' ? ' w-[184px] shrink-0' : '';
+        return '<div' + attr + ' class="premium-card glass-card rounded-2xl p-3.5 border border-slate-200 ' + (has ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition-all' : '') + wide + '">' +
+            '<div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 min-w-0"><span class="text-sm leading-none">' + (FLAG[it.id] || '•') + '</span><span class="truncate">' + esc(it.n) + '</span></div>' +
+            '<div class="flex items-end justify-between gap-2 mt-1.5"><div class="min-w-0"><div class="text-lg font-black text-slate-900 leading-tight">' + fmt(it.price, d) + '</div><div class="text-xs mt-0.5">' + pct(it.chg) + '</div></div>' + spark(it.spark, up).replace('width="80" height="26"', 'width="64" height="24"') + '</div>' +
+            '<div class="text-[10px] text-slate-400 mt-1.5 truncate">' + esc(it.u || it.s || '') + (has ? ' · <span class="font-bold text-blue-600">saham terkait ›</span>' : '') + '</div></div>';
+    }
+    function paintMarkets() {
+        if (!commData || !mkHost) return;
+        var q = function (s) { return mkHost.querySelector(s); };
+        var all = commData.items.map(mergeItem);
+        var gold = all.filter(function (x) { return x.id === 'gold'; })[0], idr = all.filter(function (x) { return x.id === 'usdidr'; })[0];
+        q('.mk-tabs').innerHTML = MK_TABS.map(function (t) { return '<button type="button" class="hm-chip shrink-0 ' + (t[0] === mkTab ? 'on' : '') + '" data-mk="' + t[0] + '">' + t[1] + '</button>'; }).join('');
+        var items = all.filter(function (x) { return x.g === mkTab; });
+        items.sort(function (a, b) { var ia = MK_PRIO.indexOf(a.id), ib = MK_PRIO.indexOf(b.id); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); });
+        var sc = q('.mk-scroll'), keep = sc.scrollLeft, keepT = sc.scrollTop;
+        sc.className = 'mk-scroll ' + (mkView === 'ticker' ? 'flex gap-3 overflow-x-auto no-scrollbar pb-1' : 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 overflow-y-auto max-h-[26rem] pr-1');
+        sc.innerHTML = items.map(mkCard).join('') || '<p class="text-sm text-slate-500 p-3">Belum ada data.</p>';
+        sc.scrollLeft = keep; sc.scrollTop = keepT;
+        var note = q('.mk-note');
+        note.textContent = (mkTab === 'komoditas' && gold && idr) ? 'Emas ≈ Rp' + Math.round(gold.price * idr.price / 31.1034768).toLocaleString('id-ID') + '/gram (harga dunia × kurs, bukan harga toko).' : '';
+        q('.mk-stamp').textContent = liveBadge() || (commData.meta ? 'Snapshot ' + ago(commData.meta.built) : '');
+        var vb = q('.mk-view'); vb.textContent = mkView === 'ticker' ? 'Lihat semua ▾' : 'Mode ticker ▸';
+    }
+    function mkTick() {
+        requestAnimationFrame(mkTick);
+        if (!mkHost || mkView !== 'ticker' || document.hidden) return;
+        var sc = mkHost.querySelector('.mk-scroll'); if (!sc || sc.scrollWidth <= sc.clientWidth + 2) return;
+        var now = Date.now(); if (now < mkAuto.hold || mkAuto.hover) { mkAuto.pos = sc.scrollLeft; return; }
+        if (Math.abs(sc.scrollLeft - mkAuto.pos) > 2) { mkAuto.pos = sc.scrollLeft; }
+        mkAuto.pos += 0.45; sc.scrollLeft = mkAuto.pos;
+        if (sc.scrollLeft >= sc.scrollWidth - sc.clientWidth - 1) { mkAuto.hold = now + 2200; setTimeout(function () { sc.scrollTo({ left: 0, behavior: 'smooth' }); mkAuto.pos = 0; }, 1800); }
+    }
+    function mountMarkets(host) {
+        if (!host || host.__mk) return; host.__mk = 1; mkHost = host;
+        host.innerHTML = '<section class="premium-card p-4 md:p-5 mb-6" aria-label="Daftar pasar">' +
+            '<div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="mk-tabs flex gap-2 overflow-x-auto"></div>' +
+            '<div class="flex items-center gap-3"><span class="mk-stamp text-[10px] font-bold text-blue-600"></span><button type="button" class="mk-view hm-chip"></button></div></div>' +
+            '<div class="mk-scroll"></div><div class="mk-note text-[11px] text-slate-500 mt-2"></div></section>';
+        var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+        host.addEventListener('click', function (e) {
+            var b = e.target.closest('[data-mk]'); if (b) { mkTab = b.dataset.mk; try { localStorage.setItem('ewoks_gmk', mkTab); } catch (_) {} paintMarkets(); return; }
+            if (e.target.closest('.mk-view')) { mkView = mkView === 'ticker' ? 'grid' : 'ticker'; try { localStorage.setItem('ewoks_gmk_view', mkView); } catch (_) {} paintMarkets(); }
+        });
+        ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (ev) { host.addEventListener(ev, function () { mkAuto.hold = Date.now() + 6000; }, { passive: true }); });
+        host.addEventListener('mouseenter', function () { mkAuto.hover = true; }); host.addEventListener('mouseleave', function () { mkAuto.hover = false; });
+        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), get('global-intl.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('idx-screener.json').catch(function () { return null; })]).then(function (r) {
+            commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
+            if (r[2] && r[2].groups) { INTL = r[2].groups; Object.keys(INTL).forEach(function (k) { mkGroups[k] = mkGroups[k] || {}; }); }
+            if (!IS_IDX && r[3] && r[3].rows) {
+                var top = r[3].rows.filter(function (x) { return Number.isFinite(x[1]) && x[1] > 0; }).sort(function (a, b) { return (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0)); }).slice(0, 30);
+                INTL = INTL || {}; INTL.ihsg = { n: 'IHSG', d: '30 saham dengan nilai transaksi terbesar (data yang sama dengan mode IHSG). Harga dalam rupiah.', items: top.map(function (x) { return { t: x[0], n: shortName(x[11]), p: x[1], c: x[3], cur: 'Rp' }; }) };
+                mkGroups.ihsg = mkGroups.ihsg || {};
+            }
+            paintMarkets(); startLive(); onLive.push(paintMarkets);
+            if (!reduce) requestAnimationFrame(mkTick);
+        }).catch(function () { host.querySelector('.mk-scroll').innerHTML = '<p class="text-sm text-slate-500 p-3">Data pasar belum tersedia. Jalankan workflow Sync global.</p>'; });
+    }
+    window.EwoksGlobal.mountMarkets = mountMarkets;
+
+
     var root = document.getElementById('page-global');
     if (!root) return;
 
@@ -257,57 +331,9 @@
     });
 
 
-    /* ---------- Daftar pasar ala Stockbit: Indeks | Komoditas | Mata Uang | Kripto ---------- */
-    var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸', vix: '🇺🇸', ust10: '🇺🇸', dxy: '🇺🇸', ihsg: '🇮🇩', n225: '🇯🇵', hsi: '🇭🇰', sti: '🇸🇬', ftse: '🇬🇧', dax: '🇩🇪', kospi: '🇰🇷', sse: '🇨🇳', szse: '🇨🇳', cac: '🇫🇷', stoxx: '🇪🇺', asx: '🇦🇺', twii: '🇹🇼', sensex: '🇮🇳', nifty: '🇮🇳', klci: '🇲🇾', set: '🇹🇭', bvsp: '🇧🇷', tsx: '🇨🇦',
-        usdidr: '🇺🇸', sgdidr: '🇸🇬', euridr: '🇪🇺', audidr: '🇦🇺', cnyidr: '🇨🇳', jpyidr: '🇯🇵', gbpidr: '🇬🇧', myridr: '🇲🇾', hkdidr: '🇭🇰', saridr: '🇸🇦', krwidr: '🇰🇷', thbidr: '🇹🇭', inridr: '🇮🇳', nzdidr: '🇳🇿', chfidr: '🇨🇭', eurusd: '🇪🇺', gbpusd: '🇬🇧', usdjpy: '🇯🇵', audusd: '🇦🇺', usdcny: '🇨🇳', usdsgd: '🇸🇬',
-        brent: '🛢️', wti: '🛢️', gas: '🔥', coal: '⚫', gold: '🥇', silver: '🥈', copper: '🟠', platinum: '⚪', palladium: '⚪', aluminium: '🔩', zinc: '🔩', nickel: '🔩', tin: '🔩', cpo: '🌴', rubber: '🛞', heating: '🛢️', gasoline: '⛽', cotton: '☁️', rice: '🌾', lumber: '🪵', wheat: '🌾', corn: '🌽', soy: '🫘', sugar: '🍬', coffee: '☕', cocoa: '🍫', btc: '₿', eth: 'Ξ', sol: '◎', bnb: '◆', xrp: '✕' };
-    var MK_TABS = [['indeks', 'Indeks'], ['komoditas', 'Komoditas'], ['kurs', 'Mata uang'], ['kripto', 'Kripto']];
-    var MK_PRIO = ['spx', 'ndx', 'dji', 'rut', 'ihsg', 'n225', 'hsi', 'kospi', 'sse', 'dax', 'ftse', 'cac', 'sti', 'vix', 'ust10', 'dxy', 'usdidr'];
-    var mkTab = 'indeks', mkGroups = {};
-    try { var sv = localStorage.getItem('ewoks_gmk'); if (sv) mkTab = sv; } catch (_) {}
-    function mkRow(it) {
-        var up = (it.chg || 0) >= 0, has = mkGroups[it.id];
-        var d = it.price >= 1000 ? 0 : (it.price >= 10 ? 2 : 4);
-        var attr = has ? ' data-grp="' + esc(it.id) + '" role="button" tabindex="0"' : '';
-        return '<div' + attr + ' class="flex items-center gap-3 py-2.5 border-b border-slate-100 ' + (has ? 'cursor-pointer hover:bg-slate-50' : '') + ' rounded-lg px-1">' +
-            '<span class="w-9 h-9 shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-lg">' + (FLAG[it.id] || '•') + '</span>' +
-            '<div class="min-w-0 flex-1"><div class="text-sm font-bold text-slate-800 truncate">' + esc(it.n) + '</div><div class="text-[10px] text-slate-400 truncate">' + esc(it.s || '') + (it.u ? ' · ' + esc(it.u) : '') + (has ? ' · saham terkait ›' : '') + '</div></div>' +
-            '<span class="hidden sm:block">' + spark(it.spark, up) + '</span>' +
-            '<div class="text-right shrink-0"><div class="text-sm font-black text-slate-900">' + fmt(it.price, d) + '</div><div class="text-xs">' + pct(it.chg) + '</div></div></div>';
-    }
-    function paintMarkets() {
-        if (!commData) return;
-        var all = commData.items.map(mergeItem);
-        var gold = all.filter(function (x) { return x.id === 'gold'; })[0], idr = all.filter(function (x) { return x.id === 'usdidr'; })[0];
-        var tabs = document.getElementById('gk-tabs');
-        tabs.innerHTML = MK_TABS.map(function (t) { return '<button type="button" class="hm-chip shrink-0 ' + (t[0] === mkTab ? 'on' : '') + '" data-mk="' + t[0] + '">' + t[1] + '</button>'; }).join('');
-        var items = all.filter(function (x) { return x.g === mkTab; });
-        items.sort(function (a, b) { var ia = MK_PRIO.indexOf(a.id), ib = MK_PRIO.indexOf(b.id); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); });
-        var html = items.map(mkRow).join('');
-        if (mkTab === 'komoditas' && gold && idr) html = '<div class="md:col-span-2 text-[11px] text-slate-500 pb-2">Emas ≈ Rp' + Math.round(gold.price * idr.price / 31.1034768).toLocaleString('id-ID') + '/gram (harga dunia × kurs, bukan harga toko)</div>' + html;
-        document.getElementById('gk-list').innerHTML = html || '<p class="text-sm text-slate-500 p-3">Belum ada data.</p>';
-        document.getElementById('gk-stamp').textContent = liveBadge() || (commData.meta ? 'Snapshot ' + ago(commData.meta.built) : '');
-    }
-    function initMarkets() {
-        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('global-intl.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('idx-screener.json').catch(function () { return null; })]).then(function (r) {
-            commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
-            if (r[2] && r[2].groups) { INTL = r[2].groups; Object.keys(INTL).forEach(function (k) { mkGroups[k] = mkGroups[k] || {}; }); }
-            if (!IS_IDX && r[3] && r[3].rows) {
-                // Database yang sama dengan mode IHSG: 30 saham IDX dengan nilai transaksi terbesar
-                var top = r[3].rows.filter(function (x) { return Number.isFinite(x[1]) && x[1] > 0; }).sort(function (a, b) { return (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0)); }).slice(0, 30);
-                INTL = INTL || {}; INTL.ihsg = { n: 'IHSG', d: '30 saham dengan nilai transaksi terbesar (data yang sama dengan mode IHSG). Harga dalam rupiah.', items: top.map(function (x) { return { t: x[0], n: shortName(x[11]), p: x[1], c: x[3], cur: 'Rp' }; }) };
-                mkGroups.ihsg = mkGroups.ihsg || {};
-            }
-            paintMarkets(); startLive(); onLive.push(paintMarkets);
-        }).catch(function () { document.getElementById('gk-list').innerHTML = '<p class="text-sm text-slate-500 p-3">Data pasar belum tersedia. Jalankan workflow Sync global.</p>'; });
-        document.getElementById('gk-tabs').addEventListener('click', function (e) {
-            var b = e.target.closest('[data-mk]'); if (!b) return; mkTab = b.dataset.mk; try { localStorage.setItem('ewoks_gmk', mkTab); } catch (_) {} paintMarkets();
-        });
-    }
-
     /* ---------- Ringkasan ---------- */
     function initSummary() {
-        initMarkets();
+        mountMarkets(document.getElementById('mk-panel'));
         renderSectors(document.getElementById('g-sectors'));
         get('global-screener.json').then(function (d) {
             window.__gRows = d.rows; startLive();

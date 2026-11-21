@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261121j">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261121j">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261121k">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261121k">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="home">
 
@@ -242,13 +242,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-6">
-                <div class="flex items-center justify-between mb-2">
-                    <h2 class="font-extrabold text-slate-900 text-sm md:text-base">Komoditas &amp; kurs hari ini</h2>
-                    <button onclick="showPage('global')" class="text-xs font-bold text-blue-600">Mode Global →</button>
-                </div>
-                <div id="home-commodities" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"></div>
-            </div>
+            <div id="mk-panel" class="mb-0"></div>
             <div class="premium-card p-5 md:p-6 mb-8">
                 <h2 class="font-extrabold text-slate-900 text-sm md:text-base mb-3">Performa sektor IHSG hari ini</h2>
                 <div id="home-sectors"></div>
@@ -264,12 +258,12 @@
             </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                <div class="premium-card p-6 md:p-8">
+                <div class="premium-card p-6 md:p-8 flex flex-col">
                     <h3 class="text-xl font-black text-slate-900 mb-4 flex items-center gap-3">
                         <i class="fas fa-newspaper text-blue-500"></i> Berita Terkini
                         <span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded-full ml-auto uppercase font-bold tracking-widest">Live RSS</span>
                     </h3>
-                    <div id="news-container" class="space-y-4 max-h-64 overflow-y-auto no-scrollbar pr-2">
+                    <div id="news-container" class="space-y-3 flex-1 min-h-0 max-h-[32rem] overflow-y-auto no-scrollbar pr-2">
                         <div class="animate-pulse flex flex-col gap-2 p-3 rounded-xl border border-slate-100 bg-slate-50">
                             <div class="h-2 bg-slate-200 rounded w-1/4"></div>
                             <div class="h-3 bg-slate-200 rounded w-full"></div>
@@ -448,12 +442,12 @@
 
 
     <script>window.EWOKS_FINNHUB_TOKEN = ""; /* isi token Finnhub (gratis): https://finnhub.io/register */</script>
-    <script src="assets/js/pages/page-home-movers.js?v=20261121j" defer></script>
-    <script src="assets/js/pages/page-home-picks.js?v=20261121j" defer></script>
-    <script src="assets/js/ewoks-core.js?v=20261121j"></script>
-    <script src="assets/js/pages/page-global.js?v=20261121j"></script>
+    <script src="assets/js/pages/page-home-movers.js?v=20261121k" defer></script>
+    <script src="assets/js/pages/page-home-picks.js?v=20261121k" defer></script>
+    <script src="assets/js/ewoks-core.js?v=20261121k"></script>
+    <script src="assets/js/pages/page-global.js?v=20261121k"></script>
     <script>
-    (function(){var el=document.getElementById('home-commodities');if(el&&window.EwoksGlobal)EwoksGlobal.renderCommodities(el,['ihsg','brent','gold','silver','coal','copper','nickel','cpo','aluminium','tin','usdidr','sgdidr']);})();
+    (function(){var el=document.getElementById('mk-panel');if(el&&window.EwoksGlobal)EwoksGlobal.mountMarkets(el);})();
     var sx=document.getElementById('home-sectors');if(sx&&window.EwoksGlobal)EwoksGlobal.renderSectors(sx);
     </script>
 </body>

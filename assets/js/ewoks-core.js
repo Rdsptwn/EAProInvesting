@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261121j';
+window.EWOKS_ASSET_V = '20261121k';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -667,7 +667,8 @@ async function fetchNews() {
                 return keywords.some(kw => titleLower.includes(kw.toLowerCase()));
             });
 
-            const itemsToShow = filteredItems.length > 0 ? filteredItems.slice(0, 5) : data.items.slice(0, 5);
+            const itemsToShow = filteredItems.slice(0, 12);
+            data.items.forEach(item => { if (itemsToShow.length < 8 && !itemsToShow.includes(item)) itemsToShow.push(item); });
 
             container.innerHTML = itemsToShow.map(item => `
                 <a href="${item.link}" target="_blank" class="block p-3 rounded-xl border border-slate-100 hover:bg-blue-50 transition-colors bg-white shadow-sm">
