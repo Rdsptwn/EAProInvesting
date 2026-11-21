@@ -240,12 +240,13 @@ async function routeQuotes(url, ctx, origin) {
 
 // ---------- Asisten tanya-jawab (POST /ask) ----------
 // Butuh SALAH SATU: secret GEMINI_KEY (Google AI Studio, gratis) ATAU binding Workers AI bernama "AI" (gratis 10.000 neuron/hari).
+const OFFTOPIC_RULE = 'Untuk pertanyaan yang tidak terkait investasi/keuangan/situs, tolak dengan sopan satu kalimat.';
 const SYSTEM_PROMPT = [
     'Kamu adalah "Asisten Ewoks", pemandu edukasi investasi di situs Ewoks Academy (Indonesia).',
     'Jawab dalam Bahasa Indonesia yang santai tapi jelas, ringkas (maks ±180 kata), pakai poin bila membantu.',
     'Bidangmu: dasar saham IHSG & global, analisa teknikal/fundamental dasar, reksa dana, obligasi, kripto, forex, manajemen risiko, psikologi trading, cara memakai fitur situs (Peta Konglo, Watchlist/Terminal, Kalkulator, Jurnal, Mode Global/Bitcoin/Forex).',
     'Aturan: jangan memberi rekomendasi beli/jual pasti atau menjanjikan untung; jangan mengarang angka, harga, atau berita terkini (bilang tidak punya data real-time dan arahkan ke halaman terkait di situs); jangan bantu penipuan, manipulasi harga, atau insider trading.',
-    'Untuk pertanyaan yang tidak terkait investasi/keuangan/situs, tolak dengan sopan satu kalimat.',
+    OFFTOPIC_RULE,
     'Selalu ingatkan singkat bahwa ini edukasi bukan saran investasi bila pertanyaannya meminta keputusan transaksi.'
 ].join(' ');
 const ASK_LIMIT_PER_HOUR = 25;
@@ -312,11 +313,14 @@ async function routeAsk(request, env, origin) {
     // cache jawaban untuk pertanyaan yang sama (tanpa riwayat) -> hemat kuota bersama
     const cache = caches.default;
     const ck = new Request('https://ask.cache.local/' + encodeURIComponent(q.toLowerCase().replace(/\s+/g, ' ')));
-    if (!hist.length) {
+    if (!hist.length && !isBot) {
         try { const hit = await cache.match(ck); if (hit) return J({ ok: true, a: await hit.text(), by: 'cache' }, 200, origin); } catch (_) {}
     }
     if (!isBot && await rateLimited(request)) return J({ ok: false, error: 'Terlalu banyak pertanyaan dari perangkat ini. Coba lagi sekitar 1 jam.' }, 429, origin);
-    const sys = SYSTEM_PROMPT + (page ? ' Konteks: ' + page + '.' : '') + (isBot ? ' Jawaban dikirim lewat WhatsApp: tanpa markdown tebal berlebihan, singkat.' : ' Pengguna sedang membuka halaman: ' + page + '.');
+    let base = SYSTEM_PROMPT;
+    if (isBot && body.mode === 'bebas') base = base.replace(OFFTOPIC_RULE, 'Bot ini juga boleh menjawab topik umum (koding, matematika, logika) selama aman dan tidak melanggar aturan di atas.');
+    const extra = isBot ? String(body.sys_extra || '').slice(0, 4000) : '';
+    const sys = base + (extra ? ' ' + extra : '') + (page ? ' Konteks: ' + page + '.' : '') + (isBot ? ' Jawaban dikirim lewat WhatsApp: tanpa markdown tebal berlebihan, singkat.' : ' Pengguna sedang membuka halaman: ' + page + '.');
     const msgs = hist.concat([{ role: 'user', content: q }]);
     const chain = [];
     if (env && env.GEMINI_KEY) chain.push(['gemini', askGemini]);
@@ -328,7 +332,7 @@ async function routeAsk(request, env, origin) {
         try {
             const out = await fn(env, sys, msgs);
             if (!out) throw new Error('kosong');
-            if (!hist.length) { try { await cache.put(ck, new Response(out, { headers: { 'Cache-Control': 'max-age=21600' } })); } catch (_) {} }
+            if (!hist.length && !isBot) { try { await cache.put(ck, new Response(out, { headers: { 'Cache-Control': 'max-age=21600' } })); } catch (_) {} }
             return J({ ok: true, a: out, by: name }, 200, origin);
         } catch (e) { last += name + ':' + String((e && e.message) || e) + ' '; }
     }
