@@ -131,7 +131,19 @@
     function openGrp(id) {
         loadSy().then(function () { openGrp2(id); });
     }
+    var INTL = null;
+    function openIntl(id) {
+        var g = INTL[id], m = document.getElementById('grp-modal');
+        if (!m) { m = document.createElement('div'); m.id = 'grp-modal'; m.className = 'fixed inset-0 z-[100] bg-slate-900/70 backdrop-blur-sm flex items-end md:items-center justify-center md:p-4'; document.body.appendChild(m); m.addEventListener('click', function (e) { if (e.target === m || e.target.closest('[data-close]')) closeGrp(); }); document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeGrp(); }); }
+        var rows = g.items.slice().sort(function (a, b) { return (b.c || -99) - (a.c || -99); });
+        m.innerHTML = '<div class="premium-card glass-card w-full md:max-w-2xl max-h-[88vh] flex flex-col rounded-t-3xl md:rounded-3xl border border-slate-200 overflow-hidden" role="dialog" aria-modal="true" aria-label="' + esc(g.n) + '">' +
+            '<div class="p-5 pb-3 border-b border-slate-100 flex items-start justify-between gap-3"><div><div class="text-[11px] font-black text-blue-600">Saham terkait</div><h3 class="text-xl font-black text-slate-900">' + esc(g.n) + '</h3><p class="text-xs text-slate-500 mt-1 max-w-md">' + esc(g.d) + '</p></div><button data-close aria-label="Tutup" class="text-slate-400 hover:text-slate-700 text-xl font-black px-2">✕</button></div>' +
+            '<div class="overflow-y-auto p-2 md:p-3">' + rows.map(function (r) { return '<div class="flex items-center gap-3 p-3 rounded-xl"><span class="font-black text-xs text-slate-900 w-24 shrink-0">' + esc(r.t) + '</span><span class="flex-1 min-w-0 text-xs text-slate-500 truncate">' + esc(r.n) + '</span><span class="text-sm font-bold text-slate-700">' + (r.cur ? '<span class="text-[10px] text-slate-400 mr-1">' + esc(r.cur) + '</span>' : '') + Number(r.p).toLocaleString('en-US', { maximumFractionDigits: r.p < 10 ? 3 : 2 }) + '</span>' + pill(r.c) + '</div>'; }).join('') + '</div>' +
+            '<div class="px-5 py-3 border-t border-slate-100 text-[10px] text-slate-400">Snapshot harian, harga dalam mata uang bursa masing-masing. Bukan rekomendasi.</div></div>';
+        m.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+    }
     function openGrp2(id) {
+        if (!IS_IDX && INTL && INTL[id]) return openIntl(id);
         Promise.all([get('market-groups.json'), IS_IDX ? get('idx-screener.json') : get('global-screener.json'), IS_IDX ? Promise.resolve(null) : get('global-index-members.json').catch(function () { return null; })]).then(function (res) {
             var def = res[0][IS_IDX ? 'idx' : 'global'][id];
             if (/^sec:/.test(id)) {
@@ -277,8 +289,9 @@
         document.getElementById('gk-stamp').textContent = liveBadge() || (commData.meta ? 'Snapshot ' + ago(commData.meta.built) : '');
     }
     function initMarkets() {
-        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; })]).then(function (r) {
+        Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('global-intl.json').catch(function () { return null; })]).then(function (r) {
             commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
+            if (r[2] && r[2].groups) { INTL = r[2].groups; Object.keys(INTL).forEach(function (k) { mkGroups[k] = mkGroups[k] || {}; }); }
             paintMarkets(); startLive(); onLive.push(paintMarkets);
         }).catch(function () { document.getElementById('gk-list').innerHTML = '<p class="text-sm text-slate-500 p-3">Data pasar belum tersedia. Jalankan workflow Sync global.</p>'; });
         document.getElementById('gk-tabs').addEventListener('click', function (e) {
