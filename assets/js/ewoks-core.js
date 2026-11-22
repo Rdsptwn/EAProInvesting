@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122b';
+window.EWOKS_ASSET_V = '20261122c';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1261,12 +1261,14 @@ window.addEventListener('load', () => {
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function px(v) { v = Number(v); return nf(v, v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8); }
     var MK = { idx: ['IHSG', 'watchlist.html'], global: ['Saham Global', 'global.html'], kripto: ['Kripto', 'bitcoin.html'], forex: ['Forex', 'forex.html'] };
-    var HELP = 'Command yang tersedia:\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
+    var HELP = 'Command yang tersedia:\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL)\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
     function normCmd(q) {
         var t = q.trim(), l = t.toLowerCase();
         if (l.charAt(0) === '/') return t;
         var m = l.match(/^(?:minta |kasih |tampilkan |lihat )?(?:rekomendasi|rekomen|saran saham|bot picks)\s*(?:saham\s*)?(ihsg|idx|indonesia|global|us|amerika|kripto|crypto|forex|fx)?\s*$/);
         if (m) return '/rekomendasi ' + (m[1] || '');
+        m = l.match(/^(?:rekomendasi |saran |kasih |minta )?(pagi|siang|swing|scalp|scalping|scalpus)\s*(?:saham\s*)?(ihsg|idx|indonesia|global|us|amerika|kripto|crypto|forex|fx)?\s*$/);
+        if (m) return m[1] === 'scalpus' ? '/scalp global' : '/' + (m[1] === 'scalping' ? 'scalp' : m[1]) + ' ' + (m[2] || '');
         m = l.match(/^(?:harga|price|cek|kurs)\s+([a-z0-9.^=-]{1,12})$/); if (m) return '/harga ' + m[1];
         if (/^(berita|news)( terbaru| terkini)?$/.test(l)) return '/berita';
         if (/^(help|menu|bantuan|command)$/.test(l)) return '/help';
@@ -1308,12 +1310,74 @@ window.addEventListener('load', () => {
         if (!it.length) return 'Berita belum bisa dimuat.';
         return 'Berita terbaru:\n' + it.map(function (x) { return '- [' + x.title + '](' + x.link + ') (' + x.src + ')'; }).join('\n');
     }
+
+    /* ---- Command rencana trading: /pagi /siang /swing /scalp (semua pasar, user memilih pasar) ---- */
+    function askMarket(cmd, txt, only) {
+        var all = [['IHSG', 'idx'], ['Saham Global', 'global'], ['Kripto', 'kripto'], ['Forex', 'forex']];
+        return { text: txt, opts: all.filter(function (o) { return !only || only.indexOf(o[1]) > -1; }).map(function (o) { return [o[0], cmd + ' ' + o[1]]; }) };
+    }
+    function loadEngine() {
+        if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
+        return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/picks-engine.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksPicksEngine || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
+    }
+    var KIND = { pagi: 'Rekomendasi Pagi', siang: 'Rekomendasi Siang', swing: 'Swing (±1 minggu)', scalp: 'Scalping' };
+    var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
+    async function planIdx(kind) {
+        var d = await cjson('idx-screener.json'); if (!d || !d.rows) return 'Data IHSG belum bisa dimuat.';
+        var R = function (v) { return 'Rp ' + nf(Math.round(v), 0); }, out = '', date = '';
+        if (kind === 'scalp') {
+            var sc = d.rows.filter(function (r) { return r[1] > 50 && r[3] >= 2 && r[3] <= 15 && r[1] * (r[9] || 0) > 2e9; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 5);
+            if (!sc.length) return 'Belum ada saham IHSG yang lolos filter scalping (naik 2-15% dengan transaksi > Rp 2 miliar).';
+            sc.forEach(function (r) { date = r[10]; out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Entry dekat ' + R(r[1]) + ' · TP ' + R(r[1] * 1.025) + ' (+2,5%) · SL ' + R(r[1] * 0.98) + ' (-2%)\n'; });
+            return 'Scalping IHSG (naik 2-15%, transaksi > Rp 2 miliar), data harian ' + date + ':\n' + out + DISC;
+        }
+        var n = kind === 'swing' ? 10 : 5;
+        var rows = d.rows.filter(function (r) { return r[1] > 50 && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
+            .map(function (r) { var tp = r[1] >= r[7] ? r[1] * 1.08 : r[7]; return { r: r, near: (r[1] - r[6]) / r[6], tp: tp, room: (tp - r[1]) / r[1] }; })
+            .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n);
+        if (!rows.length) return 'Belum ada saham IHSG yang lolos saringan hari ini.';
+        rows.forEach(function (x) {
+            var r = x.r, sup = r[6]; date = r[10];
+            out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Area BoW ' + R(sup) + ' - ' + R(sup * 1.03) + ' · SL ' + R(sup * 0.96) + '\n  ' +
+                (kind === 'swing' ? 'TP1 ' + R(r[1] * 1.04) + ' (+4%) · TP2 ' + R(r[1] * 1.08) + ' (+8%) · TP Max ' + R(Math.max(x.tp, r[1] * 1.08)) : 'TP ' + R(x.tp) + (r[1] >= r[7] ? ' (harga di ATH 20 hari, TP +8%)' : ' (resist 20 hari)')) + '\n';
+        });
+        return KIND[kind] + ' IHSG (momentum naik, urut paling dekat support), data harian ' + date + ':\n' + out + 'BoW = low 20 hari sampai +3%. SL = support -4%.' + DISC;
+    }
+    async function planGlobalScalp() {
+        var d = await cjson('global-screener.json'); if (!d || !d.rows) return 'Data saham global belum bisa dimuat.';
+        var sc = d.rows.filter(function (r) { return r[1] > 5 && r[3] >= 1.5 && r[3] <= 25 && r[1] * (r[7] || 0) > 1e6; }).sort(function (a, b) { return b[1] * b[7] - a[1] * a[7]; }).slice(0, 5);
+        if (!sc.length) return 'Belum ada saham global yang lolos filter scalping (naik 1,5-25%, harga > $5).';
+        var out = ''; sc.forEach(function (r) { out += r[0] + ' (' + r[10] + ')  $' + px(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  TP $' + nf(r[1] * 1.025, 2) + ' (+2,5%) · SL $' + nf(r[1] * 0.98, 2) + ' (-2%)\n'; });
+        return 'Scalping Saham Global (naik 1,5-25%), data harian ' + sc[0][9] + ':\n' + out + DISC;
+    }
+    async function planEngine(kind, k) {
+        var E = await loadEngine(); if (!E) return 'Mesin rekomendasi belum bisa dimuat.';
+        var mk = k === 'kripto' ? 'crypto' : k, tf = kind === 'swing' ? '4h' : kind === 'scalp' ? '5m' : '1h', tfl = { '4h': '4 jam', '5m': '5 menit', '1h': '1 jam' }[tf];
+        var r = await E.forMarket(mk).run(tf, 'ketat'), n = kind === 'swing' ? 10 : 5;
+        if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).';
+        if (!r.list.length) return 'Belum ada ' + MK[k][0] + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti atau pasar lain.';
+        var pre = k === 'forex' ? '' : '$', out = '';
+        r.list.slice(0, n).forEach(function (x) {
+            out += x.t + '  ' + pre + E.fmt(mk, x.price, x.t) + ' (' + (x.chg >= 0 ? '+' : '') + x.chg.toFixed(1) + '%)\n  Area BoW ' + E.fmt(mk, x.lo, x.t) + ' - ' + E.fmt(mk, x.hi, x.t) + ' · CL ' + E.fmt(mk, x.cl, x.t) + '\n  ' +
+                (kind === 'swing' ? 'TP1 ' + E.fmt(mk, x.tp1, x.t) + ' · TP Max ' + E.fmt(mk, x.tp, x.t) : 'TP ' + E.fmt(mk, x.tp, x.t)) + ' · R/R ' + x.rr.toFixed(1) + '\n';
+        });
+        return KIND[kind] + ' ' + MK[k][0] + ' (Buy on Weakness, candle ' + tfl + '):\n' + out + 'Dihitung langsung dari candle saat ini. Tren naik, dekat support, ada ruang ke resist.' + DISC;
+    }
+    async function cmdPlan(kind, a) {
+        var k = mkey(a);
+        if (!k) return kind === 'scalp' ? askMarket('/scalp', 'Scalping untuk pasar mana?', ['idx', 'global', 'kripto', 'forex']) : askMarket('/' + kind, KIND[kind] + ' untuk pasar mana?');
+        if (k === 'idx') return planIdx(kind);
+        if (k === 'global' && kind === 'scalp') return planGlobalScalp();
+        return planEngine(kind, k);
+    }
     async function runCmd(q) {
         var c = normCmd(q); if (c == null) return null;
         var p = c.split(/\s+/), n = p[0].toLowerCase();
         if (n === '/help' || n === '/menu' || n === '/start') return HELP;
         if (n === '/harga' || n === '/price' || n === '/cek') return cmdHarga(p[1]);
         if (n === '/rekomendasi' || n === '/rekomen' || n === '/bow' || n === '/picks') return cmdRek(p[1]);
+        if (n === '/pagi' || n === '/siang' || n === '/swing' || n === '/scalp') return cmdPlan(n.slice(1), p[1]);
+        if (n === '/scalpus') return cmdPlan('scalp', 'global');
         if (n === '/berita' || n === '/news') return cmdBerita();
         return 'Command "' + p[0] + '" belum ada di chat web. Ketik /help. (Command lengkap dengan gambar ada di bot WhatsApp.)';
     }
@@ -1365,7 +1429,14 @@ window.addEventListener('load', () => {
             e.preventDefault(); var q = inp.value.trim(); if (!q || busy) return;
             var api = (typeof getEwoksLiveApi === 'function') ? getEwoksLiveApi() : '';
             inp.value = ''; add('u', q);
-            try { var cr = await runCmd(q); if (cr != null) { rich(add('a', ''), cr); m.scrollTop = m.scrollHeight; return; } } catch (_) { add('a', 'Command gagal dijalankan. Coba lagi.'); return; }
+            if (normCmd(q) != null) {
+                var cw = add('a', 'Memproses…'); busy = true; sb.disabled = true;
+                try {
+                    var cr = await runCmd(q), ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct);
+                    if (cr && cr.opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
+                } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
+                busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
+            }
             if (!api) { add('a', 'Server asisten belum diatur.'); return; }
             busy = true; sb.disabled = true; var w = add('a', 'Mengetik…');
             try {
