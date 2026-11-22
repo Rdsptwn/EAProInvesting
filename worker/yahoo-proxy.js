@@ -174,6 +174,38 @@ async function routeChart(url, ctx, origin) {
     return J(out, 200, origin, true);
 }
 
+// ---- Fundamental ringkas: GET /fund?s=BBCA  (IDX)  atau  /fund?s=AAPL&g=1  (global)
+//  -> { ok, sym, name, currency, price, chg, pe, pbv, eps, mcap }   (untuk command /lk dan /analisa di chat web)
+async function routeFund(url, ctx, origin) {
+    const sym = String(url.searchParams.get('s') || '').toUpperCase().trim();
+    const glob = url.searchParams.get('g') === '1';
+    if (glob ? !/^[A-Z0-9.^=-]{1,12}$/.test(sym) : !/^[A-Z0-9]{2,6}$/.test(sym)) return J({ ok: false, error: 'bad symbol' }, 400, origin);
+    const ysym = glob ? sym : sym + '.JK';
+    const cache = caches.default;
+    const ck = new Request('https://cache.ewoks.local/fund/' + ysym);
+    const hit = await cache.match(ck);
+    let body;
+    if (hit) {
+        body = await hit.json();
+    } else {
+        try {
+            const sess = await getYahooSession();
+            const f = 'regularMarketPrice,regularMarketChangePercent,epsTrailingTwelveMonths,trailingPE,priceToBook,marketCap,longName,shortName,currency';
+            const yurl = 'https://query1.finance.yahoo.com/v7/finance/quote?symbols=' + encodeURIComponent(ysym) + '&fields=' + f + '&crumb=' + encodeURIComponent(sess.crumb);
+            const res = await fetch(yurl, { headers: { 'User-Agent': UA, Cookie: sess.cookie, Accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
+            if (!res.ok) throw new Error('Yahoo ' + res.status);
+            const q = (((await res.json()) || {}).quoteResponse || {}).result;
+            if (!q || !q[0]) throw new Error('not found');
+            const x = q[0], n = (v) => (Number.isFinite(Number(v)) && v !== null ? Number(v) : null);
+            body = { sym, name: x.longName || x.shortName || sym, currency: x.currency || (glob ? 'USD' : 'IDR'), price: n(x.regularMarketPrice), chg: n(x.regularMarketChangePercent), pe: n(x.trailingPE), pbv: n(x.priceToBook), eps: n(x.epsTrailingTwelveMonths), mcap: n(x.marketCap) };
+        } catch (e) {
+            return J({ ok: false, error: String((e && e.message) || e) }, 502, origin);
+        }
+        ctx.waitUntil(cache.put(ck, new Response(JSON.stringify(body), { headers: { 'Cache-Control': 'max-age=300' } })));
+    }
+    return J(Object.assign({ ok: true, ts: new Date().toISOString() }, body), 200, origin, true);
+}
+
 async function routeScreener(url, ctx, origin) {
     const codes = codesFrom(url, 1200);
     if (!codes.length) return J({ ok: false, error: 'no symbols' }, 400, origin);
@@ -374,8 +406,9 @@ async function handle(request, ctx, env) {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method === 'POST' && path === '/ask') return routeAsk(request, env, origin);
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v9-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v10-cmd', routes: ['/quotes', '/screener', '/chart', '/gquotes', '/fund', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
+    if (path === '/fund') return routeFund(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);
     if (path === '/gquotes') return routeGQuotes(url, ctx, origin);

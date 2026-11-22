@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122c';
+window.EWOKS_ASSET_V = '20261122d';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1261,7 +1261,7 @@ window.addEventListener('load', () => {
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function px(v) { v = Number(v); return nf(v, v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8); }
     var MK = { idx: ['IHSG', 'watchlist.html'], global: ['Saham Global', 'global.html'], kripto: ['Kripto', 'bitcoin.html'], forex: ['Forex', 'forex.html'] };
-    var HELP = 'Command yang tersedia:\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL)\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
+    var HELP = 'Command yang tersedia:\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL)\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/akum <kode> [tf], /topakum [pasar]  bandarmologi (akumulasi/distribusi), tf: 15M 30M 1J 4J 1H 7H 30H\n/ea [pasar] [tf], /eaus  Golden Cross MA5/MA20\n/analisa <kode>, /lk <kode>  valuasi, trading plan, nilai wajar (EPS x 15)\n/fibo <kode> [tf]  level Fibonacci (semua pasar)\n/global [kripto|forex|kode] [tf]  sinyal SMC (BoS, SMA, RSI)\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
     function normCmd(q) {
         var t = q.trim(), l = t.toLowerCase();
         if (l.charAt(0) === '/') return t;
@@ -1270,6 +1270,7 @@ window.addEventListener('load', () => {
         m = l.match(/^(?:rekomendasi |saran |kasih |minta )?(pagi|siang|swing|scalp|scalping|scalpus)\s*(?:saham\s*)?(ihsg|idx|indonesia|global|us|amerika|kripto|crypto|forex|fx)?\s*$/);
         if (m) return m[1] === 'scalpus' ? '/scalp global' : '/' + (m[1] === 'scalping' ? 'scalp' : m[1]) + ' ' + (m[2] || '');
         m = l.match(/^(?:harga|price|cek|kurs)\s+([a-z0-9.^=-]{1,12})$/); if (m) return '/harga ' + m[1];
+        m = l.match(/^(akum|bandar|fibo|analisa|lk)\s+(\S+)(?:\s+(\S+))?$/); if (m) return '/' + m[1] + ' ' + m[2] + (m[3] ? ' ' + m[3] : '');
         if (/^(berita|news)( terbaru| terkini)?$/.test(l)) return '/berita';
         if (/^(help|menu|bantuan|command)$/.test(l)) return '/help';
         return null;
@@ -1320,6 +1321,11 @@ window.addEventListener('load', () => {
         if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
         return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/picks-engine.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksPicksEngine || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
     }
+    function loadCmds() {
+        if (window.EwoksChatCmds) return Promise.resolve(window.EwoksChatCmds);
+        return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/chat-cmds.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksChatCmds || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
+    }
+    var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1 };
     var KIND = { pagi: 'Rekomendasi Pagi', siang: 'Rekomendasi Siang', swing: 'Swing (±1 minggu)', scalp: 'Scalping' };
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
     async function planIdx(kind) {
@@ -1378,6 +1384,7 @@ window.addEventListener('load', () => {
         if (n === '/rekomendasi' || n === '/rekomen' || n === '/bow' || n === '/picks') return cmdRek(p[1]);
         if (n === '/pagi' || n === '/siang' || n === '/swing' || n === '/scalp') return cmdPlan(n.slice(1), p[1]);
         if (n === '/scalpus') return cmdPlan('scalp', 'global');
+        if (HEAVY[n.slice(1)]) { var M = await loadCmds(); if (!M) return 'Modul command belum bisa dimuat. Coba lagi.'; var hr = await M.run(n.slice(1), p.slice(1)); return hr == null ? 'Command belum tersedia.' : hr; }
         if (n === '/berita' || n === '/news') return cmdBerita();
         return 'Command "' + p[0] + '" belum ada di chat web. Ketik /help. (Command lengkap dengan gambar ada di bot WhatsApp.)';
     }
