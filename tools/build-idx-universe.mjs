@@ -16,6 +16,8 @@ const outPath = path.join(root, 'assets/data/idx-universe.json');
 const UA = { 'User-Agent': 'EAProInvestingBot/1.0 (https://github.com/Rdsptwn/EAProInvesting; data sync)', Accept: 'application/json,text/html' };
 const CODE = /^[A-Z]{4}$/;
 
+// Produk tembakau masuk Consumer Non-Cyclicals; sektor dari sumber kadang rusak (mis. "`")
+const TOBACCO = new Set(['GGRM', 'HMSP', 'WIIM', 'RMBA']);
 const map = new Map(); // kode -> {t,name,board,sector}
 function put(t, name, board, sector) {
     t = String(t || '').trim().toUpperCase();
@@ -23,7 +25,7 @@ function put(t, name, board, sector) {
     const o = map.get(t) || { t, name: '', board: '', sector: '' };
     if (name && !o.name) o.name = String(name).trim();
     if (board) o.board = String(board).trim();
-    if (sector) o.sector = String(sector).trim();
+    if (sector) { const sc = String(sector).trim(); if (/[A-Za-z]{3}/.test(sc)) o.sector = sc; else if (TOBACCO.has(t)) o.sector = 'Consumer Non-Cyclicals'; }
     map.set(t, o);
 }
 

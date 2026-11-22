@@ -135,7 +135,7 @@ async function routeChart(url, ctx, origin) {
     const range = ['1d', '5d', '1mo', '3mo'].includes(rg) ? rg : '1d';
     const interval = ['1m', '5m', '15m', '30m', '60m', '1d'].includes(iv) ? iv : '5m';
     const glob = url.searchParams.get('g') === '1';
-    if (glob ? !/^[A-Z0-9.^-]{1,12}$/.test(sym) : (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE')) return J({ ok: false, error: 'bad symbol' }, 400, origin);
+    if (glob ? !/^[A-Z0-9.^=-]{1,12}$/.test(sym) : (!/^[A-Z0-9]{2,6}$/.test(sym) && sym !== 'COMPOSITE')) return J({ ok: false, error: 'bad symbol' }, 400, origin);
     const ysym = glob ? encodeURIComponent(sym) : (sym === 'COMPOSITE' ? '%5EJKSE' : sym + '.JK');
     const cache = caches.default;
     const ck = new Request('https://cache.ewoks.local/chart/' + ysym + '/' + range + '/' + interval);

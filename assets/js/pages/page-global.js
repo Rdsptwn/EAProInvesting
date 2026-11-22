@@ -256,8 +256,10 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
         var items = all.filter(function (x) { return x.g === mkTab; });
         items.sort(function (a, b) { var ia = MK_PRIO.indexOf(a.id), ib = MK_PRIO.indexOf(b.id); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); });
         var sc = q('.mk-scroll'), keep = sc.scrollLeft, keepT = sc.scrollTop;
-        sc.className = 'mk-scroll ' + (mkView === 'ticker' ? 'flex gap-3 overflow-x-auto no-scrollbar pb-1' : 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 overflow-y-auto max-h-[26rem] pr-1');
-        sc.innerHTML = items.map(mkCard).join('') || '<p class="text-sm text-slate-500 p-3">Belum ada data.</p>';
+        sc.className = 'mk-scroll ' + (mkView === 'ticker' ? 'flex gap-3 overflow-x-auto no-scrollbar pb-1 pr-3' : 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 overflow-y-auto max-h-[26rem] pr-1');
+        var cardsHtml = items.map(mkCard).join('');
+        sc.innerHTML = cardsHtml ? (mkView === 'ticker' && items.length > 4 ? cardsHtml + cardsHtml.replace(/ data-grp=/g, ' data-dup="1" data-grp=') : cardsHtml) : '<p class="text-sm text-slate-500 p-3">Belum ada data.</p>';
+        sc.dataset.loop = (mkView === 'ticker' && items.length > 4) ? '1' : '';
         sc.scrollLeft = keep; sc.scrollTop = keepT;
         var note = q('.mk-note');
         note.textContent = (mkTab === 'komoditas' && gold && idr) ? 'Emas ≈ Rp' + Math.round(gold.price * idr.price / 31.1034768).toLocaleString('id-ID') + '/gram (harga dunia × kurs, bukan harga toko).' : '';
@@ -268,10 +270,13 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
         requestAnimationFrame(mkTick);
         if (!mkHost || mkView !== 'ticker' || document.hidden) return;
         var sc = mkHost.querySelector('.mk-scroll'); if (!sc || sc.scrollWidth <= sc.clientWidth + 2) return;
-        var now = Date.now(); if (now < mkAuto.hold || mkAuto.hover) { mkAuto.pos = sc.scrollLeft; return; }
-        if (Math.abs(sc.scrollLeft - mkAuto.pos) > 2) { mkAuto.pos = sc.scrollLeft; }
-        mkAuto.pos += 0.45; sc.scrollLeft = mkAuto.pos;
-        if (sc.scrollLeft >= sc.scrollWidth - sc.clientWidth - 1) { mkAuto.hold = now + 2200; setTimeout(function () { sc.scrollTo({ left: 0, behavior: 'smooth' }); mkAuto.pos = 0; }, 1800); }
+        if (mkAuto.hover || Date.now() < mkAuto.hold) { mkAuto.pos = sc.scrollLeft; return; }
+        if (Math.abs(sc.scrollLeft - mkAuto.pos) > 2) mkAuto.pos = sc.scrollLeft;
+        mkAuto.pos += 0.6;
+        var half = sc.dataset.loop ? sc.scrollWidth / 2 : 0;
+        if (half && mkAuto.pos >= half) mkAuto.pos -= half;   // putar mulus tanpa jeda
+        else if (!half && mkAuto.pos >= sc.scrollWidth - sc.clientWidth) mkAuto.pos = 0;
+        sc.scrollLeft = mkAuto.pos;
     }
     function mountMarkets(host) {
         if (!host || host.__mk) return; host.__mk = 1; mkHost = host;
@@ -284,8 +289,10 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
             var b = e.target.closest('[data-mk]'); if (b) { mkTab = b.dataset.mk; try { localStorage.setItem('ewoks_gmk', mkTab); } catch (_) {} paintMarkets(); return; }
             if (e.target.closest('.mk-view')) { mkView = mkView === 'ticker' ? 'grid' : 'ticker'; try { localStorage.setItem('ewoks_gmk_view', mkView); } catch (_) {} paintMarkets(); }
         });
-        ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (ev) { host.addEventListener(ev, function () { mkAuto.hold = Date.now() + 6000; }, { passive: true }); });
-        host.addEventListener('mouseenter', function () { mkAuto.hover = true; }); host.addEventListener('mouseleave', function () { mkAuto.hover = false; });
+        // Jeda hanya saat kursor berada di atas deretan kartu atau saat disentuh/di-scroll; klik tab atau tombol tidak menghentikan ticker.
+        var scr = host.querySelector('.mk-scroll');
+        scr.addEventListener('mouseenter', function () { mkAuto.hover = true; }); scr.addEventListener('mouseleave', function () { mkAuto.hover = false; mkAuto.hold = 0; });
+        ['wheel', 'touchstart', 'touchmove'].forEach(function (ev) { scr.addEventListener(ev, function () { mkAuto.hold = Date.now() + 1200; }, { passive: true }); });
         Promise.all([get('global-commodities.json'), get('market-groups.json').catch(function () { return null; }), get('global-intl.json').catch(function () { return null; }), IS_IDX ? Promise.resolve(null) : get('idx-screener.json').catch(function () { return null; })]).then(function (r) {
             commData = r[0]; mkGroups = r[1] ? r[1][IS_IDX ? 'idx' : 'global'] : {};
             if (r[2] && r[2].groups) { INTL = r[2].groups; Object.keys(INTL).forEach(function (k) { mkGroups[k] = mkGroups[k] || {}; }); }
