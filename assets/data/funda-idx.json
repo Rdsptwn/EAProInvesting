@@ -49830,8 +49830,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2021-12-01",
-      "latestMonths": 12,
+      "latestPeriod": "2021-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -57823,7 +57823,7 @@
         0,
         0,
         0,
-        0.142
+        0
       ],
       "cogs": [
         0,
@@ -57841,7 +57841,7 @@
         0,
         -0.022,
         0,
-        -0.127
+        -0.022
       ],
       "asset": [
         0,
@@ -57850,7 +57850,7 @@
         0,
         0.588,
         0,
-        0.631
+        0.588
       ],
       "eq": [
         0,
@@ -57859,7 +57859,7 @@
         0,
         -0.224,
         0,
-        -0.167
+        -0.224
       ],
       "interest": [
         0,
@@ -57913,7 +57913,7 @@
         0,
         0,
         0,
-        -128.3
+        0
       ],
       "grossMargin": [
         0,
@@ -57940,12 +57940,12 @@
         0,
         -3.8,
         0,
-        -28.9
+        -3.8
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-11-06",
-      "latestMonths": 11,
+      "latestPeriod": "2024-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -62763,7 +62763,7 @@
         0,
         0,
         0,
-        -0.001
+        -0.005
       ],
       "asset": [
         0,
@@ -62772,7 +62772,7 @@
         0,
         0,
         0,
-        0.209
+        0.208
       ],
       "eq": [
         0,
@@ -62781,7 +62781,7 @@
         0,
         0,
         0,
-        0.184
+        0.18
       ],
       "interest": [
         0,
@@ -62835,7 +62835,7 @@
         0,
         0,
         0,
-        -127.1
+        -136.4
       ],
       "grossMargin": [
         0,
@@ -62853,7 +62853,7 @@
         0,
         0,
         0,
-        -2.0
+        -2.6
       ],
       "roa": [
         0,
@@ -62862,12 +62862,12 @@
         0,
         0,
         0,
-        -1.8
+        -2.2
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-11-30",
-      "latestMonths": 11,
+      "latestPeriod": "2022-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -66603,7 +66603,7 @@
         0,
         0,
         0.013,
-        0.009
+        0.013
       ],
       "cogs": [
         0,
@@ -66621,7 +66621,7 @@
         0,
         0,
         0.001,
-        0.002
+        0.001
       ],
       "asset": [
         0,
@@ -66630,7 +66630,7 @@
         0,
         0,
         0.346,
-        0.345
+        0.346
       ],
       "eq": [
         0,
@@ -66639,7 +66639,7 @@
         0,
         0,
         0.34,
-        0.339
+        0.34
       ],
       "interest": [
         0,
@@ -66693,7 +66693,7 @@
         0,
         0,
         4.6,
-        87.9
+        4.6
       ],
       "grossMargin": [
         0,
@@ -66711,7 +66711,7 @@
         0,
         0,
         0.2,
-        2.5
+        0.2
       ],
       "roa": [
         0,
@@ -66720,12 +66720,12 @@
         0,
         0,
         0.2,
-        2.4
+        0.2
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-11-01",
-      "latestMonths": 11,
+      "latestPeriod": "2025-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -67124,8 +67124,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2020-12-01",
-      "latestMonths": 12,
+      "latestPeriod": "2020-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -68189,8 +68189,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -78310,7 +78310,7 @@
         0,
         0,
         0.129,
-        0.107
+        0.129
       ],
       "cogs": [
         0,
@@ -78328,7 +78328,7 @@
         0,
         0,
         -0.0,
-        0.001
+        -0.0
       ],
       "asset": [
         0,
@@ -78337,7 +78337,7 @@
         0,
         0,
         0.412,
-        0.425
+        0.412
       ],
       "eq": [
         0,
@@ -78400,7 +78400,7 @@
         0,
         0,
         -0.2,
-        -0.8
+        -0.2
       ],
       "grossMargin": [
         0,
@@ -78418,7 +78418,7 @@
         0,
         0,
         -0.2,
-        -0.6
+        -0.2
       ],
       "roa": [
         0,
@@ -78427,12 +78427,12 @@
         0,
         0,
         -0.1,
-        -0.2
+        -0.1
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-07-30",
-      "latestMonths": 7,
+      "latestPeriod": "2025-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -81890,8 +81890,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-07-12",
-      "latestMonths": 7,
+      "latestPeriod": "2022-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -82556,8 +82556,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-10-30",
-      "latestMonths": 10,
+      "latestPeriod": "2023-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -90567,7 +90567,7 @@
         0,
         0,
         -0.019,
-        -0.004
+        -0.019
       ],
       "asset": [
         0,
@@ -90576,7 +90576,7 @@
         0,
         0,
         0.024,
-        0.039
+        0.024
       ],
       "eq": [
         0,
@@ -90585,7 +90585,7 @@
         0,
         0,
         0.024,
-        0.039
+        0.024
       ],
       "interest": [
         0,
@@ -90639,7 +90639,7 @@
         0,
         0,
         -2589.3,
-        -515.9
+        -2589.3
       ],
       "grossMargin": [
         0,
@@ -90657,7 +90657,7 @@
         0,
         0,
         -78.1,
-        -9.6
+        -78.1
       ],
       "roa": [
         0,
@@ -90666,12 +90666,12 @@
         0,
         0,
         -77.9,
-        -9.6
+        -77.9
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-08-01",
-      "latestMonths": 8,
+      "latestPeriod": "2025-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -95604,7 +95604,7 @@
         0,
         0,
         0.002,
-        0.001
+        0.002
       ],
       "cogs": [
         0,
@@ -95622,7 +95622,7 @@
         0,
         0,
         -0.01,
-        -0.003
+        -0.01
       ],
       "asset": [
         0,
@@ -95631,7 +95631,7 @@
         0,
         0,
         0.03,
-        0.036
+        0.03
       ],
       "eq": [
         0,
@@ -95640,7 +95640,7 @@
         0,
         0,
         0.026,
-        0.033
+        0.026
       ],
       "interest": [
         0,
@@ -95694,7 +95694,7 @@
         0,
         0,
         -422.5,
-        -560.1
+        -422.5
       ],
       "grossMargin": [
         0,
@@ -95712,7 +95712,7 @@
         0,
         0,
         -38.8,
-        -20.3
+        -38.8
       ],
       "roa": [
         0,
@@ -95721,12 +95721,12 @@
         0,
         0,
         -32.6,
-        -18.6
+        -32.6
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-07-31",
-      "latestMonths": 7,
+      "latestPeriod": "2025-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -111553,8 +111553,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-07-31",
-      "latestMonths": 7,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -112763,7 +112763,7 @@
         0,
         0.176,
         0.065,
-        0.139
+        0.065
       ],
       "cogs": [
         0,
@@ -112781,7 +112781,7 @@
         0,
         -0.143,
         -0.049,
-        -0.019
+        -0.049
       ],
       "asset": [
         0,
@@ -112790,7 +112790,7 @@
         0,
         0.481,
         0.395,
-        0.609
+        0.395
       ],
       "eq": [
         0,
@@ -112799,7 +112799,7 @@
         0,
         0.061,
         0.012,
-        0.183
+        0.012
       ],
       "interest": [
         0,
@@ -112853,7 +112853,7 @@
         0,
         -80.8,
         -74.8,
-        -21.4
+        -74.8
       ],
       "grossMargin": [
         0,
@@ -112871,7 +112871,7 @@
         0,
         -234.3,
         -391.4,
-        -16.3
+        -391.4
       ],
       "roa": [
         0,
@@ -112880,12 +112880,12 @@
         0,
         -29.6,
         -12.4,
-        -4.9
+        -12.4
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-11-27",
-      "latestMonths": 11,
+      "latestPeriod": "2025-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -113949,8 +113949,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-03-20",
-      "latestMonths": 3,
+      "latestPeriod": "2023-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -115812,8 +115812,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-06-12",
-      "latestMonths": 6,
+      "latestPeriod": "2023-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -116079,8 +116079,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-03-01",
-      "latestMonths": 3,
+      "latestPeriod": "2020-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -122331,8 +122331,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -122465,8 +122465,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-08-04",
-      "latestMonths": 8,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -122599,8 +122599,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-07-31",
-      "latestMonths": 7,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -122733,8 +122733,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-30",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -122867,8 +122867,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-10-30",
-      "latestMonths": 10,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -123001,8 +123001,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-07-22",
-      "latestMonths": 7,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -123135,8 +123135,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-05-02",
-      "latestMonths": 5,
+      "latestPeriod": "2023-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -123537,8 +123537,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-06-28",
-      "latestMonths": 6,
+      "latestPeriod": "2019-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -123671,8 +123671,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-11-28",
-      "latestMonths": 11,
+      "latestPeriod": "2023-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -123684,7 +123684,7 @@
         0,
         0,
         0,
-        1.758
+        0.0
       ],
       "cogs": [
         0,
@@ -123702,7 +123702,7 @@
         0,
         0,
         0,
-        0.007
+        -0.033
       ],
       "asset": [
         0,
@@ -123774,7 +123774,7 @@
         0,
         0,
         0,
-        -2.1
+        -1285643.4
       ],
       "grossMargin": [
         0,
@@ -123801,11 +123801,11 @@
         0,
         0,
         0,
-        -4.2
+        -8.8
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-09-27",
+      "latestPeriod": "2023-09-30",
       "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
@@ -123939,8 +123939,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2022-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124073,8 +124073,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-01-31",
-      "latestMonths": 1,
+      "latestPeriod": "2021-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124207,8 +124207,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-09-29",
-      "latestMonths": 9,
+      "latestPeriod": "2023-03-31",
+      "latestMonths": 3,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124341,8 +124341,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2020-11-04",
-      "latestMonths": 11,
+      "latestPeriod": "2020-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124475,8 +124475,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-07-29",
-      "latestMonths": 7,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124609,8 +124609,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-30",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124743,8 +124743,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -124877,8 +124877,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2019-10-28",
-      "latestMonths": 10,
+      "latestPeriod": "2019-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125011,8 +125011,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2021-10-27",
-      "latestMonths": 10,
+      "latestPeriod": "2021-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125145,8 +125145,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2021-11-30",
-      "latestMonths": 11,
+      "latestPeriod": "2021-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125279,8 +125279,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2020-06-03",
-      "latestMonths": 6,
+      "latestPeriod": "2019-12-31",
+      "latestMonths": 12,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125413,8 +125413,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-05-31",
-      "latestMonths": 5,
+      "latestPeriod": "2022-03-31",
+      "latestMonths": 3,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125547,8 +125547,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125681,8 +125681,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-05-22",
-      "latestMonths": 5,
+      "latestPeriod": "2022-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125815,8 +125815,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2019-10-28",
-      "latestMonths": 10,
+      "latestPeriod": "2019-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125949,8 +125949,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2020-08-05",
-      "latestMonths": 8,
+      "latestPeriod": "2020-06-30",
+      "latestMonths": 6,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -125962,7 +125962,7 @@
         0,
         0,
         0,
-        0.96
+        0.517
       ],
       "cogs": [
         0,
@@ -125980,7 +125980,7 @@
         0,
         0,
         0,
-        -0.231
+        -0.635
       ],
       "asset": [
         0,
@@ -125989,7 +125989,7 @@
         0,
         0,
         0,
-        4.532
+        2.59
       ],
       "eq": [
         0,
@@ -125998,7 +125998,7 @@
         0,
         0,
         0,
-        1.077
+        -1.242
       ],
       "interest": [
         0,
@@ -126052,7 +126052,7 @@
         0,
         0,
         0,
-        -32.5
+        -462.3
       ],
       "grossMargin": [
         0,
@@ -126070,7 +126070,7 @@
         0,
         0,
         0,
-        -28.9
+        0
       ],
       "roa": [
         0,
@@ -126079,12 +126079,12 @@
         0,
         0,
         0,
-        -6.9
+        -92.3
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-06-02",
-      "latestMonths": 6,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126217,8 +126217,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-11-28",
-      "latestMonths": 11,
+      "latestPeriod": "2022-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126351,8 +126351,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-29",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126485,8 +126485,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-01-24",
-      "latestMonths": 1,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126619,8 +126619,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126753,8 +126753,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2019-11-21",
-      "latestMonths": 11,
+      "latestPeriod": "2019-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -126887,8 +126887,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2023-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127021,8 +127021,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2019-11-29",
-      "latestMonths": 11,
+      "latestPeriod": "2019-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127155,8 +127155,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2019-11-04",
-      "latestMonths": 11,
+      "latestPeriod": "2019-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127289,8 +127289,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-09-26",
-      "latestMonths": 9,
+      "latestPeriod": "2025-06-30",
+      "latestMonths": 6,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127392,7 +127392,7 @@
         0,
         0,
         0,
-        -2108.6
+        -212.2
       ],
       "grossMargin": [
         0,
@@ -127410,7 +127410,7 @@
         0,
         0,
         0,
-        -11.3
+        -1.1
       ],
       "roa": [
         0,
@@ -127419,12 +127419,12 @@
         0,
         0,
         0,
-        -3.6
+        -0.4
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2018-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2018-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127557,8 +127557,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2025-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127691,8 +127691,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2023-05-08",
-      "latestMonths": 5,
+      "latestPeriod": "2023-03-31",
+      "latestMonths": 3,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127825,8 +127825,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2025-09-10",
-      "latestMonths": 9,
+      "latestPeriod": "2025-06-30",
+      "latestMonths": 6,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -127959,8 +127959,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2024-10-31",
-      "latestMonths": 10,
+      "latestPeriod": "2024-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -128093,8 +128093,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2022-02-06",
-      "latestMonths": 2,
+      "latestPeriod": "2021-09-30",
+      "latestMonths": 9,
       "stale": true,
       "updated": "2026-11-23"
     },
@@ -128227,8 +128227,8 @@
       ],
       "source": "bei",
       "sourceLabel": "BEI Financial Data and Ratio (idx.id), tanpa arus kas & dividen",
-      "latestPeriod": "2020-07-30",
-      "latestMonths": 7,
+      "latestPeriod": "2020-06-30",
+      "latestMonths": 6,
       "stale": true,
       "updated": "2026-11-23"
     }

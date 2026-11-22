@@ -37,7 +37,7 @@ def main(folder):
         m = re.search(r'-_([A-Za-z]{3})_(\d{4})', os.path.basename(p))
         if m: files[(MON[m.group(1).lower()], int(m.group(2)))] = p
     cols = {y: {} for y in YEARS}; latest = {}; best = (0, 0)
-    for (mo, yr) in sorted(files):  # lama -> baru, yang baru menimpa
+    for (mo, yr) in sorted(files, key=lambda k: (k[1], k[0])):  # lama -> baru, yang baru menimpa
         data = read(files[(mo, yr)])
         for c, d in data.items():
             if d['fs'].month == d['fye'] and d['fs'].year in YEARS: cols[d['fs'].year][c] = d
