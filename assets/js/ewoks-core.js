@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122d';
+window.EWOKS_ASSET_V = '20261122e';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1398,23 +1398,54 @@ window.addEventListener('load', () => {
         b.style.whiteSpace = 'pre-wrap';
     }
 
+    /* ---- Maskot "Si Hoo": burung hantu berkacamata + topi wisuda (gambar asli untuk situs ini), animasi CSS, tanpa suara ---- */
+    var HOO = '<svg class="hoo-svg" viewBox="0 0 120 124" aria-hidden="true"><g class="hoo-bob">' +
+        '<ellipse cx="48" cy="117" rx="9" ry="4" fill="#f59e0b"/><ellipse cx="72" cy="117" rx="9" ry="4" fill="#f59e0b"/>' +
+        '<g class="hoo-wl"><ellipse cx="25" cy="80" rx="9" ry="21" fill="#a8672a" transform="rotate(12 25 80)"/></g>' +
+        '<g class="hoo-wr"><ellipse cx="95" cy="80" rx="9" ry="21" fill="#a8672a" transform="rotate(-12 95 80)"/></g>' +
+        '<path d="M28 44 L33 27 L46 38Z M92 44 L87 27 L74 38Z" fill="#a8672a"/>' +
+        '<ellipse cx="60" cy="74" rx="36" ry="40" fill="#c98a3b"/><ellipse cx="60" cy="91" rx="22" ry="22" fill="#f6e7c8"/>' +
+        '<path d="M50 99 l6-8 4 5 8-10" stroke="#10b981" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<ellipse cx="35" cy="75" rx="5.5" ry="3.2" fill="#f9a8b8" opacity=".65"/><ellipse cx="85" cy="75" rx="5.5" ry="3.2" fill="#f9a8b8" opacity=".65"/>' +
+        '<circle cx="44" cy="60" r="14.5" fill="#fff" stroke="#10b981" stroke-width="3.6"/><circle cx="76" cy="60" r="14.5" fill="#fff" stroke="#10b981" stroke-width="3.6"/><path d="M58.5 60h3" stroke="#10b981" stroke-width="3.6" stroke-linecap="round"/>' +
+        '<g class="hoo-eyes"><g class="hoo-blink" style="transform-origin:44px 60px"><circle cx="44" cy="60" r="6" fill="#1e293b"/><circle cx="46" cy="57.8" r="1.9" fill="#fff"/></g><g class="hoo-blink" style="transform-origin:76px 60px"><circle cx="76" cy="60" r="6" fill="#1e293b"/><circle cx="78" cy="57.8" r="1.9" fill="#fff"/></g></g>' +
+        '<path d="M55 68h10l-5 7z" fill="#f59e0b"/><path class="hoo-jaw" d="M57 73.5h6l-3 4.2z" fill="#d97706"/>' +
+        '<path d="M44 36v7q16 8 32 0v-7z" fill="#1f2a44"/><path d="M24 34 L60 19 L96 34 L60 49Z" fill="#2b3a5f"/><path d="M60 19 L96 34 L60 49" fill="#33466f" opacity=".6"/>' +
+        '<g class="hoo-tas"><path d="M88 35.5 L93 53" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round"/><circle cx="93.5" cy="55" r="3.2" fill="#fbbf24"/></g>' +
+        '<text class="hoo-q" x="96" y="22" font-size="20" font-weight="800" fill="#34d399">?</text>' +
+        '</g></svg>';
+    var HOO_CSS = '.hoo-svg{display:block;width:100%;height:100%;overflow:visible}.hoo-bob{transform-origin:60px 118px;animation:hoo-bob 3.2s ease-in-out infinite}' +
+        '@keyframes hoo-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px) scale(1.012,.99)}}' +
+        '.hoo-blink{animation:hoo-blink 5.2s infinite}@keyframes hoo-blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}' +
+        '.hoo-eyes{transform:translate(var(--hx,0px),var(--hy,0px));transition:transform .14s ease-out}' +
+        '.hoo-tas{transform-origin:88px 35px;animation:hoo-tas 2.6s ease-in-out infinite}@keyframes hoo-tas{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(9deg)}}' +
+        '.hoo-wl{transform-origin:30px 64px}.hoo-wr{transform-origin:90px 64px}.hoo-q{opacity:0;transform-origin:96px 22px}' +
+        '.is-wave .hoo-wr{animation:hoo-wave .45s ease-in-out 4}@keyframes hoo-wave{0%,100%{transform:rotate(0)}50%{transform:rotate(-38deg)}}' +
+        '.is-talk .hoo-jaw{animation:hoo-jaw .26s ease-in-out infinite}@keyframes hoo-jaw{0%,100%{transform:translateY(0)}50%{transform:translateY(2.6px)}}' +
+        '.is-talk .hoo-wl{animation:hoo-flapl .6s ease-in-out infinite}.is-talk .hoo-wr{animation:hoo-flapr .6s ease-in-out .3s infinite}' +
+        '@keyframes hoo-flapl{0%,100%{transform:rotate(0)}50%{transform:rotate(12deg)}}@keyframes hoo-flapr{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg)}}' +
+        '.is-think .hoo-bob{animation:hoo-tilt 1.8s ease-in-out infinite}@keyframes hoo-tilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}' +
+        '.is-think .hoo-q{opacity:1;animation:hoo-q 1s ease-in-out infinite}@keyframes hoo-q{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}' +
+        '.ec-fab:hover .hoo-bob{animation-duration:1.4s}' +
+        '@media (prefers-reduced-motion:reduce){.hoo-svg *{animation:none!important;transition:none!important}}';
+
     function init() {
         var st = document.createElement('style');
-        st.textContent = '.ec-fab{position:fixed;right:24px;bottom:160px;z-index:60;width:52px;height:52px;border-radius:50%;border:0;background:#10b981;color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer}' +
+        st.textContent = '.ec-fab{position:fixed;right:20px;bottom:156px;z-index:60;width:64px;height:68px;padding:0;border:0;background:none;cursor:pointer;filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}.ec-tip{position:absolute;right:68px;top:8px;width:max-content;max-width:190px;background:#fff;color:#0f172a;font-size:12px;font-weight:600;line-height:1.35;padding:7px 10px;border-radius:12px 12px 2px 12px;box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:0;transform:translateY(4px);transition:.25s;pointer-events:none;text-align:left}.ec-tip.on{opacity:1;transform:none}.ec-av{width:34px;height:36px;flex:none;margin-right:8px}.ec-ht{display:flex;align-items:center;min-width:0}.ec-ht b{display:block;font-size:14px;line-height:1.1}.ec-ht small{display:block;font-weight:400;font-size:10.5px;color:#94a3b8}' +
             '.ec-box{position:fixed;right:16px;bottom:222px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 180px));display:none;flex-direction:column;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);overflow:hidden;font-size:13px}' +
             '.ec-box.open{display:flex}.ec-h{padding:10px 12px;background:#111c33;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;font-weight:600}' +
             '.ec-h button{background:none;border:0;color:#94a3b8;cursor:pointer;font-size:16px}.ec-m{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}' +
             '.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
-            '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-f input{flex:1;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:8px;color:#e2e8f0;font-size:13px;min-width:0}' +
+            '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-box .ec-f input{flex:1;background:#1e293b!important;border:1px solid #334155!important;border-radius:8px;padding:8px;color:#e2e8f0!important;font-size:13px;min-width:0}' +
             '.ec-f button{background:#10b981;border:0;border-radius:8px;color:#04130d;padding:0 12px;font-weight:600;cursor:pointer}.ec-f button:disabled{opacity:.5}' +
-            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:104px}.ec-box{bottom:166px}}@media(min-width:1500px){.ec-fab{top:14px;bottom:auto;right:16px}.ec-box{top:74px;bottom:auto;right:16px;height:min(520px,calc(100vh - 110px))}}';
-        document.head.appendChild(st);
-        var fab = el('button', 'ec-fab', '💬'); fab.setAttribute('aria-label', 'Tanya Asisten Ewoks');
+            '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:96px}.ec-box{bottom:172px}}@media(min-width:1500px){.ec-fab{top:4px;bottom:auto;right:16px;width:56px;height:60px}.ec-box{top:74px;bottom:auto;right:16px;height:min(520px,calc(100vh - 110px))}}';
+        st.textContent += HOO_CSS; document.head.appendChild(st);
+        var fab = el('button', 'ec-fab hoo'); fab.innerHTML = HOO + '<span class="ec-tip"></span>'; fab.setAttribute('aria-label', 'Tanya Si Hoo, asisten Ewoks'); var tip = fab.querySelector('.ec-tip');
         var box = el('div', 'ec-box');
-        var h = el('div', 'ec-h'); h.appendChild(el('span', '', 'Asisten Ewoks'));
+        var h = el('div', 'ec-h'); var ht = el('div', 'ec-ht'); ht.innerHTML = '<span class="ec-av hoo">' + HOO + '</span><span><b>Si Hoo</b><small>asisten Ewoks, santai tapi paham</small></span>'; h.appendChild(ht); var av = ht.querySelector('.ec-av');
         var x = el('button', '', '✕'); x.setAttribute('aria-label', 'Tutup'); h.appendChild(x);
         var m = el('div', 'ec-m');
-        var f = el('form', 'ec-f'); var inp = el('input'); inp.placeholder = 'Tanya, atau ketik /help untuk command…'; inp.maxLength = 700; inp.autocomplete = 'off';
+        var f = el('form', 'ec-f'); var inp = el('input'); inp.placeholder = 'Tanya Si Hoo, atau ketik /help…'; inp.maxLength = 700; inp.autocomplete = 'off';
         var sb = el('button', '', 'Kirim'); sb.type = 'submit'; f.appendChild(inp); f.appendChild(sb);
         box.appendChild(h); box.appendChild(m); box.appendChild(f);
         box.appendChild(el('div', 'ec-n', 'Edukasi, bukan saran investasi. Jawaban AI bisa keliru — cek ulang.'));
@@ -1427,25 +1458,31 @@ window.addEventListener('load', () => {
         }
         place(); window.addEventListener('resize', place);
 
+        var hooT = null;
+        function hoo(state, ms) { [fab, av].forEach(function (e) { e.classList.remove('is-wave', 'is-talk', 'is-think'); if (state) e.classList.add('is-' + state); }); clearTimeout(hooT); if (state && ms) hooT = setTimeout(function () { hoo(''); }, ms); }
+        function talk(txt) { hoo('talk', Math.max(1200, Math.min(4500, String(txt || '').length * 26))); }
+        var rq = 0; document.addEventListener('mousemove', function (e) { if (rq) return; rq = requestAnimationFrame(function () { rq = 0; var r = fab.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), k = function (v) { return Math.max(-1, Math.min(1, v / 160)) * 3.4; }; fab.style.setProperty('--hx', k(dx) + 'px'); fab.style.setProperty('--hy', k(dy) * 0.7 + 'px'); }); }, { passive: true });
+        function showTip(msg, ms) { tip.textContent = msg; tip.classList.add('on'); setTimeout(function () { tip.classList.remove('on'); }, ms || 6500); }
+        try { if (!sessionStorage.getItem('ewoks_hoo_tip')) { sessionStorage.setItem('ewoks_hoo_tip', '1'); setTimeout(function () { if (!box.classList.contains('open')) { showTip('Halo, aku Si Hoo 🦉 Tanya apa aja soal investasi!'); hoo('wave', 2000); } }, 3500); } } catch (_) {}
         function add(role, t) { var b = el('div', 'ec-b ' + (role === 'u' ? 'ec-u' : 'ec-a'), t); m.appendChild(b); m.scrollTop = m.scrollHeight; return b; }
-        if (!hist.length) add('a', 'Halo! Tanya apa saja soal dasar saham, reksa dana, kripto, forex, manajemen risiko, atau cara pakai fitur di web ini. Ketik /help untuk command (/harga, /rekomendasi, /berita). Aku tidak memberi sinyal beli/jual.');
+        if (!hist.length) add('a', 'Halo, aku Si Hoo 🦉 asisten Ewoks. Tanya santai aja soal saham, kripto, forex, manajemen risiko, atau cara pakai web ini. Ketik /help buat lihat command (/harga, /rekomendasi, /pagi, /swing, /fibo, dll). Aku bantu belajar ya, bukan kasih sinyal beli/jual pasti.');
         hist.forEach(function (i) { add(i.r, i.t); });
-        fab.onclick = function () { box.classList.toggle('open'); if (box.classList.contains('open')) { inp.focus(); m.scrollTop = m.scrollHeight; } };
+        fab.onclick = function () { tip.classList.remove('on'); box.classList.toggle('open'); if (box.classList.contains('open')) { hoo('wave', 1900); inp.focus(); m.scrollTop = m.scrollHeight; } };
         x.onclick = function () { box.classList.remove('open'); };
         f.onsubmit = async function (e) {
             e.preventDefault(); var q = inp.value.trim(); if (!q || busy) return;
             var api = (typeof getEwoksLiveApi === 'function') ? getEwoksLiveApi() : '';
             inp.value = ''; add('u', q);
             if (normCmd(q) != null) {
-                var cw = add('a', 'Memproses…'); busy = true; sb.disabled = true;
+                var cw = add('a', 'Si Hoo lagi ngitung…'); busy = true; sb.disabled = true; hoo('think');
                 try {
                     var cr = await runCmd(q), ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct);
                     if (cr && cr.opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
                 } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
-                busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
+                talk(cw.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
             }
             if (!api) { add('a', 'Server asisten belum diatur.'); return; }
-            busy = true; sb.disabled = true; var w = add('a', 'Mengetik…');
+            busy = true; sb.disabled = true; var w = add('a', 'Si Hoo lagi mikir…'); hoo('think');
             try {
                 var ctl = new AbortController(); var tm = setTimeout(function () { ctl.abort(); }, 30000);
                 var r = await fetch(api + '/ask', { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctl.signal,
@@ -1456,7 +1493,7 @@ window.addEventListener('load', () => {
                 w.textContent = ans;
                 if (d && d.ok) { hist.push({ r: 'u', t: q }); hist.push({ r: 'a', t: ans }); save(); }
             } catch (_) { w.textContent = 'Koneksi bermasalah atau terlalu lama. Coba lagi.'; }
-            busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight;
+            talk(w.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight;
         };
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
