@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122g';
+window.EWOKS_ASSET_V = '20261122h';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1546,9 +1546,59 @@ window.addEventListener('load', () => {
             }, 8500 + Math.random() * 3500);
         }
         function showTip(msg, ms) { tip.textContent = msg; tip.classList.add('on'); clearTimeout(tip._t); tip._t = setTimeout(function () { tip.classList.remove('on'); }, ms || 6500); }
+        /* ---- Tido petakilan: sesekali keluar dari tombol chat, terbang / lari / main mobil / gelantungan di seluruh halaman ---- */
+        var roamer = null, roamAnim = null, roamT = null, RW = 120, RH = 112;
+        var ROAMCSS = '.ec-roam{position:fixed;left:0;top:0;width:' + RW + 'px;height:' + RH + 'px;z-index:55;pointer-events:none;will-change:transform}.ec-roam .in2{width:100%;height:100%;pointer-events:auto;cursor:pointer}.ec-roam.run .k-legs{animation-duration:.22s}' +
+            '.ec-roam-t{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:#fff;color:#0f172a;font:600 12px/1.2 system-ui,sans-serif;padding:3px 8px;border-radius:9px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}' +
+            '.ec-rope{position:absolute;width:2px;background:#94a3b8;left:' + (RW / 2 - 1) + 'px;top:0}.ec-hang{position:absolute;top:0;left:0;transform-origin:' + (RW / 2) + 'px 0}';
+        function roamEnd() {
+            clearTimeout(roamT); if (roamAnim) { try { roamAnim.cancel(); } catch (e) { } roamAnim = null; }
+            if (roamer) { roamer.remove(); roamer = null; fab.style.visibility = ''; if (!box.classList.contains('open')) enter(); }
+        }
+        function roamNext() {
+            clearTimeout(roamT);
+            roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden && !roamer && M) roamGo(); roamNext(); }, 30000 + Math.random() * 40000);
+        }
+        function roamGo(act) {
+            var rm = false; try { rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { }
+            if (rm || roamer || !M) return;
+            var vw = window.innerWidth, vh = window.innerHeight, acts = ['fly', 'run', 'car', 'hang'];
+            act = act || acts[Math.floor(Math.random() * acts.length)];
+            var left = Math.random() < .5, scn = act === 'car' ? 'car' : act === 'hang' ? 'sit' : 'fly', say = { fly: 'wiii~ 😴', run: 'hup hup hup!', car: 'brrm brrm!', hang: 'ayun~ ayun~' }[act];
+            roamer = el('div', 'ec-roam sc-' + scn + (act === 'run' ? ' run' : '')); var inn = el('div', 'in2'); inn.innerHTML = M.fab; var bub = el('span', 'ec-roam-t', say); roamer.appendChild(inn);
+            roamer.onclick = function () { roamEnd(); fab.onclick(); };
+            document.body.appendChild(roamer); fab.style.visibility = 'hidden';
+            var kf = [], n, i, dur, x0 = -RW - 20, x1 = vw + 20;
+            if (act === 'hang') {
+                var L = Math.max(90, Math.min(190, vh * .2)), px = 20 + Math.random() * Math.max(10, vw - RW - 40), hang = el('div', 'ec-hang'), rope = el('div', 'ec-rope'); rope.style.height = L + 'px';
+                hang.style.width = RW + 'px'; hang.style.height = (L + RH) + 'px'; inn.style.position = 'absolute'; inn.style.top = L + 'px'; inn.style.width = RW + 'px'; inn.style.height = RH + 'px';
+                hang.appendChild(rope); hang.appendChild(inn); roamer.appendChild(hang); roamer.style.height = '0'; roamer.style.left = px + 'px';
+                var up = -(L + RH + 12), ang = [0, 11, -11, 9, -9, 6, -5, 0];
+                kf.push({ transform: 'translateY(' + up + 'px) rotate(0deg)', offset: 0 }); kf.push({ transform: 'translateY(0) rotate(0deg)', offset: .12, easing: 'ease-out' });
+                ang.forEach(function (a, j) { kf.push({ transform: 'translateY(0) rotate(' + a + 'deg)', offset: .12 + (j + 1) * .095, easing: 'ease-in-out' }); });
+                kf.push({ transform: 'translateY(' + up + 'px) rotate(0deg)', offset: 1, easing: 'ease-in' }); dur = 7000; hang.appendChild(bub); bub.style.top = (L - 16) + 'px';
+                roamAnim = hang.animate(kf, { duration: dur, fill: 'forwards' });
+            } else {
+                n = 14; dur = Math.max(6000, Math.min(11000, vw * 8)); if (act === 'run') dur = Math.max(3800, Math.min(6500, vw * 5));
+                var y0 = act === 'fly' ? 70 + Math.random() * Math.max(10, vh - RH - 260) : vh - RH - 6;
+                for (i = 0; i <= n; i++) {
+                    var f = i / n, xx = x0 + (x1 - x0) * (left ? 1 - f : f), yy = y0;
+                    if (act === 'fly') yy = y0 + Math.sin(f * Math.PI * 3) * 42 - Math.sin(f * Math.PI) * 18;
+                    else if (act === 'run') yy = y0 - (i % 2 ? 26 : 0);
+                    else yy = y0 - (i % 2 ? 3 : 0);
+                    kf.push({ transform: 'translate(' + Math.round(xx) + 'px,' + Math.round(yy) + 'px)', offset: f, easing: act === 'run' ? 'ease-out' : 'linear' });
+                }
+                if (left) inn.style.transform = 'scaleX(-1)';
+                roamer.appendChild(bub); setTimeout(function () { if (bub.parentNode) bub.remove(); }, 2600);
+                roamAnim = roamer.animate(kf, { duration: dur, fill: 'forwards' });
+            }
+            setTimeout(function () { bub.style.opacity = '0'; bub.style.transition = 'opacity .5s'; }, 2200);
+            roamAnim.onfinish = roamEnd;
+        }
+        window.EwoksTidoRoam = roamGo;
         loadMascot().then(function (MM) {
-            if (!MM) return; M = MM; var st2 = document.createElement('style'); st2.textContent = M.css; document.head.appendChild(st2);
-            fab.innerHTML = M.fab; fab.appendChild(tip); peek.innerHTML = M.peek; enter(); idle();
+            if (!MM) return; M = MM; var st2 = document.createElement('style'); st2.textContent = M.css + ROAMCSS; document.head.appendChild(st2);
+            fab.innerHTML = M.fab; fab.appendChild(tip); peek.innerHTML = M.peek; enter(); idle(); roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden) roamGo(); roamNext(); }, 18000 + Math.random() * 12000);
             try { if (!sessionStorage.getItem('ewoks_hoo_tip')) { sessionStorage.setItem('ewoks_hoo_tip', '1'); setTimeout(function () { if (!box.classList.contains('open')) showTip('Hoaam… eh, halo! Aku Tido. Tanya apa aja soal investasi ya 😴'); }, 2800); } } catch (_) {}
         });
         var TIPS = ['Hoaam… ada apa?', 'Eh, kamu manggil aku? 😴', 'Mau tanya soal saham? Sini!', 'Ketik /help buat lihat command~'];
