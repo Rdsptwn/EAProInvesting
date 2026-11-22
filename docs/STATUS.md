@@ -62,6 +62,8 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 - Koin `WLFI-USD` belum punya harga di `crypto.json`; MEW dan POPCAT belum ketemu.
 - Chat: command `/pagi /siang /swing /scalp` kini menerima budget (`/swing idx 500`, `/scalp global 10`) dan bahasa natural ("tido, swing di bawah 500").
 
+- Arus kas/dividen emiten BEI: workflow baru **Sync funda cash flow** (`tools/build-funda-cf.mjs`, manual atau Sabtu 10:00 WIB) mencoba mengisinya dari Yahoo; belum pernah dijalankan. Emiten yang tidak ada di Yahoo tetap 0.
+
 ## 5. Catatan teknis singkat
 - Semua data disajikan sebagai snapshot dari GitHub Actions; harga live memakai Binance (kripto) dan Worker (`/gquotes`, `/quotes`).
 - Data yang gagal diambil tidak menimpa data lama (`writeSafe`).

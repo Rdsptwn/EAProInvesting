@@ -1,0 +1,48 @@
+# Lengkapi arus kas dan dividend yield emiten BEI dari Yahoo Finance (sumber BEI tidak memuatnya).
+# Dijalankan manual: Actions -> Sync funda cash flow -> Run workflow. Juga mingguan (Sabtu 10:00 WIB).
+name: Sync funda cash flow
+
+on:
+  schedule:
+    - cron: '0 3 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-funda-idx
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Cadangkan dan tolak hasil bila jumlah emiten turun atau JSON rusak.
+      - name: Build arus kas dan dividen
+        run: |
+          cp assets/data/funda-idx.json /tmp/funda-idx.bak
+          node tools/build-funda-cf.mjs
+          node -e '
+            const fs = require("fs");
+            const a = JSON.parse(fs.readFileSync("/tmp/funda-idx.bak", "utf8")).tickers;
+            const b = JSON.parse(fs.readFileSync("assets/data/funda-idx.json", "utf8")).tickers;
+            if (Object.keys(b).length < Object.keys(a).length) { console.error("Jumlah emiten turun"); process.exit(1); }
+          ' || { echo "::warning::hasil tidak valid, pakai versi sebelumnya"; cp /tmp/funda-idx.bak assets/data/funda-idx.json; }
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/funda-idx.json
+          if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
+          git commit -m "chore(data): arus kas dan dividen emiten BEI dari Yahoo"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
+          git push
