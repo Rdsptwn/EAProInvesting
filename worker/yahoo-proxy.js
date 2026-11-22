@@ -294,6 +294,31 @@ async function askGroq(env, sys, msgs) {
     const j = await r.json();
     return String((((j.choices || [])[0] || {}).message || {}).content || '').trim();
 }
+async function askOpenAICompat(url, key, model, sys, msgs, extraHeaders) {
+    const r = await fetch(url, {
+        method: 'POST',
+        headers: Object.assign({ 'Content-Type': 'application/json', Authorization: 'Bearer ' + key }, extraHeaders || {}),
+        body: JSON.stringify({ model, messages: [{ role: 'system', content: sys }].concat(msgs), max_tokens: 600, temperature: 0.5 }),
+        signal: AbortSignal.timeout(25000)
+    });
+    if (!r.ok) throw new Error(r.status + '');
+    const j = await r.json();
+    return String((((j.choices || [])[0] || {}).message || {}).content || '').trim();
+}
+const askOpenRouter = (env, sys, msgs) => askOpenAICompat('https://openrouter.ai/api/v1/chat/completions', env.OPENROUTER_KEY, env.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free', sys, msgs, { 'X-Title': 'Ewoks Academy' });
+const askNvidia = (env, sys, msgs) => askOpenAICompat('https://integrate.api.nvidia.com/v1/chat/completions', env.NVIDIA_KEY, env.NVIDIA_MODEL || 'nvidia/nemotron-3.5-lightning-30b-a3b', sys, msgs);
+async function askCohere(env, sys, msgs) {
+    const r = await fetch('https://api.cohere.com/v2/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + env.COHERE_KEY },
+        body: JSON.stringify({ model: env.COHERE_MODEL || 'command-r-08-2024', messages: [{ role: 'system', content: sys }].concat(msgs), max_tokens: 600, temperature: 0.5 }),
+        signal: AbortSignal.timeout(25000)
+    });
+    if (!r.ok) throw new Error('cohere ' + r.status);
+    const j = await r.json();
+    const c = ((j.message || {}).content || []);
+    return c.map((x) => x.text || '').join('').trim();
+}
 async function askCfAi(env, sys, msgs) {
     const res = await env.AI.run(env.AI_MODEL || '@cf/meta/llama-3.1-8b-instruct', { messages: [{ role: 'system', content: sys }].concat(msgs), max_tokens: 600, temperature: 0.5 });
     return String((res && (res.response || res.result)) || '').trim();
@@ -325,6 +350,9 @@ async function routeAsk(request, env, origin) {
     const chain = [];
     if (env && env.GEMINI_KEY) chain.push(['gemini', askGemini]);
     if (env && env.GROQ_KEY) chain.push(['groq', askGroq]);
+    if (env && env.OPENROUTER_KEY) chain.push(['openrouter', askOpenRouter]);
+    if (env && env.NVIDIA_KEY) chain.push(['nvidia', askNvidia]);
+    if (env && env.COHERE_KEY) chain.push(['cohere', askCohere]);
     if (env && env.AI) chain.push(['workers-ai', askCfAi]);
     if (!chain.length) return J({ ok: false, error: 'Asisten belum diaktifkan di server (isi GEMINI_KEY / GROQ_KEY atau binding AI).', code: 'not_configured' }, 503, origin);
     let last = '';
@@ -346,7 +374,7 @@ async function handle(request, ctx, env) {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method === 'POST' && path === '/ask') return routeAsk(request, env, origin);
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v8-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v9-ask', routes: ['/quotes', '/screener', '/chart', '/gquotes', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
     if (path === '/quotes') return routeQuotes(url, ctx, origin);
