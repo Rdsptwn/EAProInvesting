@@ -1,6 +1,6 @@
 # Status Proyek: Update Tertunda & Data Belum Terisi
 
-Diperbarui: **21 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu tindakan, dan data yang masih kosong.
+Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu tindakan, dan data yang masih kosong.
 
 ## 1. Sudah jalan (data live di situs)
 
@@ -53,6 +53,14 @@ Diperbarui: **21 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 | 124 ticker kolam IDX lama | Tidak ada di daftar BEI | Ticker lama atau salah ketik (MAND, TOTAL, ZENC, dst.) |
 | Saham terkait: 5 indeks | Hanya perusahaan terbesar, bukan seluruh anggota | Daftar anggota lengkap non-AS belum tersedia gratis |
 | Berkas `kolam_global.json` bot | Belum pernah diterima | Disebut di manual bot; kirim bila bot membutuhkannya |
+
+
+### 4.1 Hasil audit 22 Nov 2026 (belum bisa diisi dari sini)
+- Server kerja Claude tidak boleh mengakses Yahoo/Binance/situs lain (hanya paket npm/pip), jadi data baru dan gambar tidak bisa diunduh dari sana. Pengisian otomatis hanya lewat GitHub Actions.
+- Logo emiten IDX: 263 dari 898 punya berkas lokal (`assets/img/logos`); sisanya otomatis memakai favicon domain (`logos.json`) lalu inisial. Tidak ada yang rusak, hanya tampil inisial.
+- Laporan keuangan IDX (`funda-idx.json`): 351 dari 898 emiten; 548 emiten lain belum punya data. Perlu sumber/Action tambahan.
+- Koin `WLFI-USD` belum punya harga di `crypto.json`; MEW dan POPCAT belum ketemu.
+- Chat: command `/pagi /siang /swing /scalp` kini menerima budget (`/swing idx 500`, `/scalp global 10`) dan bahasa natural ("tido, swing di bawah 500").
 
 ## 5. Catatan teknis singkat
 - Semua data disajikan sebagai snapshot dari GitHub Actions; harga live memakai Binance (kripto) dan Worker (`/gquotes`, `/quotes`).
