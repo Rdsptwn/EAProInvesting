@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122h';
+window.EWOKS_ASSET_V = '20261123a';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1261,7 +1261,7 @@ window.addEventListener('load', () => {
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function px(v) { v = Number(v); return nf(v, v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8); }
     var MK = { idx: ['IHSG', 'watchlist.html'], global: ['Saham Global', 'global.html'], kripto: ['Kripto', 'bitcoin.html'], forex: ['Forex', 'forex.html'] };
-    var HELP = 'Command yang tersedia:\n/cek <kode>  ringkasan cepat: harga + bandar + Fibonacci (semua pasar)\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL). Tambah budget: /pagi idx 500, /swing idx 1000, /scalp global 10\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/akum <kode> [tf], /topakum [pasar]  bandarmologi (akumulasi/distribusi), tf: 15M 30M 1J 4J 1H 7H 30H\n/ea [pasar] [tf], /eaus  Golden Cross MA5/MA20\n/analisa <kode>, /lk <kode>  valuasi, trading plan, nilai wajar (EPS x 15)\n/fibo <kode> [tf]  level Fibonacci (semua pasar)\n/global [kripto|forex|kode] [tf]  sinyal SMC (BoS, SMA, RSI)\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
+    var HELP = 'Command yang tersedia:\n/cek <kode>  ringkasan cepat: harga + bandar + Fibonacci (semua pasar)\n/rd [rdpu|rdpt|rds|rdc|rdi]  database reksa dana\n/istilah <kata>  arti istilah (PER, SBN, ARA, dst.)\n/topreturn [idx|global]  saham naik paling tinggi 52 minggu\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL). Tambah budget: /pagi idx 500, /swing idx 1000, /scalp global 10\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/akum <kode> [tf], /topakum [pasar]  bandarmologi (akumulasi/distribusi), tf: 15M 30M 1J 4J 1H 7H 30H\n/ea [pasar] [tf], /eaus  Golden Cross MA5/MA20\n/analisa <kode>, /lk <kode>  valuasi, trading plan, nilai wajar (EPS x 15)\n/fibo <kode> [tf]  level Fibonacci (semua pasar)\n/global [kripto|forex|kode] [tf]  sinyal SMC (BoS, SMA, RSI)\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
     function normCmd(q) {
         var t = q.trim(), l = t.toLowerCase();
         if (l.charAt(0) === '/') return t;
@@ -1326,7 +1326,7 @@ window.addEventListener('load', () => {
         if (window.EwoksChatCmds) return Promise.resolve(window.EwoksChatCmds);
         return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/chat-cmds.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksChatCmds || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
     }
-    var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1 };
+    var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1, rd: 1, reksadana: 1, istilah: 1, topreturn: 1 };
     var KIND = { pagi: 'Rekomendasi Pagi', siang: 'Rekomendasi Siang', swing: 'Swing (±1 minggu)', scalp: 'Scalping' };
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
     async function planIdx(kind, B) {
@@ -1425,7 +1425,7 @@ window.addEventListener('load', () => {
 
 
     /* ---- Bahasa biasa -> command (tanpa AI): "tido, cari tau akumulasi saham brpt" -> /akum BRPT ---- */
-    var NL_RE = /(akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita)/;
+    var NL_RE = /(akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita|rdpu|rdpt|\brds\b|\brdc\b|\brdi\b|reksa ?dana|pasar uang|apa itu|apa sih|artinya|maksud|pengertian|jelaskan|bedanya|return tertinggi|paling cuan|paling tinggi|top gainer|naik paling)/;
     var NL_ALIAS = { BITCOIN: 'BTC', ETHEREUM: 'ETH', EMAS: 'XAUUSD', GOLD: 'XAUUSD', PERAK: 'XAGUSD', SILVER: 'XAGUSD', DOGE: 'DOGE', DOGECOIN: 'DOGE', SOLANA: 'SOL', RIPPLE: 'XRP', DOLAR: 'USDIDR' };
     async function nlCode(q) {
         var words = q.replace(/[^A-Za-z0-9=.^ -]/g, ' ').split(/\s+/).filter(Boolean), i, w, W;
@@ -1445,6 +1445,13 @@ window.addEventListener('load', () => {
         var l = q.toLowerCase().replace(/^\s*tido\s*[,!:]?\s*/, ''), mk = nlMarket(l), code = await nlCode(q.replace(/^\s*tido\s*[,!:]?\s*/i, ''));
         var tfm = l.match(/\b(\d{1,2}\s?(?:m|j|h)|1h|4h)\b/), tf = tfm ? tfm[1].replace(/\s/g, '') : '', cmd = '', intro = '';
         var K = code || '';
+        var RDT = /\b(rdpu|rdpt|rds|rdc|rdi)\b|reksa ?dana|pasar uang/.test(l), DEF = /(apa itu|apa sih|artinya|arti |maksud|pengertian|jelaskan|bedanya|beda )/.test(l);
+        if (RDT) { var rr0 = await runCmd('/rd ' + l.replace(/[^a-z0-9 ]/g, ' ')); if (typeof rr0 === 'string') return 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0; rr0.text = 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0.text; return rr0; }
+        if (/(return|cuan|naik|gain|untung)/.test(l) && /(tertinggi|paling|terbesar|teratas|\btop\b)/.test(l) && /(tahun|bulan|saham|ihsg)/.test(l) && !code && !DEF) {
+            var rr1 = await runCmd('/topreturn ' + (mk || 'idx')); var in1 = /(5|lima) tahun|3 tahun|10 tahun/.test(l) ? 'Hoaam… data harga 5 tahun belum aku simpan, jadi aku kasih versi 52 minggu terakhir ya:' : 'Sip, ini yang naik paling tinggi dalam 52 minggu terakhir:';
+            if (typeof rr1 === 'string') return in1 + '\n\n' + rr1; rr1.text = in1 + '\n\n' + rr1.text; return rr1;
+        }
+        if (DEF) { var MG = await loadCmds(); var gl = MG ? await MG.run('istilah', [l]) : null; if (gl) return gl; }
         if (/(akumulasi|distribusi|bandar|aliran dana)/.test(l)) {
             if (code) { cmd = '/akum ' + code + (tf ? ' ' + tf : ''); intro = 'Oke, aku intip bandar ' + code + ' dulu ya 😴'; }
             else if (/(top|teratas|paling|daftar|apa saja|saham apa)/.test(l)) { cmd = '/topakum ' + mk; intro = 'Sip, aku cari yang lagi diakumulasi ya.'; }
@@ -1546,59 +1553,92 @@ window.addEventListener('load', () => {
             }, 8500 + Math.random() * 3500);
         }
         function showTip(msg, ms) { tip.textContent = msg; tip.classList.add('on'); clearTimeout(tip._t); tip._t = setTimeout(function () { tip.classList.remove('on'); }, ms || 6500); }
-        /* ---- Tido petakilan: sesekali keluar dari tombol chat, terbang / lari / main mobil / gelantungan di seluruh halaman ---- */
-        var roamer = null, roamAnim = null, roamT = null, RW = 120, RH = 112;
-        var ROAMCSS = '.ec-roam{position:fixed;left:0;top:0;width:' + RW + 'px;height:' + RH + 'px;z-index:55;pointer-events:none;will-change:transform}.ec-roam .in2{width:100%;height:100%;pointer-events:auto;cursor:pointer}.ec-roam.run .k-legs{animation-duration:.22s}' +
-            '.ec-roam-t{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:#fff;color:#0f172a;font:600 12px/1.2 system-ui,sans-serif;padding:3px 8px;border-radius:9px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}' +
+        /* ---- Tido petakilan: sesekali keluar dari tombol chat dan bertingkah di seluruh halaman (acak) ---- */
+        var roamer = null, roamAnim = null, roamT = null, roamRaf = 0, lastAct = '', RW = 120, RH = 112, lastM = { x: 0, y: 0, t: 0 };
+        document.addEventListener('mousemove', function (e) { lastM.x = e.clientX; lastM.y = e.clientY; lastM.t = Date.now(); }, { passive: true });
+        var ROAMCSS = '.ec-roam{position:fixed;left:0;top:0;width:' + RW + 'px;height:' + RH + 'px;z-index:55;pointer-events:none;will-change:transform}.ec-roam .in2{width:100%;height:100%;pointer-events:auto;cursor:pointer}.ec-roam.chase .in2{pointer-events:none}.ec-roam.run .k-legs{animation-duration:.22s}' +
+            '.ec-roam-t{position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:#fff;color:#0f172a;font:600 12px/1.2 system-ui,sans-serif;padding:3px 8px;border-radius:9px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none;transition:opacity .4s}' +
             '.ec-rope{position:absolute;width:2px;background:#94a3b8;left:' + (RW / 2 - 1) + 'px;top:0}.ec-hang{position:absolute;top:0;left:0;transform-origin:' + (RW / 2) + 'px 0}';
+        var SAY = {
+            fly: ['wiii~ 😴', 'terbaaang~', 'hoaam sambil terbang'], run: ['hup hup hup!', 'kejar akuu!', 'lari pagi~'], car: ['brrm brrm!', 'minggir dong~', 'nguuung!'], hang: ['ayun~ ayun~', 'jangan dilepas ya', 'wuuu~'],
+            spin: ['muter muter~', 'pusing… tapi seru', 'wuuush!'], bounce: ['boing boing!', 'mantul~', 'duk duk duk'], peek: ['psst…', 'kamu liat aku?', 'cilukba!'], drop: ['zzz…', 'bruk! zzz…', 'zzz… 5 menit lagi'],
+            zigzag: ['zig-zag!', 'ngebut ala kurir', 'wush wush!'], chase: ['tunggu aku!', 'ikut dong~', 'itu kursornya!']
+        };
         function roamEnd() {
-            clearTimeout(roamT); if (roamAnim) { try { roamAnim.cancel(); } catch (e) { } roamAnim = null; }
+            clearTimeout(roamT); cancelAnimationFrame(roamRaf); roamRaf = 0; if (roamAnim) { try { roamAnim.cancel(); } catch (e) { } roamAnim = null; }
             if (roamer) { roamer.remove(); roamer = null; fab.style.visibility = ''; if (!box.classList.contains('open')) enter(); }
         }
         function roamNext() {
             clearTimeout(roamT);
-            roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden && !roamer && M) roamGo(); roamNext(); }, 30000 + Math.random() * 40000);
+            roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden && !roamer && M) roamGo(); roamNext(); }, 18000 + Math.random() * 27000);
         }
         function roamGo(act) {
             var rm = false; try { rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { }
             if (rm || roamer || !M) return;
-            var vw = window.innerWidth, vh = window.innerHeight, acts = ['fly', 'run', 'car', 'hang'];
-            act = act || acts[Math.floor(Math.random() * acts.length)];
-            var left = Math.random() < .5, scn = act === 'car' ? 'car' : act === 'hang' ? 'sit' : 'fly', say = { fly: 'wiii~ 😴', run: 'hup hup hup!', car: 'brrm brrm!', hang: 'ayun~ ayun~' }[act];
-            roamer = el('div', 'ec-roam sc-' + scn + (act === 'run' ? ' run' : '')); var inn = el('div', 'in2'); inn.innerHTML = M.fab; var bub = el('span', 'ec-roam-t', say); roamer.appendChild(inn);
+            var vw = window.innerWidth, vh = window.innerHeight, rnd = Math.random, canChase = Date.now() - lastM.t < 30000 && !('ontouchstart' in window && !lastM.t);
+            var acts = ['fly', 'run', 'car', 'hang', 'spin', 'bounce', 'peek', 'drop', 'zigzag'].concat(canChase ? ['chase', 'chase'] : []).filter(function (a) { return a !== lastAct; });
+            act = act || acts[Math.floor(rnd() * acts.length)]; lastAct = act;
+            var left = rnd() < .5, scn = { car: 'car', hang: 'sit', peek: 'sit', drop: 'sleep' }[act] || 'fly', words = SAY[act], say = words[Math.floor(rnd() * words.length)];
+            roamer = el('div', 'ec-roam sc-' + scn + (act === 'run' || act === 'zigzag' ? ' run' : '') + (act === 'chase' ? ' chase' : '')); var inn = el('div', 'in2'); inn.innerHTML = M.fab; var bub = el('span', 'ec-roam-t', say); roamer.appendChild(inn);
             roamer.onclick = function () { roamEnd(); fab.onclick(); };
             document.body.appendChild(roamer); fab.style.visibility = 'hidden';
-            var kf = [], n, i, dur, x0 = -RW - 20, x1 = vw + 20;
+            var kf = [], i, n, dur = 7000, x0 = -RW - 20, x1 = vw + 20, gy = vh - RH - 6, host = roamer;
+            function T(x, y, r) { return 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px)' + (r ? ' rotate(' + r + 'deg)' : ''); }
+            function say2(txt, ms) { setTimeout(function () { if (roamer) { bub.textContent = txt; bub.style.opacity = '1'; } }, ms); }
+            roamer.appendChild(bub); setTimeout(function () { bub.style.opacity = '0'; }, 2400);
             if (act === 'hang') {
-                var L = Math.max(90, Math.min(190, vh * .2)), px = 20 + Math.random() * Math.max(10, vw - RW - 40), hang = el('div', 'ec-hang'), rope = el('div', 'ec-rope'); rope.style.height = L + 'px';
+                var L = Math.max(90, Math.min(190, vh * .2)), px = 20 + rnd() * Math.max(10, vw - RW - 40), hang = el('div', 'ec-hang'), rope = el('div', 'ec-rope'); rope.style.height = L + 'px';
                 hang.style.width = RW + 'px'; hang.style.height = (L + RH) + 'px'; inn.style.position = 'absolute'; inn.style.top = L + 'px'; inn.style.width = RW + 'px'; inn.style.height = RH + 'px';
-                hang.appendChild(rope); hang.appendChild(inn); roamer.appendChild(hang); roamer.style.height = '0'; roamer.style.left = px + 'px';
+                hang.appendChild(rope); hang.appendChild(inn); roamer.appendChild(hang); roamer.style.height = '0'; roamer.style.left = px + 'px'; hang.appendChild(bub); bub.style.top = (L - 16) + 'px';
                 var up = -(L + RH + 12), ang = [0, 11, -11, 9, -9, 6, -5, 0];
                 kf.push({ transform: 'translateY(' + up + 'px) rotate(0deg)', offset: 0 }); kf.push({ transform: 'translateY(0) rotate(0deg)', offset: .12, easing: 'ease-out' });
                 ang.forEach(function (a, j) { kf.push({ transform: 'translateY(0) rotate(' + a + 'deg)', offset: .12 + (j + 1) * .095, easing: 'ease-in-out' }); });
-                kf.push({ transform: 'translateY(' + up + 'px) rotate(0deg)', offset: 1, easing: 'ease-in' }); dur = 7000; hang.appendChild(bub); bub.style.top = (L - 16) + 'px';
-                roamAnim = hang.animate(kf, { duration: dur, fill: 'forwards' });
+                kf.push({ transform: 'translateY(' + up + 'px) rotate(0deg)', offset: 1, easing: 'ease-in' }); dur = 7000; host = hang;
+            } else if (act === 'chase') {
+                var cx = left ? x0 : x1, cy = vh * (.3 + rnd() * .4), t0 = Date.now(), fl = false;
+                (function step() {
+                    if (!roamer) return; var el2 = Date.now() - t0, out = el2 > 8500, tx = out ? (cx < vw / 2 ? -RW - 60 : vw + 60) : lastM.x - RW - 18, ty = out ? cy - 60 : lastM.y - RH / 2;
+                    cx += (tx - cx) * (out ? .05 : .07); cy += (ty - cy) * .07; var nfl = tx < cx; if (nfl !== fl) { fl = nfl; inn.style.transform = fl ? 'scaleX(-1)' : ''; }
+                    roamer.style.transform = T(cx, cy + Math.sin(el2 / 180) * 5);
+                    if (out && (cx < -RW - 30 || cx > vw + 30)) { roamEnd(); return; } roamRaf = requestAnimationFrame(step);
+                })(); dur = 0;
+            } else if (act === 'spin') {
+                n = 24; dur = 7500; var rx = vw * .34, ry = Math.max(60, vh * .26), laps = 1.4, ph = rnd() * 6.28, dir = left ? -1 : 1;
+                for (i = 0; i <= n; i++) { var f = i / n, a = ph + dir * f * laps * 6.283; kf.push({ transform: T(vw / 2 - RW / 2 + Math.cos(a) * rx * (1 - .15 * f), vh / 2 - RH / 2 + Math.sin(a) * ry, f * 720 * dir), offset: f }); }
+                kf[0].transform = T(x0, kf[0].transform.match(/,(-?\d+)px/)[1] * 1, 0);
+            } else if (act === 'bounce') {
+                var bx = rnd() * (vw - RW), by = rnd() * (vh - RH), dx = left ? -1 : 1, dy = rnd() < .5 ? -1 : 1, sl = .55 + rnd() * .6, tot = 0, pts = [[bx, by, 0]], hits = 0, mx = vw - RW, my = vh - RH, cuts = [0];
+                while (hits < 9) { var tX = dx > 0 ? (mx - bx) : bx, tY = dy > 0 ? (my - by) / sl : by / sl, tt = Math.max(1, Math.min(tX, tY)); bx += dx * tt; by += dy * tt * sl; if (tt === tX) dx = -dx; else dy = -dy; tot += tt * Math.sqrt(1 + sl * sl); pts.push([bx, by, hits % 2 ? 10 : -10]); cuts.push(tot); hits++; }
+                dur = Math.min(10000, Math.max(5500, tot * 2.2)); pts.forEach(function (p, j) { kf.push({ transform: T(p[0], p[1], p[2]), offset: cuts[j] / tot }); });
+                kf.push({ transform: T(pts[pts.length - 1][0] + (dx > 0 ? vw : -vw), pts[pts.length - 1][1] - 80, 0), offset: 1 }); kf.forEach(function (k, j) { if (j === kf.length - 1) k.offset = 1; }); kf[kf.length - 1].offset = 1; kf[kf.length - 2].offset = Math.min(.92, kf[kf.length - 2].offset); dur += 800;
+            } else if (act === 'peek') {
+                var py = 110 + rnd() * Math.max(10, vh - RH - 240), sx = left ? -RW : vw, ox = left ? -RW * .38 : vw - RW * .62; if (!left) inn.style.transform = 'scaleX(-1)'; dur = 6500;
+                [[0, sx, py], [.14, ox, py], [.28, ox, py - 10], [.42, ox, py + 4], [.55, ox, py], [.7, sx + (left ? -10 : 10), py], [.74, ox, py], [.9, ox, py], [1, sx, py]].forEach(function (p) { kf.push({ transform: T(p[1], p[2]), offset: p[0], easing: 'ease-in-out' }); });
+                say2('…hilang~', 4300);
+            } else if (act === 'drop') {
+                var dx0 = 40 + rnd() * Math.max(10, vw - RW - 80); dur = 10000;
+                [[0, dx0, -RH - 20, 0, 'ease-in'], [.14, dx0, gy, 0, 'ease-out'], [.2, dx0, gy - 38, -4, 'ease-in'], [.26, dx0, gy, 0, 'linear'], [.68, dx0, gy, 0, 'linear'], [.72, dx0, gy - 50, -10, 'ease-out'], [.78, dx0, gy, 0, 'linear'], [1, left ? x0 : x1, gy, 0, 'ease-in']].forEach(function (p) { kf.push({ transform: T(p[1], p[2], p[3]), offset: p[0], easing: p[4] }); });
+                if (left) inn.style.transform = 'scaleX(-1)'; say2('!? aku ketiduran', 6600); setTimeout(function () { if (roamer) { roamer.classList.remove('sc-sleep'); roamer.classList.add('sc-fly', 'run'); bub.textContent = 'telat telat!'; bub.style.opacity = '1'; setTimeout(function () { bub.style.opacity = '0'; }, 1500); } }, 7200);
+            } else if (act === 'zigzag') {
+                n = 10; dur = Math.max(4200, Math.min(6500, vw * 4.5));
+                for (i = 0; i <= n; i++) { var f2 = i / n; kf.push({ transform: T(x0 + (x1 - x0) * (left ? 1 - f2 : f2), i % 2 ? vh * (.2 + rnd() * .12) : vh * (.6 + rnd() * .12)), offset: f2, easing: 'ease-in-out' }); }
+                if (left) inn.style.transform = 'scaleX(-1)';
             } else {
                 n = 14; dur = Math.max(6000, Math.min(11000, vw * 8)); if (act === 'run') dur = Math.max(3800, Math.min(6500, vw * 5));
-                var y0 = act === 'fly' ? 70 + Math.random() * Math.max(10, vh - RH - 260) : vh - RH - 6;
+                var y0 = act === 'fly' ? 70 + rnd() * Math.max(10, vh - RH - 260) : gy;
                 for (i = 0; i <= n; i++) {
-                    var f = i / n, xx = x0 + (x1 - x0) * (left ? 1 - f : f), yy = y0;
-                    if (act === 'fly') yy = y0 + Math.sin(f * Math.PI * 3) * 42 - Math.sin(f * Math.PI) * 18;
-                    else if (act === 'run') yy = y0 - (i % 2 ? 26 : 0);
-                    else yy = y0 - (i % 2 ? 3 : 0);
-                    kf.push({ transform: 'translate(' + Math.round(xx) + 'px,' + Math.round(yy) + 'px)', offset: f, easing: act === 'run' ? 'ease-out' : 'linear' });
+                    var f3 = i / n, yy = y0;
+                    if (act === 'fly') yy = y0 + Math.sin(f3 * Math.PI * 3) * 42 - Math.sin(f3 * Math.PI) * 18; else if (act === 'run') yy = y0 - (i % 2 ? 26 : 0); else yy = y0 - (i % 2 ? 3 : 0);
+                    kf.push({ transform: T(x0 + (x1 - x0) * (left ? 1 - f3 : f3), yy), offset: f3, easing: act === 'run' ? 'ease-out' : 'linear' });
                 }
                 if (left) inn.style.transform = 'scaleX(-1)';
-                roamer.appendChild(bub); setTimeout(function () { if (bub.parentNode) bub.remove(); }, 2600);
-                roamAnim = roamer.animate(kf, { duration: dur, fill: 'forwards' });
             }
-            setTimeout(function () { bub.style.opacity = '0'; bub.style.transition = 'opacity .5s'; }, 2200);
-            roamAnim.onfinish = roamEnd;
+            if (dur) { roamAnim = host.animate(kf, { duration: dur, fill: 'forwards' }); roamAnim.onfinish = roamEnd; }
         }
         window.EwoksTidoRoam = roamGo;
         loadMascot().then(function (MM) {
             if (!MM) return; M = MM; var st2 = document.createElement('style'); st2.textContent = M.css + ROAMCSS; document.head.appendChild(st2);
-            fab.innerHTML = M.fab; fab.appendChild(tip); peek.innerHTML = M.peek; enter(); idle(); roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden) roamGo(); roamNext(); }, 18000 + Math.random() * 12000);
+            fab.innerHTML = M.fab; fab.appendChild(tip); peek.innerHTML = M.peek; enter(); idle(); roamT = setTimeout(function () { if (!box.classList.contains('open') && !document.hidden) roamGo(); roamNext(); }, 9000 + Math.random() * 8000);
             try { if (!sessionStorage.getItem('ewoks_hoo_tip')) { sessionStorage.setItem('ewoks_hoo_tip', '1'); setTimeout(function () { if (!box.classList.contains('open')) showTip('Hoaam… eh, halo! Aku Tido. Tanya apa aja soal investasi ya 😴'); }, 2800); } } catch (_) {}
         });
         var TIPS = ['Hoaam… ada apa?', 'Eh, kamu manggil aku? 😴', 'Mau tanya soal saham? Sini!', 'Ketik /help buat lihat command~'];

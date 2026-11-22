@@ -21,7 +21,7 @@
     /* harga: IDX Rp bulat; forex 5 desimal (3 untuk JPY); lainnya adaptif */
     function fp(mk, v, k) {
         v = Number(v); if (!isFinite(v)) return '-';
-        if (mk === 'idx') return 'Rp ' + nf(Math.round(v), 0);
+        if (mk === 'idx') return 'Rp ' + nf(Math.round(v), 0).replace(/,/g, '.');
         if (mk === 'forex') return nf(v, /JPY|IDR|KRW|INR|XAU|XAG|GC=F|SI=F/.test(k || '') ? 3 : 5);
         var d = v >= 1000 ? 2 : v >= 1 ? 2 : v >= 0.01 ? 5 : 8; return '$' + nf(v, d);
     }
@@ -299,6 +299,109 @@
         }).join('\n-----------------------------\n') + '\n\nSL sangat ketat. Wajib disiplin lot size. Edukasi, bukan ajakan beli/jual.';
     }
 
+
+    /* ---------- reksa dana, kamus istilah, return tertinggi ---------- */
+    var RD = {
+        rdpu: { cls: 'Pasar Uang', nama: 'Reksa Dana Pasar Uang (RDPU)', def: 'Isinya instrumen jangka pendek (deposito, surat utang di bawah 1 tahun). Naik-turunnya paling kecil, cocok buat dana darurat atau parkir dana sementara. Pencairan umumnya 1-2 hari bursa. Return kira-kira mengikuti bunga deposito, tidak dijamin.' },
+        rdpt: { cls: 'Reksa Dana Pendapatan Tetap', nama: 'Reksa Dana Pendapatan Tetap (RDPT)', def: 'Minimal 80% di obligasi/surat utang. Risiko menengah: nilainya bisa turun kalau suku bunga naik atau penerbit obligasi bermasalah. Cocok untuk horizon minimal 1-3 tahun.' },
+        rds: { cls: 'Reksa Dana Saham', nama: 'Reksa Dana Saham (RDS)', def: 'Minimal 80% di saham. Potensi return tertinggi tapi naik-turunnya besar, cocok untuk horizon 5 tahun lebih.' },
+        rdc: { cls: 'Reksa Dana Campuran', nama: 'Reksa Dana Campuran (RDC)', def: 'Campuran saham, obligasi, dan pasar uang tanpa satu jenis yang mendominasi. Risiko di antara RDPT dan RDS.' },
+        rdi: { cls: 'Reksa Dana Indeks', nama: 'Reksa Dana Indeks (RDI)', def: 'Mengikuti indeks tertentu (mis. LQ45, SRI-KEHATI), minimal 80% sesuai bobot indeks. Biaya biasanya lebih murah karena tidak memilih saham aktif.' }
+    };
+    function rdKeys(args) {
+        var s = ' ' + [].concat(args || []).join(' ').toLowerCase() + ' ', o = [];
+        if (/pasar uang|\brdpu\b|\bpu\b|money market/.test(s)) o.push('rdpu');
+        if (/pendapatan tetap|\brdpt\b|obligasi|fixed income/.test(s)) o.push('rdpt');
+        if (/\brds\b|reksa ?dana saham|\bsaham\b/.test(s)) o.push('rds');
+        if (/campuran|\brdc\b|berimbang|balanced/.test(s)) o.push('rdc');
+        if (/indeks|\brdi\b|index/.test(s)) o.push('rdi');
+        return o;
+    }
+    async function cmdRd(args) {
+        var ks = rdKeys(args);
+        if (!ks.length) return { text: 'Reksa dana yang ada di database Ewoks:\n- RDPU (Pasar Uang): paling aman, jangka pendek\n- RDPT (Pendapatan Tetap): obligasi, risiko menengah\n- RDC (Campuran): saham + obligasi\n- RDS (Saham): potensi tinggi, risiko tinggi\n- RDI (Indeks): mengikuti indeks\nPilih jenis yang mau dilihat:', opts: [['RDPU', '/rd rdpu'], ['RDPT', '/rd rdpt'], ['RDC', '/rd rdc'], ['RDS', '/rd rds'], ['RDI', '/rd rdi']] };
+        var d = await jfile('pasar-global.json'), ins = d && d.instruments ? d.instruments : [], out = [];
+        ks.slice(0, 3).forEach(function (k) {
+            var R = RD[k], list = ins.filter(function (x) { return x.assetClass === R.cls && (!x.country || x.country === 'Indonesia') && x.cagrBasis === 'return1y' && isFinite(x.cagr); }).sort(function (a, b) { return b.cagr - a.cagr; }).slice(0, ks.length > 1 ? 3 : 5);
+            var s = R.nama.toUpperCase() + '\n' + R.def;
+            if (list.length) { s += '\n\nDi database kami (return 1 tahun, urut tertinggi):\n' + list.map(function (x, i) { return (i + 1) + '. ' + x.name + ' (' + x.ticker + ') · ' + (x.cagr > 0 ? '+' : '') + nf(x.cagr, 2) + '% · risiko ' + x.risk + (x.aum ? ' · AUM ' + x.aum : ''); }).join('\n') + '\n' + (list[0].metric || 'Return 1 tahun'); }
+            else s += '\n\nBelum ada data kinerja untuk jenis ini di database.';
+            out.push(s);
+        });
+        return { text: out.join('\n\n') + '\n\nReturn masa lalu tidak menjamin hasil ke depan. Cek prospektus dan biaya (expense ratio) sebelum membeli. Edukasi, bukan saran investasi.', opts: ks.length === 1 ? [['Bandingkan jenis lain', '/rd']] : [] };
+    }
+    var GLOS = [
+        [['rdpu', 'reksa dana pasar uang'], 'RDPU: reksa dana pasar uang. Isinya instrumen jangka pendek; risiko paling rendah, return mirip deposito.'],
+        [['rdpt', 'reksa dana pendapatan tetap'], 'RDPT: reksa dana pendapatan tetap. Minimal 80% di obligasi; risiko menengah, sensitif ke suku bunga.'],
+        [['rds', 'reksa dana saham'], 'RDS: reksa dana saham. Minimal 80% di saham; potensi tinggi, naik-turun besar, cocok jangka panjang.'],
+        [['rdc', 'reksa dana campuran'], 'RDC: reksa dana campuran. Gabungan saham, obligasi, dan pasar uang.'],
+        [['rdi', 'reksa dana indeks'], 'RDI: reksa dana indeks. Mengikuti indeks tertentu, biaya biasanya lebih murah.'],
+        [['reksa dana', 'reksadana'], 'Reksa dana: wadah patungan dana investor yang dikelola manajer investasi ke saham, obligasi, atau pasar uang. Ketik /rd untuk jenis-jenisnya.'],
+        [['nab'], 'NAB: nilai aktiva bersih per unit reksa dana. Harga unit yang kamu beli/jual, dihitung tiap hari bursa.'],
+        [['etf'], 'ETF: reksa dana indeks yang diperdagangkan di bursa seperti saham, bisa dibeli/jual kapan saja jam bursa.'],
+        [['sbn'], 'SBN: surat berharga negara (ORI, SBR, sukuk ritel, dll). Diterbitkan pemerintah, risiko gagal bayar sangat kecil.'],
+        [['ori'], 'ORI: obligasi negara ritel dengan kupon tetap. Bisa dijual lagi di pasar sekunder sebelum jatuh tempo.'],
+        [['sbr', 'savings bond'], 'SBR: savings bond ritel, kupon mengambang dengan batas bawah. Tidak bisa diperdagangkan di pasar sekunder.'],
+        [['sukuk'], 'Sukuk: surat berharga syariah, imbalannya berupa bagi hasil/imbal hasil dari aset yang mendasarinya.'],
+        [['obligasi'], 'Obligasi: surat utang. Kamu meminjamkan uang ke penerbit (pemerintah/perusahaan) dan menerima kupon berkala plus pokok saat jatuh tempo.'],
+        [['deposito'], 'Deposito: simpanan berjangka di bank dengan bunga tetap, dijamin LPS sampai batas tertentu.'],
+        [['dividen'], 'Dividen: bagian laba perusahaan yang dibagikan ke pemegang saham.'],
+        [['per', 'price earning ratio'], 'PER: harga saham dibagi laba per saham. Makin rendah relatif ke sektornya, makin murah, tapi cek penyebabnya.'],
+        [['pbv'], 'PBV: harga dibagi nilai buku per saham. Di bawah 1 artinya diperdagangkan di bawah nilai bukunya.'],
+        [['eps'], 'EPS: laba bersih per lembar saham.'],
+        [['roe'], 'ROE: laba bersih dibagi ekuitas. Menunjukkan seberapa efisien modal pemegang saham dipakai.'],
+        [['der'], 'DER: total utang dibagi ekuitas. Makin tinggi makin banyak dibiayai utang.'],
+        [['market cap', 'kapitalisasi pasar', 'kapitalisasi'], 'Kapitalisasi pasar: harga saham dikali jumlah saham beredar. Ukuran besar-kecilnya perusahaan.'],
+        [['ipo'], 'IPO: penawaran umum perdana, saat perusahaan pertama kali menjual sahamnya ke publik.'],
+        [['rights issue', 'hmetd'], 'Rights issue: penawaran saham baru ke pemegang saham lama lebih dulu. Kalau tidak ikut, porsi kepemilikanmu terencerkan.'],
+        [['stock split', 'split'], 'Stock split: memecah 1 lembar jadi beberapa lembar. Harga per lembar turun, nilai total kepemilikan tetap.'],
+        [['ara', 'arb', 'auto reject'], 'ARA/ARB: batas kenaikan/penurunan harga harian di bursa. Persentasenya mengikuti aturan BEI terkini.'],
+        [['lot'], 'Lot: satuan jual-beli saham di BEI, 1 lot = 100 lembar.'],
+        [['bid', 'offer'], 'Bid: harga beli tertinggi yang antre. Offer: harga jual terendah yang antre.'],
+        [['support'], 'Support: area harga di mana penurunan sering tertahan karena pembeli masuk.'],
+        [['resist', 'resistance', 'resisten'], 'Resistance: area harga di mana kenaikan sering tertahan karena penjual muncul.'],
+        [['breakout'], 'Breakout: harga menembus support/resist, sering disertai volume besar.'],
+        [['bow', 'buy on weakness'], 'BoW (Buy on Weakness): beli saat harga turun mendekati support di tren naik, bukan mengejar saat sudah naik.'],
+        [['sl', 'stop loss'], 'Stop loss (SL): batas harga jual otomatis untuk membatasi kerugian bila salah arah.'],
+        [['tp', 'take profit'], 'Take profit (TP): target harga untuk mengunci keuntungan.'],
+        [['akumulasi'], 'Akumulasi: indikasi pelaku besar mengumpulkan barang pelan-pelan. Di Ewoks dibaca dari pola harga dan volume, lihat /akum KODE.'],
+        [['distribusi'], 'Distribusi: kebalikan akumulasi, indikasi pelaku besar melepas barang ke pasar.'],
+        [['golden cross'], 'Golden cross: rata-rata bergerak jangka pendek memotong ke atas jangka panjang, sinyal awal tren naik. Lihat /ea.'],
+        [['fibonacci', 'fibo'], 'Fibonacci retracement: level koreksi (38,2%, 50%, 61,8%) dari satu ayunan harga untuk mencari area support/resist. Lihat /fibo KODE.'],
+        [['scalping', 'scalp'], 'Scalping: trading sangat singkat (menit sampai jam) mengejar selisih kecil. Risiko dan biaya transaksi tinggi.'],
+        [['swing'], 'Swing: menahan posisi beberapa hari sampai minggu untuk menangkap satu gelombang harga.'],
+        [['leverage'], 'Leverage: memakai dana pinjaman/margin sehingga untung dan rugi membesar. Bisa rugi lebih cepat dari modal.'],
+        [['margin call'], 'Margin call: peringatan broker bahwa dana jaminan kurang karena posisi rugi; posisi bisa ditutup paksa.'],
+        [['dca', 'dollar cost averaging'], 'DCA: membeli rutin dengan nominal sama berkala, tanpa menebak waktu masuk. Meratakan harga beli.'],
+        [['diversifikasi'], 'Diversifikasi: menyebar dana ke beberapa aset agar satu kejadian buruk tidak menghabiskan semuanya.'],
+        [['inflasi'], 'Inflasi: kenaikan harga barang secara umum, menggerus daya beli uang yang diam.'],
+        [['bi rate', 'suku bunga acuan'], 'BI Rate: suku bunga acuan Bank Indonesia. Naik biasanya menekan harga obligasi dan saham tertentu.'],
+        [['likuiditas', 'likuid'], 'Likuiditas: seberapa mudah aset dijual tanpa menggeser harga. Saham sepi transaksi lebih sulit dijual.'],
+        [['volume'], 'Volume: jumlah lembar/lot yang diperdagangkan. Pergerakan harga dengan volume besar lebih dipercaya.']
+    ];
+    function cmdIstilah(args) {
+        var q = ' ' + [].concat(args || []).join(' ').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ') + ' ', hits = [];
+        GLOS.forEach(function (g) {
+            var best = -1;
+            g[0].forEach(function (a) { var i = q.indexOf(' ' + a + ' '); if (i > -1 && (best < 0 || i < best)) best = i; });
+            if (best > -1) hits.push([best, g]);
+        });
+        if (!hits.length) return null;
+        // buang entri umum bila yang spesifik sudah ada (mis. "reksa dana" saat "rdpu" disebut)
+        var gen = hits.filter(function (h) { return h[1][0][0] === 'reksa dana'; }).length && hits.length > 1;
+        hits = hits.filter(function (h) { return !(gen && h[1][0][0] === 'reksa dana'); }).sort(function (a, b) { return a[0] - b[0]; }).slice(0, 4);
+        return hits.map(function (h) { return h[1][1]; }).join('\n\n') + '\n\nMau lihat datanya? Coba /rd untuk reksa dana atau /help untuk semua command.';
+    }
+    async function cmdTopReturn(args) {
+        var mk = mkey([].concat(args || [])[0]) || 'idx', rows, lo, hi, nm = MKT[mk] || 'IHSG', cur = mk === 'idx' ? 'Rp ' : '$';
+        if (mk === 'idx') { var d = await jfile('idx-screener.json'); if (!d || !d.rows) return 'Data IHSG belum bisa dimuat. Coba lagi.'; rows = d.rows.filter(function (r) { return r[1] > 50 && r[4] > 0 && r[1] * (r[9] || 0) > 1e9; }).map(function (r) { return { k: r[0], p: r[1], lo: r[4], hi: r[5], n: r[11] }; }); }
+        else if (mk === 'global') { var g = await jfile('global-screener.json'); if (!g || !g.rows) return 'Data saham global belum bisa dimuat. Coba lagi.'; rows = g.rows.filter(function (r) { return r[1] > 3 && r[5] > 0 && r[1] * (r[7] || 0) > 5e6; }).map(function (r) { return { k: r[0], p: r[1], lo: r[5], hi: r[6], n: r[10] }; }); }
+        else return { text: 'Return tertinggi yang bisa kuhitung baru untuk IHSG dan Saham Global. Pilih:', opts: [['IHSG', '/topreturn idx'], ['Saham Global', '/topreturn global']] };
+        rows.forEach(function (x) { x.g = (x.p / x.lo - 1) * 100; });
+        rows.sort(function (a, b) { return b.g - a.g; });
+        var top = rows.slice(0, 10), idn = function (s) { return mk === 'idx' ? s.replace(/,/g, '.') : s; };
+        return idn('Naik paling tinggi dari titik terendah 52 minggu, ' + nm + ' (hanya saham yang cukup likuid):\n' + top.map(function (x, i) { return (i + 1) + '. ' + x.k + '  ' + cur + nf(x.p, x.p < 10 ? 2 : 0) + ' · +' + nf(x.g, 0) + '% dari low ' + cur + nf(x.lo, x.lo < 10 ? 2 : 0) + ' (high ' + cur + nf(x.hi, x.hi < 10 ? 2 : 0) + ')'; }).join('\n') + '\n\nCatatan jujur: data harga yang kusimpan cuma 52 minggu, jadi return 5 tahun belum bisa dihitung. Ini juga bukan return beli-tahan (dihitung dari titik terendah), dan saham yang sudah naik tinggi bisa saja sudah mahal.' + DISC);
+    }
     window.EwoksChatCmds = {
         run: function (name, args) {
             args = args || [];
@@ -316,6 +419,9 @@
                 case 'global': case 'scalpglobal': return cmdGlobal(args);
                 case 'globalcrypto': return cmdGlobal(['kripto'].concat(args));
                 case 'globalforex': return cmdGlobal(['forex'].concat(args));
+                case 'rd': case 'reksadana': return cmdRd(args);
+                case 'istilah': return cmdIstilah(args);
+                case 'topreturn': return cmdTopReturn(args);
             }
             return null;
         }
