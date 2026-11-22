@@ -84,6 +84,7 @@
                 list = rs.filter(function (x) { return x && x !== 'x'; }).sort(function (a, b) { return b.score - a.score; });
                 note = fail === cs.length ? 'Data candle belum tersedia (cek koneksi atau Worker).' : (fail > cs.length / 2 ? 'Sebagian data candle belum tersedia.' : '');
                 lastAt = Date.now();
+                window.__ewoksPicks = window.__ewoksPicks || {}; window.__ewoksPicks[MARKET === 'crypto' ? 'kripto' : MARKET] = { list: list, tfLabel: TFS.filter(function (x) { return x[0] === tf; })[0][1], at: wib(lastAt) };
             });
         }).catch(function () { note = 'Gagal memuat data.'; }).then(function () { busy = false; paint(false); });
     }
