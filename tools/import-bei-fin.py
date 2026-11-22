@@ -43,15 +43,16 @@ def main(folder):
             if d['fs'].month == d['fye'] and d['fs'].year in YEARS: cols[d['fs'].year][c] = d
         if yr == 2026 and (mo, yr) >= (best[0], best[1]) if False else yr == 2026 and mo >= best[0]:
             best = (mo, yr); latest = {c: d for c, d in data.items() if d['fs'].year == 2026}
-    cols['latest'] = latest
-    codes = set(latest)
+    cols['latest'] = latest; newest = data  # file terakhir (terbaru) dipakai sebagai cadangan untuk emiten telat lapor
+    codes = set(latest) | set(newest)
     for y in YEARS: codes |= set(cols[y])
     added = 0; today = datetime.date.today().isoformat()
     def col(c, y): return cols[y].get(c)
     for c in sorted(codes):
-        if c in have: continue
-        arr = [col(c, y) for y in YEARS]; lt = cols['latest'].get(c)
+        if c in have and T[c].get('source') != 'bei': continue
+        arr = [col(c, y) for y in YEARS]; lt = cols['latest'].get(c) or (newest.get(c) if newest.get(c, {}).get('asset') else None)
         arr.append(lt)
+        if lt and lt['fs'].year != 2026 and lt['fs'].month == lt['fye'] and lt['fs'].year in YEARS and not arr[lt['fs'].year - 2020]: arr[lt['fs'].year - 2020] = lt; arr[6] = lt = None
         if not any(arr): continue
         g = lambda f, k: [round(a[k] / f, 3) if a and a.get(k) is not None else 0 for a in arr]
         rec = dict(rev=g(1000, 'sales'), cogs=[0] * 7, net=g(1000, 'net'), asset=g(1000, 'asset'), eq=g(1000, 'eq'), interest=[0] * 7, tax=[0] * 7, fcf=[0] * 7, ocf=[0] * 7, divYield=[0] * 7)
@@ -63,6 +64,7 @@ def main(folder):
         if lt:
             mths = ((lt['fs'].month - lt['fye']) % 12) or 12
             rec['latestPeriod'] = lt['fs'].strftime('%Y-%m-%d'); rec['latestMonths'] = mths
+            if lt['fs'].year != 2026: rec['stale'] = True
         rec['updated'] = today; T[c] = rec; added += 1
     j['meta']['bei'] = 'Emiten dengan source=bei berasal dari BEI Financial Data and Ratio; kolom terakhir = laporan terbaru 2026 dengan latestMonths = bulan kumulatif (3/6/9/12).'
     json.dump(j, open(D, 'w', encoding='utf-8'), ensure_ascii=False, indent=2); open(D, 'a').write('\n')
