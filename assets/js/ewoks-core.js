@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261122f';
+window.EWOKS_ASSET_V = '20261122g';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1261,7 +1261,7 @@ window.addEventListener('load', () => {
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function px(v) { v = Number(v); return nf(v, v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8); }
     var MK = { idx: ['IHSG', 'watchlist.html'], global: ['Saham Global', 'global.html'], kripto: ['Kripto', 'bitcoin.html'], forex: ['Forex', 'forex.html'] };
-    var HELP = 'Command yang tersedia:\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL)\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/akum <kode> [tf], /topakum [pasar]  bandarmologi (akumulasi/distribusi), tf: 15M 30M 1J 4J 1H 7H 30H\n/ea [pasar] [tf], /eaus  Golden Cross MA5/MA20\n/analisa <kode>, /lk <kode>  valuasi, trading plan, nilai wajar (EPS x 15)\n/fibo <kode> [tf]  level Fibonacci (semua pasar)\n/global [kripto|forex|kode] [tf]  sinyal SMC (BoS, SMA, RSI)\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
+    var HELP = 'Command yang tersedia:\n/cek <kode>  ringkasan cepat: harga + bandar + Fibonacci (semua pasar)\n/pagi, /siang  5 rekomendasi + trading plan (BoW, TP, SL). Tambah budget: /pagi idx 500, /swing idx 1000, /scalp global 10\n/swing  10 kandidat swing ±1 minggu (TP1, TP2, TP Max)\n/scalp  kandidat scalping (TP 2,5% / SL 2% untuk saham)\nTiga command di atas: tambahkan pasar (ihsg | global | kripto | forex), atau ketik tanpa pasar lalu pilih tombolnya.\n/akum <kode> [tf], /topakum [pasar]  bandarmologi (akumulasi/distribusi), tf: 15M 30M 1J 4J 1H 7H 30H\n/ea [pasar] [tf], /eaus  Golden Cross MA5/MA20\n/analisa <kode>, /lk <kode>  valuasi, trading plan, nilai wajar (EPS x 15)\n/fibo <kode> [tf]  level Fibonacci (semua pasar)\n/global [kripto|forex|kode] [tf]  sinyal SMC (BoS, SMA, RSI)\n/harga <kode>  contoh: /harga BBCA, /harga BTC, /harga EURUSD, /harga NVDA\n/rekomendasi [ihsg|global|kripto|forex]  rekomendasi Bot Buy on Weakness\n/berita  5 berita terbaru\n/help  daftar ini\nBisa juga ketik biasa: "rekomendasi kripto", "harga bbca", "berita".\nPertanyaan lain dijawab asisten AI. Semua ini edukasi, bukan ajakan beli/jual.';
     function normCmd(q) {
         var t = q.trim(), l = t.toLowerCase();
         if (l.charAt(0) === '/') return t;
@@ -1273,6 +1273,7 @@ window.addEventListener('load', () => {
         m = l.match(/^(akum|bandar|fibo|analisa|lk)\s+(\S+)(?:\s+(\S+))?$/); if (m) return '/' + m[1] + ' ' + m[2] + (m[3] ? ' ' + m[3] : '');
         if (/^(berita|news)( terbaru| terkini)?$/.test(l)) return '/berita';
         if (/^(help|menu|bantuan|command)$/.test(l)) return '/help';
+        if (l.length <= 160 && NL_RE.test(l)) return '/nl ' + t;
         return null;
     }
     function mkey(a) { a = (a || '').toLowerCase(); if (/^(ihsg|idx|indonesia)$/.test(a)) return 'idx'; if (/^(global|us|amerika)$/.test(a)) return 'global'; if (/^(kripto|crypto)$/.test(a)) return 'kripto'; if (/^(forex|fx)$/.test(a)) return 'forex'; return ''; }
@@ -1313,9 +1314,9 @@ window.addEventListener('load', () => {
     }
 
     /* ---- Command rencana trading: /pagi /siang /swing /scalp (semua pasar, user memilih pasar) ---- */
-    function askMarket(cmd, txt, only) {
+    function askMarket(cmd, txt, only, suf) {
         var all = [['IHSG', 'idx'], ['Saham Global', 'global'], ['Kripto', 'kripto'], ['Forex', 'forex']];
-        return { text: txt, opts: all.filter(function (o) { return !only || only.indexOf(o[1]) > -1; }).map(function (o) { return [o[0], cmd + ' ' + o[1]]; }) };
+        return { text: txt, opts: all.filter(function (o) { return !only || only.indexOf(o[1]) > -1; }).map(function (o) { return [o[0], cmd + ' ' + o[1] + (suf || '')]; }) };
     }
     function loadEngine() {
         if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
@@ -1328,62 +1329,154 @@ window.addEventListener('load', () => {
     var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1 };
     var KIND = { pagi: 'Rekomendasi Pagi', siang: 'Rekomendasi Siang', swing: 'Swing (±1 minggu)', scalp: 'Scalping' };
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
-    async function planIdx(kind) {
+    async function planIdx(kind, B) {
         var d = await cjson('idx-screener.json'); if (!d || !d.rows) return 'Data IHSG belum bisa dimuat.';
         var R = function (v) { return 'Rp ' + nf(Math.round(v), 0); }, out = '', date = '';
         if (kind === 'scalp') {
-            var sc = d.rows.filter(function (r) { return r[1] > 50 && r[3] >= 2 && r[3] <= 15 && r[1] * (r[9] || 0) > 2e9; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 5);
-            if (!sc.length) return 'Belum ada saham IHSG yang lolos filter scalping (naik 2-15% dengan transaksi > Rp 2 miliar).';
+            var sc = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[3] >= 2 && r[3] <= 15 && r[1] * (r[9] || 0) > (B ? 2e8 : 2e9); }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 5);
+            if (!sc.length) return 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos filter scalping (naik 2-15%, transaksi cukup). Coba budget lebih besar atau /pagi.';
             sc.forEach(function (r) { date = r[10]; out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Entry dekat ' + R(r[1]) + ' · TP ' + R(r[1] * 1.025) + ' (+2,5%) · SL ' + R(r[1] * 0.98) + ' (-2%)\n'; });
-            return 'Scalping IHSG (naik 2-15%, transaksi > Rp 2 miliar), data harian ' + date + ':\n' + out + DISC;
+            return { text: 'Scalping IHSG' + budTxt(B) + ' (naik 2-15%, transaksi ' + (B ? '> Rp 200 juta' : '> Rp 2 miliar') + '), data harian ' + date + ':\n' + out + DISC, opts: budOpts('scalp', 'idx', B) };
         }
         var n = kind === 'swing' ? 10 : 5;
-        var rows = d.rows.filter(function (r) { return r[1] > 50 && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
+        var rows = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
             .map(function (r) { var tp = r[1] >= r[7] ? r[1] * 1.08 : r[7]; return { r: r, near: (r[1] - r[6]) / r[6], tp: tp, room: (tp - r[1]) / r[1] }; })
             .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n);
-        if (!rows.length) return 'Belum ada saham IHSG yang lolos saringan hari ini.';
+        if (!rows.length) return { text: 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos saringan hari ini. Coba budget lebih besar.', opts: budOpts(kind, 'idx', B) };
         rows.forEach(function (x) {
             var r = x.r, sup = r[6]; date = r[10];
             out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Area BoW ' + R(sup) + ' - ' + R(sup * 1.03) + ' · SL ' + R(sup * 0.96) + '\n  ' +
                 (kind === 'swing' ? 'TP1 ' + R(r[1] * 1.04) + ' (+4%) · TP2 ' + R(r[1] * 1.08) + ' (+8%) · TP Max ' + R(Math.max(x.tp, r[1] * 1.08)) : 'TP ' + R(x.tp) + (r[1] >= r[7] ? ' (harga di ATH 20 hari, TP +8%)' : ' (resist 20 hari)')) + '\n';
         });
-        return KIND[kind] + ' IHSG (momentum naik, urut paling dekat support), data harian ' + date + ':\n' + out + 'BoW = low 20 hari sampai +3%. SL = support -4%.' + DISC;
+        return { text: KIND[kind] + ' IHSG' + budTxt(B) + ' (momentum naik, urut paling dekat support), data harian ' + date + ':\n' + out + 'BoW = low 20 hari sampai +3%. SL = support -4%.' + DISC, opts: budOpts(kind, 'idx', B) };
     }
-    async function planGlobalScalp() {
+    async function planGlobalScalp(B) {
         var d = await cjson('global-screener.json'); if (!d || !d.rows) return 'Data saham global belum bisa dimuat.';
-        var sc = d.rows.filter(function (r) { return r[1] > 5 && r[3] >= 1.5 && r[3] <= 25 && r[1] * (r[7] || 0) > 1e6; }).sort(function (a, b) { return b[1] * b[7] - a[1] * a[7]; }).slice(0, 5);
-        if (!sc.length) return 'Belum ada saham global yang lolos filter scalping (naik 1,5-25%, harga > $5).';
+        var sc = d.rows.filter(function (r) { return r[1] > (B ? 1 : 5) && (!B || r[1] <= B) && r[3] >= 1.5 && r[3] <= 25 && r[1] * (r[7] || 0) > 1e6; }).sort(function (a, b) { return b[1] * b[7] - a[1] * a[7]; }).slice(0, 5);
+        if (!sc.length) return 'Belum ada saham global' + budTxt(B, '$') + ' yang lolos filter scalping (naik 1,5-25%). Coba budget lebih besar.';
         var out = ''; sc.forEach(function (r) { out += r[0] + ' (' + r[10] + ')  $' + px(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  TP $' + nf(r[1] * 1.025, 2) + ' (+2,5%) · SL $' + nf(r[1] * 0.98, 2) + ' (-2%)\n'; });
-        return 'Scalping Saham Global (naik 1,5-25%), data harian ' + sc[0][9] + ':\n' + out + DISC;
+        return { text: 'Scalping Saham Global' + budTxt(B, '$') + ' (naik 1,5-25%), data harian ' + sc[0][9] + ':\n' + out + DISC, opts: budOpts('scalp', 'global', B) };
     }
-    async function planEngine(kind, k) {
+    async function planEngine(kind, k, B) {
         var E = await loadEngine(); if (!E) return 'Mesin rekomendasi belum bisa dimuat.';
         var mk = k === 'kripto' ? 'crypto' : k, tf = kind === 'swing' ? '4h' : kind === 'scalp' ? '5m' : '1h', tfl = { '4h': '4 jam', '5m': '5 menit', '1h': '1 jam' }[tf];
         var r = await E.forMarket(mk).run(tf, 'ketat'), n = kind === 'swing' ? 10 : 5;
         if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).';
-        if (!r.list.length) return 'Belum ada ' + MK[k][0] + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti atau pasar lain.';
+        if (B) r.list = r.list.filter(function (x) { return x.price <= B; });
+        if (!r.list.length) return 'Belum ada ' + MK[k][0] + budTxt(B, k === 'idx' ? 'Rp' : '$') + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti, budget lebih besar, atau pasar lain.';
         var pre = k === 'forex' ? '' : '$', out = '';
         r.list.slice(0, n).forEach(function (x) {
             out += x.t + '  ' + pre + E.fmt(mk, x.price, x.t) + ' (' + (x.chg >= 0 ? '+' : '') + x.chg.toFixed(1) + '%)\n  Area BoW ' + E.fmt(mk, x.lo, x.t) + ' - ' + E.fmt(mk, x.hi, x.t) + ' · CL ' + E.fmt(mk, x.cl, x.t) + '\n  ' +
                 (kind === 'swing' ? 'TP1 ' + E.fmt(mk, x.tp1, x.t) + ' · TP Max ' + E.fmt(mk, x.tp, x.t) : 'TP ' + E.fmt(mk, x.tp, x.t)) + ' · R/R ' + x.rr.toFixed(1) + '\n';
         });
-        return KIND[kind] + ' ' + MK[k][0] + ' (Buy on Weakness, candle ' + tfl + '):\n' + out + 'Dihitung langsung dari candle saat ini. Tren naik, dekat support, ada ruang ke resist.' + DISC;
+        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' (Buy on Weakness, candle ' + tfl + '):\n' + out + 'Dihitung langsung dari candle saat ini. Tren naik, dekat support, ada ruang ke resist.' + DISC, opts: budOpts(kind, k, B) };
     }
-    async function cmdPlan(kind, a) {
-        var k = mkey(a);
-        if (!k) return kind === 'scalp' ? askMarket('/scalp', 'Scalping untuk pasar mana?', ['idx', 'global', 'kripto', 'forex']) : askMarket('/' + kind, KIND[kind] + ' untuk pasar mana?');
-        if (k === 'idx') return planIdx(kind);
-        if (k === 'global' && kind === 'scalp') return planGlobalScalp();
-        return planEngine(kind, k);
+    function parseBudget(tok) {
+        var m = String(tok).toLowerCase().replace(/^(<=|<|≤|maks|max)/, '').replace(/^rp\.?\s*/, '').replace(/^\$/, '');
+        var mm = m.match(/^(\d[\d.,]*)(k|rb|ribu)?$/); if (!mm) return null;
+        var v = parseFloat(mm[1].replace(/[.,](?=\d{3}(\D|$))/g, '').replace(',', '.')); if (mm[2]) v *= 1000;
+        return isFinite(v) && v > 0 ? v : null;
+    }
+    function budTxt(B, cur) { return B ? ' dengan harga ≤ ' + (cur === '$' ? '$' + nf(B, B < 10 ? 2 : 0) : 'Rp ' + nf(B, 0).replace(/,/g, '.')) : ''; }
+    function budOpts(kind, mk, B) {
+        var base = '/' + kind + ' ' + mk, o = [];
+        if (mk === 'idx') { if (B !== 500) o.push(['Harga ≤ Rp500', base + ' 500']); if (B !== 1000) o.push(['Harga ≤ Rp1.000', base + ' 1000']); if (B !== 2000) o.push(['Harga ≤ Rp2.000', base + ' 2000']); if (B) o.push(['Semua harga', base]); }
+        else if (mk === 'global' || mk === 'kripto') { if (B !== 10) o.push(['Harga ≤ $10', base + ' 10']); if (B !== 50) o.push(['Harga ≤ $50', base + ' 50']); if (B) o.push(['Semua harga', base]); }
+        return o;
+    }
+    async function cmdPlan(kind, args) {
+        args = [].concat(args || []); var mkk = '', B = null;
+        args.forEach(function (a) { var m = mkey(a), b = parseBudget(a); if (m) mkk = m; else if (b) B = b; });
+        var bs = B ? ' ' + B : '';
+        if (!mkk) return kind === 'scalp' ? askMarket('/scalp', 'Scalping untuk pasar mana?' + (B ? ' (harga ≤ ' + nf(B, 0) + ')' : ''), ['idx', 'global', 'kripto', 'forex'], bs) : askMarket('/' + kind, KIND[kind] + ' untuk pasar mana?' + (B ? ' (harga ≤ ' + nf(B, 0) + ')' : ''), null, bs);
+        if (mkk === 'idx') return planIdx(kind, B);
+        if (mkk === 'global' && kind === 'scalp') return planGlobalScalp(B);
+        return planEngine(kind, mkk, B);
+    }
+    /* ---- Intent dari bahasa biasa: "cari tau akumulasi saham brpt" -> langsung jalankan /akum BRPT (tanpa AI) ---- */
+    var STOP = {}; ('ada apa ini itu yang dan atau dong deh sih nih lah bisa mau cek cari tau tahu coba tolong gmn gimana bagaimana brp berapa harga saham koin kripto sama buat untuk dari pada lagi sudah udah belum bagus naik turun kok yuk ya pak bro tido gak ga nggak engga tidak akumulasi distribusi bandar bandarmologi asing fibo fibonacci analisa analisis prospek laporan keuangan nilai wajar valuasi golden cross sinyal lihat liat kasih kasi info tentang soal dengan kalo kalau kenapa karena jadi terus pake pakai hari besok minggu bulan banyak sedikit yg tdk bgt banget aja saja lalu juga masih ikut cuma hanya pasar forex global ihsg idx us pagi siang swing scalp rekomendasi saran per pbv eps fundamental layak retracement kurs price scalping smc emas gold aku kamu dia kita lu gue w mah dulu nanti sekarang terbaru terkini lagi yang gmn'.split(' ')).forEach(function (w) { STOP[w] = 1; });
+    var KNOWN = null;
+    async function knownMap() {
+        if (KNOWN) return KNOWN; var m = {}, g = await cjson('global-screener.json'), f = await cjson('forex.json'), cr = await cjson('crypto.json'), id = await cjson('idx-screener.json');
+        if (g && g.rows) g.rows.forEach(function (r) { m[r[0]] = 'global'; }); if (f && f.items) f.items.forEach(function (x) { m[x.k] = 'forex'; }); if (cr && cr.items) cr.items.forEach(function (x) { m[x.k] = 'kripto'; }); if (id && id.rows) id.rows.forEach(function (r) { m[r[0]] = 'idx'; });
+        KNOWN = m; return m;
+    }
+    async function nlIntent(q) {
+        var l = ' ' + q.toLowerCase().replace(/[?!.,;:()"]/g, ' ') + ' ';
+        var toks = (l.match(/[a-z0-9]{2,8}/g) || []).filter(function (w) { return !STOP[w]; }), code = null, mk = null, K = await knownMap();
+        for (var i = 0; i < toks.length; i++) { var U = toks[i].toUpperCase(); if (K[U]) { code = U; mk = K[U]; break; } if (/^(xau|xag)$/i.test(toks[i])) { code = toks[i].toUpperCase() + 'USD'; mk = 'forex'; break; } }
+        var has = function (re) { return re.test(l); }, mkw = has(/ihsg|idx|indonesia/) ? 'idx' : has(/ global| us | amerika/) ? 'global' : has(/kripto|crypto|koin/) ? 'kripto' : has(/forex|fx| gold| emas/) ? 'forex' : '';
+        if (has(/akumulasi|distribusi|bandar/)) return code ? { cmd: '/akum ' + code, code: code, mk: mk, intro: 'Oke, aku intip akumulasi/distribusi ' + code + ' dulu ya…' } : { cmd: '/topakum ' + mkw, intro: 'Siap, aku cari yang lagi diakumulasi…' };
+        if (has(/fibo|retracement/) && code) return { cmd: '/fibo ' + code, code: code, mk: mk, intro: 'Oke, aku tarik Fibonacci ' + code + '…' };
+        if (has(/laporan keuangan|nilai wajar|valuasi|fundamental| per | pbv | eps /) && code) return { cmd: '/lk ' + code, code: code, mk: mk, intro: 'Aku bukain laporan keuangan ' + code + ' ya…' };
+        if (has(/golden cross/)) return { cmd: '/ea ' + mkw, intro: 'Aku scan Golden Cross dulu ya…' };
+        if (has(/sinyal|smc|scalping/) && (mkw === 'kripto' || mkw === 'forex' || mk === 'kripto' || mk === 'forex')) return { cmd: '/global ' + (code && (mk === 'kripto' || mk === 'forex') ? code : mkw), intro: 'Aku cek radar sinyal SMC-nya…' };
+        if (has(/harga|berapa| kurs|price/) && code) return { cmd: '/harga ' + code, code: code, mk: mk, intro: '' };
+        if (code && (has(/analisa|analisis|prospek|gimana|bagaimana|gmn|bagus|layak|cek|cari tau|cari tahu|lihat|liat|info/) || toks.length <= 2)) return { cmd: 'cek', code: code, mk: mk, intro: 'Siap, aku cek ' + code + ' dari beberapa sisi (harga, bandar, Fibonacci)…' };
+        return null;
+    }
+    async function cmdCek(code, mk) {
+        var M = await loadCmds(), out = [await cmdHarga(code)], iscrypto = mk === 'kripto', isfx = mk === 'forex';
+        if (M && !isfx) { var a = await M.run('akum', [code, '7H']); if (typeof a === 'string' && /^BANDAR/.test(a)) out.push(a.split('\n').slice(0, 6).join('\n')); }
+        if (M) { var f = await M.run('fibo', [code]); if (typeof f === 'string' && /Golden Zone/.test(f)) { var gz = (f.match(/Area buy terbaik[^\n]*/) || [''])[0], zn = (f.match(/ZONA[^\n]*/) || [''])[0]; out.push('Fibonacci (3 bulan): ' + gz + '\n' + zn); } }
+        var opts = []; if (!iscrypto && !isfx) { opts.push(['Analisa ' + code, '/analisa ' + code]); opts.push(['Laporan keuangan', '/lk ' + code]); } opts.push(['Fibo lengkap', '/fibo ' + code]); if (!isfx) opts.push(['Bandar 30H', '/akum ' + code + ' 30H']);
+        return { text: out.join('\n\n') + DISC, opts: opts };
+    }
+
+
+    /* ---- Bahasa biasa -> command (tanpa AI): "tido, cari tau akumulasi saham brpt" -> /akum BRPT ---- */
+    var NL_RE = /(akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita)/;
+    var NL_ALIAS = { BITCOIN: 'BTC', ETHEREUM: 'ETH', EMAS: 'XAUUSD', GOLD: 'XAUUSD', PERAK: 'XAGUSD', SILVER: 'XAGUSD', DOGE: 'DOGE', DOGECOIN: 'DOGE', SOLANA: 'SOL', RIPPLE: 'XRP', DOLAR: 'USDIDR' };
+    async function nlCode(q) {
+        var words = q.replace(/[^A-Za-z0-9=.^ -]/g, ' ').split(/\s+/).filter(Boolean), i, w, W;
+        var idr = await cjson('idx-screener.json'), idS = {}; if (idr && idr.rows) idr.rows.forEach(function (r) { idS[r[0]] = 1; });
+        var cr = await cjson('crypto.json'), crS = {}; if (cr && cr.items) cr.items.forEach(function (x) { crS[x.k] = 1; });
+        var fx = await cjson('forex.json'), fxS = {}; if (fx && fx.items) fx.items.forEach(function (x) { fxS[x.k] = 1; });
+        for (i = 0; i < words.length; i++) { w = words[i]; W = w.toUpperCase(); if (NL_ALIAS[W]) { W = NL_ALIAS[W]; if (fxS[W]) return W; if (crS[W]) return W; } }
+        for (i = 0; i < words.length; i++) { W = words[i].toUpperCase(); if (W.length >= 3 && idS[W] && !/^(YANG|DARI|ATAU|BISA|BANK|GOLD|SAHAM|UNTUK)$/.test(W)) return W; }
+        for (i = 0; i < words.length; i++) { W = words[i].toUpperCase(); if (fxS[W] && W.length >= 5) return W; }
+        for (i = 0; i < words.length; i++) { W = words[i].toUpperCase(); if (crS[W] && W.length >= 3 && !/^(ONE|SUN|NEAR|FUN|ALL)$/.test(W)) return W; }
+        var gs = await cjson('global-screener.json'), gS = {}; if (gs && gs.rows) gs.rows.forEach(function (r) { gS[r[0]] = 1; });
+        for (i = 0; i < words.length; i++) { w = words[i]; if (w === w.toUpperCase() && gS[w] && w.length >= 2) return w; }
+        return '';
+    }
+    function nlMarket(l) { if (/\b(ihsg|idx|indonesia)\b/.test(l)) return 'idx'; if (/\b(global|amerika|us)\b/.test(l)) return 'global'; if (/\b(kripto|crypto|koin)\b/.test(l)) return 'kripto'; if (/\b(forex|fx)\b/.test(l)) return 'forex'; return ''; }
+    async function nlRun(q) {
+        var l = q.toLowerCase().replace(/^\s*tido\s*[,!:]?\s*/, ''), mk = nlMarket(l), code = await nlCode(q.replace(/^\s*tido\s*[,!:]?\s*/i, ''));
+        var tfm = l.match(/\b(\d{1,2}\s?(?:m|j|h)|1h|4h)\b/), tf = tfm ? tfm[1].replace(/\s/g, '') : '', cmd = '', intro = '';
+        var K = code || '';
+        if (/(akumulasi|distribusi|bandar|aliran dana)/.test(l)) {
+            if (code) { cmd = '/akum ' + code + (tf ? ' ' + tf : ''); intro = 'Oke, aku intip bandar ' + code + ' dulu ya 😴'; }
+            else if (/(top|teratas|paling|daftar|apa saja|saham apa)/.test(l)) { cmd = '/topakum ' + mk; intro = 'Sip, aku cari yang lagi diakumulasi ya.'; }
+            else return null;
+        } else if (/(fibo|retracement)/.test(l) && code) { cmd = '/fibo ' + code + (tf ? ' ' + tf : ''); intro = 'Aku tarik Fibonacci ' + code + ' ya.'; }
+        else if (/(laporan keuangan|keuangan|nilai wajar|valuasi|fundamental)/.test(l) && code) { cmd = '/lk ' + code; intro = 'Aku buka laporan keuangan ' + code + ' dulu, bentar ya 😴'; }
+        else if (/(analisa|analisis)/.test(l) && code) { cmd = '/analisa ' + code; intro = 'Oke, analisa ringkas ' + code + ':'; }
+        else if (/(sinyal|scalping|\bsmc\b)/.test(l) && (code || mk === 'kripto' || mk === 'forex') && mk !== 'idx' && mk !== 'global') { cmd = '/global ' + (code || mk) + (tf ? ' ' + tf : ''); intro = 'Aku cek radar sinyalnya ya.'; }
+        else if (/(golden cross|\bea\b)/.test(l)) { cmd = '/ea ' + mk; intro = 'Aku scan Golden Cross-nya ya.'; }
+        else if (/(harga|price|berapa)/.test(l) && code) { cmd = '/harga ' + code; intro = ''; }
+        else if (/(rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|scalp)/.test(l) && (mk || /(swing|pagi|siang|scalp|rekomendasi)/.test(l)) && !code) {
+            var kind = /swing/.test(l) ? 'swing' : /scalp/.test(l) ? 'scalp' : /pagi/.test(l) ? 'pagi' : /siang/.test(l) ? 'siang' : 'rekomendasi';
+            var bm = l.match(/(?:di ?bawah|dibawah|kurang dari|maks(?:imal)?|max|budget|modal|<=?|≤)\s*(?:rp\.?|\$)?\s*(\d[\d.,]*)\s*(k|rb|ribu)?/), bud = '';
+            if (bm && kind !== 'rekomendasi') { var bv = parseBudget(bm[1] + (bm[2] || '')); if (bv) bud = ' ' + bv; }
+            cmd = '/' + kind + (mk ? ' ' + mk : '') + bud; intro = 'Siap, ini hasil screener-nya' + (bud ? ' untuk budget minim' : '') + ' (bukan ajakan beli/jual ya):';
+        }
+        else if (/berita/.test(l)) cmd = '/berita';
+        else return null;
+        var r = await runCmd(cmd); if (r == null) return null;
+        if (typeof r === 'string') return (intro ? intro + '\n\n' : '') + r;
+        r.text = (intro ? intro + '\n\n' : '') + r.text; return r;
     }
     async function runCmd(q) {
         var c = normCmd(q); if (c == null) return null;
+        if (c.slice(0, 4) === '/nl ') return nlRun(c.slice(4));
         var p = c.split(/\s+/), n = p[0].toLowerCase();
         if (n === '/help' || n === '/menu' || n === '/start') return HELP;
-        if (n === '/harga' || n === '/price' || n === '/cek') return cmdHarga(p[1]);
+        if (n === '/harga' || n === '/price') return cmdHarga(p[1]);
+        if (n === '/cek') { var ck = String(p[1] || '').toUpperCase(); if (!ck) return 'Format: /cek <kode>. Contoh: /cek BBCA, /cek BTC, /cek EURUSD. Aku cek harga, bandar, dan Fibonacci sekaligus.'; var KK = await knownMap(); return cmdCek(ck, KK[ck] || ''); }
         if (n === '/rekomendasi' || n === '/rekomen' || n === '/bow' || n === '/picks') return cmdRek(p[1]);
-        if (n === '/pagi' || n === '/siang' || n === '/swing' || n === '/scalp') return cmdPlan(n.slice(1), p[1]);
-        if (n === '/scalpus') return cmdPlan('scalp', 'global');
+        if (n === '/pagi' || n === '/siang' || n === '/swing' || n === '/scalp') return cmdPlan(n.slice(1), p.slice(1));
+        if (n === '/scalpus') return cmdPlan('scalp', ['global'].concat(p.slice(1)));
         if (HEAVY[n.slice(1)]) { var M = await loadCmds(); if (!M) return 'Modul command belum bisa dimuat. Coba lagi.'; var hr = await M.run(n.slice(1), p.slice(1)); return hr == null ? 'Command belum tersedia.' : hr; }
         if (n === '/berita' || n === '/news') return cmdBerita();
         return 'Command "' + p[0] + '" belum ada di chat web. Ketik /help. (Command lengkap dengan gambar ada di bot WhatsApp.)';
@@ -1471,12 +1564,22 @@ window.addEventListener('load', () => {
             var api = (typeof getEwoksLiveApi === 'function') ? getEwoksLiveApi() : '';
             inp.value = ''; add('u', q);
             if (normCmd(q) != null) {
-                var cw = add('a', 'Tido lagi ngitung sambil ngucek mata…'); busy = true; sb.disabled = true; hoo('think');
+                var fall = false, cw = add('a', 'Tido lagi ngitung sambil ngucek mata…'); busy = true; sb.disabled = true; hoo('think');
                 try {
-                    var cr = await runCmd(q), ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct);
+                    var cr = await runCmd(q); if (cr == null) { fall = true; cw.remove(); } else { var ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct);
                     if (cr && cr.opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
-                } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
-                talk(cw.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
+                } } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
+                busy = false; sb.disabled = false;
+                if (!fall) { talk(cw.textContent); m.scrollTop = m.scrollHeight; return; }
+            }
+            var ni = null; try { ni = await nlIntent(q); } catch (_) {}
+            if (ni) {
+                var nw = add('a', ni.intro || 'Tido lagi cek…'); busy = true; sb.disabled = true; hoo('think');
+                try {
+                    var nr = ni.cmd === 'cek' ? await cmdCek(ni.code, ni.mk) : await runCmd(ni.cmd), nt = typeof nr === 'string' ? nr : nr.text; rich(nw, (ni.intro ? ni.intro + '\n\n' : '') + nt);
+                    if (nr && nr.opts) { var nb = el('div'); nb.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; nr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; nb.appendChild(bt); }); nw.appendChild(nb); }
+                } catch (_) { nw.textContent = 'Gagal ngecek datanya. Coba lagi ya.'; }
+                talk(nw.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
             }
             if (!api) { add('a', 'Server asisten belum diatur.'); return; }
             busy = true; sb.disabled = true; var w = add('a', 'Tido lagi mikir…'); hoo('think');

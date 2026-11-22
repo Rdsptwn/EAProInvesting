@@ -164,6 +164,7 @@
         ['📉 Dekat Low 52 Mgg', { pos: 'low', sort: 'pos-asc' }],
         ['📈 Dekat High 52 Mgg', { pos: 'high', sort: 'chg-desc' }],
         ['🪙 Harga ≤ 500', { pmax: 500, sort: 'chg-desc' }],
+        ['💰 Harga ≤ 1.000', { pmax: 1000, sort: 'chg-desc' }],
         ['🏦 Blue Chip (≥ 5.000)', { pmin: 5000, sort: 'chg-desc' }]
     ];
     const FIELD = { vmin: 'f-vmin', board: 'f-board', status: 'f-status', sector: 'f-sector', q: 'f-q', pmin: 'f-pmin', pmax: 'f-pmax', cmin: 'f-cmin', cmax: 'f-cmax', pos: 'f-pos', sr: 'f-sr', sort: 'f-sort', limit: 'f-limit' };
@@ -262,14 +263,23 @@
             </tr>`;
         }).join('');
     };
+    /* Chip bisa digabung (AND): mis. Breakout Resist + Harga ≤ 500. Chip satu kelompok (harga, perubahan, posisi 52 mgg, support/resist) saling menggantikan. */
+    let activePresets = [];
+    const presetGroups = (f) => ['price:pmin,pmax', 'chg:cmin,cmax', 'pos:pos', 'sr:sr'].filter((g) => g.split(':')[1].split(',').some((k) => k in f)).map((g) => g.split(':')[0]);
     window.tpApplyPreset = function (i) {
+        if (activePresets.includes(i)) activePresets = activePresets.filter((j) => j !== i);
+        else {
+            const gi = presetGroups(PRESETS[i][1]);
+            activePresets = activePresets.filter((j) => !presetGroups(PRESETS[j][1]).some((g) => gi.includes(g)));
+            activePresets.push(i);
+        }
         tpResetScreener(true);
-        const f = PRESETS[i][1];
-        Object.entries(f).forEach(([k, v]) => { const e = $(FIELD[k]); if (e) e.value = v; });
-        document.querySelectorAll('#tp-presets .tp-chip').forEach((b, j) => b.classList.toggle('on', j === i));
+        activePresets.forEach((j) => { Object.entries(PRESETS[j][1]).forEach(([k, v]) => { const e = $(FIELD[k]); if (e) e.value = v; }); });
+        document.querySelectorAll('#tp-presets .tp-chip').forEach((b, j) => b.classList.toggle('on', activePresets.includes(j)));
         tpRunScreener();
     };
     window.tpResetScreener = function (silent) {
+        if (!silent) activePresets = [];
         Object.values(FIELD).forEach((id) => { const e = $(id); if (e) e.value = e.tagName === 'SELECT' ? e.options[0].value : ''; });
         const lim = $('f-limit'); if (lim) lim.value = '50';
         document.querySelectorAll('#tp-presets .tp-chip').forEach((b) => b.classList.remove('on'));
