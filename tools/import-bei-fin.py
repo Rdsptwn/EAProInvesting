@@ -46,10 +46,22 @@ def main(folder):
     cols['latest'] = latest; newest = data  # file terakhir (terbaru) dipakai sebagai cadangan untuk emiten telat lapor
     codes = set(latest) | set(newest)
     for y in YEARS: codes |= set(cols[y])
-    added = 0; today = datetime.date.today().isoformat()
+    added = 0; filled = 0; today = datetime.date.today().isoformat()
     def col(c, y): return cols[y].get(c)
     for c in sorted(codes):
-        if c in have and T[c].get('source') != 'bei': continue
+        if c in have and T[c].get('source') != 'bei':
+            # Emiten Yahoo (hanya ±4 tahun): isi HANYA kolom tahun yang kosong (mis. 2020-2021) dari BEI; angka Yahoo tidak ditimpa.
+            r0 = T[c]; fl = []
+            for i, y in enumerate(YEARS):
+                d = col(c, y)
+                if not d or d.get('asset') is None or any(r0.get(k, [0] * 7)[i] for k in ('asset', 'rev', 'net')): continue
+                for k, f in (('rev', 'sales'), ('net', 'net'), ('asset', 'asset'), ('eq', 'eq')):
+                    if d.get(f) is not None: r0[k][i] = round(d[f] / 1000, 3)
+                for k in ('npm', 'roe', 'roa'):
+                    if d.get(k) is not None and k in r0: r0[k][i] = round(d[k], 1)
+                fl.append(y)
+            if fl: r0['fillBei'] = sorted(set(r0.get('fillBei', []) + fl)); filled += 1
+            continue
         arr = [col(c, y) for y in YEARS]; lt = cols['latest'].get(c) or (newest.get(c) if newest.get(c, {}).get('asset') else None)
         arr.append(lt)
         if lt and lt['fs'].year != 2026 and lt['fs'].month == lt['fye'] and lt['fs'].year in YEARS and not arr[lt['fs'].year - 2020]: arr[lt['fs'].year - 2020] = lt; arr[6] = lt = None
@@ -68,6 +80,6 @@ def main(folder):
         rec['updated'] = today; T[c] = rec; added += 1
     j['meta']['bei'] = 'Emiten dengan source=bei berasal dari BEI Financial Data and Ratio; kolom terakhir = laporan terbaru 2026 dengan latestMonths = bulan kumulatif (3/6/9/12).'
     json.dump(j, open(D, 'w', encoding='utf-8'), ensure_ascii=False, indent=2); open(D, 'a').write('\n')
-    print('ditambah', added, 'total', len(T))
+    print('ditambah', added, 'diisi tahun kosong (Yahoo)', filled, 'total', len(T))
 
 if __name__ == '__main__': main(sys.argv[1])

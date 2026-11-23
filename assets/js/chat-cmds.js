@@ -320,15 +320,17 @@
     async function cmdRd(args) {
         var ks = rdKeys(args);
         if (!ks.length) return { text: 'Reksa dana yang ada di database Ewoks:\n- RDPU (Pasar Uang): paling aman, jangka pendek\n- RDPT (Pendapatan Tetap): obligasi, risiko menengah\n- RDC (Campuran): saham + obligasi\n- RDS (Saham): potensi tinggi, risiko tinggi\n- RDI (Indeks): mengikuti indeks\nPilih jenis yang mau dilihat:', opts: [['RDPU', '/rd rdpu'], ['RDPT', '/rd rdpt'], ['RDC', '/rd rdc'], ['RDS', '/rd rds'], ['RDI', '/rd rdi']] };
-        var d = await jfile('pasar-global.json'), ins = d && d.instruments ? d.instruments : [], out = [];
+        var d = await jfile('pasar-global.json'), ins = d && d.instruments ? d.instruments : [], out = [], picks = [];
         ks.slice(0, 3).forEach(function (k) {
             var R = RD[k], list = ins.filter(function (x) { return x.assetClass === R.cls && (!x.country || x.country === 'Indonesia') && x.cagrBasis === 'return1y' && isFinite(x.cagr); }).sort(function (a, b) { return b.cagr - a.cagr; }).slice(0, ks.length > 1 ? 3 : 5);
             var s = R.nama.toUpperCase() + '\n' + R.def;
-            if (list.length) { s += '\n\nDi database kami (return 1 tahun, urut tertinggi):\n' + list.map(function (x, i) { return (i + 1) + '. ' + x.name + ' (' + x.ticker + ') · ' + (x.cagr > 0 ? '+' : '') + nf(x.cagr, 2) + '% · risiko ' + x.risk + (x.aum ? ' · AUM ' + x.aum : ''); }).join('\n') + '\n' + (list[0].metric || 'Return 1 tahun'); }
-            else s += '\n\nBelum ada data kinerja untuk jenis ini di database.';
+            if (list.length) {
+                s += '\n\nTeratas di database (return 1 tahun, urut tertinggi) ada di kartu bawah.';
+                list.forEach(function (x) { picks.push({ t: x.ticker, priceTxt: x.name, chg: x.cagr, rows: [['Jenis', R.nama.split(' (')[0].replace(/^Reksa dana /i, 'RD ')], ['Risiko', x.risk || '-'], ['AUM', x.aum || '-']], note: (x.metric || 'Return 1 tahun') + (x.dataAsOf ? ' · per ' + x.dataAsOf : ''), simple: { t: x.ticker, mk: 'rd', name: x.name } }); });
+            } else s += '\n\nBelum ada data kinerja untuk jenis ini di database.';
             out.push(s);
         });
-        return { text: out.join('\n\n') + '\n\nReturn masa lalu tidak menjamin hasil ke depan. Cek prospektus dan biaya (expense ratio) sebelum membeli. Edukasi, bukan saran investasi.', opts: ks.length === 1 ? [['Bandingkan jenis lain', '/rd']] : [] };
+        return { text: out.join('\n\n') + '\n\nReturn masa lalu tidak menjamin hasil ke depan. Cek prospektus dan biaya (expense ratio) sebelum membeli. Edukasi, bukan saran investasi.', picks: picks, opts: ks.length === 1 ? [['Bandingkan jenis lain', '/rd']] : [] };
     }
     var GLOS = [
         [['rdpu', 'reksa dana pasar uang'], 'RDPU: reksa dana pasar uang. Isinya instrumen jangka pendek; risiko paling rendah, return mirip deposito.'],

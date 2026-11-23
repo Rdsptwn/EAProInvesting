@@ -656,6 +656,24 @@ function refreshCorporateCalendarIfJakartaDateChanged() {
 async function fetchNews() {
     const container = document.getElementById('news-container');
     if (!container) return;
+    // Utama: global-news.json (diperbarui workflow sync-24jam tiap 30 menit, 24 jam, termasuk CNBC Indonesia). rss2json hanya cadangan.
+    try {
+        const V = encodeURIComponent(window.EWOKS_ASSET_V || '1') + '.' + Math.floor(Date.now() / 600000), B = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+        const gj = await (await fetch(B + 'assets/data/global-news.json?v=' + V)).json();
+        const its = (gj.items || []).filter(x => x.lang === 'id' && x.title && x.link).sort((a, b) => new Date(b.ts) - new Date(a.ts)).slice(0, 12);
+        if (its.length >= 4) {
+            const dec = t => { const e = document.createElement('textarea'); e.innerHTML = t; return e.value; };
+            const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+            container.innerHTML = its.map(item => {
+                const d = new Date(item.ts), w = d.toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).replace(':', '.') + ' WIB';
+                return `<a href="${esc(item.link)}" target="_blank" rel="noopener" class="block p-3 rounded-xl border border-slate-100 hover:bg-blue-50 transition-colors bg-white shadow-sm">
+                    <p class="text-[10px] text-blue-500 font-black mb-1 uppercase tracking-widest">${esc(w)} · ${esc(item.src || '')}</p>
+                    <h4 class="text-xs md:text-sm font-bold text-slate-800 line-clamp-2">${esc(dec(item.title))}</h4>
+                </a>`;
+            }).join('');
+            return;
+        }
+    } catch (_) { /* lanjut ke cadangan */ }
     try {
         const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.cnbcindonesia.com/market/rss');
         const data = await res.json();
@@ -1309,6 +1327,21 @@ window.addEventListener('load', () => {
         return 'Berita terbaru:\n' + it.map(function (x) { return '- [' + x.title + '](' + x.link + ') (' + x.src + ')'; }).join('\n');
     }
 
+
+    /* /komoditas [kata] -> kartu harga komoditas/kurs/indeks dunia + tombol Pantau (tanpa level BoW) */
+    var KOM_ALIAS = { emas: 'gold', perak: 'silver', minyak: 'brent wti', batubara: 'coal', 'batu bara': 'coal', tembaga: 'copper', gas: 'gas', kopi: 'coffee', gula: 'sugar', jagung: 'corn', gandum: 'wheat', kedelai: 'soy', kakao: 'cocoa', platina: 'platinum', dolar: 'usdidr', kurs: 'usdidr' };
+    async function cmdKomoditas(args) {
+        var d = await cjson('global-commodities.json'); if (!d || !d.items) return 'Data komoditas belum bisa dimuat.';
+        var q = (args || []).join(' ').toLowerCase().trim(), ids = null;
+        if (q) { ids = []; Object.keys(KOM_ALIAS).forEach(function (k) { if (q.indexOf(k) > -1) ids = ids.concat(KOM_ALIAS[k].split(' ')); }); }
+        var its = d.items.filter(function (x) { return ids && ids.length ? ids.indexOf(x.id) > -1 : q ? (x.n + ' ' + x.id).toLowerCase().indexOf(q) > -1 : ['gold', 'silver', 'brent', 'wti', 'copper', 'coal', 'gas', 'usdidr'].indexOf(x.id) > -1; }).slice(0, 8);
+        if (!its.length) return { text: 'Aku ga nemu komoditas itu 😴 Coba: emas, perak, minyak, batu bara, tembaga, gas, kopi, gula, dolar.', opts: [['Emas', '/komoditas emas'], ['Minyak', '/komoditas minyak'], ['Semua utama', '/komoditas']] };
+        var pk = its.map(function (x) {
+            var dp = x.price >= 1000 ? 0 : x.price >= 10 ? 2 : 4, F = function (v) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }, sg = function (v) { return v == null ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2).replace('.', ',') + '%'; };
+            return { t: x.n, price: x.price, priceTxt: F(x.price) + (x.u ? ' ' + x.u : ''), chg: x.chg, rows: [['1 hari', sg(x.chg), x.chg >= 0 ? 'g' : 'r'], ['1 bulan', sg(x.chg1m), x.chg1m >= 0 ? 'g' : 'r']], note: 'Data ' + (x.time ? new Date(x.time).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' WIB' : 'terbaru'), simple: { t: x.id, mk: 'komoditas', name: x.n } };
+        });
+        return { text: 'Komoditas, kurs, dan indeks dunia (data diperbarui otomatis tiap 30 menit, kecuali pasar tutup).' + DISC, picks: pk };
+    }
     /* ---- Command rencana trading: /pagi /siang /swing /scalp (semua pasar, user memilih pasar) ---- */
     function askMarket(cmd, txt, only, suf) {
         var all = [['IHSG', 'idx'], ['Saham Global', 'global'], ['Kripto', 'kripto'], ['Forex', 'forex']];
@@ -1326,6 +1359,16 @@ window.addEventListener('load', () => {
         return 'ok';
     }
     window.ewoksBowWatchAdd = bowWatchAdd;
+    /* Pantau tanpa level BoW (komoditas/kurs/indeks dan reksa dana): {t, mk:'komoditas'|'rd', name} */
+    function simpleWatchAdd(p) {
+        if (typeof watchlist === 'undefined' || !p || !p.t) return 'err';
+        if (watchlist.some(function (w) { return w.ticker === p.t && (w.mk || 'idx') === p.mk; })) return 'dup';
+        watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, mk: p.mk, name: p.name || '', price: '', note: p.note || (p.mk === 'rd' ? 'Reksa dana dari database Ewoks' : 'Dipantau dari Ewoks'), foreign: '' });
+        try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
+        try { if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist(); } catch (_) {}
+        return 'ok';
+    }
+    window.ewoksWatchAdd = simpleWatchAdd;
     function picksCss() {
         if (document.getElementById('ec-pk-css')) return; var st = document.createElement('style'); st.id = 'ec-pk-css';
         st.textContent = '.ec-pk{display:flex;flex-direction:column;gap:10px;margin-top:10px;white-space:normal}.ec-pc{background:#0f172a;border:1px solid #334155;border-left:3px solid #22c55e;border-radius:10px;padding:9px 11px}' +
@@ -1345,10 +1388,10 @@ window.addEventListener('load', () => {
             c.appendChild(h);
             p.rows.forEach(function (r) { var d = el('div', 'ec-pr'); d.appendChild(el('span', '', r[0])); d.appendChild(el('b', r[2] || '', r[1])); c.appendChild(d); });
             if (p.note) c.appendChild(el('div', 'ec-pn', p.note));
-            if (p.bow) { var b = el('button', 'ec-pa', '+ Pantau'); b.type = 'button'; b.onclick = function () { mark(b, bowWatchAdd(p)); }; btns.push([b, p]); c.appendChild(b); }
+            if (p.bow || p.simple) { var b = el('button', 'ec-pa', '+ Pantau'); b.type = 'button'; b.onclick = function () { mark(b, p.simple ? simpleWatchAdd(p.simple) : bowWatchAdd(p)); }; btns.push([b, p]); c.appendChild(b); }
             wrap.appendChild(c);
         });
-        if (btns.length > 1) { var all = el('button', 'ec-pall', '+ Pantau semua (' + btns.length + ')'); all.type = 'button'; all.onclick = function () { btns.forEach(function (x) { if (!x[0].disabled) mark(x[0], bowWatchAdd(x[1])); }); all.disabled = true; all.textContent = 'Semua masuk Watchlist ✓'; }; wrap.appendChild(all); }
+        if (btns.length > 1) { var all = el('button', 'ec-pall', '+ Pantau semua (' + btns.length + ')'); all.type = 'button'; all.onclick = function () { btns.forEach(function (x) { if (!x[0].disabled) mark(x[0], x[1].simple ? simpleWatchAdd(x[1].simple) : bowWatchAdd(x[1])); }); all.disabled = true; all.textContent = 'Semua masuk Watchlist ✓'; }; wrap.appendChild(all); }
         box.appendChild(wrap);
     }
     /* BoW IHSG: aturan sama dengan kartu di halaman Terminal (page-bot-picks.js) */
@@ -1504,7 +1547,7 @@ window.addEventListener('load', () => {
 
 
     /* ---- Bahasa biasa -> command (tanpa AI): "tido, cari tau akumulasi saham brpt" -> /akum BRPT ---- */
-    var NL_RE = /(watchlist|pantauan|akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita|rdpu|rdpt|\brds\b|\brdc\b|\brdi\b|reksa ?dana|pasar uang|apa itu|apa sih|artinya|maksud|pengertian|jelaskan|bedanya|return tertinggi|paling cuan|paling tinggi|top gainer|naik paling)/;
+    var NL_RE = /(komoditas|watchlist|pantauan|akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita|rdpu|rdpt|\brds\b|\brdc\b|\brdi\b|reksa ?dana|pasar uang|apa itu|apa sih|artinya|maksud|pengertian|jelaskan|bedanya|return tertinggi|paling cuan|paling tinggi|top gainer|naik paling)/;
     var NL_ALIAS = { BITCOIN: 'BTC', ETHEREUM: 'ETH', EMAS: 'XAUUSD', GOLD: 'XAUUSD', PERAK: 'XAGUSD', SILVER: 'XAGUSD', DOGE: 'DOGE', DOGECOIN: 'DOGE', SOLANA: 'SOL', RIPPLE: 'XRP', DOLAR: 'USDIDR' };
     async function nlCode(q) {
         var words = q.replace(/[^A-Za-z0-9=.^ -]/g, ' ').split(/\s+/).filter(Boolean), i, w, W;
@@ -1527,11 +1570,12 @@ window.addEventListener('load', () => {
         if (/(watchlist|pantauan|daftar pantau|watch list)/.test(l) && /(masukin|masukkan|masuk|tambah|simpan|pantau|add|catat|pindah)/.test(l)) {
             if (!lastPicks || !lastPicks.length) return { text: 'Belum ada rekomendasi yang bisa dimasukkan 😴 Minta dulu ya, nanti tinggal klik "+ Pantau" atau bilang "masukin ke watchlist".', opts: [['Rekomendasi IHSG', '/rekomendasi idx'], ['Swing IHSG', '/swing idx'], ['Rekomendasi Kripto', '/rekomendasi kripto']] };
             var want = {}; (q.toUpperCase().match(/[A-Z0-9]{2,8}/g) || []).forEach(function (w) { want[w] = 1; });
-            var sel = lastPicks.filter(function (p) { return p.bow; }), named = sel.filter(function (p) { return want[p.t]; }); if (named.length) sel = named;
+            var sel = lastPicks.filter(function (p) { return p.bow || p.simple; }), named = sel.filter(function (p) { return want[p.t]; }); if (named.length) sel = named;
             if (!sel.length) return 'Rekomendasi tadi belum punya level BoW yang bisa dipantau (mis. scalping).';
-            var ok = [], dup = []; sel.forEach(function (p) { var r = bowWatchAdd(p); (r === 'ok' ? ok : dup).push(p.t); });
-            return { text: (ok.length ? 'Beres, masuk Watchlist: ' + ok.join(', ') + ' ✅ (lengkap dengan area BoW, TP, CL; naik/turunnya kelihatan di Watchlist).' : '') + (dup.length ? (ok.length ? '\n' : '') + 'Sudah ada: ' + dup.join(', ') + '.' : '') + '\n[Buka Watchlist](' + CBASE + 'watchlist.html)' };
+            var ok = [], dup = []; sel.forEach(function (p) { var r = p.simple ? simpleWatchAdd(p.simple) : bowWatchAdd(p); (r === 'ok' ? ok : dup).push(p.t); });
+            return { text: (ok.length ? 'Beres, masuk Watchlist: ' + ok.join(', ') + ' ✅' + (sel.some(function (p) { return p.bow; }) ? ' (lengkap dengan area BoW, TP, CL; naik/turunnya kelihatan di Watchlist).' : '') : '') + (dup.length ? (ok.length ? '\n' : '') + 'Sudah ada: ' + dup.join(', ') + '.' : '') + '\n[Buka Watchlist](' + CBASE + 'watchlist.html)' };
         }
+        if (/(komoditas|\bemas\b|\bperak\b|minyak|batu ?bara|tembaga|\bkopi\b|\bgula\b|jagung|gandum)/.test(l) && /(harga|berapa|komoditas|pantau|naik|turun|cek|lihat)/.test(l) && !/(saham|reksa)/.test(l)) { var kr = await cmdKomoditas(l.replace(/[^a-z ]/g, ' ').split(/\s+/).filter(function (w) { return KOM_ALIAS[w]; })); if (kr && kr.picks) return kr; }
         var RDT = /\b(rdpu|rdpt|rds|rdc|rdi)\b|reksa ?dana|pasar uang/.test(l), DEF = /(apa itu|apa sih|artinya|arti |maksud|pengertian|jelaskan|bedanya|beda )/.test(l);
         if (RDT) { var rr0 = await runCmd('/rd ' + l.replace(/[^a-z0-9 ]/g, ' ')); if (typeof rr0 === 'string') return 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0; rr0.text = 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0.text; return rr0; }
         if (/(return|cuan|naik|gain|untung)/.test(l) && /(tertinggi|paling|terbesar|teratas|\btop\b)/.test(l) && /(tahun|bulan|saham|ihsg)/.test(l) && !code && !DEF) {
@@ -1573,6 +1617,7 @@ window.addEventListener('load', () => {
         if (n === '/scalpus') return cmdPlan('scalp', ['global'].concat(p.slice(1)));
         if (HEAVY[n.slice(1)]) { var M = await loadCmds(); if (!M) return 'Modul command belum bisa dimuat. Coba lagi.'; var hr = await M.run(n.slice(1), p.slice(1)); return hr == null ? 'Command belum tersedia.' : hr; }
         if (n === '/berita' || n === '/news') return cmdBerita();
+        if (n === '/komoditas' || n === '/kom') return cmdKomoditas(p.slice(1));
         return 'Command "' + p[0] + '" belum ada di chat web. Ketik /help. (Command lengkap dengan gambar ada di bot WhatsApp.)';
     }
     function rich(b, t) {

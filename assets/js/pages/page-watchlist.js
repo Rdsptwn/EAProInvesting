@@ -32,7 +32,7 @@ function clearWatchlist() {
 }
 
 // Harga cadangan/semua pasar dari snapshot JSON: IHSG (idx-screener), Kripto, Forex, Saham Global. Disegarkan tiap 5 menit.
-let __wlScr = null, __wlMk = { kripto: {}, forex: {}, global: {} }, __wlAt = 0;
+let __wlScr = null, __wlMk = { kripto: {}, forex: {}, global: {}, komoditas: {}, rd: {} }, __wlAt = 0;
 function wlLoadScr() {
     const missing = __wlScr !== null && Date.now() - __wlAt > 15000 && watchlist.some(w => (w.mk || 'idx') !== 'idx' && !(__wlMk[w.mk] && __wlMk[w.mk][w.ticker]));
     if (__wlScr !== null && Date.now() - __wlAt < 300000 && !missing) return;
@@ -45,18 +45,23 @@ function wlLoadScr() {
     if (need.has('kripto')) jobs.push(get('crypto.json').then(d => { (d.items || []).forEach(x => { __wlMk.kripto[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
     if (need.has('forex')) jobs.push(get('forex.json').then(d => { (d.items || []).forEach(x => { __wlMk.forex[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
     if (need.has('global')) jobs.push(get('global-screener.json').then(d => { (d.rows || []).forEach(r => { __wlMk.global[r[0]] = { price: r[1], changePct: r[3], date: r[9] }; }); }).catch(() => {}));
+    if (need.has('komoditas')) jobs.push(get('global-commodities.json').then(d => { (d.items || []).forEach(x => { __wlMk.komoditas[x.id] = { price: x.price, changePct: x.chg, chg1m: x.chg1m, u: x.u || '', n: x.n, date: x.time }; }); }).catch(() => {}));
+    if (need.has('rd')) jobs.push(get('pasar-global.json').then(d => { (d.instruments || []).forEach(x => { __wlMk.rd[x.ticker] = x; }); }).catch(() => {}));
     Promise.all(jobs).then(() => renderWatchlist(true));
 }
 // Format harga per pasar: IHSG Rp, Kripto/Global $, Forex tanpa simbol.
 function wlFmt(w, v) {
     if (v == null || !Number.isFinite(Number(v))) return '-';
     v = Number(v); const mk = w.mk || 'idx';
+    if (mk === 'komoditas') { const it = __wlMk.komoditas[w.ticker]; return v.toLocaleString('en-US', { minimumFractionDigits: v >= 1000 ? 0 : v >= 10 ? 2 : 4, maximumFractionDigits: v >= 1000 ? 0 : v >= 10 ? 2 : 4 }) + (it && it.u ? ' ' + it.u : ''); }
     if (mk === 'idx') return 'Rp ' + Math.round(v).toLocaleString('id-ID');
     const d = mk === 'forex' ? (/JPY|IDR|KRW|INR|XAU|XAG/.test(w.ticker) ? 3 : 5) : (v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8);
     return (mk === 'forex' ? '' : '$') + v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
 }
-const WL_MK_LABEL = { kripto: 'Kripto', forex: 'Forex', global: 'Saham Global' };
+const WL_MK_LABEL = { kripto: 'Kripto', forex: 'Forex', global: 'Saham Global', komoditas: 'Komoditas/Kurs/Indeks', rd: 'Reksa Dana' };
 function wlChartUrl(w) {
+    if (w.mk === 'rd') return 'pasar-global.html?q=' + encodeURIComponent(w.ticker);
+    if (w.mk === 'komoditas') { const it = __wlMk.komoditas[w.ticker]; return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(({ gold: 'COMEX:GC1!', silver: 'COMEX:SI1!', brent: 'TVC:UKOIL', wti: 'TVC:USOIL', copper: 'COMEX:HG1!', gas: 'NYMEX:NG1!', usdidr: 'FX_IDC:USDIDR' })[w.ticker] || (it && it.n) || w.ticker); }
     const t = String(w.ticker).replace(/[^A-Z0-9.=-]/gi, '');
     const sym = w.mk === 'kripto' ? 'BINANCE:' + t + 'USDT' : w.mk === 'forex' ? (/^(XAU|XAG)/.test(t) ? 'OANDA:' + t : 'FX:' + t) : t;
     return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym);
@@ -87,6 +92,21 @@ function wlBowHtml(w, cur, chg) {
     </div>`;
 }
 
+function wlRdHtml(w) {
+    const x = __wlMk.rd[w.ticker]; if (!x) return '<p class="mt-2 text-[10px] font-bold text-slate-500">Menunggu data database reksa dana…</p>';
+    const asof = x.dataAsOf ? ` (per ${escapeHtml(x.dataAsOf)})` : '';
+    return `<div class="mt-2 p-2 rounded-xl border border-sky-100 bg-sky-50/50 text-[10px] font-bold text-slate-600">
+        <p class="font-black text-sky-700">${escapeHtml(x.assetClass || '')}</p>
+        <p>${x.cagr != null ? escapeHtml(x.metric || (x.cagrBasis === 'return1y' ? 'Return 1 tahun' : 'CAGR')) + ': <span class="' + (x.cagr >= 0 ? 'text-emerald-600' : 'text-red-500') + '">' + (x.cagr >= 0 ? '+' : '') + x.cagr + '%</span>' : 'Return: belum ada data'}${asof}</p>
+        <p>AUM ${escapeHtml(x.aum || '-')} · Risiko ${escapeHtml(x.risk || '-')}${x.expense != null ? ' · Expense ' + x.expense + '%' : ''}</p>
+        <p class="font-medium text-slate-400">Database belum punya NAB harian, jadi tidak ada naik/turun harian. Cek NAB terbaru di aplikasi manajer investasi.</p>
+    </div>`;
+}
+function wlKomHtml(w) {
+    const it = __wlMk.komoditas[w.ticker]; if (!it || it.chg1m == null) return '';
+    const v = it.chg1m; return `<p class="mt-1 text-[10px] font-bold text-slate-500">1 bulan: <span class="${v >= 0 ? 'text-emerald-600' : 'text-red-500'}">${v >= 0 ? '▲ +' : '▼ '}${Number(v).toFixed(2)}%</span></p>`;
+}
+
 function renderWatchlist(isTick = false) {
     wlLoadScr();
     const container = document.getElementById('watchlist-container');
@@ -99,7 +119,7 @@ function renderWatchlist(isTick = false) {
     watchlist.forEach(w => {
         const mk = w.mk || 'idx';
         const q = mk === 'idx' && typeof getIdxQuote === 'function' ? getIdxQuote(w.ticker) : null;
-        const q2 = mk !== 'idx' ? (__wlMk[mk] && __wlMk[mk][w.ticker]) || null : (q && q.price != null ? q : (__wlScr && __wlScr[w.ticker]) || null);
+        const q2 = mk === 'rd' ? null : mk !== 'idx' ? (__wlMk[mk] && __wlMk[mk][w.ticker]) || null : (q && q.price != null ? q : (__wlScr && __wlScr[w.ticker]) || null);
         w.currentPrice = q2 && q2.price != null ? Number(q2.price) : null;
         w.changePct = q2 && q2.changePct != null ? Number(q2.changePct) : null;
     });
@@ -121,13 +141,14 @@ function renderWatchlist(isTick = false) {
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div>
-                    <h4 class="font-black text-slate-900 text-lg leading-none">${escapeHtml(w.ticker)}</h4>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Target Beli: <span class="text-emerald-600">${wlFmt(w, w.price)}</span>${w.mk && w.mk !== 'idx' ? ` <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 normal-case">${WL_MK_LABEL[w.mk] || ''}</span>` : ''}</p>
-                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${hasPrice ? `Harga: ${wlFmt(w, current)}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
+                    <h4 class="font-black text-slate-900 text-lg leading-none">${escapeHtml(w.name || (w.mk === 'komoditas' && __wlMk.komoditas[w.ticker] ? __wlMk.komoditas[w.ticker].n : w.ticker))}</h4>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">${w.mk === 'rd' ? 'Reksa dana · ' + escapeHtml(w.ticker) : 'Target Beli: <span class="text-emerald-600">' + (Number.isFinite(parseFloat(w.price)) ? wlFmt(w, w.price) : 'belum diatur') + '</span>'}${w.mk && w.mk !== 'idx' ? ` <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 normal-case">${WL_MK_LABEL[w.mk] || ''}</span>` : ''}</p>
+                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${w.mk === 'rd' ? '' : hasPrice ? `Harga: ${wlFmt(w, current)}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
                 </div>
             </div>
             
-            ${wlBowHtml(w, hasPrice ? current : null, w.changePct)}
+            ${w.mk === 'rd' ? wlRdHtml(w) : wlBowHtml(w, hasPrice ? current : null, w.changePct)}
+            ${w.mk === 'komoditas' ? wlKomHtml(w) : ''}
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-grow mt-2">
                 <p class="text-xs text-slate-600 italic">"${escapeHtml(w.note || 'Tidak ada catatan')}"</p>
             </div>

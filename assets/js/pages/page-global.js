@@ -188,6 +188,14 @@
             m.classList.remove('hidden'); document.body.style.overflow = 'hidden';
         });
     }
+    // Tombol "+ Pantau": masuk Watchlist (komoditas/kurs/indeks/kripto). Fase capture agar tidak ikut membuka daftar saham terkait.
+    document.addEventListener('click', function (e) {
+        var w = e.target.closest && e.target.closest('[data-wl]'); if (!w) return;
+        e.stopPropagation(); e.preventDefault();
+        var r = typeof window.ewoksWatchAdd === 'function' ? window.ewoksWatchAdd({ t: w.getAttribute('data-wl'), mk: w.getAttribute('data-wlmk'), name: w.getAttribute('data-wln') }) : 'err';
+        w.textContent = r === 'ok' ? 'Dipantau ✓' : r === 'dup' ? 'Sudah dipantau ✓' : 'Gagal';
+        if (typeof showToast === 'function') showToast(r === 'dup' ? 'Sudah ada di Watchlist' : r === 'ok' ? w.getAttribute('data-wln') + ' masuk Watchlist' : 'Gagal menambah', r === 'ok' ? 'success' : 'warning');
+    }, true);
     document.addEventListener('click', function (e) { var c = e.target.closest('[data-grp]'); if (c) openGrp(c.getAttribute('data-grp')); });
     document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('[data-grp]')) { e.preventDefault(); openGrp(e.target.getAttribute('data-grp')); } });
 
@@ -245,7 +253,8 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
         return '<div' + attr + ' class="premium-card glass-card rounded-2xl p-3.5 border border-slate-200 ' + (has ? 'cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition-all' : '') + wide + '">' +
             '<div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 min-w-0"><span class="text-sm leading-none">' + (FLAG[it.id] || '•') + '</span><span class="truncate">' + esc(it.n) + '</span></div>' +
             '<div class="flex items-end justify-between gap-2 mt-1.5"><div class="min-w-0"><div class="text-lg font-black text-slate-900 leading-tight">' + fmt(it.price, d) + '</div><div class="text-xs mt-0.5">' + pct(it.chg) + '</div></div>' + spark(it.spark, up).replace('width="80" height="26"', 'width="64" height="24"') + '</div>' +
-            '<div class="text-[10px] text-slate-400 mt-1.5 truncate">' + esc(it.u || it.s || '') + (has ? ' · <span class="font-bold text-blue-600">saham terkait ›</span>' : '') + '</div></div>';
+            '<div class="text-[10px] text-slate-400 mt-1.5 truncate">' + esc(it.u || it.s || '') + (has ? ' · <span class="font-bold text-blue-600">saham terkait ›</span>' : '') + '</div>' +
+            '<button type="button" data-wl="' + esc(it.g === 'kripto' ? String(it.id).toUpperCase() : it.id) + '" data-wlmk="' + (it.g === 'kripto' ? 'kripto' : 'komoditas') + '" data-wln="' + esc(it.n) + '" class="mt-2 text-[10px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-0.5 hover:bg-emerald-100">+ Pantau</button></div>';
     }
     function paintMarkets() {
         if (!commData || !mkHost) return;

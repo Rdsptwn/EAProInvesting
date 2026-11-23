@@ -279,7 +279,7 @@ function pgRenderTable() {
         .map((i) => {
             const sel = pgSelectedId === i.id;
             return `<tr data-pg-id="${i.id}" class="border-t border-slate-100 cursor-pointer hover:bg-blue-50/60 transition-colors ${sel ? 'bg-blue-50' : ''}">
-                <td class="px-4 py-3"><div class="font-mono font-bold text-blue-600 text-xs">${pgEsc(i.ticker)}</div><div class="font-bold text-slate-800 leading-snug">${pgEsc(i.name)}</div></td>
+                <td class="px-4 py-3"><div class="font-mono font-bold text-blue-600 text-xs">${pgEsc(i.ticker)}</div><div class="font-bold text-slate-800 leading-snug">${pgEsc(i.name)}</div>${/Reksa Dana|Pasar Uang/.test(i.assetClass || '') ? `<button type="button" data-pgwl="${pgEsc(i.ticker)}" data-pgwln="${pgEsc(i.name)}" class="mt-1 text-[10px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-0.5 hover:bg-emerald-100">+ Pantau</button>` : ''}</td>
                 <td class="px-4 py-3 text-xs text-slate-600 hidden md:table-cell">${pgEsc(i.country)}</td>
                 <td class="px-4 py-3 hidden lg:table-cell"><span class="px-2 py-0.5 rounded text-[10px] font-black ${pgTierClass(i.tier)}">${pgEsc(i.tier)}</span></td>
                 <td class="px-4 py-3 text-xs text-slate-600 hidden lg:table-cell">${pgEsc(i.assetClass)}</td>
@@ -559,3 +559,12 @@ async function pgInit() {
 }
 
 document.addEventListener('DOMContentLoaded', pgInit);
+
+// Tombol "+ Pantau" reksa dana -> Watchlist (fase capture supaya baris tidak ikut terpilih).
+document.addEventListener('click', function (e) {
+    const b = e.target.closest && e.target.closest('[data-pgwl]'); if (!b) return;
+    e.stopPropagation(); e.preventDefault();
+    const r = typeof window.ewoksWatchAdd === 'function' ? window.ewoksWatchAdd({ t: b.getAttribute('data-pgwl'), mk: 'rd', name: b.getAttribute('data-pgwln') }) : 'err';
+    b.textContent = r === 'ok' ? 'Dipantau ✓' : r === 'dup' ? 'Sudah dipantau ✓' : 'Gagal';
+    if (typeof showToast === 'function') showToast(r === 'dup' ? 'Sudah ada di Watchlist' : r === 'ok' ? 'Reksa dana masuk Watchlist' : 'Gagal menambah', r === 'ok' ? 'success' : 'warning');
+}, true);
