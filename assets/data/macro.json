@@ -17,8 +17,8 @@
  },
  "fedRate": {
   "low": 3.75,
-  "high": 4,
-  "asOf": "2026-11-11",
-  "source": "Stockbit (input manual)"
+  "high": 4.0,
+  "asOf": "2026-10-28",
+  "source": "The Fed, FOMC 28 Okt 2026 (input manual)"
  }
 }
