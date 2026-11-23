@@ -116,6 +116,57 @@
         '.k-peeksvg{--lid:.5}.k-peeksvg .k-lid{animation:k-blink 4s infinite}.k-hand-r{transform-origin:50% 100%}.pk.is-hi .k-hand-r,.pk.is-wave .k-hand-r{animation:k-wave .5s ease-in-out 4}@keyframes k-wave{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(-14deg)}}' +
         '.pk.is-think .k-hand-l{animation:k-tap .45s ease-in-out infinite}@keyframes k-tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}' +
         '@media (prefers-reduced-motion:reduce){.k-svg *{animation:none!important}.k-svg .k-q{opacity:0}}';
+
+    /* ---- Profesor Tido: berdiri di sebelah jawaban, berkacamata + topi toga, menunjuk-nunjuk sambil menjelaskan ---- */
+    var COAT = '#9a7455', TROU = '#4a4468', RED = '#ef4444';
+    function headProf() {
+        return '<g class="k-head">' +
+            '<ellipse cx="0" cy="-1" rx="34" ry="31" fill="' + HAIR + '" ' + SW + '/>' +
+            '<path d="M-30 14 q-3 12 3 18 q3-8 6-12z M30 14 q3 12-3 18 q-3-8-6-12z" fill="' + HAIR + '" ' + SW + '/>' +
+            '<ellipse cx="0" cy="3" rx="29.5" ry="26" fill="' + SKIN + '" ' + SW + '/>' +
+            '<ellipse cx="-19.5" cy="13" rx="5.8" ry="3.4" fill="#ff9fb5" opacity=".6"/><ellipse cx="19.5" cy="13" rx="5.8" ry="3.4" fill="#ff9fb5" opacity=".6"/>' +
+            '<g class="k-eyes">' + eye(-12.5) + eye(12.5) + '</g>' + lid(-12.5) + lid(12.5) +
+            '<g class="kp-gl"><circle cx="-12.5" cy="5" r="11.5" fill="#fff" fill-opacity=".28" stroke="' + INK + '" stroke-width="2.6"/><circle cx="12.5" cy="5" r="11.5" fill="#fff" fill-opacity=".28" stroke="' + INK + '" stroke-width="2.6"/>' +
+            '<path d="M-1.2 4 q1.2-2.2 2.4 0 M-24 3 L-30 0 M24 3 L30 0" fill="none" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/><path d="M-18 0 q3-3 7-3" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/></g>' +
+            '<path d="M-18 -7.5 q5.5-3.2 11 0.4 M7 -7.1 q5.5-3.6 11-0.4" fill="none" ' + SW + ' stroke-width="1.7"/>' +
+            '<path class="k-mouth" d="M-3.5 17.5 q3.5 2.6 7 0" fill="none" ' + SW + ' stroke-width="1.9"/>' +
+            '<ellipse class="k-yawn" cx="0" cy="18.5" rx="4.4" ry="5.4" fill="#ff7a93" ' + SW + ' stroke-width="1.8"/>' +
+            '<path d="M-30 -3 Q-33 -30 0 -31.5 Q33 -30 30 -3 Q25 -15 17 -13.5 Q12 -5 5.5 -17 Q0 -7 -6 -17 Q-12 -6 -17.5 -14.5 Q-26 -13 -30 -3Z" fill="' + HAIR + '" ' + SW + '/>' +
+            '<path d="M-25 -20 Q0 -32 25 -20 L25 -32 Q0 -43 -25 -32Z" fill="#2f2a4a" ' + SW + '/>' +
+            '<path d="M-44 -35 L0 -52 L44 -35 L0 -19Z" fill="#3b3560" ' + SW + '/><circle cx="0" cy="-36" r="2.8" fill="' + STAR + '" ' + SW + ' stroke-width="1.4"/>' +
+            '<g class="kp-tassel"><path d="M0 -36 Q24 -38 38 -30" fill="none" stroke="#fbbf24" stroke-width="2.4" stroke-linecap="round"/><path d="M38 -30 v14" stroke="#fbbf24" stroke-width="4.5" stroke-linecap="round"/></g>' +
+            '</g>';
+    }
+    var PROF =
+        '<svg class="k-svg kp" viewBox="0 0 130 150" aria-hidden="true">' +
+        '<ellipse cx="52" cy="144" rx="34" ry="5" fill="#000" opacity=".16"/>' +
+        '<g class="kp-body">' +
+        '<path d="M37 104 v24 M67 104 v24" stroke="' + INK + '" stroke-width="15" stroke-linecap="round"/><path d="M37 104 v24 M67 104 v24" stroke="' + TROU + '" stroke-width="11.4" stroke-linecap="round"/>' +
+        '<ellipse cx="36" cy="132" rx="11" ry="6" fill="#2a2140" ' + SW + '/><ellipse cx="68" cy="132" rx="11" ry="6" fill="#2a2140" ' + SW + '/>' +
+        '<g transform="translate(52 90)"><path d="M-24 0 Q0-8 24 0 L28 38 Q0 46-28 38Z" fill="' + COAT + '" ' + SW + '/><path d="M-8 -3 L0 18 L8 -3Z" fill="#fff" ' + SW + ' stroke-width="1.8"/>' +
+        '<path d="M-9 -1 l9 4 l9 -4 l0 8 l-9 -4 l-9 4z" fill="' + RED + '" ' + SW + ' stroke-width="1.6"/><circle cx="0" cy="26" r="1.8" fill="' + INK + '"/><circle cx="0" cy="34" r="1.8" fill="' + INK + '"/>' +
+        '<ellipse cx="-22" cy="26" rx="4" ry="3" fill="#b8916d" opacity=".9"/></g>' +
+        /* tangan kiri pegang buku */
+        '<path d="M28 98 Q22 112 30 120" fill="none" stroke="' + INK + '" stroke-width="12.5" stroke-linecap="round"/><path d="M28 98 Q22 112 30 120" fill="none" stroke="' + COAT + '" stroke-width="9" stroke-linecap="round"/>' +
+        '<g transform="translate(14 112) rotate(-8)"><rect x="0" y="0" width="22" height="28" rx="3" fill="' + EM + '" ' + SW + '/><path d="M5 0 v28" stroke="' + INK + '" stroke-width="1.6"/><rect x="9" y="7" width="9" height="3" rx="1.5" fill="#fff" opacity=".85"/></g>' +
+        '<circle cx="32" cy="120" r="5.5" fill="' + SKIN + '" ' + SW + '/>' +
+        /* tangan kanan menunjuk dengan tongkat */
+        '<g class="kp-point"><path d="M76 98 Q90 104 98 116" fill="none" stroke="' + INK + '" stroke-width="12.5" stroke-linecap="round"/><path d="M76 98 Q90 104 98 116" fill="none" stroke="' + COAT + '" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M98 116 L128 88" stroke="' + INK + '" stroke-width="5" stroke-linecap="round"/><path d="M98 116 L127 89" stroke="#d6a76c" stroke-width="2.6" stroke-linecap="round"/><circle cx="128" cy="88" r="3.2" fill="#fff" ' + SW + ' stroke-width="1.4"/>' +
+        '<circle cx="98" cy="117" r="5.5" fill="' + SKIN + '" ' + SW + '/></g>' +
+        '<g transform="translate(52 50)">' + headProf() + '</g>' +
+        '</g></svg>';
+    var PCSS =
+        '.k-svg.kp{--lid:.04}.kp .k-lid{animation:kp-blink 4.4s infinite}@keyframes kp-blink{0%,92%,100%{transform:scaleY(.04)}96%{transform:scaleY(1)}}' +
+        '.kp-body{transform-origin:50% 100%;transform-box:fill-box;animation:kp-idle 3.2s ease-in-out infinite}@keyframes kp-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}' +
+        '.is-talk .kp-body{animation:kp-bob .5s ease-in-out infinite}@keyframes kp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}' +
+        '.kp .k-head{transform-origin:50% 90%;animation:kp-tilt 4.4s ease-in-out infinite}@keyframes kp-tilt{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}' +
+        '.kp-point{transform-box:view-box;transform-origin:76px 98px;animation:kp-ptr 2.6s ease-in-out infinite}.is-talk .kp-point{animation:kp-ptr .55s ease-in-out infinite}@keyframes kp-ptr{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(9deg)}}' +
+        '.kp-tassel{transform-box:view-box;transform-origin:0 -36px;animation:kp-tas 2.4s ease-in-out infinite}@keyframes kp-tas{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg)}}' +
+        '.kp-gl{animation:kp-push 6s ease-in-out infinite}@keyframes kp-push{0%,86%,100%{transform:translateY(0)}90%{transform:translateY(-2.2px)}94%{transform:translateY(0)}}' +
+        '.ec-prof.kp-in .k-svg{animation:kp-poof .95s cubic-bezier(.2,1.3,.4,1) both}@keyframes kp-poof{0%{transform:scale(0) rotate(-540deg);opacity:0}45%{opacity:1}70%{transform:scale(1.18) rotate(8deg)}100%{transform:none;opacity:1}}' +
+        '.kp-puff{position:absolute;left:50%;top:48%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#fff 0,#e9e4ff 45%,rgba(167,139,250,0) 72%);opacity:0;animation:kp-puff .9s ease-out both}@keyframes kp-puff{0%{transform:scale(.3);opacity:.95}60%{opacity:.8}100%{transform:scale(2.1);opacity:0}}' +
+        '@media (prefers-reduced-motion:reduce){.ec-prof .k-svg{animation:none!important}.kp-puff{display:none}}';
     var SCENES = ['sit', 'sleep', 'car', 'fly'];
-    window.EwoksMascot = { fab: FAB, peek: PEEK, css: CSS, scenes: SCENES };
+    window.EwoksMascot = { fab: FAB, peek: PEEK, prof: PROF, css: CSS + PCSS, scenes: SCENES };
 })();

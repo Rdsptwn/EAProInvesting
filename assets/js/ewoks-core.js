@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261123l';
+window.EWOKS_ASSET_V = '20261123m';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1512,7 +1512,7 @@ window.addEventListener('load', () => {
             '.ec-box{position:fixed;right:16px;bottom:150px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(500px,calc(100vh - 320px));display:none;flex-direction:column;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);font-size:13px}.ec-h{border-radius:14px 14px 0 0}.ec-n{border-radius:0 0 14px 14px}' +
             '.ec-box.open{display:flex}.ec-h{padding:10px 12px;background:#111c33;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;font-weight:600}' +
             '.ec-h button{background:none;border:0;color:#94a3b8;cursor:pointer;font-size:16px}.ec-m{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}' +
-            '.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
+            '.ec-prow{display:flex;gap:4px;align-items:flex-start;align-self:stretch}.ec-prow .ec-b{flex:1;min-width:0;max-width:none}.ec-prof{position:sticky;top:2px;flex:0 0 92px;width:92px;height:106px}.ec-b{max-width:88%;padding:8px 10px;border-radius:10px;white-space:pre-wrap;line-height:1.45;word-break:break-word}.ec-u{align-self:flex-end;background:#10b981;color:#04130d}.ec-a{align-self:flex-start;background:#1e293b}' +
             '.ec-f{display:flex;gap:6px;padding:8px;border-top:1px solid #334155}.ec-box .ec-f input{flex:1;background:#1e293b!important;border:1px solid #334155!important;border-radius:8px;padding:8px;color:#e2e8f0!important;font-size:13px;min-width:0}' +
             '.ec-f button{background:#10b981;border:0;border-radius:8px;color:#04130d;padding:0 12px;font-weight:600;cursor:pointer}.ec-f button:disabled{opacity:.5}' +
             '.ec-n{font-size:10px;color:#64748b;padding:0 10px 6px}@media(min-width:768px){.ec-fab{bottom:84px}.ec-box{bottom:96px}}@media(min-width:1500px){.ec-fab{top:-4px;bottom:auto;right:10px;width:110px;height:104px}.ec-box{top:150px;bottom:auto;right:16px;height:min(520px,calc(100vh - 160px))}}';
@@ -1540,7 +1540,14 @@ window.addEventListener('load', () => {
         var hooT = null, scene = 'fly', sceneT = null, M = null;
         function setScene(s) { scene = s; ['sit', 'sleep', 'car', 'fly'].forEach(function (k) { fab.classList.toggle('sc-' + k, k === s); }); }
         function hoo(state, ms) { [fab, peek].forEach(function (e) { e.classList.remove('is-hi', 'is-talk', 'is-think', 'is-wave'); if (state) e.classList.add('is-' + state); }); clearTimeout(hooT); if (state && ms) hooT = setTimeout(function () { hoo(''); }, ms); }
-        function talk(txt) { hoo('talk', Math.max(1400, Math.min(5000, String(txt || '').length * 26))); }
+        function profOn(txt) {
+            if (!M || !M.prof) return; var bs = m.querySelectorAll('.ec-b.ec-a'), b = bs[bs.length - 1]; if (!b || b.parentNode.classList.contains('ec-prow')) return;
+            m.querySelectorAll('.ec-prow').forEach(function (r) { var bb = r.querySelector('.ec-b'); if (bb) r.parentNode.insertBefore(bb, r); r.remove(); });
+            var row = el('div', 'ec-prow'), pf = el('div', 'ec-prof kp-in is-talk'); pf.innerHTML = M.prof + '<span class="kp-puff"></span>';
+            b.parentNode.insertBefore(row, b); row.appendChild(pf); row.appendChild(b);
+            setTimeout(function () { pf.classList.remove('is-talk'); }, Math.max(2200, Math.min(7000, String(txt || '').length * 32)));
+        }
+        function talk(txt) { hoo('talk', Math.max(1400, Math.min(5000, String(txt || '').length * 26))); profOn(txt); }
         function enter() { fab.classList.remove('in'); void fab.offsetWidth; setScene('fly'); fab.classList.add('in'); }
         function idle() {
             clearTimeout(sceneT);
