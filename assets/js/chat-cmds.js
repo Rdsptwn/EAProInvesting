@@ -392,7 +392,7 @@
         hits = hits.filter(function (h) { return !(gen && h[1][0][0] === 'reksa dana'); }).sort(function (a, b) { return a[0] - b[0]; }).slice(0, 4);
         return hits.map(function (h) { return h[1][1]; }).join('\n\n') + '\n\nMau lihat datanya? Coba /rd untuk reksa dana atau /help untuk semua command.';
     }
-    async function cmdTopReturn(args) {
+    async function cmdTop52(args) {
         var mk = mkey([].concat(args || [])[0]) || 'idx', rows, lo, hi, nm = MKT[mk] || 'IHSG', cur = mk === 'idx' ? 'Rp ' : '$';
         if (mk === 'idx') { var d = await jfile('idx-screener.json'); if (!d || !d.rows) return 'Data IHSG belum bisa dimuat. Coba lagi.'; rows = d.rows.filter(function (r) { return r[1] > 50 && r[4] > 0 && r[1] * (r[9] || 0) > 1e9; }).map(function (r) { return { k: r[0], p: r[1], lo: r[4], hi: r[5], n: r[11] }; }); }
         else if (mk === 'global') { var g = await jfile('global-screener.json'); if (!g || !g.rows) return 'Data saham global belum bisa dimuat. Coba lagi.'; rows = g.rows.filter(function (r) { return r[1] > 3 && r[5] > 0 && r[1] * (r[7] || 0) > 5e6; }).map(function (r) { return { k: r[0], p: r[1], lo: r[5], hi: r[6], n: r[10] }; }); }
@@ -401,6 +401,18 @@
         rows.sort(function (a, b) { return b.g - a.g; });
         var top = rows.slice(0, 10), idn = function (s) { return mk === 'idx' ? s.replace(/,/g, '.') : s; };
         return idn('Naik paling tinggi dari titik terendah 52 minggu, ' + nm + ' (hanya saham yang cukup likuid):\n' + top.map(function (x, i) { return (i + 1) + '. ' + x.k + '  ' + cur + nf(x.p, x.p < 10 ? 2 : 0) + ' · +' + nf(x.g, 0) + '% dari low ' + cur + nf(x.lo, x.lo < 10 ? 2 : 0) + ' (high ' + cur + nf(x.hi, x.hi < 10 ? 2 : 0) + ')'; }).join('\n') + '\n\nCatatan jujur: data harga yang kusimpan cuma 52 minggu, jadi return 5 tahun belum bisa dihitung. Ini juga bukan return beli-tahan (dihitung dari titik terendah), dan saham yang sudah naik tinggi bisa saja sudah mahal.' + DISC);
+    }
+    async function cmdTopReturn(args) {
+        var a = [].concat(args || []).join(' ').toLowerCase(), mk = mkey([].concat(args || [])[0]) || 'idx', ym = a.match(/(?:^|\s)(1|3|5)(?:\s|$|tahun|thn)/), yrs = ym ? parseInt(ym[1], 10) : 0;
+        if (mk !== 'idx' || /52/.test(a) || (!yrs && !/tahun|thn/.test(a))) { if (mk === 'idx' && !/52/.test(a)) yrs = 1; else return cmdTop52(args); }
+        if (!yrs) yrs = 1;
+        var ret = await jfile('idx-ret.json'), scr = await jfile('idx-screener.json'), st = await jfile('idx-status.json'), col = yrs === 1 ? 0 : yrs === 3 ? 1 : 2;
+        if (!ret || !ret.rows || !scr || !scr.rows) { var r52 = await cmdTop52(['idx']); return 'Data return ' + yrs + ' tahun belum tersedia (job penghitungnya belum dijalankan), jadi ini versi 52 minggu:\n\n' + (typeof r52 === 'string' ? r52 : r52.text); }
+        var items = st && st.items ? st.items : {}, px = {}; scr.rows.forEach(function (r) { px[r[0]] = r; });
+        var list = Object.keys(ret.rows).filter(function (k) { var v = ret.rows[k][col], r = px[k]; return v != null && r && r[1] > 50 && r[1] * (r[9] || 0) > 1e9 && !(items[k] || []).some(function (f) { return f[0] === 'DELIST' || f[0] === 'SUSPEN'; }); }).map(function (k) { return { k: k, g: ret.rows[k][col], p: px[k][1], n: px[k][11] }; }).sort(function (x, y) { return y.g - x.g; }).slice(0, 10);
+        var opts = [1, 3, 5].filter(function (y) { return y !== yrs; }).map(function (y) { return ['Return ' + y + ' tahun', '/topreturn idx ' + y]; }).concat([['52 minggu', '/topreturn idx 52']]);
+        if (!list.length) return { text: 'Belum ada saham yang punya riwayat cukup untuk ' + yrs + ' tahun.', opts: opts };
+        return { text: ('Return tertinggi ' + yrs + ' tahun terakhir, saham IHSG yang masih aktif dan cukup likuid (data per ' + ret.asOf + '):\n' + list.map(function (x, i) { return (i + 1) + '. ' + x.k + (x.n ? ' (' + x.n + ')' : '') + '  +' + nf(x.g, 0).replace(/,/g, '.') + '% · harga sekarang Rp ' + nf(x.p, 0).replace(/,/g, '.'); }).join('\n') + '\n\nCatatan: dihitung dari harga penyesuaian bulanan Yahoo (memasukkan split dan dividen), jadi bisa sedikit beda dari aplikasi sekuritas. Saham yang sudah naik tinggi bisa saja sudah mahal, dan angka ini tidak menjamin hasil ke depan.' + DISC), opts: opts };
     }
     window.EwoksChatCmds = {
         run: function (name, args) {

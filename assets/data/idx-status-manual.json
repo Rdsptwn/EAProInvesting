@@ -783,6 +783,30 @@
         "note": "Delisting 30 Jul 2026",
         "src": "https://finance.detik.com/bursa-dan-valas/d-8598035/bei-resmi-coret-raksasa-tekstil-cntx-dari-pasar-modal"
       }
+    ],
+    "IIKP": [
+      {
+        "k": "SUSPEN",
+        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+      }
+    ],
+    "META": [
+      {
+        "k": "SUSPEN",
+        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+      }
+    ],
+    "OCAP": [
+      {
+        "k": "SUSPEN",
+        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+      }
+    ],
+    "SCPI": [
+      {
+        "k": "SUSPEN",
+        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+      }
     ]
   }
 }

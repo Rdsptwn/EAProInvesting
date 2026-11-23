@@ -35,7 +35,8 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 | ₿ | **Bitcoin & Kripto** | 162 koin, Fear & Greed, tab Listing (pengumuman Binance + trending), harga live Binance |
 | 💱 | **Forex & Emas** | 31 pasangan, XAU/USD, XAG/USD, PAXG, XAUT |
 | 📓 | **Jurnal Multi-pasar** | Jurnal Global, Bitcoin, dan Forex dengan statistik, kurva equity, ekspor/impor |
-| 💬 | **Asisten tanya-jawab** | Widget chat gratis (edukasi, bukan sinyal) lewat Worker `/ask`; otak yang sama bisa dipakai bot WA |
+| 💬 | **Tido, asisten chat** | Maskot chibi pengantuk yang sesekali terbang, lari, main mobil, gelantungan, atau ngejar kursor. Chat gratis (edukasi, bukan sinyal) lewat Worker `/ask`; otak yang sama bisa dipakai bot WA |
+| ⌨️ | **Command chat** | `/pagi /siang /swing /scalp` (IHSG, Global, Kripto, Forex; budget mis. `/swing idx 500`), `/akum /bandar /topakum /ea /lk /analisa /fibo`, `/rd` (reksa dana RDPU/RDPT/RDS/RDC/RDI), `/istilah`, `/topreturn idx 1\|3\|5`, `/harga /berita /help`. Pertanyaan bahasa natural ("tido, swing di bawah 500") otomatis dialihkan ke command; hasilnya dari database situs, bukan dari AI |
 | 🏦 | **Broker** | Database 91 broker BEI aktif (ritel, asing, lokal) dengan label kategori bandarmologi |
 | 📚 | **Edukasi** | Makro dan saham, laporan keuangan, fixed income, bandarmologi, kuis profil risiko |
 | 🧮 | **Tools** | Terminal watchlist dan screener (dengan **rekomendasi bot BoW** otomatis), jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
@@ -53,6 +54,8 @@ Bot GitHub Actions meng-commit data ke repo, jadi situs berisi data terbaru tanp
 | IHSG, harga emiten, kalender korporasi, inflasi, yield SBN, BI Rate, Fed Rate, ETF | Tiap jam, Senin–Jumat (09.00–17.00 WIB) | `daily-market-sync` |
 | Aktivitas perdagangan BEI (nilai, volume, frekuensi) | Tiap jam, Senin–Jumat | `market-activity-intraday` |
 | Laporan keuangan emiten | Senin–Jumat 18.30 WIB | `sync-funda-idx` |
+| Arus kas dan dividen emiten BEI (dari Yahoo) | Sabtu 10.00 WIB + manual | `sync-funda-cf` |
+| Return 1/3/5 tahun saham IHSG (untuk `/topreturn`) | Minggu 10.00 WIB + manual | `sync-ret5y` |
 | Peringkat broker BEI | Harian | `sync-broker` |
 | Global: screener, indeks dunia, komoditas, kripto, forex, listing kripto | Harian + manual | `sync-global` |
 | Fundamental global dan estimasi syariah | Berkala | `sync-global-funda` |

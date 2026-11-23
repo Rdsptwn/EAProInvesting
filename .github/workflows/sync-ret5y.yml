@@ -1,0 +1,46 @@
+# Hitung return 1/3/5 tahun saham IHSG dari Yahoo Finance (untuk /topreturn di chat Tido).
+# Manual: Actions -> Sync return 5 tahun -> Run workflow. Juga mingguan (Minggu 10:00 WIB).
+name: Sync return 5 tahun
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-ret5y
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Hasil ditolak bila terlalu sedikit emiten (Yahoo sedang memblokir) agar data lama tidak tertimpa.
+      - name: Hitung return
+        run: |
+          cp -f assets/data/idx-ret.json /tmp/idx-ret.bak 2>/dev/null || true
+          node tools/build-ret5y.mjs
+          node -e '
+            const n = Object.keys(JSON.parse(require("fs").readFileSync("assets/data/idx-ret.json", "utf8")).rows).length;
+            console.log("emiten: " + n); if (n < 300) process.exit(1);
+          ' || { echo "::warning::hasil terlalu sedikit, pakai versi sebelumnya"; if [ -f /tmp/idx-ret.bak ]; then cp /tmp/idx-ret.bak assets/data/idx-ret.json; else rm -f assets/data/idx-ret.json; fi; }
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/idx-ret.json
+          if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
+          git commit -m "chore(data): return 1/3/5 tahun IHSG"
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          node tools/bump-asset-version.mjs
+          git add -u -- '*.html' assets/js/ewoks-core.js
+          git diff --staged --quiet || git commit -m "chore: cache-bust asset version"
+          git push

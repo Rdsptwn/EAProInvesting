@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261123t1004';
+window.EWOKS_ASSET_V = '20261123l';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1448,7 +1448,7 @@ window.addEventListener('load', () => {
         var RDT = /\b(rdpu|rdpt|rds|rdc|rdi)\b|reksa ?dana|pasar uang/.test(l), DEF = /(apa itu|apa sih|artinya|arti |maksud|pengertian|jelaskan|bedanya|beda )/.test(l);
         if (RDT) { var rr0 = await runCmd('/rd ' + l.replace(/[^a-z0-9 ]/g, ' ')); if (typeof rr0 === 'string') return 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0; rr0.text = 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0.text; return rr0; }
         if (/(return|cuan|naik|gain|untung)/.test(l) && /(tertinggi|paling|terbesar|teratas|\btop\b)/.test(l) && /(tahun|bulan|saham|ihsg)/.test(l) && !code && !DEF) {
-            var rr1 = await runCmd('/topreturn ' + (mk || 'idx')); var in1 = /(5|lima) tahun|3 tahun|10 tahun/.test(l) ? 'Hoaam… data harga 5 tahun belum aku simpan, jadi aku kasih versi 52 minggu terakhir ya:' : 'Sip, ini yang naik paling tinggi dalam 52 minggu terakhir:';
+            var ym1 = l.match(/(\d+|lima|tiga|satu) ?(tahun|thn)/), yv1 = ym1 ? ({ lima: 5, tiga: 3, satu: 1 }[ym1[1]] || parseInt(ym1[1], 10)) : 0, yy1 = yv1 >= 5 ? 5 : yv1 >= 3 ? 3 : yv1 >= 1 ? 1 : (/(bulan|minggu|52)/.test(l) ? 52 : 1); var rr1 = await runCmd('/topreturn ' + (mk || 'idx') + ' ' + yy1); var in1 = 'Sip, aku cek datanya dulu ya 😴';
             if (typeof rr1 === 'string') return in1 + '\n\n' + rr1; rr1.text = in1 + '\n\n' + rr1.text; return rr1;
         }
         if (DEF) { var MG = await loadCmds(); var gl = MG ? await MG.run('istilah', [l]) : null; if (gl) return gl; }

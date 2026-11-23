@@ -14,16 +14,19 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 | Syariah Global | Estimasi otomatis: 1.123 lolos, 1.311 tidak lolos, 36 tanpa data | `sync-global-funda` |
 | Kripto | 162 koin, Fear & Greed, tab Listing (40 pengumuman Binance + 10 trending CoinGecko) | `sync-global` |
 | Forex & emas | 31 pasangan termasuk XAU/USD, XAG/USD, PAXG, XAUT | `sync-global` |
-| Terminal / Watchlist | Rekomendasi bot BoW (Area BoW, TP, Strict CL) | Dihitung di browser dari screener |
+| Terminal / Watchlist | Rekomendasi bot BoW (Area BoW, TP, Strict CL); chip Market Screener bisa digabung (mis. Breakout Resist + Harga ≤ 500) | Dihitung di browser dari screener |
+| Chat Tido | Command `/pagi /siang /swing /scalp` dengan budget (≤500/1000), `/rd`, `/istilah`, `/topreturn`, router bahasa natural, maskot animasi | `assets/js/ewoks-core.js`, `chat-cmds.js`, `mascot.js` |
+| Lapkeu IDX | 351 emiten Yahoo + 622 emiten BEI (Financial Data and Ratio, tanpa arus kas) | `sync-funda-idx`, impor `tools/import-bei-fin.py` |
 | Jurnal Multi-pasar | Global, Bitcoin, Forex; ekspor/impor JSON & CSV | Tersimpan di browser (localStorage) |
 
 ## 2. Menunggu tindakan Anda (manual)
 
-1. **Cloudflare Worker `ewoks-live` → versi v8.** Tempel `worker/yahoo-proxy.js` terbaru lalu Deploy. Cek `/health`: harus `version: v8-ask`.
-2. **Aktifkan asisten tanya-jawab.** Tambah secret di Worker: `GEMINI_KEY` (Google AI Studio) dan opsional `GROQ_KEY`; atau binding Workers AI bernama `AI`. Tanpa ini widget 💬 menjawab "belum diaktifkan".
+1. **Cloudflare Worker `ewoks-live` → v12.** Tempel `worker/yahoo-proxy.js` terbaru lalu Deploy (persona Tido + pengetahuan command). Secret yang dipakai: `GEMINI_KEY`, `GROQ_KEY`, `OPENROUTER_KEY`, `COHERE_KEY`, opsional `NVIDIA_KEY`; `BOT_KEY` untuk bot WA.
+2. **Jalankan sekali di GitHub → Actions:** `Sync funda cash flow` (arus kas/dividen emiten BEI) dan `Sync return 5 tahun` (data `/topreturn`). Keduanya belum pernah dijalankan; setelah selesai cek jumlah emiten terisi.
 3. **Hubungkan bot WA ke otak yang sama.** Secret Worker `BOT_KEY`; di `.env` bot: `EWOKS_ASK_URL` dan `EWOKS_BOT_KEY`; ganti `index.js` bot dengan versi yang sudah dipatch.
 4. **Ganti kolam bot** dengan file terbersih: `kolam_idx.json` (898), `kolam_us.json` (416), `kolam_crypto.json` (162), `kolam_forex.json` (31).
 5. **Hard refresh (Ctrl+Shift+R)** bila tampilan lama masih muncul (cache browser/Pages 1–2 menit).
+6. **Awal Desember:** impor daftar ISSI baru (`tools/import-bei-indices.py`); daftar suspensi dan delisting diperbarui manual di `idx-status-manual.json`.
 
 ## 3. Update berkala yang tertunda
 
@@ -43,7 +46,7 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 
 | Data | Kondisi | Penyebab / jalan keluar |
 |------|---------|-------------------------|
-| 58 saham IDX tanpa harga | Ada di daftar BEI, tidak ada harga | Sebagian besar suspensi panjang; 23 Nov 2026: 62 emiten suspensi (Bisnis, 5 Nov) + WIKA, TMPO, ARKO, TFCO, MKNT, CSMI ditandai SUSPEN di `idx-status-manual.json`; 33 emiten ditandai DELIST (18 efektif 10 Nov 2026, 13 pada 2025, CNTX 30 Jul 2026). Belum diketahui statusnya: IIKP, META, NGLS, OCAP, SCPI |
+| 58 saham IDX tanpa harga | Ada di daftar BEI, tidak ada harga | Sebagian besar suspensi panjang; 23 Nov 2026: 62 emiten suspensi (Bisnis, 5 Nov) + WIKA, TMPO, ARKO, TFCO, MKNT, CSMI ditandai SUSPEN di `idx-status-manual.json`; 33 emiten ditandai DELIST (18 efektif 10 Nov 2026, 13 pada 2025, CNTX 30 Jul 2026). IIKP, META, OCAP, SCPI ditandai SUSPEN (dicek pengguna 23 Nov); NGLS tidak ditemukan di Stockbit (belum ditandai) |
 | Buy / Sell / Net per broker | Kosong | BEI tidak menerbitkan; menunggu data "bandar" dari Anda |
 | Upbit di Berita Listing Kripto | Gagal (HTTP 403) | Upbit memblokir server GitHub. Listing Binance dan trending CoinGecko tetap jalan |
 | Koin MEW dan POPCAT | Tidak ketemu di Yahoo | Kode koin belum terdaftar; akan ikut otomatis bila muncul |
@@ -60,6 +63,7 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 - Logo emiten IDX: 263 dari 898 punya berkas lokal (`assets/img/logos`); sisanya otomatis memakai favicon domain (`logos.json`) lalu inisial. Tidak ada yang rusak, hanya tampil inisial.
 - Laporan keuangan IDX (`funda-idx.json`): 351 emiten dari Yahoo + 614 dari BEI "Financial Data and Ratio" (`tools/import-bei-fin.py`, 23 Nov). Emiten BEI: kolom terbaru terisi (3/6/9 bulan kumulatif, ditandai `latestMonths`; 61 emiten laporan lama ditandai `stale`), tahunan terisi (dari file Apr 2021-2026) untuk 2020: 139, 2021: 317, 2022: 366, 2023: 358, 2024: 306, 2025: 511 dari 622 emiten BEI (file April + Maret 2020-2025; file bulanan hanya memuat tahunan bagi emiten yang belum lapor kuartal I), tanpa arus kas dan dividen. File bulanan BEI berisi laporan terbaru bulan itu (Dec = kuartal III; May = kuartal I), bukan tahunan; untuk tahunan pakai file bulan April tiap tahun (teruji). 15 emiten tanpa nama/sektor: 14 diisi dari BEI, tersisa NGLS.
 - Koin `WLFI-USD` belum punya harga di `crypto.json`; MEW dan POPCAT belum ketemu.
+- Return 5 tahun: workflow `Sync return 5 tahun` (`tools/build-ret5y.mjs`) menghasilkan `idx-ret.json`; sebelum dijalankan, `/topreturn` memakai fallback 52 minggu. Tido sudah dites dengan data tiruan saja.
 - Chat: command `/pagi /siang /swing /scalp` kini menerima budget (`/swing idx 500`, `/scalp global 10`) dan bahasa natural ("tido, swing di bawah 500").
 
 - Arus kas/dividen emiten BEI: workflow baru **Sync funda cash flow** (`tools/build-funda-cf.mjs`, manual atau Sabtu 10:00 WIB) mencoba mengisinya dari Yahoo; belum pernah dijalankan. Emiten yang tidak ada di Yahoo tetap 0.
