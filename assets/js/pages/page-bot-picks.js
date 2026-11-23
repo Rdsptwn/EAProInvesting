@@ -44,12 +44,22 @@
             '<div class="bp-r"><span>TP Terdekat</span><b class="g">' + idr(x.tp) + '</b></div>' +
             '<div class="bp-r"><span>Strict CL (jebol)</span><b class="r">' + idr(x.cl) + '</b></div>' +
             '<p class="bp-n">Jika mulai lemes/kejedot di ' + idr(x.tp) + ', aktifkan trailing stop &amp; amankan cuan. R/R ±' + x.rr.toFixed(1) + '</p>' +
-            '<a class="bp-l" href="?t=' + esc(x.t) + '#chart" onclick="try{tpPickTicker&&tpPickTicker(\'' + esc(x.t) + '\')}catch(e){}">Lihat grafik ›</a></div>';
+            '<button type="button" class="bp-add" data-add="' + esc(x.t) + '">+ Pantau</button> <a class="bp-l" href="?t=' + esc(x.t) + '#chart" onclick="try{tpPickTicker&&tpPickTicker(\'' + esc(x.t) + '\')}catch(e){}">Lihat grafik ›</a></div>';
     }
     function copyText(list) {
         return 'Rekomendasi Bot BoW (edukasi, bukan ajakan beli/jual)\n' + list.map(function (x) { return x.t + ' | Last ' + idr(x.price) + ' | Area BoW ' + idr(x.lo) + '-' + idr(x.hi) + ' | TP ' + idr(x.tp) + ' | CL ' + idr(x.cl); }).join('\n');
     }
     var D = null, S = null, list = [];
+    // Simpan ke Watchlist dengan level BoW; Watchlist menampilkan naik/turun & status area/TP/CL.
+    function addWatch(t, btn) {
+        var x = list.filter(function (i) { return i.t === t; })[0]; if (!x || typeof watchlist === 'undefined') return;
+        if (watchlist.some(function (w) { return w.ticker === t; })) { if (typeof showToast === 'function') showToast(t + ' sudah ada di Watchlist', 'warning'); btn.textContent = 'Sudah dipantau ✓'; return; }
+        watchlist.push({ id: Date.now(), ticker: t, price: String(x.hi), note: 'Dari Bot BoW · R/R ±' + x.rr.toFixed(1), foreign: '', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, ref: x.price, date: (D.rows.filter(function (r) { return r[0] === t; })[0] || [])[10] || '' } });
+        try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (e) {}
+        if (typeof renderWatchlist === 'function') renderWatchlist();
+        if (typeof showToast === 'function') showToast(t + ' masuk Watchlist dengan level BoW', 'success');
+        btn.textContent = 'Dipantau ✓';
+    }
     function paint() {
         list = build(D, S);
         var top = list.slice(0, N);
@@ -59,6 +69,7 @@
             '<div class="bp-grid">' + top.map(card).join('') + '</div>' +
             '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari harga penutupan, bukan ajakan beli/jual. Tren naik = harga ≥ MA50; area BoW = sekitar support 20 hari; TP = resist 20 hari; CL = di bawah support. Lakukan analisa sendiri &amp; manage risk.</p></div>';
         box.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { mode = b.dataset.m; paint(); }; });
+        box.querySelectorAll('[data-add]').forEach(function (b) { b.onclick = function () { addWatch(b.dataset.add, b); }; });
         var c = document.getElementById('bp-copy'); if (c) c.onclick = function () { try { navigator.clipboard.writeText(copyText(top)); c.textContent = 'Tersalin ✓'; } catch (e) { c.textContent = 'Gagal'; } };
     }
     Promise.all([get('idx-screener.json'), get('idx-status.json').catch(function () { return null; })]).then(function (r) { D = r[0]; S = r[1]; if (build(D, S).length < 4) mode = 'longgar'; paint(); })

@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261123m';
+window.EWOKS_ASSET_V = '20261123t1503';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1297,8 +1297,9 @@ window.addEventListener('load', () => {
         var name = it ? it.n : '', pre = kind === 'forex' ? '' : '$';
         return k + (name ? ' (' + name + ')' : '') + '\nHarga ' + pre + px(price) + (chg != null && isFinite(chg) ? '  (' + (chg >= 0 ? '+' : '') + nf(chg, 2) + '%)' : '') + (q ? '\nHarga live dari Worker.' : '\nHarga dari data terakhir (live belum tersedia).') + '\nDetail: [' + MK[kind === 'kripto' ? 'kripto' : kind][0] + '](' + CBASE + MK[kind === 'kripto' ? 'kripto' : kind][1] + (kind === 'global' ? '#saham-' + k : '') + ')';
     }
-    function cmdRek(a) {
+    async function cmdRek(a) {
         var k = mkey(a);
+        if (k === 'idx') { var L = await bowIdx(null, false), md = 'ketat'; if (!L || L.length < 4) { L = await bowIdx(null, true); md = 'longgar'; } if (!L) return 'Data IHSG belum bisa dimuat.'; if (!L.length) return 'Belum ada saham IHSG yang lolos saringan BoW hari ini.'; var Rr = function (v) { return 'Rp ' + nf(Math.round(v), 0).replace(/,/g, '.'); }; return { text: 'Rekomendasi Bot IHSG · Buy on Weakness (' + md + '): ' + L.length + ' saham lolos, tampil ' + Math.min(5, L.length) + ' teratas.\nData harian ' + L[0].date + '.' + '\n[Lihat semua di Terminal](' + CBASE + MK.idx[1] + ')' + DISC, picks: L.slice(0, 5).map(function (x) { return bowCard(x, Rr); }) }; }
         if (!k) return 'Rekomendasi Bot (Buy on Weakness) per pasar:\n- [IHSG](' + CBASE + MK.idx[1] + ')\n- [Saham Global](' + CBASE + MK.global[1] + ')\n- [Kripto](' + CBASE + MK.kripto[1] + ')\n- [Forex](' + CBASE + MK.forex[1] + ')\nKetik mis. "rekomendasi kripto". Dihitung otomatis dari candle, tombol timeframe 5 menit / 1 jam / 4 jam ada di halamannya. Edukasi, bukan ajakan beli/jual.';
         var P = window.__ewoksPicks && window.__ewoksPicks[k];
         var link = '[Buka rekomendasi ' + MK[k][0] + '](' + CBASE + MK[k][1] + ')';
@@ -1318,6 +1319,63 @@ window.addEventListener('load', () => {
         var all = [['IHSG', 'idx'], ['Saham Global', 'global'], ['Kripto', 'kripto'], ['Forex', 'forex']];
         return { text: txt, opts: all.filter(function (o) { return !only || only.indexOf(o[1]) > -1; }).map(function (o) { return [o[0], cmd + ' ' + o[1] + (suf || '')]; }) };
     }
+
+    /* ---- Kartu rekomendasi di chat (rapi) + tombol Pantau ke Watchlist ---- */
+    function tkR(v, up) { var t = v < 200 ? 1 : v < 500 ? 2 : v < 2000 ? 5 : v < 5000 ? 10 : 25; return (up ? Math.ceil(v / t - 1e-9) : Math.floor(v / t + 1e-9)) * t; }
+    function bowWatchAdd(p) {
+        if (typeof watchlist === 'undefined' || !p || !p.bow) return 'err';
+        if (watchlist.some(function (w) { return w.ticker === p.t; })) return 'dup';
+        watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, price: String(p.bow.hi), note: 'Dari Tido · R/R ±' + p.bow.rr.toFixed(1), foreign: '', bow: { lo: p.bow.lo, hi: p.bow.hi, tp: p.bow.tp, cl: p.bow.cl, ref: p.price, date: new Date().toISOString().slice(0, 10) } });
+        try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
+        try { if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist(); } catch (_) {}
+        return 'ok';
+    }
+    function picksCss() {
+        if (document.getElementById('ec-pk-css')) return; var st = document.createElement('style'); st.id = 'ec-pk-css';
+        st.textContent = '.ec-pk{display:flex;flex-direction:column;gap:10px;margin-top:10px;white-space:normal}.ec-pc{background:#0f172a;border:1px solid #334155;border-left:3px solid #22c55e;border-radius:10px;padding:9px 11px}' +
+            '.ec-ph{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}.ec-ph b{font-size:15px;color:#fff}.ec-ph span{font-size:11px;color:#94a3b8}.ec-ph i{margin-left:auto;font-style:normal;font-size:11px;font-weight:700}.ec-ph i.u{color:#4ade80}.ec-ph i.d{color:#f87171}' +
+            '.ec-pr{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:2px 0;color:#cbd5e1}.ec-pr b{color:#fff;font-family:ui-monospace,monospace;font-weight:700}.ec-pr b.g{color:#4ade80}.ec-pr b.r{color:#f87171}' +
+            '.ec-pn{font-size:10.5px;color:#64748b;margin-top:4px}.ec-pa{margin-top:7px;padding:4px 11px;border-radius:999px;border:0;background:#22c55e;color:#04130d;font-size:11px;font-weight:800;cursor:pointer}.ec-pa[disabled]{background:#334155;color:#94a3b8;cursor:default}.ec-pall{align-self:flex-start;padding:5px 12px;border-radius:999px;border:1px solid #22c55e;background:transparent;color:#4ade80;font-size:12px;font-weight:800;cursor:pointer}';
+        document.head.appendChild(st);
+    }
+    function picksUI(box, picks) {
+        if (!picks || !picks.length) return; picksCss();
+        var wrap = el('div', 'ec-pk'), btns = [];
+        function mark(b, r) { b.textContent = r === 'dup' ? 'Sudah dipantau ✓' : r === 'ok' ? 'Dipantau ✓' : 'Gagal'; b.disabled = true; }
+        picks.forEach(function (p) {
+            var c = el('div', 'ec-pc'), h = el('div', 'ec-ph'); h.appendChild(el('b', '', p.t)); if (p.priceTxt) h.appendChild(el('span', '', p.priceTxt));
+            if (p.chg != null) h.appendChild(el('i', p.chg >= 0 ? 'u' : 'd', (p.chg >= 0 ? '+' : '') + p.chg.toFixed(1).replace('.', ',') + '%'));
+            c.appendChild(h);
+            p.rows.forEach(function (r) { var d = el('div', 'ec-pr'); d.appendChild(el('span', '', r[0])); d.appendChild(el('b', r[2] || '', r[1])); c.appendChild(d); });
+            if (p.note) c.appendChild(el('div', 'ec-pn', p.note));
+            if (p.bow) { var b = el('button', 'ec-pa', '+ Pantau'); b.type = 'button'; b.onclick = function () { mark(b, bowWatchAdd(p)); }; btns.push([b, p]); c.appendChild(b); }
+            wrap.appendChild(c);
+        });
+        if (btns.length > 1) { var all = el('button', 'ec-pall', '+ Pantau semua (' + btns.length + ')'); all.type = 'button'; all.onclick = function () { btns.forEach(function (x) { if (!x[0].disabled) mark(x[0], bowWatchAdd(x[1])); }); all.disabled = true; all.textContent = 'Semua masuk Watchlist ✓'; }; wrap.appendChild(all); }
+        box.appendChild(wrap);
+    }
+    /* BoW IHSG: aturan sama dengan kartu di halaman Terminal (page-bot-picks.js) */
+    async function bowIdx(B, loose) {
+        var d = await cjson('idx-screener.json'), st = await cjson('idx-status.json'); if (!d || !d.rows) return null;
+        var info = d.info || {}, items = (st && st.items) || {}, out = [], cutoff = Date.now() - 6 * 86400e3;
+        d.rows.forEach(function (r) {
+            var t = r[0], price = r[1], chg = r[3], sup = r[6], res = r[7], ma50 = r[8], vol = r[9], date = r[10];
+            if (!(price >= 60) || (B && price > B) || !sup || !res || !ma50 || !date || new Date(date).getTime() < cutoff) return;
+            var fl = (items[t] || []).map(function (x) { return x[0]; });
+            if (/SUSPEN|DELIST|PPK|UMA/.test(fl.join(' '))) return;
+            var board = info[t] && info[t][0]; if (board && /pemantauan khusus|pengembangan/i.test(board) && board !== 'Utama') return;
+            if ((vol || 0) * price < (B ? 2e8 : 5e8)) return;
+            var dist = (price - sup) / price * 100, room = (res - price) / price * 100;
+            if (price < ma50 * (loose ? 0.96 : 0.99) || dist < -0.5 || dist > (loose ? 10 : 6.5) || room < (loose ? 5 : 8)) return;
+            var lo = tkR(sup, 1), hi = tkR(sup * 1.02, 1), cl = tkR(sup * 0.97), tp = tkR(res); if (hi <= lo) hi = lo + 1;
+            var mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl); if (!(rr >= (loose ? 1.2 : 1.5)) || cl >= lo) return;
+            out.push({ t: t, price: price, chg: chg, lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, date: date, score: rr * 10 + Math.max(0, 6 - dist) * 2 + (chg != null && chg <= 0.5 ? 3 : 0) + Math.min(5, Math.log10((vol || 1) * price / 1e9)) });
+        });
+        return out.sort(function (a, b) { return b.score - a.score; });
+    }
+    function bowCard(x, R) {
+        return { t: x.t, price: x.price, priceTxt: 'Last ' + R(x.price), chg: x.chg, rows: [['Area BoW', R(x.lo).replace('Rp ', '') + ' - ' + R(x.hi).replace('Rp ', '')], ['TP terdekat', R(x.tp).replace('Rp ', ''), 'g'], ['Strict CL (jebol)', R(x.cl).replace('Rp ', ''), 'r']], note: 'R/R ±' + x.rr.toFixed(1) + ' · Kalau mulai lemes di TP, aktifkan trailing stop.', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } };
+    }
     function loadEngine() {
         if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
         return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/picks-engine.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksPicksEngine || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
@@ -1331,24 +1389,26 @@ window.addEventListener('load', () => {
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
     async function planIdx(kind, B) {
         var d = await cjson('idx-screener.json'); if (!d || !d.rows) return 'Data IHSG belum bisa dimuat.';
-        var R = function (v) { return 'Rp ' + nf(Math.round(v), 0); }, out = '', date = '';
+        var R = function (v) { return 'Rp ' + nf(Math.round(v), 0).replace(/,/g, '.'); }, out = '', date = '';
         if (kind === 'scalp') {
             var sc = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[3] >= 2 && r[3] <= 15 && r[1] * (r[9] || 0) > (B ? 2e8 : 2e9); }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 5);
             if (!sc.length) return 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos filter scalping (naik 2-15%, transaksi cukup). Coba budget lebih besar atau /pagi.';
-            sc.forEach(function (r) { date = r[10]; out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Entry dekat ' + R(r[1]) + ' · TP ' + R(r[1] * 1.025) + ' (+2,5%) · SL ' + R(r[1] * 0.98) + ' (-2%)\n'; });
-            return { text: 'Scalping IHSG' + budTxt(B) + ' (naik 2-15%, transaksi ' + (B ? '> Rp 200 juta' : '> Rp 2 miliar') + '), data harian ' + date + ':\n' + out + DISC, opts: budOpts('scalp', 'idx', B) };
+            var spk = sc.map(function (r) { date = r[10]; return { t: r[0], price: r[1], priceTxt: 'Last ' + R(r[1]), chg: r[3], rows: [['Entry dekat', nf(r[1], 0).replace(/,/g, '.')], ['TP (+2,5%)', nf(Math.round(r[1] * 1.025), 0).replace(/,/g, '.'), 'g'], ['SL (-2%)', nf(Math.round(r[1] * 0.98), 0).replace(/,/g, '.'), 'r']] }; });
+            return { text: 'Scalping IHSG' + budTxt(B) + ' · naik 2-15%, transaksi ' + (B ? '> Rp 200 juta' : '> Rp 2 miliar') + '.\nData harian ' + date + '.' + DISC, picks: spk, opts: budOpts('scalp', 'idx', B) };
         }
         var n = kind === 'swing' ? 10 : 5;
         var rows = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
             .map(function (r) { var tp = r[1] >= r[7] ? r[1] * 1.08 : r[7]; return { r: r, near: (r[1] - r[6]) / r[6], tp: tp, room: (tp - r[1]) / r[1] }; })
             .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n);
         if (!rows.length) return { text: 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos saringan hari ini. Coba budget lebih besar.', opts: budOpts(kind, 'idx', B) };
-        rows.forEach(function (x) {
-            var r = x.r, sup = r[6]; date = r[10];
-            out += r[0] + '  ' + R(r[1]) + ' (+' + nf(r[3], 1) + '%)\n  Area BoW ' + R(sup) + ' - ' + R(sup * 1.03) + ' · SL ' + R(sup * 0.96) + '\n  ' +
-                (kind === 'swing' ? 'TP1 ' + R(r[1] * 1.04) + ' (+4%) · TP2 ' + R(r[1] * 1.08) + ' (+8%) · TP Max ' + R(Math.max(x.tp, r[1] * 1.08)) : 'TP ' + R(x.tp) + (r[1] >= r[7] ? ' (harga di ATH 20 hari, TP +8%)' : ' (resist 20 hari)')) + '\n';
+        var picks = rows.map(function (x) {
+            var r = x.r, sup = r[6], lo = tkR(sup, 1), hi = tkR(sup * 1.03, 1), cl = tkR(sup * 0.96), tp = tkR(Math.max(x.tp, kind === 'swing' ? r[1] * 1.08 : 0)), mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl); date = r[10];
+            var rw = [['Area BoW', nf(lo, 0).replace(/,/g, '.') + ' - ' + nf(hi, 0).replace(/,/g, '.')]];
+            if (kind === 'swing') { rw.push(['TP1 (+4%)', nf(Math.round(r[1] * 1.04), 0).replace(/,/g, '.'), 'g']); rw.push(['TP Max', nf(tp, 0).replace(/,/g, '.'), 'g']); } else rw.push(['TP' + (r[1] >= r[7] ? ' (ATH 20 hari, +8%)' : ''), nf(tp, 0).replace(/,/g, '.'), 'g']);
+            rw.push(['Strict CL', nf(cl, 0).replace(/,/g, '.'), 'r']);
+            return { t: r[0], price: r[1], priceTxt: 'Last ' + R(r[1]), chg: r[3], rows: rw, note: rr > 0 ? 'R/R ±' + rr.toFixed(1) : '', bow: rr > 0 && cl < lo ? { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr } : null };
         });
-        return { text: KIND[kind] + ' IHSG' + budTxt(B) + ' (momentum naik, urut paling dekat support), data harian ' + date + ':\n' + out + 'BoW = low 20 hari sampai +3%. SL = support -4%.' + DISC, opts: budOpts(kind, 'idx', B) };
+        return { text: KIND[kind] + ' IHSG' + budTxt(B) + ' · momentum naik, urut paling dekat support.\nData harian ' + date + '. BoW = low 20 hari sampai +3%, CL = support -4%.' + DISC, picks: picks, opts: budOpts(kind, 'idx', B) };
     }
     async function planGlobalScalp(B) {
         var d = await cjson('global-screener.json'); if (!d || !d.rows) return 'Data saham global belum bisa dimuat.';
@@ -1364,12 +1424,14 @@ window.addEventListener('load', () => {
         if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).';
         if (B) r.list = r.list.filter(function (x) { return x.price <= B; });
         if (!r.list.length) return 'Belum ada ' + MK[k][0] + budTxt(B, k === 'idx' ? 'Rp' : '$') + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti, budget lebih besar, atau pasar lain.';
-        var pre = k === 'forex' ? '' : '$', out = '';
-        r.list.slice(0, n).forEach(function (x) {
-            out += x.t + '  ' + pre + E.fmt(mk, x.price, x.t) + ' (' + (x.chg >= 0 ? '+' : '') + x.chg.toFixed(1) + '%)\n  Area BoW ' + E.fmt(mk, x.lo, x.t) + ' - ' + E.fmt(mk, x.hi, x.t) + ' · CL ' + E.fmt(mk, x.cl, x.t) + '\n  ' +
-                (kind === 'swing' ? 'TP1 ' + E.fmt(mk, x.tp1, x.t) + ' · TP Max ' + E.fmt(mk, x.tp, x.t) : 'TP ' + E.fmt(mk, x.tp, x.t)) + ' · R/R ' + x.rr.toFixed(1) + '\n';
+        var pre = k === 'forex' ? '' : '$';
+        var epk = r.list.slice(0, n).map(function (x) {
+            var F = function (v) { return E.fmt(mk, v, x.t); }, rw = [['Area BoW', F(x.lo) + ' - ' + F(x.hi)]];
+            if (kind === 'swing') { rw.push(['TP1', F(x.tp1), 'g']); rw.push(['TP Max', F(x.tp), 'g']); } else rw.push(['TP', F(x.tp), 'g']);
+            rw.push(['CL', F(x.cl), 'r']);
+            return { t: x.t, price: x.price, priceTxt: 'Last ' + pre + F(x.price), chg: x.chg, rows: rw, note: 'R/R ±' + x.rr.toFixed(1) };
         });
-        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' (Buy on Weakness, candle ' + tfl + '):\n' + out + 'Dihitung langsung dari candle saat ini. Tren naik, dekat support, ada ruang ke resist.' + DISC, opts: budOpts(kind, k, B) };
+        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' · Buy on Weakness, candle ' + tfl + '.\nDihitung langsung dari candle saat ini: tren naik, dekat support, ada ruang ke resist.\nPantau otomatis di Watchlist baru untuk saham IHSG.' + DISC, picks: epk, opts: budOpts(kind, k, B) };
     }
     function parseBudget(tok) {
         var m = String(tok).toLowerCase().replace(/^(<=|<|≤|maks|max)/, '').replace(/^rp\.?\s*/, '').replace(/^\$/, '');
@@ -1663,7 +1725,7 @@ window.addEventListener('load', () => {
             if (normCmd(q) != null) {
                 var fall = false, cw = add('a', 'Tido lagi ngitung sambil ngucek mata…'); busy = true; sb.disabled = true; hoo('think');
                 try {
-                    var cr = await runCmd(q); if (cr == null) { fall = true; cw.remove(); } else { var ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct);
+                    var cr = await runCmd(q); if (cr == null) { fall = true; cw.remove(); } else { var ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct); if (cr && cr.picks) picksUI(cw, cr.picks);
                     if (cr && cr.opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
                 } } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
                 busy = false; sb.disabled = false;
@@ -1673,7 +1735,7 @@ window.addEventListener('load', () => {
             if (ni) {
                 var nw = add('a', ni.intro || 'Tido lagi cek…'); busy = true; sb.disabled = true; hoo('think');
                 try {
-                    var nr = ni.cmd === 'cek' ? await cmdCek(ni.code, ni.mk) : await runCmd(ni.cmd), nt = typeof nr === 'string' ? nr : nr.text; rich(nw, (ni.intro ? ni.intro + '\n\n' : '') + nt);
+                    var nr = ni.cmd === 'cek' ? await cmdCek(ni.code, ni.mk) : await runCmd(ni.cmd), nt = typeof nr === 'string' ? nr : nr.text; rich(nw, (ni.intro ? ni.intro + '\n\n' : '') + nt); if (nr && nr.picks) picksUI(nw, nr.picks);
                     if (nr && nr.opts) { var nb = el('div'); nb.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; nr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; nb.appendChild(bt); }); nw.appendChild(nb); }
                 } catch (_) { nw.textContent = 'Gagal ngecek datanya. Coba lagi ya.'; }
                 talk(nw.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;

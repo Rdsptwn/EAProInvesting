@@ -31,7 +31,45 @@ function clearWatchlist() {
     }
 }
 
+// Cadangan harga: seluruh emiten dari idx-screener.json (snapshot harian punya lebih sedikit emiten).
+let __wlScr = null;
+function wlLoadScr() {
+    if (__wlScr !== null) return;
+    __wlScr = {};
+    const V = encodeURIComponent(window.EWOKS_ASSET_V || '1'), B = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+    fetch(B + 'assets/data/idx-screener.json?v=' + V).then(r => r.json()).then(d => {
+        (d.rows || []).forEach(r => { __wlScr[r[0]] = { price: r[1], changePct: r[3], date: r[10] }; });
+        renderWatchlist(true);
+    }).catch(() => {});
+}
+// Pasar sudah tutup? (WIB: Sabtu-Minggu, atau Senin-Jumat setelah 16:00)
+function wlMarketClosed() {
+    const w = new Date(Date.now() + 7 * 3600e3), d = w.getUTCDay(), h = w.getUTCHours() + w.getUTCMinutes() / 60;
+    return d === 0 || d === 6 || h >= 16 || h < 9;
+}
+function wlBowHtml(w, cur, chg) {
+    const b = w.bow; if (!b) return '';
+    const f = n => Math.round(n).toLocaleString('id-ID');
+    let st, cls;
+    if (cur == null) { st = 'Menunggu data harga'; cls = 'text-slate-500'; }
+    else if (cur <= b.cl) { st = '❌ Jebol Strict CL'; cls = 'text-red-600'; }
+    else if (cur >= b.tp) { st = '🎯 TP tercapai'; cls = 'text-emerald-600'; }
+    else if (cur >= b.lo && cur <= b.hi) { st = '🟢 Masih di area BoW'; cls = 'text-emerald-600'; }
+    else if (cur > b.hi) { st = '⬆️ Naik meninggalkan area BoW'; cls = 'text-sky-600'; }
+    else { st = '⚠️ Di bawah area BoW, dekat CL'; cls = 'text-amber-600'; }
+    const since = cur != null && b.ref ? (cur - b.ref) / b.ref * 100 : null;
+    const arrow = v => v == null ? '-' : (v >= 0 ? '▲ +' : '▼ ') + v.toFixed(2) + '%';
+    const clr = v => v == null ? '' : v >= 0 ? 'text-emerald-600' : 'text-red-500';
+    const closed = wlMarketClosed();
+    return `<div class="mt-2 p-2 rounded-xl border border-emerald-100 bg-emerald-50/40 text-[10px] font-bold text-slate-600">
+        <p class="font-black ${cls}">${st}</p>
+        <p>Area BoW ${f(b.lo)} - ${f(b.hi)} · TP ${f(b.tp)} · CL ${f(b.cl)}</p>
+        <p>${closed ? 'Penutupan' : 'Hari ini'}: <span class="${clr(chg)}">${arrow(chg)}</span> · Sejak dipantau (Rp ${f(b.ref)}): <span class="${clr(since)}">${arrow(since)}</span></p>
+    </div>`;
+}
+
 function renderWatchlist(isTick = false) {
+    wlLoadScr();
     const container = document.getElementById('watchlist-container');
     if(watchlist.length === 0) {
         if(!isTick) container.innerHTML = `<div class="col-span-full p-8 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl font-bold bg-white">Watchlist masih kosong. Mulai tambahkan pantauan emiten Anda!</div>`;
@@ -41,8 +79,9 @@ function renderWatchlist(isTick = false) {
     // Harga asli dari snapshot/live Yahoo (.JK). Tidak ada lagi harga simulasi acak.
     watchlist.forEach(w => {
         const q = typeof getIdxQuote === 'function' ? getIdxQuote(w.ticker) : null;
-        w.currentPrice = q && q.price != null ? Number(q.price) : null;
-        w.changePct = q && q.changePct != null ? Number(q.changePct) : null;
+        const q2 = q && q.price != null ? q : (__wlScr && __wlScr[w.ticker]) || null;
+        w.currentPrice = q2 && q2.price != null ? Number(q2.price) : null;
+        w.changePct = q2 && q2.changePct != null ? Number(q2.changePct) : null;
     });
     container.innerHTML = watchlist.map(w => {
         const target = parseFloat(w.price);
@@ -68,7 +107,8 @@ function renderWatchlist(isTick = false) {
                 </div>
             </div>
             
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-grow">
+            ${wlBowHtml(w, hasPrice ? current : null, w.changePct)}
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-grow mt-2">
                 <p class="text-xs text-slate-600 italic">"${escapeHtml(w.note || 'Tidak ada catatan')}"</p>
             </div>
 
