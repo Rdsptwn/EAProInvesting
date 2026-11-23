@@ -393,218 +393,128 @@
     ],
     "COWL": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "MTRA": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "SRIL": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "TOYS": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "SBAT": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "TDPM": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (gagal bayar pokok MTN II)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "TELE": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (pailit)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "LCGP": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "SUGI": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "MABA": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "LMAS": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "SKYB": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "ENVY": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "GOLL": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "PLAS": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "TRIL": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "UNIT": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "DUCK": [
       {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
         "k": "DELIST",
-        "note": "Dihapus dari BEI efektif 10 Nov 2026 (suspensi >50 bulan)",
-        "src": "https://www.bareksa.com/berita/saham/2026-04-13/18-emiten-akan-dihapus-dari-bursa-efek-indonesia-mulai-10-november-2026-ini-daftarnya"
+        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
       }
     ],
     "KOIN": [
@@ -774,6 +684,104 @@
       {
         "k": "SUSPEN",
         "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
+      }
+    ],
+    "MAMI": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "FORZ": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "MYRX": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "KRAH": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "KPAS": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "KPAL": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "PRAS": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "NIPS": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 21 Jul 2025",
+        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+      }
+    ],
+    "FREN": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 17 Apr 2025 (merger dengan XL)",
+        "src": "https://market.bisnis.com/read/20250416/7/1869778/bye-smartfren-fren-resmi-delisting-besok-kamis-17-april-2025"
+      }
+    ],
+    "HDTX": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+      }
+    ],
+    "JKSW": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+      }
+    ],
+    "MFIN": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+      }
+    ],
+    "MASA": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+      }
+    ],
+    "CNTX": [
+      {
+        "k": "DELIST",
+        "note": "Delisting 30 Jul 2026",
+        "src": "https://finance.detik.com/bursa-dan-valas/d-8598035/bei-resmi-coret-raksasa-tekstil-cntx-dari-pasar-modal"
       }
     ]
   }

@@ -43,7 +43,7 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 
 | Data | Kondisi | Penyebab / jalan keluar |
 |------|---------|-------------------------|
-| 58 saham IDX tanpa harga | Ada di daftar BEI, tidak ada harga | Sebagian besar suspensi panjang; 23 Nov 2026: 62 emiten suspensi (Bisnis, 5 Nov) + WIKA, TMPO, ARKO, TFCO, MKNT, CSMI ditandai SUSPEN di `idx-status-manual.json` |
+| 58 saham IDX tanpa harga | Ada di daftar BEI, tidak ada harga | Sebagian besar suspensi panjang; 23 Nov 2026: 62 emiten suspensi (Bisnis, 5 Nov) + WIKA, TMPO, ARKO, TFCO, MKNT, CSMI ditandai SUSPEN di `idx-status-manual.json`; 33 emiten ditandai DELIST (18 efektif 10 Nov 2026, 13 pada 2025, CNTX 30 Jul 2026). Belum diketahui statusnya: IIKP, META, NGLS, OCAP, SCPI |
 | Buy / Sell / Net per broker | Kosong | BEI tidak menerbitkan; menunggu data "bandar" dari Anda |
 | Upbit di Berita Listing Kripto | Gagal (HTTP 403) | Upbit memblokir server GitHub. Listing Binance dan trending CoinGecko tetap jalan |
 | Koin MEW dan POPCAT | Tidak ketemu di Yahoo | Kode koin belum terdaftar; akan ikut otomatis bila muncul |

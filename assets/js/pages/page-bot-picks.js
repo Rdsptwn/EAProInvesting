@@ -21,7 +21,7 @@
             var t = r[0], price = r[1], chg = r[3], sup = r[6], res = r[7], ma50 = r[8], vol = r[9], date = r[10];
             if (!(price >= 60) || !sup || !res || !ma50 || !date || new Date(date).getTime() < cutoff) return;
             var flags = (items[t] || []).map(function (x) { return x[0]; });
-            if (flags.indexOf('SUSPEN') >= 0 || flags.indexOf('PPK') >= 0 || flags.indexOf('UMA') >= 0) return;
+            if (flags.indexOf('SUSPEN') >= 0 || flags.indexOf('DELIST') >= 0 || flags.indexOf('PPK') >= 0 || flags.indexOf('UMA') >= 0) return;
             var board = info[t] && info[t][0]; if (board && /pemantauan khusus|pengembangan/i.test(board) && board !== 'Utama') return;
             if ((vol || 0) * price < 5e8) return; // likuiditas minimal ±Rp 500 jt/hari
             var loose = mode === 'longgar';
