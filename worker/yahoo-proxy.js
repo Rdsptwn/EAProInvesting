@@ -423,11 +423,20 @@ async function handle(request, ctx, env) {
 // Butuh secret GH_TOKEN (fine-grained PAT, repo ini saja, izin Actions: Read and write). Lihat worker/README.md.
 const GH_REPO = 'Rdsptwn/EAProInvesting';
 const GH_REF = 'main';
-const GH_WORKFLOWS = ['daily-market-sync.yml', 'market-activity-intraday.yml'];
+// Jendela IHSG (WIB): Senin 03:00 s/d Jumat 18:00; Sabtu-Minggu libur. Intraday hanya jam bursa Senin-Jumat 09-16.
+// Forex/crypto/berita (sync-24jam) jalan 24 jam, setiap hari, tanpa libur.
+function pickWorkflows(now) {
+    const w = new Date(now.getTime() + 7 * 3600e3); // WIB
+    const d = w.getUTCDay(), h = w.getUTCHours();   // 0=Min
+    const list = ['sync-24jam.yml'];
+    if (d >= 1 && d <= 5 && (d > 1 || h >= 3) && (d < 5 || h < 18)) list.push('daily-market-sync.yml');
+    if (d >= 1 && d <= 5 && h >= 9 && h <= 16) list.push('market-activity-intraday.yml');
+    return list;
+}
 
-async function triggerWorkflows(env) {
+async function triggerWorkflows(env, now) {
     if (!env || !env.GH_TOKEN) { console.log('GH_TOKEN belum diisi, lewati.'); return; }
-    for (const wf of GH_WORKFLOWS) {
+    for (const wf of pickWorkflows(now || new Date())) {
         const r = await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${wf}/dispatches`, {
             method: 'POST',
             headers: {
@@ -454,6 +463,6 @@ export default {
     },
     // Cron Trigger: picu workflow data (lihat README).
     async scheduled(event, env, ctx) {
-        ctx.waitUntil(triggerWorkflows(env).catch((e) => console.log('trigger gagal:', e && e.message)));
+        ctx.waitUntil(triggerWorkflows(env, new Date(event && event.scheduledTime ? event.scheduledTime : Date.now())).catch((e) => console.log('trigger gagal:', e && e.message)));
     },
 };

@@ -57,7 +57,9 @@ Bot GitHub Actions meng-commit data ke repo, jadi situs berisi data terbaru tanp
 | Arus kas dan dividen emiten BEI (dari Yahoo) | Sabtu 10.00 WIB + manual | `sync-funda-cf` |
 | Return 1/3/5 tahun saham IHSG (untuk `/topreturn`) | Minggu 10.00 WIB + manual | `sync-ret5y` |
 | Peringkat broker BEI | Harian | `sync-broker` |
-| Global: screener, indeks dunia, komoditas, kripto, forex, listing kripto | Harian + manual | `sync-global` |
+| Global: screener, indeks dunia, komoditas, IPO | Tiap 2 jam, Senin–Jumat | `sync-global` |
+| Kripto, forex, listing kripto, berita RSS | Tiap 30 menit, 24 jam, tiap hari | `sync-24jam` |
+| IHSG dan harga emiten | Tiap jam, Senin 03:00 – Jumat 17:00 WIB (Sabtu–Minggu libur) | `daily-market-sync` |
 | Fundamental global dan estimasi syariah | Berkala | `sync-global-funda` |
 | Cache aset (`?v=`) | Setiap data berubah | otomatis |
 

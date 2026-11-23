@@ -1,13 +1,15 @@
 # Sinkron IHSG, harga emiten, kalender korporasi, dan pasar global.
-# Jalan tiap jam 09:00–17:00 WIB, Senin–Jumat. (All Market/Regular/Nego ada di market-activity-intraday.yml.) Bisa juga manual:
+# Jalan tiap jam, mulai Senin 03:00 WIB s/d Jumat 17:00 WIB (Sabtu–Minggu libur). (All Market/Regular/Nego ada di market-activity-intraday.yml.) Bisa juga manual:
 # Actions → Daily market sync → Run workflow
 
 name: Daily market sync
 
 on:
   schedule:
-    # Tiap jam, 09:00–17:00 WIB (02:00–10:00 UTC), Senin–Jumat
-    - cron: '0 2-10 * * 1-5'
+    # Senin–Jumat 03:00–06:00 WIB = Minggu–Kamis 20:00–23:00 UTC
+    - cron: '0 20-23 * * 0-4'
+    # Senin–Jumat 07:00–17:00 WIB = 00:00–10:00 UTC
+    - cron: '0 0-10 * * 1-5'
   workflow_dispatch:
 
 permissions:

@@ -12,8 +12,8 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 | Global | 2.649 saham & ETF AS, fundamental (26 shard), anggota S&P 500 / Nasdaq 100 / Dow / Russell 2000 (perkiraan) | `sync-global`, `sync-global-funda` |
 | Saham terkait indeks dunia | 18 indeks (KOSPI, CAC, DAX, Nikkei, dst.), 18–24 perusahaan terbesar tiap indeks | `sync-global` (`global-intl.json`) |
 | Syariah Global | Estimasi otomatis: 1.123 lolos, 1.311 tidak lolos, 36 tanpa data | `sync-global-funda` |
-| Kripto | 162 koin, Fear & Greed, tab Listing (40 pengumuman Binance + 10 trending CoinGecko) | `sync-global` |
-| Forex & emas | 31 pasangan termasuk XAU/USD, XAG/USD, PAXG, XAUT | `sync-global` |
+| Kripto | 162 koin, Fear & Greed, tab Listing (40 pengumuman Binance + 10 trending CoinGecko) | `sync-24jam` (24 jam) |
+| Forex & emas | 31 pasangan termasuk XAU/USD, XAG/USD, PAXG, XAUT | `sync-24jam` (24 jam) |
 | Terminal / Watchlist | Rekomendasi bot BoW (Area BoW, TP, Strict CL); chip Market Screener bisa digabung (mis. Breakout Resist + Harga ≤ 500) | Dihitung di browser dari screener |
 | Chat Tido | Command `/pagi /siang /swing /scalp` dengan budget (≤500/1000), `/rd`, `/istilah`, `/topreturn`, router bahasa natural, maskot animasi | `assets/js/ewoks-core.js`, `chat-cmds.js`, `mascot.js` |
 | Lapkeu IDX | 351 emiten Yahoo + 622 emiten BEI (Financial Data and Ratio, tanpa arus kas) | `sync-funda-idx`, impor `tools/import-bei-fin.py` |

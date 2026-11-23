@@ -1,5 +1,5 @@
 # Sinkron mode Global: saham & ETF AS, komoditas/indeks dunia, berita RSS, kalender IPO AS.
-# Jalan tiap 2 jam, Senin–Jumat (cukup untuk jam bursa AS dan berita). Bisa manual: Actions → Sync global → Run workflow
+# Saham/ETF AS, komoditas, IPO: tiap 2 jam, Senin–Jumat. Crypto, forex, berita ada di sync-24jam.yml (24 jam, tiap hari). Bisa manual: Actions → Sync global → Run workflow
 
 name: Sync global
 
@@ -31,11 +31,7 @@ jobs:
 
       # Tiap bagian gagal-aman: sumber error = file lama dipertahankan (skrip tidak menimpa dengan kosong).
       - name: Build global-*.json
-        run: node tools/build-global.mjs
-
-      - name: Build crypto-listings.json
-        continue-on-error: true
-        run: node tools/build-crypto-listings.mjs
+        run: node tools/build-global.mjs members screener commodities intl ipo
 
       - name: Bump cache version (hanya kalau data berubah)
         run: |
@@ -49,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          for f in global-index-members global-screener global-commodities crypto forex global-intl crypto-listings global-news global-ipo; do [ -f assets/data/$f.json ] && git add assets/data/$f.json || true; done
+          for f in global-index-members global-screener global-commodities global-intl global-ipo; do [ -f assets/data/$f.json ] && git add assets/data/$f.json || true; done
           if git diff --staged --quiet; then
             echo "Tidak ada perubahan data — skip commit."
             exit 0
