@@ -31,16 +31,35 @@ function clearWatchlist() {
     }
 }
 
-// Cadangan harga: seluruh emiten dari idx-screener.json (snapshot harian punya lebih sedikit emiten).
-let __wlScr = null;
+// Harga cadangan/semua pasar dari snapshot JSON: IHSG (idx-screener), Kripto, Forex, Saham Global. Disegarkan tiap 5 menit.
+let __wlScr = null, __wlMk = { kripto: {}, forex: {}, global: {} }, __wlAt = 0;
 function wlLoadScr() {
-    if (__wlScr !== null) return;
-    __wlScr = {};
-    const V = encodeURIComponent(window.EWOKS_ASSET_V || '1'), B = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
-    fetch(B + 'assets/data/idx-screener.json?v=' + V).then(r => r.json()).then(d => {
-        (d.rows || []).forEach(r => { __wlScr[r[0]] = { price: r[1], changePct: r[3], date: r[10] }; });
-        renderWatchlist(true);
-    }).catch(() => {});
+    const missing = __wlScr !== null && Date.now() - __wlAt > 15000 && watchlist.some(w => (w.mk || 'idx') !== 'idx' && !(__wlMk[w.mk] && __wlMk[w.mk][w.ticker]));
+    if (__wlScr !== null && Date.now() - __wlAt < 300000 && !missing) return;
+    const first = __wlScr === null; __wlScr = __wlScr || {}; __wlAt = Date.now();
+    const V = encodeURIComponent(window.EWOKS_ASSET_V || '1') + '.' + Math.floor(Date.now() / 300000), B = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
+    const get = n => fetch(B + 'assets/data/' + n + '?v=' + V).then(r => r.json());
+    const need = new Set(watchlist.map(w => w.mk || 'idx'));
+    const jobs = [];
+    if (first || need.has('idx')) jobs.push(get('idx-screener.json').then(d => { (d.rows || []).forEach(r => { __wlScr[r[0]] = { price: r[1], changePct: r[3], date: r[10] }; }); }).catch(() => {}));
+    if (need.has('kripto')) jobs.push(get('crypto.json').then(d => { (d.items || []).forEach(x => { __wlMk.kripto[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
+    if (need.has('forex')) jobs.push(get('forex.json').then(d => { (d.items || []).forEach(x => { __wlMk.forex[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
+    if (need.has('global')) jobs.push(get('global-screener.json').then(d => { (d.rows || []).forEach(r => { __wlMk.global[r[0]] = { price: r[1], changePct: r[3], date: r[9] }; }); }).catch(() => {}));
+    Promise.all(jobs).then(() => renderWatchlist(true));
+}
+// Format harga per pasar: IHSG Rp, Kripto/Global $, Forex tanpa simbol.
+function wlFmt(w, v) {
+    if (v == null || !Number.isFinite(Number(v))) return '-';
+    v = Number(v); const mk = w.mk || 'idx';
+    if (mk === 'idx') return 'Rp ' + Math.round(v).toLocaleString('id-ID');
+    const d = mk === 'forex' ? (/JPY|IDR|KRW|INR|XAU|XAG/.test(w.ticker) ? 3 : 5) : (v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8);
+    return (mk === 'forex' ? '' : '$') + v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+}
+const WL_MK_LABEL = { kripto: 'Kripto', forex: 'Forex', global: 'Saham Global' };
+function wlChartUrl(w) {
+    const t = String(w.ticker).replace(/[^A-Z0-9.=-]/gi, '');
+    const sym = w.mk === 'kripto' ? 'BINANCE:' + t + 'USDT' : w.mk === 'forex' ? (/^(XAU|XAG)/.test(t) ? 'OANDA:' + t : 'FX:' + t) : t;
+    return 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(sym);
 }
 // Pasar sudah tutup? (WIB: Sabtu-Minggu, atau Senin-Jumat setelah 16:00)
 function wlMarketClosed() {
@@ -49,7 +68,7 @@ function wlMarketClosed() {
 }
 function wlBowHtml(w, cur, chg) {
     const b = w.bow; if (!b) return '';
-    const f = n => Math.round(n).toLocaleString('id-ID');
+    const f = n => wlFmt(w, n).replace(/^Rp /, '');
     let st, cls;
     if (cur == null) { st = 'Menunggu data harga'; cls = 'text-slate-500'; }
     else if (cur <= b.cl) { st = '❌ Jebol Strict CL'; cls = 'text-red-600'; }
@@ -60,11 +79,11 @@ function wlBowHtml(w, cur, chg) {
     const since = cur != null && b.ref ? (cur - b.ref) / b.ref * 100 : null;
     const arrow = v => v == null ? '-' : (v >= 0 ? '▲ +' : '▼ ') + v.toFixed(2) + '%';
     const clr = v => v == null ? '' : v >= 0 ? 'text-emerald-600' : 'text-red-500';
-    const closed = wlMarketClosed();
+    const closed = (w.mk || 'idx') === 'idx' ? wlMarketClosed() : null;
     return `<div class="mt-2 p-2 rounded-xl border border-emerald-100 bg-emerald-50/40 text-[10px] font-bold text-slate-600">
         <p class="font-black ${cls}">${st}</p>
         <p>Area BoW ${f(b.lo)} - ${f(b.hi)} · TP ${f(b.tp)} · CL ${f(b.cl)}</p>
-        <p>${closed ? 'Penutupan' : 'Hari ini'}: <span class="${clr(chg)}">${arrow(chg)}</span> · Sejak dipantau (Rp ${f(b.ref)}): <span class="${clr(since)}">${arrow(since)}</span></p>
+        <p>${closed === null ? 'Perubahan terakhir' : closed ? 'Penutupan' : 'Hari ini'}: <span class="${clr(chg)}">${arrow(chg)}</span> · Sejak dipantau (${wlFmt(w, b.ref)}): <span class="${clr(since)}">${arrow(since)}</span></p>
     </div>`;
 }
 
@@ -78,8 +97,9 @@ function renderWatchlist(isTick = false) {
 
     // Harga asli dari snapshot/live Yahoo (.JK). Tidak ada lagi harga simulasi acak.
     watchlist.forEach(w => {
-        const q = typeof getIdxQuote === 'function' ? getIdxQuote(w.ticker) : null;
-        const q2 = q && q.price != null ? q : (__wlScr && __wlScr[w.ticker]) || null;
+        const mk = w.mk || 'idx';
+        const q = mk === 'idx' && typeof getIdxQuote === 'function' ? getIdxQuote(w.ticker) : null;
+        const q2 = mk !== 'idx' ? (__wlMk[mk] && __wlMk[mk][w.ticker]) || null : (q && q.price != null ? q : (__wlScr && __wlScr[w.ticker]) || null);
         w.currentPrice = q2 && q2.price != null ? Number(q2.price) : null;
         w.changePct = q2 && q2.changePct != null ? Number(q2.changePct) : null;
     });
@@ -97,13 +117,13 @@ function renderWatchlist(isTick = false) {
             ${isHit ? `<div class="absolute -top-3 -right-2 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10 animate-bounce">🎯 TARGET HIT!</div>` : ''}
             
             <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 ${isHit ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'} rounded-xl flex items-center justify-center font-black cursor-pointer hover:opacity-80" onclick="openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')" title="Buka Chart Live">
+                <div class="w-10 h-10 ${isHit ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'} rounded-xl flex items-center justify-center font-black cursor-pointer hover:opacity-80" onclick="${w.mk && w.mk !== 'idx' ? `window.open('${wlChartUrl(w)}','_blank','noopener')` : `openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')`}" title="Buka Chart Live">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div>
                     <h4 class="font-black text-slate-900 text-lg leading-none">${escapeHtml(w.ticker)}</h4>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Target Beli: <span class="text-emerald-600">Rp ${Number(w.price).toLocaleString('id-ID')}</span></p>
-                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${hasPrice ? `Harga: Rp ${Math.round(current).toLocaleString('id-ID')}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">Target Beli: <span class="text-emerald-600">${wlFmt(w, w.price)}</span>${w.mk && w.mk !== 'idx' ? ` <span class="ml-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 normal-case">${WL_MK_LABEL[w.mk] || ''}</span>` : ''}</p>
+                    <p class="text-[10px] font-bold mt-0.5 ${isHit ? 'text-emerald-500' : 'text-slate-500'}">${hasPrice ? `Harga: ${wlFmt(w, current)}${chgTxt}` : 'Harga: menunggu data pasar'}</p>
                 </div>
             </div>
             
@@ -119,7 +139,7 @@ function renderWatchlist(isTick = false) {
             </div>` : ''}
 
             <div class="grid grid-cols-2 gap-2 mt-4">
-                <button onclick="openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')" class="w-full text-[10px] font-black text-slate-600 bg-slate-100 py-3 rounded-xl hover:bg-slate-200 transition-colors uppercase"><i class="fas fa-chart-pie mr-1"></i> Chart</button>
+                <button onclick="${w.mk && w.mk !== 'idx' ? `window.open('${wlChartUrl(w)}','_blank','noopener')` : `openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')`}" class="w-full text-[10px] font-black text-slate-600 bg-slate-100 py-3 rounded-xl hover:bg-slate-200 transition-colors uppercase"><i class="fas fa-chart-pie mr-1"></i> Chart</button>
                 <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}'; document.getElementById('calc-price').value='${Number(w.price) || 0}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>
             </div>
         </div>

@@ -34,7 +34,7 @@
             '<div class="bp-r"><span>TP Terdekat</span><b class="g">' + fmtP(x.tp, k) + '</b></div>' +
             '<div class="bp-r"><span>Strict CL (jebol)</span><b class="r">' + fmtP(x.cl, k) + '</b></div>' +
             '<p class="bp-n">Jika mulai lemes/kejedot di ' + fmtP(x.tp, k) + ', aktifkan trailing stop &amp; amankan cuan. R/R ±' + x.rr.toFixed(1) + '</p>' +
-            (MARKET === 'global' ? '<a class="bp-l" href="global.html#saham-' + esc(k) + '">Lihat grafik ›</a>' : '') + '</div>';
+            '<button type="button" class="bp-add" data-add="' + esc(k) + '">+ Pantau</button> ' + (MARKET === 'global' ? '<a class="bp-l" href="global.html#saham-' + esc(k) + '">Lihat grafik ›</a>' : '') + '</div>';
     }
     function paint(loading) {
         var top = list.slice(0, N), tfl = TFS.filter(function (t) { return t[0] === tf; })[0];
@@ -49,6 +49,13 @@
     }
     box.addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.add) {
+            var x = list.filter(function (i) { return i.t === b.dataset.add; })[0]; if (!x || typeof window.ewoksBowWatchAdd !== 'function') return;
+            var r = window.ewoksBowWatchAdd({ t: x.t, mk: MARKET === 'crypto' ? 'kripto' : MARKET, price: x.price, bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } });
+            b.textContent = r === 'ok' ? 'Dipantau ✓' : r === 'dup' ? 'Sudah dipantau ✓' : 'Gagal'; b.disabled = true;
+            if (typeof showToast === 'function') showToast(r === 'dup' ? x.t + ' sudah ada di Watchlist' : x.t + ' masuk Watchlist dengan level BoW', r === 'dup' ? 'warning' : 'success');
+            return;
+        }
         if (b.dataset.tf) { tf = b.dataset.tf; try { localStorage.setItem('ewoks_bpm_tf', tf); } catch (_) {} sched(); refresh(); }
         else if (b.dataset.m) { mode = b.dataset.m; try { localStorage.setItem('ewoks_bpm_mode', mode); } catch (_) {} refresh(); }
         else if (b.dataset.r) refresh();

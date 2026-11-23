@@ -789,7 +789,7 @@ function getEwoksLiveTickers() {
     const set = new Set();
     try {
         if (typeof watchlist !== 'undefined' && Array.isArray(watchlist)) {
-            watchlist.forEach((w) => w && w.ticker && set.add(String(w.ticker).toUpperCase()));
+            watchlist.forEach((w) => w && w.ticker && (!w.mk || w.mk === 'idx') && set.add(String(w.ticker).toUpperCase()));
         }
     } catch (_) {}
     if (Array.isArray(window.__ewoksLiveTickers)) {
@@ -1301,12 +1301,7 @@ window.addEventListener('load', () => {
         var k = mkey(a);
         if (k === 'idx') { var L = await bowIdx(null, false), md = 'ketat'; if (!L || L.length < 4) { L = await bowIdx(null, true); md = 'longgar'; } if (!L) return 'Data IHSG belum bisa dimuat.'; if (!L.length) return 'Belum ada saham IHSG yang lolos saringan BoW hari ini.'; var Rr = function (v) { return 'Rp ' + nf(Math.round(v), 0).replace(/,/g, '.'); }; return { text: 'Rekomendasi Bot IHSG · Buy on Weakness (' + md + '): ' + L.length + ' saham lolos, tampil ' + Math.min(5, L.length) + ' teratas.\nData harian ' + L[0].date + '.' + '\n[Lihat semua di Terminal](' + CBASE + MK.idx[1] + ')' + DISC, picks: L.slice(0, 5).map(function (x) { return bowCard(x, Rr); }) }; }
         if (!k) return 'Rekomendasi Bot (Buy on Weakness) per pasar:\n- [IHSG](' + CBASE + MK.idx[1] + ')\n- [Saham Global](' + CBASE + MK.global[1] + ')\n- [Kripto](' + CBASE + MK.kripto[1] + ')\n- [Forex](' + CBASE + MK.forex[1] + ')\nKetik mis. "rekomendasi kripto". Dihitung otomatis dari candle, tombol timeframe 5 menit / 1 jam / 4 jam ada di halamannya. Edukasi, bukan ajakan beli/jual.';
-        var P = window.__ewoksPicks && window.__ewoksPicks[k];
-        var link = '[Buka rekomendasi ' + MK[k][0] + '](' + CBASE + MK[k][1] + ')';
-        if (!P || !P.list || !P.list.length) return 'Rekomendasi ' + MK[k][0] + ' dihitung di halamannya (belum dimuat di halaman ini atau belum ada yang lolos saringan).\n' + link + '\nEdukasi, bukan ajakan beli/jual.';
-        var pre = k === 'forex' ? '' : '$', out = 'Rekomendasi Bot ' + MK[k][0] + ' (Buy on Weakness, candle ' + P.tfLabel + '):\n';
-        P.list.slice(0, 5).forEach(function (x) { out += x.t + '  Last ' + pre + px(x.price) + '\n  Area BoW ' + px(x.lo) + ' - ' + px(x.hi) + ' · TP ' + px(x.tp) + ' · CL ' + px(x.cl) + ' · R/R ' + x.rr.toFixed(1) + '\n'; });
-        return out + 'Diperbarui ' + P.at + '. ' + link + '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
+        return planEngine('pagi', k, null);
     }
     async function cmdBerita() {
         var d = await cjson('global-news.json'), it = d && d.items ? d.items.slice(0, 5) : [];
@@ -1324,12 +1319,13 @@ window.addEventListener('load', () => {
     function tkR(v, up) { var t = v < 200 ? 1 : v < 500 ? 2 : v < 2000 ? 5 : v < 5000 ? 10 : 25; return (up ? Math.ceil(v / t - 1e-9) : Math.floor(v / t + 1e-9)) * t; }
     function bowWatchAdd(p) {
         if (typeof watchlist === 'undefined' || !p || !p.bow) return 'err';
-        if (watchlist.some(function (w) { return w.ticker === p.t; })) return 'dup';
-        watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, price: String(p.bow.hi), note: 'Dari Tido · R/R ±' + p.bow.rr.toFixed(1), foreign: '', bow: { lo: p.bow.lo, hi: p.bow.hi, tp: p.bow.tp, cl: p.bow.cl, ref: p.price, date: new Date().toISOString().slice(0, 10) } });
+        if (watchlist.some(function (w) { return w.ticker === p.t && (w.mk || 'idx') === (p.mk || 'idx'); })) return 'dup';
+        watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, mk: p.mk || 'idx', price: String(p.bow.hi), note: 'Dari Tido · R/R ±' + p.bow.rr.toFixed(1), foreign: '', bow: { lo: p.bow.lo, hi: p.bow.hi, tp: p.bow.tp, cl: p.bow.cl, ref: p.price, date: new Date().toISOString().slice(0, 10) } });
         try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
         try { if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist(); } catch (_) {}
         return 'ok';
     }
+    window.ewoksBowWatchAdd = bowWatchAdd;
     function picksCss() {
         if (document.getElementById('ec-pk-css')) return; var st = document.createElement('style'); st.id = 'ec-pk-css';
         st.textContent = '.ec-pk{display:flex;flex-direction:column;gap:10px;margin-top:10px;white-space:normal}.ec-pc{background:#0f172a;border:1px solid #334155;border-left:3px solid #22c55e;border-radius:10px;padding:9px 11px}' +
@@ -1338,8 +1334,9 @@ window.addEventListener('load', () => {
             '.ec-pn{font-size:10.5px;color:#64748b;margin-top:4px}.ec-pa{margin-top:7px;padding:4px 11px;border-radius:999px;border:0;background:#22c55e;color:#04130d;font-size:11px;font-weight:800;cursor:pointer}.ec-pa[disabled]{background:#334155;color:#94a3b8;cursor:default}.ec-pall{align-self:flex-start;padding:5px 12px;border-radius:999px;border:1px solid #22c55e;background:transparent;color:#4ade80;font-size:12px;font-weight:800;cursor:pointer}';
         document.head.appendChild(st);
     }
+    var lastPicks = null;
     function picksUI(box, picks) {
-        if (!picks || !picks.length) return; picksCss();
+        if (!picks || !picks.length) return; picksCss(); lastPicks = picks;
         var wrap = el('div', 'ec-pk'), btns = [];
         function mark(b, r) { b.textContent = r === 'dup' ? 'Sudah dipantau ✓' : r === 'ok' ? 'Dipantau ✓' : 'Gagal'; b.disabled = true; }
         picks.forEach(function (p) {
@@ -1371,10 +1368,19 @@ window.addEventListener('load', () => {
             var mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl); if (!(rr >= (loose ? 1.2 : 1.5)) || cl >= lo) return;
             out.push({ t: t, price: price, chg: chg, lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, date: date, score: rr * 10 + Math.max(0, 6 - dist) * 2 + (chg != null && chg <= 0.5 ? 3 : 0) + Math.min(5, Math.log10((vol || 1) * price / 1e9)) });
         });
+        out.sort(function (a, b) { return b.score - a.score; });
+        return refineIdx(out, loose ? 'longgar' : 'ketat');
+    }
+    /* Ganti level persen tetap dengan level dari candle (swing support/resist + ATR). Kalau candle tidak tersedia, level kasar dipertahankan dan diberi tanda. */
+    async function refineIdx(list, mode) {
+        var E = await loadEngine(); if (!E || !E.idxSmart) return list.map(function (x) { x.rough = true; return x; });
+        var top = list.slice(0, 18), r = await E.idxSmart(top.map(function (x) { return { k: x.t }; }), mode);
+        if (!r.avail) return list.map(function (x) { x.rough = true; return x; });
+        var out = []; top.forEach(function (x) { var a = r.map[x.t]; if (a) { a.date = x.date; a.chg = x.chg; a.price = x.price; out.push(a); } });
         return out.sort(function (a, b) { return b.score - a.score; });
     }
     function bowCard(x, R) {
-        return { t: x.t, price: x.price, priceTxt: 'Last ' + R(x.price), chg: x.chg, rows: [['Area BoW', R(x.lo).replace('Rp ', '') + ' - ' + R(x.hi).replace('Rp ', '')], ['TP terdekat', R(x.tp).replace('Rp ', ''), 'g'], ['Strict CL (jebol)', R(x.cl).replace('Rp ', ''), 'r']], note: 'R/R ±' + x.rr.toFixed(1) + ' · Kalau mulai lemes di TP, aktifkan trailing stop.', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } };
+        return { t: x.t, price: x.price, priceTxt: 'Last ' + R(x.price), chg: x.chg, rows: [['Area BoW', R(x.lo).replace('Rp ', '') + ' - ' + R(x.hi).replace('Rp ', '')], ['TP terdekat', R(x.tp).replace('Rp ', ''), 'g'], ['Strict CL (jebol)', R(x.cl).replace('Rp ', ''), 'r']], note: 'R/R ±' + x.rr.toFixed(1) + (x.rough ? ' · Level kasar (candle belum tersedia).' : ' · Level dari candle harian (swing support/resist + ATR).'), mk: 'idx', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } };
     }
     function loadEngine() {
         if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
@@ -1399,16 +1405,27 @@ window.addEventListener('load', () => {
         var n = kind === 'swing' ? 10 : 5;
         var rows = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
             .map(function (r) { var tp = r[1] >= r[7] ? r[1] * 1.08 : r[7]; return { r: r, near: (r[1] - r[6]) / r[6], tp: tp, room: (tp - r[1]) / r[1] }; })
-            .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n);
+            .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n * 2);
         if (!rows.length) return { text: 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos saringan hari ini. Coba budget lebih besar.', opts: budOpts(kind, 'idx', B) };
-        var picks = rows.map(function (x) {
-            var r = x.r, sup = r[6], lo = tkR(sup, 1), hi = tkR(sup * 1.03, 1), cl = tkR(sup * 0.96), tp = tkR(Math.max(x.tp, kind === 'swing' ? r[1] * 1.08 : 0)), mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl); date = r[10];
-            var rw = [['Area BoW', nf(lo, 0).replace(/,/g, '.') + ' - ' + nf(hi, 0).replace(/,/g, '.')]];
-            if (kind === 'swing') { rw.push(['TP1 (+4%)', nf(Math.round(r[1] * 1.04), 0).replace(/,/g, '.'), 'g']); rw.push(['TP Max', nf(tp, 0).replace(/,/g, '.'), 'g']); } else rw.push(['TP' + (r[1] >= r[7] ? ' (ATH 20 hari, +8%)' : ''), nf(tp, 0).replace(/,/g, '.'), 'g']);
-            rw.push(['Strict CL', nf(cl, 0).replace(/,/g, '.'), 'r']);
-            return { t: r[0], price: r[1], priceTxt: 'Last ' + R(r[1]), chg: r[3], rows: rw, note: rr > 0 ? 'R/R ±' + rr.toFixed(1) : '', bow: rr > 0 && cl < lo ? { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr } : null };
+        // Level dari candle harian (swing support/resist + ATR); kalau candle tidak tersedia, jatuh ke level kasar dari support/resist 20 hari.
+        var E = await loadEngine(), sm = { map: {}, avail: 0 }, md = 'longgar';
+        if (E && E.idxSmart) sm = await E.idxSmart(rows.map(function (x) { return { k: x.r[0] }; }), md);
+        var rough = !sm.avail, picks = [];
+        rows.forEach(function (x) {
+            var r = x.r, a = sm.map[r[0]]; date = r[10];
+            if (!rough && !a) return;
+            var lo, hi, cl, tp, tp1, rr;
+            if (a) { lo = a.lo; hi = a.hi; cl = a.cl; tp = a.tp; tp1 = a.tp1; rr = a.rr; }
+            else { var sup = r[6]; lo = tkR(sup, 1); hi = tkR(sup * 1.03, 1); cl = tkR(sup * 0.96); tp = tkR(Math.max(x.tp, kind === 'swing' ? r[1] * 1.08 : 0)); tp1 = r[1] * 1.04; rr = (tp - (lo + hi) / 2) / ((lo + hi) / 2 - cl); }
+            var N0 = function (v) { return nf(Math.round(v), 0).replace(/,/g, '.'); };
+            var rw = [['Area BoW', N0(lo) + ' - ' + N0(hi)]];
+            if (kind === 'swing') { rw.push(['TP1', N0(tp1), 'g']); rw.push(['TP Max', N0(tp), 'g']); } else rw.push(['TP', N0(tp), 'g']);
+            rw.push(['Strict CL', N0(cl), 'r']);
+            picks.push({ t: r[0], mk: 'idx', price: r[1], priceTxt: 'Last ' + R(r[1]), chg: r[3], rows: rw, note: 'R/R ±' + rr.toFixed(1) + (a ? ' · Level dari candle harian (swing + ATR)' : ' · Level kasar (candle belum tersedia)'), bow: rr > 0 && cl < lo ? { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr } : null });
         });
-        return { text: KIND[kind] + ' IHSG' + budTxt(B) + ' · momentum naik, urut paling dekat support.\nData harian ' + date + '. BoW = low 20 hari sampai +3%, CL = support -4%.' + DISC, picks: picks, opts: budOpts(kind, 'idx', B) };
+        picks = picks.slice(0, n);
+        if (!picks.length) return { text: 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos saringan candle hari ini. Coba budget lebih besar.', opts: budOpts(kind, 'idx', B) };
+        return { text: KIND[kind] + ' IHSG' + budTxt(B) + ' · momentum naik, urut paling dekat support.\nData harian ' + date + '. ' + (rough ? 'Level kasar (candle belum tersedia).' : 'Area/CL/TP dihitung dari candle harian: swing support-resist dan ATR.') + DISC, picks: picks, opts: budOpts(kind, 'idx', B) };
     }
     async function planGlobalScalp(B) {
         var d = await cjson('global-screener.json'); if (!d || !d.rows) return 'Data saham global belum bisa dimuat.';
@@ -1429,9 +1446,9 @@ window.addEventListener('load', () => {
             var F = function (v) { return E.fmt(mk, v, x.t); }, rw = [['Area BoW', F(x.lo) + ' - ' + F(x.hi)]];
             if (kind === 'swing') { rw.push(['TP1', F(x.tp1), 'g']); rw.push(['TP Max', F(x.tp), 'g']); } else rw.push(['TP', F(x.tp), 'g']);
             rw.push(['CL', F(x.cl), 'r']);
-            return { t: x.t, price: x.price, priceTxt: 'Last ' + pre + F(x.price), chg: x.chg, rows: rw, note: 'R/R ±' + x.rr.toFixed(1) };
+            return { t: x.t, mk: k, price: x.price, priceTxt: 'Last ' + pre + F(x.price), chg: x.chg, rows: rw, note: 'R/R ±' + x.rr.toFixed(1) + ' · Level dari swing support/resist + ATR', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } };
         });
-        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' · Buy on Weakness, candle ' + tfl + '.\nDihitung langsung dari candle saat ini: tren naik, dekat support, ada ruang ke resist.\nPantau otomatis di Watchlist baru untuk saham IHSG.' + DISC, picks: epk, opts: budOpts(kind, k, B) };
+        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' · Buy on Weakness, candle ' + tfl + '.\nDihitung langsung dari candle saat ini: tren naik, dekat support, ada ruang ke resist.' + DISC, picks: epk, opts: budOpts(kind, k, B) };
     }
     function parseBudget(tok) {
         var m = String(tok).toLowerCase().replace(/^(<=|<|≤|maks|max)/, '').replace(/^rp\.?\s*/, '').replace(/^\$/, '');
@@ -1487,7 +1504,7 @@ window.addEventListener('load', () => {
 
 
     /* ---- Bahasa biasa -> command (tanpa AI): "tido, cari tau akumulasi saham brpt" -> /akum BRPT ---- */
-    var NL_RE = /(akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita|rdpu|rdpt|\brds\b|\brdc\b|\brdi\b|reksa ?dana|pasar uang|apa itu|apa sih|artinya|maksud|pengertian|jelaskan|bedanya|return tertinggi|paling cuan|paling tinggi|top gainer|naik paling)/;
+    var NL_RE = /(watchlist|pantauan|akumulasi|distribusi|bandar|aliran dana|fibo|retracement|analisa|analisis|laporan keuangan|keuangan|nilai wajar|valuasi|fundamental|golden cross|\bea\b|harga|price|berapa|sinyal|scalping|\bsmc\b|rekomendasi|rekomen|saran|pilihan|jagoan|swing|\bpagi\b|\bsiang\b|berita|rdpu|rdpt|\brds\b|\brdc\b|\brdi\b|reksa ?dana|pasar uang|apa itu|apa sih|artinya|maksud|pengertian|jelaskan|bedanya|return tertinggi|paling cuan|paling tinggi|top gainer|naik paling)/;
     var NL_ALIAS = { BITCOIN: 'BTC', ETHEREUM: 'ETH', EMAS: 'XAUUSD', GOLD: 'XAUUSD', PERAK: 'XAGUSD', SILVER: 'XAGUSD', DOGE: 'DOGE', DOGECOIN: 'DOGE', SOLANA: 'SOL', RIPPLE: 'XRP', DOLAR: 'USDIDR' };
     async function nlCode(q) {
         var words = q.replace(/[^A-Za-z0-9=.^ -]/g, ' ').split(/\s+/).filter(Boolean), i, w, W;
@@ -1507,6 +1524,14 @@ window.addEventListener('load', () => {
         var l = q.toLowerCase().replace(/^\s*tido\s*[,!:]?\s*/, ''), mk = nlMarket(l), code = await nlCode(q.replace(/^\s*tido\s*[,!:]?\s*/i, ''));
         var tfm = l.match(/\b(\d{1,2}\s?(?:m|j|h)|1h|4h)\b/), tf = tfm ? tfm[1].replace(/\s/g, '') : '', cmd = '', intro = '';
         var K = code || '';
+        if (/(watchlist|pantauan|daftar pantau|watch list)/.test(l) && /(masukin|masukkan|masuk|tambah|simpan|pantau|add|catat|pindah)/.test(l)) {
+            if (!lastPicks || !lastPicks.length) return { text: 'Belum ada rekomendasi yang bisa dimasukkan 😴 Minta dulu ya, nanti tinggal klik "+ Pantau" atau bilang "masukin ke watchlist".', opts: [['Rekomendasi IHSG', '/rekomendasi idx'], ['Swing IHSG', '/swing idx'], ['Rekomendasi Kripto', '/rekomendasi kripto']] };
+            var want = {}; (q.toUpperCase().match(/[A-Z0-9]{2,8}/g) || []).forEach(function (w) { want[w] = 1; });
+            var sel = lastPicks.filter(function (p) { return p.bow; }), named = sel.filter(function (p) { return want[p.t]; }); if (named.length) sel = named;
+            if (!sel.length) return 'Rekomendasi tadi belum punya level BoW yang bisa dipantau (mis. scalping).';
+            var ok = [], dup = []; sel.forEach(function (p) { var r = bowWatchAdd(p); (r === 'ok' ? ok : dup).push(p.t); });
+            return { text: (ok.length ? 'Beres, masuk Watchlist: ' + ok.join(', ') + ' ✅ (lengkap dengan area BoW, TP, CL; naik/turunnya kelihatan di Watchlist).' : '') + (dup.length ? (ok.length ? '\n' : '') + 'Sudah ada: ' + dup.join(', ') + '.' : '') + '\n[Buka Watchlist](' + CBASE + 'watchlist.html)' };
+        }
         var RDT = /\b(rdpu|rdpt|rds|rdc|rdi)\b|reksa ?dana|pasar uang/.test(l), DEF = /(apa itu|apa sih|artinya|arti |maksud|pengertian|jelaskan|bedanya|beda )/.test(l);
         if (RDT) { var rr0 = await runCmd('/rd ' + l.replace(/[^a-z0-9 ]/g, ' ')); if (typeof rr0 === 'string') return 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0; rr0.text = 'Oke, aku buka database reksa dana ya 😴\n\n' + rr0.text; return rr0; }
         if (/(return|cuan|naik|gain|untung)/.test(l) && /(tertinggi|paling|terbesar|teratas|\btop\b)/.test(l) && /(tahun|bulan|saham|ihsg)/.test(l) && !code && !DEF) {

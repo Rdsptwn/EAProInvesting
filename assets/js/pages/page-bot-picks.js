@@ -60,14 +60,41 @@
         if (typeof showToast === 'function') showToast(t + ' masuk Watchlist dengan level BoW', 'success');
         btn.textContent = 'Dipantau ✓';
     }
+    function loadEng() {
+        if (window.EwoksPicksEngine) return Promise.resolve(window.EwoksPicksEngine);
+        return new Promise(function (res) { var sc = document.createElement('script'); sc.src = BASE + 'assets/js/picks-engine.js?v=' + V; sc.onload = function () { res(window.EwoksPicksEngine || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
+    }
+    // Level dari candle harian (swing support/resist + ATR) lewat Worker; kalau tidak tersedia tetap pakai level kasar dari snapshot.
+    var SM = {};
+    function refine(rough, key) {
+        if (SM[key]) return Promise.resolve(SM[key]);
+        return loadEng().then(function (E) {
+            if (!E || !E.idxSmart) return null; var top = rough.slice(0, 18);
+            return E.idxSmart(top.map(function (x) { return { k: x.t }; }), key).then(function (r) {
+                if (!r.avail) return null; var out = [];
+                top.forEach(function (x) { var a = r.map[x.t]; if (a) { a.chg = x.chg; a.price = x.price; out.push(a); } });
+                out.sort(function (a, b) { return b.score - a.score; }); SM[key] = out; return out;
+            });
+        }).catch(function () { return null; });
+    }
+    var status = '';
     function paint() {
-        list = build(D, S);
+        var key = mode, rough = build(D, S); list = rough; status = rough.length ? 'Menghitung level dari candle…' : '';
+        draw();
+        if (!rough.length) return;
+        refine(rough, key).then(function (sl) {
+            if (key !== mode) return;
+            if (sl) { list = sl; status = 'Level dari candle harian (swing support/resist + ATR).'; } else status = 'Level kasar dari support/resist 20 hari (candle belum tersedia).';
+            draw();
+        });
+    }
+    function draw() {
         var top = list.slice(0, N);
         var when = D.meta && D.meta.built ? new Date(D.meta.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' WIB' : '';
-        box.innerHTML = '<div class="bp-wrap"><div class="bp-top"><div><h2>Rekomendasi Bot · Buy on Weakness</h2><p>' + (top.length ? list.length + ' saham lolos saringan; tampil ' + top.length + ' teratas.' : 'Belum ada saham yang memenuhi syarat saat ini.') + ' Data ' + esc(when) + '</p></div>' +
+        box.innerHTML = '<div class="bp-wrap"><div class="bp-top"><div><h2>Rekomendasi Bot · Buy on Weakness</h2><p>' + (top.length ? list.length + ' saham lolos saringan; tampil ' + top.length + ' teratas. ' + status : 'Belum ada saham yang memenuhi syarat saat ini.') + ' Data ' + esc(when) + '</p></div>' +
             '<div class="bp-btn"><button type="button" data-m="ketat" class="' + (mode === 'ketat' ? 'on' : '') + '">Ketat</button><button type="button" data-m="longgar" class="' + (mode === 'longgar' ? 'on' : '') + '">Longgar</button><button type="button" id="bp-copy">Salin</button></div></div>' +
             '<div class="bp-grid">' + top.map(card).join('') + '</div>' +
-            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari harga penutupan, bukan ajakan beli/jual. Tren naik = harga ≥ MA50; area BoW = sekitar support 20 hari; TP = resist 20 hari; CL = di bawah support. Lakukan analisa sendiri &amp; manage risk.</p></div>';
+            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari harga penutupan, bukan ajakan beli/jual. Tren naik = harga ≥ MA50; area BoW = zona di atas swing support (dari candle); TP = swing resist terdekat; CL = di bawah support sejauh ±0,8 ATR. Lakukan analisa sendiri &amp; manage risk.</p></div>';
         box.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { mode = b.dataset.m; paint(); }; });
         box.querySelectorAll('[data-add]').forEach(function (b) { b.onclick = function () { addWatch(b.dataset.add, b); }; });
         var c = document.getElementById('bp-copy'); if (c) c.onclick = function () { try { navigator.clipboard.writeText(copyText(top)); c.textContent = 'Tersalin ✓'; } catch (e) { c.textContent = 'Gagal'; } };
