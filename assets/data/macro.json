@@ -1,6 +1,6 @@
 {
  "inflation": {
-  "value": 3.19,
+  "value": 0.21,
   "period": "2026-10",
   "label": "Okt 2026",
   "asOf": "2026-11-23"
@@ -9,15 +9,15 @@
   "value": 7.73,
   "asOf": "2026-11-23"
  },
- "builtAt": "2026-11-23T10:03:11.880Z",
+ "builtAt": "2026-11-23T21:59:35.122Z",
  "biRate": {
-  "value": 6.0,
+  "value": 6,
   "asOf": "2026-11-18",
   "source": "Bank Indonesia, RDG 17-18 Nov 2026 (input manual)"
  },
  "fedRate": {
   "low": 3.75,
-  "high": 4.0,
+  "high": 4,
   "asOf": "2026-10-28",
   "source": "The Fed, FOMC 28 Okt 2026 (input manual)"
  }
