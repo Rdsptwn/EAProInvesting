@@ -11,9 +11,9 @@
  },
  "builtAt": "2026-11-23T10:03:11.880Z",
  "biRate": {
-  "value": 5.75,
-  "asOf": "2026-11-11",
-  "source": "Stockbit (input manual)"
+  "value": 6.0,
+  "asOf": "2026-11-18",
+  "source": "Bank Indonesia, RDG 17-18 Nov 2026 (input manual)"
  },
  "fedRate": {
   "low": 3.75,
