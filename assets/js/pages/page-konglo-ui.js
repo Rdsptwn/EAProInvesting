@@ -6,10 +6,15 @@ function kgLoadLogos() {
     if (kgLogos || kgLogosLoading) return;
     kgLogosLoading = true;
     const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
-    fetch(`${base}assets/data/logos.json?v=${encodeURIComponent(window.EWOKS_ASSET_V || '1')}`)
+    const v = encodeURIComponent(window.EWOKS_ASSET_V || '1');
+    // logos-auto.json (otomatis dari Yahoo) hanya pelengkap; logos.json manual menang.
+    const auto = fetch(`${base}assets/data/logos-auto.json?v=${v}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    fetch(`${base}assets/data/logos.json?v=${v}`)
         .then((r) => (r.ok ? r.json() : null))
-        .then((j) => {
+        .then(async (j) => {
+            const a = await auto;
             kgLogos = j || { groups: {}, tickers: {} };
+            if (a && a.tickers) kgLogos.tickers = { ...a.tickers, ...Object.fromEntries(Object.entries(kgLogos.tickers || {}).filter(([, d]) => d)) };
             if (typeof searchKonglo === 'function' && document.getElementById('group-grid')) searchKonglo();
             if (typeof window.__kongloRepaint === 'function') window.__kongloRepaint();
         })
