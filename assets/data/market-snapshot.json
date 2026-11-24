@@ -1,14 +1,14 @@
 {
   "meta": {
     "source": "Yahoo Finance",
-    "built": "2026-11-24T04:33:44.892Z",
+    "built": "2026-11-24T05:01:27.072Z",
     "tz": "WIB",
     "tickerCount": 283
   },
   "ihsg": {
-    "price": 5236.45,
+    "price": 5230.74,
     "prevClose": 5215.85,
-    "changePct": 0.4,
+    "changePct": 0.29,
     "high52": 9174.474,
     "low52": 4824.364,
     "support": 4900,
@@ -116,9 +116,9 @@
       "name": "PT Adhi Karya (Persero) Tbk"
     },
     "ADMG": {
-      "price": 187,
+      "price": 188,
       "prevClose": 187,
-      "changePct": 0,
+      "changePct": 0.53,
       "high52": 310,
       "low52": 155,
       "support": 179,
@@ -176,9 +176,9 @@
       "name": "PT Bank Raya Indonesia Tbk"
     },
     "AHAP": {
-      "price": 43,
+      "price": 44,
       "prevClose": 44,
-      "changePct": -2.27,
+      "changePct": 0,
       "high52": 214,
       "low52": 39,
       "support": 41,
@@ -200,9 +200,9 @@
       "name": "PT Ancara Logistics Indonesia Tbk"
     },
     "AMAG": {
-      "price": 378,
-      "prevClose": 380,
-      "changePct": -0.53,
+      "price": 374,
+      "prevClose": 378,
+      "changePct": -1.06,
       "high52": 510,
       "low52": 330,
       "support": 368,
@@ -212,9 +212,9 @@
       "name": "PT Asuransi Multi Artha Guna Tbk"
     },
     "AMMN": {
-      "price": 3320,
+      "price": 3290,
       "prevClose": 3240,
-      "changePct": 2.47,
+      "changePct": 1.54,
       "high52": 8450,
       "low52": 2710,
       "support": 3150,
@@ -236,9 +236,9 @@
       "name": "PT Austindo Nusantara Jaya Tbk"
     },
     "ANTM": {
-      "price": 2680,
+      "price": 2690,
       "prevClose": 2670,
-      "changePct": 0.37,
+      "changePct": 0.75,
       "high52": 4970,
       "low52": 2330,
       "support": 2400,
@@ -248,9 +248,9 @@
       "name": "PT Antam (Persero) Tbk"
     },
     "ARCI": {
-      "price": 825,
+      "price": 840,
       "prevClose": 815,
-      "changePct": 1.23,
+      "changePct": 3.07,
       "high52": 2120,
       "low52": 760,
       "support": 785,
@@ -260,9 +260,9 @@
       "name": "PT Archi Indonesia Tbk"
     },
     "ARII": {
-      "price": 655,
+      "price": 665,
       "prevClose": 690,
-      "changePct": -5.07,
+      "changePct": -3.62,
       "high52": 760,
       "low52": 240,
       "support": 454,
@@ -284,9 +284,9 @@
       "name": "PT Arkora Hydro Tbk"
     },
     "ASGR": {
-      "price": 2400,
+      "price": 2480,
       "prevClose": 2490,
-      "changePct": -3.61,
+      "changePct": -0.4,
       "high52": 2680,
       "low52": 1145,
       "support": 2280,
@@ -296,9 +296,9 @@
       "name": "PT Astra Graphia Tbk"
     },
     "ASII": {
-      "price": 5475,
+      "price": 5425,
       "prevClose": 5400,
-      "changePct": 1.39,
+      "changePct": 0.46,
       "high52": 7475,
       "low52": 3920,
       "support": 4690,
@@ -320,9 +320,9 @@
       "name": "PT Autopedia Sukses Lestari Tbk"
     },
     "ASSA": {
-      "price": 484,
+      "price": 482,
       "prevClose": 486,
-      "changePct": -0.41,
+      "changePct": -0.82,
       "high52": 1315,
       "low52": 452,
       "support": 468,
@@ -404,13 +404,13 @@
       "name": "PT Bank Central Asia Tbk"
     },
     "BBHI": {
-      "price": 735,
+      "price": 715,
       "prevClose": 590,
-      "changePct": 24.58,
+      "changePct": 21.19,
       "high52": 1540,
       "low52": 545,
       "support": 575,
-      "resistance": 735,
+      "resistance": 715,
       "avg": 695,
       "currency": "IDR",
       "name": "PT Allo Bank Indonesia Tbk"
@@ -428,9 +428,9 @@
       "name": "PT Bank Negara Indonesia (Persero) Tbk"
     },
     "BBRI": {
-      "price": 3100,
+      "price": 3090,
       "prevClose": 3070,
-      "changePct": 0.98,
+      "changePct": 0.65,
       "high52": 4000,
       "low52": 2460,
       "support": 2660,
@@ -452,9 +452,9 @@
       "name": "PT Bank Tabungan Negara (Persero) Tbk"
     },
     "BBYB": {
-      "price": 174,
+      "price": 173,
       "prevClose": 173,
-      "changePct": 0.58,
+      "changePct": 0,
       "high52": 615,
       "low52": 138,
       "support": 142,
@@ -476,9 +476,9 @@
       "name": "PT MNC Kapital Indonesia Tbk"
     },
     "BDMN": {
-      "price": 4700,
+      "price": 4670,
       "prevClose": 4650,
-      "changePct": 1.08,
+      "changePct": 0.43,
       "high52": 5075,
       "low52": 2350,
       "support": 4540,
@@ -488,9 +488,9 @@
       "name": "PT Bank Danamon Indonesia Tbk"
     },
     "BELI": {
-      "price": 195,
+      "price": 197,
       "prevClose": 198,
-      "changePct": -1.52,
+      "changePct": -0.51,
       "high52": 500,
       "low52": 192,
       "support": 192,
@@ -500,9 +500,9 @@
       "name": "PT Global Digital Niaga Tbk"
     },
     "BEST": {
-      "price": 102,
+      "price": 103,
       "prevClose": 101,
-      "changePct": 0.99,
+      "changePct": 1.98,
       "high52": 144,
       "low52": 82,
       "support": 95,
@@ -512,9 +512,9 @@
       "name": "PT Bekasi Fajar Industrial Estate Tbk"
     },
     "BFIN": {
-      "price": 790,
+      "price": 800,
       "prevClose": 785,
-      "changePct": 0.64,
+      "changePct": 1.91,
       "high52": 1040,
       "low52": 575,
       "support": 710,
@@ -572,9 +572,9 @@
       "name": "PT Sentul City Tbk"
     },
     "BLES": {
-      "price": 190,
+      "price": 188,
       "prevClose": 188,
-      "changePct": 1.06,
+      "changePct": 0,
       "high52": 230,
       "low52": 115,
       "support": 187,
@@ -632,13 +632,13 @@
       "name": "PT Bakrie & Brothers Tbk"
     },
     "BNGA": {
-      "price": 1600,
+      "price": 1605,
       "prevClose": 1575,
-      "changePct": 1.59,
+      "changePct": 1.9,
       "high52": 1935,
       "low52": 1435,
       "support": 1460,
-      "resistance": 1600,
+      "resistance": 1605,
       "avg": 1620,
       "currency": "IDR",
       "name": "PT Bank CIMB Niaga Tbk"
@@ -656,9 +656,9 @@
       "name": "PT Bali Bintang Sejahtera Tbk"
     },
     "BREN": {
-      "price": 2310,
+      "price": 2260,
       "prevClose": 2370,
-      "changePct": -2.53,
+      "changePct": -4.64,
       "high52": 10125,
       "low52": 1670,
       "support": 1795,
@@ -692,9 +692,9 @@
       "name": "PT Bumi Resources Minerals Tbk"
     },
     "BRPT": {
-      "price": 690,
+      "price": 680,
       "prevClose": 730,
-      "changePct": -5.48,
+      "changePct": -6.85,
       "high52": 3940,
       "low52": 615,
       "support": 625,
@@ -704,9 +704,9 @@
       "name": "PT Barito Pacific Tbk"
     },
     "BSBK": {
-      "price": 35,
+      "price": 34,
       "prevClose": 35,
-      "changePct": 0,
+      "changePct": -2.86,
       "high52": 100,
       "low52": 31,
       "support": 33,
@@ -740,9 +740,9 @@
       "name": "PT Bank Sinarmas Tbk"
     },
     "BUKA": {
-      "price": 114,
+      "price": 113,
       "prevClose": 114,
-      "changePct": 0,
+      "changePct": -0.88,
       "high52": 184,
       "low52": 90,
       "support": 94,
@@ -776,9 +776,9 @@
       "name": "PT Bumi Resources Tbk"
     },
     "BUVA": {
-      "price": 296,
+      "price": 294,
       "prevClose": 290,
-      "changePct": 2.07,
+      "changePct": 1.38,
       "high52": 2320,
       "low52": 250,
       "support": 258,
@@ -800,9 +800,9 @@
       "name": "PT Eagle High Plantations Tbk"
     },
     "BYAN": {
-      "price": 9725,
+      "price": 9500,
       "prevClose": 8675,
-      "changePct": 12.1,
+      "changePct": 9.51,
       "high52": 18650,
       "low52": 8125,
       "support": 8250,
@@ -824,9 +824,9 @@
       "name": "PT Cahayaputra Asa Keramik Tbk"
     },
     "CARS": {
-      "price": 85,
+      "price": 84,
       "prevClose": 86,
-      "changePct": -1.16,
+      "changePct": -2.33,
       "high52": 137,
       "low52": 75,
       "support": 82,
@@ -848,12 +848,12 @@
       "name": "PT Cahaya Aero Services Tbk"
     },
     "CBDK": {
-      "price": 2440,
+      "price": 2430,
       "prevClose": 2500,
-      "changePct": -2.4,
+      "changePct": -2.8,
       "high52": 9775,
       "low52": 2320,
-      "support": 2440,
+      "support": 2430,
       "resistance": 3080,
       "avg": 3160,
       "currency": "IDR",
@@ -872,9 +872,9 @@
       "name": "PT Cakra Buana Resources Energi Tbk"
     },
     "CDIA": {
-      "price": 380,
+      "price": 374,
       "prevClose": 386,
-      "changePct": -1.55,
+      "changePct": -3.11,
       "high52": 2130,
       "low52": 306,
       "support": 310,
@@ -908,13 +908,13 @@
       "name": "PT Cita Mineral Investindo Tbk"
     },
     "CITY": {
-      "price": 141,
+      "price": 142,
       "prevClose": 117,
-      "changePct": 20.51,
+      "changePct": 21.37,
       "high52": 474,
       "low52": 101,
       "support": 107,
-      "resistance": 141,
+      "resistance": 142,
       "avg": 142,
       "currency": "IDR",
       "name": "PT Natura City Developments Tbk"
@@ -968,9 +968,9 @@
       "name": "PT Indokripto Koin Semesta Tbk"
     },
     "CTRA": {
-      "price": 498,
+      "price": 496,
       "prevClose": 488,
-      "changePct": 2.05,
+      "changePct": 1.64,
       "high52": 990,
       "low52": 484,
       "support": 488,
@@ -980,9 +980,9 @@
       "name": "PT Ciputra Development Tbk"
     },
     "CUAN": {
-      "price": 382,
+      "price": 376,
       "prevClose": 400,
-      "changePct": -4.5,
+      "changePct": -6,
       "high52": 2870,
       "low52": 314,
       "support": 320,
@@ -992,9 +992,9 @@
       "name": "PT Petrindo Jaya Kreasi Tbk"
     },
     "DATA": {
-      "price": 845,
+      "price": 830,
       "prevClose": 850,
-      "changePct": -0.59,
+      "changePct": -2.35,
       "high52": 6050,
       "low52": 770,
       "support": 805,
@@ -1004,9 +1004,9 @@
       "name": "PT Remala Abadi Tbk"
     },
     "DCII": {
-      "price": 140000,
+      "price": 140050,
       "prevClose": 139825,
-      "changePct": 0.13,
+      "changePct": 0.16,
       "high52": 260500,
       "low52": 139725,
       "support": 139825,
@@ -1028,9 +1028,9 @@
       "name": "PT Caturkarda Depo Bangunan Tbk"
     },
     "DEWA": {
-      "price": 242,
+      "price": 240,
       "prevClose": 248,
-      "changePct": -2.42,
+      "changePct": -3.23,
       "high52": 865,
       "low52": 206,
       "support": 214,
@@ -1088,9 +1088,9 @@
       "name": "PT Dharma Polimetal Tbk"
     },
     "DSNG": {
-      "price": 1275,
+      "price": 1270,
       "prevClose": 1285,
-      "changePct": -0.78,
+      "changePct": -1.17,
       "high52": 1875,
       "low52": 1045,
       "support": 1255,
@@ -1136,9 +1136,9 @@
       "name": "PT Dwi Guna Laksana Tbk"
     },
     "ECII": {
-      "price": 129,
+      "price": 128,
       "prevClose": 130,
-      "changePct": -0.77,
+      "changePct": -1.54,
       "high52": 270,
       "low52": 107,
       "support": 128,
@@ -1172,9 +1172,9 @@
       "name": "PT Elnusa Tbk"
     },
     "ELTY": {
-      "price": 19,
+      "price": 18,
       "prevClose": 19,
-      "changePct": 0,
+      "changePct": -5.26,
       "high52": 108,
       "low52": 17,
       "support": 17,
@@ -1184,9 +1184,9 @@
       "name": "PT Bakrieland Development Tbk"
     },
     "EMAS": {
-      "price": 4710,
+      "price": 4760,
       "prevClose": 4740,
-      "changePct": -0.63,
+      "changePct": 0.42,
       "high52": 10175,
       "low52": 3570,
       "support": 4440,
@@ -1196,9 +1196,9 @@
       "name": "PT Merdeka Gold Resources Tbk"
     },
     "EMTK": {
-      "price": 270,
+      "price": 268,
       "prevClose": 268,
-      "changePct": 0.75,
+      "changePct": 0,
       "high52": 1500,
       "low52": 256,
       "support": 266,
@@ -1208,9 +1208,9 @@
       "name": "PT Elang Mahkota Teknologi Tbk"
     },
     "ENRG": {
-      "price": 550,
+      "price": 555,
       "prevClose": 555,
-      "changePct": -0.9,
+      "changePct": 0,
       "high52": 2420,
       "low52": 505,
       "support": 535,
@@ -1220,9 +1220,9 @@
       "name": "PT Energi Mega Persada Tbk"
     },
     "ERAA": {
-      "price": 520,
+      "price": 525,
       "prevClose": 530,
-      "changePct": -1.89,
+      "changePct": -0.94,
       "high52": 655,
       "low52": 314,
       "support": 472,
@@ -1244,9 +1244,9 @@
       "name": "PT Sinar Eka Selaras Tbk"
     },
     "ESSA": {
-      "price": 510,
+      "price": 505,
       "prevClose": 510,
-      "changePct": 0,
+      "changePct": -0.98,
       "high52": 995,
       "low52": 444,
       "support": 478,
@@ -1256,21 +1256,21 @@
       "name": "PT ESSA Industries Indonesia Tbk."
     },
     "EURO": {
-      "price": 745,
+      "price": 760,
       "prevClose": 790,
-      "changePct": -5.7,
+      "changePct": -3.8,
       "high52": 3750,
       "low52": 232,
-      "support": 745,
+      "support": 760,
       "resistance": 1010,
       "avg": 1150,
       "currency": "IDR",
       "name": "PT Estee Gold Feet Tbk"
     },
     "EXCL": {
-      "price": 1710,
+      "price": 1705,
       "prevClose": 1720,
-      "changePct": -0.58,
+      "changePct": -0.87,
       "high52": 4550,
       "low52": 1410,
       "support": 1460,
@@ -1292,9 +1292,9 @@
       "name": "PT Fast Food Indonesia Tbk"
     },
     "FILM": {
-      "price": 280,
+      "price": 278,
       "prevClose": 280,
-      "changePct": 0,
+      "changePct": -0.71,
       "high52": 14750,
       "low52": 254,
       "support": 272,
@@ -1304,9 +1304,9 @@
       "name": "PT.MD Entertainment Tbk"
     },
     "GEMS": {
-      "price": 6850,
+      "price": 6825,
       "prevClose": 6925,
-      "changePct": -1.08,
+      "changePct": -1.44,
       "high52": 9000,
       "low52": 5625,
       "support": 6750,
@@ -1316,12 +1316,12 @@
       "name": "PT Golden Energy Mines Tbk"
     },
     "GHON": {
-      "price": 1565,
+      "price": 1515,
       "prevClose": 1550,
-      "changePct": 0.97,
+      "changePct": -2.26,
       "high52": 2400,
       "low52": 1430,
-      "support": 1540,
+      "support": 1515,
       "resistance": 1630,
       "avg": 1595,
       "currency": "IDR",
@@ -1340,9 +1340,9 @@
       "name": "PT. Garuda Indonesia (Persero) Tbk"
     },
     "GJTL": {
-      "price": 1160,
+      "price": 1165,
       "prevClose": 1145,
-      "changePct": 1.31,
+      "changePct": 1.75,
       "high52": 1455,
       "low52": 950,
       "support": 1050,
@@ -1352,9 +1352,9 @@
       "name": "PT. Gajah Tunggal Tbk"
     },
     "GMFI": {
-      "price": 39,
+      "price": 40,
       "prevClose": 41,
-      "changePct": -4.88,
+      "changePct": -2.44,
       "high52": 152,
       "low52": 35,
       "support": 37,
@@ -1364,9 +1364,9 @@
       "name": "PT Garuda Maintenance Facility Aero Asia Tbk"
     },
     "GMTD": {
-      "price": 735,
+      "price": 730,
       "prevClose": 735,
-      "changePct": 0,
+      "changePct": -0.68,
       "high52": 3500,
       "low52": 685,
       "support": 730,
@@ -1388,9 +1388,9 @@
       "name": "PT Visi Telekomunikasi Infrastruktur Tbk"
     },
     "GOLF": {
-      "price": 116,
+      "price": 113,
       "prevClose": 118,
-      "changePct": -1.69,
+      "changePct": -4.24,
       "high52": 454,
       "low52": 108,
       "support": 110,
@@ -1424,9 +1424,9 @@
       "name": "PT GTS Internasional Tbk"
     },
     "GWSA": {
-      "price": 129,
+      "price": 127,
       "prevClose": 129,
-      "changePct": 0,
+      "changePct": -1.55,
       "high52": 286,
       "low52": 105,
       "support": 120,
@@ -1460,9 +1460,9 @@
       "name": "PT Humpuss Intermoda Transportasi Tbk."
     },
     "HUMI": {
-      "price": 82,
+      "price": 81,
       "prevClose": 81,
-      "changePct": 1.23,
+      "changePct": 0,
       "high52": 390,
       "low52": 69,
       "support": 73,
@@ -1484,14 +1484,14 @@
       "name": "PT Inti Bangun Sejahtera Tbk"
     },
     "ICBP": {
-      "price": 6900,
+      "price": 7050,
       "prevClose": 6900,
-      "changePct": 0,
+      "changePct": 2.17,
       "high52": 8650,
       "low52": 5400,
       "support": 5475,
-      "resistance": 6950,
-      "avg": 6500,
+      "resistance": 7050,
+      "avg": 6525,
       "currency": "IDR",
       "name": "PT Indofood CBP Sukses Makmur Tbk"
     },
@@ -1544,9 +1544,9 @@
       "name": "PT Vale Indonesia Tbk"
     },
     "INDF": {
-      "price": 7025,
+      "price": 7075,
       "prevClose": 6950,
-      "changePct": 1.08,
+      "changePct": 1.8,
       "high52": 7600,
       "low52": 5850,
       "support": 6275,
@@ -1568,9 +1568,9 @@
       "name": "PT Indah Kiat Pulp & Paper Tbk"
     },
     "INPC": {
-      "price": 115,
+      "price": 117,
       "prevClose": 116,
-      "changePct": -0.86,
+      "changePct": 0.86,
       "high52": 318,
       "low52": 102,
       "support": 106,
@@ -1616,9 +1616,9 @@
       "name": "PT MNC Vision Networks Tbk"
     },
     "ITMA": {
-      "price": 990,
+      "price": 980,
       "prevClose": 985,
-      "changePct": 0.51,
+      "changePct": -0.51,
       "high52": 2920,
       "low52": 935,
       "support": 975,
@@ -1628,9 +1628,9 @@
       "name": "PT Sumber Energi Andalan Tbk"
     },
     "ITMG": {
-      "price": 24675,
+      "price": 24650,
       "prevClose": 24500,
-      "changePct": 0.71,
+      "changePct": 0.61,
       "high52": 30700,
       "low52": 20900,
       "support": 23625,
@@ -1640,9 +1640,9 @@
       "name": "PT Indo Tambangraya Megah Tbk"
     },
     "JARR": {
-      "price": 2320,
+      "price": 2280,
       "prevClose": 2250,
-      "changePct": 3.11,
+      "changePct": 1.33,
       "high52": 4600,
       "low52": 1155,
       "support": 2230,
@@ -1652,9 +1652,9 @@
       "name": "PT Jhonlin Agro Raya Tbk"
     },
     "JECX": {
-      "price": 915,
+      "price": 925,
       "prevClose": 935,
-      "changePct": -2.14,
+      "changePct": -1.07,
       "high52": 1950,
       "low52": 845,
       "support": 885,
@@ -1664,9 +1664,9 @@
       "name": "PT Nitrasanata Dharma"
     },
     "JGLE": {
-      "price": 31,
+      "price": 30,
       "prevClose": 30,
-      "changePct": 3.33,
+      "changePct": 0,
       "high52": 109,
       "low52": 18,
       "support": 29,
@@ -1688,9 +1688,9 @@
       "name": "PT Jakarta International Hotels & Development Tbk"
     },
     "JSMR": {
-      "price": 2630,
+      "price": 2600,
       "prevClose": 2600,
-      "changePct": 1.15,
+      "changePct": 0,
       "high52": 3860,
       "low52": 1965,
       "support": 2540,
@@ -1700,9 +1700,9 @@
       "name": "PT Jasa Marga (Persero) Tbk"
     },
     "KAEF": {
-      "price": 346,
+      "price": 348,
       "prevClose": 342,
-      "changePct": 1.17,
+      "changePct": 1.75,
       "high52": 785,
       "low52": 324,
       "support": 334,
@@ -1712,9 +1712,9 @@
       "name": "PT Kimia Farma Tbk"
     },
     "KBAG": {
-      "price": 29,
+      "price": 31,
       "prevClose": 29,
-      "changePct": 0,
+      "changePct": 6.9,
       "high52": 68,
       "low52": 25,
       "support": 26,
@@ -1736,9 +1736,9 @@
       "name": "PT First Media Tbk"
     },
     "KETR": {
-      "price": 515,
+      "price": 510,
       "prevClose": 515,
-      "changePct": 0,
+      "changePct": -0.97,
       "high52": 1595,
       "low52": 364,
       "support": 440,
@@ -1808,9 +1808,9 @@
       "name": "PT MSIG Life Insurance Indonesia Tbk"
     },
     "LINK": {
-      "price": 800,
+      "price": 825,
       "prevClose": 810,
-      "changePct": -1.23,
+      "changePct": 1.85,
       "high52": 5300,
       "low52": 750,
       "support": 785,
@@ -1844,9 +1844,9 @@
       "name": "PT Lippo General Insurance Tbk"
     },
     "LPIN": {
-      "price": 466,
+      "price": 462,
       "prevClose": 472,
-      "changePct": -1.27,
+      "changePct": -2.12,
       "high52": 490,
       "low52": 360,
       "support": 420,
@@ -1856,9 +1856,9 @@
       "name": "PT Multi Prima Sejahtera Tbk"
     },
     "LPKR": {
-      "price": 41,
+      "price": 42,
       "prevClose": 42,
-      "changePct": -2.38,
+      "changePct": 0,
       "high52": 143,
       "low52": 37,
       "support": 39,
@@ -1880,9 +1880,9 @@
       "name": "PT Star Pacific Tbk"
     },
     "LPPF": {
-      "price": 1635,
+      "price": 1640,
       "prevClose": 1650,
-      "changePct": -0.91,
+      "changePct": -0.61,
       "high52": 1990,
       "low52": 1420,
       "support": 1595,
@@ -1928,9 +1928,9 @@
       "name": "PT Mandiri Herindo Adiperkasa Tbk"
     },
     "MAIN": {
-      "price": 545,
+      "price": 550,
       "prevClose": 545,
-      "changePct": 0,
+      "changePct": 0.92,
       "high52": 1105,
       "low52": 498,
       "support": 540,
@@ -1964,9 +1964,9 @@
       "name": "PT Bank Mayapada Internasional Tbk"
     },
     "MBMA": {
-      "price": 350,
+      "price": 346,
       "prevClose": 360,
-      "changePct": -2.78,
+      "changePct": -3.89,
       "high52": 945,
       "low52": 280,
       "support": 294,
@@ -2000,9 +2000,9 @@
       "name": "PT Intermedia Capital Tbk"
     },
     "MDKA": {
-      "price": 1835,
+      "price": 1830,
       "prevClose": 1840,
-      "changePct": -0.27,
+      "changePct": -0.54,
       "high52": 3960,
       "low52": 1710,
       "support": 1710,
@@ -2024,9 +2024,9 @@
       "name": "PT Emdeki Utama Tbk"
     },
     "MEDC": {
-      "price": 1170,
+      "price": 1165,
       "prevClose": 1165,
-      "changePct": 0.43,
+      "changePct": 0,
       "high52": 2000,
       "low52": 1005,
       "support": 1140,
@@ -2048,9 +2048,9 @@
       "name": "PT Bank Mega Tbk"
     },
     "MERI": {
-      "price": 87,
+      "price": 88,
       "prevClose": 88,
-      "changePct": -1.14,
+      "changePct": 0,
       "high52": 222,
       "low52": 75,
       "support": 78,
@@ -2072,9 +2072,9 @@
       "name": "PT NexAI Digital Infrastruktur Tbk"
     },
     "MINA": {
-      "price": 146,
+      "price": 145,
       "prevClose": 147,
-      "changePct": -0.68,
+      "changePct": -1.36,
       "high52": 725,
       "low52": 117,
       "support": 124,
@@ -2084,9 +2084,9 @@
       "name": "PT Sanurhasta Mitra Tbk"
     },
     "MIRA": {
-      "price": 17,
+      "price": 18,
       "prevClose": 17,
-      "changePct": 0,
+      "changePct": 5.88,
       "high52": 49,
       "low52": 15,
       "support": 17,
@@ -2096,9 +2096,9 @@
       "name": "PT Mitra International Resources Tbk"
     },
     "MITI": {
-      "price": 208,
+      "price": 212,
       "prevClose": 206,
-      "changePct": 0.97,
+      "changePct": 2.91,
       "high52": 525,
       "low52": 135,
       "support": 194,
@@ -2120,9 +2120,9 @@
       "name": "PT Metropolitan Kentjana Tbk"
     },
     "MLPL": {
-      "price": 56,
+      "price": 55,
       "prevClose": 55,
-      "changePct": 1.82,
+      "changePct": 0,
       "high52": 184,
       "low52": 51,
       "support": 51,
@@ -2132,9 +2132,9 @@
       "name": "PT Multipolar Tbk"
     },
     "MLPT": {
-      "price": 334,
+      "price": 328,
       "prevClose": 322,
-      "changePct": 3.73,
+      "changePct": 1.86,
       "high52": 3442,
       "low52": 308,
       "support": 322,
@@ -2144,9 +2144,9 @@
       "name": "PT Multipolar Technology Tbk"
     },
     "MMLP": {
-      "price": 238,
+      "price": 240,
       "prevClose": 250,
-      "changePct": -4.8,
+      "changePct": -4,
       "high52": 680,
       "low52": 208,
       "support": 214,
@@ -2156,9 +2156,9 @@
       "name": "PT Mega Manunggal Property Tbk"
     },
     "MNCN": {
-      "price": 76,
+      "price": 75,
       "prevClose": 74,
-      "changePct": 2.7,
+      "changePct": 1.35,
       "high52": 302,
       "low52": 67,
       "support": 70,
@@ -2168,12 +2168,12 @@
       "name": "PT. Media Nusantara Citra Tbk"
     },
     "MORA": {
-      "price": 1060,
+      "price": 1055,
       "prevClose": 1125,
-      "changePct": -5.78,
+      "changePct": -6.22,
       "high52": 16725,
       "low52": 1050,
-      "support": 1060,
+      "support": 1055,
       "resistance": 2620,
       "avg": 3270,
       "currency": "IDR",
@@ -2216,9 +2216,9 @@
       "name": "PT Maha Properti Indonesia Tbk"
     },
     "MSIN": {
-      "price": 95,
+      "price": 96,
       "prevClose": 96,
-      "changePct": -1.04,
+      "changePct": 0,
       "high52": 1450,
       "low52": 79,
       "support": 79,
@@ -2288,13 +2288,13 @@
       "name": "PT Metropolitan Land Tbk"
     },
     "MUTU": {
-      "price": 110,
+      "price": 109,
       "prevClose": 107,
-      "changePct": 2.8,
+      "changePct": 1.87,
       "high52": 167,
       "low52": 90,
       "support": 97,
-      "resistance": 110,
+      "resistance": 109,
       "avg": 113,
       "currency": "IDR",
       "name": "PT Mutuagung Lestari Tbk"
@@ -2312,9 +2312,9 @@
       "name": "PT Samindo Resources Tbk"
     },
     "NCKL": {
-      "price": 715,
+      "price": 720,
       "prevClose": 715,
-      "changePct": 0,
+      "changePct": 0.7,
       "high52": 1595,
       "low52": 645,
       "support": 700,
@@ -2348,9 +2348,9 @@
       "name": "PT PAM Mineral Tbk"
     },
     "NIKL": {
-      "price": 143,
+      "price": 145,
       "prevClose": 144,
-      "changePct": -0.69,
+      "changePct": 0.69,
       "high52": 510,
       "low52": 133,
       "support": 137,
@@ -2372,9 +2372,9 @@
       "name": "PT Bank OCBC NISP Tbk"
     },
     "NOBU": {
-      "price": 398,
+      "price": 396,
       "prevClose": 396,
-      "changePct": 0.51,
+      "changePct": 0,
       "high52": 745,
       "low52": 352,
       "support": 366,
@@ -2384,9 +2384,9 @@
       "name": "PT Bank Nationalnobu Tbk"
     },
     "NRCA": {
-      "price": 402,
+      "price": 404,
       "prevClose": 410,
-      "changePct": -1.95,
+      "changePct": -1.46,
       "high52": 2160,
       "low52": 350,
       "support": 378,
@@ -2396,9 +2396,9 @@
       "name": "PT Nusa Raya Cipta Tbk"
     },
     "OASA": {
-      "price": 163,
+      "price": 165,
       "prevClose": 166,
-      "changePct": -1.81,
+      "changePct": -0.6,
       "high52": 590,
       "low52": 149,
       "support": 158,
@@ -2408,9 +2408,9 @@
       "name": "PT Maharaksa Biru Energi Tbk"
     },
     "PACK": {
-      "price": 334,
+      "price": 332,
       "prevClose": 340,
-      "changePct": -1.76,
+      "changePct": -2.35,
       "high52": 3280,
       "low52": 143,
       "support": 276,
@@ -2432,9 +2432,9 @@
       "name": "PT Minna Padi Investama Sekuritas Tbk"
     },
     "PALM": {
-      "price": 218,
+      "price": 222,
       "prevClose": 220,
-      "changePct": -0.91,
+      "changePct": 0.91,
       "high52": 496,
       "low52": 202,
       "support": 204,
@@ -2456,9 +2456,9 @@
       "name": "PT Bima Sakti Pertiwi Tbk"
     },
     "PANI": {
-      "price": 3490,
+      "price": 3480,
       "prevClose": 3540,
-      "changePct": -1.41,
+      "changePct": -1.69,
       "high52": 14425,
       "low52": 3280,
       "support": 3450,
@@ -2516,9 +2516,9 @@
       "name": "PT. Penta Valent Tbk"
     },
     "PGAS": {
-      "price": 1510,
+      "price": 1515,
       "prevClose": 1520,
-      "changePct": -0.66,
+      "changePct": -0.33,
       "high52": 2520,
       "low52": 1125,
       "support": 1215,
@@ -2528,9 +2528,9 @@
       "name": "PT Perusahaan Gas Negara (Persero) Tbk"
     },
     "PGEO": {
-      "price": 895,
+      "price": 890,
       "prevClose": 895,
-      "changePct": 0,
+      "changePct": -0.56,
       "high52": 1305,
       "low52": 770,
       "support": 870,
@@ -2540,14 +2540,14 @@
       "name": "PT Pertamina Geothermal Energy Tbk"
     },
     "PGUN": {
-      "price": 8125,
+      "price": 8175,
       "prevClose": 8250,
-      "changePct": -1.52,
+      "changePct": -0.91,
       "high52": 16000,
       "low52": 5250,
       "support": 8000,
       "resistance": 8400,
-      "avg": 8575,
+      "avg": 8600,
       "currency": "IDR",
       "name": "PT Pradiksi Gunatama Tbk"
     },
@@ -2576,9 +2576,9 @@
       "name": "PT Bank Pan Indonesia Tbk"
     },
     "PNBS": {
-      "price": 36,
+      "price": 37,
       "prevClose": 36,
-      "changePct": 0,
+      "changePct": 2.78,
       "high52": 64,
       "low52": 33,
       "support": 34,
@@ -2612,9 +2612,9 @@
       "name": "PT Panin Financial Tbk"
     },
     "PORT": {
-      "price": 895,
+      "price": 875,
       "prevClose": 875,
-      "changePct": 2.29,
+      "changePct": 0,
       "high52": 1575,
       "low52": 720,
       "support": 865,
@@ -2648,9 +2648,9 @@
       "name": "PT Pembangunan Perumahan Properti Tbk"
     },
     "PSKT": {
-      "price": 226,
+      "price": 228,
       "prevClose": 232,
-      "changePct": -2.59,
+      "changePct": -1.72,
       "high52": 438,
       "low52": 141,
       "support": 154,
@@ -2660,9 +2660,9 @@
       "name": "PT Red Planet Indonesia Tbk"
     },
     "PTBA": {
-      "price": 2950,
+      "price": 2940,
       "prevClose": 2970,
-      "changePct": -0.67,
+      "changePct": -1.01,
       "high52": 3490,
       "low52": 2220,
       "support": 2940,
@@ -2684,9 +2684,9 @@
       "name": "PT PP (Persero) Tbk"
     },
     "PTRO": {
-      "price": 2340,
+      "price": 2300,
       "prevClose": 2460,
-      "changePct": -4.88,
+      "changePct": -6.5,
       "high52": 13000,
       "low52": 1915,
       "support": 2010,
@@ -2696,13 +2696,13 @@
       "name": "PT Petrosea Tbk"
     },
     "PWON": {
-      "price": 302,
+      "price": 300,
       "prevClose": 292,
-      "changePct": 3.42,
+      "changePct": 2.74,
       "high52": 440,
       "low52": 236,
       "support": 254,
-      "resistance": 302,
+      "resistance": 300,
       "avg": 272,
       "currency": "IDR",
       "name": "PT Pakuwon Jati Tbk"
@@ -2720,9 +2720,9 @@
       "name": "PT Tripar Multivision Plus Tbk"
     },
     "RAJA": {
-      "price": 448,
+      "price": 444,
       "prevClose": 448,
-      "changePct": 0,
+      "changePct": -0.89,
       "high52": 1695,
       "low52": 360,
       "support": 364,
@@ -2780,9 +2780,9 @@
       "name": "PT Raharja Energi Cepu Tbk"
     },
     "RISE": {
-      "price": 468,
+      "price": 466,
       "prevClose": 468,
-      "changePct": 0,
+      "changePct": -0.43,
       "high52": 9459.459,
       "low52": 448,
       "support": 466,
@@ -2792,12 +2792,12 @@
       "name": "PT Jaya Sukses Makmur Sentosa Tbk"
     },
     "ROTI": {
-      "price": 416,
+      "price": 414,
       "prevClose": 422,
-      "changePct": -1.42,
+      "changePct": -1.9,
       "high52": 815,
       "low52": 408,
-      "support": 416,
+      "support": 414,
       "resistance": 510,
       "avg": 525,
       "currency": "IDR",
@@ -2816,9 +2816,9 @@
       "name": "PT Kedoya Adyaraya Tbk"
     },
     "SAME": {
-      "price": 222,
+      "price": 218,
       "prevClose": 216,
-      "changePct": 2.78,
+      "changePct": 0.93,
       "high52": 444,
       "low52": 214,
       "support": 216,
@@ -2828,9 +2828,9 @@
       "name": "PT Sarana Meditama Metropolitan Tbk"
     },
     "SCMA": {
-      "price": 134,
+      "price": 133,
       "prevClose": 135,
-      "changePct": -0.74,
+      "changePct": -1.48,
       "high52": 454,
       "low52": 121,
       "support": 127,
@@ -2840,9 +2840,9 @@
       "name": "PT Surya Citra Media Tbk"
     },
     "SILO": {
-      "price": 1585,
+      "price": 1570,
       "prevClose": 1550,
-      "changePct": 2.26,
+      "changePct": 1.29,
       "high52": 2880,
       "low52": 1475,
       "support": 1480,
@@ -2864,9 +2864,9 @@
       "name": "PT Salim Ivomas Pratama Tbk"
     },
     "SINI": {
-      "price": 9800,
+      "price": 9675,
       "prevClose": 10000,
-      "changePct": -2,
+      "changePct": -3.25,
       "high52": 19200,
       "low52": 5500,
       "support": 7450,
@@ -2876,9 +2876,9 @@
       "name": "PT Singaraja Putra Tbk"
     },
     "SMAR": {
-      "price": 6475,
+      "price": 6400,
       "prevClose": 6325,
-      "changePct": 2.37,
+      "changePct": 1.19,
       "high52": 9850,
       "low52": 4000,
       "support": 6300,
@@ -2912,9 +2912,9 @@
       "name": "PT Solusi Bangun Indonesia Tbk"
     },
     "SMDM": {
-      "price": 382,
+      "price": 396,
       "prevClose": 396,
-      "changePct": -3.54,
+      "changePct": 0,
       "high52": 1315,
       "low52": 346,
       "support": 376,
@@ -2924,9 +2924,9 @@
       "name": "PT Suryamas Dutamakmur Tbk"
     },
     "SMGR": {
-      "price": 1580,
+      "price": 1570,
       "prevClose": 1605,
-      "changePct": -1.56,
+      "changePct": -2.18,
       "high52": 3260,
       "low52": 1265,
       "support": 1335,
@@ -2960,9 +2960,9 @@
       "name": "PT Sona Topas Tourism Industry Tbk"
     },
     "SRTG": {
-      "price": 1645,
+      "price": 1655,
       "prevClose": 1645,
-      "changePct": 0,
+      "changePct": 0.61,
       "high52": 2040,
       "low52": 1235,
       "support": 1565,
@@ -2996,9 +2996,9 @@
       "name": "PT Lovina Beach Brewery Tbk"
     },
     "SUPA": {
-      "price": 344,
+      "price": 346,
       "prevClose": 346,
-      "changePct": -0.58,
+      "changePct": 0,
       "high52": 1350,
       "low52": 296,
       "support": 314,
@@ -3020,9 +3020,9 @@
       "name": "PT Solusi Tunas Pratama Tbk"
     },
     "TAPG": {
-      "price": 1725,
+      "price": 1720,
       "prevClose": 1710,
-      "changePct": 0.88,
+      "changePct": 0.58,
       "high52": 2480,
       "low52": 1255,
       "support": 1710,
@@ -3032,21 +3032,21 @@
       "name": "PT Triputra Agro Persada Tbk"
     },
     "TBIG": {
-      "price": 1255,
+      "price": 1260,
       "prevClose": 1235,
-      "changePct": 1.62,
+      "changePct": 2.02,
       "high52": 2950,
       "low52": 950,
       "support": 990,
-      "resistance": 1255,
+      "resistance": 1260,
       "avg": 1245,
       "currency": "IDR",
       "name": "PT Tower Bersama Infrastructure Tbk"
     },
     "TEBE": {
-      "price": 1495,
+      "price": 1490,
       "prevClose": 1355,
-      "changePct": 10.33,
+      "changePct": 9.96,
       "high52": 3100,
       "low52": 760,
       "support": 1315,
@@ -3056,9 +3056,9 @@
       "name": "PT Dana Brata Luhur Tbk"
     },
     "TINS": {
-      "price": 3150,
+      "price": 3140,
       "prevClose": 3060,
-      "changePct": 2.94,
+      "changePct": 2.61,
       "high52": 5000,
       "low52": 2650,
       "support": 3050,
@@ -3092,9 +3092,9 @@
       "name": "PT Pabrik Kertas Tjiwi Kimia Tbk"
     },
     "TLKM": {
-      "price": 2080,
+      "price": 2070,
       "prevClose": 2040,
-      "changePct": 1.96,
+      "changePct": 1.47,
       "high52": 3990,
       "low52": 1770,
       "support": 1880,
@@ -3116,9 +3116,9 @@
       "name": "PT TBS Energi Utama Tbk"
     },
     "TOWR": {
-      "price": 382,
+      "price": 380,
       "prevClose": 380,
-      "changePct": 0.53,
+      "changePct": 0,
       "high52": 650,
       "low52": 310,
       "support": 334,
@@ -3128,9 +3128,9 @@
       "name": "PT Sarana Menara Nusantara Tbk."
     },
     "TPIA": {
-      "price": 1225,
+      "price": 1220,
       "prevClose": 1295,
-      "changePct": -5.41,
+      "changePct": -5.79,
       "high52": 7875,
       "low52": 1080,
       "support": 1155,
@@ -3164,9 +3164,9 @@
       "name": "PT Perintis Triniti Properti Tbk"
     },
     "TRJA": {
-      "price": 99,
+      "price": 100,
       "prevClose": 98,
-      "changePct": 1.02,
+      "changePct": 2.04,
       "high52": 199,
       "low52": 89,
       "support": 94,
@@ -3212,9 +3212,9 @@
       "name": "PT Pakuan Tbk"
     },
     "UCID": {
-      "price": 380,
+      "price": 382,
       "prevClose": 382,
-      "changePct": -0.52,
+      "changePct": 0,
       "high52": 560,
       "low52": 354,
       "support": 378,
@@ -3260,21 +3260,21 @@
       "name": "PT United Tractors Tbk"
     },
     "VISI": {
-      "price": 505,
+      "price": 500,
       "prevClose": 520,
-      "changePct": -2.88,
+      "changePct": -3.85,
       "high52": 1470,
       "low52": 187,
-      "support": 505,
+      "support": 500,
       "resistance": 695,
       "avg": 855,
       "currency": "IDR",
       "name": "PT Satu Visi Putra Tbk"
     },
     "VIVA": {
-      "price": 27,
+      "price": 26,
       "prevClose": 27,
-      "changePct": 0,
+      "changePct": -3.7,
       "high52": 84,
       "low52": 25,
       "support": 25,
@@ -3284,9 +3284,9 @@
       "name": "PT Visi Media Asia Tbk"
     },
     "VKTR": {
-      "price": 290,
+      "price": 288,
       "prevClose": 304,
-      "changePct": -4.61,
+      "changePct": -5.26,
       "high52": 1340,
       "low52": 226,
       "support": 230,
@@ -3296,9 +3296,9 @@
       "name": "PT VKTR Teknologi Mobilitas Tbk"
     },
     "VOKS": {
-      "price": 368,
+      "price": 362,
       "prevClose": 372,
-      "changePct": -1.08,
+      "changePct": -2.69,
       "high52": 400,
       "low52": 182,
       "support": 196,
@@ -3332,9 +3332,9 @@
       "name": "PT Wijaya Karya Bangunan Gedung Tbk"
     },
     "WIFI": {
-      "price": 880,
+      "price": 870,
       "prevClose": 910,
-      "changePct": -3.3,
+      "changePct": -4.4,
       "high52": 4420,
       "low52": 730,
       "support": 740,
@@ -3392,9 +3392,9 @@
       "name": "PT Waskita Beton Precast Tbk"
     },
     "WTON": {
-      "price": 62,
+      "price": 63,
       "prevClose": 63,
-      "changePct": -1.59,
+      "changePct": 0,
       "high52": 108,
       "low52": 56,
       "support": 58,
@@ -3416,12 +3416,12 @@
       "name": "PT Dosni Roha Indonesia Tbk"
     },
     "ZONE": {
-      "price": 600,
+      "price": 615,
       "prevClose": 645,
-      "changePct": -6.98,
+      "changePct": -4.65,
       "high52": 1000,
       "low52": 308,
-      "support": 600,
+      "support": 605,
       "resistance": 695,
       "avg": 665,
       "currency": "IDR",
