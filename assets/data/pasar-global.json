@@ -15,7 +15,7 @@
    "SWRV → SCHA (Schwab U.S. Small-Cap ETF)"
   ],
   "yearlyNote": "Return per tahun kalender. ETF: dari harga penutupan, tahun berjalan = YTD. Reksa dana & obligasi: estimasi referensi, bukan angka resmi produk; cek factsheet/prospektus.",
-  "builtAt": "2026-11-24T21:04:09.663Z",
+  "builtAt": "2026-11-24T22:03:42.404Z",
   "stooqUpdated": 203,
   "indonesia2026": {
    "asOf": "2026-11-04",
@@ -838,7 +838,7 @@
    "country": "Chile",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": -1.2,
+   "cagr": -1.1,
    "aum": "$320 M",
    "expense": 0.58,
    "risk": "Tinggi",
@@ -1632,7 +1632,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 7.8,
+   "cagr": 7.7,
    "aum": "$55 B",
    "expense": 0.06,
    "risk": "Moderat",
@@ -2307,7 +2307,7 @@
    "country": "Norway",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.1,
+   "cagr": 6.2,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2345,7 +2345,7 @@
    "country": "Finland",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 4.2,
+   "cagr": 4.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat",
@@ -2421,7 +2421,7 @@
    "country": "Kuwait",
    "tier": "Emerging",
    "assetClass": "ETF",
-   "cagr": 5.2,
+   "cagr": 5.3,
    "aum": null,
    "expense": null,
    "risk": "Moderat-Tinggi",
@@ -3656,7 +3656,7 @@
    "country": "Global",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 6.9,
+   "cagr": 7,
    "aum": null,
    "expense": null,
    "risk": "Tinggi",
@@ -3903,7 +3903,7 @@
    "country": "USA",
    "tier": "Developed",
    "assetClass": "ETF",
-   "cagr": 17.5,
+   "cagr": 17.6,
    "aum": null,
    "expense": null,
    "risk": "Sangat Tinggi",
@@ -6696,7 +6696,7 @@
     },
     {
      "year": 2026,
-     "return": 27.1
+     "return": 27.2
     }
    ]
   },
@@ -6800,7 +6800,7 @@
     },
     {
      "year": 2026,
-     "return": 3.7
+     "return": 3.6
     }
    ]
   },
@@ -7164,7 +7164,7 @@
     },
     {
      "year": 2026,
-     "return": -43.2
+     "return": -43.3
     }
    ]
   },
