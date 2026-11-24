@@ -322,7 +322,8 @@
         if (!ks.length) return { text: 'Reksa dana yang ada di database Ewoks:\n- RDPU (Pasar Uang): paling aman, jangka pendek\n- RDPT (Pendapatan Tetap): obligasi, risiko menengah\n- RDC (Campuran): saham + obligasi\n- RDS (Saham): potensi tinggi, risiko tinggi\n- RDI (Indeks): mengikuti indeks\nPilih jenis yang mau dilihat:', opts: [['RDPU', '/rd rdpu'], ['RDPT', '/rd rdpt'], ['RDC', '/rd rdc'], ['RDS', '/rd rds'], ['RDI', '/rd rdi']] };
         var d = await jfile('pasar-global.json'), rdn = ((await jfile('rd-nav.json')) || {}).funds || {}, ins = d && d.instruments ? d.instruments : [], out = [], picks = [];
         ks.slice(0, 3).forEach(function (k) {
-            var R = RD[k], list = ins.filter(function (x) { return x.assetClass === R.cls && (!x.country || x.country === 'Indonesia') && x.cagrBasis === 'return1y' && isFinite(x.cagr); }).sort(function (a, b) { return b.cagr - a.cagr; }).slice(0, ks.length > 1 ? 3 : 5);
+            var r1 = function (x) { var n = rdn[String(x.id)]; return n && n.ret['1t'] != null ? n.ret['1t'] : (x.cagrBasis === 'return1y' && x.cagr != null ? x.cagr : NaN); };
+            var R = RD[k], list = ins.filter(function (x) { return x.assetClass === R.cls && (!x.country || x.country === 'Indonesia') && isFinite(r1(x)); }).sort(function (a, b) { return r1(b) - r1(a); }).slice(0, ks.length > 1 ? 3 : 5);
             var s = R.nama.toUpperCase() + '\n' + R.def;
             if (list.length) {
                 s += '\n\nTeratas di database (return 1 tahun, urut tertinggi) ada di kartu bawah.';

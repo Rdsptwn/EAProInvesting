@@ -114,6 +114,14 @@ async function pgLoad() {
     const res = await fetch(`${base}assets/data/pasar-global.json?v=${encodeURIComponent(v)}`);
     if (!res.ok) throw new Error('Data tidak ditemukan');
     pgData = await res.json();
+    // Reksa dana: return 1 tahun dari NAB harian (rd-nav.json) menggantikan angka arsip bila ada.
+    try {
+        const rn = await fetch(`${base}assets/data/rd-nav.json?v=${encodeURIComponent(v)}`).then((r) => (r.ok ? r.json() : null));
+        if (rn && rn.funds) pgData.instruments.forEach((i) => {
+            const f = rn.funds[String(i.id)];
+            if (f && f.ret && f.ret['1t'] != null) { i.cagr = f.ret['1t']; i.cagrBasis = 'return1y'; i.dataAsOf = f.d; i.metric = 'Return 1 tahun dari NAB harian'; i.status = 'terverifikasi'; }
+        });
+    } catch (_) { /* tetap pakai data arsip */ }
     return pgData;
 }
 

@@ -21,17 +21,9 @@
    "f": "RD1207",
    "nama": "Panin Dana Maksima"
   },
-  "13": {
-   "f": "RD3597",
-   "nama": "Bahana Likuid Syariah"
-  },
   "73": {
    "f": "RD423",
    "nama": "BNP Paribas Pesona"
-  },
-  "74": {
-   "f": "RD3371",
-   "nama": "Eastspring Investments Value Discovery Kelas B"
   },
   "77": {
    "f": "BRK1772",
@@ -45,17 +37,9 @@
    "f": "RD1543",
    "nama": "Schroder Dana Likuid"
   },
-  "104": {
-   "f": "RD632",
-   "nama": "Eastspring Investments Yield Discovery"
-  },
   "106": {
    "f": "RD1205",
    "nama": "Panin Dana Likuid"
-  },
-  "107": {
-   "f": "BRK1607",
-   "nama": "RD PT Mandiri Obligasi Negara"
   },
   "283": {
    "f": "RD125",
@@ -152,6 +136,142 @@
   "306": {
    "f": "BRK3244",
    "nama": "Reksa Dana Indeks Syailendra MSCI Indonesia Value Index Fund Kelas A"
+  },
+  "314": {
+   "f": "RD124",
+   "nama": "Bahana Dana Likuid Kelas G"
+  },
+  "315": {
+   "f": "RD429",
+   "nama": "BNP Paribas Rupiah Plus"
+  },
+  "316": {
+   "f": "RD555",
+   "nama": "Danamas Rupiah Plus"
+  },
+  "317": {
+   "f": "RD205",
+   "nama": "Batavia Dana Kas Maxima"
+  },
+  "318": {
+   "f": "RD1766",
+   "nama": "TRIM Kas 2 Kelas A"
+  },
+  "319": {
+   "f": "RD618",
+   "nama": "Reksa Dana BRI Seruni Pasar Uang II Kelas A"
+  },
+  "320": {
+   "f": "RD3206",
+   "nama": "Manulife Obligasi Unggulan Kelas A"
+  },
+  "321": {
+   "f": "RD553",
+   "nama": "Danamas Pasti"
+  },
+  "322": {
+   "f": "RD556",
+   "nama": "Danamas Stabil"
+  },
+  "323": {
+   "f": "RD1544",
+   "nama": "Schroder Dana Mantap Plus II"
+  },
+  "324": {
+   "f": "RD214",
+   "nama": "Batavia Dana Obligasi Ultima"
+  },
+  "325": {
+   "f": "RD3542",
+   "nama": "BNP Paribas Prima II Kelas RK1"
+  },
+  "326": {
+   "f": "RD1564",
+   "nama": "Schroder Syariah Balanced Fund"
+  },
+  "327": {
+   "f": "RD1551",
+   "nama": "Schroder Dynamic Balanced Fund"
+  },
+  "328": {
+   "f": "RD1629",
+   "nama": "Simas Satu"
+  },
+  "329": {
+   "f": "RD1658",
+   "nama": "Sucorinvest Premium Fund Kelas A"
+  },
+  "330": {
+   "f": "RD872",
+   "nama": "Mandiri Investa Syariah Berimbang Kelas A"
+  },
+  "331": {
+   "f": "RD1764",
+   "nama": "TRIM Kapital"
+  },
+  "332": {
+   "f": "RD216",
+   "nama": "Batavia Dana Saham"
+  },
+  "333": {
+   "f": "RD409",
+   "nama": "BNP Paribas Ekuitas"
+  },
+  "334": {
+   "f": "RD985",
+   "nama": "Manulife Dana Saham Kelas A"
+  },
+  "335": {
+   "f": "RD1366",
+   "nama": "Trim Syariah Saham Kelas A"
+  },
+  "336": {
+   "f": "RD412",
+   "nama": "BNP Paribas Infrastruktur Plus"
+  },
+  "337": {
+   "f": "RD424",
+   "nama": "BNP Paribas Pesona Syariah"
+  },
+  "338": {
+   "f": "RD218",
+   "nama": "Batavia Dana Saham Syariah"
+  },
+  "339": {
+   "f": "RD337",
+   "nama": "BNI AM Indeks IDX30"
+  },
+  "340": {
+   "f": "RD82",
+   "nama": "Reksa Dana Indeks Avrist IDX30"
+  },
+  "341": {
+   "f": "RD3901",
+   "nama": "Trimegah FTSE Indonesia Low Volatility Factor Index Kelas A"
+  },
+  "342": {
+   "f": "RD1743",
+   "nama": "Schroder Global Sharia Equity Fund"
+  },
+  "343": {
+   "f": "RD1735",
+   "nama": "Manulife Saham Syariah Asia Pasiﬁk Dollar AS"
+  },
+  "344": {
+   "f": "RD3523",
+   "nama": "Eastspring Syariah Equity Islamic Asia Pacific USD Kelas A"
+  },
+  "345": {
+   "f": "RD1725",
+   "nama": "Reksa Dana Syariah BNP Paribas Cakra Syariah USD Kelas RK1"
+  },
+  "346": {
+   "f": "RD3531",
+   "nama": "Reksa Dana Syariah BNP Paribas Greater China Equity Syariah USD Kelas RK1"
+  },
+  "347": {
+   "f": "RD3702",
+   "nama": "Eastspring Syariah Greater China Equity USD Kelas A"
   }
  }
 }
