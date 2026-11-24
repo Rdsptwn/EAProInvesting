@@ -320,13 +320,17 @@
     async function cmdRd(args) {
         var ks = rdKeys(args);
         if (!ks.length) return { text: 'Reksa dana yang ada di database Ewoks:\n- RDPU (Pasar Uang): paling aman, jangka pendek\n- RDPT (Pendapatan Tetap): obligasi, risiko menengah\n- RDC (Campuran): saham + obligasi\n- RDS (Saham): potensi tinggi, risiko tinggi\n- RDI (Indeks): mengikuti indeks\nPilih jenis yang mau dilihat:', opts: [['RDPU', '/rd rdpu'], ['RDPT', '/rd rdpt'], ['RDC', '/rd rdc'], ['RDS', '/rd rds'], ['RDI', '/rd rdi']] };
-        var d = await jfile('pasar-global.json'), ins = d && d.instruments ? d.instruments : [], out = [], picks = [];
+        var d = await jfile('pasar-global.json'), rdn = ((await jfile('rd-nav.json')) || {}).funds || {}, ins = d && d.instruments ? d.instruments : [], out = [], picks = [];
         ks.slice(0, 3).forEach(function (k) {
             var R = RD[k], list = ins.filter(function (x) { return x.assetClass === R.cls && (!x.country || x.country === 'Indonesia') && x.cagrBasis === 'return1y' && isFinite(x.cagr); }).sort(function (a, b) { return b.cagr - a.cagr; }).slice(0, ks.length > 1 ? 3 : 5);
             var s = R.nama.toUpperCase() + '\n' + R.def;
             if (list.length) {
                 s += '\n\nTeratas di database (return 1 tahun, urut tertinggi) ada di kartu bawah.';
-                list.forEach(function (x) { picks.push({ t: x.ticker, priceTxt: x.name, chg: x.cagr, rows: [['Jenis', R.nama.split(' (')[0].replace(/^Reksa dana /i, 'RD ')], ['Risiko', x.risk || '-'], ['AUM', x.aum || '-']], note: (x.metric || 'Return 1 tahun') + (x.dataAsOf ? ' · per ' + x.dataAsOf : ''), simple: { t: x.ticker, mk: 'rd', name: x.name } }); });
+                list.forEach(function (x) {
+                    var nv = rdn[String(x.id)], rr = [['Jenis', R.nama.split(' (')[0].replace(/^Reksa dana /i, 'RD ')], ['Risiko', x.risk || '-'], ['AUM', x.aum || '-']];
+                    var pc = function (v) { return v == null ? '-' : (v >= 0 ? '+' : '') + v + '%'; };
+                    if (nv) { rr.push(['NAB ' + nv.d, Number(nv.v).toLocaleString('id-ID', { maximumFractionDigits: 4 }) + ' (' + pc(+nv.c1d.toFixed(2)) + ' harian)']); rr.push(['Return 1T / 3T / 5T', pc(nv.ret['1t']) + ' / ' + pc(nv.ret['3t']) + ' / ' + pc(nv.ret['5t'])]); }
+                    picks.push({ t: x.ticker, priceTxt: x.name, chg: nv && nv.ret['1t'] != null ? nv.ret['1t'] : x.cagr, rows: rr, note: nv ? 'Return dari NAB harian (dataset publik tidak resmi) · per ' + nv.d : (x.metric || 'Return 1 tahun') + (x.dataAsOf ? ' · per ' + x.dataAsOf : ''), simple: { t: x.ticker, mk: 'rd', name: x.name } }); });
             } else s += '\n\nBelum ada data kinerja untuk jenis ini di database.';
             out.push(s);
         });

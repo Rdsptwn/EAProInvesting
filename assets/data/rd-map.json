@@ -1,0 +1,157 @@
+{
+ "note": "id instrumen pasar-global -> id fund di dataset risan/reksadana-id (dicocokkan nama, diperiksa manual). Tambah baris untuk fund lain.",
+ "map": {
+  "2": {
+   "f": "RD3561",
+   "nama": "Sucorinvest Stable Fund Kelas A"
+  },
+  "3": {
+   "f": "RD1669",
+   "nama": "Sucorinvest Sharia Money Market Fund"
+  },
+  "10": {
+   "f": "RD1541",
+   "nama": "Schroder Dana Istimewa"
+  },
+  "11": {
+   "f": "RD998",
+   "nama": "Manulife Saham Andalan"
+  },
+  "12": {
+   "f": "RD1207",
+   "nama": "Panin Dana Maksima"
+  },
+  "13": {
+   "f": "RD3597",
+   "nama": "Bahana Likuid Syariah"
+  },
+  "73": {
+   "f": "RD423",
+   "nama": "BNP Paribas Pesona"
+  },
+  "74": {
+   "f": "RD3371",
+   "nama": "Eastspring Investments Value Discovery Kelas B"
+  },
+  "77": {
+   "f": "BRK1772",
+   "nama": "Avrist Prime Income Fund"
+  },
+  "102": {
+   "f": "RD431",
+   "nama": "BNP Paribas Solaris"
+  },
+  "103": {
+   "f": "RD1543",
+   "nama": "Schroder Dana Likuid"
+  },
+  "104": {
+   "f": "RD632",
+   "nama": "Eastspring Investments Yield Discovery"
+  },
+  "106": {
+   "f": "RD1205",
+   "nama": "Panin Dana Likuid"
+  },
+  "107": {
+   "f": "BRK1607",
+   "nama": "RD PT Mandiri Obligasi Negara"
+  },
+  "283": {
+   "f": "RD125",
+   "nama": "Reksa Dana Bahana Primavera Plus"
+  },
+  "284": {
+   "f": "RD1541",
+   "nama": "Schroder Dana Istimewa"
+  },
+  "285": {
+   "f": "RD1653",
+   "nama": "Reksa Dana Sucorinvest Equity Fund Kelas A"
+  },
+  "286": {
+   "f": "RD431",
+   "nama": "BNP Paribas Solaris"
+  },
+  "287": {
+   "f": "RD3692",
+   "nama": "Trimegah Dana Obligasi Nusantara"
+  },
+  "288": {
+   "f": "RD6414",
+   "nama": "Syailendra Sharia Fixed Income Fund Kelas A"
+  },
+  "289": {
+   "f": "RD6436",
+   "nama": "KIM Fixed Income Fund Plus"
+  },
+  "290": {
+   "f": "RD6280",
+   "nama": "STAR Stable Amanah Sukuk"
+  },
+  "291": {
+   "f": "BRK2240",
+   "nama": "STAR Stable Income Fund Kelas Utama"
+  },
+  "292": {
+   "f": "RD1671",
+   "nama": "Reksa Dana Syailendra Balanced Opportunity Fund Kelas A"
+  },
+  "293": {
+   "f": "RD3191",
+   "nama": "Jarvis Balanced Fund"
+  },
+  "294": {
+   "f": "RD523",
+   "nama": "Sucorinvest Citra Dana Berimbang"
+  },
+  "295": {
+   "f": "RD1655",
+   "nama": "Sucorinvest Flexi Fund"
+  },
+  "296": {
+   "f": "RD1365",
+   "nama": "TRIM Syariah Berimbang"
+  },
+  "297": {
+   "f": "RD832",
+   "nama": "Majoris Pasar Uang Syariah Indonesia"
+  },
+  "298": {
+   "f": "RD3496",
+   "nama": "KIM Money Market Fund"
+  },
+  "299": {
+   "f": "RD733",
+   "nama": "Insight Money Syariah"
+  },
+  "300": {
+   "f": "RD1669",
+   "nama": "Sucorinvest Sharia Money Market Fund"
+  },
+  "301": {
+   "f": "RD732",
+   "nama": "Insight Money"
+  },
+  "302": {
+   "f": "RD3954",
+   "nama": "BNP Paribas IDX Growth30"
+  },
+  "303": {
+   "f": "RD1502",
+   "nama": "Reksa Dana Indeks Allianz SRI KEHATI Index Fund"
+  },
+  "304": {
+   "f": "RD1911",
+   "nama": "Reksa Dana Indeks BNP Paribas Sri Kehati Kelas RK1"
+  },
+  "305": {
+   "f": "RD562",
+   "nama": "BRI Indeks Syariah"
+  },
+  "306": {
+   "f": "BRK3244",
+   "nama": "Reksa Dana Indeks Syailendra MSCI Indonesia Value Index Fund Kelas A"
+  }
+ }
+}

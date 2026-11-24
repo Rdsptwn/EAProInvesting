@@ -47,6 +47,7 @@ function wlLoadScr() {
     if (need.has('global')) jobs.push(get('global-screener.json').then(d => { (d.rows || []).forEach(r => { __wlMk.global[r[0]] = { price: r[1], changePct: r[3], date: r[9] }; }); }).catch(() => {}));
     if (need.has('komoditas')) jobs.push(get('global-commodities.json').then(d => { (d.items || []).forEach(x => { __wlMk.komoditas[x.id] = { price: x.price, changePct: x.chg, chg1m: x.chg1m, u: x.u || '', n: x.n, date: x.time }; }); }).catch(() => {}));
     if (need.has('rd')) jobs.push(get('pasar-global.json').then(d => { (d.instruments || []).forEach(x => { __wlMk.rd[x.ticker] = x; }); }).catch(() => {}));
+    if (need.has('rd')) jobs.push(get('rd-nav.json').then(d => { __wlMk.rdNav = (d && d.funds) || {}; }).catch(() => {}));
     Promise.all(jobs).then(() => renderWatchlist(true));
 }
 // Format harga per pasar: IHSG Rp, Kripto/Global $, Forex tanpa simbol.
@@ -92,14 +93,29 @@ function wlBowHtml(w, cur, chg) {
     </div>`;
 }
 
+function wlRdSpark(sr) {
+    if (!sr || !sr.v || sr.v.length < 8) return '';
+    const v = sr.v, lo = Math.min(...v), hi = Math.max(...v), W = 220, H = 40, sp = hi - lo || 1;
+    const pts = v.map((y, i) => (i / (v.length - 1) * W).toFixed(1) + ',' + (H - 3 - (y - lo) / sp * (H - 6)).toFixed(1)).join(' ');
+    const up = v[v.length - 1] >= v[0];
+    return `<svg viewBox="0 0 ${W} ${H}" class="w-full h-10 mt-1" preserveAspectRatio="none" role="img" aria-label="Grafik NAB mingguan"><polyline points="${pts}" fill="none" stroke="${up ? '#059669' : '#ef4444'}" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>`;
+}
 function wlRdHtml(w) {
     const x = __wlMk.rd[w.ticker]; if (!x) return '<p class="mt-2 text-[10px] font-bold text-slate-500">Menunggu data database reksa dana…</p>';
+    const nv = (__wlMk.rdNav || {})[String(x.id)];
+    const pc = v => v == null ? '-' : '<span class="' + (v >= 0 ? 'text-emerald-600' : 'text-red-500') + '">' + (v >= 0 ? '+' : '') + v + '%</span>';
+    let nab = '<p class="font-medium text-slate-400">NAB harian untuk fund ini belum tersedia di dataset; cek NAB terbaru di aplikasi manajer investasi.</p>';
+    if (nv) {
+        const r = nv.ret || {};
+        nab = `<p>NAB <b>${Number(nv.v).toLocaleString('id-ID', { maximumFractionDigits: 4 })}</b> (${escapeHtml(nv.d)}) · harian ${pc(+nv.c1d.toFixed(2))}</p>
+        <p>1B ${pc(r['1b'])} · 3B ${pc(r['3b'])} · 1T ${pc(r['1t'])} · 3T ${pc(r['3t'])} · 5T ${pc(r['5t'])}</p>${wlRdSpark(nv.s)}
+        <p class="font-medium text-slate-400">Grafik NAB mingguan sampai 5 tahun. Sumber dataset publik tidak resmi, cek ke manajer investasi. Return masa lalu tidak menjamin hasil ke depan.</p>`;
+    }
     const asof = x.dataAsOf ? ` (per ${escapeHtml(x.dataAsOf)})` : '';
     return `<div class="mt-2 p-2 rounded-xl border border-sky-100 bg-sky-50/50 text-[10px] font-bold text-slate-600">
         <p class="font-black text-sky-700">${escapeHtml(x.assetClass || '')}</p>
-        <p>${x.cagr != null ? escapeHtml(x.metric || (x.cagrBasis === 'return1y' ? 'Return 1 tahun' : 'CAGR')) + ': <span class="' + (x.cagr >= 0 ? 'text-emerald-600' : 'text-red-500') + '">' + (x.cagr >= 0 ? '+' : '') + x.cagr + '%</span>' : 'Return: belum ada data'}${asof}</p>
+        ${nab}
         <p>AUM ${escapeHtml(x.aum || '-')} · Risiko ${escapeHtml(x.risk || '-')}${x.expense != null ? ' · Expense ' + x.expense + '%' : ''}</p>
-        <p class="font-medium text-slate-400">Database belum punya NAB harian, jadi tidak ada naik/turun harian. Cek NAB terbaru di aplikasi manajer investasi.</p>
     </div>`;
 }
 function wlKomHtml(w) {

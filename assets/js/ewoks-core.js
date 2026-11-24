@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261124t1304';
+window.EWOKS_ASSET_V = '20261124t1311';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -529,12 +529,8 @@ function kongloDailyStampText() {
 function paintDataStamps(snap) {
     const built = snap?.meta?.built;
     const liveAt = snap?.meta?.liveAt;
-    const text = liveAt
-        ? `Harga live: ${formatStampWib(liveAt)} `
-        : built
-            ? `Update data pasar: ${formatStampWib(built)}`
-            : 'Update data pasar: snapshot belum tersedia';
-    const full = !liveAt && window.__ewoksLiveErr ? `${text} · harga live belum tersedia, memakai data snapshot` : text;
+    const at = liveAt || built;
+    const full = at ? `Update data pasar: ${formatStampWib(at)}` : 'Update data pasar: belum tersedia';
     const home = document.getElementById('data-updated-stamp');
     if (home) home.textContent = full;
     const konglo = document.getElementById('konglo-data-stamp');
