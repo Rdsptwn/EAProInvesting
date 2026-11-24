@@ -16,13 +16,33 @@
         for (var i = 0; i + 3 < c.length; i += 4) { H.push(Math.max.apply(null, h.slice(i, i + 4))); L.push(Math.min.apply(null, l.slice(i, i + 4))); C.push(c[i + 3]); }
         return { h: H, l: L, c: C };
     }
+    var lastErr = '';
+    function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    // Worker /chart (Yahoo). Satu kali ulang kalau kena batas/gangguan sesaat; alasan gagal disimpan di lastErr supaya bisa ditampilkan.
+    function workerChart(sym, g, rg, iv, minN) {
+        var A = api(); if (!A) { lastErr = 'URL Worker belum diisi'; return Promise.resolve(null); }
+        function once() {
+            return fetch(A + '/chart?s=' + encodeURIComponent(sym) + (g ? '&g=1' : '') + '&range=' + rg + '&interval=' + iv, { cache: 'no-store' }).then(function (r) {
+                return r.json().then(function (d) { return { st: r.status, d: d }; });
+            }).then(function (x) {
+                var d = x.d;
+                if (!d || !d.ok) { lastErr = (d && d.error) || ('HTTP ' + x.st); return { retry: true }; }
+                if (!d.c || d.c.length < minN) { lastErr = 'candle ' + sym + ' terlalu sedikit (' + (d.c ? d.c.length : 0) + ')'; return null; }
+                return { o: { h: d.h, l: d.l, c: d.c } };
+            }).catch(function (e) { lastErr = 'koneksi ke Worker gagal (' + ((e && e.message) || e) + ')'; return { retry: true }; });
+        }
+        return once().then(function (r) { return r && r.retry ? sleep(500 + Math.random() * 500).then(once) : r; }).then(function (r) { return r && r.o ? r.o : null; });
+    }
     function viaWorker(sym, tf) {
-        var A = api(); if (!A) return Promise.resolve(null);
         var rg = tf === '5m' ? '5d' : tf === '1h' ? '1mo' : '3mo', iv = tf === '5m' ? '5m' : '60m';
-        return fetch(A + '/chart?s=' + encodeURIComponent(sym) + '&g=1&range=' + rg + '&interval=' + iv, { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (d) {
-            if (!d || !d.ok || !d.c || d.c.length < 30) return null;
-            var o = { h: d.h, l: d.l, c: d.c };
-            return tf === '4h' ? agg4(o.h, o.l, o.c) : o;
+        return workerChart(sym, true, rg, iv, 30).then(function (o) { return o && tf === '4h' ? agg4(o.h, o.l, o.c) : o; });
+    }
+    // Kripto: OKX dulu (Binance sering diblokir di Indonesia), lalu Binance, terakhir Worker.
+    function viaOkx(k, tf) {
+        var bar = { '5m': '5m', '1h': '1H', '4h': '4H' }[tf] || '1H';
+        return fetch('https://www.okx.com/api/v5/market/candles?instId=' + encodeURIComponent(k) + '-USDT&bar=' + bar + '&limit=120').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
+            var a = (j && j.data || []).slice().reverse(); if (a.length < 50) return null;
+            return { h: a.map(function (x) { return +x[2]; }), l: a.map(function (x) { return +x[3]; }), c: a.map(function (x) { return +x[4]; }) };
         }).catch(function () { return null; });
     }
     function viaBinance(k, tf) {
@@ -69,12 +89,7 @@
     /* IHSG: candle harian dari Worker (Yahoo .JK), pembulatan fraksi harga BEI. */
     function tkI(v) { return v < 200 ? 1 : v < 500 ? 2 : v < 2000 ? 5 : v < 5000 ? 10 : 25; }
     var RD_IDX = { up: function (v) { var t = tkI(v); return Math.ceil(v / t - 1e-9) * t; }, dn: function (v) { var t = tkI(v); return Math.floor(v / t + 1e-9) * t; }, step: tkI };
-    function idxDaily(code) {
-        var A = api(); if (!A) return Promise.resolve(null);
-        return fetch(A + '/chart?s=' + encodeURIComponent(code) + '&range=3mo&interval=1d', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (d) {
-            return d && d.ok && d.c && d.c.length >= 55 ? { h: d.h, l: d.l, c: d.c } : null;
-        }).catch(function () { return null; });
-    }
+    function idxDaily(code) { return workerChart(code, false, '3mo', '1d', 55); }
     /* codes: [{k, n}] -> Promise<{code: analisis|null}> ; null = lolos tidak / data tidak ada. avail = jumlah yang datanya berhasil diambil */
     function idxSmart(codes, mode) {
         var avail = 0;
@@ -101,13 +116,13 @@
             });
         }
         function candles(it, tf) {
-            if (market === 'crypto') return viaBinance(it.k, tf).then(function (o) { return o || viaWorker(it.s, tf); });
+            if (market === 'crypto') return viaOkx(it.k, tf).then(function (o) { return o || viaBinance(it.k, tf); }).then(function (o) { return o || viaWorker(it.s, tf); });
             return viaWorker(it.s, tf);
         }
         /* run(tf, mode) -> Promise<{list, fail, total}> */
         function run(tf, mode) {
             return candidates().then(function (cs) {
-                return pool(cs, function (it) { return candles(it, tf).then(function (o) { return o ? analyze(it, o, mode) : 'x'; }); }, 6).then(function (rs) {
+                return pool(cs, function (it) { return candles(it, tf).then(function (o) { return o ? analyze(it, o, mode) : 'x'; }); }, 4).then(function (rs) {
                     return { list: rs.filter(function (x) { return x && x !== 'x'; }).sort(function (a, b) { return b.score - a.score; }), fail: rs.filter(function (x) { return x === 'x'; }).length, total: cs.length };
                 });
             });
@@ -115,5 +130,5 @@
         return { run: run };
     }
     var cache = {};
-    window.EwoksPicksEngine = { forMarket: function (m) { return cache[m] || (cache[m] = make(m)); }, fmt: fmt, idxSmart: idxSmart, levels: levels };
+    window.EwoksPicksEngine = { forMarket: function (m) { return cache[m] || (cache[m] = make(m)); }, fmt: fmt, idxSmart: idxSmart, levels: levels, lastErr: function () { return lastErr; } };
 })();

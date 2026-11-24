@@ -1379,7 +1379,7 @@ window.addEventListener('load', () => {
     }
     var lastPicks = null;
     function picksUI(box, picks) {
-        if (!picks || !picks.length) return; picksCss(); lastPicks = picks;
+        if (!picks || !picks.length) return; picksCss(); lastPicks = picks; box._pk = picks;
         var wrap = el('div', 'ec-pk'), btns = [];
         function mark(b, r) { b.textContent = r === 'dup' ? 'Sudah dipantau ✓' : r === 'ok' ? 'Dipantau ✓' : 'Gagal'; b.disabled = true; }
         picks.forEach(function (p) {
@@ -1481,7 +1481,7 @@ window.addEventListener('load', () => {
         var E = await loadEngine(); if (!E) return 'Mesin rekomendasi belum bisa dimuat.';
         var mk = k === 'kripto' ? 'crypto' : k, tf = kind === 'swing' ? '4h' : kind === 'scalp' ? '5m' : '1h', tfl = { '4h': '4 jam', '5m': '5 menit', '1h': '1 jam' }[tf];
         var r = await E.forMarket(mk).run(tf, 'ketat'), n = kind === 'swing' ? 10 : 5;
-        if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).';
+        if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).' + (E.lastErr && E.lastErr() ? ' Detail: ' + E.lastErr() + '.' : '');
         if (B) r.list = r.list.filter(function (x) { return x.price <= B; });
         if (!r.list.length) return 'Belum ada ' + MK[k][0] + budTxt(B, k === 'idx' ? 'Rp' : '$') + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti, budget lebih besar, atau pasar lain.';
         var pre = k === 'forex' ? '' : '$';
@@ -1621,7 +1621,7 @@ window.addEventListener('load', () => {
         return 'Command "' + p[0] + '" belum ada di chat web. Ketik /help. (Command lengkap dengan gambar ada di bot WhatsApp.)';
     }
     function rich(b, t) {
-        b.textContent = '';
+        b._raw = t; b.textContent = '';
         String(t).split(/(\[[^\]]+\]\([^)\s]+\))/).forEach(function (seg) {
             var m = seg.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
             if (m && /^(https:\/\/|[a-z0-9_\/.#%-]+(\.html)?(#[^\s]*)?$|\.\.?\/)/i.test(m[2]) && !/^\s*javascript:/i.test(m[2])) { var a = document.createElement('a'); a.href = m[2]; a.textContent = m[1]; a.style.cssText = 'color:#34d399;text-decoration:underline'; if (/^https:/.test(m[2])) { a.target = '_blank'; a.rel = 'noopener noreferrer'; } b.appendChild(a); }
@@ -1653,6 +1653,7 @@ window.addEventListener('load', () => {
         var box = el('div', 'ec-box');
         var h = el('div', 'ec-h'); var ht = el('div', 'ec-ht'); ht.innerHTML = '<span><b>Tido</b><small>asisten Ewoks, ngantuk tapi paham</small></span>'; h.appendChild(ht);
         var peek = el('div', 'ec-peek pk'); box.appendChild(peek);
+        var clr = el('button', '', '🗑'); clr.setAttribute('aria-label', 'Hapus semua chat'); clr.title = 'Hapus semua chat'; h.appendChild(clr);
         var x = el('button', '', '✕'); x.setAttribute('aria-label', 'Tutup'); h.appendChild(x);
         var m = el('div', 'ec-m');
         var f = el('form', 'ec-f'); var inp = el('input'); inp.placeholder = 'Tanya Tido, atau ketik /help…'; inp.maxLength = 700; inp.autocomplete = 'off';
@@ -1784,9 +1785,33 @@ window.addEventListener('load', () => {
         fab.addEventListener('mouseenter', function () { if (!M || box.classList.contains('open')) return; setScene('sit'); hoo('hi', 1600); showTip(TIPS[Math.floor(Math.random() * TIPS.length)], 3000); });
         var rq = 0; document.addEventListener('mousemove', function (e) { if (rq) return; rq = requestAnimationFrame(function () { rq = 0; var tg = box.classList.contains('open') ? peek : fab, r = tg.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), k = function (v) { return Math.max(-1, Math.min(1, v / 180)) * 3.6; }; [fab, peek].forEach(function (z) { z.style.setProperty('--hx', k(dx) + 'px'); z.style.setProperty('--hy', k(dy) * 0.6 + 'px'); }); }); }, { passive: true });
         function add(role, t) { var b = el('div', 'ec-b ' + (role === 'u' ? 'ec-u' : 'ec-a'), t); m.appendChild(b); m.scrollTop = m.scrollHeight; return b; }
-        if (!hist.length) add('a', 'Hoaam… halo, aku Tido 😴 asisten Ewoks (ngantuk tapi paham). Tanya santai aja soal saham, kripto, forex, manajemen risiko, atau cara pakai web ini. Ketik /help buat lihat command (/harga, /rekomendasi, /pagi, /swing, /fibo, dll). Aku bantu belajar ya, bukan kasih sinyal beli/jual pasti.');
-        hist.forEach(function (i) { add(i.r, i.t); });
-        fab.onclick = function () { tip.classList.remove('on'); box.classList.add('open'); fab.style.display = 'none'; hoo('hi', 2200); inp.focus(); m.scrollTop = m.scrollHeight; };
+        var GREET = 'Hoaam… halo, aku Tido 😴 asisten Ewoks (ngantuk tapi paham). Tanya santai aja soal saham, kripto, forex, manajemen risiko, atau cara pakai web ini. Ketik /help buat lihat command (/harga, /rekomendasi, /pagi, /swing, /fibo, dll). Aku bantu belajar ya, bukan kasih sinyal beli/jual pasti.';
+        /* Riwayat chat tahan refresh (localStorage), otomatis dihapus setelah 24 jam; tombol 🗑 untuk hapus manual. */
+        var LKEY = 'ewoks_chat_log', DAY = 86400000;
+        function logGet() { try { var o = JSON.parse(localStorage.getItem(LKEY) || 'null'); if (o && o.items && o.items.length && Date.now() - o.t0 < DAY) return o; localStorage.removeItem(LKEY); } catch (_) {} return null; }
+        function optsBar(b, opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); b.appendChild(bar); b._op = opts; }
+        function snap() {
+            try {
+                var items = [], hasU = false;
+                Array.prototype.forEach.call(m.querySelectorAll('.ec-b'), function (b) {
+                    var tx = b._raw || b.textContent; if (/^Tido lagi ngitung/.test(tx)) return;
+                    var u = b.classList.contains('ec-u'); if (u) hasU = true; items.push({ r: u ? 'u' : 'a', t: tx, pk: b._pk || null, op: b._op || null });
+                });
+                if (!hasU) return;
+                items = items.slice(-40).map(function (it, i, a) { if (i < a.length - 12) { it.pk = null; it.op = null; } return it; });
+                var old = null; try { old = JSON.parse(localStorage.getItem(LKEY) || 'null'); } catch (_) {}
+                var t0 = old && old.t0 && Date.now() - old.t0 < DAY ? old.t0 : Date.now();
+                localStorage.setItem(LKEY, JSON.stringify({ t0: t0, items: items }));
+            } catch (e) { console.warn('chat snap gagal', e); }
+        }
+        var snapT = 0; try { new MutationObserver(function () { if (!snapT) snapT = setTimeout(function () { snapT = 0; snap(); }, 600); }).observe(m, { childList: true, subtree: true, characterData: true }); } catch (_) {}
+        function greetIn() { add('a', GREET); }
+        function chatReset() { try { localStorage.removeItem(LKEY); } catch (_) {} hist = []; save(); m.innerHTML = ''; lastPicks = null; greetIn(); }
+        clr.onclick = function () { if (confirm('Hapus seluruh chat dengan Tido?')) chatReset(); };
+        var saved = logGet();
+        if (saved) { saved.items.forEach(function (it) { var b = add(it.r, it.t); if (it.r === 'a') rich(b, it.t); if (it.pk) picksUI(b, it.pk); if (it.op) optsBar(b, it.op); }); }
+        else { if (!hist.length) greetIn(); hist.forEach(function (i) { add(i.r, i.t); }); }
+        fab.onclick = function () { try { var lo = JSON.parse(localStorage.getItem(LKEY) || 'null'); if (lo && Date.now() - lo.t0 >= DAY) chatReset(); } catch (_) {} tip.classList.remove('on'); box.classList.add('open'); fab.style.display = 'none'; hoo('hi', 2200); inp.focus(); m.scrollTop = m.scrollHeight; };
         x.onclick = function () { box.classList.remove('open'); fab.style.display = ''; if (M) enter(); };
         f.onsubmit = async function (e) {
             e.preventDefault(); var q = inp.value.trim(); if (!q || busy) return;
@@ -1796,7 +1821,7 @@ window.addEventListener('load', () => {
                 var fall = false, cw = add('a', 'Tido lagi ngitung sambil ngucek mata…'); busy = true; sb.disabled = true; hoo('think');
                 try {
                     var cr = await runCmd(q); if (cr == null) { fall = true; cw.remove(); } else { var ct = typeof cr === 'string' ? cr : cr.text; rich(cw, ct); if (cr && cr.picks) picksUI(cw, cr.picks);
-                    if (cr && cr.opts) { var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
+                    if (cr && cr.opts) { cw._op = cr.opts; var bar = el('div'); bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; cr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; bar.appendChild(bt); }); cw.appendChild(bar); }
                 } } catch (_) { cw.textContent = 'Command gagal dijalankan. Coba lagi.'; }
                 busy = false; sb.disabled = false;
                 if (!fall) { talk(cw.textContent); m.scrollTop = m.scrollHeight; return; }
@@ -1806,7 +1831,7 @@ window.addEventListener('load', () => {
                 var nw = add('a', ni.intro || 'Tido lagi cek…'); busy = true; sb.disabled = true; hoo('think');
                 try {
                     var nr = ni.cmd === 'cek' ? await cmdCek(ni.code, ni.mk) : await runCmd(ni.cmd), nt = typeof nr === 'string' ? nr : nr.text; rich(nw, (ni.intro ? ni.intro + '\n\n' : '') + nt); if (nr && nr.picks) picksUI(nw, nr.picks);
-                    if (nr && nr.opts) { var nb = el('div'); nb.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; nr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; nb.appendChild(bt); }); nw.appendChild(nb); }
+                    if (nr && nr.opts) { nw._op = nr.opts; var nb = el('div'); nb.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px'; nr.opts.forEach(function (o) { var bt = el('button', '', o[0]); bt.type = 'button'; bt.style.cssText = 'padding:5px 10px;border-radius:999px;border:1px solid #10b981;background:transparent;color:#34d399;font-size:12px;font-weight:700;cursor:pointer'; bt.onclick = function () { inp.value = o[1]; f.dispatchEvent(new Event('submit', { cancelable: true })); }; nb.appendChild(bt); }); nw.appendChild(nb); }
                 } catch (_) { nw.textContent = 'Gagal ngecek datanya. Coba lagi ya.'; }
                 talk(nw.textContent); busy = false; sb.disabled = false; m.scrollTop = m.scrollHeight; return;
             }

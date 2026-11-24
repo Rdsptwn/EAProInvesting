@@ -21,7 +21,7 @@
         busy = true; paint(true);
         return ENG.forMarket(MARKET).run(tf, mode).then(function (r) {
             list = r.list;
-            note = r.fail === r.total ? 'Data candle belum tersedia (cek koneksi atau Worker).' : (r.fail > r.total / 2 ? 'Sebagian data candle belum tersedia.' : '');
+            note = r.fail === r.total ? 'Data candle belum tersedia (cek koneksi atau Worker).' + (ENG.lastErr && ENG.lastErr() ? ' Detail: ' + ENG.lastErr() + '.' : '') : (r.fail > r.total / 2 ? 'Sebagian data candle belum tersedia.' : '');
             lastAt = Date.now();
             window.__ewoksPicks = window.__ewoksPicks || {}; window.__ewoksPicks[MARKET === 'crypto' ? 'kripto' : MARKET] = { list: list, tfLabel: TFS.filter(function (x) { return x[0] === tf; })[0][1], at: wib(lastAt) };
         }).catch(function () { note = 'Gagal memuat data.'; }).then(function () { busy = false; paint(false); });
