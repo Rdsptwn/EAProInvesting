@@ -1,812 +1,790 @@
 {
-  "asOf": "2026-11-23",
-  "note": "Dikurasi manual dari pengumuman/berita BEI; bukan daftar resmi lengkap. Cek idx.co.id untuk status terkini.",
-  "flags": {
-    "BEBS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "WIKA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      },
-      {
-        "k": "PPK",
-        "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
-        "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
-      }
-    ],
-    "TGUK": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±13 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      },
-      {
-        "k": "PPK",
-        "note": "Papan Pemantauan Khusus, kriteria 11 (efektif 31 Agu 2026)",
-        "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
-      }
-    ],
-    "ALTO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "PMMP": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "PTMR": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±>6 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      },
-      {
-        "k": "PPK",
-        "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
-        "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
-      }
-    ],
-    "SWAT": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "TGRA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "ZBRA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
-        "k": "PPK",
-        "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
-        "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
-      }
-    ],
-    "KIAS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±11 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "FIMP": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±10 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "DPNS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "GLOB": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "MENN": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "BIMA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "MTPS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "TOPS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "INRU": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±6 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "ARTI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "BIKA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "INAF": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "MKNT": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      }
-    ],
-    "POLL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "IPPE": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "ALMI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±20 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "LMSH": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "MFMI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "MTSM": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "PLIN": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "WICO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "SMCB": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "FASW": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "JSKY": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "PURE": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "HOTL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "MAGP": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "CBMF": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "WSKT": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±38 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "CPRI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "GAMA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "HKMU": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "TECH": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "HOME": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "RIMO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "POOL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "NUSA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "POSA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±68 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "KBRI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "BTEL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "TRIO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±84 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "ARMY": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "SMRU": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI ±78 bulan (per 30 Jun 2026)",
-        "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
-      }
-    ],
-    "TRAM": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "COWL": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "MTRA": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "SRIL": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "TOYS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "SBAT": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "TDPM": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "TELE": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "LCGP": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "SUGI": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "MABA": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "LMAS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "SKYB": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "ENVY": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "GOLL": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "PLAS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "TRIL": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "UNIT": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "DUCK": [
-      {
-        "k": "DELIST",
-        "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
-        "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
-      }
-    ],
-    "KOIN": [
-      {
-        "k": "PPK",
-        "note": "Papan Pemantauan Khusus, kriteria 5,7 (efektif 31 Agu 2026)",
-        "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
-      }
-    ],
-    "PTDU": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      },
-      {
-        "k": "PPK",
-        "note": "Papan Pemantauan Khusus, kriteria 5,6,7 (efektif 31 Agu 2026)",
-        "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
-      }
-    ],
-    "AKKU": [
-      {
-        "k": "PPK",
-        "note": "Papan Pemantauan Khusus, kriteria 1 (efektif 31 Agu 2026)",
-        "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
-      }
-    ],
-    "BMAS": [
-      {
-        "k": "RI",
-        "note": "Rights issue: recording 25 Nov 2026, perdagangan/pelaksanaan HMETD 27 Nov–3 Des 2026, harga tebus Rp350, rasio 655:104",
-        "src": "https://bcasekuritas.co.id/latest-news/news/bmas-akan-gelar-rights-issue-287-miliar-saham"
-      }
-    ],
-    "ARKA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "BHAT": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "BOSS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "COAL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "DEAL": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "ETWA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "HITS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "INCF": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "INDX": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "JMAS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "KAYU": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "LCKM": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "MREI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "RAFI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "SIMA": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "TAYS": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
-        "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
-      }
-    ],
-    "TMPO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      }
-    ],
-    "ARKO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      }
-    ],
-    "TFCO": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      }
-    ],
-    "CSMI": [
-      {
-        "k": "SUSPEN",
-        "note": "Disuspensi BEI pada Nov 2026 (daftar suspensi idx.id yang diberikan pengguna)"
-      }
-    ],
-    "MAMI": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "FORZ": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "MYRX": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "KRAH": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "KPAS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "KPAL": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "PRAS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "NIPS": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 21 Jul 2025",
-        "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
-      }
-    ],
-    "FREN": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 17 Apr 2025 (merger dengan XL)",
-        "src": "https://market.bisnis.com/read/20250416/7/1869778/bye-smartfren-fren-resmi-delisting-besok-kamis-17-april-2025"
-      }
-    ],
-    "HDTX": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
-        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
-      }
-    ],
-    "JKSW": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
-        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
-      }
-    ],
-    "MFIN": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
-        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
-      }
-    ],
-    "MASA": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
-        "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
-      }
-    ],
-    "CNTX": [
-      {
-        "k": "DELIST",
-        "note": "Delisting 30 Jul 2026",
-        "src": "https://finance.detik.com/bursa-dan-valas/d-8598035/bei-resmi-coret-raksasa-tekstil-cntx-dari-pasar-modal"
-      }
-    ],
-    "IIKP": [
-      {
-        "k": "SUSPEN",
-        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
-      }
-    ],
-    "META": [
-      {
-        "k": "SUSPEN",
-        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
-      }
-    ],
-    "OCAP": [
-      {
-        "k": "SUSPEN",
-        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
-      }
-    ],
-    "SCPI": [
-      {
-        "k": "SUSPEN",
-        "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
-      }
-    ]
-  }
+ "asOf": "2026-11-23",
+ "note": "Dikurasi manual dari pengumuman/berita BEI; bukan daftar resmi lengkap. Cek idx.co.id untuk status terkini.",
+ "flags": {
+  "BEBS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "WIKA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI (gagal bayar obligasi/sukuk, diperpanjang); belum ada kabar dibuka",
+    "src": "https://www.emitennews.com/news/gagal-bayar-surat-utang-bei-lanjutkan-suspensi-saham-wika"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "TGUK": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±13 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 11 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "ALTO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "PMMP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "PTMR": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±>6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "SWAT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "TGRA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "ZBRA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   },
+   {
+    "k": "PPK",
+    "note": "Masuk Papan Pemantauan Khusus (Nov 2025)",
+    "src": "https://market.bisnis.com/read/20251128/7/1932503/bei-beri-tato-pemantauan-khusus-untuk-ptmr-wika-dan-zbra"
+   }
+  ],
+  "KIAS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±11 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "FIMP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±10 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "DPNS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "GLOB": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MENN": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±8 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "BIMA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MTPS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±7 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TOPS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "INRU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±6 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ARTI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "BIKA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "INAF": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MKNT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI sejak 6 Nov 2026 (lonjakan harga, masuk HSC); belum ada kabar dibuka",
+    "src": "https://insight.kontan.co.id/news/mknt-disuspensi-dan-masuk-hsc-efek-perubahan-bisnis-konsekuensi-private-placement"
+   }
+  ],
+  "POLL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±24 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "IPPE": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "ALMI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±20 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "LMSH": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MFMI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "MTSM": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "PLIN": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "WICO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "SMCB": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "FASW": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±17 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "JSKY": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "PURE": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "HOTL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "MAGP": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "CBMF": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "WSKT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±38 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "CPRI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "GAMA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "HKMU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "TECH": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "HOME": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "RIMO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "POOL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "NUSA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "POSA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±68 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "KBRI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "BTEL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "TRIO": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±84 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "ARMY": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "SMRU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI ±78 bulan (per 30 Jun 2026)",
+    "src": "https://cnbcindonesia.com/market/20260731190020-17-755602/59-emiten-berpotensi-ditendang-dari-bei-ini-daftar-nama-perusahaannya"
+   }
+  ],
+  "TRAM": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "COWL": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "MTRA": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "SRIL": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "TOYS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "SBAT": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "TDPM": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "TELE": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "LCGP": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "SUGI": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "MABA": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "LMAS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "SKYB": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "ENVY": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "GOLL": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "PLAS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "TRIL": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "UNIT": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "DUCK": [
+   {
+    "k": "DELIST",
+    "note": "Delisting efektif 10 Nov 2026 (pailit atau suspensi lebih dari 50 bulan)",
+    "src": "https://www.metrotvnews.com/read/KRXCQpPD-daftar-lengkap-18-emiten-yang-akan-delisting-dari-bei-simak-jadwalnya"
+   }
+  ],
+  "KOIN": [
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 5,7 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "PTDU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   },
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 5,6,7 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "AKKU": [
+   {
+    "k": "PPK",
+    "note": "Papan Pemantauan Khusus, kriteria 1 (efektif 31 Agu 2026)",
+    "src": "https://bcasekuritas.co.id/api/pdf/pemantauan-khusus-perubahan-31-agustus-2026.pdf"
+   }
+  ],
+  "BMAS": [
+   {
+    "k": "RI",
+    "note": "Rights issue: recording 25 Nov 2026, perdagangan/pelaksanaan HMETD 27 Nov–3 Des 2026, harga tebus Rp350, rasio 655:104",
+    "src": "https://bcasekuritas.co.id/latest-news/news/bmas-akan-gelar-rights-issue-287-miliar-saham"
+   }
+  ],
+  "ARKA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "BHAT": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "BOSS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "COAL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "DEAL": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "ETWA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "HITS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "INCF": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "INDX": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "JMAS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "KAYU": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "LCKM": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "MREI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "RAFI": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "SIMA": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "TAYS": [
+   {
+    "k": "SUSPEN",
+    "note": "Disuspensi BEI: telat menyampaikan laporan keuangan (daftar 62 emiten, 5 Nov 2026)",
+    "src": "https://market.bisnis.com/read/20261105/7/2018603/bei-suspensi-62-saham-telat-laporan-keuangan-ada-rafi-hingga-sritex"
+   }
+  ],
+  "MAMI": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "FORZ": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "MYRX": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "KRAH": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "KPAS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "KPAL": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "PRAS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "NIPS": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 21 Jul 2025",
+    "src": "https://market.bisnis.com/read/20250721/7/1894825/8-emiten-resmi-delisting-dari-bursa-hari-ini-217-ada-myrx-forz-hingga-nips"
+   }
+  ],
+  "FREN": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 17 Apr 2025 (merger dengan XL)",
+    "src": "https://market.bisnis.com/read/20250416/7/1869778/bye-smartfren-fren-resmi-delisting-besok-kamis-17-april-2025"
+   }
+  ],
+  "HDTX": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+    "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+   }
+  ],
+  "JKSW": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+    "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+   }
+  ],
+  "MFIN": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+    "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+   }
+  ],
+  "MASA": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 2025 (daftar Fortune IDN, tanggal tepat belum diperiksa)",
+    "src": "https://www.fortuneidn.com/market/daftar-33-perusahaan-delisting-dari-bei-terbanyak-pada-2026-d7w02-00-lflgw-c5lfz4"
+   }
+  ],
+  "CNTX": [
+   {
+    "k": "DELIST",
+    "note": "Delisting 30 Jul 2026",
+    "src": "https://finance.detik.com/bursa-dan-valas/d-8598035/bei-resmi-coret-raksasa-tekstil-cntx-dari-pasar-modal"
+   }
+  ],
+  "IIKP": [
+   {
+    "k": "SUSPEN",
+    "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+   }
+  ],
+  "META": [
+   {
+    "k": "SUSPEN",
+    "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+   }
+  ],
+  "OCAP": [
+   {
+    "k": "SUSPEN",
+    "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+   }
+  ],
+  "SCPI": [
+   {
+    "k": "SUSPEN",
+    "note": "Suspensi (dicek pengguna di Stockbit, 23 Nov 2026)"
+   }
+  ]
+ }
 }
