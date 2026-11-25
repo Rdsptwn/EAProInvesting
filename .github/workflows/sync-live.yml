@@ -8,7 +8,7 @@ on:
   schedule:
     - cron: '*/10 2-9 * * 1-5'
     - cron: '*/10 14-20 * * 1-5'
-    - cron: '5 0-13,21-23 * * 1-5'
+    - cron: '5 0-1,10-13,21-23 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
       - name: Bangun harga live
         run: |
           if [ "${{ github.event.schedule }}" = "*/10 2-9 * * 1-5" ]; then node tools/build-live.mjs idx
-          elif [ "${{ github.event.schedule }}" = "*/10 14-20 * * 1-5" ] || [ "${{ github.event.schedule }}" = "5 0-13,21-23 * * 1-5" ]; then node tools/build-live.mjs global
+          elif [ "${{ github.event.schedule }}" = "*/10 14-20 * * 1-5" ] || [ "${{ github.event.schedule }}" = "5 0-1,10-13,21-23 * * 1-5" ]; then node tools/build-live.mjs global
           else node tools/build-live.mjs idx; node tools/build-live.mjs global; fi
       - name: Commit and push
         run: |
