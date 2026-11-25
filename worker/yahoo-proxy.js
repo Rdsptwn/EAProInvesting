@@ -431,6 +431,7 @@ function pickWorkflows(now) {
     const list = ['sync-24jam.yml'];
     if (d >= 1 && d <= 5 && (d > 1 || h >= 3) && (d < 5 || h < 18)) list.push('daily-market-sync.yml');
     if (d >= 1 && d <= 5 && h >= 9 && h <= 16) list.push('market-activity-intraday.yml');
+    list.push('sync-live.yml'); // harga hampir-live (cadangan tanpa Worker); candles ikut lewat workflow_run
     return list;
 }
 

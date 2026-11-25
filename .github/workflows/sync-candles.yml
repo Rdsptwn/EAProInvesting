@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: '20 */2 * * *'
     - cron: '35 10 * * 1-5'
+  # Cron GitHub untuk workflow ini terbukti tidak pernah jalan; sambung ke 'Sync 24 jam' (dipicu Worker tiap jam).
+  workflow_run:
+    workflows: ['Sync 24 jam']
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -28,6 +32,11 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "35 10 * * 1-5" ]; then node tools/build-candles.mjs idx
           elif [ "${{ github.event_name }}" = "schedule" ]; then node tools/build-candles.mjs crypto forex global
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            # dipicu tiap jam: kripto/forex/AS tiap 2 jam (jam UTC genap), IHSG harian sekali setelah bursa tutup (17 WIB, Senin-Jumat)
+            H=$(date -u +%H); D=$(date -u +%u)
+            if [ $((10#$H % 2)) -eq 0 ]; then node tools/build-candles.mjs crypto forex global; fi
+            if [ "$H" = "10" ] && [ "$D" -le 5 ]; then node tools/build-candles.mjs idx; fi
           else node tools/build-candles.mjs; fi
       - name: Commit and push
         run: |

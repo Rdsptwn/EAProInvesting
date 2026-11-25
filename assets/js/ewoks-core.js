@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0703';
+window.EWOKS_ASSET_V = '20261125t0723';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1473,11 +1473,13 @@ window.addEventListener('load', () => {
         var n = kind === 'swing' ? 10 : 5;
         var rows = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6 && r[3] > 0 && r[6] > 0 && r[7] > 0; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 80)
             .map(function (r) { var tp = r[1] >= r[7] ? r[1] * 1.08 : r[7]; return { r: r, near: (r[1] - r[6]) / r[6], tp: tp, room: (tp - r[1]) / r[1] }; })
-            .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, n * 2);
-        if (!rows.length) return { text: 'Belum ada saham IHSG' + budTxt(B) + ' yang lolos saringan hari ini. Coba budget lebih besar.', opts: budOpts(kind, 'idx', B) };
+            .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, 80); // candle statis murah dicek semua; hasil akhir dipotong n di bawah
         // Level dari candle harian (swing support/resist + ATR); kalau candle tidak tersedia, jatuh ke level kasar dari support/resist 20 hari.
         var E = await loadEngine(), sm = { map: {}, avail: 0 }, md = 'longgar';
-        if (E && E.idxSmart) sm = await E.idxSmart(rows.map(function (x) { return { k: x.r[0] }; }), md);
+        // Candle statis mencakup 150 saham paling ramai: cek semuanya (bukan hanya yang dekat support menurut screener), urut skor mesin.
+        var wide = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 150).map(function (r) { return { r: r, tp: 0 }; });
+        if (E && E.idxSmart) sm = await E.idxSmart(wide.map(function (x) { return { k: x.r[0] }; }), md);
+        if (sm.avail) rows = wide.filter(function (x) { return sm.map[x.r[0]]; }).sort(function (a, b) { return sm.map[b.r[0]].score - sm.map[a.r[0]].score; });
         var rough = !sm.avail, picks = [];
         rows.forEach(function (x) {
             var r = x.r, a = sm.map[r[0]]; date = r[10];
@@ -1505,7 +1507,8 @@ window.addEventListener('load', () => {
     async function planEngine(kind, k, B) {
         var E = await loadEngine(); if (!E) return 'Mesin rekomendasi belum bisa dimuat.';
         var mk = k === 'kripto' ? 'crypto' : k, tf = kind === 'swing' ? '4h' : kind === 'scalp' ? '5m' : '1h', tfl = { '4h': '4 jam', '5m': '5 menit', '1h': '1 jam' }[tf];
-        var r = await E.forMarket(mk).run(tf, 'ketat'), n = kind === 'swing' ? 10 : 5;
+        var r = await E.forMarket(mk).run(tf, 'ketat'), n = kind === 'swing' ? 10 : 5, md = 'ketat';
+        if (r.fail !== r.total && (B ? r.list.filter(function (x) { return x.price <= B; }) : r.list).length < 3) { var r2 = await E.forMarket(mk).run(tf, 'longgar'); if (r2.list.length > r.list.length) { r = r2; md = 'longgar'; } } // ketat sering kosong: pakai longgar dan bilang
         if (r.fail === r.total) return 'Data candle ' + MK[k][0] + ' belum tersedia (cek koneksi atau Worker).' + (E.lastErr && E.lastErr() ? ' Detail: ' + E.lastErr() + '.' : '');
         if (B) r.list = r.list.filter(function (x) { return x.price <= B; });
         if (!r.list.length) return 'Belum ada ' + MK[k][0] + budTxt(B, k === 'idx' ? 'Rp' : '$') + ' yang lolos saringan BoW di candle ' + tfl + '. Coba lagi nanti, budget lebih besar, atau pasar lain.';
@@ -1516,7 +1519,7 @@ window.addEventListener('load', () => {
             rw.push(['CL', F(x.cl), 'r']);
             return { t: x.t, mk: k, price: x.price, priceTxt: 'Last ' + pre + F(x.price), chg: x.chg, rows: rw, note: 'R/R ±' + x.rr.toFixed(1) + ' · Level dari swing support/resist + ATR', bow: { lo: x.lo, hi: x.hi, tp: x.tp, cl: x.cl, rr: x.rr } };
         });
-        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' · Buy on Weakness, candle ' + tfl + '.\nDihitung langsung dari candle saat ini: tren naik, dekat support, ada ruang ke resist.' + DISC, picks: epk, opts: budOpts(kind, k, B) };
+        return { text: KIND[kind] + ' ' + MK[k][0] + budTxt(B, '$') + ' · Buy on Weakness, candle ' + tfl + '.\nDihitung langsung dari candle saat ini: tren naik, dekat support, ada ruang ke resist.' + (md === 'longgar' ? ' Saringan longgar (yang ketat tidak meloloskan cukup saham).' : '') + DISC, picks: epk, opts: budOpts(kind, k, B) };
     }
     function parseBudget(tok) {
         var m = String(tok).toLowerCase().replace(/^(<=|<|≤|maks|max)/, '').replace(/^rp\.?\s*/, '').replace(/^\$/, '');
