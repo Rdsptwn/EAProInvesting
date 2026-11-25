@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0749';
+window.EWOKS_ASSET_V = '20261125t0750';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -930,7 +930,8 @@ async function loadMacroIndicators() {
     const sbnEl = document.getElementById('sbn-yield-dash');
     const biEl = document.getElementById('bi-rate-dash');
     const fedEl = document.getElementById('fed-rate-dash');
-    if (!infEl && !sbnEl && !biEl && !fedEl) return;
+    const pInf = document.getElementById('p-inflation'), pRet = document.getElementById('p-return');
+    if (!infEl && !sbnEl && !biEl && !fedEl && !pInf && !pRet) return;
     try {
         const res = await fetch(ewoksAssetUrl('assets/data/macro.json'), { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -944,6 +945,9 @@ async function loadMacroIndicators() {
             infEl.title = `Inflasi tahunan periode ${m.inflation.label || m.inflation.period}`;
         }
         const pct = (v) => `${Number(v).toFixed(2).replace('.', ',')}%`;
+        // Kalkulator Pensiun: badge "AUTO LIVE" = isi asumsi dari data terbaru (sekali saat dibuka; tidak menimpa kalau pengguna sudah mengetik).
+        const autoFill = (el, v) => { if (el && Number.isFinite(v) && document.activeElement !== el) { el.value = String(v); el.dispatchEvent(new Event('input')); } };
+        autoFill(pInf, m?.inflation?.value); autoFill(pRet, m?.sbn10y?.value);
         if (biEl && Number.isFinite(m?.biRate?.value)) {
             biEl.innerText = pct(m.biRate.value);
             biEl.title = `BI 7-Day Reverse Repo Rate per ${fmtDate(m.biRate.asOf)}`;
