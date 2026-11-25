@@ -1,11 +1,11 @@
 // Candle statis untuk Tido/BoW supaya tidak bergantung pada Worker/OKX/Binance yang bisa diblokir jaringan pengguna.
 // Hasil: assets/data/candles/{crypto,forex,global}-{5m,1h,4h}.json dan idx-1d.json  (disajikan lewat GitHub Pages).
-// Format: { asOf, tf, s: { SIMBOL: [high[], low[], close[]] } }  (bar terlama -> terbaru, maks 100 bar)
+// Format: { asOf, tf, s: { SIMBOL: [high[], low[], close[]] } }  (bar terlama -> terbaru, maks 80 bar)
 // Pemakaian: node tools/build-candles.mjs [crypto forex global idx]   (default semua)
 import fs from 'node:fs';
 
 const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36', Accept: 'application/json' };
-const KEEP = 100, DIR = 'assets/data/candles/';
+const KEEP = 80, DIR = 'assets/data/candles/';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const J = (f) => JSON.parse(fs.readFileSync('assets/data/' + f, 'utf8'));
 const p6 = (x) => Number(Number(x).toPrecision(6));

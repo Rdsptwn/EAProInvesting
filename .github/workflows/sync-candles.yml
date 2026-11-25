@@ -1,10 +1,11 @@
 # Candle statis (kripto, forex, saham AS, IHSG) untuk Tido/BoW: dilayani GitHub Pages, tidak lewat Worker/OKX yang bisa diblokir.
-# Tiap jam; manual: Actions -> Sync candles -> Run workflow.
+# Kripto/forex/saham AS tiap 2 jam, IHSG sekali sehari (hari kerja). Dibatasi supaya riwayat repo tidak membengkak. Manual: Actions -> Sync candles -> Run workflow.
 name: Sync candles
 
 on:
   schedule:
-    - cron: '20 * * * *'
+    - cron: '20 */2 * * *'
+    - cron: '35 10 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +25,10 @@ jobs:
         with:
           node-version: '20'
       - name: Bangun candle
-        run: node tools/build-candles.mjs
+        run: |
+          if [ "${{ github.event.schedule }}" = "35 10 * * 1-5" ]; then node tools/build-candles.mjs idx
+          elif [ "${{ github.event_name }}" = "schedule" ]; then node tools/build-candles.mjs crypto forex global
+          else node tools/build-candles.mjs; fi
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"

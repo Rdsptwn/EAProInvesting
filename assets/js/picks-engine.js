@@ -16,6 +16,17 @@
         for (var i = 0; i + 3 < c.length; i += 4) { H.push(Math.max.apply(null, h.slice(i, i + 4))); L.push(Math.min.apply(null, l.slice(i, i + 4))); C.push(c[i + 3]); }
         return { h: H, l: L, c: C };
     }
+    // Candle statis (dibuat GitHub Actions, dilayani GitHub Pages): tidak lewat Worker/OKX yang bisa diblokir jaringan pengguna.
+    var statCache = {}, STAT_MAX_AGE = { crypto: 5 * 36e5, forex: 5 * 36e5, global: 4 * 864e5, idx: 5 * 864e5 };
+    function stat(market, tf, key) {
+        var f = market + '-' + tf;
+        if (!statCache[f]) statCache[f] = get('candles/' + f + '.json').catch(function () { return null; });
+        return statCache[f].then(function (d) {
+            if (!d || !d.s || !d.s[key]) return null;
+            if (Date.now() - Date.parse(d.asOf) > (STAT_MAX_AGE[market] || 36e5)) return null; // basi: coba sumber live
+            var a = d.s[key]; return a[2].length >= 55 ? { h: a[0], l: a[1], c: a[2] } : null;
+        });
+    }
     var lastErr = '';
     function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
     // Worker /chart (Yahoo). Satu kali ulang kalau kena batas/gangguan sesaat; alasan gagal disimpan di lastErr supaya bisa ditampilkan.
@@ -89,7 +100,7 @@
     /* IHSG: candle harian dari Worker (Yahoo .JK), pembulatan fraksi harga BEI. */
     function tkI(v) { return v < 200 ? 1 : v < 500 ? 2 : v < 2000 ? 5 : v < 5000 ? 10 : 25; }
     var RD_IDX = { up: function (v) { var t = tkI(v); return Math.ceil(v / t - 1e-9) * t; }, dn: function (v) { var t = tkI(v); return Math.floor(v / t + 1e-9) * t; }, step: tkI };
-    function idxDaily(code) { return workerChart(code, false, '3mo', '1d', 55); }
+    function idxDaily(code) { return stat('idx', '1d', code).then(function (o) { return o || workerChart(code, false, '3mo', '1d', 55); }); }
     /* codes: [{k, n}] -> Promise<{code: analisis|null}> ; null = lolos tidak / data tidak ada. avail = jumlah yang datanya berhasil diambil */
     function idxSmart(codes, mode) {
         var avail = 0;
@@ -116,8 +127,11 @@
             });
         }
         function candles(it, tf) {
-            if (market === 'crypto') return viaOkx(it.k, tf).then(function (o) { return o || viaBinance(it.k, tf); }).then(function (o) { return o || viaWorker(it.s, tf); });
-            return viaWorker(it.s, tf);
+            return stat(market, tf, market === 'crypto' ? it.k : it.s).then(function (o) {
+                if (o) return o;
+                if (market === 'crypto') return viaOkx(it.k, tf).then(function (o2) { return o2 || viaBinance(it.k, tf); }).then(function (o2) { return o2 || viaWorker(it.s, tf); });
+                return viaWorker(it.s, tf);
+            });
         }
         /* run(tf, mode) -> Promise<{list, fail, total}> */
         function run(tf, mode) {
