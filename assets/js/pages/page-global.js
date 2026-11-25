@@ -5,8 +5,9 @@
     var V = function () { return encodeURIComponent(window.EWOKS_ASSET_V || '1'); };
     var base = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
     var cache = {};
+    var snapBuilt = '';
     function get(name) {
-        if (!cache[name]) cache[name] = fetch(base + 'assets/data/' + name + '?v=' + V(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+        if (!cache[name]) cache[name] = fetch(base + 'assets/data/' + name + '?v=' + V(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) { if (d && d.meta && d.meta.built && /^global-(screener|commodities)\.json$/.test(name) && (!snapBuilt || d.meta.built > snapBuilt)) snapBuilt = d.meta.built; return d; });
         return cache[name];
     }
     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -72,7 +73,7 @@
     }
     function liveBadge() {
         if (liveOk === null) return '';
-        if (!liveOk) return 'Harga live belum tersedia, memakai data snapshot';
+        if (!liveOk) return snapBuilt && typeof formatStampWib === 'function' ? 'Update data pasar: ' + formatStampWib(snapBuilt) : '';
         return '● Live · ' + liveTs.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
     }
     function mergeItem(it) {
