@@ -25,9 +25,9 @@ async function yahoo(sym, range, interval) {
     const j = await jget(`https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=${range}&interval=${interval}`);
     const q = j?.chart?.result?.[0]?.indicators?.quote?.[0];
     if (!q) return null;
-    const h = [], l = [], c = [];
-    q.close.forEach((cl, i) => { if (cl != null && q.high[i] != null && q.low[i] != null) { h.push(q.high[i]); l.push(q.low[i]); c.push(cl); } });
-    return c.length ? { h, l, c } : null;
+    const h = [], l = [], c = [], o = [], v = [];
+    q.close.forEach((cl, i) => { if (cl != null && q.high[i] != null && q.low[i] != null) { h.push(q.high[i]); l.push(q.low[i]); c.push(cl); o.push(q.open?.[i] ?? cl); v.push(q.volume?.[i] || 0); } });
+    return c.length ? { h, l, c, o, v } : null;
 }
 function agg4(o) { // gabung per 4 bar (dari akhir, supaya bar terbaru lengkap)
     const n = o.c.length, h = [], l = [], c = [];
@@ -87,5 +87,9 @@ if (want.has('idx')) {
     const items = J('idx-screener.json').rows.filter((r) => r[1] >= 50).map((r) => r[0]); // semua saham IHSG (±800)
     const rs = await pool(items, (c) => yahoo(c + '.JK', '3mo', '1d'));
     total += save('idx', '1d', Object.fromEntries(items.map((c, i) => [c, rs[i]])));
+    // Open + volume 30 hari terakhir (sejajar dengan akhir idx-1d) untuk /akum tanpa Worker. Volume dalam lembar.
+    const vs = {};
+    items.forEach((c, i) => { const o = rs[i]; if (o && o.c.length >= 55) vs[c] = [o.o.slice(-30).map(p6), o.v.slice(-30).map((x) => Math.round(x))]; });
+    if (Object.keys(vs).length) { fs.writeFileSync(DIR + 'idx-vol.json', JSON.stringify({ asOf: new Date().toISOString(), s: vs })); console.log('idx-vol', Object.keys(vs).length, 'simbol'); }
 }
 if (!total) { console.error('tidak ada candle yang berhasil diambil'); process.exit(1); }

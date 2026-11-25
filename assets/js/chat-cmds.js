@@ -119,12 +119,20 @@
             var bi = { '1m': '1m', '5m': '5m', '30m': '30m', '1d': '1d' }[cfg.iv], lim = { '1m': 1000, '5m': 1000, '30m': 400, '1d': 45 }[cfg.iv];
             R = await viaBinance(it, bi, lim);
         } else R = await viaWorker(it, cfg.rg, cfg.iv);
+        if ((!R || !R.c.length) && it.mk === 'idx') return statAkum(it, key); // Worker tidak terjangkau: pakai candle harian statis
         if (!R || !R.c.length) return null;
         var last = R.t[R.t.length - 1], from;
         if (cfg.sesi) { from = it.mk === 'kripto' ? last - 86400 : (function () { var day = new Date((last + 7 * 3600) * 1000).toISOString().slice(0, 10), k = 0; while (k < R.t.length && new Date((R.t[k] + 7 * 3600) * 1000).toISOString().slice(0, 10) !== day) k++; return R.t[k] - 1; })(); }
         else from = last - cfg.win;
         var idx = []; for (var i = 0; i < R.t.length; i++) if (R.t[i] > from) idx.push(i);
         return { o: idx.map(function (i) { return R.o[i]; }), h: idx.map(function (i) { return R.h[i]; }), l: idx.map(function (i) { return R.l[i]; }), c: idx.map(function (i) { return R.c[i]; }), v: idx.map(function (i) { return R.v[i]; }), t: idx.map(function (i) { return R.t[i]; }) };
+    }
+    // Cadangan IHSG: candle harian statis (GitHub Pages). Untuk TF intraday dipakai 5 hari terakhir dan diberi catatan.
+    async function statAkum(it, key) {
+        var cd = await jfile('candles/idx-1d.json'), vd = await jfile('candles/idx-vol.json');
+        var a = cd && cd.s && cd.s[it.k], b = vd && vd.s && vd.s[it.k]; if (!a || !b) return null;
+        var win = TFA[key].win, intra = !win || win < 86400 * 5, n = Math.min(b[1].length, key === '30H' ? 21 : 5), cut = function (x) { return x.slice(-n); };
+        return { o: cut(b[0]), h: cut(a[0]), l: cut(a[1]), c: cut(a[2]), v: cut(b[1]), t: [], stat: true, note: intra ? 'Data intraday butuh Worker; ini versi candle harian ' + n + ' hari terakhir.' : 'Dari candle harian (Worker tidak terjangkau).' };
     }
     function hitungAkum(mk, H) {
         var tv = 0, vn = 0, acc = 0, dist = 0;
@@ -149,7 +157,7 @@
         if (it.mk === 'idx' && last <= 50) return 'Saham ' + it.k + ' masuk zona gocap (<= Rp50). Mending diskip.';
         var r = hitungAkum(it.mk, H), dom = r.total > 0 ? r.net / r.total * 100 : 0, isA = r.net > 0, u = unit(it.mk);
         return 'BANDAR ' + it.k + ' (' + key + ', ' + TFA[key].label + ', ' + H.c.length + ' candle)\nStatus: ' + (isA ? 'AKUMULASI' : 'DISTRIBUSI') + ' (dominasi ' + (dom > 0 ? '+' : '') + nf(dom, 1) + '%)\nNet Volume: ' + (r.net > 0 ? '+' : '') + nf(r.net, 0) + ' ' + u + '\nVolume candle naik: ' + nf(r.acc, 0) + ' ' + u + ' | turun: ' + nf(r.dist, 0) + ' ' + u + '\nVWAP: ' + fp(it.mk, r.avg, it.k) + ' | Last: ' + fp(it.mk, last, it.k) + (last < r.avg ? ' (di bawah rata-rata, diskon)' : ' (di atas rata-rata)') +
-            '\nRange periode: ' + fp(it.mk, Math.min.apply(null, H.l), it.k) + ' - ' + fp(it.mk, Math.max.apply(null, H.h), it.k) + '\nEstimasi proxy dari arah candle × volume, BUKAN data broker asli.';
+            (H.note ? '\n' + H.note : '') + '\nRange periode: ' + fp(it.mk, Math.min.apply(null, H.l), it.k) + ' - ' + fp(it.mk, Math.max.apply(null, H.h), it.k) + '\nEstimasi proxy dari arah candle × volume, BUKAN data broker asli.';
     }
     async function cmdTopAkum(args) {
         var mk = '', key = '';
