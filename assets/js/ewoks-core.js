@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0209';
+window.EWOKS_ASSET_V = '20261125t0211';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1429,7 +1429,7 @@ window.addEventListener('load', () => {
         if (window.EwoksChatCmds) return Promise.resolve(window.EwoksChatCmds);
         return new Promise(function (res) { var sc = document.createElement('script'); sc.src = CBASE + 'assets/js/chat-cmds.js?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1'); sc.onload = function () { res(window.EwoksChatCmds || null); }; sc.onerror = function () { res(null); }; document.head.appendChild(sc); });
     }
-    var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1, rd: 1, reksadana: 1, istilah: 1, topreturn: 1 };
+    var HEAVY = { akum: 1, bandar: 1, topakum: 1, ea: 1, eaus: 1, lk: 1, lkus: 1, analisa: 1, analisaus: 1, fibo: 1, fibous: 1, global: 1, scalpglobal: 1, globalcrypto: 1, globalforex: 1, rd: 1, reksadana: 1, istilah: 1, topreturn: 1, koneksi: 1, diag: 1 };
     var KIND = { pagi: 'Rekomendasi Pagi', siang: 'Rekomendasi Siang', swing: 'Swing (±1 minggu)', scalp: 'Scalping' };
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
     async function planIdx(kind, B) {

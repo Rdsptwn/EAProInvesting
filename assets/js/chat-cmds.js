@@ -421,6 +421,28 @@
         if (!list.length) return { text: 'Belum ada saham yang punya riwayat cukup untuk ' + yrs + ' tahun.', opts: opts };
         return { text: ('Return tertinggi ' + yrs + ' tahun terakhir, saham IHSG yang masih aktif dan cukup likuid (data per ' + ret.asOf + '):\n' + list.map(function (x, i) { return (i + 1) + '. ' + x.k + (x.n ? ' (' + x.n + ')' : '') + '  +' + nf(x.g, 0).replace(/,/g, '.') + '% · harga sekarang Rp ' + nf(x.p, 0).replace(/,/g, '.'); }).join('\n') + '\n\nCatatan: dihitung dari harga penyesuaian bulanan Yahoo (memasukkan split dan dividen), jadi bisa sedikit beda dari aplikasi sekuritas. Saham yang sudah naik tinggi bisa saja sudah mahal, dan angka ini tidak menjamin hasil ke depan.' + DISC), opts: opts };
     }
+    /* ================= /koneksi: diagnosis koneksi Worker dari browser ini ================= */
+    function cmdCek() {
+        var A = api(), tests = [
+            ['Worker /health', A + '/health'],
+            ['Worker harga saham AS', A + '/gquotes?s=AAPL'],
+            ['Worker candle saham AS', A + '/chart?g=1&s=AAPL&range=1mo&interval=1d'],
+            ['Worker harga IHSG', A + '/quotes?s=BBCA'],
+            ['OKX (kripto langsung)', 'https://www.okx.com/api/v5/market/candles?instId=BTC-USDT&bar=1H&limit=5'],
+            ['Data situs (GitHub Pages)', (typeof CBASE !== 'undefined' ? CBASE : '') + 'assets/data/macro.json']
+        ];
+        if (!A) return Promise.resolve('URL Worker belum diisi di situs ini.');
+        return Promise.all(tests.map(function (t) {
+            var t0 = Date.now(), ctl = new AbortController(), tm = setTimeout(function () { ctl.abort(); }, 12000);
+            return fetch(t[1], { cache: 'no-store', signal: ctl.signal }).then(function (r) {
+                clearTimeout(tm);
+                return r.text().then(function (b) { return '• ' + t[0] + ': ' + (r.ok ? 'OK' : 'GAGAL HTTP ' + r.status) + ' (' + (Date.now() - t0) + ' ms)' + (r.ok ? '' : ' ' + b.slice(0, 60)); });
+            }).catch(function (e) { clearTimeout(tm); return '• ' + t[0] + ': GAGAL, ' + (e && e.name === 'AbortError' ? 'timeout 12 detik' : ((e && e.message) || e)) + ' (' + (Date.now() - t0) + ' ms)'; });
+        })).then(function (rows) {
+            return 'Cek koneksi dari browser ini\nHalaman: ' + location.origin + '\nOnline: ' + (navigator.onLine ? 'ya' : 'tidak') + '\n' + rows.join('\n') +
+                '\n\nKalau semua "Worker" gagal tapi data situs OK, jaringan/ekstensi di perangkat ini memblokir workers.dev (coba DNS 1.1.1.1, matikan adblock/VPN, atau jaringan lain). Kalau cuma satu yang gagal, kirim barisnya ke gw.';
+        });
+    }
     window.EwoksChatCmds = {
         run: function (name, args) {
             args = args || [];
@@ -440,6 +462,7 @@
                 case 'globalforex': return cmdGlobal(['forex'].concat(args));
                 case 'rd': case 'reksadana': return cmdRd(args);
                 case 'istilah': return cmdIstilah(args);
+                case 'koneksi': case 'diag': return cmdCek();
                 case 'topreturn': return cmdTopReturn(args);
             }
             return null;
