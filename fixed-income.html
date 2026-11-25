@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261125t2226">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t2226">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261125t2242">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t2242">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="fixed-income">
 
@@ -179,8 +179,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-1 premium-card p-6 flex flex-col justify-center bg-slate-900 text-white border-slate-700 shadow-xl">
                         <h3 class="text-lg font-bold text-white mb-2 border-b border-slate-700 pb-2">Yield vs Risiko (Historis)</h3>
-                        <p class="text-xs text-slate-400 mb-4">Perbandingan rata-rata return tahunan vs fluktuasi harga (drawdown).</p>
-                        <div class="chart-container !h-[250px]">
+                        <p class="text-xs text-slate-400 mb-4">Hijau: perkiraan return per tahun. Merah: penurunan terdalam yang pernah terjadi (drawdown). Semakin panjang merahnya, semakin besar risiko.</p>
+                        <div class="chart-container !h-[300px]">
                             <canvas id="yieldChart"></canvas>
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                 <div class="premium-card p-6 border-blue-200 mt-8 shadow-sm">
                     <h3 class="text-xl font-black text-slate-900 mb-2 tooltip-trigger">Ilustrasi Yield Curve <span class="tooltip-text">Bentuk kurva imbal hasil obligasi negara berdasar tenor. Titik 10Y mengikuti data terbaru; tenor lain hanya ilustrasi.</span></h3>
                     <p class="text-xs text-slate-500 mb-6">Jika kurva <span class="text-red-500 font-bold">Inverted (Terbalik)</span> di mana tenor pendek lebih tinggi dari tenor panjang, itu biasanya merupakan indikator resesi/perlambatan ekonomi.</p>
-                    <div class="chart-container !h-[250px] !max-w-full">
+                    <div class="chart-container !h-[300px] !max-w-full">
                         <canvas id="yieldCurveChart"></canvas>
                     </div>
                 </div>
@@ -340,7 +340,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261125t2226"></script>
-    <script src="assets/js/pages/page-fixed-income.js?v=20261125t2226"></script>
+    <script src="assets/js/ewoks-core.js?v=20261125t2242"></script>
+    <script src="assets/js/pages/page-fixed-income.js?v=20261125t2242"></script>
 </body>
 </html>
