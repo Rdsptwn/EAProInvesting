@@ -16,5 +16,6 @@ for i in $(seq 1 "$N"); do
   else
     echo "putaran $i gagal, lanjut"
   fi
-  [ "$i" -lt "$N" ] && sleep "$GAP"
+  if [ "$i" -lt "$N" ]; then sleep "$GAP"; fi
 done
+exit 0
