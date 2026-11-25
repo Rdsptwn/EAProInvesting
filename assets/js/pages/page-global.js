@@ -245,7 +245,7 @@
                 }).join('') + '<p class="text-[10px] text-slate-400 mt-2">Rata-rata perubahan harga, dibobot nilai transaksi. Klik sektor untuk melihat sahamnya.</p>';
             }).catch(function () { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; });
         }
-        if (IS_IDX) get('syariah.json').then(function (d) { if (!d || !d.lists) return; var order = ['LQ45', 'IDX80', 'ISSI', 'JII', 'JII70', 'SHAGROW', 'MESBUMN17', 'VESTA28', 'ECONOMIC30', 'SRIKEHATI', 'ESGQ', 'ESGS', 'INVESTOR33']; el.insertAdjacentHTML('beforebegin', '<div class="flex flex-wrap gap-2 mb-3">' + order.filter(function (k) { return d.lists[k]; }).map(function (k) { return '<button type="button" data-grp="ix:' + k + '" class="hm-chip">' + esc(IX_NAME[k][0].replace(/ \(.*\)/, '')) + ' · ' + d.lists[k].length + '</button>'; }).join('') + '</div>'); }).catch(function () {});
+        if (IS_IDX) get('syariah.json').then(function (d) { if (!d || !d.lists) return; var order = ['LQ45', 'IDX80', 'ISSI', 'JII', 'JII70', 'SHAGROW', 'MESBUMN17', 'VESTA28', 'ECONOMIC30', 'SRIKEHATI', 'ESGQ', 'ESGS', 'INVESTOR33']; el.insertAdjacentHTML('beforebegin', '<div class="flex flex-wrap gap-2 mb-3">' + order.filter(function (k) { return d.lists[k]; }).map(function (k) { return '<button type="button" data-grp="ix:' + k + '" class="hm-chip">' + esc(IX_NAME[k][0].replace(/ \(.*\)/, '')) + ' · ' + d.lists[k].length + '</button>'; }).join('') + '</div>' + (d.notice && d.notice.text ? '<p class="mb-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">' + esc(d.notice.text) + '</p>' : '')); }).catch(function () {});
         paint(); startLive(); onLive.push(paint);
     }
     window.EwoksGlobal.renderSectors = renderSectors;

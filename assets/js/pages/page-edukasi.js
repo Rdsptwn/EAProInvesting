@@ -233,3 +233,6 @@ function updateSimAnalysisText(tickerA, dataA, tickerB, dataB) {
     `;
     container.innerHTML = html;
 }
+
+// Tautan langsung ke tab, mis. edukasi.html#edu-aturan
+(function () { var h = (location.hash || '').slice(1); if (/^edu-[a-z]+$/.test(h) && document.getElementById(h) && document.getElementById('btn-' + h)) switchEduTab(h); })();

@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261125t1241">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t1241">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261125t1249">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t1249">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="edukasi">
 
@@ -116,7 +116,7 @@
                                 <i class="fas fa-search-dollar w-5 text-indigo-500"></i> Cheat Sheet Bandar
                             </button>
                             <button onclick="showPage('quiz')" id="nav-quiz" class="dropdown-item border-t border-slate-100 mt-1 pt-2">
-                                <i class="fas fa-clipboard-list w-5 text-emerald-500"></i> Kuis Profil Risiko
+                                <i class="fas fa-clipboard-list w-5 text-emerald-500"></i> Kuis Gaya Trading
                             </button>
                         </div>
                     </div>
@@ -205,6 +205,7 @@
 
                 <div class="flex overflow-x-auto gap-2 mb-6 no-scrollbar pb-2 border-b border-slate-200">
                     <button id="btn-edu-dasar" onclick="switchEduTab('edu-dasar')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-blue-600 text-white font-bold text-xs transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-chart-pie mr-2"></i>Dasar & Makro</button>
+                    <button id="btn-edu-aturan" onclick="switchEduTab('edu-aturan')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-gavel mr-2"></i>Aturan Bursa</button>
                     <button id="btn-edu-fundamental" onclick="switchEduTab('edu-fundamental')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-chart-bar mr-2"></i>Analisis Fundamental</button>
                     <button id="btn-edu-profil" onclick="switchEduTab('edu-profil')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent"><i class="fas fa-users mr-2"></i>Profil Trader & Screener</button>
                     <button id="btn-edu-kamus" onclick="switchEduTab('edu-kamus')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent"><i class="fas fa-book mr-2"></i>Kamus & Regulasi</button>
@@ -313,6 +314,103 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="edu-aturan" class="edu-tab-content hidden space-y-8">
+                    <div class="premium-card p-6 md:p-10">
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl shrink-0"><i class="fas fa-gavel"></i></div>
+                            <div>
+                                <h2 class="text-xl md:text-2xl font-black text-slate-900">Aturan Main Bursa Saham Indonesia</h2>
+                                <p class="text-sm text-slate-600 mt-1">Aturan di BEI sering berubah, dan sepanjang 2026 ada beberapa perubahan besar. Halaman ini dicek ke pemberitaan resmi per <b>25 November 2026</b>. Sebelum order, cek pengumuman terbaru di <a class="text-blue-600 underline" href="https://www.idx.co.id" target="_blank" rel="noopener">idx.co.id</a>.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2"><i class="far fa-clock text-blue-500 mr-2"></i>Jam perdagangan (pasar reguler)</h3>
+                                <ul class="text-sm text-slate-700 space-y-1 list-disc pl-5">
+                                    <li><b>Senin-Kamis:</b> sesi I 09.00-12.00, sesi II 13.30-15.49.59 WIB.</li>
+                                    <li><b>Jumat:</b> sesi I 09.00-11.30, sesi II 14.00-15.49.59 WIB.</li>
+                                    <li>Sabtu, Minggu, dan hari libur bursa tidak ada perdagangan.</li>
+                                </ul>
+                                <p class="text-xs text-slate-500 mt-2">Jam ini dari pemberitaan Agustus 2025. Fase pre-opening dan pre-closing tidak dibahas di sini.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2"><i class="fas fa-cubes text-blue-500 mr-2"></i>Lot dan harga minimum</h3>
+                                <ul class="text-sm text-slate-700 space-y-1 list-disc pl-5">
+                                    <li><b>1 lot = 100 lembar.</b> Harga Rp1.000 per lembar berarti 1 lot Rp100.000 (belum termasuk fee).</li>
+                                    <li><b>Harga minimum Rp1</b> sejak 28 September 2026. Sebelumnya batas bawahnya Rp50, jadi saham "gocap" sekarang bisa turun lebih jauh.</li>
+                                    <li>Yang berubah hanya batas terendah yang boleh diperdagangkan. Harga saham tidak otomatis jadi Rp1.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-900 mb-2"><i class="fas fa-ban text-rose-500 mr-2"></i>Auto Rejection: batas naik (ARA) dan batas turun (ARB)</h2>
+                        <p class="text-sm text-slate-600 mb-4">Auto rejection menolak order yang harganya melewati batas kenaikan atau penurunan harian. Tujuannya meredam lonjakan dan kejatuhan ekstrem dalam satu hari.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left border border-slate-200 rounded-xl overflow-hidden">
+                                <thead class="bg-slate-50 text-slate-700">
+                                    <tr><th class="p-3 font-black">Rentang harga</th><th class="p-3 font-black">ARA</th><th class="p-3 font-black">ARB sekarang<br><span class="text-[11px] font-semibold text-slate-500">19 Okt-31 Des 2026</span></th><th class="p-3 font-black">ARB rencana<br><span class="text-[11px] font-semibold text-slate-500">mulai 1 Jan 2027</span></th></tr>
+                                </thead>
+                                <tbody class="text-slate-700 divide-y divide-slate-100">
+                                    <tr><td class="p-3 font-bold">Rp1-Rp10</td><td class="p-3">Rp1</td><td class="p-3">Rp1</td><td class="p-3">Rp1</td></tr>
+                                    <tr><td class="p-3 font-bold">Rp11-Rp200</td><td class="p-3">35%</td><td class="p-3">7%</td><td class="p-3">35%</td></tr>
+                                    <tr><td class="p-3 font-bold">&gt; Rp200-Rp5.000</td><td class="p-3">25%</td><td class="p-3">7%</td><td class="p-3">25%</td></tr>
+                                    <tr><td class="p-3 font-bold">&gt; Rp5.000</td><td class="p-3">20%</td><td class="p-3">7%</td><td class="p-3">20%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="text-sm text-slate-700 space-y-2 list-disc pl-5 mt-4">
+                            <li><b>Contoh:</b> saham Rp1.000 boleh naik maksimal 25% (sekitar Rp1.250) dalam sehari, dan turun maksimal 7% (sekitar Rp930) selama ARB 7% berlaku.</li>
+                            <li><b>Kenapa ARB sempat 15% lalu 7%?</b> Mulai 28 September 2026 ARB tetap 15%. BEI menurunkannya jadi 7% mulai 19 Oktober 2026 (Kep-00157/BEI/10-2026) untuk meredam volatilitas setelah pengumuman MSCI. Aturan ini berlaku sampai 31 Desember 2026 dan akan dievaluasi.</li>
+                            <li><b>Rencana 2027:</b> pemberitaan September 2026 menyebut ARB akan disamakan dengan ARA (maksimal 35%) mulai 1 Januari 2027. Karena ARB 7% dikeluarkan setelah itu dan akan dievaluasi, cek lagi pengumuman BEI akhir Desember.</li>
+                            <li><b>Saham Rp1-Rp10:</b> batasnya nominal tetap Rp1. Saham Rp5 yang turun Rp1 berarti turun 20%, dan saham Rp2 turun 50% dalam sehari. Makin murah harganya, makin besar risiko persentasenya.</li>
+                        </ul>
+                        <p class="text-xs text-slate-500 mt-3">Sumber: <a class="underline" href="https://investasi.kontan.co.id/news/bei-berlakukan-arb-7-hingga-akhir-2026-ini-aturan-lengkapnya" target="_blank" rel="noopener">Kontan</a>, <a class="underline" href="https://stockwatch.id/bei-resmi-turunkan-batas-arb-saham-menjadi-7-berlaku-hingga-akhir-2026/" target="_blank" rel="noopener">StockWatch</a>, <a class="underline" href="https://katadata.co.id/finansial/bursa/6ab310b01550b/apa-itu-batas-bawah-harga-saham-rp-1-berlaku-28-september-bagaimana-aturannya" target="_blank" rel="noopener">Katadata</a>.</p>
+                    </div>
+
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-900 mb-4"><i class="fas fa-pause-circle text-amber-500 mr-2"></i>Trading halt, suspensi, dan papan khusus</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2">Trading halt IHSG</h3>
+                                <p>Kalau IHSG turun 8% dalam satu hari, BEI menghentikan sementara perdagangan semua saham selama 30 menit. Ini terjadi, misalnya, pada 16 Oktober 2026. Selama halt kamu tidak bisa order. Setelah dibuka, harga bisa bergerak cepat ke dua arah.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2">Suspensi dan UMA</h3>
+                                <p>BEI bisa menghentikan perdagangan satu saham (suspensi) saat harganya bergerak tidak wajar atau ada masalah pada emiten. Sebelumnya BEI biasanya mengumumkan UMA (Unusual Market Activity) sebagai peringatan. Selama suspensi, saham tidak bisa dijual, jadi uangmu tertahan sampai dibuka lagi.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2">Papan Pemantauan Khusus</h3>
+                                <p>Saham yang memenuhi kriteria BEI (misalnya harga sangat rendah atau kinerja keuangan buruk) dipindah ke papan ini. Perdagangannya memakai mekanisme call auction per jam, bukan transaksi kontinu, jadi harga lebih sulit ditebak dan antreannya bisa lama.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 dark-mode-card">
+                                <h3 class="font-black text-slate-900 mb-2">HSC (kepemilikan terkonsentrasi)</h3>
+                                <p>Sejak 2026 BEI dan KSEI mengumumkan saham yang pemegang sahamnya terkonsentrasi (HSC). Per 12 November 2026 ada 383 saham, dikeluarkan dari perhitungan IHSG mulai 13 November. Mulai 30 November-1 Desember 2026 saham HSC juga keluar dari beberapa indeks (Papan Utama, ISSI, JII, dan lainnya). HSC bukan berarti ada pelanggaran. Dana yang mengikuti indeks-indeks itu bisa ikut menyesuaikan portofolionya, jadi harga saham HSC bisa bergerak di sekitar tanggal tersebut.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">Sumber: <a class="underline" href="https://www.bareksa.com/berita/saham/2026-11-11/saham-hsc-jadi-383-emiten-keluar-dari-ihsg-mulai-13-november/amp" target="_blank" rel="noopener">Bareksa</a>, <a class="underline" href="https://kumparan.com/kumparanbisnis/bei-keluarkan-semua-saham-hsc-dari-12-indeks-mulai-30-november-2026-28dOcsdZjMh" target="_blank" rel="noopener">Kumparan</a>, <a class="underline" href="https://market.bisnis.com/read/20261016/7/2013113/bei-terapkan-trading-halt-30-menit-usai-ihsg-dibuka-turun-8" target="_blank" rel="noopener">Bisnis.com</a>. Status suspensi dan pemantauan khusus per emiten ada di Watchlist (kolom status).</p>
+                    </div>
+
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-900 mb-4"><i class="fas fa-clipboard-check text-emerald-500 mr-2"></i>Cek sebelum menekan tombol beli</h2>
+                        <ol class="text-sm text-slate-700 space-y-2 list-decimal pl-5">
+                            <li>Harga sekarang berapa, dan masih berapa persen ke ARA atau ARB hari ini?</li>
+                            <li>Apakah saham ini sedang UMA, suspensi, papan pemantauan khusus, atau masuk daftar HSC?</li>
+                            <li>Berapa lot yang kamu beli, dan berapa rupiah yang hilang kalau kena stop loss? Pakai kalkulator Trading Plan.</li>
+                            <li>Apakah volume cukup likuid untuk keluar tanpa menunggu lama? Saham murah dan sepi sering sulit dijual.</li>
+                            <li>Sudah punya dana darurat dan bukan memakai uang kebutuhan?</li>
+                        </ol>
+                        <div class="mt-5 flex flex-wrap gap-3">
+                            <a href="kalkulator.html" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold">Kalkulator Trading Plan</a>
+                            <a href="watchlist.html" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">Watchlist dan status emiten</a>
+                            <a href="quiz.html" class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-bold">Cari tahu gaya tradingmu</a>
+                        </div>
+                        <p class="text-[11px] text-slate-400 italic mt-4">Materi ini untuk edukasi, bukan saran investasi.</p>
                     </div>
                 </div>
 
@@ -3738,7 +3836,7 @@
                 <button onclick="showPage('edukasi')" class="dropdown-item">Makro & Saham</button>
                 <button onclick="showPage('fixed-income')" class="dropdown-item">Fixed Income (SBN)</button>
                 <button onclick="showPage('bandarmology-edu')" class="dropdown-item">Cheat Sheet Bandar</button>
-                <button onclick="showPage('quiz')" class="dropdown-item border-t border-slate-100">Kuis Profil Risiko</button>
+                <button onclick="showPage('quiz')" class="dropdown-item border-t border-slate-100">Kuis Gaya Trading</button>
             </div>
         </div>
         
@@ -3769,8 +3867,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261125t1241"></script>
-    <script src="assets/js/pages/page-edu-quiz.js?v=20261125t1241"></script>
-    <script src="assets/js/pages/page-edukasi.js?v=20261125t1241"></script>
+    <script src="assets/js/ewoks-core.js?v=20261125t1249"></script>
+    <script src="assets/js/pages/page-edu-quiz.js?v=20261125t1249"></script>
+    <script src="assets/js/pages/page-edukasi.js?v=20261125t1249"></script>
 </body>
 </html>

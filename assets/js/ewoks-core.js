@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t1241';
+window.EWOKS_ASSET_V = '20261125t1249';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {

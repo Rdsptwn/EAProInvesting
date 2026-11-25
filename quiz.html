@@ -7,17 +7,15 @@
     <meta name="keywords" content="saham, investasi, bandarmologi, fundamental, teknikal, kalkulator investasi, bunga majemuk, edukasi saham, IHSG">
     <meta name="author" content="Ewoks Academy">
     
-    <title>Kuis Profil Risiko</title>
+    <title>Kuis Gaya Trading</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/logo-ea.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <meta name="theme-color" content="#2563eb">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261125t1241">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t1241">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261125t1249">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t1249">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="quiz">
 
@@ -116,7 +114,7 @@
                                 <i class="fas fa-search-dollar w-5 text-indigo-500"></i> Cheat Sheet Bandar
                             </button>
                             <button onclick="showPage('quiz')" id="nav-quiz" class="dropdown-item border-t border-slate-100 mt-1 pt-2">
-                                <i class="fas fa-clipboard-list w-5 text-emerald-500"></i> Kuis Profil Risiko
+                                <i class="fas fa-clipboard-list w-5 text-emerald-500"></i> Kuis Gaya Trading
                             </button>
                         </div>
                     </div>
@@ -171,61 +169,31 @@
 
         <section id="page-quiz" class="max-w-7xl mx-auto">
             <div class="max-w-3xl mx-auto">
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl md:text-4xl font-black text-slate-900 mb-4">Kenali <span class="text-emerald-500">Profil Risiko</span> Anda</h2>
-                    <p class="text-slate-500 text-sm">Tiga tahap penilaian: kondisi keuangan, toleransi risiko, dan horizon waktu. Hasilnya berupa gambaran alokasi awal untuk edukasi, bukan nasihat investasi personal.</p>
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-black text-slate-900 mb-3">Kenali <span class="text-emerald-500">Gaya Trading</span> Kamu</h2>
+                    <p class="text-slate-500 text-sm max-w-xl mx-auto">15 pertanyaan singkat (sekitar 3 menit) untuk tahu kamu lebih cocok jadi scalper, day trader, swing trader, trend trader, value investor, atau investor rutin. Hasilnya berisi ciri, jebakan, aturan main, dan materi yang bisa kamu pelajari. Edukasi, bukan saran investasi.</p>
                 </div>
 
-                <div id="quiz-container" class="premium-card p-6 md:p-10 shadow-sm relative min-h-[400px]">
+                <div id="quiz-container" class="premium-card p-5 md:p-10 shadow-sm relative min-h-[360px]">
                     <div id="quiz-intro" class="quiz-step active">
-                        <div class="mb-6 border-b border-slate-200 pb-4">
-                            <h3 class="text-xl font-bold text-slate-800">Langkah Awal: Data Diri & Finansial</h3>
-                            <p class="text-xs text-slate-500 mt-1">Data Anda tidak disimpan di server, hanya digunakan untuk analisis rekomendasi pada sesi ini.</p>
+                        <div class="mb-5 border-b border-slate-200 pb-4">
+                            <h3 class="text-lg md:text-xl font-bold text-slate-800">Sebelum mulai</h3>
+                            <p class="text-xs text-slate-500 mt-1">Jawab sesuai kebiasaanmu sekarang, bukan yang kamu harapkan. Tidak ada jawaban benar atau salah. Jawabanmu tidak dikirim ke server.</p>
                         </div>
                         <div class="space-y-4">
                             <div>
-                                <label class="text-xs font-black text-slate-600 uppercase mb-2 block">Nama Lengkap (Untuk Sertifikat)</label>
-                                <input type="text" id="qz-name" placeholder="Rakaditya Septiawan" class="input-pro border border-slate-200 bg-white" required>
+                                <label for="qz-name" class="text-xs font-bold text-slate-600 mb-2 block">Nama (opsional, untuk kartu profil)</label>
+                                <input type="text" id="qz-name" placeholder="Nama panggilan" maxlength="40" autocomplete="given-name" class="input-pro border border-slate-200 bg-white">
                             </div>
-                            <div>
-                                <label class="text-xs font-black text-slate-600 uppercase mb-2 block">Total Dana Investasi Anda Saat Ini (Rp)</label>
-                                <input type="number" id="qz-capital" placeholder="Contoh: 10000000" class="input-pro border border-slate-200 bg-white" min="0" required>
-                            </div>
-                            <div>
-                                <label class="text-xs font-black text-slate-600 uppercase mb-2 block">Pengeluaran Pokok / Tanggungan Per Bulan (Rp)</label>
-                                <input type="number" id="qz-expense" placeholder="Contoh: 5000000" class="input-pro border border-slate-200 bg-white" min="0" required>
-                            </div>
-                            <button onclick="startComplexQuiz()" class="w-full mt-4 bg-emerald-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-colors shadow-md">
-                                Mulai Asesmen (30 Pertanyaan) <i class="fas fa-arrow-right ml-2"></i>
+                            <button type="button" onclick="startComplexQuiz()" class="w-full mt-2 bg-emerald-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-colors shadow-md">
+                                Mulai kuis (15 pertanyaan) <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                         </div>
                     </div>
 
                     <div id="quiz-dynamic-container"></div>
 
-                    <div id="quiz-result" class="hidden text-center py-8">
-                        <div id="res-icon" class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl mb-6"></div>
-                        <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Profil & Status Kesehatan Finansial Anda:</h3>
-                        <h2 id="res-title" class="text-3xl font-black text-slate-900 mb-4">Tipe Profil</h2>
-                        <p id="res-desc" class="text-slate-600 max-w-lg mx-auto mb-8 leading-relaxed font-medium">Deskripsi</p>
-                        
-                        <div class="bg-slate-50 p-6 rounded-2xl text-left border border-slate-200 shadow-sm max-w-xl mx-auto mb-8">
-                            <h4 class="font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2"><i class="fas fa-chart-pie text-blue-500 mr-2"></i>Rekomendasi Alokasi Aset Spesifik Anda:</h4>
-                            <ul id="res-allocation" class="space-y-3 text-sm font-bold text-slate-700"></ul>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-                            <button onclick="generateCertificate()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md hover:bg-blue-700 transition-colors flex items-center gap-2">
-                                <i class="fas fa-certificate"></i> Download Sertifikat
-                            </button>
-                            <button onclick="resetQuiz()" class="text-slate-500 font-bold hover:text-blue-600 underline">Ulangi Asesmen</button>
-                        </div>
-
-                        <div class="text-left mt-8 max-w-xl mx-auto border-t border-slate-200 pt-6">
-                            <h4 class="font-bold text-slate-800 mb-2"><i class="fas fa-lightbulb text-amber-500 mr-2"></i> Feedback Pembelajaran Ewoks:</h4>
-                            <p class="text-xs text-slate-600 leading-relaxed">Penting untuk dicatat bahwa dalam berinvestasi, <b>Risiko selalu berbanding lurus dengan Return</b>. Rekomendasi di atas disesuaikan tidak hanya dengan mental psikologi Anda, tetapi juga memperhitungkan *ketahanan napas* (dana darurat vs modal investasi) yang Anda miliki saat ini.</p>
-                        </div>
-                    </div>
+                    <div id="quiz-result" class="hidden"></div>
                 </div>
 
                 <canvas id="certCanvas" width="800" height="600" class="hidden"></canvas>
@@ -279,7 +247,7 @@
                 <button onclick="showPage('edukasi')" class="dropdown-item">Makro & Saham</button>
                 <button onclick="showPage('fixed-income')" class="dropdown-item">Fixed Income (SBN)</button>
                 <button onclick="showPage('bandarmology-edu')" class="dropdown-item">Cheat Sheet Bandar</button>
-                <button onclick="showPage('quiz')" class="dropdown-item border-t border-slate-100">Kuis Profil Risiko</button>
+                <button onclick="showPage('quiz')" class="dropdown-item border-t border-slate-100">Kuis Gaya Trading</button>
             </div>
         </div>
         
@@ -310,7 +278,7 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261125t1241"></script>
-    <script src="assets/js/pages/page-quiz.js?v=20261125t1241"></script>
+    <script src="assets/js/ewoks-core.js?v=20261125t1249"></script>
+    <script src="assets/js/pages/page-quiz.js?v=20261125t1249"></script>
 </body>
 </html>

@@ -1,298 +1,270 @@
-﻿// --- KUIS PROFIL RISIKO KOMPLEKS (30 PERTANYAAN) ---
-let quizAnswers = [];
-let currentQIndex = 0;
-let userData = { name: '', capital: 0, expense: 0 };
-
-// 30 Pertanyaan dibagi 3 Level (Dasar, Menengah, Lanjutan/Psikologi)
-const quizQuestions = [
-    // LEVEL 1: Dasar & Tujuan
-    { q: "Apa tujuan utama Anda berinvestasi di pasar modal?", opts: [{t: "Menjaga uang dari inflasi (Sangat Aman)", s: 1}, {t: "Mendapat dividen rutin & sedikit growth", s: 2}, {t: "Pertumbuhan aset eksponensial (Capital Gain)", s: 3}] },
-    { q: "Berapa lama Anda berencana untuk TIDAK menarik dana investasi ini?", opts: [{t: "Kurang dari 1 tahun", s: 1}, {t: "1 sampai 5 tahun", s: 2}, {t: "Lebih dari 5 tahun", s: 3}] },
-    { q: "Bagaimana tingkat pengetahuan Anda tentang instrumen keuangan saat ini?", opts: [{t: "Pemula (Hanya tahu deposito/tabungan)", s: 1}, {t: "Menengah (Paham reksa dana & obligasi)", s: 2}, {t: "Lanjut (Sudah trading saham menjanjikan/mandiri)", s: 3}] },
-    { q: "Jika Anda diberi pilihan, skenario untung-rugi mana yang Anda pilih per tahun?", opts: [{t: "Untung 5% pasti, tanpa risiko turun", s: 1}, {t: "Untung 10%, tapi bisa turun 5%", s: 2}, {t: "Untung 25%, tapi siap jika turun 20%", s: 3}] },
-    { q: "Apa sumber dana yang Anda gunakan untuk investasi ini?", opts: [{t: "Uang dapur/kebutuhan sehari-hari (BAHAYA)", s: 1}, {t: "Tabungan yang mungkin dipakai 1 tahun ke depan", s: 2}, {t: "Uang dingin (Uang nganggur)", s: 3}] },
-    { q: "Jika inflasi tiba-tiba naik drastis (Harga barang mahal), apa reaksi Anda?", opts: [{t: "Tarik semua investasi jadi uang tunai", s: 1}, {t: "Beralih ke Obligasi/Emas yang aman", s: 2}, {t: "Beli saham sektor konsumsi/energi pelindung nilai", s: 3}] },
-    { q: "Apakah Anda siap jika nilai portofolio Anda tidak tumbuh (stagnan) selama 2 tahun?", opts: [{t: "Sangat tidak siap, mending deposito", s: 1}, {t: "Kecewa, tapi akan menunggu", s: 2}, {t: "Biasa saja, fokus pada nilai jangka panjang", s: 3}] },
-    { q: "Berapa persen dari total kekayaan Anda yang akan dialokasikan ke pasar modal?", opts: [{t: "Kurang dari 10%", s: 1}, {t: "10% - 30%", s: 2}, {t: "Lebih dari 30%", s: 3}] },
-    { q: "Apa yang Anda lakukan saat menerima bonus tahunan/THR?", opts: [{t: "Dibelanjakan semua", s: 1}, {t: "Ditabung di rekening biasa", s: 2}, {t: "Disuntikkan lagi ke portofolio investasi", s: 3}] },
-    { q: "Seberapa sering Anda ingin memantau portofolio investasi Anda?", opts: [{t: "Setiap jam (Cemas)", s: 1}, {t: "Sebulan sekali", s: 2}, {t: "Setiap hari untuk cari peluang (Trading)", s: 3}] },
-    
-    // LEVEL 2: Skenario Menengah & Volatilitas
-    { q: "Portofolio saham Anda tiba-tiba anjlok -15% dalam 3 hari karena krisis global. Apa tindakan Anda?", opts: [{t: "Panik dan Cut Loss semua", s: 1}, {t: "Diam dan berdoa harganya naik lagi", s: 2}, {t: "Evaluasi fundamental, jika masih bagus saya Average Down", s: 3}] },
-    { q: "Anda membeli saham karena rekomendasi influencer, lalu saham tersebut disuspen bursa. Reaksi Anda?", opts: [{t: "Marah pada influencer tersebut", s: 1}, {t: "Menyesal dan kapok main saham", s: 2}, {t: "Jadikan pelajaran untuk wajib analisa (DYOR)", s: 3}] },
-    { q: "Anda memegang obligasi (SBN) lalu suku bunga BI naik drastis. Apa dampaknya pada nilai SBN Anda?", opts: [{t: "Tidak tahu sama sekali", s: 1}, {t: "Nilai harga SBN di pasar sekunder akan turun", s: 3}, {t: "Nilainya tetap naik", s: 1}] },
-    { q: "Saham unggulan (BBCA) turun -5% dalam sehari, sementara saham lapis 3 (Gorengan) naik +20%. Anda akan?", opts: [{t: "Jual BBCA, kejar saham gorengan (FOMO)", s: 1}, {t: "Tetap pegang BBCA, hindari gorengan", s: 2}, {t: "Serok BBCA lebih banyak karena diskon", s: 3}] },
-    { q: "Manakah pernyataan yang paling mendeskripsikan strategi diversifikasi Anda?", opts: [{t: "All-in di 1 saham yang katanya pasti naik", s: 1}, {t: "Membeli 20 saham berbeda agar aman", s: 2}, {t: "Membagi modal di 3-5 saham beda sektor & ada porsi Reksadana", s: 3}] },
-    { q: "Apa yang Anda pahami tentang 'Dividen Trap'?", opts: [{t: "Sesuatu yang menguntungkan", s: 1}, {t: "Perangkap harga turun tajam setelah Ex-Date dividen", s: 3}, {t: "Pajak dari dividen yang terlalu besar", s: 2}] },
-    { q: "Anda melihat harga emas dunia sedang rekor tertinggi (All Time High). Keputusan Anda?", opts: [{t: "All-in beli Emas sekarang juga", s: 1}, {t: "Jual sebagian emas untuk Take Profit", s: 3}, {t: "Ikut beli sedikit karena takut tertinggal", s: 2}] },
-    { q: "Seorang teman menawarkan robot trading yang menjamin profit 5% sebulan. Respon Anda?", opts: [{t: "Ikut, karena pasti untung", s: 1}, {t: "Pikir-pikir dulu", s: 2}, {t: "Tolak tegas, di investasi tidak ada hasil 'pasti' (Fix Return)", s: 3}] },
-    { q: "Jika Anda mencapai target profit (TP) lebih cepat dari perkiraan (misal +15% dalam 2 hari), Anda akan?", opts: [{t: "Tahan terus karena merasa bisa +50%", s: 1}, {t: "Amankan profit parsial, naikkan titik Trailing Stop", s: 3}, {t: "Tanya orang lain di grup saham", s: 2}] },
-    { q: "Apa indikator utama bagi Anda sebelum memutuskan membeli sebuah saham?", opts: [{t: "Feeling dan feeling", s: 1}, {t: "Berita bagus di media massa", s: 2}, {t: "Kombinasi valusi fundamental murah & teknikal yang valid", s: 3}] },
-
-    // LEVEL 3: Lanjutan & Psikologi Trading
-    { q: "Apa prinsip Anda mengenai 'Cut Loss'?", opts: [{t: "Pantang Cut Loss sebelum hijau", s: 1}, {t: "Hanya Cut Loss kalau butuh uang", s: 2}, {t: "Wajib Cut Loss jika harga jebol Support / melanggar Trading Plan", s: 3}] },
-    { q: "Ketika terjadi Bear Market (Pasar Bearish), strategi terbaik menurut Anda?", opts: [{t: "Pensiun dari bursa saham", s: 1}, {t: "Tetap beli saham setiap hari", s: 2}, {t: "Perbanyak pegang Cash (Pasar Uang) tunggu momentum reversal", s: 3}] },
-    { q: "Pahami skenario ini: Laba bersih perusahaan naik 50%, tapi harga sahamnya malah turun saat laporan rilis (Sell on News). Kenapa?", opts: [{t: "Bursa sedang error", s: 1}, {t: "Pasar sudah mengekspektasikan kenaikan tersebut jauh-jauh hari", s: 3}, {t: "Laporan keuangannya palsu", s: 2}] },
-    { q: "Jika modal Anda Rp 10 Juta, dan Anda siap rugi maksimal Rp 100 ribu per trade (Risk 1%). Berapa persen Stop Loss yang ideal jika Anda all-in?", opts: [{t: "50%", s: 1}, {t: "10%", s: 2}, {t: "1% dari modal, atau atur Position Sizing (Lot) nya", s: 3}] },
-    { q: "Apa yang membedakan seorang Investor dengan seorang Gambler (Penjudi) di bursa?", opts: [{t: "Investor pakai jas, gambler pakai kaos", s: 1}, {t: "Investor selalu menang, gambler sering kalah", s: 2}, {t: "Investor memiliki dasar analisis dan manajemen risiko yang terukur", s: 3}] },
-    { q: "Anda menemukan saham dengan PER 2x (Sangat murah). Apa langkah selanjutnya sebelum membeli?", opts: [{t: "Langsung HAKA (Hajar Kanan) all in", s: 1}, {t: "Masuk ke watchlist", s: 2}, {t: "Cek laporan arus kas (CF) dan hutangnya (DER), pastikan bukan Value Trap", s: 3}] },
-    { q: "Mitos atau Fakta: 'Saham Bluechip (BCA/BRI) tidak mungkin membuat Anda bangkrut'?", opts: [{t: "Fakta, karena perusahaannya besar", s: 1}, {t: "Mitos, jika beli di harga pucuk (Overvalued) tetap bisa nyangkut parah", s: 3}, {t: "Tergantung takdir", s: 2}] },
-    { q: "Berapa rasio Risk : Reward (RRR) minimal yang Anda terima sebelum entry sebuah saham?", opts: [{t: "1 : 1 (Take profit 5%, Stop loss 5%)", s: 1}, {t: "0.5 : 1 (Take profit tipis, Stop loss dalam)", s: 1}, {t: "1 : 2 atau lebih (Risiko Rp 1, Potensi untung Rp 2)", s: 3}] },
-    { q: "Anda melihat asing mencatatkan 'Net Sell' (Jual bersih) berturut-turut di saham yang Anda pegang. Reaksi Anda?", opts: [{t: "Abaikan, asing tidak penting", s: 1}, {t: "Langsung jual tanpa analisa", s: 2}, {t: "Waspada, cek level teknikal apakah ada distribusi masif (Bandarmologi)", s: 3}] },
-    { q: "Apa prioritas utama Anda dalam karir investasi / trading Anda?", opts: [{t: "Cepat kaya dan beli lamborghini", s: 1}, {t: "Bisa pamer screenshot profit di sosmed", s: 1}, {t: "Survival (Bertahan hidup) dengan melindungi modal dari kerugian fatal", s: 3}] }
+// --- KUIS GAYA TRADING: 15 pertanyaan -> tipe trader/investor + saran ---
+// Tiap opsi menambah poin ke tipe: s=Scalper, d=Day Trader/BSJP, w=Swing, p=Trend/Position, v=Value & Dividen, c=Investor Rutin (DCA).
+// r = tingkat risiko yang dipilih (1 rendah - 3 tinggi); f = penanda peringatan untuk hasil.
+const QZ_TYPES = {
+    s: { name: 'Scalper', icon: 'fa-bolt', color: 'amber', tag: 'Ambil untung kecil, berkali-kali, dalam hitungan menit.',
+        ciri: ['Posisi dipegang detik sampai menit, puluhan transaksi per hari.', 'Hampir sepanjang sesi bursa kamu menatap layar.', 'Targetmu tipis (sekitar 0,5-2%) dan stop loss sangat ketat.'],
+        kuat: ['Refleks cepat dan nyaman memotong rugi kecil.', 'Terbiasa membaca antrean beli-jual dan pergerakan harga.'],
+        jebak: ['Overtrading: fee pulang-pergi dan selisih harga bisa memakan seluruh target tipis.', 'Balas dendam setelah rugi, lalu ukuran posisi dibesarkan.', 'Saham sepi: sulit keluar tepat waktu.'],
+        cocok: 'Saham paling likuid (LQ45/IDX80) dengan nilai transaksi besar. Hindari saham murah yang sepi.',
+        aturan: ['Risiko maksimal 0,5-1% modal per transaksi.', 'Tentukan batas rugi harian (misalnya 2-3% modal). Kena batas itu, berhenti sampai besok.', 'Hitung fee beli+jual sebelum menetapkan target.', 'Ingat batas harian: ARB saat ini 7% (sampai 31 Des 2026), dan IHSG turun 8% memicu trading halt 30 menit.'],
+        belajar: [['Teknikal dasar', 'edukasi.html#edu-teknikal'], ['Fungsi indikator', 'edukasi.html#edu-indikator'], ['Aturan bursa (ARA/ARB, halt)', 'edukasi.html#edu-aturan'], ['Cheat sheet bandar', 'bandarmology-edu.html']],
+        tools: ['Tido: /scalp idx atau /scalp kripto', 'Tido: /akum KODE untuk arah volume', 'Kalkulator Trading Plan', 'Jurnal Trading: catat tiap transaksi dan hitung win rate'] },
+    d: { name: 'Day Trader (BSJP/BPJS)', icon: 'fa-sun', color: 'orange', tag: 'Masuk dan keluar dalam hari yang sama, atau beli sore jual pagi.',
+        ciri: ['Posisi dipegang beberapa jam sampai 1-2 hari.', 'Mengincar momentum: pembukaan, penutupan, atau saham yang sedang ramai.', 'Cek pasar beberapa kali sehari, tidak harus terus-menerus.'],
+        kuat: ['Disiplin target dan stop loss harian.', 'Bisa membaca momentum dan volume.'],
+        jebak: ['FOMO: masuk saat harga sudah naik tinggi.', 'Gap turun semalam atau saham kena ARB sebelum sempat jual (ARB saat ini 7%).', 'Ikut-ikutan rumor tanpa level jelas.'],
+        cocok: 'Saham likuid dengan nilai transaksi besar dan pergerakan harian cukup lebar.',
+        aturan: ['Stop loss 1-2% dari harga masuk, ditentukan sebelum order.', 'Risiko maksimal 1% modal per transaksi.', 'Jangan membawa posisi menginap kalau tidak ada rencana untuk gap turun.', 'Jangan mengejar harga yang sudah naik jauh dari titik rencana.'],
+        belajar: [['Teknikal dasar', 'edukasi.html#edu-teknikal'], ['Fungsi indikator', 'edukasi.html#edu-indikator'], ['Aturan bursa (ARA/ARB, halt)', 'edukasi.html#edu-aturan'], ['Profil trader dan screener', 'edukasi.html#edu-profil']],
+        tools: ['Tido: /pagi idx atau /siang idx', 'Watchlist: pantau level BoW dan harga near-live', 'Kalkulator Trading Plan', 'Jurnal Trading'] },
+    w: { name: 'Swing Trader', icon: 'fa-wave-square', color: 'blue', tag: 'Ikuti ayunan harga selama beberapa hari sampai beberapa minggu.',
+        ciri: ['Posisi dipegang 1 minggu sampai sekitar 3 bulan.', 'Beli dekat support, jual dekat resist atau saat tren patah.', 'Cukup cek pasar sekali sehari, biasanya sore atau malam.'],
+        kuat: ['Sabar menunggu level yang jelas.', 'Cocok untuk yang punya pekerjaan lain: tidak perlu menatap layar.'],
+        jebak: ['Tidak memakai stop loss, lalu rugi kecil jadi nyangkut.', 'Memegang terlalu banyak saham sampai tidak sempat dipantau.', 'Menggeser stop loss terus karena belum rela rugi.'],
+        cocok: 'Saham likuid dengan tren dan level support/resist yang rapi, di IHSG maupun saham global.',
+        aturan: ['Risk:reward minimal 1:2 (potensi untung dua kali risiko).', 'Risiko 1-2% modal per posisi, maksimal 5-8 posisi bersamaan.', 'Stop loss di bawah support, bukan di angka yang enak dilihat.', 'Catat alasan masuk supaya bisa dievaluasi.'],
+        belajar: [['Teknikal dasar', 'edukasi.html#edu-teknikal'], ['Fungsi indikator', 'edukasi.html#edu-indikator'], ['Dasar dan makro', 'edukasi.html#edu-dasar'], ['Aturan bursa', 'edukasi.html#edu-aturan']],
+        tools: ['Tido: /swing idx atau /swing global', 'Watchlist: simpan rekomendasi level BoW', 'Tido: /fibo KODE untuk area koreksi', 'Kalkulator Trading Plan dan Jurnal Trading'] },
+    p: { name: 'Trend / Position Trader', icon: 'fa-chart-line', color: 'indigo', tag: 'Menunggangi tren besar selama berbulan-bulan.',
+        ciri: ['Posisi dipegang sekitar 3-12 bulan.', 'Memadukan tren harga dengan cerita bisnis dan siklus ekonomi.', 'Jarang transaksi, tapi tiap transaksi ukurannya berarti.'],
+        kuat: ['Tahan terhadap gejolak harian.', 'Tidak terbawa berita jangka pendek.'],
+        jebak: ['Menahan saham rugi tanpa batas karena "kan jangka panjang" (nyangkut).', 'Menjual terlalu cepat saat tren baru dimulai.', 'Terlalu percaya satu cerita tanpa angka.'],
+        cocok: 'Saham dengan tren naik jelas dan fundamental sehat, serta komoditas atau indeks global.',
+        aturan: ['Tulis alasan beli dan syarat keluar (harga atau kondisi bisnis) sebelum membeli.', 'Pakai stop loss lebar (misalnya di bawah support mingguan) dengan ukuran posisi lebih kecil.', 'Tinjau tiap bulan, bukan tiap hari.'],
+        belajar: [['Dasar dan makro', 'edukasi.html#edu-dasar'], ['Analisis fundamental', 'edukasi.html#edu-fundamental'], ['Teknikal dasar', 'edukasi.html#edu-teknikal'], ['Fixed income dan SBN', 'fixed-income.html']],
+        tools: ['Tido: /topreturn untuk saham dengan tren kuat', 'Tido: /lk KODE untuk ringkasan laporan keuangan', 'Peta Konglo dan Database Emiten', 'Jurnal Trading'] },
+    v: { name: 'Value & Dividend Investor', icon: 'fa-seedling', color: 'emerald', tag: 'Beli bisnis bagus di harga wajar, lalu biarkan bertumbuh.',
+        ciri: ['Posisi dipegang bertahun-tahun.', 'Membaca laporan keuangan dan menilai harga wajar.', 'Mengincar dividen dan pertumbuhan laba, tidak peduli naik-turun harian.'],
+        kuat: ['Tahan turun asal bisnisnya sehat.', 'Tidak butuh waktu di depan layar.'],
+        jebak: ['Value trap: murah karena bisnisnya memang memburuk.', 'Dividend trap: dividen besar tapi laba menyusut dan harga turun sesudahnya.', 'Terlalu terkonsentrasi di satu atau dua emiten.'],
+        cocok: 'Emiten dengan laba konsisten, arus kas kuat, utang terkendali. Cek juga status HSC, suspensi, dan papan pemantauan khusus.',
+        aturan: ['Beli bertahap (cicil), jangan sekali masuk.', 'Batasi satu emiten maksimal 10-20% portofolio.', 'Evaluasi tiap rilis laporan keuangan: kalau alasan beli sudah tidak berlaku, keluar.', 'Cek rasio dividen terhadap laba dan arus kas, bukan hanya yield.'],
+        belajar: [['Analisis fundamental', 'edukasi.html#edu-fundamental'], ['Dasar dan makro', 'edukasi.html#edu-dasar'], ['Kamus istilah', 'edukasi.html#edu-kamus'], ['Fixed income dan SBN', 'fixed-income.html']],
+        tools: ['Tido: /lk KODE dan /analisa KODE', 'Halaman Global: filter saham dan ringkasan fundamental', 'Peta Konglo dan Database Emiten', 'Kalkulator bunga majemuk'] },
+    c: { name: 'Investor Rutin (DCA)', icon: 'fa-piggy-bank', color: 'teal', tag: 'Cicil rutin tiap bulan dan biarkan waktu bekerja.',
+        ciri: ['Menyisihkan dana rutin tanpa menebak waktu masuk.', 'Lebih suka instrumen terdiversifikasi: reksa dana, ETF, SBN, emas.', 'Waktu yang dipakai untuk memantau sangat sedikit.'],
+        kuat: ['Tidak terjebak emosi harian.', 'Konsisten adalah keunggulan terbesarmu.'],
+        jebak: ['Berhenti cicil saat pasar turun, padahal itu saat cicilan paling murah.', 'Memilih produk karena return tahun lalu saja.', 'Tidak pernah menyeimbangkan ulang porsi aset.'],
+        cocok: 'Reksa dana pasar uang untuk dana darurat, reksa dana saham atau indeks untuk jangka panjang, SBN ritel, dan emas sebagai pelindung.',
+        aturan: ['Dana darurat dulu (3-6 bulan pengeluaran), baru instrumen berisiko.', 'Tetapkan nominal rutin dan tanggal beli, lalu otomatiskan.', 'Seimbangkan ulang porsi aset 1-2 kali setahun.', 'Cek biaya (fee pengelolaan) dan riwayat reksa dana, bukan hanya return 1 tahun.'],
+        belajar: [['Macam-macam instrumen', 'edukasi.html#edu-dasar'], ['Fixed income dan SBN', 'fixed-income.html'], ['Dasar dan makro', 'edukasi.html#edu-dasar'], ['Kalkulator pensiun', 'pensiun.html']],
+        tools: ['Tido: /rd untuk database reksa dana', 'Kalkulator bunga majemuk dan Pensiun', 'Fixed Income: yield SBN terbaru', 'Jurnal: catat setoran rutin'] }
+};
+const QZ_FLAGS = {
+    kebutuhan: 'Kamu menyebut memakai uang kebutuhan sehari-hari. Hentikan dulu: uang yang akan dipakai dalam waktu dekat bukan modal investasi.',
+    darurat: 'Dana daruratmu belum cukup. Prioritas pertama adalah dana darurat 3-6 bulan pengeluaran di instrumen aman (tabungan atau reksa dana pasar uang) sebelum menambah risiko.',
+    fomo: 'Kamu cenderung ikut masuk saat harga sudah naik cepat (FOMO). Tentukan level masuk sebelum pasar buka, dan lewati saham yang sudah jauh dari levelnya.',
+    nosl: 'Kamu cenderung tahan tanpa stop loss. Tanpa batas rugi, satu kesalahan bisa menghapus hasil banyak transaksi. Tentukan batas rugi sebelum order.',
+    pemula: 'Kamu masih di tahap awal. Mulai dengan nominal kecil dan pelajari dasar dulu sebelum tipe yang cepat.',
+    waktu: 'Waktu luangmu tidak sejalan dengan gaya yang cepat. Gaya yang butuh layar sepanjang sesi akan sulit dijalankan, jadi pertimbangkan tipe kedua yang lebih santai.'
+};
+const QZ = [
+    { q: 'Berapa waktu yang realistis kamu pakai untuk memantau pasar saat bursa buka?', o: [
+        { t: 'Hampir seluruh sesi, fokus di layar', w: { s: 3, d: 2 } },
+        { t: 'Beberapa kali sehari, 5-10 menit tiap kali', w: { d: 3, w: 1 } },
+        { t: 'Sekali sehari, biasanya sore atau malam', w: { w: 3, p: 1 }, },
+        { t: 'Seminggu sekali atau lebih jarang', w: { p: 2, v: 2, c: 3 }, f: 'waktu' } ] },
+    { q: 'Berapa lama kamu nyaman memegang satu posisi?', o: [
+        { t: 'Menit sampai beberapa jam', w: { s: 3, d: 1 } },
+        { t: '1-3 hari', w: { d: 3, w: 1 } },
+        { t: '1 minggu sampai 3 bulan', w: { w: 3, p: 1 } },
+        { t: '3-12 bulan', w: { p: 3, v: 1 } },
+        { t: 'Bertahun-tahun', w: { v: 3, c: 2 } } ] },
+    { q: 'Dari mana uang yang kamu pakai untuk ini?', o: [
+        { t: 'Uang dingin: kalau hilang, hidupku tidak terganggu', w: {}, r: 3 },
+        { t: 'Sebagian tabungan, tapi ada cadangan', w: {}, r: 2 },
+        { t: 'Uang yang sebenarnya untuk kebutuhan dalam waktu dekat', w: {}, r: 1, f: 'kebutuhan' } ] },
+    { q: 'Kamu paling tahan menghadapi kondisi mana?', o: [
+        { t: 'Naik-turun tajam dalam satu hari', w: { s: 3, d: 2 }, r: 3 },
+        { t: 'Portofolio turun 10-15% selama beberapa minggu', w: { w: 2, p: 2 }, r: 2 },
+        { t: 'Turun 20-30% asal bisnisnya masih sehat', w: { v: 3, p: 2 }, r: 3 },
+        { t: 'Hampir tidak mau melihat portofolio merah', w: { c: 2 }, r: 1 } ] },
+    { q: 'Apa yang paling kamu percaya saat memilih saham?', o: [
+        { t: 'Pergerakan harga dan antrean beli-jual saat itu juga', w: { s: 3, d: 2 } },
+        { t: 'Grafik dan indikator teknikal', w: { d: 2, w: 3, p: 2 } },
+        { t: 'Laporan keuangan dan valuasi', w: { v: 3, p: 1 } },
+        { t: 'Aku tidak mau memilih saham sendiri; diversifikasi saja', w: { c: 3 } } ] },
+    { q: 'Hasil seperti apa yang kamu cari?', o: [
+        { t: 'Untung kecil tapi tiap hari', w: { s: 3, d: 2 } },
+        { t: '5-15% dalam beberapa minggu', w: { w: 3, d: 1 } },
+        { t: '30% atau lebih dalam setahun', w: { p: 3, v: 1 } },
+        { t: 'Dividen atau bunga rutin sambil tumbuh pelan', w: { v: 3, c: 2 } },
+        { t: 'Mengalahkan inflasi tanpa repot', w: { c: 3 } } ] },
+    { q: 'Berapa kali kamu rela bertransaksi dalam sebulan?', o: [
+        { t: 'Lebih dari 100 kali', w: { s: 3 } },
+        { t: '20-100 kali', w: { d: 3, s: 1 } },
+        { t: '4-20 kali', w: { w: 3, d: 1 } },
+        { t: '1-4 kali', w: { p: 2, v: 2 } },
+        { t: 'Cukup beli rutin sebulan sekali', w: { c: 3 } } ] },
+    { q: 'Harga saham yang kamu incar tiba-tiba naik cepat tanpa kamu. Apa yang kamu lakukan?', o: [
+        { t: 'Langsung ikut masuk supaya tidak ketinggalan', w: { s: 2, d: 2 }, f: 'fomo' },
+        { t: 'Menunggu koreksi ke area support', w: { w: 3, p: 1 } },
+        { t: 'Membiarkan, lalu cari yang masih murah', w: { v: 3 } },
+        { t: 'Tidak peduli, tetap beli rutin', w: { c: 3 } } ] },
+    { q: 'Bagaimana kamu menyikapi stop loss ketat (1-2%)?', o: [
+        { t: 'Nyaman, langsung cut tanpa ragu', w: { s: 3, d: 3, w: 1 }, r: 3 },
+        { t: 'Bisa, kalau levelnya jelas', w: { w: 3, p: 1 }, r: 2 },
+        { t: 'Lebih suka tahan karena yakin bisnisnya bagus', w: { v: 2, p: 1, c: 1 }, r: 2, f: 'nosl' },
+        { t: 'Aku belum paham stop loss', w: { c: 2 }, r: 1, f: 'pemula' } ] },
+    { q: 'Seberapa paham kamu membaca pasar saat ini?', o: [
+        { t: 'Paham antrean beli-jual dan tape reading', w: { s: 2, d: 2 } },
+        { t: 'Paham candlestick, support dan resist', w: { d: 1, w: 2, p: 1 } },
+        { t: 'Bisa membaca laporan keuangan dan rasio', w: { v: 3, p: 1 } },
+        { t: 'Masih pemula', w: { c: 3 }, f: 'pemula' } ] },
+    { q: 'Seperti apa keseharianmu?', o: [
+        { t: 'Bisa di depan layar sepanjang jam bursa', w: { s: 3, d: 2 } },
+        { t: 'Bekerja di kantor, mengecek saat istirahat', w: { d: 1, w: 2 } },
+        { t: 'Sibuk, baru bisa mengecek malam hari', w: { w: 3, p: 2 } },
+        { t: 'Sangat sibuk, ingin yang berjalan otomatis', w: { c: 3, v: 1 } } ] },
+    { q: 'Ada berita buruk tentang emiten yang kamu pegang. Apa langkahmu?', o: [
+        { t: 'Keluar cepat, harga yang bicara', w: { s: 2, d: 3, w: 1 } },
+        { t: 'Cek apakah support jebol, baru putuskan', w: { w: 3, p: 1 } },
+        { t: 'Baca dampaknya ke laba jangka panjang', w: { v: 3, p: 2 } },
+        { t: 'Tidak mengubah rencana rutin', w: { c: 3 } } ] },
+    { q: 'Pola hasil mana yang paling bisa kamu terima?', o: [
+        { t: 'Sering menang tapi kecil-kecil', w: { s: 3, d: 2 } },
+        { t: 'Jarang menang tapi sekali menang besar', w: { w: 2, p: 3 } },
+        { t: 'Pelan dan pasti, tanpa kejutan', w: { v: 2, c: 3 } } ] },
+    { q: 'Apa reaksimu setelah dua kali rugi berturut-turut?', o: [
+        { t: 'Berhenti dulu, evaluasi, lanjut besok', w: { s: 1, d: 2, w: 2, p: 1 }, r: 2 },
+        { t: 'Langsung cari transaksi lain untuk balas dendam', w: { s: 1, d: 1 }, r: 3 },
+        { t: 'Tidak banyak berubah, karena strategiku jangka panjang', w: { p: 2, v: 2, c: 2 }, r: 2 },
+        { t: 'Cemas dan ingin pindah ke yang lebih aman', w: { c: 2 }, r: 1 } ] },
+    { q: 'Seberapa siap dana daruratmu?', o: [
+        { t: 'Sudah ada, 6 bulan pengeluaran atau lebih', w: {}, r: 3 },
+        { t: 'Ada, sekitar 3-6 bulan', w: {}, r: 2 },
+        { t: 'Belum punya atau kurang dari 3 bulan', w: {}, r: 1, f: 'darurat' } ] }
 ];
 
+let qzIdx = 0, qzAns = [], qzName = '', qzResult = null;
+const qzEsc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
 function startComplexQuiz() {
-    const nameInput = document.getElementById('qz-name').value.trim();
-    const capInput = parseFloat(document.getElementById('qz-capital').value);
-    const expInput = parseFloat(document.getElementById('qz-expense').value);
-
-    if(!nameInput || isNaN(capInput) || isNaN(expInput) || capInput <= 0 || expInput <= 0) {
-        showToast("Mohon isi Nama, Modal, dan Pengeluaran dengan benar (Angka > 0).", "error");
-        return;
-    }
-
-    userData.name = nameInput;
-    userData.capital = capInput;
-    userData.expense = expInput;
-    quizAnswers = [];
-    currentQIndex = 0;
-
-    document.getElementById('quiz-intro').classList.remove('active');
+    qzName = (document.getElementById('qz-name').value || '').trim();
+    qzAns = []; qzIdx = 0; qzResult = null;
     document.getElementById('quiz-intro').classList.add('hidden');
+    document.getElementById('quiz-intro').classList.remove('active');
+    document.getElementById('quiz-result').classList.add('hidden');
     renderQuizQuestion();
 }
 
 function renderQuizQuestion() {
-    const container = document.getElementById('quiz-dynamic-container');
-    container.innerHTML = '';
-    
-    const qData = quizQuestions[currentQIndex];
-    let levelLabel = "LEVEL 1: DASAR";
-    if(currentQIndex >= 10) levelLabel = "LEVEL 2: MENENGAH";
-    if(currentQIndex >= 20) levelLabel = "LEVEL 3: LANJUTAN";
-
-    const progressPct = ((currentQIndex + 1) / quizQuestions.length) * 100;
-
-    let html = `
-        <div class="quiz-step active animate-[fadeIn_0.3s_ease-out]">
-            <div class="flex justify-between items-end mb-2">
-                <p class="text-[10px] font-black text-blue-500 uppercase tracking-widest">${levelLabel}</p>
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Pertanyaan ${currentQIndex + 1} / 30</p>
-            </div>
-            <div class="w-full bg-slate-100 rounded-full h-1.5 mb-6">
-                <div class="bg-blue-500 h-1.5 rounded-full transition-all duration-300" style="width: ${progressPct}%"></div>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-tight">${qData.q}</h3>
-            
-            <div class="space-y-4">
-                ${qData.opts.map((opt, idx) => `
-                    <button onclick="selectAnswer(${opt.s})" class="w-full text-left p-5 rounded-xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50/50 font-semibold text-slate-700 transition-all shadow-sm flex items-start gap-3 group dark-mode-card">
-                        <div class="w-6 h-6 shrink-0 rounded bg-slate-200 text-slate-500 flex items-center justify-center text-xs group-hover:bg-blue-500 group-hover:text-white transition-colors">${String.fromCharCode(65 + idx)}</div>
-                        <span class="pt-0.5 leading-relaxed">${opt.t}</span>
-                    </button>
-                `).join('')}
-            </div>
-        </div>
-    `;
-    container.innerHTML = html;
+    const qd = QZ[qzIdx], pct = (qzIdx / QZ.length) * 100;
+    document.getElementById('quiz-dynamic-container').innerHTML =
+        '<div class="animate-[fadeIn_0.3s_ease-out]">' +
+        '<div class="flex justify-between items-end mb-2"><p class="text-xs font-bold text-slate-500">Pertanyaan ' + (qzIdx + 1) + ' dari ' + QZ.length + '</p>' +
+        (qzIdx > 0 ? '<button type="button" onclick="qzBack()" class="text-xs font-bold text-blue-600 hover:underline py-2 px-1">Kembali</button>' : '') + '</div>' +
+        '<div class="w-full bg-slate-100 rounded-full h-1.5 mb-6"><div class="bg-emerald-500 h-1.5 rounded-full transition-all duration-300" style="width:' + pct + '%"></div></div>' +
+        '<h3 class="text-lg md:text-2xl font-bold text-slate-800 mb-6 leading-snug">' + qzEsc(qd.q) + '</h3>' +
+        '<div class="space-y-3">' + qd.o.map((op, i) =>
+            '<button type="button" onclick="qzPick(' + i + ')" class="w-full text-left p-4 rounded-xl border-2 ' + (qzAns[qzIdx] === i ? 'border-emerald-500 bg-emerald-50' : 'border-slate-100') + ' hover:border-emerald-500 hover:bg-emerald-50/50 font-semibold text-slate-700 transition-all shadow-sm flex items-start gap-3 min-h-[48px] dark-mode-card">' +
+            '<span class="w-6 h-6 shrink-0 rounded bg-slate-200 text-slate-600 flex items-center justify-center text-xs">' + String.fromCharCode(65 + i) + '</span><span class="leading-relaxed">' + qzEsc(op.t) + '</span></button>').join('') + '</div></div>';
 }
 
-// Pemformat angka lokal: formatNumber() hanya ada di page-bandar.js dan tidak dimuat di halaman kuis, sehingga hasil kuis
-// gagal tampil (ReferenceError) bagi siapa pun yang total investasinya < 3x pengeluaran bulanan.
-function quizFmt(num) {
-    const n = Number(num);
-    return Number.isFinite(n) ? Math.round(n).toLocaleString('id-ID') : '0';
-}
-
-function selectAnswer(score) {
-    quizAnswers.push(score);
-    currentQIndex++;
-    
-    if(currentQIndex < quizQuestions.length) {
-        renderQuizQuestion();
-    } else {
-        try {
-            calculateComplexResult();
-        } catch (err) {
-            console.error('Gagal menghitung hasil kuis', err);
-            showToast('Maaf, hasil kuis gagal ditampilkan. Muat ulang halaman dan coba lagi.', 'error');
-        }
+function qzPick(i) {
+    qzAns[qzIdx] = i; qzIdx++;
+    if (qzIdx < QZ.length) { renderQuizQuestion(); return; }
+    try { showQuizResult(); } catch (err) {
+        console.error('Gagal menampilkan hasil kuis', err);
+        document.getElementById('quiz-dynamic-container').innerHTML = '<div class="text-center py-10"><p class="font-bold text-slate-800 mb-2">Hasil belum bisa ditampilkan.</p><p class="text-sm text-slate-500 mb-4">Jawabanmu masih tersimpan di halaman ini. Coba lagi.</p><button type="button" onclick="qzRetryResult()" class="bg-emerald-600 text-white px-5 py-3 rounded-xl font-bold text-sm">Tampilkan hasil</button></div>';
     }
 }
+function qzRetryResult() { try { showQuizResult(); } catch (e) { resetQuiz(); } }
+function qzBack() { if (qzIdx > 0) { qzIdx--; renderQuizQuestion(); } }
 
-function calculateComplexResult() {
+function qzCompute() {
+    const keys = Object.keys(QZ_TYPES), score = {}, max = {}, flags = [];
+    keys.forEach((k) => { score[k] = 0; max[k] = 0; });
+    let rSum = 0, rN = 0;
+    QZ.forEach((qd, qi) => {
+        keys.forEach((k) => { max[k] += Math.max.apply(null, qd.o.map((o) => (o.w && o.w[k]) || 0)); });
+        const op = qd.o[qzAns[qi]]; if (!op) return;
+        keys.forEach((k) => { score[k] += (op.w && op.w[k]) || 0; });
+        if (op.r) { rSum += op.r; rN++; }
+        if (op.f && flags.indexOf(op.f) < 0) flags.push(op.f);
+    });
+    const pct = {}; keys.forEach((k) => { pct[k] = max[k] ? Math.round((score[k] / max[k]) * 100) : 0; });
+    const rank = keys.slice().sort((a, b) => pct[b] - pct[a] || score[b] - score[a]);
+    const risk = rN ? rSum / rN : 2;
+    return { pct, rank, flags, risk };
+}
+
+function showQuizResult() {
+    const R = qzCompute(), top = R.rank[0], sec = R.rank[1], T = QZ_TYPES[top];
+    const flags = R.flags.filter((f) => f !== 'waktu' || top === 's' || top === 'd');
+    const riskLbl = R.risk < 1.7 ? ['Konservatif', 'Kamu mengutamakan keamanan modal. Ukuran posisi kecil dan instrumen stabil lebih cocok.'] : R.risk < 2.4 ? ['Moderat', 'Kamu bisa menerima naik-turun wajar. Atur ukuran posisi supaya satu kesalahan tidak merusak portofolio.'] : ['Agresif', 'Kamu nyaman dengan risiko tinggi. Justru karena itu, batas rugi dan ukuran posisi harus tertulis jelas.'];
+    const col = T.color;
+    const li = (arr) => arr.map((x) => '<li>' + qzEsc(x) + '</li>').join('');
+    const warn = flags.map((f) => '<div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>' + qzEsc(QZ_FLAGS[f]) + '</div>').join('');
+    const bars = R.rank.map((k, i) => '<div class="mb-2"><div class="flex justify-between text-xs font-bold ' + (i === 0 ? 'text-slate-900' : 'text-slate-500') + '"><span>' + qzEsc(QZ_TYPES[k].name) + '</span><span>' + R.pct[k] + '%</span></div><div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-2 rounded-full ' + (i === 0 ? 'bg-emerald-500' : 'bg-slate-300') + '" style="width:' + R.pct[k] + '%"></div></div></div>').join('');
+    const sect = (icon, title, body) => '<div class="bg-white border border-slate-200 rounded-2xl p-5 text-left dark-mode-card"><h4 class="font-black text-slate-900 mb-2 text-sm"><i class="fas ' + icon + ' text-blue-500 mr-2"></i>' + title + '</h4>' + body + '</div>';
+    const ul = (arr) => '<ul class="text-sm text-slate-700 space-y-1.5 list-disc pl-5">' + li(arr) + '</ul>';
+    const links = T.belajar.map((x) => '<a href="' + x[1] + '" class="inline-block px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold hover:bg-slate-200">' + qzEsc(x[0]) + '</a>').join(' ');
+    const name = qzName ? qzEsc(qzName) + ', ' : '';
+    qzResult = { type: T.name, pct: R.pct, rank: R.rank, risk: riskLbl[0] };
+    window.finalProfileResult = T.name;
+
     document.getElementById('quiz-dynamic-container').innerHTML = '';
-    
-    // 1. Calculate Score Profile
-    const totalScore = quizAnswers.reduce((a, b) => a + b, 0);
-    // Min 30, Max 90
-    let profile = "";
-    let desc = "";
-    let icon = "";
-    let classIcon = "";
-    let baseAllo = {};
-
-    if(totalScore <= 45) {
-        profile = "KONSERVATIF (Aman & Stabil)";
-        desc = `Halo ${userData.name}, Anda sangat memprioritaskan keamanan modal. Volatilitas pasar membuat Anda tidak nyaman. Prioritas Anda adalah melawan inflasi dengan instrumen yang dijamin.`;
-        icon = '<i class="fas fa-shield-alt text-emerald-500"></i>';
-        classIcon = "bg-emerald-100 shadow-emerald-100";
-        baseAllo = { sbn: 60, rdp: 30, saham: 5, emas: 5 };
-    } else if (totalScore <= 70) {
-        profile = "MODERAT (Seimbang)";
-        desc = `Halo ${userData.name}, Anda mencari pertumbuhan aset (Capital Gain) namun tetap logis dan tidak suka risiko hancur total. Anda toleran terhadap fluktuasi normal IHSG.`;
-        icon = '<i class="fas fa-balance-scale text-blue-500"></i>';
-        classIcon = "bg-blue-100 shadow-blue-100";
-        baseAllo = { saham: 40, sbn: 30, rdp: 20, emas: 10 };
-    } else {
-        profile = "AGRESIF (Risk Taker / Growth Hunter)";
-        desc = `Halo ${userData.name}, Anda paham mekanika bursa, manajemen risiko, dan siap dengan fluktuasi tinggi demi mengejar *compounding interest* maksimal di masa depan.`;
-        icon = '<i class="fas fa-rocket text-rose-500"></i>';
-        classIcon = "bg-rose-100 shadow-rose-100";
-        baseAllo = { saham: 70, sbn: 15, rdp: 10, emas: 5 };
-    }
-
-    // 2. Calculate Financial Health (Emergency Fund)
-    const emergencyRatio = userData.capital / userData.expense;
-    let healthStatus = "";
-    let healthWarning = "";
-
-    if(emergencyRatio < 3) {
-        healthStatus = "SANGAT BERISIKO";
-        healthWarning = `<li class="p-3 bg-rose-50 text-rose-700 border border-rose-200 rounded-xl mb-3"><i class="fas fa-exclamation-triangle mr-2"></i><b>Dana Darurat Kurang!</b> Total investasi Anda (${quizFmt(userData.capital)}) tidak sampai 3x pengeluaran bulanan. <b>Kami paksa alokasi Cash/RDPU Anda diperbesar</b> agar Anda tidak terpaksa Cut Loss saham saat butuh uang mendadak.</li>`;
-        // Override safety
-        baseAllo.rdp += 30;
-        baseAllo.saham = Math.max(0, baseAllo.saham - 20);
-        baseAllo.sbn = Math.max(0, baseAllo.sbn - 10);
-    } else if(emergencyRatio < 6) {
-        healthStatus = "CUKUP AMAN";
-        healthWarning = `<li class="p-3 bg-amber-50 text-amber-700 border border-amber-200 rounded-xl mb-3"><i class="fas fa-info-circle mr-2"></i><b>Dana Darurat Sedang.</b> Anda punya nafas ${emergencyRatio.toFixed(1)} bulan. Tetap sisihkan sebagian ke Reksa Dana Pasar Uang.</li>`;
-    } else {
-        healthStatus = "SANGAT SEHAT";
-        healthWarning = `<li class="p-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl mb-3"><i class="fas fa-check-circle mr-2"></i><b>Keuangan Sangat Kuat.</b> Nafas finansial Anda >6 bulan. Anda bebas memaksimalkan instrumen agresif sesuai profil Anda.</li>`;
-    }
-
-    // Normalisasi Alokasi ke 100%
-    let totalA = baseAllo.saham + baseAllo.sbn + baseAllo.rdp + baseAllo.emas;
-    let finalSaham = Math.round((baseAllo.saham / totalA) * 100);
-    let finalSbn = Math.round((baseAllo.sbn / totalA) * 100);
-    let finalEmas = Math.round((baseAllo.emas / totalA) * 100);
-    let finalRdp = 100 - (finalSaham + finalSbn + finalEmas);
-
-    let alloHtml = healthWarning;
-    const disclaimerLi = `<li class="text-[11px] text-slate-400 italic">Alokasi di atas contoh ilustrasi untuk edukasi berdasarkan jawaban kuis singkat, bukan rekomendasi investasi pribadi. Pertimbangkan berkonsultasi dengan perencana keuangan berizin.</li>`;
-    if(finalSaham > 0) alloHtml += `<li>🔴 <b class="text-slate-900">${finalSaham}% Saham / ETF</b> (Pertumbuhan modal, dividen. Pilih Bluechip/Growth)</li>`;
-    if(finalSbn > 0) alloHtml += `<li>🟡 <b class="text-slate-900">${finalSbn}% SBN / Obligasi Ritel</b> (Imbal hasil tetap, dijamin Negara; cek yield terbaru di halaman Fixed Income)</li>`;
-    if(finalRdp > 0) alloHtml += `<li>🟢 <b class="text-slate-900">${finalRdp}% Reksa Dana Pasar Uang / Deposito</b> (Sangat likuid, untuk dana darurat & peluru serok bawah)</li>`;
-    if(finalEmas > 0) alloHtml += `<li>🟠 <b class="text-slate-900">${finalEmas}% Emas / Logam Mulia</b> (Safe haven, pelindung krisis makro)</li>`;
-
-    alloHtml += disclaimerLi;
-    document.getElementById('res-title').innerText = profile;
-    document.getElementById('res-desc').innerText = desc;
-    
-    document.getElementById('res-icon').innerHTML = icon;
-    document.getElementById('res-icon').className = `w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl mb-6 shadow-lg ${classIcon}`;
-    
-    document.getElementById('res-allocation').innerHTML = alloHtml;
-    document.getElementById('quiz-result').classList.remove('hidden');
-
-    // Set global variable for certificate
-    window.finalProfileResult = profile;
+    const box = document.getElementById('quiz-result');
+    box.innerHTML =
+        warn +
+        '<div class="text-center py-6"><div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl mb-4 bg-' + col + '-100 text-' + col + '-600"><i class="fas ' + T.icon + '"></i></div>' +
+        '<p class="text-xs font-bold text-slate-500 mb-1">' + name + 'gaya yang paling cocok denganmu:</p>' +
+        '<h2 class="text-3xl font-black text-slate-900 mb-2">' + qzEsc(T.name) + '</h2><p class="text-slate-600 max-w-md mx-auto font-medium">' + qzEsc(T.tag) + '</p>' +
+        '<p class="mt-3 text-sm text-slate-500">Tipe kedua: <b>' + qzEsc(QZ_TYPES[sec].name) + '</b> (' + R.pct[sec] + '%). Kamu boleh mencampur keduanya, misalnya sebagian dana untuk investasi rutin dan sebagian kecil untuk trading.</p></div>' +
+        '<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">' +
+        sect('fa-chart-bar', 'Kecocokan dengan tiap tipe', bars) +
+        sect('fa-shield-alt', 'Toleransi risiko: ' + riskLbl[0], '<p class="text-sm text-slate-700">' + riskLbl[1] + '</p>') +
+        sect('fa-id-card', 'Ciri kamu', ul(T.ciri)) +
+        sect('fa-thumbs-up', 'Kekuatan', ul(T.kuat)) +
+        sect('fa-skull-crossbones', 'Jebakan yang perlu dihindari', ul(T.jebak)) +
+        sect('fa-bullseye', 'Cocok dimainkan di', '<p class="text-sm text-slate-700">' + qzEsc(T.cocok) + '</p>') +
+        sect('fa-ruler', 'Aturan main yang disarankan', ul(T.aturan)) +
+        sect('fa-toolbox', 'Pakai di situs ini', ul(T.tools)) + '</div>' +
+        '<div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left mb-6"><h4 class="font-black text-slate-900 mb-3 text-sm"><i class="fas fa-book-open text-blue-500 mr-2"></i>Mulai belajar dari sini</h4><div class="flex flex-wrap gap-2">' + links + '</div></div>' +
+        '<div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4"><button type="button" onclick="generateCertificate()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md hover:bg-blue-700 flex items-center gap-2"><i class="fas fa-download"></i> Unduh kartu profil</button><button type="button" onclick="resetQuiz()" class="text-slate-600 font-bold hover:text-blue-600 underline py-2">Ulangi kuis</button></div>' +
+        '<p class="text-[11px] text-slate-400 italic text-center">Hasil ini gambaran kecenderungan dari 15 jawabanmu untuk edukasi, bukan sertifikasi atau saran investasi pribadi. Tidak ada jaminan hasil. Data tidak disimpan di server.</p>';
+    box.classList.remove('hidden');
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetQuiz() {
-    userData = { name: '', capital: 0, expense: 0 };
-    document.getElementById('qz-name').value = '';
-    document.getElementById('qz-capital').value = '';
-    document.getElementById('qz-expense').value = '';
-    
+    qzIdx = 0; qzAns = []; qzResult = null;
     document.getElementById('quiz-result').classList.add('hidden');
+    document.getElementById('quiz-result').innerHTML = '';
+    document.getElementById('quiz-dynamic-container').innerHTML = '';
     document.getElementById('quiz-intro').classList.remove('hidden');
     document.getElementById('quiz-intro').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Kartu profil (gambar PNG) dari hasil kuis; bukan sertifikat resmi.
 function generateCertificate() {
-    const title = window.finalProfileResult || "KONSULTAN INVESTASI";
-    const userName = userData.name.toUpperCase();
-    const canvas = document.getElementById('certCanvas');
-    const ctx = canvas.getContext('2d');
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#0f172a'; // slate-900 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = '#3b82f6'; // blue-500
-    ctx.lineWidth = 10;
-    ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
-
-    ctx.fillStyle = '#1e293b'; // slate-800 
-    ctx.fillRect(30, 30, canvas.width - 60, canvas.height - 60);
-
-    ctx.fillStyle = '#f8fafc';
+    if (!qzResult) return;
+    const canvas = document.getElementById('certCanvas'), ctx = canvas.getContext('2d'), W = canvas.width, H = canvas.height;
+    const font = (px, w) => (w || '') + ' ' + px + 'px "Plus Jakarta Sans", Arial, sans-serif';
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#1e293b'; ctx.fillRect(24, 24, W - 48, H - 48);
     ctx.textAlign = 'center';
-
-    ctx.font = 'bold 36px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillText('CERTIFICATE OF COMPLETION', canvas.width / 2, 100);
-
-    ctx.font = '20px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('Secara resmi diberikan kepada:', canvas.width / 2, 160);
-
-    ctx.font = 'bold 46px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#10b981'; // emerald-500
-    ctx.fillText(userName, canvas.width / 2, 230, canvas.width - 140);
-    
-    ctx.beginPath();
-    ctx.moveTo(canvas.width/2 - 200, 250);
-    ctx.lineTo(canvas.width/2 + 200, 250);
-    ctx.strokeStyle = '#334155';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    ctx.font = '20px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('Atas kelulusannya menyelesaikan Uji Kompetensi 30 Pertanyaan', canvas.width / 2, 310);
-    ctx.fillText('dan teridentifikasi memiliki Profil Risiko & Eksekusi:', canvas.width / 2, 340);
-
-    ctx.font = 'bold 32px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#3b82f6';
-    ctx.fillText(`"${title}"`, canvas.width / 2, 400, canvas.width - 140);
-
-    const date = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
-    
-    ctx.textAlign = 'left';
-    ctx.font = '16px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#cbd5e1';
-    ctx.fillText(`Diterbitkan: ${date}`, 80, 520);
-    ctx.fillText(`No. Sertifikat: EA-${Date.now().toString().slice(-6)}`, 80, 545);
-
-    ctx.textAlign = 'right';
-    ctx.font = 'italic 24px Georgia, serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('Rakaditya Septiawan', canvas.width - 80, 500);
-    
-    ctx.beginPath();
-    ctx.moveTo(canvas.width - 300, 510);
-    ctx.lineTo(canvas.width - 80, 510);
-    ctx.strokeStyle = '#cbd5e1';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    ctx.font = 'bold 16px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#f8fafc';
-    ctx.fillText('Ewoks Academy', canvas.width - 80, 535);
-    
-    ctx.font = '12px "Plus Jakarta Sans", Arial, sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('Rakaditya Septiawan.MOS.MCE.CEH (Founder)', canvas.width - 80, 555);
-
-    const link = document.createElement('a');
-    link.download = `Sertifikat_Ewoks_${userName.replace(/[^A-Z0-9]+/g, '_')}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-
-    showToast('Sertifikat kelulusan berhasil dibuat dan diunduh!', 'success');
+    ctx.fillStyle = '#94a3b8'; ctx.font = font(18, 'bold'); ctx.fillText('KARTU PROFIL TRADER', W / 2, 78);
+    ctx.fillStyle = '#f8fafc'; ctx.font = font(26, 'bold'); ctx.fillText(qzName || 'Peserta kuis', W / 2, 130, W - 120);
+    ctx.fillStyle = '#94a3b8'; ctx.font = font(16); ctx.fillText('gaya yang paling cocok:', W / 2, 175);
+    ctx.fillStyle = '#10b981'; ctx.font = font(40, 'bold'); ctx.fillText(qzResult.type, W / 2, 230, W - 120);
+    ctx.fillStyle = '#cbd5e1'; ctx.font = font(15); ctx.fillText('Toleransi risiko: ' + qzResult.risk, W / 2, 268);
+    qzResult.rank.slice(0, 3).forEach((k, i) => {
+        const y = 320 + i * 52, w = 440;
+        ctx.textAlign = 'left'; ctx.fillStyle = '#e2e8f0'; ctx.font = font(15, 'bold'); ctx.fillText(QZ_TYPES[k].name, 180, y);
+        ctx.textAlign = 'right'; ctx.fillText(qzResult.pct[k] + '%', 620, y);
+        ctx.fillStyle = '#334155'; ctx.fillRect(180, y + 10, w, 8);
+        ctx.fillStyle = i === 0 ? '#10b981' : '#64748b'; ctx.fillRect(180, y + 10, (w * qzResult.pct[k]) / 100, 8);
+    });
+    ctx.textAlign = 'center'; ctx.fillStyle = '#94a3b8'; ctx.font = font(13);
+    ctx.fillText(new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) + ' · Ewoks Academy', W / 2, 520);
+    ctx.fillStyle = '#64748b'; ctx.font = font(11); ctx.fillText('Hasil kuis edukasi, bukan sertifikasi atau saran investasi.', W / 2, 545);
+    const a = document.createElement('a');
+    a.download = 'Profil_Trader_' + (qzName || 'Ewoks').replace(/[^A-Za-z0-9]+/g, '_') + '.png';
+    a.href = canvas.toDataURL('image/png'); a.click();
+    if (typeof showToast === 'function') showToast('Kartu profil berhasil diunduh.', 'success');
 }
