@@ -7,7 +7,7 @@
     const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const base = () => (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
     const DEPOSITO = 5.0; // referensi: sama dengan tabel di halaman Obligasi & Fixed Income
-    let picks = [], live = {}, macro = {}, active = null, chart = null, stampTxt = '';
+    let picks = [], live = {}, nav = {}, macro = {}, active = null, chart = null, stampTxt = '';
 
     const f1 = (n, d = 1) => Number(n).toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
     const riskRank = (r) => ['Sangat Rendah', 'Rendah', 'Moderat', 'Moderat-Tinggi', 'Tinggi', 'Sangat Tinggi', 'Ekstrem'].indexOf(r);
@@ -36,6 +36,7 @@
             link: `pasar-global.html?q=${encodeURIComponent(sb.ticker)}`, linkLabel: 'Buka di Database SBN', chartTitle: 'Kupon SBN ritel 2026 — tenor terpanjang (% p.a.)', rows: bar(sbns.slice(0, 6)), hi: sb.ticker });
         if (dp) out.push({ key: dp.ticker, kind: 'bars', cat: 'Deposito', color: 'amber', title: dp.name.replace(/\s*\(.*$/, ''), sub: 'Bank digital · di atas batas LPS 3,75% tidak dijamin', big: dp.cagr, bigLbl: 'bunga maks.', risk: dp.risk, badge: 'OKT 2026',
             link: `pasar-global.html?q=${encodeURIComponent(dp.ticker)}`, linkLabel: 'Buka di Database Deposito', chartTitle: 'Bunga deposito maks. — bank digital vs bank besar (% p.a.)', rows: bar(deps), hi: lbl(dp) });
+        if (rd) { const o = out.find((x) => x.key === rd.ticker); if (o) o.iid = rd.id; }
         return out;
     }
 
@@ -46,6 +47,13 @@
         return `<svg viewBox="0 0 ${w} ${h}" class="hp-spark" preserveAspectRatio="none"><polyline fill="none" stroke="${up ? '#16a34a' : '#dc2626'}" stroke-width="2" stroke-linejoin="round" points="${pts}"/></svg>`;
     }
 
+    function sparkBars(rows, hi) {
+        if (!rows || !rows.length) return '';
+        const w = 100, h = 28, mx = Math.max(...rows.map((r) => r[1])) || 1, bw = w / rows.length;
+        const bars = rows.map((r, i) => { const bh = Math.max(2, (r[1] / mx) * (h - 2)); return `<rect x="${(i * bw + 1).toFixed(1)}" y="${(h - bh).toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="${bh.toFixed(1)}" rx="1.5" fill="${r[0] === hi ? '#2563eb' : '#cbd5e1'}"/>`; }).join('');
+        return `<svg viewBox="0 0 ${w} ${h}" class="hp-spark" preserveAspectRatio="none">${bars}</svg>`;
+    }
+
     function cardHtml(p) {
         let big, small, badge, sp = '';
         if (p.kind === 'etf') {
@@ -54,16 +62,18 @@
                 const up = L.chg >= 0;
                 big = `<span class="hp-big">$${f1(L.price, 2)}</span><span class="hp-chg ${up ? 'up' : 'dn'}">${up ? '+' : ''}${f1(L.chg, 2)}%</span>`;
                 sp = spark(L.c, up);
-                badge = '<span class="hp-badge live">LIVE</span>';
+                badge = L.stat ? '<span class="hp-badge live">±5 MNT</span>' : '<span class="hp-badge live">LIVE</span>';
             } else {
                 big = `<span class="hp-big">${f1(p.cagr)}%</span><span class="hp-chg">CAGR ${p.years}th</span>`;
                 badge = '<span class="hp-badge">ARSIP</span>';
             }
             small = `CAGR ${p.years}th <b>${f1(p.cagr)}%</b> · Risiko ${esc(p.risk)}`;
         } else {
-            big = `<span class="hp-big">${f1(p.big, 2)}%</span><span class="hp-chg">${p.bigLbl}</span>`;
-            badge = `<span class="hp-badge ${p.badge === 'HARIAN' ? 'live' : ''}">${p.badge}</span>`;
-            small = `Risiko ${esc(p.risk)}${p.asOf ? ' · ' + esc(p.asOf) : ''}`;
+            const N = p.iid && nav[p.iid];
+            big = `<span class="hp-big">${f1(N ? N.ret1t : p.big, 2)}%</span><span class="hp-chg">${p.bigLbl}</span>`;
+            sp = N ? spark(N.v, N.v[N.v.length - 1] >= N.v[0]) : sparkBars(p.rows, p.hi);
+            badge = N ? '<span class="hp-badge live">HARIAN</span>' : `<span class="hp-badge">${p.badge}</span>`;
+            small = `Risiko ${esc(p.risk)}${N ? ' · NAB ' + new Date(N.d).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) : (p.asOf ? ' · ' + esc(p.asOf) : '')}`;
         }
         return `<div class="hp-card ${active === p.key ? 'on' : ''} hp-${p.color}" role="button" tabindex="0" onclick="homePick('${p.key}')" onkeydown="if(event.key==='Enter')homePick('${p.key}')">
             <div class="hp-top"><span class="hp-cat">${esc(p.cat)}</span>${badge}</div>
@@ -101,8 +111,8 @@
         if (p.kind === 'etf' && live[p.key] && live[p.key].c.length > 1) {
             const L = live[p.key], up = L.c[L.c.length - 1] >= L.c[0];
             const col = up ? '#16a34a' : '#dc2626';
-            note = `Harga penutupan harian 3 bulan terakhir (USD). Terakhir: ${new Date(L.t[L.t.length - 1] * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}.`;
-            cfg = { type: 'line', data: { labels: L.t.map((s) => new Date(s * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })), datasets: [{ data: L.c, borderColor: col, backgroundColor: up ? 'rgba(22,163,74,.12)' : 'rgba(220,38,38,.12)', fill: true, pointRadius: 0, borderWidth: 2, tension: .2 }] },
+            note = L.t ? `Harga penutupan harian 3 bulan terakhir (USD). Terakhir: ${new Date(L.t[L.t.length - 1] * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}.` : 'Harga per 4 jam (±3 minggu terakhir, USD) dari data statis; harga terbaru near-live (selisih beberapa menit).';
+            cfg = { type: 'line', data: { labels: L.t ? L.t.map((s) => new Date(s * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })) : L.c.map(() => ''), datasets: [{ data: L.c, borderColor: col, backgroundColor: up ? 'rgba(22,163,74,.12)' : 'rgba(220,38,38,.12)', fill: true, pointRadius: 0, borderWidth: 2, tension: .2 }] },
                 options: { plugins: { legend: { display: false } }, scales: { x: { ticks: { color: txt, maxTicksLimit: 6 }, grid: { color: grid } }, y: { position: 'right', ticks: { color: txt }, grid: { color: grid }, grace: '3%' } } } };
         } else if (p.kind === 'etf' && p.yr && p.yr.yearly) {
             const ys = p.yr.yearly.slice(-8);
@@ -152,25 +162,50 @@
         anchor.insertAdjacentElement('afterend', sec);
     }
 
+    // Tanpa Worker: candle 4 jam statis + harga near-live dari GitHub Pages
+    async function statEtf(sym) {
+        try {
+            const get = (f) => fetch(`${base()}assets/data/${f}?t=${Math.floor(Date.now() / 300000)}`, { cache: 'no-store' }).then((r) => r.json());
+            const [cd, lv] = await Promise.all([get('candles/global-4h.json'), get('live-global.json').catch(() => null)]);
+            const c = ((cd.s || {})[sym] || [])[2];
+            if (!c || c.length < 2) return null;
+            const q = lv && lv.q && lv.q[sym];
+            const price = q && Number.isFinite(q[0]) ? q[0] : c[c.length - 1];
+            const prev = q && Number.isFinite(q[1]) ? q[1] : c[c.length - 2];
+            const chg = q && Number.isFinite(q[2]) ? q[2] : (prev > 0 ? (price - prev) / prev * 100 : 0);
+            return { c, t: null, price, prev, chg, stat: 1 };
+        } catch (e) { return null; }
+    }
+    async function loadNav() {
+        try {
+            const d = await fetch(`${base()}assets/data/rd-nav.json?v=${V()}`, { cache: 'no-store' }).then((r) => r.json());
+            picks.forEach((p) => { const f = p.iid && d.funds && d.funds[p.iid]; if (f && f.s && f.s.v.length > 5 && f.ret && Number.isFinite(f.ret['1t'])) nav[p.iid] = { v: f.s.v.slice(-53), d: f.d, ret1t: f.ret['1t'] }; });
+        } catch (e) { /* tetap pakai data database */ }
+    }
     async function liveEtf() {
         const api = typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '';
         const etfs = picks.filter((p) => p.kind === 'etf');
-        if (!api || !etfs.length) return;
+        if (!etfs.length) return;
         let ok = 0, err = '';
         await Promise.all(etfs.map(async (p) => {
             try {
+                if (!api) throw new Error('no api');
                 const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
                 const r = await fetch(`${api}/chart?s=${encodeURIComponent(p.key)}&g=1&range=3mo&interval=1d`, { signal: ctl.signal, cache: 'no-store' });
                 clearTimeout(tm);
                 const d = await r.json();
                 if (!d.ok || !d.c || d.c.length < 2) throw new Error(d.error || 'HTTP ' + r.status);
                 const price = d.price || d.c[d.c.length - 1], prev = Number.isFinite(d.prev) ? d.prev : d.c[d.c.length - 2];
-                live[p.key] = { c: d.c, t: d.t, price, prev, chg: prev > 0 ? ((price - prev) / prev) * 100 : 0 };
+                live[p.key] = { c: d.c, t: d.t, price, prev, w: 1, chg: prev > 0 ? ((price - prev) / prev) * 100 : 0 };
                 ok++;
-            } catch (e) { err = /abort/i.test(String(e.message)) ? 'timeout' : String(e.message); }
+            } catch (e) {
+                err = /abort/i.test(String(e.message)) ? 'timeout' : String(e.message);
+                const S = await statEtf(p.key);
+                if (S) { live[p.key] = S; ok++; }
+            }
         }));
         const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-        stampTxt = ok ? `Harga ETF live · ${hhmm} WIB · RD, SBN, deposito = data database` : 'Data database · RD, SBN, deposito, ETF';
+        stampTxt = ok ? `Harga ETF ${Object.values(live).some((x) => x.stat) ? 'near-live' : 'live'} · ${hhmm} WIB · RD, SBN, deposito = data database` : 'Data database · RD, SBN, deposito, ETF';
         render();
     }
 
@@ -186,6 +221,7 @@
             stampTxt = 'Data database Pasar Global · memuat harga live…';
             render();
         } catch (e) { const s = $('hp-stamp'); if (s) s.textContent = 'Gagal memuat database instrumen'; return; }
+        await loadNav(); render();
         liveEtf();
         setInterval(liveEtf, 10 * 60 * 1000);
     })();
