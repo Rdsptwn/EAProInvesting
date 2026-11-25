@@ -41,10 +41,10 @@ function wlLoadScr() {
     const get = n => fetch(B + 'assets/data/' + n + '?v=' + V).then(r => r.json());
     const need = new Set(watchlist.map(w => w.mk || 'idx'));
     const jobs = [];
-    if (first || need.has('idx')) jobs.push(get('idx-screener.json').then(d => { (d.rows || []).forEach(r => { __wlScr[r[0]] = { price: r[1], changePct: r[3], date: r[10] }; }); }).catch(() => {}));
+    if (first || need.has('idx')) jobs.push(get('idx-screener.json').then(d => { (d.rows || []).forEach(r => { __wlScr[r[0]] = { price: r[1], changePct: r[3], date: r[10] }; }); }).catch(() => {}).then(() => get('live-idx.json').then(l => { Object.keys(l.q || {}).forEach(k => { const x = l.q[k], o = __wlScr[k]; if (o && x && x[0] > 0) { o.price = x[0]; o.changePct = x[2]; } }); }).catch(() => {})));
     if (need.has('kripto')) jobs.push(get('crypto.json').then(d => { (d.items || []).forEach(x => { __wlMk.kripto[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
     if (need.has('forex')) jobs.push(get('forex.json').then(d => { (d.items || []).forEach(x => { __wlMk.forex[x.k] = { price: x.price, changePct: x.chg, date: x.time }; }); }).catch(() => {}));
-    if (need.has('global')) jobs.push(get('global-screener.json').then(d => { (d.rows || []).forEach(r => { __wlMk.global[r[0]] = { price: r[1], changePct: r[3], date: r[9] }; }); }).catch(() => {}));
+    if (need.has('global')) jobs.push(get('global-screener.json').then(d => { (d.rows || []).forEach(r => { __wlMk.global[r[0]] = { price: r[1], changePct: r[3], date: r[9] }; }); }).catch(() => {}).then(() => get('live-global.json').then(l => { Object.keys(l.q || {}).forEach(k => { const x = l.q[k], o = __wlMk.global[k]; if (o && x && x[0] > 0) { o.price = x[0]; o.changePct = x[2]; } }); }).catch(() => {})));
     if (need.has('komoditas')) jobs.push(get('global-commodities.json').then(d => { (d.items || []).forEach(x => { __wlMk.komoditas[x.id] = { price: x.price, changePct: x.chg, chg1m: x.chg1m, u: x.u || '', n: x.n, date: x.time }; }); }).catch(() => {}));
     if (need.has('rd')) jobs.push(get('pasar-global.json').then(d => { (d.instruments || []).forEach(x => { __wlMk.rd[x.ticker] = x; }); }).catch(() => {}));
     if (need.has('rd')) jobs.push(get('rd-nav.json').then(d => { __wlMk.rdNav = (d && d.funds) || {}; }).catch(() => {}));
