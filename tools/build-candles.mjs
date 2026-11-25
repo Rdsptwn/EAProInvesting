@@ -84,7 +84,7 @@ if (want.has('global')) {
     }
 }
 if (want.has('idx')) {
-    const items = J('idx-screener.json').rows.slice().sort((a, b) => (b[1] * (b[9] || 0)) - (a[1] * (a[9] || 0))).slice(0, 150).map((r) => r[0]);
+    const items = J('idx-screener.json').rows.filter((r) => r[1] >= 50).map((r) => r[0]); // semua saham IHSG (±800)
     const rs = await pool(items, (c) => yahoo(c + '.JK', '3mo', '1d'));
     total += save('idx', '1d', Object.fromEntries(items.map((c, i) => [c, rs[i]])));
 }

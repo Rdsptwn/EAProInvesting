@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0726';
+window.EWOKS_ASSET_V = '20261125t0732';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1476,8 +1476,8 @@ window.addEventListener('load', () => {
             .filter(function (x) { return x.room >= 0.03; }).sort(function (a, b) { return a.near - b.near; }).slice(0, 80); // candle statis murah dicek semua; hasil akhir dipotong n di bawah
         // Level dari candle harian (swing support/resist + ATR); kalau candle tidak tersedia, jatuh ke level kasar dari support/resist 20 hari.
         var E = await loadEngine(), sm = { map: {}, avail: 0 }, md = 'longgar';
-        // Candle statis mencakup 150 saham paling ramai: cek semuanya (bukan hanya yang dekat support menurut screener), urut skor mesin.
-        var wide = d.rows.filter(function (r) { return r[1] > 50 && (!B || r[1] <= B) && r[1] * (r[9] || 0) > 1e6; }).sort(function (a, b) { return b[1] * b[9] - a[1] * a[9]; }).slice(0, 150).map(function (r) { return { r: r, tp: 0 }; });
+        // Candle statis mencakup semua saham IHSG: cek semuanya (bukan hanya yang dekat support menurut screener), urut skor mesin.
+        var wide = d.rows.filter(function (r) { return r[1] >= 50 && (!B || r[1] <= B); }).sort(function (a, b) { return b[1] * (b[9] || 0) - a[1] * (a[9] || 0); }).map(function (r) { return { r: r, tp: 0 }; });
         if (E && E.idxSmart) sm = await E.idxSmart(wide.map(function (x) { return { k: x.r[0] }; }), md);
         if (sm.avail) rows = wide.filter(function (x) { return sm.map[x.r[0]]; }).sort(function (a, b) { return sm.map[b.r[0]].score - sm.map[a.r[0]].score; });
         var rough = !sm.avail, picks = [];

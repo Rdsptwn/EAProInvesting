@@ -1,5 +1,5 @@
 # Candle statis (kripto, forex, saham AS, IHSG) untuk Tido/BoW: dilayani GitHub Pages, tidak lewat Worker/OKX yang bisa diblokir.
-# Kripto/forex/saham AS tiap 2 jam, IHSG sekali sehari (hari kerja). Dibatasi supaya riwayat repo tidak membengkak. Manual: Actions -> Sync candles -> Run workflow.
+# Kripto/forex/saham AS tiap 2 jam, IHSG (semua saham) sekali sehari (hari kerja). Dibatasi supaya riwayat repo tidak membengkak. Manual: Actions -> Sync candles -> Run workflow.
 name: Sync candles
 
 on:
