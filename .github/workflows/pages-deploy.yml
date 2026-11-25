@@ -1,0 +1,59 @@
+# Publikasi GitHub Pages lewat Actions (batas 10 build/jam untuk publikasi dari branch tidak berlaku).
+# AKTIF HANYA setelah Settings -> Pages -> Build and deployment -> Source = "GitHub Actions".
+# Sebelum itu langkah deploy gagal diam-diam (continue-on-error) dan situs tetap dilayani dari branch seperti biasa.
+# Commit oleh bot (GITHUB_TOKEN) tidak memicu event push, jadi deploy juga dipicu saat workflow sync selesai (workflow_run).
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows:
+      - Daily market sync
+      - Market activity (jam bursa)
+      - Sync 24 jam
+      - Sync NAB reksa dana
+      - Sync candles
+      - Sync funda cash flow
+      - Sync funda-idx
+      - Sync global
+      - Sync global funda
+      - Sync live
+      - Sync logo emiten
+      - Sync ranking broker
+      - Sync return 5 tahun
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Siapkan _site
+        run: |
+          mkdir _site
+          rsync -a --exclude .git --exclude .github --exclude _site ./ _site/
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
