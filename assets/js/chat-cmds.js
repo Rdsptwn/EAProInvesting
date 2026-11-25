@@ -8,6 +8,11 @@
     var V = encodeURIComponent(window.EWOKS_ASSET_V || '1');
     var MEM = {};
     function jfile(n) { if (!MEM[n]) MEM[n] = fetch(BASE + 'assets/data/' + n + '?v=' + V).then(function (r) { if (!r.ok) throw 0; return r.json(); }).catch(function () { delete MEM[n]; return null; }); return MEM[n]; }
+    // Harga near-live statis (live-idx/live-global, ±5 menit di jam bursa): [harga, prev, chg%, vol] atau null. Disegarkan per 5 menit.
+    function livePx(it) {
+        var f = it.mk === 'idx' ? 'live-idx.json' : (it.mk === 'global' ? 'live-global.json' : null); if (!f) return Promise.resolve(null);
+        return fetch(BASE + 'assets/data/' + f + '?t=' + Math.floor(Date.now() / 300000)).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { var q = d && d.q && d.q[it.k]; return q && q[0] > 0 ? q : null; }).catch(function () { return null; });
+    }
     function api() { return (typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : '') || ''; }
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }); }
     var DISC = '\nEdukasi, bukan ajakan beli/jual. Selalu pakai stop loss.';
@@ -214,6 +219,7 @@
         var F = await fund(it), us = it.mk === 'global';
         var price = F && F.price != null ? F.price : null, chg = F ? F.chg : null, name = (F && F.name) || (it.row && it.row[11]) || it.k;
         if (price == null && it.row) { price = it.row[1]; chg = it.row[3]; }
+        var lp = await livePx(it); if (lp && !(F && F.price != null)) { price = lp[0]; chg = lp[2]; }
         if (price == null && us) { var gs = await jfile('global-screener.json'), g = gs && gs.rows ? gs.rows.filter(function (x) { return x[0] === it.k; })[0] : null; if (g) { price = g[1]; chg = g[3]; name = g[10] || name; } }
         if (price == null) return 'Data ' + it.k + ' tidak ditemukan.';
         if (!us && price <= 50) return 'Saham ' + it.k + ' harganya Rp' + price + ' (<= Rp50): zona gocap/FCA, sangat berisiko. Mending cari emiten lain.';
@@ -262,6 +268,7 @@
         if (nums.length >= 2) { low = Math.min(nums[0], nums[1]); high = Math.max(nums[0], nums[1]); mode = 'Manual input'; }
         else { if (!R || R.c.length < 5) return 'Data ' + it.k + ' belum bisa diambil. Cek kode atau coba lagi.'; low = Math.min.apply(null, R.l); high = Math.max.apply(null, R.h); mode = 'Otomatis (' + (tf === 'd' ? '3 bulan harian' : 'candle ' + tf) + ')'; }
         var price = R && R.c.length ? R.c[R.c.length - 1] : (it.row ? it.row[1] : null); if (price == null) return 'Harga ' + it.k + ' tidak tersedia.';
+        if (R && R.stat) { var lp2 = await livePx(it); if (lp2) price = lp2[0]; }
         if (it.mk === 'idx' && price <= 50) return 'Saham ' + it.k + ' gocap (<= Rp50): Fibo tidak valid. Skip.';
         if (!(high > low)) return 'Rentang harga tidak valid (high harus lebih besar dari low).';
         var diff = high - low, L = function (r) { return high - diff * r; }, f = function (v) { return fp(it.mk, v, it.k); };

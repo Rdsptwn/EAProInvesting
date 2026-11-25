@@ -1304,6 +1304,8 @@ window.addEventListener('load', () => {
     /* ---- Command (tanpa AI, jalan di browser; mirip command bot WA) ---- */
     var CBASE = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
     var CMEM = {};
+    // File harga near-live (diperbarui tiap ±5 menit di jam bursa): jangan di-memo seumur sesi, segarkan per 5 menit.
+    function cLive(n) { return fetch(CBASE + 'assets/data/' + n + '?t=' + Math.floor(Date.now() / 300000)).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); }
     function cjson(n) { if (!CMEM[n]) CMEM[n] = fetch(CBASE + 'assets/data/' + n + '?v=' + encodeURIComponent(window.EWOKS_ASSET_V || '1')).then(function (r) { if (!r.ok) throw 0; return r.json(); }).catch(function () { delete CMEM[n]; return null; }); return CMEM[n]; }
     function nf(v, d) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
     function px(v) { v = Number(v); return nf(v, v >= 1000 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8); }
@@ -1332,18 +1334,24 @@ window.addEventListener('load', () => {
     async function cmdHarga(code) {
         var k = String(code || '').toUpperCase().replace(/^\$/, ''); if (!k) return 'Format: /harga <kode>. Contoh: /harga BBCA';
         var ihsg = await cjson('idx-screener.json'), r = ihsg && ihsg.rows ? ihsg.rows.filter(function (x) { return x[0] === k; })[0] : null;
-        if (r) return k + ' (' + (r[11] || 'IHSG') + ')\nHarga Rp ' + nf(r[1], 0).replace(/,/g, '.') + '  (' + (r[3] >= 0 ? '+' : '') + nf(r[3], 2) + '%)\nSupport Rp ' + nf(r[6], 0).replace(/,/g, '.') + ' · Resist Rp ' + nf(r[7], 0).replace(/,/g, '.') + '\nRentang 52 minggu Rp ' + nf(r[4], 0).replace(/,/g, '.') + ' - ' + nf(r[5], 0).replace(/,/g, '.') + '\nData harian IHSG, bisa tertunda. Detail: [Watchlist](' + CBASE + 'watchlist.html)';
+        if (r) {
+            var lv = await cLive('live-idx.json'), lq = lv && lv.q && lv.q[k], P0 = r[1], C0 = r[3], liveOk = lq && lq[0] > 0;
+            if (liveOk) { P0 = lq[0]; C0 = lq[2]; }
+            var R0 = function (v) { return nf(v, 0).replace(/,/g, '.'); };
+            return k + ' (' + (r[11] || 'IHSG') + ')\nHarga Rp ' + R0(P0) + '  (' + (C0 >= 0 ? '+' : '') + nf(C0, 2) + '%)\nSupport Rp ' + R0(r[6]) + ' · Resist Rp ' + R0(r[7]) + '\nRentang 52 minggu Rp ' + R0(r[4]) + ' - ' + R0(r[5]) + '\n' + (liveOk ? 'Harga near-live (selisih beberapa menit dari bursa).' : 'Data harian IHSG, bisa tertunda.') + ' Detail: [Watchlist](' + CBASE + 'watchlist.html)';
+        }
         var cr = await cjson('crypto.json'), c = cr && cr.items ? cr.items.filter(function (x) { return x.k === k; })[0] : null;
         var fx = await cjson('forex.json'), f = fx && fx.items ? fx.items.filter(function (x) { return x.k === k; })[0] : null;
         var it = c || f, sym = it ? it.s : k, kind = c ? 'kripto' : f ? 'forex' : 'global';
-        var q = await liveQ(sym), price = q ? q[0] : (it ? it.price : null), chg = q ? q[2] : (it ? it.chg : null);
+        var stLive = false, q = await liveQ(sym), price = q ? q[0] : (it ? it.price : null), chg = q ? q[2] : (it ? it.chg : null);
         if (price == null || !isFinite(price)) {
             var gs = await cjson('global-screener.json'), g = gs && gs.rows ? gs.rows.filter(function (x) { return x[0] === k; })[0] : null;
             if (!g) return 'Kode "' + k + '" tidak ketemu. Coba kode saham IHSG (BBCA), kripto (BTC), forex (EURUSD), atau saham global (NVDA).';
             price = g[1]; chg = g[3];
+            var lg = await cLive('live-global.json'), gq = lg && lg.q && lg.q[k]; if (gq && gq[0] > 0) { price = gq[0]; chg = gq[2]; q = gq; stLive = true; }
         }
         var name = it ? it.n : '', pre = kind === 'forex' ? '' : '$';
-        return k + (name ? ' (' + name + ')' : '') + '\nHarga ' + pre + px(price) + (chg != null && isFinite(chg) ? '  (' + (chg >= 0 ? '+' : '') + nf(chg, 2) + '%)' : '') + (q ? '\nHarga live dari Worker.' : '\nHarga dari data terakhir (live belum tersedia).') + '\nDetail: [' + MK[kind === 'kripto' ? 'kripto' : kind][0] + '](' + CBASE + MK[kind === 'kripto' ? 'kripto' : kind][1] + (kind === 'global' ? '#saham-' + k : '') + ')';
+        return k + (name ? ' (' + name + ')' : '') + '\nHarga ' + pre + px(price) + (chg != null && isFinite(chg) ? '  (' + (chg >= 0 ? '+' : '') + nf(chg, 2) + '%)' : '') + (q ? (stLive ? '\nHarga near-live (selisih beberapa menit dari bursa).' : '\nHarga live dari Worker.') : '\nHarga dari data terakhir (live belum tersedia).') + '\nDetail: [' + MK[kind === 'kripto' ? 'kripto' : kind][0] + '](' + CBASE + MK[kind === 'kripto' ? 'kripto' : kind][1] + (kind === 'global' ? '#saham-' + k : '') + ')';
     }
     async function cmdRek(a) {
         var k = mkey(a);
