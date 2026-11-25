@@ -1,624 +1,624 @@
 {
- "asOf": "2026-11-24",
- "builtAt": "2026-11-24T20:20:22.777Z",
- "session": "dicek 03.20 WIB",
+ "asOf": "2026-11-25",
+ "builtAt": "2026-11-25T19:34:58.729Z",
+ "session": "dicek 02.34 WIB",
  "source": "BEI (idx.id)",
  "rows": [
   [
-   "XL",
-   "Stockbit Sekuritas Digital",
-   2702352303652,
-   11158542372,
-   846455
-  ],
-  [
    "CC",
    "MANDIRI SEKURITAS",
-   2670001841120,
-   4783372396,
-   261406
+   1978010844000,
+   4544413000,
+   210986
   ],
   [
    "AK",
    "UBS Sekuritas Indonesia",
-   2451312468620,
-   5094749080,
-   207073
+   1660066166900,
+   2943532422,
+   163067
   ],
   [
-   "BK",
-   "J.P. Morgan Sekuritas Indonesia",
-   1411711040216,
-   1038868554,
-   75527
+   "XL",
+   "Stockbit Sekuritas Digital",
+   1526914603040,
+   7288236102,
+   621739
   ],
   [
    "ZP",
    "Maybank Sekuritas Indonesia",
-   1375152296830,
-   1657543414,
-   104925
+   1185144835800,
+   1113081600,
+   79351
   ],
   [
    "YU",
    "CGS International Sekuritas Indonesia",
-   1177412823152,
-   1724583868,
-   53344
+   1008267455148,
+   3506900326,
+   47165
+  ],
+  [
+   "BK",
+   "J.P. Morgan Sekuritas Indonesia",
+   788230961342,
+   564460590,
+   47236
   ],
   [
    "YP",
    "Mirae Asset Sekuritas Indonesia",
-   995587500000,
-   3145397400,
-   183914
-  ],
-  [
-   "PD",
-   "Indo Premier Sekuritas",
-   850461567440,
-   1800853960,
-   113660
-  ],
-  [
-   "XC",
-   "Ajaib Sekuritas Asia",
-   766249574700,
-   2158047200,
-   172017
-  ],
-  [
-   "MG",
-   "Semesta Indovest Sekuritas",
-   648645181100,
-   3814239700,
-   63110
-  ],
-  [
-   "CP",
-   "KB Valbury Sekuritas",
-   604593057200,
-   2470576100,
-   67449
-  ],
-  [
-   "BB",
-   "Verdhana Sekuritas Indonesia",
-   596037649460,
-   434790344,
-   34265
+   612322972500,
+   2381142100,
+   131968
   ],
   [
    "KZ",
    "CLSA Sekuritas Indonesia",
-   582924993800,
-   315756300,
-   27429
-  ],
-  [
-   "OD",
-   "BRI Danareksa Sekuritas",
-   577805631900,
-   1227477700,
-   66638
-  ],
-  [
-   "NI",
-   "BNI Sekuritas",
-   519400579200,
-   772422500,
-   65617
-  ],
-  [
-   "SQ",
-   "BCA Sekuritas",
-   482529339400,
-   909621400,
-   45506
+   567765447500,
+   342544600,
+   22060
   ],
   [
    "DH",
    "SINARMAS SEKURITAS",
-   424402287046,
-   1248749530,
-   12949
+   533995294040,
+   1170183864,
+   11246
   ],
   [
-   "HD",
-   "KGI Sekuritas Indonesia",
-   366472712500,
-   1691419700,
-   40155
+   "XC",
+   "Ajaib Sekuritas Asia",
+   473216747400,
+   1732268500,
+   130164
   ],
   [
-   "AZ",
-   "Sucor Sekuritas",
-   359296333900,
-   1388332900,
-   37863
+   "NI",
+   "BNI Sekuritas",
+   426479553800,
+   619880900,
+   52828
   ],
   [
-   "KI",
-   "Ciptadana Sekuritas Asia",
-   288974332600,
-   887984000,
-   10036
+   "PD",
+   "Indo Premier Sekuritas",
+   395461129856,
+   1060926044,
+   82345
   ],
   [
-   "GR",
-   "PANIN SEKURITAS Tbk.",
-   262091699800,
-   863220300,
-   22980
+   "CP",
+   "KB Valbury Sekuritas",
+   389678194100,
+   1973452100,
+   52014
   ],
   [
-   "BQ",
-   "Korea Investment and Sekuritas Indonesia",
-   229730961500,
-   902073700,
-   45322
+   "SQ",
+   "BCA Sekuritas",
+   349398880000,
+   653869662,
+   36679
   ],
   [
-   "KK",
-   "Phillip Sekuritas Indonesia",
-   222292740300,
-   873012100,
-   43712
+   "MG",
+   "Semesta Indovest Sekuritas",
+   338976782800,
+   3580962500,
+   44860
   ],
   [
-   "RX",
-   "Macquarie Sekuritas Indonesia",
-   218973138800,
-   152803800,
-   11541
-  ],
-  [
-   "DR",
-   "RHB Sekuritas Indonesia",
-   191473253800,
-   505657600,
-   27334
-  ],
-  [
-   "LG",
-   "Trimegah Sekuritas Indonesia Tbk.",
-   178622401800,
-   481241840,
-   18348
-  ],
-  [
-   "EP",
-   "MNC Sekuritas",
-   176768368900,
-   850861900,
-   17840
-  ],
-  [
-   "YJ",
-   "Lotus Andalan Sekuritas",
-   167873578000,
-   480496400,
-   12993
-  ],
-  [
-   "XA",
-   "NH Korindo Sekuritas Indonesia",
-   163089098300,
-   484926500,
-   18628
-  ],
-  [
-   "YB",
-   "Yakin Bertumbuh Sekuritas",
-   144642224700,
-   929432200,
-   23408
-  ],
-  [
-   "TP",
-   "OCBC Sekuritas Indonesia",
-   131038359200,
-   298107200,
-   13569
-  ],
-  [
-   "DX",
-   "Bahana Sekuritas",
-   127455374600,
-   98928900,
-   5444
-  ],
-  [
-   "HP",
-   "Henan Putihrai Sekuritas",
-   113146357700,
-   309500400,
-   8095
-  ],
-  [
-   "AG",
-   "Kiwoom Sekuritas Indonesia",
-   103032594600,
-   147629400,
-   7374
-  ],
-  [
-   "AI",
-   "Kay Hian Sekuritas",
-   97483886600,
-   333564300,
-   8916
-  ],
-  [
-   "PO",
-   "Pilarmas Investindo Sekuritas",
-   92741124288,
-   252497348,
-   775
+   "OD",
+   "BRI Danareksa Sekuritas",
+   280899773700,
+   813515300,
+   42862
   ],
   [
    "IF",
    "SAMUEL SEKURITAS INDONESIA",
-   87243187200,
-   336099600,
-   6998
+   269483818000,
+   325304400,
+   3683
   ],
   [
-   "PG",
-   "Panca Global Sekuritas",
-   76931746900,
-   60007600,
-   1971
+   "AZ",
+   "Sucor Sekuritas",
+   239502105700,
+   972096400,
+   24364
   ],
   [
-   "II",
-   "Danatama Makmur Sekuritas",
-   64567348500,
-   324327600,
-   441
+   "HD",
+   "KGI Sekuritas Indonesia",
+   185813359100,
+   909077100,
+   27415
   ],
   [
-   "DP",
-   "DBS Vickers Sekuritas Indonesia",
-   63775956400,
-   228159200,
-   2834
+   "BQ",
+   "Korea Investment and Sekuritas Indonesia",
+   184296361600,
+   904106800,
+   32707
   ],
   [
-   "SS",
-   "Supra Sekuritas Indonesia",
-   63714073900,
-   290596000,
-   2697
+   "BB",
+   "Verdhana Sekuritas Indonesia",
+   180762836200,
+   471332700,
+   18133
   ],
   [
-   "FS",
-   "Yuanta Sekuritas Indonesia",
-   60460893800,
-   637255000,
-   2485
+   "GR",
+   "PANIN SEKURITAS Tbk.",
+   178913700200,
+   447061800,
+   20234
   ],
   [
-   "BR",
-   "Trust Sekuritas",
-   48407376500,
-   176779200,
-   5230
+   "LG",
+   "Trimegah Sekuritas Indonesia Tbk.",
+   174001541100,
+   510979800,
+   21979
   ],
   [
-   "PP",
-   "Aldiracita Sekuritas Indonesia",
-   46428483000,
-   315562100,
-   2899
+   "KK",
+   "Phillip Sekuritas Indonesia",
+   155480553500,
+   628288000,
+   37629
   ],
   [
-   "AO",
-   "ERDIKHA ELIT SEKURITAS",
-   43980799000,
-   388187800,
-   5162
+   "DX",
+   "Bahana Sekuritas",
+   147767890500,
+   62793700,
+   9402
   ],
   [
-   "SH",
-   "Artha Sekuritas Indonesia",
-   41342458600,
-   138493000,
-   2163
+   "RX",
+   "Macquarie Sekuritas Indonesia",
+   136312537300,
+   267548400,
+   14548
   ],
   [
-   "FZ",
-   "Waterfront Sekuritas Indonesia",
-   40514552700,
-   268047500,
-   5548
+   "XA",
+   "NH Korindo Sekuritas Indonesia",
+   133596803100,
+   463228800,
+   15011
   ],
   [
-   "AT",
-   "Phintraco Sekuritas",
-   37688432400,
-   158752800,
-   8869
+   "DR",
+   "RHB Sekuritas Indonesia",
+   105494649700,
+   333840100,
+   18372
+  ],
+  [
+   "TP",
+   "OCBC Sekuritas Indonesia",
+   92366245800,
+   666352900,
+   10808
+  ],
+  [
+   "HP",
+   "Henan Putihrai Sekuritas",
+   85211789000,
+   173758600,
+   9139
+  ],
+  [
+   "YJ",
+   "Lotus Andalan Sekuritas",
+   83237530800,
+   298956000,
+   6513
+  ],
+  [
+   "YB",
+   "Yakin Bertumbuh Sekuritas",
+   81721208200,
+   374439400,
+   17690
+  ],
+  [
+   "KI",
+   "Ciptadana Sekuritas Asia",
+   66557597500,
+   554939000,
+   7622
+  ],
+  [
+   "AI",
+   "Kay Hian Sekuritas",
+   64603698200,
+   239537300,
+   6643
+  ],
+  [
+   "AG",
+   "Kiwoom Sekuritas Indonesia",
+   62638912100,
+   131530000,
+   5745
   ],
   [
    "CD",
    "Mega Capital Sekuritas",
-   29783021580,
-   53483716,
-   1727
+   56142660600,
+   117025200,
+   1292
+  ],
+  [
+   "BR",
+   "Trust Sekuritas",
+   48637469100,
+   151242700,
+   4498
+  ],
+  [
+   "AO",
+   "ERDIKHA ELIT SEKURITAS",
+   38155876300,
+   383927200,
+   3458
+  ],
+  [
+   "EP",
+   "MNC Sekuritas",
+   37593596880,
+   173499340,
+   13972
+  ],
+  [
+   "PP",
+   "Aldiracita Sekuritas Indonesia",
+   32541177900,
+   1220948600,
+   583
+  ],
+  [
+   "AT",
+   "Phintraco Sekuritas",
+   31738538900,
+   98232400,
+   7217
+  ],
+  [
+   "FZ",
+   "Waterfront Sekuritas Indonesia",
+   30571484000,
+   402740900,
+   4623
   ],
   [
    "PC",
    "FAC Sekuritas Indonesia",
-   28551711600,
-   85183400,
-   4774
+   29888052600,
+   82628200,
+   4318
   ],
   [
    "IN",
    "INVESTINDO NUSANTARA SEKURITA",
-   26052547800,
-   124793900,
-   3079
-  ],
-  [
-   "IH",
-   "Indo Harvest Sekuritas",
-   25723561000,
-   96100400,
-   2491
-  ],
-  [
-   "RO",
-   "Pluang Maju Sekuritas",
-   24858067300,
-   60517900,
-   5357
-  ],
-  [
-   "LS",
-   "Reliance Sekuritas Indonesia Tbk.",
-   20561881000,
-   73857700,
-   2628
-  ],
-  [
-   "IU",
-   "Indo Capital Sekuritas",
-   18410489900,
-   272891200,
-   3326
-  ],
-  [
-   "ZR",
-   "Bumiputera Sekuritas",
-   15084649200,
-   22065600,
-   860
-  ],
-  [
-   "GA",
-   "BNC Sekuritas Indonesia",
-   13357647900,
-   129970900,
-   1142
-  ],
-  [
-   "RF",
-   "Buana Capital Sekuritas",
-   13018671400,
-   57201400,
-   557
-  ],
-  [
-   "DU",
-   "KAF Sekuritas Indonesia",
-   12858791000,
-   104422200,
-   2400
-  ],
-  [
-   "RG",
-   "Profindo Sekuritas Indonesia",
-   11788856700,
-   53793300,
-   1176
-  ],
-  [
-   "EL",
-   "Evergreen Sekuritas Indonesia",
-   11309230000,
-   48190200,
-   662
-  ],
-  [
-   "MI",
-   "Victoria Sekuritas Indonesia",
-   10921378100,
-   28877600,
-   806
-  ],
-  [
-   "ES",
-   "EKOKAPITAL SEKURITAS",
-   10575680900,
-   15345400,
-   743
-  ],
-  [
-   "AR",
-   "Binaartha Sekuritas",
-   8759653700,
-   27214200,
-   992
-  ],
-  [
-   "RB",
-   "Ina Sekuritas Indonesia",
-   8369907100,
-   188990800,
-   868
-  ],
-  [
-   "AF",
-   "Harita Kencana Sekuritas",
-   8220710000,
-   21092400,
-   163
-  ],
-  [
-   "QA",
-   "Tuntun Sekuritas Indonesia",
-   6961885600,
-   41393000,
-   3598
-  ],
-  [
-   "SF",
-   "Surya Fajar Sekuritas",
-   6240383400,
-   55440500,
-   1195
+   22311067200,
+   128531300,
+   2856
   ],
   [
    "AP",
    "Pacific Sekuritas Indonesia",
-   6069679924,
-   12898662,
-   18
+   21679130754,
+   36780580,
+   28
   ],
   [
-   "MU",
-   "Minna Padi Investama Sekuritas",
-   4856613100,
-   137528100,
-   788
+   "PG",
+   "Panca Global Sekuritas",
+   20486357000,
+   56960500,
+   1776
   ],
   [
-   "ID",
-   "Anugerah Sekuritas Indonesia",
-   4225671500,
-   19690200,
-   695
+   "PO",
+   "Pilarmas Investindo Sekuritas",
+   18895331800,
+   16056800,
+   628
   ],
   [
-   "TS",
-   "Dwidana Sakti Sekuritas",
-   3252352600,
-   7617900,
-   92
+   "DP",
+   "DBS Vickers Sekuritas Indonesia",
+   17242854000,
+   260802100,
+   1127
   ],
   [
-   "SA",
-   "Elit Sukses Sekuritas",
-   3241649100,
-   28673200,
-   677
+   "RO",
+   "Pluang Maju Sekuritas",
+   15755555300,
+   37417100,
+   4457
   ],
   [
-   "PI",
-   "Magenta Kapital Sekuritas Indonesia",
-   3052500100,
-   76795600,
-   709
+   "ZR",
+   "Bumiputera Sekuritas",
+   14055227700,
+   22963700,
+   1042
   ],
   [
-   "OK",
-   "NET SEKURITAS",
-   3047671800,
-   4536200,
-   206
+   "LS",
+   "Reliance Sekuritas Indonesia Tbk.",
+   13475953850,
+   51437266,
+   1866
   ],
   [
-   "BS",
-   "Equity Sekuritas Indonesia",
-   2800120700,
-   7424500,
-   321
+   "FS",
+   "Yuanta Sekuritas Indonesia",
+   13391549800,
+   88895700,
+   2256
   ],
   [
-   "RS",
-   "Yulie Sekuritas Indonesia Tbk.",
-   2513252000,
-   3384700,
-   307
+   "IU",
+   "Indo Capital Sekuritas",
+   13244009100,
+   91236100,
+   2359
   ],
   [
-   "TF",
-   "Laba Sekuritas Indonesia",
-   2485955800,
-   8279800,
-   226
+   "RB",
+   "Ina Sekuritas Indonesia",
+   12623031700,
+   59898500,
+   1578
   ],
   [
-   "AH",
-   "Shinhan Sekuritas Indonesia",
-   1899639400,
-   7536200,
-   20
+   "IH",
+   "Indo Harvest Sekuritas",
+   12114312500,
+   46172000,
+   2164
   ],
   [
-   "BF",
-   "Inti Fikasa Sekuritas",
-   734600000,
-   4275000,
-   77
+   "DU",
+   "KAF Sekuritas Indonesia",
+   11055476300,
+   76705100,
+   1548
   ],
   [
-   "DD",
-   "Makindo Sekuritas",
-   639531000,
-   441700,
-   51
+   "EL",
+   "Evergreen Sekuritas Indonesia",
+   10673525400,
+   39149400,
+   730
   ],
   [
-   "PF",
-   "Danasakti Sekuritas Indonesia",
-   343801700,
-   727000,
-   74
+   "GA",
+   "BNC Sekuritas Indonesia",
+   10406599700,
+   123158600,
+   995
   ],
   [
-   "IT",
-   "INTI TELADAN SEKURITAS",
-   310027000,
-   740100,
-   56
+   "SH",
+   "Artha Sekuritas Indonesia",
+   9515720700,
+   41088100,
+   1528
+  ],
+  [
+   "AR",
+   "Binaartha Sekuritas",
+   9061092300,
+   36304900,
+   972
+  ],
+  [
+   "RG",
+   "Profindo Sekuritas Indonesia",
+   9059966000,
+   10685300,
+   432
+  ],
+  [
+   "RF",
+   "Buana Capital Sekuritas",
+   8788753400,
+   32522100,
+   425
   ],
   [
    "YO",
    "Amantara Sekuritas Indonesia",
-   301922500,
-   2236000,
-   123
+   7867882500,
+   1906500,
+   299
+  ],
+  [
+   "AF",
+   "Harita Kencana Sekuritas",
+   7108554300,
+   3792400,
+   76
+  ],
+  [
+   "SF",
+   "Surya Fajar Sekuritas",
+   6714758200,
+   60547600,
+   1532
   ],
   [
    "AD",
    "Sukadana Prima Sekuritas",
-   197801900,
-   1206400,
-   90
+   5317615900,
+   10914500,
+   135
   ],
   [
-   "GI",
-   "Webull Sekuritas Indonesia",
-   74104100,
-   152600,
-   50
+   "MI",
+   "Victoria Sekuritas Indonesia",
+   5226802800,
+   20522300,
+   1105
+  ],
+  [
+   "SS",
+   "Supra Sekuritas Indonesia",
+   5165927500,
+   11051700,
+   505
+  ],
+  [
+   "MU",
+   "Minna Padi Investama Sekuritas",
+   5019411900,
+   149549500,
+   767
+  ],
+  [
+   "QA",
+   "Tuntun Sekuritas Indonesia",
+   4987468000,
+   32284500,
+   2993
+  ],
+  [
+   "TF",
+   "Laba Sekuritas Indonesia",
+   3837387800,
+   11096800,
+   246
+  ],
+  [
+   "ES",
+   "EKOKAPITAL SEKURITAS",
+   3384123100,
+   9093000,
+   448
+  ],
+  [
+   "OK",
+   "NET SEKURITAS",
+   3316693900,
+   2039600,
+   111
+  ],
+  [
+   "ID",
+   "Anugerah Sekuritas Indonesia",
+   3280458800,
+   13980800,
+   610
+  ],
+  [
+   "PI",
+   "Magenta Kapital Sekuritas Indonesia",
+   2091371200,
+   36075200,
+   684
+  ],
+  [
+   "SA",
+   "Elit Sukses Sekuritas",
+   2038279800,
+   25469000,
+   453
+  ],
+  [
+   "BS",
+   "Equity Sekuritas Indonesia",
+   1972396000,
+   3060100,
+   294
+  ],
+  [
+   "PF",
+   "Danasakti Sekuritas Indonesia",
+   1951353900,
+   16101800,
+   172
+  ],
+  [
+   "RS",
+   "Yulie Sekuritas Indonesia Tbk.",
+   1568788100,
+   2030200,
+   247
+  ],
+  [
+   "TS",
+   "Dwidana Sakti Sekuritas",
+   688384000,
+   1048500,
+   12
+  ],
+  [
+   "IT",
+   "INTI TELADAN SEKURITAS",
+   648241500,
+   513400,
+   88
+  ],
+  [
+   "II",
+   "Danatama Makmur Sekuritas",
+   645106800,
+   2384200,
+   37
+  ],
+  [
+   "BF",
+   "Inti Fikasa Sekuritas",
+   448901200,
+   3461400,
+   121
   ],
   [
    "IC",
    "Integrity Capital Sekuritas",
-   45712600,
-   195700,
-   121
+   196340100,
+   1740600,
+   41
+  ],
+  [
+   "GI",
+   "Webull Sekuritas Indonesia",
+   148954500,
+   351100,
+   62
+  ],
+  [
+   "DD",
+   "Makindo Sekuritas",
+   119119100,
+   90100,
+   38
   ],
   [
    "FO",
    "Forte Global Sekuritas",
-   8470000,
-   41000,
-   5
+   3350000,
+   20000,
+   13
+  ],
+  [
+   "AH",
+   "Shinhan Sekuritas Indonesia",
+   2731800,
+   22900,
+   12
   ]
  ]
 }
