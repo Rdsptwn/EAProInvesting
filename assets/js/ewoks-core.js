@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0737';
+window.EWOKS_ASSET_V = '20261125t0749';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1316,6 +1316,7 @@ window.addEventListener('load', () => {
         m = l.match(/^(akum|bandar|fibo|analisa|lk)\s+(\S+)(?:\s+(\S+))?$/); if (m) return '/' + m[1] + ' ' + m[2] + (m[3] ? ' ' + m[3] : '');
         if (/^(berita|news)( terbaru| terkini)?$/.test(l)) return '/berita';
         if (/^(help|menu|bantuan|command)$/.test(l)) return '/help';
+        if (/^(halo|hai|hi|hello|hallo|helo|selamat (pagi|siang|sore|malam)|makasih|terima kasih|thanks|thx)( tido)?[!. ]*$/.test(l)) return '/help'; // sapaan: jawab lokal (tanpa AI/Worker)
         if (l.length <= 160 && NL_RE.test(l)) return '/nl ' + t;
         return null;
     }
@@ -1327,7 +1328,7 @@ window.addEventListener('load', () => {
     async function cmdHarga(code) {
         var k = String(code || '').toUpperCase().replace(/^\$/, ''); if (!k) return 'Format: /harga <kode>. Contoh: /harga BBCA';
         var ihsg = await cjson('idx-screener.json'), r = ihsg && ihsg.rows ? ihsg.rows.filter(function (x) { return x[0] === k; })[0] : null;
-        if (r) return k + ' (' + (r[11] || 'IHSG') + ')\nHarga Rp ' + nf(r[1], 0) + '  (' + (r[3] >= 0 ? '+' : '') + nf(r[3], 2) + '%)\nSupport Rp ' + nf(r[6], 0) + ' · Resist Rp ' + nf(r[7], 0) + '\nRentang 52 minggu Rp ' + nf(r[4], 0) + ' - ' + nf(r[5], 0) + '\nData harian IHSG, bisa tertunda. Detail: [Watchlist](' + CBASE + 'watchlist.html)';
+        if (r) return k + ' (' + (r[11] || 'IHSG') + ')\nHarga Rp ' + nf(r[1], 0).replace(/,/g, '.') + '  (' + (r[3] >= 0 ? '+' : '') + nf(r[3], 2) + '%)\nSupport Rp ' + nf(r[6], 0).replace(/,/g, '.') + ' · Resist Rp ' + nf(r[7], 0).replace(/,/g, '.') + '\nRentang 52 minggu Rp ' + nf(r[4], 0).replace(/,/g, '.') + ' - ' + nf(r[5], 0).replace(/,/g, '.') + '\nData harian IHSG, bisa tertunda. Detail: [Watchlist](' + CBASE + 'watchlist.html)';
         var cr = await cjson('crypto.json'), c = cr && cr.items ? cr.items.filter(function (x) { return x.k === k; })[0] : null;
         var fx = await cjson('forex.json'), f = fx && fx.items ? fx.items.filter(function (x) { return x.k === k; })[0] : null;
         var it = c || f, sym = it ? it.s : k, kind = c ? 'kripto' : f ? 'forex' : 'global';
@@ -1544,7 +1545,7 @@ window.addEventListener('load', () => {
         return planEngine(kind, mkk, B);
     }
     /* ---- Intent dari bahasa biasa: "cari tau akumulasi saham brpt" -> langsung jalankan /akum BRPT (tanpa AI) ---- */
-    var STOP = {}; ('ada apa ini itu yang dan atau dong deh sih nih lah bisa mau cek cari tau tahu coba tolong gmn gimana bagaimana brp berapa harga saham koin kripto sama buat untuk dari pada lagi sudah udah belum bagus naik turun kok yuk ya pak bro tido gak ga nggak engga tidak akumulasi distribusi bandar bandarmologi asing fibo fibonacci analisa analisis prospek laporan keuangan nilai wajar valuasi golden cross sinyal lihat liat kasih kasi info tentang soal dengan kalo kalau kenapa karena jadi terus pake pakai hari besok minggu bulan banyak sedikit yg tdk bgt banget aja saja lalu juga masih ikut cuma hanya pasar forex global ihsg idx us pagi siang swing scalp rekomendasi saran per pbv eps fundamental layak retracement kurs price scalping smc emas gold aku kamu dia kita lu gue w mah dulu nanti sekarang terbaru terkini lagi yang gmn'.split(' ')).forEach(function (w) { STOP[w] = 1; });
+    var STOP = {}; ('ada apa ini itu yang dan atau dong deh sih nih lah bisa mau halo hai hi hello hallo helo makasih thanks thx oke ok okay sip siap mantap test tes cek cari tau tahu coba tolong gmn gimana bagaimana brp berapa harga saham koin kripto sama buat untuk dari pada lagi sudah udah belum bagus naik turun kok yuk ya pak bro tido gak ga nggak engga tidak akumulasi distribusi bandar bandarmologi asing fibo fibonacci analisa analisis prospek laporan keuangan nilai wajar valuasi golden cross sinyal lihat liat kasih kasi info tentang soal dengan kalo kalau kenapa karena jadi terus pake pakai hari besok minggu bulan banyak sedikit yg tdk bgt banget aja saja lalu juga masih ikut cuma hanya pasar forex global ihsg idx us pagi siang swing scalp rekomendasi saran per pbv eps fundamental layak retracement kurs price scalping smc emas gold aku kamu dia kita lu gue w mah dulu nanti sekarang terbaru terkini lagi yang gmn'.split(' ')).forEach(function (w) { STOP[w] = 1; });
     var KNOWN = null;
     async function knownMap() {
         if (KNOWN) return KNOWN; var m = {}, g = await cjson('global-screener.json'), f = await cjson('forex.json'), cr = await cjson('crypto.json'), id = await cjson('idx-screener.json');

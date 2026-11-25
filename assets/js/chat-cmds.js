@@ -82,7 +82,17 @@
         var w = WK[tf] || WK.d;
         var p = it.mk === 'kripto' ? viaBinance(it, BN[tf] || '1d', tf === 'd' ? 120 : 300).then(function (R) { return R || viaWorker(it, w[0], w[1]).then(function (X) { return X && tf === '4h' ? agg4(X) : X; }); })
             : viaWorker(it, w[0], w[1]).then(function (X) { return X && tf === '4h' ? agg4(X) : X; });
-        return p;
+        return p.then(function (X) { return X || statCandles(it, tf); });
+    }
+    // Cadangan: candle statis (GitHub Pages) kalau Worker/Binance tidak terjangkau. Tidak ada waktu/open/volume; cukup untuk Fibonacci dan level.
+    function statCandles(it, tf) {
+        var f = it.mk === 'idx' ? (tf === 'd' ? 'idx-1d' : null) : ({ kripto: 'crypto', forex: 'forex', global: 'global' }[it.mk] && ['5m', '1h', '4h'].indexOf(tf) >= 0 ? ({ kripto: 'crypto', forex: 'forex', global: 'global' }[it.mk] + '-' + tf) : null);
+        if (!f) return Promise.resolve(null);
+        var key = it.mk === 'kripto' ? it.k : (it.mk === 'idx' ? it.k : (it.sym || it.k));
+        return jfile('candles/' + f + '.json').then(function (d) {
+            var a = d && d.s && d.s[key]; if (!a || !a[2] || a[2].length < 5) return null;
+            return { t: a[2].map(function (_, i) { return i; }), o: a[2].slice(), h: a[0], l: a[1], c: a[2], v: a[2].map(function () { return 0; }), stat: true };
+        });
     }
     function sma(a, p) { var o = []; for (var i = 0; i < a.length; i++) { if (i < p - 1) { o.push(null); continue; } var s = 0; for (var j = 0; j < p; j++) s += a[i - j]; o.push(s / p); } return o; }
     function rsi(c, p) {
@@ -199,9 +209,9 @@
         if (price == null && us) { var gs = await jfile('global-screener.json'), g = gs && gs.rows ? gs.rows.filter(function (x) { return x[0] === it.k; })[0] : null; if (g) { price = g[1]; chg = g[3]; name = g[10] || name; } }
         if (price == null) return 'Data ' + it.k + ' tidak ditemukan.';
         if (!us && price <= 50) return 'Saham ' + it.k + ' harganya Rp' + price + ' (<= Rp50): zona gocap/FCA, sangat berisiko. Mending cari emiten lain.';
-        var cur = us ? '$' : 'Rp ', P = function (v) { return us ? '$' + nf(v, 2) : 'Rp ' + nf(Math.round(v), 0); };
+        var cur = us ? '$' : 'Rp ', P = function (v) { return us ? '$' + nf(v, 2) : 'Rp ' + nf(Math.round(v), 0).replace(/,/g, '.'); };
         var pe = F && F.pe != null ? nf(F.pe, 2) + 'x' : 'N/A', pbv = F && F.pbv != null ? nf(F.pbv, 2) + 'x' : 'N/A', eps = F && F.eps != null ? nf(F.eps, 2) : 'N/A';
-        var head = it.k + ' (' + name + ')\nHarga: ' + P(price) + (chg != null ? ' (' + (chg >= 0 ? '+' : '') + nf(chg, 2) + '%)' : '') + (F ? '' : '\n(Data valuasi live belum tersedia: Worker perlu v10 dengan route /fund.)');
+        var head = it.k + ' (' + name + ')\nHarga: ' + P(price) + (chg != null ? ' (' + (chg >= 0 ? '+' : '') + nf(chg, 2) + '%)' : '') + (F ? '' : '\n(Rasio valuasi belum tersedia saat ini.)');
         if (kind === 'analisa') {
             return 'ANALISA RINGKAS ' + (us ? 'US' : 'INDO') + ': ' + head + '\n\nValuasi:\n- PER: ' + pe + '\n- PBV: ' + pbv + '\n- EPS: ' + eps + '\n\nTrading Plan (estimasi sistem):\n- Entry: ' + P(price) + '\n- TP 1: ' + P(price * 1.05) + ' (+5%)\n- TP 2: ' + P(price * 1.10) + ' (+10%)\n- Cut Loss: ' + P(price * 0.95) + ' (-5%)\n- Average Down: ' + P(price * 0.90) + ' (-10%)\n\nTips: cek volume dan bandarmologi (/akum ' + it.k + ').' + DISC;
         }

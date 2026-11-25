@@ -45,7 +45,7 @@ export function parseInflationTitles(items) {
     for (const { title } of items) {
         const t = title.toLowerCase();
         if (!/inflasi/.test(t) || /(bulanan|month to month|mtm|m-to-m|ihk)\b/.test(t) && !/(tahunan|year on year|yoy|y-on-y|tahun ke tahun)/.test(t)) continue;
-        if (!/(tahunan|year on year|yoy|y-on-y|tahun ke tahun|sebesar|capai|tembus)/.test(t)) continue;
+        if (!/(tahunan|year on year|yoy|y-on-y|tahun ke tahun)/.test(t)) continue; // wajib eksplisit YoY: judul "sebesar 0,22 persen" tanpa kata tahunan = bulanan (pernah salah ambil 0,21)
         const per = t.match(new RegExp(`(${BULAN.join('|')})\\s+(20\\d{2})`));
         const val = t.match(/(\d{1,2}[,.]\d{1,2})\s*(persen|%)/);
         if (!per || !val) continue;
