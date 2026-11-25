@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/data/
+Disallow: /worker/
+Disallow: /tools/
+
+Sitemap: https://rdsptwn.github.io/EAProInvesting/sitemap.xml
