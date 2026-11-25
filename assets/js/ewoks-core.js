@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261125t0227';
+window.EWOKS_ASSET_V = '20261125t0231';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -758,6 +758,21 @@ function getEwoksLiveApi() {
 }
 
 
+
+/** Cadangan tanpa Worker: harga ±10 menit dari file statis (live-idx.json, dibuat GitHub Actions di jam bursa). */
+async function ewoksStaticLiveIdx() {
+    try {
+        const v = encodeURIComponent(window.EWOKS_ASSET_V || '1');
+        const base = (typeof EwoksSiteContext !== 'undefined' && EwoksSiteContext.basePath) || '';
+        const r = await fetch(`${base}assets/data/live-idx.json?v=${v}`, { cache: 'no-store' });
+        if (!r.ok) return null;
+        const d = await r.json();
+        if (!d || !d.q || !d.ts) return null;
+        // basi lebih dari 6 jam (pasar tutup/akhir pekan) tetap boleh: itu harga penutupan terakhir.
+        return d;
+    } catch (_) { return null; }
+}
+
 /** Ambil harga banyak saham dari Worker /screener: dipecah per ~120 kode & paralel (ringan untuk Worker gratis). */
 async function ewoksFetchScreener(codes, chunk) {
     const api = getEwoksLiveApi();
@@ -779,7 +794,11 @@ async function ewoksFetchScreener(codes, chunk) {
         }
     };
     await Promise.all(parts.map(one));
-    if (!ok) throw lastErr || new Error('gagal');
+    if (!ok) {
+        const st = await ewoksStaticLiveIdx();
+        if (st) { const q2 = {}; codes.forEach((c) => { if (st.q[c]) q2[c] = st.q[c]; }); if (Object.keys(q2).length) return { q: q2, ts: st.ts, ok: 1, total: 1, static: true }; }
+        throw lastErr || new Error('gagal');
+    }
     return { q, ts: ts || new Date().toISOString(), ok, total: parts.length };
 }
 
@@ -824,21 +843,31 @@ async function refreshLiveQuotes(force = false) {
     try {
         const snap = await loadEwoksMarketSnapshot();
         const url = `${api}/quotes?s=${encodeURIComponent(tickers.join(','))}${wantIhsg ? '&ihsg=1' : ''}`;
-        let res = null;
-        for (let attempt = 0; attempt < 2 && !res; attempt++) {
-            const ctl = new AbortController();
-            const timer = setTimeout(() => ctl.abort(), 20000);
-            try {
-                res = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
-            } catch (err) {
-                if (attempt === 1) throw (err && err.name === 'AbortError' ? new Error('Worker terlalu lambat (timeout 20 dtk)') : err);
-                await new Promise((r) => setTimeout(r, 1500));
-            } finally {
-                clearTimeout(timer);
+        let data = null;
+        try {
+            let res = null;
+            for (let attempt = 0; attempt < 2 && !res; attempt++) {
+                const ctl = new AbortController();
+                const timer = setTimeout(() => ctl.abort(), 8000);
+                try {
+                    res = await fetch(url, { signal: ctl.signal, cache: 'no-store' });
+                } catch (err) {
+                    if (attempt === 1) throw (err && err.name === 'AbortError' ? new Error('Worker terlalu lambat') : err);
+                    await new Promise((r) => setTimeout(r, 800));
+                } finally {
+                    clearTimeout(timer);
+                }
             }
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            data = await res.json();
+        } catch (werr) {
+            // Worker tidak terjangkau (mis. workers.dev diblokir jaringan): pakai harga statis ±10 menit.
+            const st = await ewoksStaticLiveIdx();
+            if (!st) throw werr;
+            data = { ts: st.ts, quotes: {} };
+            tickers.forEach((t) => { const a = st.q[t]; if (a) data.quotes[t] = { price: a[0], prevClose: a[1], changePct: a[2], time: st.ts }; });
+            if (wantIhsg && st.ihsg) data.ihsg = { price: st.ihsg[0], prevClose: st.ihsg[1], changePct: st.ihsg[2] };
         }
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
         snap.quotes = snap.quotes || {};
         let n = 0;
         for (const [t, q] of Object.entries(data.quotes || {})) {

@@ -48,6 +48,9 @@ if (mode === 'idx') {
 } else if (mode === 'global') {
     const set = new Set(J('global-commodities.json').items.map((x) => x.s).filter(Boolean));
     J('global-screener.json').rows.filter((r) => /^[A-Z.-]{1,6}$/.test(r[0])).sort((a, b) => b[1] * (b[8] || 0) - a[1] * (a[8] || 0)).slice(0, 800).forEach((r) => set.add(r[0]));
+    // top naik/turun (kolom chg = r[3]) ikut dipantau supaya tabel "Top naik & turun" juga hampir-live
+    const mv = J('global-screener.json').rows.filter((r) => /^[A-Z.-]{1,6}$/.test(r[0]) && Number.isFinite(r[3])).sort((a, b) => b[3] - a[3]);
+    mv.slice(0, 60).concat(mv.slice(-60)).forEach((r) => set.add(r[0]));
     const { out, bad, total } = await quotes([...set], sess);
     if (Object.keys(out).length < 200) { console.error('data terlalu sedikit:', Object.keys(out).length, `(batch gagal ${bad}/${total})`); process.exit(1); }
     fs.writeFileSync('assets/data/live-global.json', JSON.stringify({ ts, q: out }));

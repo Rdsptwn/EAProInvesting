@@ -40,7 +40,7 @@
     }
 
     /* ---------- Harga live (Worker /gquotes) ---------- */
-    var live = {}, liveTs = null, liveOk = null, commData = null, commTargets = [], liveTimer = null, onLive = [];
+    var live = {}, liveTs = null, liveStatic = false, liveOk = null, commData = null, commTargets = [], liveTimer = null, onLive = [];
     function liveApi() { return (typeof getEwoksLiveApi === 'function' ? getEwoksLiveApi() : ''); }
     function liveSymbols() {
         var out = [];
@@ -67,13 +67,20 @@
         })).then(function (res) {
             var n = 0;
             res.forEach(function (q) { if (q) Object.keys(q).forEach(function (k) { if (q[k] && Number.isFinite(q[k][0])) { live[k] = q[k]; n++; } }); });
-            liveOk = n > 0; if (liveOk) liveTs = new Date();
-            return liveOk;
+            if (n > 0) { liveOk = true; liveTs = new Date(); liveStatic = false; return true; }
+            // Worker tidak terjangkau: pakai harga ±10 menit dari file statis (live-global.json).
+            return fetch(base + 'assets/data/live-global.json?v=' + V(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+                if (!d || !d.q) { liveOk = false; return false; }
+                var m = 0; syms.forEach(function (k) { var a = d.q[k]; if (a && Number.isFinite(a[0])) { live[k] = a; m++; } });
+                liveOk = m > 0; if (liveOk) { liveTs = new Date(d.ts); liveStatic = true; }
+                return liveOk;
+            }).catch(function () { liveOk = false; return false; });
         });
     }
     function liveBadge() {
         if (liveOk === null) return '';
         if (!liveOk) return snapBuilt && typeof formatStampWib === 'function' ? 'Update data pasar: ' + formatStampWib(snapBuilt) : '';
+        if (liveStatic && typeof formatStampWib === 'function') return 'Update data pasar: ' + formatStampWib(liveTs.toISOString());
         return '● Live · ' + liveTs.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
     }
     function mergeItem(it) {
