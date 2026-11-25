@@ -111,7 +111,7 @@
         const maxD = Object.values(data).reduce((a, x) => (x.date > a ? x.date : a), '');
         for (const x of Object.values(data)) if (x.date < maxD) { x.chg = null; x.vol = 0; } // suspend / tidak diperdagangkan
         const m = d.meta || {};
-        stamp = 'Snapshot ' + (m.built ? new Date(m.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' WIB' : '') + ' — mencoba data live…';
+        stamp = 'Update data pasar: ' + (m.built ? new Date(m.built).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' WIB' : '');
     }
 
     async function refreshLive() {
@@ -129,10 +129,9 @@
                 c++;
             }
             live = c > 0;
-            const hhmm = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
-            stamp = `Live · ${hhmm} WIB · ${c} saham` + (d.ok < d.total ? ` (${d.ok}/${d.total} bagian)` : '');
+            const hhmm = new Date(d.ts || Date.now()).toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' }).replace(':', '.');
+            stamp = `Update data pasar: ${hhmm} WIB`;
         } catch (e) {
-            stamp = (live ? 'Live belum diperbarui, memakai data terakhir' : 'Snapshot harian, harga live belum tersedia');
             console.warn('Live screener:', e && e.message);
         }
         renderMovers();
