@@ -409,7 +409,7 @@ async function handle(request, ctx, env) {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(origin) });
     if (request.method === 'POST' && path === '/ask') return routeAsk(request, env, origin);
     if (request.method !== 'GET') return J({ ok: false, error: 'method' }, 405, origin);
-    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v10-cmd', routes: ['/quotes', '/screener', '/chart', '/gquotes', '/fund', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
+    if (path === '/' || path === '/health') return J({ ok: true, service: 'ewoks-live', version: 'v14-global', routes: ['/quotes', '/screener', '/chart', '/gquotes', '/fund', 'POST /ask'], ai: [env && env.GEMINI_KEY && 'gemini', env && env.GROQ_KEY && 'groq', env && env.AI && 'workers-ai'].filter(Boolean) }, 200, origin);
     if (path === '/chart') return routeChart(url, ctx, origin);
     if (path === '/fund') return routeFund(url, ctx, origin);
     if (path === '/screener') return routeScreener(url, ctx, origin);
