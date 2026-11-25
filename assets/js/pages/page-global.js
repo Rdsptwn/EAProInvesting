@@ -82,7 +82,10 @@
         return c;
     }
     function paintComm() {
-        if (!commData) return;
+        if (commData) paintCommCards();
+        onLive.forEach(function (f) { try { f(); } catch (_) {} });
+    }
+    function paintCommCards() {
         var by = {}; commData.items.forEach(function (x) { by[x.id] = mergeItem(x); });
         var gold = by.gold, idr = by.usdidr;
         var gram = gold && idr ? Math.round(gold.price * idr.price / 31.1034768) : (commData.derived && commData.derived.goldIdrGram);
@@ -93,11 +96,15 @@
             }).join('');
             if (t.opts && t.opts.stamp) t.opts.stamp.textContent = (liveBadge() || ('Snapshot ' + ago(commData.meta.built)));
         });
-        onLive.forEach(function (f) { try { f(); } catch (_) {} });
     }
+    var liveRetry = 0;
     function liveTick() {
         if (document.hidden) return;
-        liveFetch().then(function () { paintComm(); });
+        liveFetch().then(function (ok) {
+            paintComm();
+            // gagal sesaat (Yahoo/Worker lambat): coba lagi 3x dalam 5 detik, jangan tunggu 60 detik
+            if (!ok && liveRetry < 3) { liveRetry++; setTimeout(liveTick, 5000); } else if (ok) liveRetry = 0;
+        });
     }
     function startLive() {
         if (liveTimer) return;
@@ -478,15 +485,17 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
     }
     function paintPrice() {
         var r = symInfo(pcSym), el = document.getElementById('gd-price'); if (!el) return;
+        var lv = live[pcSym]; if (r && lv && Number.isFinite(lv[0])) { r = r.slice(); r[1] = lv[0]; if (Number.isFinite(lv[2])) r[3] = lv[2]; }
         el.innerHTML = r ? '<span class="text-3xl font-black text-slate-900">$' + fmt(r[1]) + '</span> <span class="ml-2">' + pct(r[3]) + '</span> <span class="text-[11px] text-slate-500 ml-2">' + (liveBadge() || 'snapshot') + '</span>' : '';
     }
-    function loadChart() {
+    function loadChart(retried) {
         var api = liveApi(), msg = document.getElementById('gp-msg'), r = RANGES[pcRange], sym = pcSym;
         if (!msg) return;
         msg.textContent = 'Memuat grafik…';
         if (!api) { msg.textContent = 'Grafik butuh Worker live. Pakai tombol TradingView di bawah.'; return; }
-        fetch(api + '/chart?g=1&s=' + encodeURIComponent(sym) + '&range=' + r[0] + '&interval=' + r[1], { cache: 'no-store' }).then(function (x) { return x.json(); }).then(function (d) {
-            if (sym !== pcSym || !d.ok || !d.c || d.c.length < 2) throw new Error('kosong');
+        fetch(api + '/chart?g=1&s=' + encodeURIComponent(sym) + '&range=' + r[0] + '&interval=' + r[1], { cache: 'no-store' }).then(function (x) { if (!x.ok) throw new Error('HTTP ' + x.status); return x.json(); }).then(function (d) {
+            if (sym !== pcSym) return;
+            if (!d.ok || !d.c || d.c.length < 2) throw new Error(d.error || 'data kosong');
             msg.textContent = '';
             var labels = d.t.map(function (t) { var dt = new Date(t * 1000); return r[0] === '1d' || r[0] === '5d' ? dt.toLocaleString('id-ID', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : dt.toLocaleDateString('id-ID', { day: '2-digit', month: 'short' }); });
             var col = d.c[d.c.length - 1] >= (d.prev || d.c[0]) ? '#10b981' : '#f43f5e';
@@ -494,14 +503,18 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
             if (!window.Chart) { msg.textContent = 'Pustaka grafik belum termuat.'; return; }
             pcChart = new Chart(document.getElementById('gp-canvas'), { type: 'line', data: { labels: labels, datasets: [{ data: d.c, borderColor: col, backgroundColor: col + '22', fill: true, pointRadius: 0, borderWidth: 2, tension: 0.15 }] },
                 options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false } }, interaction: { mode: 'index', intersect: false }, scales: { x: { ticks: { maxTicksLimit: 6, maxRotation: 0 }, grid: { display: false } }, y: { ticks: { maxTicksLimit: 6 } } } } });
-        }).catch(function () { msg.textContent = 'Grafik belum tersedia (Worker belum v7 atau pasar tutup). Pakai tombol TradingView di bawah.'; });
+        }).catch(function (e) {
+            if (sym !== pcSym) return;
+            if (!retried) { retried = true; msg.textContent = 'Memuat ulang grafik…'; setTimeout(function () { if (sym === pcSym) loadChart(true); }, 3000); return; }
+            msg.textContent = 'Grafik belum tersedia. Detail: ' + String((e && e.message) || e).slice(0, 80) + '. Pakai tombol TradingView di bawah.';
+        });
     }
     var gfChart = null;
     function fundaHtml(k, f, d, isEtf) {
         if (!f) return '<div class="premium-card glass-card rounded-2xl p-4 border border-slate-200 text-sm text-slate-500">' + (isEtf ? 'ETF/dana tidak punya laporan keuangan seperti perusahaan. Lihat komposisi dan biaya di situs penerbit ETF.' : 'Data fundamental untuk ' + esc(k) + ' belum tersedia (belum masuk sync atau Yahoo tidak punya datanya).') + '</div>';
         var keep = d.meta.years.map(function (y, i) { return ['rev', 'ni', 'asset', 'eq'].some(function (kk) { return Number.isFinite(f[kk][i]); }); });
         var pick = function (a) { return a.filter(function (_, i) { return keep[i]; }); };
-        var yrs = pick(d.meta.years), r0 = symInfo(k), price = r0 ? r0[1] : null;
+        var yrs = pick(d.meta.years), r0 = symInfo(k), price = live[k] && Number.isFinite(live[k][0]) ? live[k][0] : (r0 ? r0[1] : null);
         var F = {}; ['rev', 'gp', 'op', 'ni', 'asset', 'eq', 'debt', 'ocf', 'fcf', 'eps'].forEach(function (kk) { F[kk] = pick(f[kk]); });
         var rev = f.ttm.rev != null ? f.ttm.rev : last(f.rev), ni = f.ttm.ni != null ? f.ttm.ni : last(f.ni);
         var fcf = f.ttm.fcf != null ? f.ttm.fcf : last(f.fcf);

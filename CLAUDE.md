@@ -8,6 +8,13 @@ Situs edukasi investasi (Indonesia). Statis di GitHub Pages: HTML + Tailwind CDN
 - Konten = edukasi, bukan saran investasi. Pertahankan disclaimer di kartu rekomendasi.
 - Angka pasar/makro (BI Rate, Fed Rate, kurs) harus dicek ke sumber resmi sebelum diubah; catat `asOf` dan sumber.
 
+## Skill proyek (di `.claude/skills/`)
+Dipakai otomatis saat bekerja di repo ini:
+- `ponytail`: coding. Perubahan sekecil mungkin tapi lengkap (semua pemanggil, tes, cache-bust); sebut apa yang dilewati.
+- `humanizer`: setiap teks situs/Tido/commit yang ditulis dalam prosa; hasil tetap Bahasa Indonesia santai tapi jelas.
+- `ui-ux-pro-max`: setiap perubahan tampilan (cek mobile, kontras, target sentuh, pesan error yang jelas).
+- `last30days`: cek berita/status terkini (suspensi, delisting, BI Rate, Fed) lewat WebSearch/WebFetch; catat `asOf` dan sumber.
+
 ## Peta kode
 - `assets/js/ewoks-core.js`: komponen umum + widget chat **Tido** (router command/NL, kartu rekomendasi `picksUI`, Watchlist helper `bowWatchAdd`/`simpleWatchAdd`, riwayat chat `ewoks_chat_log`).
 - `assets/js/chat-cmds.js` (lazy): `/rd /istilah /topreturn /lk /akum /fibo /analisa`. `assets/js/mascot.js` (lazy): SVG Tido. `assets/js/picks-engine.js` (lazy): level BoW dari candle (swing support/resist + ATR) untuk IHSG/Global/Kripto/Forex.
