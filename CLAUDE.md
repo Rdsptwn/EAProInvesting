@@ -25,6 +25,7 @@ Dipakai otomatis saat bekerja di repo ini:
 ## Jadwal data (WIB)
 - `sync-24jam`: kripto, forex, berita RSS, tiap 30 menit, 24 jam, tiap hari.
 - IHSG (`daily-market-sync`): tiap jam Senin 03:00 s/d Jumat 17:00; Sabtu-Minggu libur. `market-activity-intraday`: jam bursa. `sync-global`: Senin-Jumat.
+- `sync-live` (harga near-live tanpa Worker): dipicu `workflow_run` dari `sync-24jam` (cron GitHub-nya tidak pernah jalan). Di jam bursa IHSG (02-09 UTC) / AS (14-20 UTC) `tools/live-loop.sh` memperbarui tiap ±5 menit selama ±55 menit lalu memicu `pages-deploy`. `sync-candles` ikut `sync-24jam` (kripto/forex/AS tiap 2 jam, IHSG semua saham harian 10 UTC).
 - Cron GitHub sering telat; pemicu tepat waktu lewat Worker Cron Trigger (`0 * * * *`, UTC, filter hari/jam ada di `pickWorkflows`).
 
 ## Aturan teknis
