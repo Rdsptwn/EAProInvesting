@@ -236,3 +236,11 @@ function updateSimAnalysisText(tickerA, dataA, tickerB, dataB) {
 
 // Tautan langsung ke tab, mis. edukasi.html#edu-aturan
 (function () { var h = (location.hash || '').slice(1); if (/^edu-[a-z]+$/.test(h) && document.getElementById(h) && document.getElementById('btn-' + h)) switchEduTab(h); })();
+
+// Tombol geser tab (kiri/kanan)
+(function () {
+    var t = document.getElementById('edu-tabs'), p = document.getElementById('edu-tab-prev'), n = document.getElementById('edu-tab-next');
+    if (!t || !p || !n) return;
+    p.onclick = function () { t.scrollBy({ left: -240 }); };
+    n.onclick = function () { t.scrollBy({ left: 240 }); };
+})();

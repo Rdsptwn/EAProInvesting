@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <link rel="stylesheet" href="assets/css/app.css?v=20261125t2103">
-    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t2103">
+    <link rel="stylesheet" href="assets/css/app.css?v=20261125t2149">
+    <link rel="stylesheet" href="assets/css/theme.css?v=20261125t2149">
 </head>
 <body class="min-h-screen relative flex flex-col" data-page="edukasi">
 
@@ -203,7 +203,7 @@
                     </div>
                 </div>
 
-                <div class="flex overflow-x-auto gap-2 mb-6 no-scrollbar pb-2 border-b border-slate-200">
+                <div class="flex items-center gap-1 mb-6 border-b border-slate-200"><button type="button" id="edu-tab-prev" aria-label="Geser tab ke kiri" class="shrink-0 w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 font-black">&lsaquo;</button><div id="edu-tabs" class="edu-tabs flex overflow-x-auto gap-2 pb-2 flex-1">
                     <button id="btn-edu-dasar" onclick="switchEduTab('edu-dasar')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-blue-600 text-white font-bold text-xs transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-chart-pie mr-2"></i>Dasar & Makro</button>
                     <button id="btn-edu-aturan" onclick="switchEduTab('edu-aturan')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-gavel mr-2"></i>Aturan Bursa</button>
                     <button id="btn-edu-fundamental" onclick="switchEduTab('edu-fundamental')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-chart-bar mr-2"></i>Analisis Fundamental</button>
@@ -211,7 +211,7 @@
                     <button id="btn-edu-kamus" onclick="switchEduTab('edu-kamus')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent"><i class="fas fa-book mr-2"></i>Kamus & Regulasi</button>
                     <button id="btn-edu-teknikal" onclick="switchEduTab('edu-teknikal')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent"><i class="fas fa-chart-line mr-2"></i>Analisis Teknikal</button>
                     <button id="btn-edu-indikator" onclick="switchEduTab('edu-indikator')" class="edu-tab-btn whitespace-nowrap px-5 py-3 rounded-t-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition-colors border-b-2 border-transparent shadow-sm"><i class="fas fa-layer-group mr-2"></i>Fungsi Indikator</button>
-                </div>
+                </div><button type="button" id="edu-tab-next" aria-label="Geser tab ke kanan" class="shrink-0 w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 font-black">&rsaquo;</button></div>
 
                 <div id="edu-dasar" class="edu-tab-content block space-y-8">
                     <div class="premium-card p-6 md:p-10">
@@ -394,6 +394,31 @@
                             </div>
                         </div>
                         <p class="text-xs text-slate-500 mt-3">Sumber: <a class="underline" href="https://www.bareksa.com/berita/saham/2026-11-11/saham-hsc-jadi-383-emiten-keluar-dari-ihsg-mulai-13-november/amp" target="_blank" rel="noopener">Bareksa</a>, <a class="underline" href="https://kumparan.com/kumparanbisnis/bei-keluarkan-semua-saham-hsc-dari-12-indeks-mulai-30-november-2026-28dOcsdZjMh" target="_blank" rel="noopener">Kumparan</a>, <a class="underline" href="https://market.bisnis.com/read/20261016/7/2013113/bei-terapkan-trading-halt-30-menit-usai-ihsg-dibuka-turun-8" target="_blank" rel="noopener">Bisnis.com</a>. Status suspensi dan pemantauan khusus per emiten ada di Watchlist (kolom status).</p>
+                    </div>
+
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-900 mb-1"><i class="fas fa-clock text-blue-500 mr-2"></i>Order dikunci dan fraksi harga</h2>
+                        <p class="text-sm text-slate-600 mb-4">Dua aturan teknis yang sering bikin order salah atau tidak jalan.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+                            <div class="rounded-2xl border border-slate-200 p-4"><b>Periode non-cancellation</b><p class="mt-1">Di pra-pembukaan dan pra-penutupan, order yang sudah masuk dikunci:</p>
+                                <ul class="list-disc pl-5 mt-1 space-y-1"><li>Pra-pembukaan: 08.56.00-08.57.59 tidak bisa diubah maupun dibatalkan; 08.56.00-08.59.59 tidak bisa diubah.</li><li>Pra-penutupan: 15.56.00-15.59.59 tidak bisa diubah maupun dibatalkan; 15.56.00-16.01.59 tidak bisa diubah.</li><li>Order baru tetap bisa masuk. Order yang tidak ketemu pasangan saat pencocokan masih bisa dibatalkan.</li></ul>
+                                <p class="mt-2 text-xs text-slate-500">Implementasi 15 Des 2025 (Kep-00003/BEI/04-2025). Jadi cek harga dan lot dua kali sebelum menekan kirim di jam-jam itu.</p></div>
+                            <div class="rounded-2xl border border-slate-200 p-4"><b>Fraksi harga (kelipatan harga)</b><p class="mt-1">Harga order harus mengikuti kelipatan yang ditetapkan BEI menurut rentang harga. Ketentuan lama: Rp1 (di bawah Rp200), Rp2 (Rp200-500), Rp5 (Rp500-2.000), Rp10 (Rp2.000-5.000), Rp25 (di atas Rp5.000).</p>
+                                <p class="mt-2 text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2">Belum terverifikasi: saya belum menemukan pengumuman bahwa fraksi ikut berubah setelah harga minimum jadi Rp1 (28 Sep 2026). Cek tabel fraksi terbaru di situs BEI atau aplikasi sekuritasmu.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="premium-card p-6 md:p-10">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-900 mb-1"><i class="fas fa-coins text-amber-500 mr-2"></i>Dividen dan aksi korporasi</h2>
+                        <p class="text-sm text-slate-600 mb-4">Aksi korporasi mengubah harga dan jumlah sahammu tanpa kamu mengetik apa pun.</p>
+                        <ul class="text-sm text-slate-700 space-y-2 list-disc pl-5">
+                            <li><b>Cum date dan ex date dividen:</b> kamu berhak dividen kalau sudah memegang saham sampai akhir hari cum date. Mulai ex date, saham diperdagangkan tanpa hak dividen, jadi harga biasanya turun kira-kira sebesar dividen. Beli saat ex date tidak dapat dividen.</li>
+                            <li><b>Stock split:</b> jumlah lembar naik, harga per lembar turun, nilai investasimu tetap. Reverse split kebalikannya.</li>
+                            <li><b>Right issue:</b> pemegang saham ditawari membeli saham baru. Kalau tidak ikut, persentase kepemilikanmu mengecil (terdilusi).</li>
+                            <li><b>Buyback:</b> perusahaan membeli kembali sahamnya sendiri. Bisa menopang harga, tapi bukan jaminan naik.</li>
+                            <li><b>Tanggal-tanggalnya</b> ada di pengumuman emiten di situs IDX. Cek sebelum membeli saham demi dividen.</li>
+                        </ul>
+                        <p class="text-[11px] text-slate-400 italic mt-4">Materi ini untuk edukasi, bukan saran investasi. Aturan siklus penyelesaian transaksi (T+2) dan biaya broker beda-beda per sekuritas; saya belum mengecek perubahan terbaru 2026, jadi lihat ketentuan sekuritasmu.</p>
                     </div>
 
                     <div class="premium-card p-6 md:p-10">
@@ -3867,8 +3892,8 @@
     </div>
 
 
-    <script src="assets/js/ewoks-core.js?v=20261125t2103"></script>
-    <script src="assets/js/pages/page-edu-quiz.js?v=20261125t2103"></script>
-    <script src="assets/js/pages/page-edukasi.js?v=20261125t2103"></script>
+    <script src="assets/js/ewoks-core.js?v=20261125t2149"></script>
+    <script src="assets/js/pages/page-edu-quiz.js?v=20261125t2149"></script>
+    <script src="assets/js/pages/page-edukasi.js?v=20261125t2149"></script>
 </body>
 </html>

@@ -22,35 +22,37 @@ function renderYieldChart() {
     const canvas = document.getElementById('yieldChart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    const pts = [
+        {x: 0.5, y: 6.5, r: 9, label: 'Deposito', c: '#94a3b8'},
+        {x: 1.0, y: 7.0, r: 11, label: 'SBN Ritel', c: '#34d399'},
+        {x: 5.0, y: 8.5, r: 11, label: 'RD Campuran', c: '#fbbf24'},
+        {x: 12.0, y: 12.0, r: 15, label: 'IHSG/ETF', c: '#60a5fa'},
+        {x: 20.0, y: 25.0, r: 12, label: 'Trading aktif', c: '#f87171'}
+    ];
+    // label langsung di samping gelembung (tanpa legenda)
+    const labelPlugin = { id: 'yLabels', afterDatasetsDraw(ch) {
+        const c = ch.ctx, m = ch.getDatasetMeta(1); c.save(); c.font = '600 11px sans-serif'; c.fillStyle = '#e2e8f0';
+        m.data.forEach((el, i) => { const l = pts[i].label, w = c.measureText(l).width, left = el.x + el.options.radius + 6 + w > ch.chartArea.right; c.textAlign = left ? 'right' : 'left'; c.fillText(l, el.x + (left ? -1 : 1) * (el.options.radius + 6), el.y + 4); });
+        c.restore(); } };
     new Chart(ctx, {
-        type: 'scatter',
         data: {
-            datasets: [{
-                label: 'Profil Instrumen',
-                data: [
-                    {x: 0.5, y: 6.5, r: 12, label: 'Deposito'},
-                    {x: 1.0, y: 7.0, r: 15, label: 'SBN Ritel'},
-                    {x: 5.0, y: 8.5, r: 12, label: 'RD Campuran'},
-                    {x: 12.0, y: 12.0, r: 20, label: 'IHSG/ETF (Pasar Saham)'},
-                    {x: 20.0, y: 25.0, r: 15, label: 'Saham (Trading Aktif)'}
-                ],
-                backgroundColor: ['#64748b', '#10b981', '#f59e0b', '#3b82f6', '#ef4444']
-            }]
+            datasets: [
+                { type: 'line', data: pts.map(p => ({x: p.x, y: p.y})), borderColor: 'rgba(148,163,184,.55)', borderDash: [5, 5], borderWidth: 2, tension: 0.45, pointRadius: 0, fill: false, order: 2 },
+                { type: 'bubble', data: pts.map(p => ({x: p.x, y: p.y, r: p.r, label: p.label})), backgroundColor: pts.map(p => p.c + 'cc'), borderColor: pts.map(p => p.c), borderWidth: 2, order: 1 }
+            ]
         },
+        plugins: [labelPlugin],
         options: {
             responsive: true, maintainAspectRatio: false,
             color: '#cbd5e1',
+            layout: { padding: { right: 8, top: 8 } },
             plugins: {
                 legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function(ctx) { return ctx.raw.label + ': Yield ~' + ctx.raw.y + '%, Risiko ' + ctx.raw.x + '%'; }
-                    }
-                }
+                tooltip: { filter: (i) => i.datasetIndex === 1, callbacks: { label: (c) => c.raw.label + ': return ~' + c.raw.y + '%, risiko ' + c.raw.x + '%' } }
             },
             scales: {
-                x: { title: { display: true, text: 'Risiko / Drawdown Maksimal (%)', color: '#94a3b8'}, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.5)' } },
-                y: { title: { display: true, text: 'Est. Return Tahunan (%)', color: '#94a3b8'}, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.5)' } }
+                x: { min: 0, max: 24, title: { display: true, text: 'Risiko / Drawdown Maksimal (%)', color: '#94a3b8'}, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+                y: { min: 4, max: 28, title: { display: true, text: 'Est. Return Tahunan (%)', color: '#94a3b8'}, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } }
             }
         }
     });

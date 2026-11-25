@@ -245,7 +245,7 @@
                 }).join('') + '<p class="text-[10px] text-slate-400 mt-2">Rata-rata perubahan harga, dibobot nilai transaksi. Klik sektor untuk melihat sahamnya.</p>';
             }).catch(function () { el.innerHTML = '<p class="text-sm text-slate-500 p-3">Data sektor belum tersedia.</p>'; });
         }
-        if (IS_IDX) get('syariah.json').then(function (d) { if (!d || !d.lists) return; var order = ['LQ45', 'IDX80', 'ISSI', 'JII', 'JII70', 'SHAGROW', 'MESBUMN17', 'VESTA28', 'ECONOMIC30', 'SRIKEHATI', 'ESGQ', 'ESGS', 'INVESTOR33']; el.insertAdjacentHTML('beforebegin', '<div class="flex flex-wrap gap-2 mb-3">' + order.filter(function (k) { return d.lists[k]; }).map(function (k) { return '<button type="button" data-grp="ix:' + k + '" class="hm-chip">' + esc(IX_NAME[k][0].replace(/ \(.*\)/, '')) + ' · ' + d.lists[k].length + '</button>'; }).join('') + '</div>' + (d.notice && d.notice.text ? '<p class="mb-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">' + esc(d.notice.text) + '</p>' : '')); }).catch(function () {});
+        if (IS_IDX) get('syariah.json').then(function (d) { if (!d || !d.lists) return; var order = ['LQ45', 'IDX80', 'ISSI', 'JII', 'JII70', 'SHAGROW', 'MESBUMN17', 'VESTA28', 'ECONOMIC30', 'SRIKEHATI', 'ESGQ', 'ESGS', 'INVESTOR33']; el.insertAdjacentHTML('beforebegin', '<div class="flex flex-wrap gap-2 mb-3">' + order.filter(function (k) { return d.lists[k]; }).map(function (k) { return '<button type="button" data-grp="ix:' + k + '" class="hm-chip">' + esc(IX_NAME[k][0].replace(/ \(.*\)/, '')) + ' · ' + d.lists[k].length + '</button>'; }).join('') + '</div>'); }).catch(function () {});
         paint(); startLive(); onLive.push(paint);
     }
     window.EwoksGlobal.renderSectors = renderSectors;
@@ -514,7 +514,14 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
         }).catch(function (e) {
             if (sym !== pcSym) return;
             if (!retried) { retried = true; msg.textContent = 'Memuat ulang grafik…'; setTimeout(function () { if (sym === pcSym) loadChart(true); }, 3000); return; }
-            msg.textContent = 'Grafik belum tersedia. Detail: ' + String((e && e.message) || e).slice(0, 80) + '. Pakai tombol TradingView di bawah.';
+            var rw = symInfo(sym), lv2 = live[sym], pr = lv2 && Number.isFinite(lv2[0]) ? lv2[0] : (rw && rw[1]);
+            if (rw && rw[5] && rw[6] && pr) {
+                var pos = Math.max(0, Math.min(100, (pr - rw[5]) / (rw[6] - rw[5]) * 100));
+                if (pcChart) { pcChart.destroy(); pcChart = null; }
+                msg.innerHTML = '<div class="w-full max-w-md"><div class="text-xs font-bold text-slate-600 mb-3">Grafik intraday belum bisa dimuat dari jaringanmu. Ini posisi harga di rentang 52 minggu:</div>' +
+                    '<div class="relative h-2 rounded-full" style="background:linear-gradient(90deg,#f43f5e,#fbbf24,#10b981)"><span class="absolute -top-1.5 w-4 h-4 rounded-full bg-white border-2 border-slate-800" style="left:calc(' + pos.toFixed(1) + '% - 8px)"></span></div>' +
+                    '<div class="flex justify-between text-[11px] text-slate-500 mt-2"><span>Terendah $' + fmt(rw[5]) + '</span><span class="font-black text-slate-800">$' + fmt(pr) + ' (' + pos.toFixed(0) + '%)</span><span>Tertinggi $' + fmt(rw[6]) + '</span></div></div>';
+            } else msg.textContent = 'Grafik belum tersedia. Detail: ' + String((e && e.message) || e).slice(0, 80) + '. Pakai tombol TradingView di bawah.';
         });
     }
     var gfChart = null;
