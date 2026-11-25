@@ -1,0 +1,35 @@
+# Candle statis (kripto, forex, saham AS, IHSG) untuk Tido/BoW: dilayani GitHub Pages, tidak lewat Worker/OKX yang bisa diblokir.
+# Tiap jam; manual: Actions -> Sync candles -> Run workflow.
+name: Sync candles
+
+on:
+  schedule:
+    - cron: '20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-candles
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bangun candle
+        run: node tools/build-candles.mjs
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/data/candles
+          if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
+          git commit -m "chore(data): candles"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break || sleep 5; done
