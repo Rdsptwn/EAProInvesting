@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Yahoo Finance",
-    "built": "2026-11-26T14:01:25.633Z",
+    "built": "2026-11-26T15:01:20.146Z",
     "tz": "WIB",
     "tickerCount": 283
   },
@@ -18,13 +18,13 @@
     "name": "IDX COMPOSITE"
   },
   "usdIdr": {
-    "price": 18345,
+    "price": 18303,
     "prevClose": 18214,
-    "changePct": 0.72,
+    "changePct": 0.49,
     "high52": 18391,
     "low52": 15636.2,
     "support": 18175,
-    "resistance": 18350,
+    "resistance": 18300,
     "avg": 18250,
     "currency": "IDR",
     "name": "USD/IDR"
