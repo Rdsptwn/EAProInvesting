@@ -97,6 +97,49 @@
         var chg = (price / c[Math.max(0, n - 25)] - 1) * 100;
         return { t: it.k, n: it.n || '', price: price, lo: lo, hi: hi, tp: tp, tp1: mid + (tp - mid) * 0.5, cl: cl, rr: rr, chg: chg, atr: atr, touches: lv.touches, smart: true, score: rr * 10 + Math.max(0, 4 - dist / atr) * 3 + Math.min(lv.touches, 4) };
     }
+    /* Breakout Resist: harga di dekat/di atas high 40 candle terakhir (di luar 2 candle terakhir), belum terlalu jauh (kelipatan ATR), tren naik, candle terakhir tidak turun tajam. */
+    function brkCat(o, b, mode) {
+        var h = o.h, l = o.l, c = o.c, n = c.length, loose = mode === 'longgar', i, R = -Infinity, lo40 = Infinity, atr = b.atr, price = b.price;
+        for (i = Math.max(0, n - 42); i < n - 2; i++) { R = Math.max(R, h[i]); lo40 = Math.min(lo40, l[i]); }
+        if (!isFinite(R) || price < b.ma || price < R - 0.3 * atr || price > R + (loose ? 3.5 : 2.2) * atr) return null;
+        if (c[n - 1] < c[n - 2] - (loose ? 0.8 : 0.4) * atr) return null;
+        var H = R - lo40, tp = R + Math.min(Math.max(0.8 * H, 2 * atr), 5 * atr), lo = R, hi = R + 0.6 * atr, cl = R - 1.0 * atr;
+        var mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl);
+        if (!(rr >= (loose ? 1.0 : 1.3))) return null;
+        return { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, res: R, score: rr * 8 + Math.max(0, 2.5 - (price - R) / atr) * 2 };
+    }
+    /* Trendline: garis dari dua swing low terakhir yang makin tinggi (minimal 5 candle terpisah), garis belum jebol, harga dekat garis. */
+    function tlCat(o, b, mode) {
+        var h = o.h, l = o.l, c = o.c, n = c.length, loose = mode === 'longgar', i, p = [], atr = b.atr, price = b.price;
+        for (i = Math.max(2, n - 62); i < n - 2; i++) if (l[i] <= l[i - 1] && l[i] <= l[i - 2] && l[i] <= l[i + 1] && l[i] <= l[i + 2]) p.push(i);
+        if (p.length < 2) return null;
+        var i2 = p[p.length - 1], i1 = p[p.length - 2];
+        if (i2 - i1 < 5 || l[i2] - l[i1] < 0.6 * atr) return null;
+        var sl = (l[i2] - l[i1]) / (i2 - i1), line = l[i2] + sl * (n - 1 - i2);
+        for (i = i2 + 1; i < n; i++) if (c[i] < l[i2] + sl * (i - i2) - 0.5 * atr) return null;
+        var d = (price - line) / atr;
+        if (d < (loose ? -0.3 : -0.1) || d > (loose ? 3.5 : 2.5) || price < b.ma * (loose ? 0.985 : 0.995)) return null;
+        var lv = levels(h, l, c, atr), tp = lv.res - price >= 1.5 * atr ? lv.res : price + 3 * atr;
+        var lo = line, hi = line + 0.7 * atr, cl = Math.min(line - 0.8 * atr, l[i2] - 0.3 * atr), mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl);
+        if (!(rr >= (loose ? 1.0 : 1.2)) || !(cl < lo)) return null;
+        return { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, line: line, score: rr * 8 + Math.max(0, 2.5 - Math.abs(d)) * 2 };
+    }
+    /* Semua kategori untuk satu aset dari candle: {t, n, price, chg, cats:{bow,brk,tl}} (cats kosong kalau tidak ada yang lolos). */
+    function analyzeAll(it, o, mode) {
+        var c = o.c, h = o.h, l = o.l, n = c.length;
+        var out = { t: it.k, n: it.n || '', price: it.price, chg: it.chg, cats: {} };
+        if (n < 55) return out;
+        var price = c[n - 1], i, sum = 0, tr = 0;
+        for (i = n - 50; i < n; i++) sum += c[i];
+        for (i = n - 14; i < n; i++) tr += Math.max(h[i] - l[i], Math.abs(h[i] - c[i - 1]), Math.abs(l[i] - c[i - 1]));
+        var b = { price: price, ma: sum / 50, atr: tr / 14 };
+        out.price = price; out.chg = (price / c[Math.max(0, n - 25)] - 1) * 100;
+        if (!(b.atr > 0)) return out;
+        var a = analyze(it, o, mode); if (a) out.cats.bow = a;
+        var k = brkCat(o, b, mode); if (k) out.cats.brk = k;
+        var t = tlCat(o, b, mode); if (t) out.cats.tl = t;
+        return out;
+    }
     /* IHSG: candle harian dari Worker (Yahoo .JK), pembulatan fraksi harga BEI. */
     function tkI(v) { return v < 200 ? 1 : v < 500 ? 2 : v < 2000 ? 5 : v < 5000 ? 10 : 25; }
     var RD_IDX = { up: function (v) { var t = tkI(v); return Math.ceil(v / t - 1e-9) * t; }, dn: function (v) { var t = tkI(v); return Math.floor(v / t + 1e-9) * t; }, step: tkI };
@@ -122,7 +165,7 @@
             if (market === 'forex') return get('forex.json').then(function (d) { cand = d.items.filter(function (x) { return x.k !== 'DXY' && x.s; }); return cand; });
             return get('global-screener.json').then(function (d) {
                 cand = d.rows.filter(function (r) { return r[1] >= 5 && /^[A-Z]{1,5}$/.test(r[0]); })
-                    .sort(function (a, b) { return b[1] * (b[8] || 0) - a[1] * (a[8] || 0); }).slice(0, 40).map(function (r) { return { k: r[0], n: r[10], s: r[0] }; });
+                    .sort(function (a, b) { return b[1] * (b[8] || 0) - a[1] * (a[8] || 0); }).slice(0, 40).map(function (r) { return { k: r[0], n: r[10], s: r[0], price: r[1], chg: r[3] }; });
                 return cand;
             });
         }
@@ -141,7 +184,22 @@
                 });
             });
         }
-        return { run: run };
+        /* runAll(tf, mode, force) -> Promise<{assets, fail, total}>; candle mentah disimpan 60 dtk supaya ganti mode tidak mengambil ulang. */
+        var raw = {};
+        function loadRaw(tf, force) {
+            var c = raw[tf]; if (c && !force && Date.now() - c.at < 60000) return Promise.resolve(c);
+            return candidates().then(function (cs) { return pool(cs, function (it) { return candles(it, tf).then(function (o) { return { it: it, o: o }; }); }, 4); }).then(function (d) { return (raw[tf] = { at: Date.now(), data: d }); });
+        }
+        function runAll(tf, mode, force) {
+            return loadRaw(tf, force).then(function (c) {
+                var fail = 0, assets = c.data.map(function (r) {
+                    if (!r.o) { fail++; return { t: r.it.k, n: r.it.n || '', price: r.it.price, chg: r.it.chg, cats: {}, nodata: true }; }
+                    return analyzeAll(r.it, r.o, mode);
+                });
+                return { assets: assets, fail: fail, total: c.data.length };
+            });
+        }
+        return { run: run, runAll: runAll };
     }
     var cache = {};
     window.EwoksPicksEngine = { forMarket: function (m) { return cache[m] || (cache[m] = make(m)); }, fmt: fmt, idxSmart: idxSmart, levels: levels, lastErr: function () { return lastErr; } };
