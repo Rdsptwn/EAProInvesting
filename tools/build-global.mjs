@@ -2,7 +2,7 @@
  * Data mode Global -> assets/data/global-*.json (tanpa API key).
  *   global-screener.json    harga saham & ETF AS (Yahoo chart), dari global-universe.json
  *   global-commodities.json minyak, emas, perak, tembaga, gas, batu bara, USD/IDR, indeks dunia, kripto
- *   global-news.json        judul berita dari RSS (Al Jazeera, BBC, CNBC, MarketWatch, Yahoo Finance, CNBC Indonesia)
+ *   global-news.json        judul berita dari RSS (Al Jazeera, BBC, CNBC, MarketWatch, Yahoo Finance, CNBC Indonesia, IDX Channel, Bloomberg Technoz, Antara, Liputan6, Okezone, Detik Finance)
  *   global-ipo.json         kalender IPO AS (Nasdaq)
  * Tiap bagian gagal-aman: kalau sumber tidak bisa diambil, file lama TIDAK ditimpa.
  * Jalankan: node tools/build-global.mjs [screener|commodities|news|ipo ...]
@@ -348,9 +348,16 @@ export const FEEDS = [
     { id: 'mw', n: 'MarketWatch', url: 'https://feeds.content.dowjones.io/public/rss/mw_topstories', lang: 'en', topic: 'pasar' },
     { id: 'guardian', n: 'The Guardian Business', url: 'https://www.theguardian.com/business/rss', lang: 'en', topic: 'bisnis' },
     { id: 'cnbcid', n: 'CNBC Indonesia', url: 'https://www.cnbcindonesia.com/market/rss', lang: 'id', topic: 'pasar' },
+    // Berita Indonesia tambahan (RSS publik, sudah dites bisa dibaca 27 Nov 2026). Kompas, Tempo, Kontan, Bisnis, Suara, iNews tidak bisa dites dari sini, jadi belum dipakai.
+    { id: 'idxch', n: 'IDX Channel', url: 'https://www.idxchannel.com/rss', lang: 'id', topic: 'pasar', max: 20 },
+    { id: 'btz', n: 'Bloomberg Technoz', url: 'https://www.bloombergtechnoz.com/rss', lang: 'id', topic: 'pasar', max: 20 },
+    { id: 'antara', n: 'Antara Ekonomi', url: 'https://www.antaranews.com/rss/ekonomi-bisnis.xml', lang: 'id', topic: 'bisnis', max: 20 },
+    { id: 'lip6', n: 'Liputan6 Bisnis', url: 'https://feed.liputan6.com/rss/bisnis', lang: 'id', topic: 'bisnis', max: 20 },
+    { id: 'okz', n: 'Okezone Ekonomi', url: 'https://sindikasi.okezone.com/index.php/rss/11/RSS2.0', lang: 'id', topic: 'bisnis', max: 20 },
+    { id: 'detikfin', n: 'Detik Finance', url: 'https://finance.detik.com/rss', lang: 'id', topic: 'bisnis', max: 20 },
 ];
 const ent = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (_, c) => String.fromCharCode(+c));
-const strip = (s) => ent(s).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const strip = (s) => ent(s).replace(/(?:&)?amp;nbsp;/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 export function parseRss(xml, max = 12) {
     const out = [];
     const blocks = String(xml || '').match(/<item[\s>][\s\S]*?<\/item>|<entry[\s>][\s\S]*?<\/entry>/g) || [];
@@ -376,7 +383,7 @@ async function buildNews() {
         try {
             const res = await fetch(f.url, { headers: { ...UA, Accept: 'application/rss+xml, application/xml, text/xml, */*' }, signal: AbortSignal.timeout(15000) });
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            const items = parseRss(await res.text(), 12);
+            const items = parseRss(await res.text(), f.max || 12);
             status[f.id] = items.length;
             for (const it of items) all.push({ ...it, src: f.n, sid: f.id, lang: f.lang, topic: f.topic });
         } catch (e) { status[f.id] = 'gagal: ' + e.message; }

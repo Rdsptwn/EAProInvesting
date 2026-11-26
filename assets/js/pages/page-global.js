@@ -387,7 +387,7 @@ var FLAG = { spx: '🇺🇸', ndx: '🇺🇸', dji: '🇺🇸', rut: '🇺🇸',
             paintMovers(); onLive.push(paintMovers);
         }).catch(function () { document.getElementById('gm-gain').innerHTML = '<p class="text-sm text-slate-500 p-3">Data saham AS belum tersedia.</p>'; });
         get('global-news.json').then(function (d) {
-            document.getElementById('g-news-mini').innerHTML = d.items.slice(0, 6).map(newsRow).join('');
+            document.getElementById('g-news-mini').innerHTML = d.items.filter(function (n) { return n.lang !== 'id'; }).slice(0, 6).map(newsRow).join('');
         }).catch(function () { document.getElementById('g-news-mini').innerHTML = '<div class="text-slate-500">Berita belum tersedia.</div>'; });
     }
     function yh(t) { return 'https://finance.yahoo.com/quote/' + encodeURIComponent(t); }
