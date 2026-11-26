@@ -278,6 +278,21 @@
         document.querySelectorAll('#tp-presets .tp-chip').forEach((b, j) => b.classList.toggle('on', activePresets.includes(j)));
         tpRunScreener();
     };
+    /* Kombinasi siap pakai: mengisi beberapa filter sekaligus (sejalan dengan kategori Rekomendasi Bot). */
+    const COMBOS = [
+        ['Breakout dengan volume ramai', { sr: 'brk', cmin: 1, vmin: 10000, sort: 'val-desc' }, 'Harga ≥ 98% resist, naik ≥ 1%, volume ≥ 10.000 lot. Sejalan dengan kategori Breakout Resist.'],
+        ['Breakout di dekat high 52 minggu', { sr: 'brk', pos: 'high', cmin: 0.5, sort: 'chg-desc' }, 'Tembus resist saat sudah di zona tertinggi setahun: tren kuat, minim resist di atasnya.'],
+        ['Murah yang mulai breakout', { pmax: 500, sr: 'brk', cmin: 1, vmin: 20000, sort: 'chg-desc' }, 'Harga ≤ 500, tembus resist, volume ≥ 20.000 lot. Saham murah lebih liar, pakai CL ketat.'],
+        ['Koreksi tipis dekat support', { sr: 'sup', pos: 'mid', cmax: 1, sort: 'sup-asc' }, 'Dekat support (≤ 3%), belum di dasar 52 minggu, tidak sedang melonjak. Sejalan dengan Buy on Weakness.'],
+        ['Rebound dari dasar 52 minggu', { pos: 'low', cmin: 2, vmin: 5000, sort: 'chg-desc' }, 'Dekat low 52 minggu tapi mulai naik ≥ 2% dengan volume cukup. Risiko lebih tinggi, tunggu konfirmasi.']
+    ];
+    window.tpApplyCombo = function (i) {
+        activePresets = [];
+        tpResetScreener(true);
+        Object.entries(COMBOS[i][1]).forEach(([k, v]) => { const e = $(FIELD[k]); if (e) e.value = v; });
+        tpRunScreener();
+        const sc = $('tp-screener'); if (sc && sc.scrollIntoView) sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
     window.tpResetScreener = function (silent) {
         if (!silent) activePresets = [];
         Object.values(FIELD).forEach((id) => { const e = $(id); if (e) e.value = e.tagName === 'SELECT' ? e.options[0].value : ''; });
@@ -371,6 +386,8 @@
         paintControls(); applyHeight();
         const pr = $('tp-presets');
         if (pr) pr.innerHTML = PRESETS.map(([l], i) => `<button type="button" class="tp-chip" onclick="tpApplyPreset(${i})">${l}</button>`).join('');
+        const cb = $('tp-combos');
+        if (cb) cb.innerHTML = COMBOS.map(([l, , d], i) => `<button type="button" class="cb-item" onclick="tpApplyCombo(${i})"><b>${l}</b><span>${d}</span></button>`).join('');
         let snap = null;
         try { snap = await loadEwoksMarketSnapshot(); } catch (_) {}
         // 1) data lengkap semua emiten BEI
