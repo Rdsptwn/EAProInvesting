@@ -73,14 +73,27 @@
         $('c-dom').textContent = btc && c.k !== 'BTC' && btc.price ? (c.price / btc.price).toFixed(c.price / btc.price < 0.001 ? 8 : 5) + ' BTC' : '—';
         if (chartFor !== sel) { chartFor = sel; if (NOCHART[sel]) $('c-chart').innerHTML = '<p class="p-6 text-sm text-slate-400">Stablecoin harganya ±$1, tidak ada grafik.</p>'; else tv($('c-chart'), tvSymbol(sel), 'dark'); }
     }
+    /* Bintang Pantau: simpan ke Watchlist situs (ewoks_watchlist, mk kripto/forex), tampil di Zona Pantauan. */
+    var starOnly = false;
+    function wlMk() { return PAGE === 'forex' ? 'forex' : 'kripto'; }
+    function isWatched(k) { return typeof watchlist !== 'undefined' && watchlist.some(function (w) { return w.ticker === k && w.mk === wlMk(); }); }
+    function starBtn(k, dark) { var on = isWatched(k); return '<button type="button" data-star="' + esc(k) + '" aria-pressed="' + on + '" aria-label="' + (on ? 'Hapus ' : 'Pantau ') + esc(k) + '" title="' + (on ? 'Hapus dari Zona Pantauan' : 'Pantau di Zona Pantauan') + '" class="mr-1.5 text-base leading-none align-middle ' + (on ? 'text-amber-400' : (dark ? 'text-slate-600' : 'text-slate-300')) + ' hover:text-amber-400">' + (on ? '★' : '☆') + '</button>'; }
+    function toggleStar(k, name) {
+        if (typeof watchlist === 'undefined') return;
+        var i = -1; watchlist.forEach(function (w, n) { if (w.ticker === k && w.mk === wlMk()) i = n; });
+        if (i >= 0) watchlist.splice(i, 1);
+        else watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: k, mk: wlMk(), name: '', price: '', note: 'Dari daftar ' + (PAGE === 'forex' ? 'pasangan' : 'koin') + ' (' + name + ')', foreign: '' });
+        try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
+        if (typeof renderWatchlist === 'function') try { renderWatchlist(true); } catch (_) {}
+    }
     function drawCoins() {
-        var rows = coins.filter(function (c) { return !q || (c.k + ' ' + c.n).toLowerCase().indexOf(q) >= 0; });
+        var rows = coins.filter(function (c) { return (!q || (c.k + ' ' + c.n).toLowerCase().indexOf(q) >= 0) && (!starOnly || isWatched(c.k)); });
         var key = { chg: 'chg', m1: 'chg1m', price: 'price' }[sortK];
         if (key) rows = rows.slice().sort(function (a, b) { return (b[key] == null ? -1e9 : b[key]) - (a[key] == null ? -1e9 : a[key]); });
         $('c-body').innerHTML = rows.map(function (c, i) {
             var up = (c.chg || 0) >= 0;
-            return '<tr data-coin="' + esc(c.k) + '" class="cursor-pointer border-t border-slate-800 hover:bg-slate-800/60"><td class="px-3 py-2.5 text-slate-500 text-xs">' + (i + 1) + '</td><td class="px-3 py-2.5"><div class="font-black text-white">' + esc(c.k) + '</div><div class="text-[11px] text-slate-400">' + esc(c.n) + '</div></td><td class="px-3 py-2.5 text-right font-bold text-white">$' + num(c.price, dec(c.price)) + '<div class="text-[11px] font-normal text-slate-400">' + fmtIdr(c.price * usdIdr()) + '</div></td><td class="px-3 py-2.5 text-right">' + pct(c.chg) + '</td><td class="px-3 py-2.5 text-right hidden sm:table-cell">' + pct(c.chg1m) + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell">' + spark(c.spark, (c.chg1m || 0) >= 0) + '</td></tr>';
-        }).join('') || '<tr><td colspan="6" class="p-6 text-center text-slate-400 text-sm">Tidak ada koin yang cocok.</td></tr>';
+            return '<tr data-coin="' + esc(c.k) + '" class="cursor-pointer border-t border-slate-800 hover:bg-slate-800/60"><td class="px-3 py-2.5 text-slate-500 text-xs">' + (i + 1) + '</td><td class="px-3 py-2.5"><div class="font-black text-white">' + starBtn(c.k, true) + esc(c.k) + '</div><div class="text-[11px] text-slate-400">' + esc(c.n) + '</div></td><td class="px-3 py-2.5 text-right font-bold text-white">$' + num(c.price, dec(c.price)) + '<div class="text-[11px] font-normal text-slate-400">' + fmtIdr(c.price * usdIdr()) + '</div></td><td class="px-3 py-2.5 text-right">' + pct(c.chg) + '</td><td class="px-3 py-2.5 text-right hidden sm:table-cell">' + pct(c.chg1m) + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell">' + spark(c.spark, (c.chg1m || 0) >= 0) + '</td></tr>';
+        }).join('') || '<tr><td colspan="6" class="p-6 text-center text-slate-400 text-sm">' + (starOnly ? 'Belum ada koin yang dipantau. Klik ☆ di samping kode koin.' : 'Tidak ada koin yang cocok.') + '</td></tr>';
         ['chg', 'm1', 'price', 'mcap'].forEach(function (k) { var b = $('c-s-' + k); if (b) b.classList.toggle('on', k === sortK); });
     }
     function drawGold() {
@@ -128,9 +141,10 @@
             btcLiveTick(); setInterval(btcLiveTick, 20000);
             gquotes(['IDR=X']).then(function (qq) { if (qq['IDR=X']) { idr = qq['IDR=X'][0]; drawBtcHero(); drawCoins(); } });
         }).catch(function () { $('c-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400 text-sm">Data kripto belum tersedia. Jalankan workflow "Sync global" di GitHub Actions.</td></tr>'; });
+        if ($('c-star')) $('c-star').addEventListener('change', function (e) { starOnly = e.target.checked; drawCoins(); });
         $('c-q').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); drawCoins(); });
         $('c-sorts').addEventListener('click', function (e) { var b = e.target.closest('[data-sort]'); if (!b) return; sortK = b.dataset.sort; drawCoins(); });
-        $('c-body').addEventListener('click', function (e) { var tr = e.target.closest('[data-coin]'); if (!tr) return; sel = tr.dataset.coin; if ((location.hash || '#ringkasan') !== '#ringkasan') location.hash = 'ringkasan'; setTimeout(drawBtcHero, 60); });
+        $('c-body').addEventListener('click', function (e) { var st = e.target.closest('[data-star]'); if (st) { toggleStar(st.dataset.star, st.dataset.star); drawCoins(); return; } var tr = e.target.closest('[data-coin]'); if (!tr) return; sel = tr.dataset.coin; if ((location.hash || '#ringkasan') !== '#ringkasan') location.hash = 'ringkasan'; setTimeout(drawBtcHero, 60); });
         get('global-news.json').then(function (d) {
             var re = /bitcoin|crypto|ethereum|stablecoin|kripto|blockchain|binance|coinbase|digital asset|etf spot/i;
             var items = d.items.filter(function (n) { return re.test(n.title + ' ' + (n.desc || '')); }).slice(0, 12);
@@ -183,12 +197,12 @@
         if (x) { var p = px(x), c = ch(x); $('f-gold').innerHTML = '<div class="text-xs font-bold text-amber-700">XAU/USD · Emas spot</div><div class="text-4xl font-black text-slate-900 mt-1">$' + num(p, 2) + '</div><div class="mt-1">' + pct(c, true) + '</div><a href="#emas" class="inline-block mt-3 text-xs font-bold text-teal-700">Buka grafik & konversi rupiah ›</a>'; }
     }
     function drawPairs() {
-        var rows = fx.filter(function (i) { return (!fxQ && (fxG === i.g || (fxG === 'metal' && i.g === 'index'))) || (fxQ && (i.k + i.n).toLowerCase().indexOf(fxQ) >= 0); });
+        var rows = fx.filter(function (i) { return starOnly ? isWatched(i.k) : (!fxQ && (fxG === i.g || (fxG === 'metal' && i.g === 'index'))) || (fxQ && (i.k + i.n).toLowerCase().indexOf(fxQ) >= 0); });
         $('f-tabs').innerHTML = GROUPS.map(function (g) { return '<button type="button" data-g="' + g[0] + '" class="hm-chip shrink-0 ' + (g[0] === fxG && !fxQ ? 'on' : '') + '">' + g[1] + '</button>'; }).join('');
         $('f-body').innerHTML = rows.map(function (it) {
             var p = px(it), c = ch(it);
-            return '<tr data-pair="' + esc(it.k) + '" class="cursor-pointer border-t border-slate-100 hover:bg-slate-50"><td class="px-3 py-2.5 font-black text-slate-900">' + esc(it.n) + '<div class="text-[10px] font-normal text-slate-400">' + esc(it.k) + '</div></td><td class="px-3 py-2.5 text-right font-bold">' + num(p, dec(p)) + '</td><td class="px-3 py-2.5 text-right">' + pct(c) + '</td><td class="px-3 py-2.5 text-right hidden sm:table-cell">' + pct(it.chg1m) + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell text-xs text-slate-500">' + (it.low52 ? num(it.low52, dec(it.low52)) + ' – ' + num(it.high52, dec(it.high52)) : '—') + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell">' + spark(it.spark, (it.chg1m || 0) >= 0) + '</td></tr>';
-        }).join('') || '<tr><td colspan="6" class="p-6 text-center text-sm text-slate-400">Tidak ada pasangan yang cocok.</td></tr>';
+            return '<tr data-pair="' + esc(it.k) + '" class="cursor-pointer border-t border-slate-100 hover:bg-slate-50"><td class="px-3 py-2.5 font-black text-slate-900">' + starBtn(it.k, false) + esc(it.n) + '<div class="text-[10px] font-normal text-slate-400">' + esc(it.k) + '</div></td><td class="px-3 py-2.5 text-right font-bold">' + num(p, dec(p)) + '</td><td class="px-3 py-2.5 text-right">' + pct(c) + '</td><td class="px-3 py-2.5 text-right hidden sm:table-cell">' + pct(it.chg1m) + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell text-xs text-slate-500">' + (it.low52 ? num(it.low52, dec(it.low52)) + ' – ' + num(it.high52, dec(it.high52)) : '—') + '</td><td class="px-3 py-2.5 text-right hidden md:table-cell">' + spark(it.spark, (it.chg1m || 0) >= 0) + '</td></tr>';
+        }).join('') || '<tr><td colspan="6" class="p-6 text-center text-sm text-slate-400">' + (starOnly ? 'Belum ada pasangan yang dipantau. Klik ☆ di samping nama pasangan.' : 'Tidak ada pasangan yang cocok.') + '</td></tr>';
     }
     function tvPair(k) { var m = { DXY: 'TVC:DXY', XAUUSD: 'OANDA:XAUUSD', XAGUSD: 'OANDA:XAGUSD' }; return m[k] || ('FX:' + k); }
     function drawPairChart() { var it = fx.filter(function (i) { return i.k === fxSel; })[0]; if (!it) return; $('f-ct').textContent = it.n; tv($('f-chart'), tvPair(fxSel), 'light'); }
@@ -239,9 +253,10 @@
             calc(); fxLiveTick(); setInterval(fxLiveTick, 60000); route();
         }).catch(function () { $('f-body').innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400 text-sm">Data forex belum tersedia. Jalankan workflow "Sync global" di GitHub Actions.</td></tr>'; });
         $('f-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-g]'); if (!b) return; fxG = b.dataset.g; fxQ = ''; $('f-q').value = ''; drawPairs(); });
+        if ($('f-star')) $('f-star').addEventListener('change', function (e) { starOnly = e.target.checked; drawPairs(); });
         $('f-q').addEventListener('input', function (e) { fxQ = e.target.value.trim().toLowerCase(); drawPairs(); });
         function pick(e) { var t = e.target.closest('[data-pair]'); if (!t) return; fxSel = t.dataset.pair; if ((location.hash || '#ringkasan') !== '#ringkasan') location.hash = 'ringkasan'; setTimeout(drawPairChart, 60); }
-        $('f-body').addEventListener('click', pick); $('f-tiles').addEventListener('click', pick);
+        $('f-body').addEventListener('click', function (e) { var st = e.target.closest('[data-star]'); if (st) { toggleStar(st.dataset.star, st.dataset.star); drawPairs(); return; } pick(e); }); $('f-tiles').addEventListener('click', pick);
     }
 
     if (PAGE === 'bitcoin') btcInit(); else fxInit();
