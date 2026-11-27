@@ -1,5 +1,5 @@
 {
- "asOf": "2026-11-23",
+ "asOf": "2026-11-27",
  "note": "Dikurasi manual dari pengumuman/berita BEI; bukan daftar resmi lengkap. Cek idx.co.id untuk status terkini.",
  "flags": {
   "BEBS": [
@@ -12,8 +12,8 @@
   "WIKA": [
    {
     "k": "SUSPEN",
-    "note": "Disuspensi BEI (gagal bayar obligasi/sukuk, diperpanjang); belum ada kabar dibuka",
-    "src": "https://www.emitennews.com/news/gagal-bayar-surat-utang-bei-lanjutkan-suspensi-saham-wika"
+    "note": "Disuspensi BEI sejak 18 Feb 2025 (gagal bayar obligasi/sukuk); 3 Agu 2026 menunda lagi bagi hasil sukuk, suspensi lanjut (per 6 Agu 2026)",
+    "src": "https://www.suara.com/bisnis/2026/08/06/105306/suspensi-berlanjut-saham-wika-masih-belum-bisa-dibeli"
    },
    {
     "k": "PPK",
@@ -172,8 +172,8 @@
   "MKNT": [
    {
     "k": "SUSPEN",
-    "note": "Disuspensi BEI sejak 6 Nov 2026 (lonjakan harga, masuk HSC); belum ada kabar dibuka",
-    "src": "https://insight.kontan.co.id/news/mknt-disuspensi-dan-masuk-hsc-efek-perubahan-bisnis-konsekuensi-private-placement"
+    "note": "Disuspensi BEI sejak 11 Jul 2024 (going concern). Private placement Rp1,02 triliun saham tuntas, tapi suspensi masih berlaku (per 4 Okt 2026)",
+    "src": "https://insight.kontan.co.id/news/mknt-tuntaskan-private-placement-102-triliun-saham-suspensi-masih-berlaku"
    }
   ],
   "POLL": [

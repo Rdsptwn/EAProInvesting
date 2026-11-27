@@ -644,3 +644,6 @@ body.dark-mode-override .st-DIV{background:#14532d;color:#bbf7d0}body.dark-mode-
 .edu-tabs { display: flex; gap: .5rem; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #a5b4fc transparent; scroll-behavior: smooth; }
 .edu-tabs::-webkit-scrollbar { height: 6px; }
 .edu-tabs::-webkit-scrollbar-thumb { background: #a5b4fc; border-radius: 999px; }
+
+/* Cadangan kalau Tailwind CDN gagal termuat: tabel lebar tetap bisa digeser, halaman tidak ikut melebar */
+.overflow-x-auto{overflow-x:auto}
