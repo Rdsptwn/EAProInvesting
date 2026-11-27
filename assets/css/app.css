@@ -604,6 +604,7 @@ body.dark-mode-override .st-DIV{background:#14532d;color:#bbf7d0}body.dark-mode-
 .kg-prof-who{font-size:.9rem;line-height:1.55;margin-bottom:.7rem}
 .kg-prof-row{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:.6rem}
 .kg-prof-w{font-size:1.15rem}
+.kg-prof-w2{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 .2rem}.kg-prof-w2 span{background:rgba(16,185,129,.12);border-radius:.6rem;padding:.3rem .6rem;font-size:.85rem}.kg-prof-w2 i{font-style:normal;font-size:.65rem;font-weight:800;opacity:.7;margin-right:.3rem}
 .kg-prof-s{font-size:.78rem;opacity:.8;max-width:26rem}
 .kg-prof-f{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
 .kg-pf{font-size:.72rem;padding:.2rem .55rem;border-radius:999px;background:rgba(99,102,241,.12)}

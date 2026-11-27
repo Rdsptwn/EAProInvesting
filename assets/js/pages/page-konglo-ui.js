@@ -48,6 +48,17 @@ function kgLoadProfil(cb) {
         .then((j) => { kgProfil = j || { g: {} }; cb(); })
         .catch(() => { kgProfil = { g: {} }; cb(); });
 }
+/** Nilai kekayaan dua mata uang: v = {cur:'USD' (miliar US$) | 'IDR' (triliun Rp), n}; kurs dari meta.fx. */
+function kgFmtWealth(v) {
+    const fx = kgProfil && kgProfil.meta && kgProfil.meta.fx;
+    if (!v || !fx || !(fx.rate > 0) || !Number.isFinite(v.n)) return '';
+    const f = (x, d) => x.toLocaleString('id-ID', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const usd = v.cur === 'USD' ? v.n : v.n * 1e12 / fx.rate / 1e9; // miliar US$
+    const idr = v.cur === 'IDR' ? v.n : v.n * 1e9 * fx.rate / 1e12; // triliun Rp
+    const u = usd >= 1 ? 'US$ ' + f(usd, usd >= 10 ? 1 : 2) + ' miliar' : 'US$ ' + f(usd * 1000, 0) + ' juta';
+    const r = idr >= 1000 ? 'Rp ' + f(idr / 1000, 2) + ' kuadriliun' : 'Rp ' + f(idr, idr >= 100 ? 0 : 1) + ' triliun';
+    return `<div class="kg-prof-w2"><span><i>USD</i> <b>${u}</b></span><span><i>IDR</i> <b>${r}</b></span></div><p class="kg-prof-n">Konversi kurs Rp${f(fx.rate, 0)}/US$ (${escapeHtml(fx.asOf)}). Aslinya dicatat dalam ${v.cur === 'USD' ? 'dolar' : 'rupiah'}.</p>`;
+}
 function kgRenderProfil(groupId) {
     const box = document.getElementById('detail-profile');
     if (!box) return;
@@ -57,7 +68,7 @@ function kgRenderProfil(groupId) {
     const fields = (p.fields || []).map((f) => `<span class="kg-pf">${escapeHtml(f)}</span>`).join('');
     box.innerHTML = `<div class="kg-prof premium-card">
         <p class="kg-prof-who">${escapeHtml(p.who || '')}</p>
-        <div class="kg-prof-row"><div><p class="kg-more-h">Kekayaan tercatat</p><b class="kg-prof-w">${escapeHtml(p.wealth || '—')}</b></div>
+        <div class="kg-prof-row"><div><p class="kg-more-h">Kekayaan tercatat</p><b class="kg-prof-w">${escapeHtml(p.wealth || '—')}</b>${kgFmtWealth(p.v)}</div>
         <div class="kg-prof-s"><p class="kg-more-h">Sumber &amp; tanggal</p><span>${src}</span></div></div>
         ${fields ? `<div class="kg-prof-f">${fields}</div>` : ''}
         <p class="kg-prof-n">Angka bukan nilai pasti dan cepat berubah mengikuti harga saham. Keyakinan data: ${escapeHtml(p.conf || '—')}.</p></div>`;
