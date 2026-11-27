@@ -81,3 +81,5 @@ Diperbarui: **27 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 - Semua data disajikan sebagai snapshot dari GitHub Actions; harga live memakai Binance (kripto) dan Worker (`/gquotes`, `/quotes`).
 - Data yang gagal diambil tidak menimpa data lama (`writeSafe`).
 - Konten bersifat edukasi, bukan rekomendasi beli/jual.
+
+- Konglo: estimasi nilai saham yang dipegang (persen tertulis × saham beredar × harga live) + berita 30 hari. Data saham beredar `idx-shares.json` dibuat `tools/build-idx-shares.mjs` (step di `sync-funda-cf.yml`), **belum pernah dites ke Yahoo**; sebelum Actions jalan, kotak estimasi tidak muncul.

@@ -74,6 +74,46 @@ function kgRenderProfil(groupId) {
         <p class="kg-prof-n">Angka bukan nilai pasti dan cepat berubah mengikuti harga saham. Keyakinan data: ${escapeHtml(p.conf || '—')}.</p></div>`;
 }
 
+/** Estimasi nilai saham yang dipegang: persen (hanya yang tertulis satu angka %) x jumlah saham beredar x harga live. */
+let kgEstData = null;
+function kgLoadEst(cb) {
+    if (kgEstData) return cb();
+    const base = typeof EwoksSiteContext !== 'undefined' ? EwoksSiteContext.basePath : '/';
+    const v = encodeURIComponent(window.EWOKS_ASSET_V || '1');
+    const get = (f) => fetch(`${base}assets/data/${f}?v=${v}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    Promise.all([get('idx-shares.json'), get('global-news.json')]).then(([sh, nw]) => { kgEstData = { s: (sh && sh.s) || {}, news: (nw && nw.items) || [] }; cb(); });
+}
+function kgStake(txt) {
+    const m = String(txt || '').match(/\d+(?:[.,]\d+)?\s*%/g);
+    return m && m.length === 1 ? parseFloat(m[0].replace(',', '.')) : null;
+}
+function kgRenderEst(group) {
+    const box = document.getElementById('detail-profile');
+    const fx = kgProfil && kgProfil.meta && kgProfil.meta.fx;
+    if (!box || !kgEstData || !group) return;
+    let rows = [], skipped = 0, total = 0;
+    group.stocks.forEach((st) => {
+        const pct = kgStake(st.kepemilikan_persen), sh = kgEstData.s[st.ticker], q = typeof getIdxQuote === 'function' ? getIdxQuote(st.ticker) : null;
+        if (pct == null || !sh || !q || !(q.price > 0)) { skipped++; return; }
+        const val = pct / 100 * sh[0] * q.price;
+        total += val; rows.push({ t: st.ticker, pct, val });
+    });
+    const f = (x, d) => x.toLocaleString('id-ID', { maximumFractionDigits: d });
+    let html = '';
+    if (rows.length && fx && fx.rate > 0) {
+        rows.sort((a, b) => b.val - a.val);
+        const idr = total / 1e12, usd = total / fx.rate / 1e9;
+        html += `<p class="kg-more-h">Nilai saham yang dipegang (estimasi)</p>
+        <div class="kg-prof-w2"><span><i>USD</i> <b>${usd >= 1 ? 'US$ ' + f(usd, usd >= 10 ? 1 : 2) + ' miliar' : 'US$ ' + f(usd * 1000, 0) + ' juta'}</b></span><span><i>IDR</i> <b>Rp ${f(idr, idr >= 100 ? 0 : 1)} triliun</b></span></div>
+        <p class="kg-prof-n">Dihitung dari persen pemegang × jumlah saham beredar × harga terakhir, untuk ${rows.length} emiten (${rows.slice(0, 4).map((r) => `${escapeHtml(r.t)} ${r.pct}%`).join(', ')}${rows.length > 4 ? ', dst' : ''}). ${skipped} emiten tidak dihitung karena persennya tidak tertulis jelas atau data saham belum ada. Ini nilai saham, bukan total kekayaan: aset tidak tercatat tidak ikut, dan anak usaha bisa terhitung dobel.</p>`;
+    }
+    const kw = ((kgProfil.g && kgProfil.g[group.id] && kgProfil.g[group.id].kw) || [group.name]).map((x) => String(x).toLowerCase());
+    const cut = Date.now() - 30 * 864e5;
+    const hits = kgEstData.news.filter((n) => Date.parse(n.ts) >= cut && kw.some((k) => String(n.title || '').toLowerCase().includes(k))).slice(0, 3);
+    if (hits.length) html += `<p class="kg-more-h" style="margin-top:.75rem">Berita 30 hari terakhir yang menyebut grup ini</p><ul class="kg-prof-n">${hits.map((n) => `<li><a class="underline" target="_blank" rel="noopener noreferrer" href="${escapeHtml(n.link)}">${escapeHtml(n.title)}</a> (${escapeHtml(n.src || '')})</li>`).join('')}</ul><p class="kg-prof-n">Cocok dari kata kunci di judul, belum diverifikasi.</p>`;
+    if (html) box.insertAdjacentHTML('beforeend', `<div class="kg-prof premium-card" style="margin-top:.75rem">${html}</div>`);
+}
+
 function kgHue(str) {
     let h = 0;
     for (const c of String(str)) h = (h * 31 + c.charCodeAt(0)) % 360;
@@ -220,7 +260,7 @@ function showDetail(groupId) {
         if (lg) t.insertAdjacentHTML('beforebegin', lg.replace('<img ', '<img id="detail-logo" style="width:44px;height:44px;margin:1rem 0 0;display:block" '));
     }
     document.getElementById('detail-desc').innerText = group.desc;
-    kgLoadProfil(() => kgRenderProfil(groupId));
+    kgLoadProfil(() => { kgRenderProfil(groupId); kgLoadEst(() => kgRenderEst(group)); });
     const priceNote = document.getElementById('detail-price-note');
     if (priceNote) {
         const built = typeof __ewoksMarketSnapshot !== 'undefined' ? (__ewoksMarketSnapshot?.meta?.liveAt || __ewoksMarketSnapshot?.meta?.built) : null;

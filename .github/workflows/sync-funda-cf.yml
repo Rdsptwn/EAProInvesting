@@ -34,11 +34,14 @@ jobs:
             const b = JSON.parse(fs.readFileSync("assets/data/funda-idx.json", "utf8")).tickers;
             if (Object.keys(b).length < Object.keys(a).length) { console.error("Jumlah emiten turun"); process.exit(1); }
           ' || { echo "::warning::hasil tidak valid, pakai versi sebelumnya"; cp /tmp/funda-idx.bak assets/data/funda-idx.json; }
+      # Jumlah saham beredar untuk nilai saham konglo; gagal tidak menghentikan workflow.
+      - name: Build jumlah saham beredar
+        run: node tools/build-idx-shares.mjs || echo "::warning::jumlah saham beredar gagal diambil"
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/data/funda-idx.json
+          git add assets/data/funda-idx.json assets/data/idx-shares.json
           if git diff --staged --quiet; then echo "Tidak ada perubahan."; exit 0; fi
           git commit -m "chore(data): arus kas dan dividen emiten BEI dari Yahoo"
           git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"

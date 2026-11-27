@@ -41,3 +41,5 @@ Dipakai otomatis saat bekerja di repo ini:
 ## Belum diverifikasi / catatan
 - Level candle IHSG dan rekomendasi Kripto/Forex/Global bergantung pada Worker `/chart` (Yahoo) dan OKX/Binance; pesan galat sekarang menampilkan "Detail:" alasan gagal.
 - Reksa dana: database hanya punya return 1 tahun (tanggal data tertera), tidak ada NAB harian.
+
+- `tools/build-idx-shares.mjs` → `assets/data/idx-shares.json` (saham beredar emiten konglo); dipakai `kgRenderEst` di `page-konglo-ui.js`. Belum dites ke Yahoo asli.
