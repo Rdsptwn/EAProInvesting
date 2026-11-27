@@ -11,8 +11,8 @@
     var BASE = (window.EwoksSiteContext && EwoksSiteContext.basePath) || '';
     var V = encodeURIComponent(window.EWOKS_ASSET_V || '1');
     var TFS = [['5m', '5 menit', 300000], ['1h', '1 jam', 3600000], ['4h', '4 jam', 14400000]];
-    var CATS = [['all', 'Semua'], ['bow', 'Buy on Weakness'], ['brk', 'Breakout Resist'], ['tl', 'Trendline'], ['rum', 'Rumor / Berita']];
-    var LBL = { bow: 'Buy on Weakness', brk: 'Breakout Resist', tl: 'Trendline naik', rum: 'Rumor / Berita' };
+    var CATS = [['all', 'Semua'], ['bow', 'Buy on Weakness'], ['brk', 'Breakout Resist'], ['tl', 'Trendline'], ['tlb', 'Breakout Trendline'], ['rum', 'Rumor / Berita']];
+    var LBL = { bow: 'Buy on Weakness', brk: 'Breakout Resist', tl: 'Trendline naik', tlb: 'Breakout Trendline', rum: 'Rumor / Berita' };
     var N = 12;
     var tf = '1h', mode = 'ketat', cat = 'all', timer = null, busy = false, lastAt = 0, assets = [], cards = [], note = '', NEWS = null, firstRun = true;
     try { var s1 = localStorage.getItem('ewoks_bpm_tf'); if (TFS.some(function (t) { return t[0] === s1; })) tf = s1; if (localStorage.getItem('ewoks_bpm_mode') === 'longgar') mode = 'longgar'; } catch (_) {}
@@ -60,11 +60,11 @@
         var out = [];
         assets.forEach(function (a) {
             var cats = {}, ks;
-            ['bow', 'tl', 'brk'].forEach(function (k) { if (a.cats[k]) cats[k] = a.cats[k]; });
+            ['bow', 'tl', 'tlb', 'brk'].forEach(function (k) { if (a.cats[k]) cats[k] = a.cats[k]; });
             if (ru[a.t]) cats.rum = ru[a.t];
             ks = Object.keys(cats); if (!ks.length) return;
             var c = { t: a.t, n: a.n, price: a.price, chg: a.chg, cats: cats, nk: ks.length };
-            c.lv = cats.bow || cats.tl || cats.brk || null;
+            c.lv = cats.bow || cats.tl || cats.tlb || cats.brk || null;
             c.score = ks.reduce(function (s, k) { return s + cats[k].score; }, 0) + (ks.length - 1) * 6;
             out.push(c);
         });
@@ -73,6 +73,7 @@
     function why(c) {
         var o = [], k = c.cats;
         if (k.bow) o.push('Koreksi dekat support dalam tren naik (di atas MA50).');
+        if (k.tlb) o.push('Tembus garis tren turun di ±' + fmtP(k.tlb.line, c.t) + ' (dua swing high makin rendah, harga baru menutup di atas garis).');
         if (k.tl) o.push('Pantul garis tren naik di ±' + fmtP(k.tl.line, c.t) + ' (dua swing low makin tinggi, garis belum jebol).');
         if (k.brk) o.push('Harga di/atas resist ±' + fmtP(k.brk.res, c.t) + ' (high 40 candle).');
         return o;
@@ -115,7 +116,7 @@
             '<button type="button" data-r="1">Segarkan</button><button type="button" id="bpm-copy">Salin</button></div></div>' +
             '<div class="bp-tabs">' + tabs + '</div>' +
             '<div class="bp-grid">' + (top.length ? top.map(card).join('') : (loading ? '' : '<p class="bp-n" style="grid-column:1/-1">' + esc(empty) + '</p>')) + '</div>' +
-            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari candle ' + tfl[1] + ', bukan ajakan beli/jual. Tren naik = harga ≥ MA50; Buy on Weakness = koreksi dekat support swing; Breakout = harga di dekat/atas high 40 candle; Trendline = garis dari dua swing low terakhir; Rumor/Berita hanya sebutan di judul berita, belum terverifikasi. TP = resist terdekat, CL = di bawah area beli (ukuran berdasarkan ATR). Hanya posisi beli (long). Selalu pakai manajemen risiko.</p></div>';
+            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari candle ' + tfl[1] + ', bukan ajakan beli/jual. Tren naik = harga ≥ MA50; Buy on Weakness = koreksi dekat support swing; Breakout = harga di dekat/atas high 40 candle; Trendline = garis dari dua swing low terakhir; Breakout Trendline = garis turun dari dua swing high terakhir yang baru ditembus ke atas; Rumor/Berita hanya sebutan di judul berita, belum terverifikasi. TP = resist terdekat, CL = di bawah area beli (ukuran berdasarkan ATR). Hanya posisi beli (long). Selalu pakai manajemen risiko.</p></div>';
     }
     function refresh(force) {
         if (busy) return Promise.resolve();

@@ -22,9 +22,9 @@
     function rDn(p) { var t = tick(p); return Math.floor(p / t + 1e-9) * t; }
     function idr(n) { return Math.round(n).toLocaleString('id-ID'); }
     var N = 12;
-    var CATS = [['all', 'Semua'], ['bow', 'Buy on Weakness'], ['brk', 'Breakout Resist'], ['tl', 'Trendline'], ['rum', 'Rumor / Berita']];
-    var LBL = { bow: 'Buy on Weakness', brk: 'Breakout Resist', tl: 'Trendline naik', rum: 'Rumor / Berita' };
-    var PRIO = ['bow', 'tl', 'brk'];
+    var CATS = [['all', 'Semua'], ['bow', 'Buy on Weakness'], ['brk', 'Breakout Resist'], ['tl', 'Trendline'], ['tlb', 'Breakout Trendline'], ['rum', 'Rumor / Berita']];
+    var LBL = { bow: 'Buy on Weakness', brk: 'Breakout Resist', tl: 'Trendline naik', tlb: 'Breakout Trendline', rum: 'Rumor / Berita' };
+    var PRIO = ['bow', 'tl', 'tlb', 'brk'];
     var D = null, S = null, C = null, VOL = null, NEWS = null, KM = null;
     var cat = 'all', mode = 'ketat', cards = [], L = null, status = '', SM = {};
 
@@ -90,6 +90,26 @@
         o.score = rr * 8 + Math.max(0, 3 - Math.abs(dist)) * 2 + Math.min(5, Math.log10(Math.max(1, x.lq.val) / 1e9));
         return o;
     }
+    function tlbrk(x) {
+        var a = C && C[x.t]; if (!a || !a[0] || a[0].length < 30) return null;
+        var h = a[0], cl = a[2], n = h.length, i, p = [];
+        for (i = Math.max(2, n - 50); i < n - 2; i++) if (h[i] >= h[i - 1] && h[i] >= h[i - 2] && h[i] >= h[i + 1] && h[i] >= h[i + 2]) p.push(i);
+        if (p.length < 2) return null;
+        var i2 = p[p.length - 1], i1 = p[p.length - 2];
+        if (i2 - i1 < 5 || h[i2] >= h[i1] * 0.98) return null;
+        var sl = (h[i2] - h[i1]) / (i2 - i1), line = h[i2] + sl * (n - i2), first = -1;
+        for (i = i2 + 1; i < n; i++) if (cl[i] > h[i2] + sl * (i - i2)) { first = i; break; }
+        var lo2 = loose();
+        if (first < n - (lo2 ? 5 : 3)) return null;
+        var dist = (x.price - line) / line * 100;
+        if (dist < 0.2 || dist > (lo2 ? 7 : 4.5)) return null;
+        var o = { t: x.t, n: x.n, price: x.price, chg: x.chg, line: line };
+        var tp = x.res > x.price * 1.04 ? x.res : x.price * 1.08;
+        var rr = levelsOut(o, rUp(line), rUp(line * 1.015), rDn(line * 0.97), rDn(tp));
+        if (!(rr >= (lo2 ? 1.0 : 1.2)) || o.cl >= o.lo) return null;
+        o.score = rr * 8 + Math.max(0, 4 - dist) * 2 + Math.min(5, Math.log10(Math.max(1, x.lq.val) / 1e9));
+        return o;
+    }
     function rumors(byT) {
         var out = {}, items = (NEWS && NEWS.items) || [], cutoff = Date.now() - 72 * 36e5;
         items.forEach(function (it) {
@@ -103,7 +123,7 @@
         return out;
     }
     function compute() {
-        var cutoff = Date.now() - 6 * 864e5, byT = {}, R = { bow: [], brk: [], tl: [], rum: [] };
+        var cutoff = Date.now() - 6 * 864e5, byT = {}, R = { bow: [], brk: [], tl: [], tlb: [], rum: [] };
         D.rows.forEach(function (r) {
             var price = r[1], date = r[10];
             if (!(price >= 60) || !date || new Date(date).getTime() < cutoff) return;
@@ -112,15 +132,15 @@
             if (!x.sup || !x.res || !x.ma50 || blocked(x.t)) return;
             x.lq = liq(x.t, price, x.vol);
             if (x.lq.val < (loose() ? 2e8 : 5e8)) return;
-            var a = bowRough(x), b = brk(x), c = tline(x);
-            if (a) R.bow.push(a); if (b) R.brk.push(b); if (c) R.tl.push(c);
+            var a = bowRough(x), b = brk(x), c = tline(x), e = tlbrk(x);
+            if (a) R.bow.push(a); if (b) R.brk.push(b); if (c) R.tl.push(c); if (e) R.tlb.push(e);
         });
         var ru = rumors(byT); Object.keys(ru).forEach(function (t) { R.rum.push(ru[t]); });
         return R;
     }
     function merge() {
         var map = {};
-        ['bow', 'tl', 'brk', 'rum'].forEach(function (k) {
+        ['bow', 'tl', 'tlb', 'brk', 'rum'].forEach(function (k) {
             L[k].forEach(function (x) {
                 var c = map[x.t] || (map[x.t] = { t: x.t, n: x.n, price: x.price, chg: x.chg, cats: {}, flags: flagsOf(x.t) });
                 c.cats[k] = x;
@@ -128,7 +148,7 @@
         });
         return Object.keys(map).map(function (t) {
             var c = map[t], ks = Object.keys(c.cats);
-            c.lv = c.cats.bow || c.cats.tl || c.cats.brk || null;
+            c.lv = c.cats.bow || c.cats.tl || c.cats.tlb || c.cats.brk || null;
             c.score = ks.reduce(function (s, k) { return s + c.cats[k].score; }, 0) + (ks.length - 1) * 6;
             c.nk = ks.length;
             return c;
@@ -146,6 +166,7 @@
     function why(c) {
         var o = [], k = c.cats;
         if (k.bow) o.push('Koreksi dekat support dalam tren naik (di atas MA50).');
+        if (k.tlb) o.push('Tembus garis tren turun di ±' + idr(k.tlb.line) + ' (dua swing high makin rendah, harga baru menutup di atas garis).');
         if (k.tl) o.push('Pantul garis tren naik di ±' + idr(k.tl.line) + ' (dua swing low makin tinggi, garis belum jebol).');
         if (k.brk) o.push('Harga di/atas resist ±' + idr(k.brk.res) + (k.brk.vr && k.brk.vr >= 1.5 ? ', volume ±' + k.brk.vr.toFixed(1) + '× rata-rata' : '') + '.');
         return o;
@@ -194,7 +215,7 @@
         box.innerHTML = '<div class="bp-wrap"><div class="bp-top"><div><h2>Rekomendasi Bot · IHSG</h2><p>' + (top.length ? list.length + ' saham' + (cat === 'all' ? ' lolos minimal satu kategori' : ' di kategori ini') + '; tampil ' + top.length + ' teratas. ' + esc(status) : esc(empty)) + ' Data ' + esc(when) + '</p></div>' +
             '<div class="bp-btn"><button type="button" data-m="ketat" class="' + (mode === 'ketat' ? 'on' : '') + '">Ketat</button><button type="button" data-m="longgar" class="' + (mode === 'longgar' ? 'on' : '') + '">Longgar</button><button type="button" id="bp-copy">Salin</button></div></div>' +
             '<div class="bp-tabs">' + tabs + '</div><div class="bp-grid">' + top.map(card).join('') + '</div>' +
-            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari harga penutupan, bukan ajakan beli/jual. Tren naik = harga ≥ MA50; Breakout = harga ≥ 98% resist; Trendline = garis dari dua swing low terakhir; Rumor/Berita hanya sebutan kode saham di judul berita, belum terverifikasi. Tanda konglo mengacu ke peta konglo situs ini (ikuti tautannya untuk rincian). TP = resist terdekat, CL = di bawah area beli. Lakukan analisa sendiri &amp; manage risk.</p></div>';
+            '<p class="bp-d">DISCLAIMER: hasil screener otomatis dari harga penutupan, bukan ajakan beli/jual. Tren naik = harga ≥ MA50; Breakout = harga ≥ 98% resist; Trendline = garis dari dua swing low terakhir; Breakout Trendline = garis turun dari dua swing high terakhir yang baru ditembus ke atas; Rumor/Berita hanya sebutan kode saham di judul berita, belum terverifikasi. Tanda konglo mengacu ke peta konglo situs ini (ikuti tautannya untuk rincian). TP = resist terdekat, CL = di bawah area beli. Lakukan analisa sendiri &amp; manage risk.</p></div>';
         box.querySelectorAll('[data-m]').forEach(function (b) { b.onclick = function () { mode = b.dataset.m; paint(); }; });
         box.querySelectorAll('[data-c]').forEach(function (b) { b.onclick = function () { cat = b.dataset.c; draw(); }; });
         box.querySelectorAll('[data-add]').forEach(function (b) { b.onclick = function () { addWatch(b.dataset.add, b); }; });

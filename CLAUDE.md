@@ -20,8 +20,8 @@ Dipakai otomatis saat bekerja di repo ini:
 - `assets/js/chat-cmds.js` (lazy): `/rd /istilah /topreturn /lk /akum /fibo /analisa`. `assets/js/mascot.js` (lazy): SVG Tido. `assets/js/picks-engine.js` (lazy): level BoW dari candle (swing support/resist + ATR) untuk IHSG/Global/Kripto/Forex.
 - `assets/js/pages/page-*.js`: logika per halaman (`page-watchlist.js` multi-pasar: idx, kripto, forex, global, komoditas, rd; `page-bot-picks*.js` kartu rekomendasi).
 - `worker/yahoo-proxy.js`: Worker (quotes, chart, fund, /ask AI, `scheduled()` pemicu workflow). Setiap perubahan **harus di-deploy manual** oleh pemilik.
-- `assets/js/pages/page-bot-picks-multi.js` + `picks-engine.js` (`runAll`): Rekomendasi Bot Global/Kripto/Forex, 4 kategori sama seperti IHSG (BoW, Breakout, Trendline, Rumor/Berita dari `global-news.json`), dihitung dari candle per timeframe. `run()` lama (BoW saja) masih dipakai command chat.
-- `assets/js/pages/page-bot-picks.js`: Rekomendasi Bot IHSG 4 kategori (BoW, Breakout, Trendline, Rumor/Berita) + tanda konglo dari `assets/data/konglo-map.json`. Setelah mengubah `page-konglo-data-funda.js`, jalankan `node tools/build-konglo-map.mjs` dan commit hasilnya.
+- `assets/js/pages/page-bot-picks-multi.js` + `picks-engine.js` (`runAll`): Rekomendasi Bot Global/Kripto/Forex, 5 kategori sama seperti IHSG (BoW, Breakout, Trendline naik, Breakout Trendline turun, Rumor/Berita dari `global-news.json`), dihitung dari candle per timeframe. `run()` lama (BoW saja) masih dipakai command chat.
+- `assets/js/pages/page-bot-picks.js`: Rekomendasi Bot IHSG 5 kategori (BoW, Breakout, Trendline naik, Breakout Trendline turun, Rumor/Berita) + tanda konglo dari `assets/data/konglo-map.json`. Setelah mengubah `page-konglo-data-funda.js`, jalankan `node tools/build-konglo-map.mjs` dan commit hasilnya.
 - `tools/*.mjs|py`: pembangun data. `.github/workflows/*.yml`: jadwal.
 
 ## Jadwal data (WIB)

@@ -124,7 +124,24 @@
         if (!(rr >= (loose ? 1.0 : 1.2)) || !(cl < lo)) return null;
         return { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, line: line, score: rr * 8 + Math.max(0, 2.5 - Math.abs(d)) * 2 };
     }
-    /* Semua kategori untuk satu aset dari candle: {t, n, price, chg, cats:{bow,brk,tl}} (cats kosong kalau tidak ada yang lolos). */
+    /* Breakout Trendline: garis turun dari dua swing high makin rendah (min 5 candle terpisah), harga baru menembus garis ke atas (maks 3 candle lalu, longgar 5). */
+    function tlbCat(o, b, mode) {
+        var h = o.h, l = o.l, c = o.c, n = c.length, loose = mode === 'longgar', i, p = [], atr = b.atr, price = b.price;
+        for (i = Math.max(2, n - 62); i < n - 2; i++) if (h[i] >= h[i - 1] && h[i] >= h[i - 2] && h[i] >= h[i + 1] && h[i] >= h[i + 2]) p.push(i);
+        if (p.length < 2) return null;
+        var i2 = p[p.length - 1], i1 = p[p.length - 2];
+        if (i2 - i1 < 5 || h[i1] - h[i2] < 0.6 * atr) return null;
+        var sl = (h[i2] - h[i1]) / (i2 - i1), line = h[i2] + sl * (n - 1 - i2), first = -1;
+        for (i = i2 + 1; i < n; i++) if (c[i] > h[i2] + sl * (i - i2)) { first = i; break; }
+        if (first < n - (loose ? 5 : 3)) return null;
+        var d = (price - line) / atr;
+        if (d < 0.05 || d > (loose ? 3.5 : 2.5)) return null;
+        var lv = levels(h, l, c, atr), tp = lv.res - price >= 1.5 * atr ? lv.res : price + 3 * atr;
+        var lo = line, hi = line + 0.7 * atr, cl = line - 0.8 * atr, mid = (lo + hi) / 2, rr = (tp - mid) / (mid - cl);
+        if (!(rr >= (loose ? 1.0 : 1.2))) return null;
+        return { lo: lo, hi: hi, tp: tp, cl: cl, rr: rr, line: line, score: rr * 8 + Math.max(0, 2.5 - d) * 2 };
+    }
+    /* Semua kategori untuk satu aset dari candle: {t, n, price, chg, cats:{bow,brk,tl,tlb}} (cats kosong kalau tidak ada yang lolos). */
     function analyzeAll(it, o, mode) {
         var c = o.c, h = o.h, l = o.l, n = c.length;
         var out = { t: it.k, n: it.n || '', price: it.price, chg: it.chg, cats: {} };
@@ -138,6 +155,7 @@
         var a = analyze(it, o, mode); if (a) out.cats.bow = a;
         var k = brkCat(o, b, mode); if (k) out.cats.brk = k;
         var t = tlCat(o, b, mode); if (t) out.cats.tl = t;
+        var u = tlbCat(o, b, mode); if (u) out.cats.tlb = u;
         return out;
     }
     /* IHSG: candle harian dari Worker (Yahoo .JK), pembulatan fraksi harga BEI. */
