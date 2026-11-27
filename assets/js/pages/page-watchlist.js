@@ -139,18 +139,21 @@ function renderWatchlist(isTick = false) {
         w.currentPrice = q2 && q2.price != null ? Number(q2.price) : null;
         w.changePct = q2 && q2.changePct != null ? Number(q2.changePct) : null;
     });
-    container.innerHTML = watchlist.map(w => {
+    const card = w => {
         const target = parseFloat(w.price);
         const current = w.currentPrice;
         const hasPrice = current != null && Number.isFinite(current);
-        // Target BELI: tercapai saat harga turun ke / di bawah target
-        const isHit = hasPrice && Number.isFinite(target) && current <= target;
+        // Status: TP tercapai = TARGET HIT; harga <= CL = KENA CL; harga <= target beli = di area beli (belum target).
+        const b = w.bow;
+        const st = !hasPrice ? '' : b && Number.isFinite(b.tp) && current >= b.tp ? 'tp' : b && Number.isFinite(b.cl) && current <= b.cl ? 'cl' : Number.isFinite(target) && current <= target ? 'buy' : '';
+        const isHit = st === 'tp', isCl = st === 'cl', isBuy = st === 'buy';
+        const badge = isHit ? ['bg-emerald-500', '🎯 TARGET HIT (TP)', ' animate-bounce'] : isCl ? ['bg-red-500', '🛑 KENA CL', ''] : isBuy ? ['bg-amber-500', '📍 DI AREA BELI', ''] : null;
         const chgTxt = hasPrice && w.changePct != null ? ` (${w.changePct >= 0 ? '+' : ''}${w.changePct.toFixed(2)}%)` : '';
         
         return `
-        <div class="bg-white border ${isHit ? 'border-emerald-400 shadow-emerald-100' : 'border-slate-200'} rounded-2xl p-5 shadow-sm relative group hover:border-amber-400 transition-colors flex flex-col h-full dark-mode-card">
+        <div class="bg-white border ${isHit ? 'border-emerald-400 shadow-emerald-100' : isCl ? 'border-red-400' : isBuy ? 'border-amber-400' : 'border-slate-200'} rounded-2xl p-5 shadow-sm relative group hover:border-amber-400 transition-colors flex flex-col h-full dark-mode-card">
             <button onclick="deleteWatchlist(${w.id})" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition-colors z-10"><i class="fas fa-times"></i></button>
-            ${isHit ? `<div class="absolute -top-3 -right-2 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10 animate-bounce">🎯 TARGET HIT!</div>` : ''}
+            ${badge ? `<div class="absolute -top-3 -right-2 ${badge[0]} text-white text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10${badge[2]}">${badge[1]}</div>` : ''}
             
             <div class="flex items-center gap-3 mb-3">
                 <div class="w-10 h-10 ${isHit ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'} rounded-xl flex items-center justify-center font-black cursor-pointer hover:opacity-80" onclick="${w.mk && w.mk !== 'idx' ? `window.open('${wlChartUrl(w)}','_blank','noopener')` : `openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')`}" title="Buka Chart Live">
@@ -180,7 +183,13 @@ function renderWatchlist(isTick = false) {
                 <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}'; document.getElementById('calc-price').value='${Number(w.price) || 0}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>
             </div>
         </div>
-    `}).join('');
+    `};
+    // Dikelompokkan per pasar supaya IHSG, Global, Kripto, Forex, dst. tidak tercampur.
+    const GROUPS = [['idx', 'IHSG (Saham Indonesia)'], ['global', 'Saham Global'], ['kripto', 'Kripto'], ['forex', 'Forex'], ['komoditas', 'Komoditas, Kurs & Indeks'], ['rd', 'Reksa Dana']];
+    container.innerHTML = GROUPS.map(([k, label]) => {
+        const items = watchlist.filter(w => (w.mk || 'idx') === k);
+        return items.length ? `<h3 class="col-span-full text-sm font-black text-slate-700 mt-2 first:mt-0">${label} <span class="text-slate-400 font-bold">(${items.length})</span></h3>` + items.map(card).join('') : '';
+    }).join('');
 }
 
 function deleteWatchlist(id) {
