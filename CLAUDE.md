@@ -22,7 +22,7 @@ Dipakai otomatis saat bekerja di repo ini:
 - `worker/yahoo-proxy.js`: Worker (quotes, chart, fund, /ask AI, `scheduled()` pemicu workflow). Setiap perubahan **harus di-deploy manual** oleh pemilik.
 - `assets/js/pages/page-bot-picks-multi.js` + `picks-engine.js` (`runAll`): Rekomendasi Bot Global/Kripto/Forex, 5 kategori sama seperti IHSG (BoW, Breakout, Trendline naik, Breakout Trendline turun, Rumor/Berita dari `global-news.json`), dihitung dari candle per timeframe. `run()` lama (BoW saja) masih dipakai command chat.
 - `assets/js/pages/page-bot-picks.js`: Rekomendasi Bot IHSG 5 kategori (BoW, Breakout, Trendline naik, Breakout Trendline turun, Rumor/Berita) + tanda konglo dari `assets/data/konglo-map.json`. Setelah mengubah `page-konglo-data-funda.js`, jalankan `node tools/build-konglo-map.mjs` dan commit hasilnya.
-- `tools/*.mjs|py`: pembangun data. `.github/workflows/*.yml`: jadwal.
+- `tools/*.mjs|py`: pembangun data. Berita Stockbit Snips/Bibit/Mirae di `build-global.mjs` dibaca dari HTML (`parseLinks`, wajib ada tanggal di dekat tautan); belum dites ke situs asli, cek `status` di `global-news.json`. `.github/workflows/*.yml`: jadwal.
 
 ## Jadwal data (WIB)
 - `sync-24jam`: kripto, forex, berita RSS, tiap 30 menit, 24 jam, tiap hari.

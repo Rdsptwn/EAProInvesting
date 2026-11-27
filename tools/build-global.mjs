@@ -355,7 +355,40 @@ export const FEEDS = [
     { id: 'lip6', n: 'Liputan6 Bisnis', url: 'https://feed.liputan6.com/rss/bisnis', lang: 'id', topic: 'bisnis', max: 20 },
     { id: 'okz', n: 'Okezone Ekonomi', url: 'https://sindikasi.okezone.com/index.php/rss/11/RSS2.0', lang: 'id', topic: 'bisnis', max: 20 },
     { id: 'detikfin', n: 'Detik Finance', url: 'https://finance.detik.com/rss', lang: 'id', topic: 'bisnis', max: 20 },
+    // Tanpa RSS: dibaca dari HTML (parseLinks). Struktur HTML belum pernah dilihat langsung dari sini, jadi cek `status` di global-news.json setelah run pertama.
+    { id: 'stockbit', n: 'Stockbit Snips', url: 'https://snips.stockbit.com/', lang: 'id', topic: 'pasar', max: 15, html: /^https:\/\/snips\.stockbit\.com\/[^?#]+/ },
+    { id: 'bibit', n: 'Bibit', url: 'https://blog.bibit.id/blog-1/category/News', lang: 'id', topic: 'pasar', max: 10, html: /^https:\/\/blog\.bibit\.id\/blog-1\/(?!category|tag)[^?#]+/ },
+    { id: 'mirae', n: 'Mirae Asset', url: 'https://sekuritas.miraeasset.co.id/id/news', lang: 'id', topic: 'pasar', max: 15, html: /^https:\/\/sekuritas\.miraeasset\.co\.id\/id\/news\/[^?#]+/ },
 ];
+const BLN = { jan: 0, feb: 1, mar: 2, apr: 3, mei: 4, may: 4, jun: 5, jul: 6, agu: 7, agt: 7, aug: 7, sep: 8, okt: 9, oct: 9, nov: 10, des: 11, dec: 11, januari: 0, februari: 1, maret: 2, april: 3, juni: 5, juli: 6, agustus: 7, september: 8, oktober: 9, november: 10, desember: 11, january: 0, february: 1, march: 2, june: 5, july: 6, august: 7, october: 9, december: 11 };
+/* Tanggal "26 Nov 2026" atau "November 25, 2026" di teks; hasilnya jam 00:00 WIB (17:00 UTC hari sebelumnya), atau null. */
+export function findDate(txt) {
+    const r = /\b(\d{1,2})\s+([A-Za-z]{3,9})\s+(20\d\d)\b|\b([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(20\d\d)\b/g;
+    let m;
+    while ((m = r.exec(txt))) {
+        const d = m[1] ? +m[1] : +m[5], mo = BLN[(m[2] || m[4]).toLowerCase()], y = +(m[3] || m[6]);
+        if (mo !== undefined && d >= 1 && d <= 31) return new Date(Date.UTC(y, mo, d) - 7 * 36e5).toISOString();
+    }
+    return null;
+}
+/* Ambil tautan artikel dari HTML: <a href> yang cocok `re`, judul ≥ 25 huruf, dan ada tanggal di teks sekitarnya (kalau tidak ada tanggal, dibuang). */
+export function parseLinks(html, base, re, max = 12) {
+    const out = [], seen = new Set(), src = String(html || '');
+    const rx = /<a\b[^>]*?href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+    let m;
+    while ((m = rx.exec(src))) {
+        let link; try { link = new URL(m[1].replace(/&amp;/g, '&'), base).href; } catch { continue; }
+        if (!re.test(link) || seen.has(link)) continue;
+        const title = strip(m[2]);
+        if (title.length < 25) continue;
+        const after = src.slice(m.index + m[0].length, m.index + m[0].length + 600), nx = after.search(/<a\b/i);
+        const ts = findDate(title + ' ' + strip(nx < 0 ? after : after.slice(0, nx)).slice(0, 200));
+        if (!ts) continue;
+        seen.add(link); out.push({ title: title.replace(/^(?:[^\p{L}\p{N}]+)/u, ''), link, ts, desc: '' });
+        if (out.length >= max) break;
+    }
+    return out;
+}
 const ent = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, ' ').replace(/&#(\d+);/g, (_, c) => String.fromCharCode(+c));
 const strip = (s) => ent(s).replace(/(?:&)?amp;nbsp;/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 export function parseRss(xml, max = 12) {
@@ -383,7 +416,8 @@ async function buildNews() {
         try {
             const res = await fetch(f.url, { headers: { ...UA, Accept: 'application/rss+xml, application/xml, text/xml, */*' }, signal: AbortSignal.timeout(15000) });
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            const items = parseRss(await res.text(), f.max || 12);
+            const body = await res.text();
+            const items = f.html ? parseLinks(body, f.url, f.html, f.max || 12) : parseRss(body, f.max || 12);
             status[f.id] = items.length;
             for (const it of items) all.push({ ...it, src: f.n, sid: f.id, lang: f.lang, topic: f.topic });
         } catch (e) { status[f.id] = 'gagal: ' + e.message; }
