@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Yahoo Finance",
-    "built": "2026-11-26T23:01:18.522Z",
+    "built": "2026-11-27T00:01:24.686Z",
     "tz": "WIB",
     "tickerCount": 283
   },
@@ -19,13 +19,13 @@
   },
   "usdIdr": {
     "price": 18303,
-    "prevClose": 18214,
-    "changePct": 0.49,
+    "prevClose": 18242.8,
+    "changePct": 0.33,
     "high52": 18391,
     "low52": 15636.2,
     "support": 18175,
-    "resistance": 18300,
-    "avg": 18250,
+    "resistance": 18275,
+    "avg": 18225,
     "currency": "IDR",
     "name": "USD/IDR"
   },
