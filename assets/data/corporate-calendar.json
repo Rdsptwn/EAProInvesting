@@ -1,14 +1,7 @@
 {
-  "updated": "2026-11-27T10:02:15.871Z",
+  "updated": "2026-11-27T17:57:18.948Z",
   "source": "Yahoo Finance (riwayat dividen) + agenda makro rutin",
   "events": [
-    {
-      "ticker": "BREN",
-      "action": "Pantau keterbukaan emiten",
-      "kind": "rups",
-      "date": "2026-11-20",
-      "dateLabel": "IDX"
-    },
     {
       "ticker": "BPS",
       "action": "Rilis inflasi bulanan (IHK)",
