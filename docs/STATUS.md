@@ -1,6 +1,6 @@
 # Status Proyek: Update Tertunda & Data Belum Terisi
 
-Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu tindakan, dan data yang masih kosong.
+Diperbarui: **27 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu tindakan, dan data yang masih kosong.
 
 ## 1. Sudah jalan (data live di situs)
 
@@ -14,19 +14,24 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 | Syariah Global | Estimasi otomatis: 1.123 lolos, 1.311 tidak lolos, 36 tanpa data | `sync-global-funda` |
 | Kripto | 162 koin, Fear & Greed, tab Listing (40 pengumuman Binance + 10 trending CoinGecko) | `sync-24jam` (24 jam) |
 | Forex & emas | 31 pasangan termasuk XAU/USD, XAG/USD, PAXG, XAUT | `sync-24jam` (24 jam) |
-| Terminal / Watchlist | Rekomendasi bot BoW (Area BoW, TP, Strict CL); chip Market Screener bisa digabung (mis. Breakout Resist + Harga ≤ 500) | Dihitung di browser dari screener |
+| Rekomendasi Bot | 5 kategori (BoW, Breakout Resist, Trendline naik, Breakout Trendline, Rumor/Berita) untuk IHSG, Global, Kripto, Forex; tanda konglo di IHSG | Dihitung di browser dari candle (`picks-engine.js`) |
+| Watchlist dan Zona Pantauan | Watchlist: IHSG, komoditas, reksa dana. Global/Kripto/Forex di Zona Pantauan halaman masing-masing; label TARGET HIT (TP), KENA CL, DI AREA BELI | Tersimpan di browser |
+| Berita | RSS: CNBC Indonesia, IDX Channel, Bloomberg Technoz, Antara, Liputan6, Okezone, Detik Finance; HTML: Stockbit Snips, Bibit, Mirae (belum dites ke situs asli) | `sync-24jam` |
+| Peta Konglo | 37 grup, 266 emiten dengan data Stockbit 26 Nov 2026; kekayaan pemilik USD dan IDR (kurs di `konglo-profil.json` meta.fx) | `tools/build-konglo-map.mjs` setelah edit |
 | Chat Tido | Command `/pagi /siang /swing /scalp` dengan budget (≤500/1000), `/rd`, `/istilah`, `/topreturn`, router bahasa natural, maskot animasi | `assets/js/ewoks-core.js`, `chat-cmds.js`, `mascot.js` |
 | Lapkeu IDX | 351 emiten Yahoo + 622 emiten BEI (Financial Data and Ratio, tanpa arus kas) | `sync-funda-idx`, impor `tools/import-bei-fin.py` |
 | Jurnal Multi-pasar | Global, Bitcoin, Forex; ekspor/impor JSON & CSV | Tersimpan di browser (localStorage) |
 
 ## 2. Menunggu tindakan Anda (manual)
 
-1. **Cloudflare Worker `ewoks-live` → v12.** Tempel `worker/yahoo-proxy.js` terbaru lalu Deploy (persona Tido + pengetahuan command). Secret yang dipakai: `GEMINI_KEY`, `GROQ_KEY`, `OPENROUTER_KEY`, `COHERE_KEY`, opsional `NVIDIA_KEY`; `BOT_KEY` untuk bot WA.
-2. **Jalankan sekali di GitHub → Actions:** `Sync funda cash flow` (arus kas/dividen emiten BEI) dan `Sync return 5 tahun` (data `/topreturn`). Keduanya belum pernah dijalankan; setelah selesai cek jumlah emiten terisi.
-3. **Hubungkan bot WA ke otak yang sama.** Secret Worker `BOT_KEY`; di `.env` bot: `EWOKS_ASK_URL` dan `EWOKS_BOT_KEY`; ganti `index.js` bot dengan versi yang sudah dipatch.
-4. **Ganti kolam bot** dengan file terbersih: `kolam_idx.json` (898), `kolam_us.json` (416), `kolam_crypto.json` (162), `kolam_forex.json` (31).
-5. **Hard refresh (Ctrl+Shift+R)** bila tampilan lama masih muncul (cache browser/Pages 1–2 menit).
-6. **Awal Desember:** impor daftar ISSI baru (`tools/import-bei-indices.py`); daftar suspensi dan delisting diperbarui manual di `idx-status-manual.json`.
+1. **Deploy ulang Worker `worker/yahoo-proxy.js`.** Versi yang jalan (`v14-global`) belum punya pemicu `sync-live.yml`. Setelahnya Cron Trigger boleh dirapatkan ke tiap 5 menit (sekarang `0 * * * *`).
+2. **Google Search Console:** daftarkan situs dan kirim `sitemap.xml`.
+3. **GitHub → Actions:** jalankan `Sync funda cash flow` dan `Sync return 5 tahun` tiap awal bulan atau mingguan; cek rantai `workflow_run` dan loop live jam bursa.
+4. **Cek berita HTML:** setelah `sync-24jam`, lihat `meta.status` di `assets/data/global-news.json`. Jika Stockbit, Bibit, atau Mirae 0 item, pola URL/tanggal di `tools/build-global.mjs` perlu disesuaikan.
+5. **Lihat di browser asli:** kartu bot Global/Kripto/Forex, Zona Pantauan, bintang Pantau, dan profil kekayaan konglo (baru dites offline).
+6. **ISSI:** periode berikutnya belum terbit per 27 Nov; impor setelah rilis (`tools/import-bei-indices.py`).
+7. **Aturan 2027:** ARB 35% direncanakan mulai 1 Jan 2027 (ARB 7% sampai 31 Des 2026); cek pengumuman BEI akhir Desember lalu perbarui tab Aturan Bursa di `edukasi.html`.
+8. Hard refresh (Ctrl+Shift+R) bila tampilan lama masih muncul.
 
 ## 3. Update berkala yang tertunda
 
@@ -38,9 +43,10 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 - Kuota gratis Gemini/Groq dibagi semua pengunjung; bila habis widget menampilkan pesan "lagi penuh". Cadangan: isi lebih dari satu penyedia.
 
 ### 3.3 Pending produk
-- **PR bot WA ke server 24 jam** (VPS + pm2). Bot saat ini jalan di PC pribadi; mati bila PC mati. Catatan lengkap ada di proyek Claude (`PR-bot-wa-vps.md`).
+- **Bot WA** (BOT_KEY, pindah ke VPS) ditunda; fokus ke web. Catatan ada di proyek Claude (`PR-bot-wa-vps.md`).
 - **Sinkron jurnal antar perangkat** (butuh login + penyimpanan server). Sekarang hanya per browser.
 - **Perbaikan tampilan mobile** halaman Bitcoin & Forex.
+- Bintang di screener Global memakai penyimpanan terpisah (`ewoks_gwatch`), belum menyatu dengan Zona Pantauan Global.
 
 ## 4. Data yang belum terisi
 
@@ -55,7 +61,10 @@ Diperbarui: **22 Nov 2026**. Ringkasan apa yang sudah jalan, apa yang menunggu t
 | 32 ticker kolam US lama | Tidak ada di Yahoo | Sudah diakuisisi/ganti nama (SQ→XYZ, MRO, HES, PXD, dst.) |
 | 124 ticker kolam IDX lama | Tidak ada di daftar BEI | Ticker lama atau salah ketik (MAND, TOTAL, ZENC, dst.) |
 | Saham terkait: 5 indeks | Hanya perusahaan terbesar, bukan seluruh anggota | Daftar anggota lengkap non-AS belum tersedia gratis |
-| Berkas `kolam_global.json` bot | Belum pernah diterima | Disebut di manual bot; kirim bila bot membutuhkannya |
+| Berkas `kolam_global.json` bot | Belum pernah diterima | Bot WA ditunda |
+| Funda 8 emiten: FORZ, KPAL, KPAS, KRAH, MAMI, MYRX, NGLS, NIPS | Kosong | Tidak ada di Yahoo; pencarian web (27 Nov) tidak menemukan data multi-tahun yang bisa dipakai, jadi dibiarkan kosong |
+| Kekayaan konglo tanpa angka | Bakrie, Panin, Tommy Soeharto, PAM, Provident, Danatama | Tidak ada angka terbuka yang layak (tidak masuk Forbes); Tomy Winata (Globe Asia 2016) dan Lo Kheng Hong (4 saham, 2023) hanya angka lama |
+| Fraksi harga setelah harga minimum Rp1 (28 Sep 2026), siklus T+2, biaya broker 2026 | Belum terverifikasi | Teks resmi BEI belum ditemukan; ditandai di `edukasi.html` |
 
 
 ### 4.1 Hasil audit 22 Nov 2026 (belum bisa diisi dari sini)

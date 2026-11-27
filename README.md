@@ -30,8 +30,8 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 | | Modul | Isi |
 |---|---|---|
 | 🏠 | **Beranda** | IHSG, sentimen pasar, inflasi, yield SBN, **BI 7-Day RR Rate**, **Fed Rate**, aktivitas perdagangan (All Market / Regular / Nego), top gainer-loser, berita, kalender korporasi |
-| 🧭 | **Peta Konglo** | Grup konglomerat, kepemilikan emiten, harga, logo, dan laporan keuangan 2020–2026 untuk 348 emiten (termasuk 85 saham likuid non-konglo lewat kotak "Lapkeu emiten lain") |
-| 🌏 | **Pasar Global** | Mode **IHSG / Global / Bitcoin / Forex**: 2.649 saham & ETF AS dengan fundamental, indeks dunia dan saham terkaitnya, komoditas, kurs, sektor, filter **Syariah (estimasi)**, 309 instrumen ETF/reksa dana/SBN |
+| 🧭 | **Peta Konglo** | 37 grup konglomerat dan 266 emiten dengan data kepemilikan dari Stockbit (26 Nov 2026), harga, logo, laporan keuangan 2020–2026, serta kekayaan pemilik dalam **USD dan IDR** (Forbes atau estimasi media, lengkap dengan sumber, tanggal, dan tingkat keyakinan) |
+| 🌏 | **Pasar Global** | Mode **IHSG / Global / Bitcoin / Forex**, masing-masing dengan **Rekomendasi Bot** 5 kategori dan **Zona Pantauan** sendiri: 2.649 saham & ETF AS dengan fundamental, indeks dunia dan saham terkaitnya, komoditas, kurs, sektor, filter **Syariah (estimasi)**, 309 instrumen ETF/reksa dana/SBN |
 | ₿ | **Bitcoin & Kripto** | 162 koin, Fear & Greed, tab Listing (pengumuman Binance + trending), harga live Binance |
 | 💱 | **Forex & Emas** | 31 pasangan, XAU/USD, XAG/USD, PAXG, XAUT |
 | 📓 | **Jurnal Multi-pasar** | Jurnal Global, Bitcoin, dan Forex dengan statistik, kurva equity, ekspor/impor |
@@ -39,11 +39,17 @@ Data pasar, laporan keuangan, dan peta kepemilikan konglomerat, tanpa backend da
 | ⌨️ | **Command chat** | `/pagi /siang /swing /scalp` (IHSG, Global, Kripto, Forex; budget mis. `/swing idx 500`), `/akum /bandar /topakum /ea /lk /analisa /fibo`, `/rd` (reksa dana RDPU/RDPT/RDS/RDC/RDI), `/istilah`, `/topreturn idx 1\|3\|5`, `/harga /berita /help`. Pertanyaan bahasa natural ("tido, swing di bawah 500") otomatis dialihkan ke command; hasilnya dari database situs, bukan dari AI |
 | 🏦 | **Broker** | Database 91 broker BEI aktif (ritel, asing, lokal) dengan label kategori bandarmologi |
 | 📚 | **Edukasi** | Makro dan saham, laporan keuangan, fixed income, bandarmologi, kuis profil risiko |
-| 🧮 | **Tools** | Terminal watchlist dan screener (dengan **rekomendasi bot BoW** otomatis), jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
+| 🧮 | **Tools** | Terminal watchlist (IHSG, komoditas, reksa dana; status TARGET HIT hanya saat TP tercapai, KENA CL, atau DI AREA BELI) dan screener, **Rekomendasi Bot** 5 kategori untuk IHSG, Global, Kripto, dan Forex, jurnal trading, trading plan, kalkulator bandar, dana pensiun, compounding, dana darurat |
 
 Tampilan memakai tema **Aurora**: terang atau gelap, kartu kaca, gradien indigo–magenta–aqua, ilustrasi grafik animasi di beranda. Animasi otomatis mati bila perangkat memilih *reduced motion*.
 
 **Penanda status emiten.** Terminal menampilkan badge UMA, suspensi, notasi khusus, dan **HSC** (High Shareholding Concentration; 383 emiten sesuai pengumuman resmi BEI/KSEI 11 Nov 2026, lengkap dengan persentase konsentrasi), dapat difilter lewat "Status emiten".
+
+**Rekomendasi Bot.** Lima kategori, dihitung di browser dari candle: *Buy on Weakness* (area BoW dari swing support dan ATR), *Breakout Resist*, *Trendline naik* (pantulan garis dari dua swing low), *Breakout Trendline* (garis turun dari dua swing high yang baru ditembus ke atas), dan *Rumor/Berita* (kode atau nama muncul di judul berita 72 jam terakhir, belum diverifikasi). IHSG memakai candle harian, Global/Kripto/Forex memakai candle 5 menit, 1 jam, atau 4 jam dengan mode Ketat/Longgar. Edukasi, bukan saran beli atau jual.
+
+**Zona Pantauan.** Pantauan Global, Kripto, dan Forex tampil di halaman masing-masing (bukan di Watchlist IHSG). Tambah lewat tombol Pantau di kartu bot atau bintang di daftar koin/pasangan. Disimpan di browser.
+
+**Berita.** RSS dari CNBC Indonesia, IDX Channel, Bloomberg Technoz, Antara, Liputan6, Okezone, dan Detik Finance, ditambah pembaca HTML untuk Stockbit Snips, Bibit, dan Mirae Asset (butuh tanggal di dekat tautan; hasil cek di `meta.status` pada `global-news.json`).
 
 ## 🔄 Update Data Otomatis
 
@@ -58,7 +64,7 @@ Bot GitHub Actions meng-commit data ke repo, jadi situs berisi data terbaru tanp
 | Return 1/3/5 tahun saham IHSG (untuk `/topreturn`) | Minggu 10.00 WIB + manual | `sync-ret5y` |
 | Peringkat broker BEI | Harian | `sync-broker` |
 | Global: screener, indeks dunia, komoditas, IPO | Tiap 2 jam, Senin–Jumat | `sync-global` |
-| Kripto, forex, listing kripto, berita RSS | Tiap 30 menit, 24 jam, tiap hari | `sync-24jam` |
+| Kripto, forex, listing kripto, berita (RSS dan HTML) | Tiap 30 menit, 24 jam, tiap hari | `sync-24jam` |
 | IHSG dan harga emiten | Tiap jam, Senin 03:00 – Jumat 17:00 WIB (Sabtu–Minggu libur) | `daily-market-sync` |
 | Fundamental global dan estimasi syariah | Berkala | `sync-global-funda` |
 | Cache aset (`?v=`) | Setiap data berubah | otomatis |
