@@ -1,5 +1,5 @@
 /** Versi aset — naikkan setelah deploy agar GitHub Pages tidak pakai cache JS/CSS lama. */
-window.EWOKS_ASSET_V = '20261127t0238';
+window.EWOKS_ASSET_V = '20261127t0241';
 
 // --- FUNGSI TOAST NOTIFICATION MODERN ---
 function showToast(message, type = 'success') {
@@ -1124,7 +1124,7 @@ window.addEventListener('load', () => {
     if (typeof renderBrokers === 'function' && document.getElementById('brokerTable')) renderBrokers();
     if (typeof renderHistory === 'function' && document.getElementById('historySection')) renderHistory();
     if (typeof renderGrid === 'function' && document.getElementById('group-grid')) renderGrid();
-    if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist();
+    if (typeof renderWatchlist === 'function' && (document.getElementById('watchlist-container') || document.querySelector('[data-zona]'))) renderWatchlist();
     if (typeof renderJournal === 'function' && (document.getElementById('journal-empty') || document.getElementById('jr-date'))) renderJournal();
     if (typeof calcSbn === 'function') calcSbn();
     if (typeof calculateRetirement === 'function' && document.getElementById('p-age-retire')) calculateRetirement();
@@ -1393,7 +1393,7 @@ window.addEventListener('load', () => {
         if (watchlist.some(function (w) { return w.ticker === p.t && (w.mk || 'idx') === (p.mk || 'idx'); })) return 'dup';
         watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, mk: p.mk || 'idx', price: String(p.bow.hi), note: 'Dari Tido · R/R ±' + p.bow.rr.toFixed(1), foreign: '', bow: { lo: p.bow.lo, hi: p.bow.hi, tp: p.bow.tp, cl: p.bow.cl, ref: p.price, date: new Date().toISOString().slice(0, 10) } });
         try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
-        try { if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist(); } catch (_) {}
+        try { if (typeof renderWatchlist === 'function' && (document.getElementById('watchlist-container') || document.querySelector('[data-zona]'))) renderWatchlist(); } catch (_) {}
         return 'ok';
     }
     window.ewoksBowWatchAdd = bowWatchAdd;
@@ -1403,7 +1403,7 @@ window.addEventListener('load', () => {
         if (watchlist.some(function (w) { return w.ticker === p.t && (w.mk || 'idx') === p.mk; })) return 'dup';
         watchlist.push({ id: Date.now() + Math.floor(Math.random() * 1000), ticker: p.t, mk: p.mk, name: p.name || '', price: '', note: p.note || (p.mk === 'rd' ? 'Reksa dana dari database Ewoks' : 'Dipantau dari Ewoks'), foreign: '' });
         try { localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist)); } catch (_) {}
-        try { if (typeof renderWatchlist === 'function' && document.getElementById('watchlist-container')) renderWatchlist(); } catch (_) {}
+        try { if (typeof renderWatchlist === 'function' && (document.getElementById('watchlist-container') || document.querySelector('[data-zona]'))) renderWatchlist(); } catch (_) {}
         return 'ok';
     }
     window.ewoksWatchAdd = simpleWatchAdd;

@@ -126,11 +126,6 @@ function wlKomHtml(w) {
 function renderWatchlist(isTick = false) {
     wlLoadScr();
     const container = document.getElementById('watchlist-container');
-    if(watchlist.length === 0) {
-        if(!isTick) container.innerHTML = `<div class="col-span-full p-8 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl font-bold bg-white">Watchlist masih kosong. Mulai tambahkan pantauan emiten Anda!</div>`;
-        return;
-    }
-
     // Harga asli dari snapshot/live Yahoo (.JK). Tidak ada lagi harga simulasi acak.
     watchlist.forEach(w => {
         const mk = w.mk || 'idx';
@@ -139,7 +134,18 @@ function renderWatchlist(isTick = false) {
         w.currentPrice = q2 && q2.price != null ? Number(q2.price) : null;
         w.changePct = q2 && q2.changePct != null ? Number(q2.changePct) : null;
     });
-    const card = w => {
+    const zonas = document.querySelectorAll('[data-zona]');
+    zonas.forEach(z => {
+        const items = watchlist.filter(w => (w.mk || 'idx') === z.dataset.zona);
+        z.innerHTML = items.length ? items.map(w => card(w, true)).join('') : '<div class="col-span-full p-6 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl text-sm font-bold bg-white">Belum ada yang dipantau di sini. Klik tombol Pantau di kartu Rekomendasi Bot untuk menambahkan.</div>';
+    });
+    if (!container) return;
+    if(watchlist.length === 0) {
+        if(!isTick) container.innerHTML = `<div class="col-span-full p-8 text-center text-slate-500 border border-dashed border-slate-300 rounded-2xl font-bold bg-white">Watchlist masih kosong. Mulai tambahkan pantauan emiten Anda!</div>`;
+        return;
+    }
+
+    function card(w, zona) {
         const target = parseFloat(w.price);
         const current = w.currentPrice;
         const hasPrice = current != null && Number.isFinite(current);
@@ -178,15 +184,19 @@ function renderWatchlist(isTick = false) {
                 <span class="text-[10px] font-black text-indigo-700 uppercase">Foreign: ${escapeHtml(w.foreign)}</span>
             </div>` : ''}
 
-            <div class="grid grid-cols-2 gap-2 mt-4">
+            <div class="grid ${zona ? 'grid-cols-1' : 'grid-cols-2'} gap-2 mt-4">
                 <button onclick="${w.mk && w.mk !== 'idx' ? `window.open('${wlChartUrl(w)}','_blank','noopener')` : `openTVChart('${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}')`}" class="w-full text-[10px] font-black text-slate-600 bg-slate-100 py-3 rounded-xl hover:bg-slate-200 transition-colors uppercase"><i class="fas fa-chart-pie mr-1"></i> Chart</button>
-                <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}'; document.getElementById('calc-price').value='${Number(w.price) || 0}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>
+                ${zona ? '' : `                <button onclick="showPage('kalkulator'); document.getElementById('calc-name').value='${String(w.ticker).replace(/[^A-Z0-9]/gi,'')}'; document.getElementById('calc-price').value='${Number(w.price) || 0}'; runSimpleCalc();" class="w-full text-[10px] font-black text-blue-600 bg-blue-50 py-3 rounded-xl hover:bg-blue-100 transition-colors uppercase">Trading Plan</button>`}
             </div>
         </div>
-    `};
+    `}
     // Dikelompokkan per pasar supaya IHSG, Global, Kripto, Forex, dst. tidak tercampur.
-    const GROUPS = [['idx', 'IHSG (Saham Indonesia)'], ['global', 'Saham Global'], ['kripto', 'Kripto'], ['forex', 'Forex'], ['komoditas', 'Komoditas, Kurs & Indeks'], ['rd', 'Reksa Dana']];
-    container.innerHTML = GROUPS.map(([k, label]) => {
+    // Global, Kripto, dan Forex punya "Zona Pantauan" sendiri di halamannya masing-masing; di sini hanya IHSG, komoditas, dan reksa dana.
+    const GROUPS = [['idx', 'IHSG (Saham Indonesia)'], ['komoditas', 'Komoditas, Kurs & Indeks'], ['rd', 'Reksa Dana']];
+    const ELSEWHERE = [['global', 'Saham Global', 'global.html'], ['kripto', 'Kripto', 'bitcoin.html'], ['forex', 'Forex', 'forex.html']]
+        .map(([k, n, u]) => [n, u, watchlist.filter(w => w.mk === k).length]).filter(x => x[2]);
+    const note = ELSEWHERE.length ? '<p class="col-span-full text-xs font-bold text-slate-500">Pantauan pasar lain ada di Zona Pantauan masing-masing: ' + ELSEWHERE.map(x => `<a class="underline text-blue-600" href="${x[1]}">${x[0]} (${x[2]})</a>`).join(', ') + '.</p>' : '';
+    container.innerHTML = note + GROUPS.map(([k, label]) => {
         const items = watchlist.filter(w => (w.mk || 'idx') === k);
         return items.length ? `<h3 class="col-span-full text-sm font-black text-slate-700 mt-2 first:mt-0">${label} <span class="text-slate-400 font-bold">(${items.length})</span></h3>` + items.map(card).join('') : '';
     }).join('');
@@ -197,4 +207,10 @@ function deleteWatchlist(id) {
     localStorage.setItem('ewoks_watchlist', JSON.stringify(watchlist));
     renderWatchlist();
     showToast("Item dihapus dari Watchlist", "success");
+}
+
+// Halaman Global/Kripto/Forex: tampilkan Zona Pantauan dan segarkan harga tiap menit.
+if (document.querySelector('[data-zona]')) {
+    const startZona = () => { renderWatchlist(); setInterval(() => renderWatchlist(true), 60000); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startZona); else startZona();
 }
