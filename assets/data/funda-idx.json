@@ -2,7 +2,8 @@
   "meta": {
     "source": "Yahoo Finance — tahunan + kuartal 2026 terbaru + metrik turunan",
     "unit": "triliun IDR (kolom terakhir = kuartal 2026 terbaru; ROE/ROA kuartal annualized)",
-    "built": "2026-11-27T20:08:31.351Z"
+    "built": "2026-11-27T20:08:31.351Z",
+    "cf": "Arus kas dan dividend yield emiten BEI dicoba dari Yahoo (2026-11-28); yang tidak tersedia tetap 0."
   },
   "tickers": {
     "BBCA": {
